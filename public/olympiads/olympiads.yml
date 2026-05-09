@@ -88,6 +88,10 @@
   name: The Art of Problem Solving Code Worldwide Online Olympiad Training
 - type: textbook
   subject: Computing
+  date: Future
+  name: Kaggle - Machine Learning for Science
+- type: textbook
+  subject: Computing
   date: May 2026
   name: Machine Learning with PyTorch and Scikit-Learn by Sebastian Raschka
   highlighted: true
