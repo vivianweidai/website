@@ -38,8 +38,7 @@ import com.vivianweidai.science.core.grouping.ActivityGrouping
 import com.vivianweidai.science.core.model.Activity
 
 /** Unified chronological timeline of olympiads + textbooks, visually
- *  matching the webapp at /olympiads/. Groups by year (newest first),
- *  with a "Future" bucket landing wherever it first appears. */
+ *  matching the webapp at /olympiads/. Groups by year (newest first). */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OlympiadsView(
@@ -123,7 +122,7 @@ private fun Timeline(
 @Composable
 private fun ActivityRow(a: Activity) {
     val month = remember(a.date) {
-        if (a.date == "Future") "" else a.date.substringBefore(' ').take(3)
+        a.date.substringBefore(' ').take(3)
     }
     val chips = a.subjects?.takeIf { it.isNotEmpty() } ?: listOf(a.subject)
     // Canonical curriculum highlight yellow — #fff056, matching

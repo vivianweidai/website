@@ -26,14 +26,12 @@ object ActivityGrouping {
     }
 
     /** Group a (pre-sorted) list of activities into year buckets in
-     *  source order. Entries with `sortKey == "9999-12"` land in a
-     *  "Future" bucket, which appears wherever it first shows up. */
+     *  source order. */
     fun groupedByYear(items: List<Activity>): List<YearGroup> {
         val order = mutableListOf<String>()
         val buckets = mutableMapOf<String, MutableList<Activity>>()
         for (entry in items) {
-            val year = if (entry.sortKey == "9999-12") "Future"
-                       else entry.sortKey.take(4)
+            val year = entry.sortKey.take(4)
             if (year !in buckets) { order += year; buckets[year] = mutableListOf() }
             buckets.getValue(year) += entry
         }

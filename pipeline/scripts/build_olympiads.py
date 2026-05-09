@@ -39,14 +39,12 @@ MONTHS = {
 
 
 def sort_key(date: str) -> str:
-    """'November 2025' -> '2025-11'; 'Future' -> '9999-12'."""
-    if date == "Future":
-        return "9999-12"
+    """'November 2025' -> '2025-11'."""
     try:
         month, year = date.split(" ")
         return f"{year}-{MONTHS[month]}"
     except (ValueError, KeyError) as e:
-        raise ValueError(f"invalid date {date!r}: expected 'Month YYYY' or 'Future'") from e
+        raise ValueError(f"invalid date {date!r}: expected 'Month YYYY'") from e
 
 
 def build_activities() -> list[dict]:

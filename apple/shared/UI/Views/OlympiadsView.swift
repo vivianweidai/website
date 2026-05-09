@@ -2,9 +2,9 @@ import SwiftUI
 import ScienceCore
 
 /// Unified chronological timeline of olympiads + textbooks, visually matching
-/// the webapp at /olympiads/. Groups entries by year (newest first, Future
-/// bucket last), renders each row with a month label, type icon, subject
-/// chips, and name with optional INVITED badge.
+/// the webapp at /olympiads/. Groups entries by year (newest first), renders
+/// each row with a month label, type icon, subject chips, and name with
+/// optional INVITED badge.
 ///
 /// The webapp's implementation lives in olympiads/index.md — keep this view
 /// in sync with the timeline JS there when the design changes.
@@ -228,7 +228,6 @@ private struct ActivityRow: View {
     /// letters here so longer names don't wrap in the narrow fixed-width
     /// column. Source data is untouched.
     private var month: String {
-        guard activity.date != "Future" else { return "" }
         let full = activity.date.split(separator: " ").first.map(String.init) ?? ""
         return String(full.prefix(3))
     }

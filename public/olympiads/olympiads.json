@@ -4,31 +4,13 @@
       "id": 1,
       "type": "textbook",
       "subject": "Mathematics",
-      "date": "Future",
-      "sort_key": "9999-12",
-      "name": "The Art of Problem Solving Math Worldwide Online Olympiad Training A",
-      "highlighted": 0
-    },
-    {
-      "id": 2,
-      "type": "textbook",
-      "subject": "Mathematics",
-      "date": "Future",
-      "sort_key": "9999-12",
-      "name": "The Art of Problem Solving Math Worldwide Online Olympiad Training B",
-      "highlighted": 0
-    },
-    {
-      "id": 3,
-      "type": "textbook",
-      "subject": "Mathematics",
-      "date": "June 2026",
-      "sort_key": "2026-06",
+      "date": "July 2026",
+      "sort_key": "2026-07",
       "name": "Euclidean Geometry in Mathematical Olympiads by Evan Chen",
       "highlighted": 0
     },
     {
-      "id": 4,
+      "id": 2,
       "type": "textbook",
       "subject": "Mathematics",
       "date": "June 2026",
@@ -37,7 +19,7 @@
       "highlighted": 0
     },
     {
-      "id": 5,
+      "id": 3,
       "type": "textbook",
       "subject": "Mathematics",
       "date": "December 2025",
@@ -46,7 +28,7 @@
       "highlighted": 0
     },
     {
-      "id": 6,
+      "id": 4,
       "type": "olympiad",
       "subject": "Mathematics",
       "date": "November 2025",
@@ -56,16 +38,16 @@
       "competitive": 1
     },
     {
-      "id": 7,
+      "id": 5,
       "type": "textbook",
       "subject": "Mathematics",
-      "date": "November 2025",
-      "sort_key": "2025-11",
-      "name": "Athemath Women in Math Online Social Network",
+      "date": "December 2025",
+      "sort_key": "2025-12",
+      "name": "Athemath for Women in Math",
       "highlighted": 0
     },
     {
-      "id": 8,
+      "id": 6,
       "type": "olympiad",
       "subject": "Mathematics",
       "date": "October 2025",
@@ -74,25 +56,25 @@
       "highlighted": 0
     },
     {
-      "id": 9,
-      "type": "textbook",
+      "id": 7,
+      "type": "olympiad",
       "subject": "Mathematics",
-      "date": "September 2025",
-      "sort_key": "2025-09",
-      "name": "The Art of Problem Solving American Mathematics Competition 12 Series",
+      "date": "October 2025",
+      "sort_key": "2025-10",
+      "name": "Carnegie Mellon Winter Mathematics Competition",
       "highlighted": 0
     },
     {
-      "id": 10,
+      "id": 8,
       "type": "textbook",
       "subject": "Mathematics",
       "date": "July 2025",
       "sort_key": "2025-07",
-      "name": "MathPath Summer Camp at Mount Holyoke College",
+      "name": "MathPath at Mount Holyoke College",
       "highlighted": 0
     },
     {
-      "id": 11,
+      "id": 9,
       "type": "textbook",
       "subject": "Mathematics",
       "date": "May 2025",
@@ -101,7 +83,16 @@
       "highlighted": 0
     },
     {
-      "id": 12,
+      "id": 10,
+      "type": "olympiad",
+      "subject": "Mathematics",
+      "date": "January 2025",
+      "sort_key": "2025-01",
+      "name": "Caltech Math Meet",
+      "highlighted": 0
+    },
+    {
+      "id": 11,
       "type": "olympiad",
       "subject": "Mathematics",
       "date": "November 2024",
@@ -110,7 +101,7 @@
       "highlighted": 0
     },
     {
-      "id": 13,
+      "id": 12,
       "type": "olympiad",
       "subject": "Mathematics",
       "date": "October 2024",
@@ -119,16 +110,16 @@
       "highlighted": 0
     },
     {
-      "id": 14,
+      "id": 13,
       "type": "textbook",
       "subject": "Mathematics",
       "date": "July 2024",
       "sort_key": "2024-07",
-      "name": "MathPath Summer Camp at Rockhurst University",
+      "name": "MathPath at Rockhurst University",
       "highlighted": 0
     },
     {
-      "id": 15,
+      "id": 14,
       "type": "textbook",
       "subject": "Mathematics",
       "date": "May 2024",
@@ -137,7 +128,7 @@
       "highlighted": 0
     },
     {
-      "id": 16,
+      "id": 15,
       "type": "textbook",
       "subject": "Mathematics",
       "date": "May 2024",
@@ -146,7 +137,7 @@
       "highlighted": 1
     },
     {
-      "id": 17,
+      "id": 16,
       "type": "textbook",
       "subject": "Mathematics",
       "date": "September 2023",
@@ -155,25 +146,16 @@
       "highlighted": 0
     },
     {
+      "id": 17,
+      "type": "textbook",
+      "subject": "Computing",
+      "date": "June 2026",
+      "sort_key": "2026-06",
+      "name": "Kaggle Machine Learning for Science",
+      "highlighted": 0
+    },
+    {
       "id": 18,
-      "type": "textbook",
-      "subject": "Computing",
-      "date": "Future",
-      "sort_key": "9999-12",
-      "name": "The Art of Problem Solving Code Worldwide Online Olympiad Training",
-      "highlighted": 0
-    },
-    {
-      "id": 19,
-      "type": "textbook",
-      "subject": "Computing",
-      "date": "Future",
-      "sort_key": "9999-12",
-      "name": "Kaggle - Machine Learning for Science",
-      "highlighted": 0
-    },
-    {
-      "id": 20,
       "type": "textbook",
       "subject": "Computing",
       "date": "May 2026",
@@ -182,16 +164,7 @@
       "highlighted": 1
     },
     {
-      "id": 21,
-      "type": "textbook",
-      "subject": "Computing",
-      "date": "May 2026",
-      "sort_key": "2026-05",
-      "name": "Advanced Placement Statistics Exam",
-      "highlighted": 0
-    },
-    {
-      "id": 22,
+      "id": 19,
       "type": "olympiad",
       "subject": "Computing",
       "date": "January 2026",
@@ -200,7 +173,7 @@
       "highlighted": 0
     },
     {
-      "id": 23,
+      "id": 20,
       "type": "textbook",
       "subject": "Computing",
       "date": "January 2026",
@@ -209,7 +182,7 @@
       "highlighted": 0
     },
     {
-      "id": 24,
+      "id": 21,
       "type": "textbook",
       "subject": "Computing",
       "date": "January 2026",
@@ -218,7 +191,7 @@
       "highlighted": 0
     },
     {
-      "id": 25,
+      "id": 22,
       "type": "textbook",
       "subject": "Computing",
       "date": "December 2025",
@@ -227,7 +200,7 @@
       "highlighted": 1
     },
     {
-      "id": 26,
+      "id": 23,
       "type": "textbook",
       "subject": "Computing",
       "date": "May 2025",
@@ -236,7 +209,7 @@
       "highlighted": 0
     },
     {
-      "id": 27,
+      "id": 24,
       "type": "textbook",
       "subject": "Computing",
       "date": "May 2025",
@@ -245,7 +218,7 @@
       "highlighted": 0
     },
     {
-      "id": 28,
+      "id": 25,
       "type": "olympiad",
       "subject": "Computing",
       "date": "March 2025",
@@ -254,7 +227,7 @@
       "highlighted": 0
     },
     {
-      "id": 29,
+      "id": 26,
       "type": "olympiad",
       "subject": "Computing",
       "date": "January 2025",
@@ -263,16 +236,7 @@
       "highlighted": 0
     },
     {
-      "id": 30,
-      "type": "olympiad",
-      "subject": "Computing",
-      "date": "January 2025",
-      "sort_key": "2025-01",
-      "name": "USA Computing Olympiad Bronze Exam",
-      "highlighted": 0
-    },
-    {
-      "id": 31,
+      "id": 27,
       "type": "textbook",
       "subject": "Computing",
       "date": "January 2025",
@@ -281,7 +245,7 @@
       "highlighted": 0
     },
     {
-      "id": 32,
+      "id": 28,
       "type": "textbook",
       "subject": "Computing",
       "date": "May 2024",
@@ -290,7 +254,7 @@
       "highlighted": 0
     },
     {
-      "id": 33,
+      "id": 29,
       "type": "textbook",
       "subject": "Computing",
       "date": "May 2024",
@@ -299,7 +263,7 @@
       "highlighted": 0
     },
     {
-      "id": 34,
+      "id": 30,
       "type": "olympiad",
       "subject": "Computing",
       "date": "March 2024",
@@ -308,7 +272,7 @@
       "highlighted": 0
     },
     {
-      "id": 35,
+      "id": 31,
       "type": "olympiad",
       "subject": "Computing",
       "date": "December 2023",
@@ -317,25 +281,7 @@
       "highlighted": 0
     },
     {
-      "id": 36,
-      "type": "textbook",
-      "subject": "Physics",
-      "date": "Future",
-      "sort_key": "9999-12",
-      "name": "The Art of Problem Solving Physics Worldwide Online Olympiad Training A",
-      "highlighted": 0
-    },
-    {
-      "id": 37,
-      "type": "textbook",
-      "subject": "Physics",
-      "date": "Future",
-      "sort_key": "9999-12",
-      "name": "The Art of Problem Solving Physics Worldwide Online Olympiad Training B",
-      "highlighted": 0
-    },
-    {
-      "id": 38,
+      "id": 32,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2026",
@@ -344,7 +290,7 @@
       "highlighted": 0
     },
     {
-      "id": 39,
+      "id": 33,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2026",
@@ -353,7 +299,7 @@
       "highlighted": 0
     },
     {
-      "id": 40,
+      "id": 34,
       "type": "olympiad",
       "subject": "Physics",
       "date": "April 2026",
@@ -362,11 +308,11 @@
       "highlighted": 0
     },
     {
-      "id": 41,
+      "id": 35,
       "type": "olympiad",
       "subject": "Physics",
-      "date": "March 2026",
-      "sort_key": "2026-03",
+      "date": "May 2026",
+      "sort_key": "2026-05",
       "name": "Junior Science Olympiad of Canada Exam",
       "highlighted": 0,
       "subjects": [
@@ -377,7 +323,7 @@
       "competitive": 1
     },
     {
-      "id": 42,
+      "id": 36,
       "type": "olympiad",
       "subject": "Physics",
       "date": "February 2026",
@@ -386,16 +332,16 @@
       "highlighted": 0
     },
     {
-      "id": 43,
+      "id": 37,
       "type": "textbook",
       "subject": "Physics",
-      "date": "Future",
-      "sort_key": "9999-12",
+      "date": "December 2026",
+      "sort_key": "2026-12",
       "name": "Physics Olympiad Handouts by Kevin Zhou",
       "highlighted": 0
     },
     {
-      "id": 44,
+      "id": 38,
       "type": "olympiad",
       "subject": "Physics",
       "date": "November 2025",
@@ -410,7 +356,7 @@
       "invited": 1
     },
     {
-      "id": 45,
+      "id": 39,
       "type": "olympiad",
       "subject": "Physics",
       "date": "May 2025",
@@ -425,7 +371,7 @@
       "competitive": 1
     },
     {
-      "id": 46,
+      "id": 40,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2025",
@@ -434,7 +380,7 @@
       "highlighted": 0
     },
     {
-      "id": 47,
+      "id": 41,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2025",
@@ -443,7 +389,7 @@
       "highlighted": 0
     },
     {
-      "id": 48,
+      "id": 42,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2025",
@@ -452,7 +398,7 @@
       "highlighted": 0
     },
     {
-      "id": 49,
+      "id": 43,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2025",
@@ -461,7 +407,7 @@
       "highlighted": 0
     },
     {
-      "id": 50,
+      "id": 44,
       "type": "olympiad",
       "subject": "Physics",
       "date": "April 2025",
@@ -470,16 +416,16 @@
       "highlighted": 0
     },
     {
-      "id": 51,
+      "id": 45,
       "type": "textbook",
       "subject": "Physics",
-      "date": "March 2025",
-      "sort_key": "2025-03",
+      "date": "January 2025",
+      "sort_key": "2025-01",
       "name": "The Art of Problem Solving Physics F=ma Series",
       "highlighted": 0
     },
     {
-      "id": 52,
+      "id": 46,
       "type": "olympiad",
       "subject": "Physics",
       "date": "February 2025",
@@ -488,7 +434,7 @@
       "highlighted": 0
     },
     {
-      "id": 53,
+      "id": 47,
       "type": "olympiad",
       "subject": "Physics",
       "date": "May 2024",
@@ -502,7 +448,7 @@
       ]
     },
     {
-      "id": 54,
+      "id": 48,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2024",
@@ -511,7 +457,7 @@
       "highlighted": 1
     },
     {
-      "id": 55,
+      "id": 49,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2024",
@@ -520,7 +466,7 @@
       "highlighted": 0
     },
     {
-      "id": 56,
+      "id": 50,
       "type": "olympiad",
       "subject": "Physics",
       "date": "April 2024",
@@ -529,7 +475,7 @@
       "highlighted": 0
     },
     {
-      "id": 57,
+      "id": 51,
       "type": "textbook",
       "subject": "Physics",
       "date": "March 2024",
@@ -538,7 +484,7 @@
       "highlighted": 0
     },
     {
-      "id": 58,
+      "id": 52,
       "type": "olympiad",
       "subject": "Physics",
       "date": "February 2024",
@@ -547,7 +493,7 @@
       "highlighted": 0
     },
     {
-      "id": 59,
+      "id": 53,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "May 2026",
@@ -556,25 +502,25 @@
       "highlighted": 0
     },
     {
-      "id": 60,
+      "id": 54,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2026",
       "sort_key": "2026-04",
-      "name": "Canadian Chemistry Olympiad Exams",
+      "name": "Canadian Chemistry Olympiad Exam",
       "highlighted": 0
     },
     {
-      "id": 61,
+      "id": 55,
       "type": "textbook",
       "subject": "Chemistry",
-      "date": "April 2026",
-      "sort_key": "2026-04",
+      "date": "February 2026",
+      "sort_key": "2026-02",
       "name": "Canadian Chemistry Olympiad Training Course by Ivan Shershnev",
       "highlighted": 1
     },
     {
-      "id": 62,
+      "id": 56,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "March 2026",
@@ -584,25 +530,34 @@
       "competitive": 1
     },
     {
-      "id": 63,
+      "id": 57,
       "type": "textbook",
       "subject": "Chemistry",
-      "date": "Future",
-      "sort_key": "9999-12",
+      "date": "October 2026",
+      "sort_key": "2026-10",
+      "name": "University of Nevada Reno Organic Chemistry for Scientists and Professionals",
+      "highlighted": 0
+    },
+    {
+      "id": 58,
+      "type": "textbook",
+      "subject": "Chemistry",
+      "date": "September 2026",
+      "sort_key": "2026-09",
       "name": "Descriptive Inorganic, Coordination, and Solid State Chemistry by Glen E. Rodgers",
       "highlighted": 0
     },
     {
-      "id": 64,
+      "id": 59,
       "type": "textbook",
       "subject": "Chemistry",
-      "date": "Future",
-      "sort_key": "9999-12",
+      "date": "August 2026",
+      "sort_key": "2026-08",
       "name": "Organic Chemistry as a Second Language by David Klein",
       "highlighted": 0
     },
     {
-      "id": 65,
+      "id": 60,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "April 2026",
@@ -611,7 +566,7 @@
       "highlighted": 0
     },
     {
-      "id": 66,
+      "id": 61,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "April 2026",
@@ -620,7 +575,7 @@
       "highlighted": 0
     },
     {
-      "id": 67,
+      "id": 62,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "May 2025",
@@ -629,16 +584,16 @@
       "highlighted": 0
     },
     {
-      "id": 68,
+      "id": 63,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2025",
       "sort_key": "2025-04",
-      "name": "Canadian Chemistry Olympiad Exams",
+      "name": "Canadian Chemistry Olympiad Exam",
       "highlighted": 0
     },
     {
-      "id": 69,
+      "id": 64,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2025",
@@ -648,16 +603,16 @@
       "invited": 1
     },
     {
-      "id": 70,
+      "id": 65,
       "type": "textbook",
       "subject": "Chemistry",
-      "date": "April 2025",
-      "sort_key": "2025-04",
+      "date": "February 2025",
+      "sort_key": "2025-02",
       "name": "Chemistry by Zumdahl and Zumdahl",
       "highlighted": 1
     },
     {
-      "id": 71,
+      "id": 66,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "April 2025",
@@ -666,16 +621,17 @@
       "highlighted": 0
     },
     {
-      "id": 72,
+      "id": 67,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "March 2025",
       "sort_key": "2025-03",
       "name": "United States National Chemistry Olympiad Local Exam",
-      "highlighted": 0
+      "highlighted": 0,
+      "competitive": 1
     },
     {
-      "id": 73,
+      "id": 68,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "March 2025",
@@ -684,7 +640,7 @@
       "highlighted": 0
     },
     {
-      "id": 74,
+      "id": 69,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "May 2024",
@@ -693,16 +649,16 @@
       "highlighted": 0
     },
     {
-      "id": 75,
+      "id": 70,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2024",
       "sort_key": "2024-04",
-      "name": "Canadian Chemistry Olympiad Exams",
+      "name": "Canadian Chemistry Olympiad Exam",
       "highlighted": 0
     },
     {
-      "id": 76,
+      "id": 71,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "March 2024",
@@ -711,7 +667,7 @@
       "highlighted": 0
     },
     {
-      "id": 77,
+      "id": 72,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2026",
@@ -720,7 +676,7 @@
       "highlighted": 0
     },
     {
-      "id": 78,
+      "id": 73,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2026",
@@ -730,7 +686,7 @@
       "competitive": 1
     },
     {
-      "id": 79,
+      "id": 74,
       "type": "olympiad",
       "subject": "Biology",
       "date": "February 2026",
@@ -740,16 +696,16 @@
       "competitive": 1
     },
     {
-      "id": 80,
+      "id": 75,
       "type": "textbook",
       "subject": "Biology",
-      "date": "May 2025",
-      "sort_key": "2025-05",
+      "date": "January 2025",
+      "sort_key": "2025-01",
       "name": "Biology: A Global Approach by Neil A. Campbell",
       "highlighted": 1
     },
     {
-      "id": 81,
+      "id": 76,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2025",
@@ -758,7 +714,7 @@
       "highlighted": 0
     },
     {
-      "id": 82,
+      "id": 77,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2025",
@@ -767,7 +723,16 @@
       "highlighted": 0
     },
     {
-      "id": 83,
+      "id": 78,
+      "type": "olympiad",
+      "subject": "Biology",
+      "date": "April 2025",
+      "sort_key": "2025-04",
+      "name": "Canadian Biology Olympiad Competition Exam",
+      "highlighted": 0
+    },
+    {
+      "id": 79,
       "type": "olympiad",
       "subject": "Biology",
       "date": "February 2025",
@@ -776,7 +741,7 @@
       "highlighted": 0
     },
     {
-      "id": 84,
+      "id": 80,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2024",
@@ -785,16 +750,16 @@
       "highlighted": 0
     },
     {
-      "id": 85,
+      "id": 81,
       "type": "textbook",
       "subject": "Biology",
-      "date": "Future",
-      "sort_key": "9999-12",
+      "date": "December 2026",
+      "sort_key": "2026-12",
       "name": "The USA Biology Olympiad Open Exam Exams Worked Solutions by Martyna Petrulyte",
       "highlighted": 0
     },
     {
-      "id": 86,
+      "id": 82,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2024",
@@ -803,7 +768,7 @@
       "highlighted": 0
     },
     {
-      "id": 87,
+      "id": 83,
       "type": "textbook",
       "subject": "Biology",
       "date": "March 2024",
@@ -812,7 +777,16 @@
       "highlighted": 0
     },
     {
-      "id": 88,
+      "id": 84,
+      "type": "textbook",
+      "subject": "Astronomy",
+      "date": "August 2026",
+      "sort_key": "2026-08",
+      "name": "University of Nevada Reno Astrophysical Measurements and Astrophysics",
+      "highlighted": 0
+    },
+    {
+      "id": 85,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2026",
@@ -822,7 +796,7 @@
       "invited": 1
     },
     {
-      "id": 89,
+      "id": 86,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2026",
@@ -831,7 +805,7 @@
       "highlighted": 0
     },
     {
-      "id": 90,
+      "id": 87,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2026",
@@ -841,16 +815,16 @@
       "competitive": 1
     },
     {
-      "id": 91,
+      "id": 88,
       "type": "textbook",
       "subject": "Astronomy",
-      "date": "March 2026",
-      "sort_key": "2026-03",
+      "date": "January 2026",
+      "sort_key": "2026-01",
       "name": "Foundations of Astrophysics by Barbara Ryden and Bradley Peterson",
       "highlighted": 1
     },
     {
-      "id": 92,
+      "id": 89,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2026",
@@ -860,7 +834,7 @@
       "competitive": 1
     },
     {
-      "id": 93,
+      "id": 90,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "October 2025",
@@ -870,7 +844,7 @@
       "invited": 1
     },
     {
-      "id": 94,
+      "id": 91,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2025",
@@ -880,7 +854,7 @@
       "competitive": 1
     },
     {
-      "id": 95,
+      "id": 92,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2025",
@@ -889,7 +863,7 @@
       "highlighted": 0
     },
     {
-      "id": 96,
+      "id": 93,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2025",
@@ -898,7 +872,7 @@
       "highlighted": 0
     },
     {
-      "id": 97,
+      "id": 94,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "August 2024",
@@ -907,7 +881,7 @@
       "highlighted": 0
     },
     {
-      "id": 98,
+      "id": 95,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "July 2024",
@@ -916,7 +890,7 @@
       "highlighted": 0
     },
     {
-      "id": 99,
+      "id": 96,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "June 2024",
@@ -925,7 +899,7 @@
       "highlighted": 0
     },
     {
-      "id": 100,
+      "id": 97,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2024",
@@ -934,7 +908,7 @@
       "highlighted": 0
     },
     {
-      "id": 101,
+      "id": 98,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2024",

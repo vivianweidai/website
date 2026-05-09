@@ -328,7 +328,7 @@ import PageFooter from '../../layouts/PageFooter.astro';
       var years = {};
       var yearOrder = [];
       filtered.forEach(function (e) {
-        var y = e.sort_key === '9999-12' ? 'Future' : e.sort_key.slice(0, 4);
+        var y = e.sort_key.slice(0, 4);
         if (!years[y]) { years[y] = []; yearOrder.push(y); }
         years[y].push(e);
       });
@@ -338,7 +338,7 @@ import PageFooter from '../../layouts/PageFooter.astro';
       yearOrder.forEach(function (y, yi) {
         html += '<div class="year-marker fade-in" style="animation-delay:' + (yi * 0.04).toFixed(2) + 's">' + y + '</div>';
         years[y].forEach(function (e) {
-          var month = e.date === 'Future' ? '' : e.date.split(' ')[0];
+          var month = e.date.split(' ')[0];
           var icon = e.type === 'olympiad'
             ? '<svg class="rings-icon" viewBox="0 0 50 24" width="20" height="10"><circle cx="8" cy="8" r="6" fill="none" stroke="#0081C8" stroke-width="1.5"/><circle cx="18" cy="8" r="6" fill="none" stroke="#000" stroke-width="1.5"/><circle cx="28" cy="8" r="6" fill="none" stroke="#EE334E" stroke-width="1.5"/><circle cx="13" cy="14" r="6" fill="none" stroke="#FCB131" stroke-width="1.5"/><circle cx="23" cy="14" r="6" fill="none" stroke="#00A651" stroke-width="1.5"/></svg>'
             : '<span class="type-icon">📖</span>';
@@ -374,6 +374,10 @@ import PageFooter from '../../layouts/PageFooter.astro';
           radio.addEventListener('change', function () {
             var filter = this.id.replace('view-', '');
             sessionStorage.setItem('subj-tab', filter);
+            var newHash = filter === 'all' ? '' : '#' + filter;
+            if (newHash !== location.hash) {
+              history.replaceState(null, '', location.pathname + location.search + newHash);
+            }
             renderTimeline(items, filter);
           });
         });

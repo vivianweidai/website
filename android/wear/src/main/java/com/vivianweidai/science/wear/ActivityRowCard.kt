@@ -34,10 +34,7 @@ import com.vivianweidai.science.core.model.Activity
  *  ActivityRow (yellow wash for highlighted == 1). */
 @Composable
 fun ActivityRowCard(activity: Activity, onClick: () -> Unit) {
-    val month = when {
-        activity.date == "Future" -> "TBD"
-        else -> activity.date.substringBefore(' ').take(3).uppercase()
-    }
+    val month = activity.date.substringBefore(' ').take(3).uppercase()
     val primarySubject = activity.subjects?.firstOrNull() ?: activity.subject
 
     val highlight = activity.highlighted == 1

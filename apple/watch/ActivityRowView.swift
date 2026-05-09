@@ -10,7 +10,6 @@ struct ActivityRowView: View {
     let activity: Activity
 
     private var month: String {
-        guard activity.date != "Future" else { return "TBD" }
         let full = activity.date.split(separator: " ").first.map(String.init) ?? ""
         return String(full.prefix(3)).uppercased()
     }

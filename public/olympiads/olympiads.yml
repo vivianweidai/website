@@ -6,7 +6,7 @@
 #   subject:     Mathematics | Computing | Physics |          (required)
 #                Chemistry | Biology | Astronomy
 #   subjects:    [Physics, Chemistry, Biology]                (optional — multi-subject override, e.g. JSOC)
-#   date:        "Month YYYY" | "Future"                      (required)
+#   date:        "Month YYYY"                                 (required)
 #   name:        string                                       (required)
 
 #   highlighted: true                                         (optional — omit when false)
@@ -14,15 +14,7 @@
 #   competitive: true                                         (optional — renders 🎯, "competitive field / almost made cutoff")
 - type: textbook
   subject: Mathematics
-  date: Future
-  name: The Art of Problem Solving Math Worldwide Online Olympiad Training A
-- type: textbook
-  subject: Mathematics
-  date: Future
-  name: The Art of Problem Solving Math Worldwide Online Olympiad Training B
-- type: textbook
-  subject: Mathematics
-  date: June 2026
+  date: July 2026
   name: Euclidean Geometry in Mathematical Olympiads by Evan Chen
 - type: textbook
   subject: Mathematics
@@ -39,24 +31,28 @@
   competitive: true
 - type: textbook
   subject: Mathematics
-  date: November 2025
-  name: Athemath Women in Math Online Social Network
+  date: December 2025
+  name: Athemath for Women in Math
 - type: olympiad
   subject: Mathematics
   date: October 2025
   name: Canadian Open Mathematics Challenge
-- type: textbook
+- type: olympiad
   subject: Mathematics
-  date: September 2025
-  name: The Art of Problem Solving American Mathematics Competition 12 Series
+  date: October 2025
+  name: Carnegie Mellon Winter Mathematics Competition
 - type: textbook
   subject: Mathematics
   date: July 2025
-  name: MathPath Summer Camp at Mount Holyoke College
+  name: MathPath at Mount Holyoke College
 - type: textbook
   subject: Mathematics
   date: May 2025
   name: Advanced Placement Calculus BC Exam
+- type: olympiad
+  subject: Mathematics
+  date: January 2025
+  name: Caltech Math Meet
 - type: olympiad
   subject: Mathematics
   date: November 2024
@@ -68,7 +64,7 @@
 - type: textbook
   subject: Mathematics
   date: July 2024
-  name: MathPath Summer Camp at Rockhurst University
+  name: MathPath at Rockhurst University
 - type: textbook
   subject: Mathematics
   date: May 2024
@@ -84,21 +80,13 @@
   name: Precalculus Mathematics in a Nutshell by George F. Simmons
 - type: textbook
   subject: Computing
-  date: Future
-  name: The Art of Problem Solving Code Worldwide Online Olympiad Training
-- type: textbook
-  subject: Computing
-  date: Future
-  name: Kaggle - Machine Learning for Science
+  date: June 2026
+  name: Kaggle Machine Learning for Science
 - type: textbook
   subject: Computing
   date: May 2026
   name: Machine Learning with PyTorch and Scikit-Learn by Sebastian Raschka
   highlighted: true
-- type: textbook
-  subject: Computing
-  date: May 2026
-  name: Advanced Placement Statistics Exam
 - type: olympiad
   subject: Computing
   date: January 2026
@@ -132,10 +120,6 @@
   subject: Computing
   date: January 2025
   name: North American Computational Linguistics Open Exam
-- type: olympiad
-  subject: Computing
-  date: January 2025
-  name: USA Computing Olympiad Bronze Exam
 - type: textbook
   subject: Computing
   date: January 2025
@@ -158,14 +142,6 @@
   name: USA Computing Olympiad Bronze Exam
 - type: textbook
   subject: Physics
-  date: Future
-  name: The Art of Problem Solving Physics Worldwide Online Olympiad Training A
-- type: textbook
-  subject: Physics
-  date: Future
-  name: The Art of Problem Solving Physics Worldwide Online Olympiad Training B
-- type: textbook
-  subject: Physics
   date: May 2026
   name: Advanced Placement Physics 2 Exam
 - type: textbook
@@ -179,7 +155,7 @@
 - type: olympiad
   subject: Physics
   subjects: [Physics, Chemistry, Biology]
-  date: March 2026
+  date: May 2026
   name: Junior Science Olympiad of Canada Exam
   competitive: true
 - type: olympiad
@@ -188,7 +164,7 @@
   name: USA Physics Olympiad F=ma Qualifying Exam
 - type: textbook
   subject: Physics
-  date: Future
+  date: December 2026
   name: Physics Olympiad Handouts by Kevin Zhou
 - type: olympiad
   subject: Physics
@@ -224,7 +200,7 @@
   name: Canadian Association of Physicists High School Prize Exam
 - type: textbook
   subject: Physics
-  date: March 2025
+  date: January 2025
   name: The Art of Problem Solving Physics F=ma Series
 - type: olympiad
   subject: Physics
@@ -263,10 +239,10 @@
 - type: olympiad
   subject: Chemistry
   date: April 2026
-  name: Canadian Chemistry Olympiad Exams
+  name: Canadian Chemistry Olympiad Exam
 - type: textbook
   subject: Chemistry
-  date: April 2026
+  date: February 2026
   name: Canadian Chemistry Olympiad Training Course by Ivan Shershnev
   highlighted: true
 - type: olympiad
@@ -276,11 +252,15 @@
   competitive: true
 - type: textbook
   subject: Chemistry
-  date: Future
+  date: October 2026
+  name: University of Nevada Reno Organic Chemistry for Scientists and Professionals
+- type: textbook
+  subject: Chemistry
+  date: September 2026
   name: Descriptive Inorganic, Coordination, and Solid State Chemistry by Glen E. Rodgers
 - type: textbook
   subject: Chemistry
-  date: Future
+  date: August 2026
   name: Organic Chemistry as a Second Language by David Klein
 - type: textbook
   subject: Chemistry
@@ -297,7 +277,7 @@
 - type: olympiad
   subject: Chemistry
   date: April 2025
-  name: Canadian Chemistry Olympiad Exams
+  name: Canadian Chemistry Olympiad Exam
 - type: olympiad
   subject: Chemistry
   date: April 2025
@@ -305,7 +285,7 @@
   invited: true
 - type: textbook
   subject: Chemistry
-  date: April 2025
+  date: February 2025
   name: Chemistry by Zumdahl and Zumdahl
   highlighted: true
 - type: textbook
@@ -316,6 +296,7 @@
   subject: Chemistry
   date: March 2025
   name: United States National Chemistry Olympiad Local Exam
+  competitive: true
 - type: textbook
   subject: Chemistry
   date: March 2025
@@ -327,7 +308,7 @@
 - type: olympiad
   subject: Chemistry
   date: April 2024
-  name: Canadian Chemistry Olympiad Exams
+  name: Canadian Chemistry Olympiad Exam
 - type: textbook
   subject: Chemistry
   date: March 2024
@@ -348,7 +329,7 @@
   competitive: true
 - type: textbook
   subject: Biology
-  date: May 2025
+  date: January 2025
   name: 'Biology: A Global Approach by Neil A. Campbell'
   highlighted: true
 - type: textbook
@@ -361,6 +342,10 @@
   name: Advanced Placement Biology Exam
 - type: olympiad
   subject: Biology
+  date: April 2025
+  name: Canadian Biology Olympiad Competition Exam
+- type: olympiad
+  subject: Biology
   date: February 2025
   name: USA Biology Olympiad Open Exam
 - type: textbook
@@ -369,7 +354,7 @@
   name: Advanced Placement Biology Exam
 - type: textbook
   subject: Biology
-  date: Future
+  date: December 2026
   name: The USA Biology Olympiad Open Exam Exams Worked Solutions by Martyna Petrulyte
 - type: olympiad
   subject: Biology
@@ -379,6 +364,10 @@
   subject: Biology
   date: March 2024
   name: Johns Hopkins University Center for Talented Youth AP Biology
+- type: textbook
+  subject: Astronomy
+  date: August 2026
+  name: University of Nevada Reno Astrophysical Measurements and Astrophysics
 - type: olympiad
   subject: Astronomy
   date: May 2026
@@ -395,7 +384,7 @@
   competitive: true
 - type: textbook
   subject: Astronomy
-  date: March 2026
+  date: January 2026
   name: Foundations of Astrophysics by Barbara Ryden and Bradley Peterson
   highlighted: true
 - type: olympiad

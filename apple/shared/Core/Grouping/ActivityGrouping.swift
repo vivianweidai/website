@@ -28,22 +28,14 @@ public enum ActivityGrouping {
     }
 
     /// Groups a (pre-sorted) list of activities into year buckets in
-    /// source order. Entries whose `sortKey` is the sentinel
-    /// `"9999-12"` land in a "Future" bucket. The returned array
-    /// preserves the order the buckets were first encountered, so
-    /// callers that pass a newest-first list get newest-year-first
-    /// groups with "Future" landing wherever it first appears (in
-    /// practice: at the top, before the current year).
+    /// source order. The returned array preserves the order the
+    /// buckets were first encountered, so callers that pass a
+    /// newest-first list get newest-year-first groups.
     public static func groupedByYear(_ items: [Activity]) -> [YearGroup] {
         var order: [String] = []
         var buckets: [String: [Activity]] = [:]
         for entry in items {
-            let year: String
-            if entry.sortKey == "9999-12" {
-                year = "Future"
-            } else {
-                year = String(entry.sortKey.prefix(4))
-            }
+            let year = String(entry.sortKey.prefix(4))
             if buckets[year] == nil {
                 order.append(year)
                 buckets[year] = []
