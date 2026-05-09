@@ -43,6 +43,10 @@
   name: Carnegie Mellon Winter Mathematics Competition
 - type: textbook
   subject: Mathematics
+  date: September 2025
+  name: Davidson Academy of Nevada Calculus III
+- type: textbook
+  subject: Mathematics
   date: July 2025
   name: MathPath at Mount Holyoke College
 - type: textbook
@@ -87,6 +91,14 @@
   date: May 2026
   name: Machine Learning with PyTorch and Scikit-Learn by Sebastian Raschka
   highlighted: true
+- type: textbook
+  subject: Computing
+  date: May 2026
+  name: Advanced Placement Chinese Language Exam
+- type: textbook
+  subject: Computing
+  date: February 2026
+  name: Davidson Academy of Nevada Advanced Chinese
 - type: olympiad
   subject: Computing
   date: January 2026
@@ -112,6 +124,10 @@
   subject: Computing
   date: May 2025
   name: Advanced Placement Computer Science A Exam
+- type: textbook
+  subject: Computing
+  date: May 2025
+  name: Advanced Placement Chinese Language Exam
 - type: olympiad
   subject: Computing
   date: March 2025
@@ -172,6 +188,10 @@
   date: November 2025
   name: Junior Science Olympiad of Canada National Camp
   invited: true
+- type: textbook
+  subject: Physics
+  date: September 2025
+  name: Davidson Academy of Nevada Advanced Physics
 - type: olympiad
   subject: Physics
   subjects: [Physics, Chemistry, Biology]
@@ -252,11 +272,11 @@
   competitive: true
 - type: textbook
   subject: Chemistry
-  date: October 2026
+  date: September 2026
   name: University of Nevada Reno Organic Chemistry for Scientists and Professionals
 - type: textbook
   subject: Chemistry
-  date: September 2026
+  date: December 2026
   name: Descriptive Inorganic, Coordination, and Solid State Chemistry by Glen E. Rodgers
 - type: textbook
   subject: Chemistry
@@ -270,6 +290,10 @@
   subject: Chemistry
   date: April 2026
   name: The Art of Problem Solving Chemistry Worldwide Online Olympiad Training B
+- type: textbook
+  subject: Chemistry
+  date: September 2025
+  name: Davidson Academy of Nevada Advanced Chemistry and Laboratory
 - type: textbook
   subject: Chemistry
   date: May 2025
@@ -313,6 +337,10 @@
   subject: Chemistry
   date: March 2024
   name: Johns Hopkins University Center for Talented Youth AP Chemistry
+- type: textbook
+  subject: Biology
+  date: September 2026
+  name: Davidson Academy of Nevada Advanced Biology and Laboratory
 - type: textbook
   subject: Biology
   date: May 2026
