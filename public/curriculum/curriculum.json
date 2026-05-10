@@ -1375,28 +1375,23 @@
         "name": "Learning",
         "topics": [
           {
-            "slug": "methods",
-            "name": "Methods",
+            "slug": "pipeline",
+            "name": "Pipeline",
             "tables": [
               {
                 "name": "learning",
-                "path": "computing/learning/methods-learning.md",
-                "highlighted_rows": []
-              },
-              {
-                "name": "methods",
-                "path": "computing/learning/methods-methods.md",
+                "path": "computing/learning/pipeline-learning.md",
                 "highlighted_rows": [
-                  0,
-                  2,
-                  4
+                  4,
+                  6,
+                  8
                 ]
               },
               {
-                "name": "process",
-                "path": "computing/learning/methods-process.md",
+                "name": "pipeline",
+                "path": "computing/learning/pipeline-pipeline.md",
                 "highlighted_rows": [
-                  2
+                  4
                 ]
               }
             ]
