@@ -36,7 +36,7 @@ If we update this policy, the revised version will be posted at this URL with an
 
 ## Contact
 
-If you have questions about this policy, contact us at [privacy@vivianweidai.com](mailto:privacy@vivianweidai.com).
+If you have questions about this policy, contact us at [privacy@storycharts.com](mailto:privacy@storycharts.com).
 
 <hr />
 
