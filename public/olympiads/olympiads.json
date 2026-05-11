@@ -178,11 +178,20 @@
       "subject": "Computing",
       "date": "May 2026",
       "sort_key": "2026-05",
-      "name": "Advanced Placement Chinese Language Exam",
+      "name": "Grokking Machine Learning by Luis G. Serrano",
       "highlighted": 0
     },
     {
       "id": 21,
+      "type": "textbook",
+      "subject": "Computing",
+      "date": "May 2026",
+      "sort_key": "2026-05",
+      "name": "Advanced Placement Chinese Language Exam",
+      "highlighted": 0
+    },
+    {
+      "id": 22,
       "type": "textbook",
       "subject": "Computing",
       "date": "February 2026",
@@ -191,21 +200,12 @@
       "highlighted": 0
     },
     {
-      "id": 22,
+      "id": 23,
       "type": "olympiad",
       "subject": "Computing",
       "date": "January 2026",
       "sort_key": "2026-01",
       "name": "North American Computational Linguistics Open Exam",
-      "highlighted": 0
-    },
-    {
-      "id": 23,
-      "type": "textbook",
-      "subject": "Computing",
-      "date": "January 2026",
-      "sort_key": "2026-01",
-      "name": "Puzzles in Logic, Languages and Computation: the Red book by Dragomir Radev",
       "highlighted": 0
     },
     {
@@ -214,11 +214,20 @@
       "subject": "Computing",
       "date": "January 2026",
       "sort_key": "2026-01",
-      "name": "Puzzles in Logic, Languages and Computation: the Green book by Dragomir Radev",
+      "name": "Puzzles in Logic, Languages and Computation: the Red book by Dragomir Radev",
       "highlighted": 0
     },
     {
       "id": 25,
+      "type": "textbook",
+      "subject": "Computing",
+      "date": "January 2026",
+      "sort_key": "2026-01",
+      "name": "Puzzles in Logic, Languages and Computation: the Green book by Dragomir Radev",
+      "highlighted": 0
+    },
+    {
+      "id": 26,
       "type": "textbook",
       "subject": "Computing",
       "date": "December 2025",
@@ -227,7 +236,7 @@
       "highlighted": 1
     },
     {
-      "id": 26,
+      "id": 27,
       "type": "textbook",
       "subject": "Computing",
       "date": "May 2025",
@@ -236,7 +245,7 @@
       "highlighted": 0
     },
     {
-      "id": 27,
+      "id": 28,
       "type": "textbook",
       "subject": "Computing",
       "date": "May 2025",
@@ -245,7 +254,7 @@
       "highlighted": 0
     },
     {
-      "id": 28,
+      "id": 29,
       "type": "textbook",
       "subject": "Computing",
       "date": "May 2025",
@@ -254,7 +263,7 @@
       "highlighted": 0
     },
     {
-      "id": 29,
+      "id": 30,
       "type": "olympiad",
       "subject": "Computing",
       "date": "March 2025",
@@ -263,7 +272,7 @@
       "highlighted": 0
     },
     {
-      "id": 30,
+      "id": 31,
       "type": "olympiad",
       "subject": "Computing",
       "date": "January 2025",
@@ -272,7 +281,7 @@
       "highlighted": 0
     },
     {
-      "id": 31,
+      "id": 32,
       "type": "textbook",
       "subject": "Computing",
       "date": "January 2025",
@@ -281,7 +290,7 @@
       "highlighted": 0
     },
     {
-      "id": 32,
+      "id": 33,
       "type": "textbook",
       "subject": "Computing",
       "date": "May 2024",
@@ -290,7 +299,7 @@
       "highlighted": 0
     },
     {
-      "id": 33,
+      "id": 34,
       "type": "textbook",
       "subject": "Computing",
       "date": "May 2024",
@@ -299,7 +308,7 @@
       "highlighted": 0
     },
     {
-      "id": 34,
+      "id": 35,
       "type": "olympiad",
       "subject": "Computing",
       "date": "March 2024",
@@ -308,7 +317,7 @@
       "highlighted": 0
     },
     {
-      "id": 35,
+      "id": 36,
       "type": "olympiad",
       "subject": "Computing",
       "date": "December 2023",
@@ -317,7 +326,7 @@
       "highlighted": 0
     },
     {
-      "id": 36,
+      "id": 37,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2026",
@@ -326,7 +335,7 @@
       "highlighted": 0
     },
     {
-      "id": 37,
+      "id": 38,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2026",
@@ -335,7 +344,7 @@
       "highlighted": 0
     },
     {
-      "id": 38,
+      "id": 39,
       "type": "olympiad",
       "subject": "Physics",
       "date": "April 2026",
@@ -344,7 +353,7 @@
       "highlighted": 0
     },
     {
-      "id": 39,
+      "id": 40,
       "type": "olympiad",
       "subject": "Physics",
       "date": "May 2026",
@@ -359,7 +368,7 @@
       "competitive": 1
     },
     {
-      "id": 40,
+      "id": 41,
       "type": "olympiad",
       "subject": "Physics",
       "date": "February 2026",
@@ -368,7 +377,7 @@
       "highlighted": 0
     },
     {
-      "id": 41,
+      "id": 42,
       "type": "textbook",
       "subject": "Physics",
       "date": "December 2026",
@@ -377,7 +386,7 @@
       "highlighted": 0
     },
     {
-      "id": 42,
+      "id": 43,
       "type": "olympiad",
       "subject": "Physics",
       "date": "November 2025",
@@ -392,7 +401,7 @@
       "invited": 1
     },
     {
-      "id": 43,
+      "id": 44,
       "type": "textbook",
       "subject": "Physics",
       "date": "September 2025",
@@ -401,7 +410,7 @@
       "highlighted": 0
     },
     {
-      "id": 44,
+      "id": 45,
       "type": "olympiad",
       "subject": "Physics",
       "date": "May 2025",
@@ -416,7 +425,7 @@
       "competitive": 1
     },
     {
-      "id": 45,
+      "id": 46,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2025",
@@ -425,7 +434,7 @@
       "highlighted": 0
     },
     {
-      "id": 46,
+      "id": 47,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2025",
@@ -434,7 +443,7 @@
       "highlighted": 0
     },
     {
-      "id": 47,
+      "id": 48,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2025",
@@ -443,7 +452,7 @@
       "highlighted": 0
     },
     {
-      "id": 48,
+      "id": 49,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2025",
@@ -452,7 +461,7 @@
       "highlighted": 0
     },
     {
-      "id": 49,
+      "id": 50,
       "type": "olympiad",
       "subject": "Physics",
       "date": "April 2025",
@@ -461,7 +470,7 @@
       "highlighted": 0
     },
     {
-      "id": 50,
+      "id": 51,
       "type": "textbook",
       "subject": "Physics",
       "date": "January 2025",
@@ -470,7 +479,7 @@
       "highlighted": 0
     },
     {
-      "id": 51,
+      "id": 52,
       "type": "olympiad",
       "subject": "Physics",
       "date": "February 2025",
@@ -479,7 +488,7 @@
       "highlighted": 0
     },
     {
-      "id": 52,
+      "id": 53,
       "type": "olympiad",
       "subject": "Physics",
       "date": "May 2024",
@@ -493,7 +502,7 @@
       ]
     },
     {
-      "id": 53,
+      "id": 54,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2024",
@@ -502,7 +511,7 @@
       "highlighted": 1
     },
     {
-      "id": 54,
+      "id": 55,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2024",
@@ -511,7 +520,7 @@
       "highlighted": 0
     },
     {
-      "id": 55,
+      "id": 56,
       "type": "olympiad",
       "subject": "Physics",
       "date": "April 2024",
@@ -520,7 +529,7 @@
       "highlighted": 0
     },
     {
-      "id": 56,
+      "id": 57,
       "type": "textbook",
       "subject": "Physics",
       "date": "March 2024",
@@ -529,7 +538,7 @@
       "highlighted": 0
     },
     {
-      "id": 57,
+      "id": 58,
       "type": "olympiad",
       "subject": "Physics",
       "date": "February 2024",
@@ -538,7 +547,7 @@
       "highlighted": 0
     },
     {
-      "id": 58,
+      "id": 59,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "May 2026",
@@ -547,7 +556,7 @@
       "highlighted": 0
     },
     {
-      "id": 59,
+      "id": 60,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2026",
@@ -556,7 +565,7 @@
       "highlighted": 0
     },
     {
-      "id": 60,
+      "id": 61,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "February 2026",
@@ -565,7 +574,7 @@
       "highlighted": 1
     },
     {
-      "id": 61,
+      "id": 62,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "March 2026",
@@ -575,7 +584,7 @@
       "competitive": 1
     },
     {
-      "id": 62,
+      "id": 63,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "September 2026",
@@ -584,7 +593,7 @@
       "highlighted": 0
     },
     {
-      "id": 63,
+      "id": 64,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "December 2026",
@@ -593,7 +602,7 @@
       "highlighted": 0
     },
     {
-      "id": 64,
+      "id": 65,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "August 2026",
@@ -602,7 +611,7 @@
       "highlighted": 0
     },
     {
-      "id": 65,
+      "id": 66,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "April 2026",
@@ -611,7 +620,7 @@
       "highlighted": 0
     },
     {
-      "id": 66,
+      "id": 67,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "April 2026",
@@ -620,7 +629,7 @@
       "highlighted": 0
     },
     {
-      "id": 67,
+      "id": 68,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "September 2025",
@@ -629,7 +638,7 @@
       "highlighted": 0
     },
     {
-      "id": 68,
+      "id": 69,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "May 2025",
@@ -638,7 +647,7 @@
       "highlighted": 0
     },
     {
-      "id": 69,
+      "id": 70,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2025",
@@ -647,7 +656,7 @@
       "highlighted": 0
     },
     {
-      "id": 70,
+      "id": 71,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2025",
@@ -657,7 +666,7 @@
       "invited": 1
     },
     {
-      "id": 71,
+      "id": 72,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "February 2025",
@@ -666,7 +675,7 @@
       "highlighted": 1
     },
     {
-      "id": 72,
+      "id": 73,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "April 2025",
@@ -675,7 +684,7 @@
       "highlighted": 0
     },
     {
-      "id": 73,
+      "id": 74,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "March 2025",
@@ -685,7 +694,7 @@
       "competitive": 1
     },
     {
-      "id": 74,
+      "id": 75,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "March 2025",
@@ -694,7 +703,7 @@
       "highlighted": 0
     },
     {
-      "id": 75,
+      "id": 76,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "May 2024",
@@ -703,7 +712,7 @@
       "highlighted": 0
     },
     {
-      "id": 76,
+      "id": 77,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2024",
@@ -712,7 +721,7 @@
       "highlighted": 0
     },
     {
-      "id": 77,
+      "id": 78,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "March 2024",
@@ -721,7 +730,7 @@
       "highlighted": 0
     },
     {
-      "id": 78,
+      "id": 79,
       "type": "textbook",
       "subject": "Biology",
       "date": "September 2026",
@@ -730,7 +739,7 @@
       "highlighted": 0
     },
     {
-      "id": 79,
+      "id": 80,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2026",
@@ -739,7 +748,7 @@
       "highlighted": 0
     },
     {
-      "id": 80,
+      "id": 81,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2026",
@@ -749,7 +758,7 @@
       "competitive": 1
     },
     {
-      "id": 81,
+      "id": 82,
       "type": "olympiad",
       "subject": "Biology",
       "date": "February 2026",
@@ -759,7 +768,7 @@
       "competitive": 1
     },
     {
-      "id": 82,
+      "id": 83,
       "type": "textbook",
       "subject": "Biology",
       "date": "January 2025",
@@ -768,7 +777,7 @@
       "highlighted": 1
     },
     {
-      "id": 83,
+      "id": 84,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2025",
@@ -777,7 +786,7 @@
       "highlighted": 0
     },
     {
-      "id": 84,
+      "id": 85,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2025",
@@ -786,7 +795,7 @@
       "highlighted": 0
     },
     {
-      "id": 85,
+      "id": 86,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2025",
@@ -795,7 +804,7 @@
       "highlighted": 0
     },
     {
-      "id": 86,
+      "id": 87,
       "type": "olympiad",
       "subject": "Biology",
       "date": "February 2025",
@@ -804,7 +813,7 @@
       "highlighted": 0
     },
     {
-      "id": 87,
+      "id": 88,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2024",
@@ -813,7 +822,7 @@
       "highlighted": 0
     },
     {
-      "id": 88,
+      "id": 89,
       "type": "textbook",
       "subject": "Biology",
       "date": "December 2026",
@@ -822,7 +831,7 @@
       "highlighted": 0
     },
     {
-      "id": 89,
+      "id": 90,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2024",
@@ -831,7 +840,7 @@
       "highlighted": 0
     },
     {
-      "id": 90,
+      "id": 91,
       "type": "textbook",
       "subject": "Biology",
       "date": "March 2024",
@@ -840,7 +849,7 @@
       "highlighted": 0
     },
     {
-      "id": 91,
+      "id": 92,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "August 2026",
@@ -849,7 +858,7 @@
       "highlighted": 0
     },
     {
-      "id": 92,
+      "id": 93,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2026",
@@ -859,7 +868,7 @@
       "invited": 1
     },
     {
-      "id": 93,
+      "id": 94,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2026",
@@ -868,7 +877,7 @@
       "highlighted": 0
     },
     {
-      "id": 94,
+      "id": 95,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2026",
@@ -878,7 +887,7 @@
       "competitive": 1
     },
     {
-      "id": 95,
+      "id": 96,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "January 2026",
@@ -887,7 +896,7 @@
       "highlighted": 1
     },
     {
-      "id": 96,
+      "id": 97,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2026",
@@ -897,7 +906,7 @@
       "competitive": 1
     },
     {
-      "id": 97,
+      "id": 98,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "October 2025",
@@ -907,7 +916,7 @@
       "invited": 1
     },
     {
-      "id": 98,
+      "id": 99,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2025",
@@ -917,7 +926,7 @@
       "competitive": 1
     },
     {
-      "id": 99,
+      "id": 100,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2025",
@@ -926,7 +935,7 @@
       "highlighted": 0
     },
     {
-      "id": 100,
+      "id": 101,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2025",
@@ -935,7 +944,7 @@
       "highlighted": 0
     },
     {
-      "id": 101,
+      "id": 102,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "August 2024",
@@ -944,7 +953,7 @@
       "highlighted": 0
     },
     {
-      "id": 102,
+      "id": 103,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "July 2024",
@@ -953,7 +962,7 @@
       "highlighted": 0
     },
     {
-      "id": 103,
+      "id": 104,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "June 2024",
@@ -962,7 +971,7 @@
       "highlighted": 0
     },
     {
-      "id": 104,
+      "id": 105,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2024",
@@ -971,7 +980,7 @@
       "highlighted": 0
     },
     {
-      "id": 105,
+      "id": 106,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2024",
