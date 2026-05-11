@@ -206,7 +206,7 @@ This repo is synced to GitHub at `vivianweidai/science` and served at `vivianwei
 - Ensure all code, data, and documentation is presentable and well-organized.
 - Each project's `index.md` (not README.md) serves as the public-facing overview. Astro's content collection loader globs `*/index.md` under `research/projects/`, so the filename matters.
 - **When creating a new project**, the project's `tech:` frontmatter array is the only registration step — `build_technology.py` reverse-scans projects and bakes them into `technology.json`, which the research page, tech detail pages, and Apple/Android apps all consume. Also add any new instrument as a Toy under the appropriate tech in `technology.yml`.
-- **Do not auto-commit or push.** The user reviews and commits locally. After finishing a change, show the change in Safari (see LOCAL PREVIEWS) and stop there — no `git commit` or `git push` unless explicitly asked. Before the user commits, scan for oversized images (see the resize rule above) and shrink any offenders — once a large blob is in git history it stays there forever.
+- **Follow the global commit/push/deploy default.** For self-contained one-off changes (data row, typo, single feature), commit + push + `pnpm build && cd pipeline/worker && pnpm run deploy` per the cross-repo default in `~/.claude/CLAUDE.md`. Pause that default when iterating quickly on a multi-turn redesign. **Before any commit:** scan staged paths for oversized images (see the resize rule above) and shrink any offenders — once a large blob is in git history it stays there forever.
 
 ## PROJECT README TEMPLATE
 
