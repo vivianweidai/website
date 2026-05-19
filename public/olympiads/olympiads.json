@@ -741,15 +741,6 @@
     },
     {
       "id": 80,
-      "type": "textbook",
-      "subject": "Biology",
-      "date": "May 2026",
-      "sort_key": "2026-05",
-      "name": "Advanced Placement Biology Exam",
-      "highlighted": 0
-    },
-    {
-      "id": 81,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2026",
@@ -759,7 +750,7 @@
       "competitive": 1
     },
     {
-      "id": 82,
+      "id": 81,
       "type": "olympiad",
       "subject": "Biology",
       "date": "February 2026",
@@ -769,7 +760,7 @@
       "competitive": 1
     },
     {
-      "id": 83,
+      "id": 82,
       "type": "textbook",
       "subject": "Biology",
       "date": "January 2025",
@@ -778,7 +769,7 @@
       "highlighted": 1
     },
     {
-      "id": 84,
+      "id": 83,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2025",
@@ -787,7 +778,7 @@
       "highlighted": 0
     },
     {
-      "id": 85,
+      "id": 84,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2025",
@@ -796,7 +787,7 @@
       "highlighted": 0
     },
     {
-      "id": 86,
+      "id": 85,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2025",
@@ -805,7 +796,7 @@
       "highlighted": 0
     },
     {
-      "id": 87,
+      "id": 86,
       "type": "olympiad",
       "subject": "Biology",
       "date": "February 2025",
@@ -814,7 +805,7 @@
       "highlighted": 0
     },
     {
-      "id": 88,
+      "id": 87,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2024",
@@ -823,7 +814,7 @@
       "highlighted": 0
     },
     {
-      "id": 89,
+      "id": 88,
       "type": "textbook",
       "subject": "Biology",
       "date": "December 2026",
@@ -832,7 +823,7 @@
       "highlighted": 0
     },
     {
-      "id": 90,
+      "id": 89,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2024",
@@ -841,7 +832,7 @@
       "highlighted": 0
     },
     {
-      "id": 91,
+      "id": 90,
       "type": "textbook",
       "subject": "Biology",
       "date": "March 2024",
@@ -850,7 +841,7 @@
       "highlighted": 0
     },
     {
-      "id": 92,
+      "id": 91,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "August 2026",
@@ -859,7 +850,7 @@
       "highlighted": 0
     },
     {
-      "id": 93,
+      "id": 92,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2026",
@@ -869,7 +860,7 @@
       "invited": 1
     },
     {
-      "id": 94,
+      "id": 93,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2026",
@@ -878,7 +869,7 @@
       "highlighted": 0
     },
     {
-      "id": 95,
+      "id": 94,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2026",
@@ -888,7 +879,7 @@
       "competitive": 1
     },
     {
-      "id": 96,
+      "id": 95,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "January 2026",
@@ -897,7 +888,7 @@
       "highlighted": 1
     },
     {
-      "id": 97,
+      "id": 96,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2026",
@@ -907,7 +898,7 @@
       "competitive": 1
     },
     {
-      "id": 98,
+      "id": 97,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "October 2025",
@@ -917,7 +908,7 @@
       "invited": 1
     },
     {
-      "id": 99,
+      "id": 98,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2025",
@@ -927,7 +918,7 @@
       "competitive": 1
     },
     {
-      "id": 100,
+      "id": 99,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2025",
@@ -936,7 +927,7 @@
       "highlighted": 0
     },
     {
-      "id": 101,
+      "id": 100,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2025",
@@ -945,7 +936,7 @@
       "highlighted": 0
     },
     {
-      "id": 102,
+      "id": 101,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "August 2024",
@@ -954,7 +945,7 @@
       "highlighted": 0
     },
     {
-      "id": 103,
+      "id": 102,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "July 2024",
@@ -963,7 +954,7 @@
       "highlighted": 0
     },
     {
-      "id": 104,
+      "id": 103,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "June 2024",
@@ -972,7 +963,7 @@
       "highlighted": 0
     },
     {
-      "id": 105,
+      "id": 104,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2024",
@@ -981,7 +972,7 @@
       "highlighted": 0
     },
     {
-      "id": 106,
+      "id": 105,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2024",
