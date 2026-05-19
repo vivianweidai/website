@@ -263,6 +263,7 @@
   subject: Chemistry
   date: April 2026
   name: Canadian Chemistry Olympiad Exam
+  competitive: true
 - type: textbook
   subject: Chemistry
   date: February 2026
