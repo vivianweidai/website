@@ -5,7 +5,7 @@ science_slug: bio
 topic: Image
 category: Microscopy
 hero: compound.jpeg
-hero_position: center top
+hero_position: center 25%
 toys:
   - name: Swift Optical SW380T Trinocular Compound Microscope
     description: Cellular microscope
