@@ -5,6 +5,7 @@ science_slug: bio
 topic: Image
 category: Microscopy
 hero: handheld.jpeg
+hero_position: center top
 toys:
   - name: Dino-Lite AF4515T-FUW Digital Microscope
     description: Portable microscope
