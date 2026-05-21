@@ -4,7 +4,7 @@ science: Astronomy
 science_slug: astro
 topic: Observe
 category: Invisible
-hero: radio.png
+hero: radio.jpeg
 toys:
   - name: NASA Radio JOVE RJK2p Antenna Kit
     description: Receive radio signals
