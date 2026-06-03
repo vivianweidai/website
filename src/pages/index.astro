@@ -15,13 +15,15 @@ const SUBJ_ANCHOR = {
 };
 // Latest olympiad result per subject, picked from public/olympiads/olympiads.yml.
 // kind mirrors the olympiads page: 'invited' (⭐ sparkle) | 'competitive' (🎯 wiggle) | ''.
+// Optional `badge` overrides the hover badge label (defaults to kind.toUpperCase()) —
+// e.g. an invited camp Vivian actually attended shows 'ATTENDED' but keeps the ⭐ styling.
 const OLYMPIAD_LATEST = {
   mathematics: { name: 'American Mathematics Competition 12',                                 icon: '🎯',  kind: 'competitive', date: 'November 2025' },
   computing:   { name: 'North American Computational Linguistics Open Exam',                  icon: '',    kind: '',            date: 'January 2026'  },
   physics:     { name: 'Junior Science Olympiad of Canada Exam',                              icon: '🎯',  kind: 'competitive', date: 'March 2026'    },
   chemistry:   { name: 'Canadian Chemistry Olympiad Exam',                                    icon: '🎯',  kind: 'competitive', date: 'April 2026'    },
   biology:     { name: 'Canadian Biology Olympiad Competition Exam',                          icon: '🎯',  kind: 'competitive', date: 'April 2026'    },
-  astronomy:   { name: 'Canadian Astronomy and Astrophysics Olympiad Senior National Camp',   icon: '⭐', kind: 'invited',     date: 'May 2026'      },
+  astronomy:   { name: 'Canadian Astronomy and Astrophysics Olympiad Senior National Camp',   icon: '⭐', kind: 'invited',     date: 'May 2026', badge: 'ATTENDED' },
 };
 const RESEARCH_LATEST = {
   mathematics: { name: 'UV-Vis Spectroscopy - Test Run',                      url: '/research/projects/20260420%20UV-Vis%20Spectroscopy/'                         },
@@ -103,7 +105,7 @@ const TABS = [
           <a class="curr-rows-pdf" data-tab="curriculum" href={`/curriculum/notes/${subjSlug}.pdf`}>pdf</a>
           <span class="curr-rows-date" data-tab="olympiads">{OLYMPIAD_LATEST[subjSlug].date}</span>
           {(olyKind === 'competitive' || olyKind === 'invited') && (
-            <span class="olympiad-badge" data-tab="olympiads">{olyKind.toUpperCase()}</span>
+            <span class="olympiad-badge" data-tab="olympiads">{OLYMPIAD_LATEST[subjSlug].badge || olyKind.toUpperCase()}</span>
           )}
           <span class="curr-rows-topics" data-tab="research">
             {RESEARCH_TOPICS[subjSlug].map((topic, k) => (

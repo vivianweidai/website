@@ -9,7 +9,7 @@ Output (consumed by olympiads/index.md client-side JS and by the iOS app):
 
 Output shape:
     {"items": [ {id, type, subject, date, sort_key, name, highlighted,
-                 subjects?[], invited?, competitive?}, ... ]}
+                 subjects?[], invited?, attended?, competitive?}, ... ]}
 
 Run this after editing the YAML, then commit both the YAML and the JSON.
 There is no CI validation — the editor is responsible for remembering to rebuild.
@@ -79,6 +79,8 @@ def build_activities() -> list[dict]:
             item["subjects"] = e["subjects"]
         if e.get("invited"):
             item["invited"] = 1
+        if e.get("attended"):
+            item["attended"] = 1
         if e.get("competitive"):
             item["competitive"] = 1
         items.append(item)

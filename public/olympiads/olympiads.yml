@@ -10,7 +10,8 @@
 #   name:        string                                       (required)
 
 #   highlighted: true                                         (optional — omit when false)
-#   invited:     true                                         (optional — renders ⭐)
+#   invited:     true                                         (optional — renders ⭐, "INVITED")
+#   attended:    true                                         (optional — renders ⭐, "ATTENDED"; invited + actually went)
 #   competitive: true                                         (optional — renders 🎯, "competitive field / almost made cutoff")
 - type: textbook
   subject: Mathematics
@@ -400,7 +401,7 @@
   subject: Astronomy
   date: May 2026
   name: Canadian Astronomy and Astrophysics Olympiad Senior National Camp
-  invited: true
+  attended: true
 - type: olympiad
   subject: Astronomy
   date: May 2026
