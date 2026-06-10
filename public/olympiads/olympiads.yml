@@ -189,6 +189,12 @@
 - type: olympiad
   subject: Physics
   subjects: [Physics, Chemistry, Biology]
+  date: August 2026
+  name: Junior Science Olympiad of Canada National Camp
+  invited: true
+- type: olympiad
+  subject: Physics
+  subjects: [Physics, Chemistry, Biology]
   date: November 2025
   name: Junior Science Olympiad of Canada National Camp
   invited: true
