@@ -13,6 +13,7 @@
 #   invited:     true                                         (optional — renders ⭐, "INVITED")
 #   attended:    true                                         (optional — renders ⭐, "ATTENDED"; invited + actually went)
 #   competitive: true                                         (optional — renders 🎯, "competitive field / almost made cutoff")
+#   alternate:   true                                         (optional — renders 🇨🇦, "ALTERNATE")
 - type: textbook
   subject: Mathematics
   date: July 2026
@@ -399,6 +400,11 @@
   subject: Biology
   date: March 2024
   name: Johns Hopkins University Center for Talented Youth AP Biology
+- type: olympiad
+  subject: Astronomy
+  date: September 2026
+  name: International Olympiad on Astronomy and Astrophysics
+  alternate: true
 - type: textbook
   subject: Astronomy
   date: August 2026
