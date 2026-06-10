@@ -405,6 +405,11 @@
   name: University of Nevada Reno Astrophysical Measurements and Astrophysics
 - type: olympiad
   subject: Astronomy
+  date: June 2026
+  name: Canadian Astronomy and Astrophysics Olympiad Junior National Camp
+  invited: true
+- type: olympiad
+  subject: Astronomy
   date: May 2026
   name: Canadian Astronomy and Astrophysics Olympiad Senior National Camp
   attended: true
