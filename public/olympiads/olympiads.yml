@@ -16,10 +16,6 @@
 #   alternate:   true                                         (optional — renders 🇨🇦, "ALTERNATE")
 - type: textbook
   subject: Mathematics
-  date: July 2026
-  name: Euclidean Geometry in Mathematical Olympiads by Evan Chen
-- type: textbook
-  subject: Mathematics
   date: June 2026
   name: AwesomeMath Summer Program
 - type: textbook
