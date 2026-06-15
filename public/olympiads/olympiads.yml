@@ -390,12 +390,12 @@
   name: Johns Hopkins University Center for Talented Youth AP Biology
 - type: olympiad
   subject: Astronomy
-  date: September 2026
+  date: October 2026
   name: International Olympiad on Astronomy and Astrophysics
   alternate: true
 - type: textbook
   subject: Astronomy
-  date: August 2026
+  date: September 2026
   name: University of Nevada Reno Astrophysical Measurements and Astrophysics
 - type: olympiad
   subject: Astronomy

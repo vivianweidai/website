@@ -832,8 +832,8 @@
       "id": 89,
       "type": "olympiad",
       "subject": "Astronomy",
-      "date": "September 2026",
-      "sort_key": "2026-09",
+      "date": "October 2026",
+      "sort_key": "2026-10",
       "name": "International Olympiad on Astronomy and Astrophysics",
       "highlighted": 0,
       "alternate": 1
@@ -842,8 +842,8 @@
       "id": 90,
       "type": "textbook",
       "subject": "Astronomy",
-      "date": "August 2026",
-      "sort_key": "2026-08",
+      "date": "September 2026",
+      "sort_key": "2026-09",
       "name": "University of Nevada Reno Astrophysical Measurements and Astrophysics",
       "highlighted": 0
     },
