@@ -179,10 +179,6 @@
   subject: Physics
   date: February 2026
   name: USA Physics Olympiad F=ma Qualifying Exam
-- type: textbook
-  subject: Physics
-  date: December 2026
-  name: Physics Olympiad Handouts by Kevin Zhou
 - type: olympiad
   subject: Physics
   subjects: [Physics, Chemistry, Biology]
