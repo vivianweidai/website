@@ -428,11 +428,6 @@
   competitive: true
 - type: olympiad
   subject: Astronomy
-  date: October 2025
-  name: International Olympiad on Astronomy and Astrophysics Junior
-  invited: true
-- type: olympiad
-  subject: Astronomy
   date: May 2025
   name: Canadian Astronomy and Astrophysics Olympiad Junior Exam
   competitive: true

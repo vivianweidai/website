@@ -909,16 +909,6 @@
       "id": 97,
       "type": "olympiad",
       "subject": "Astronomy",
-      "date": "October 2025",
-      "sort_key": "2025-10",
-      "name": "International Olympiad on Astronomy and Astrophysics Junior",
-      "highlighted": 0,
-      "invited": 1
-    },
-    {
-      "id": 98,
-      "type": "olympiad",
-      "subject": "Astronomy",
       "date": "May 2025",
       "sort_key": "2025-05",
       "name": "Canadian Astronomy and Astrophysics Olympiad Junior Exam",
@@ -926,7 +916,7 @@
       "competitive": 1
     },
     {
-      "id": 99,
+      "id": 98,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2025",
@@ -935,7 +925,7 @@
       "highlighted": 0
     },
     {
-      "id": 100,
+      "id": 99,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2025",
@@ -944,7 +934,7 @@
       "highlighted": 0
     },
     {
-      "id": 101,
+      "id": 100,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "August 2024",
@@ -953,7 +943,7 @@
       "highlighted": 0
     },
     {
-      "id": 102,
+      "id": 101,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "July 2024",
@@ -962,7 +952,7 @@
       "highlighted": 0
     },
     {
-      "id": 103,
+      "id": 102,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "June 2024",
@@ -971,7 +961,7 @@
       "highlighted": 0
     },
     {
-      "id": 104,
+      "id": 103,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2024",
@@ -980,7 +970,7 @@
       "highlighted": 0
     },
     {
-      "id": 105,
+      "id": 104,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2024",
