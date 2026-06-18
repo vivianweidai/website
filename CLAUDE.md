@@ -96,12 +96,13 @@ science/
 │
 ├── public/                 # Astro public/ — served at site root; our source-of-truth lives directly here
 │   ├── curriculum/
-│   │   ├── notes/                # Per-discipline DOCX + PDF (linked from homepage)
+│   │   ├── notes/                # Per-discipline PDF (linked from homepage). The DOCX
+│   │   │                         #   sources were dropped after the one-time build (commit
+│   │   │                         #   f8e7ad3); re-add a subject's .docx here to rebuild it.
 │   │   ├── source/               # Per-discipline markdown (build_curriculum.py output;
 │   │   │                         #   ALSO fetched by Apple+Android apps for in-app rendering)
 │   │   └── curriculum.json       # Generated manifest — DO NOT EDIT BY HAND
 │   ├── olympiads/
-│   │   ├── photos/               # Photos referenced from olympiads.json photo_url fields
 │   │   ├── olympiads.yml         # Source of truth — edit, then rebuild
 │   │   └── olympiads.json        # Generated — DO NOT EDIT BY HAND
 │   └── research/
@@ -127,7 +128,7 @@ science/
 
 **URL ↔ disk mapping.** Pages have clean URLs (`/`, `/curriculum/`, `/research/projects/<folder>/`, etc.). Files under `public/<path>` serve at `/<path>` — 1:1 mapping, no rewrites. Page URLs and asset URLs coexist under the same prefix (e.g., `/research/projects/<folder>/` is the rendered HTML page; `/research/projects/<folder>/index.md` is the raw markdown the apps fetch; `/research/projects/<folder>/photos/...` are the photos).
 
-**Activities workflow.** `public/olympiads/olympiads.yml` is the single source of truth for olympiads and textbooks. After editing, run `python pipeline/scripts/build_olympiads.py` to regenerate `public/olympiads/olympiads.json`, then `pnpm build && cd pipeline/worker && pnpm run deploy` to ship. The website (`/olympiads/` via client-side JS) and the Apple/Android apps both fetch the same JSON via `https://vivianweidai.com/olympiads/olympiads.json`. Same pattern for `technology.yml` (research) and the curriculum `.docx` sources. No database, no API, no admin endpoint.
+**Activities workflow.** `public/olympiads/olympiads.yml` is the single source of truth for olympiads and textbooks. After editing, run `python pipeline/scripts/build_olympiads.py` to regenerate `public/olympiads/olympiads.json`, then `pnpm build && cd pipeline/worker && pnpm run deploy` to ship. The website (`/olympiads/` via client-side JS) and the Apple/Android apps both fetch the same JSON via `https://vivianweidai.com/olympiads/olympiads.json`. Same pattern for `technology.yml` (research). The curriculum is a **one-time build**: its `.docx` sources were dropped from the repo (commit f8e7ad3), so `curriculum.json` and `source/*.md` are now committed artifacts — re-add a subject's `.docx` to `public/curriculum/notes/` only if you need to regenerate it. No database, no API, no admin endpoint.
 
 Each research project lives in a date-prefixed folder under `research/projects/`:
 

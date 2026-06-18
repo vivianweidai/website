@@ -138,7 +138,7 @@
               "specs": "Classic models",
               "available": 1,
               "tech_url": "/research/technology/computing/Machine%20Learning/",
-              "hero": "/research/technology/computing/Machine%20Learning/scikit-learn.png"
+              "hero": "/research/technology/computing/Machine%20Learning/kaggle.png"
             },
             {
               "id": 7,
@@ -261,7 +261,7 @@
               "specs": "Disperse light",
               "available": 1,
               "tech_url": "/research/technology/physics/Spectrometer/",
-              "hero": "/research/technology/physics/Spectrometer/spectrometer.png"
+              "hero": "/research/technology/physics/Spectrometer/spectrometer.jpeg"
             },
             {
               "id": 17,
@@ -315,7 +315,7 @@
               "specs": "Filament fabrication",
               "available": 1,
               "tech_url": "/research/technology/physics/3D%20Printing/",
-              "hero": "/research/technology/physics/3D%20Printing/3d-printing.png"
+              "hero": "/research/technology/physics/3D%20Printing/3d-printing.jpeg"
             }
           ]
         }
@@ -567,7 +567,7 @@
               "specs": "Surfaces",
               "available": 1,
               "tech_url": "/research/technology/biology/Handheld/",
-              "hero": "/research/technology/biology/Handheld/handheld.png"
+              "hero": "/research/technology/biology/Handheld/handheld.jpeg"
             },
             {
               "id": 38,
@@ -575,7 +575,7 @@
               "specs": "Organisms",
               "available": 1,
               "tech_url": "/research/technology/biology/Stereo/",
-              "hero": "/research/technology/biology/Stereo/stereo.png"
+              "hero": "/research/technology/biology/Stereo/stereo.jpeg"
             },
             {
               "id": 39,
@@ -583,7 +583,7 @@
               "specs": "Cells",
               "available": 1,
               "tech_url": "/research/technology/biology/Compound/",
-              "hero": "/research/technology/biology/Compound/compound.png"
+              "hero": "/research/technology/biology/Compound/compound.jpeg"
             }
           ]
         },
@@ -789,7 +789,7 @@
               "specs": "Radio telescopes",
               "available": 1,
               "tech_url": "/research/technology/astronomy/Radio/",
-              "hero": "/research/technology/astronomy/Radio/radio.png"
+              "hero": "/research/technology/astronomy/Radio/radio.jpeg"
             },
             {
               "id": 54,

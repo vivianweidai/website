@@ -42,6 +42,33 @@ done <<EOF
 $staged
 EOF
 
+# Stale-generated-file warning. The JSON manifests are built from YAML/markdown
+# sources by pipeline/scripts/build_*.py and consumed by the Astro homepage AND
+# the Apple/Android apps. Editing a source without regenerating its JSON
+# silently ships stale data to the apps — this is exactly how technology.json
+# drifted to point at deleted .png heroes. Warn when a source is staged but its
+# generated JSON is not.
+staged_all=$(git diff --cached --name-only)
+gen_warns=""
+
+# technology.json ← technology.yml + every tech page's index.md frontmatter (hero)
+if printf '%s\n' "$staged_all" | grep -Eq '^public/research/technology\.yml$|^public/research/technology/.+/index\.md$'; then
+  printf '%s\n' "$staged_all" | grep -q '^public/research/technology\.json$' \
+    || gen_warns="${gen_warns}  technology.json not staged — run: python pipeline/scripts/build_technology.py\n"
+fi
+
+# olympiads.json ← olympiads.yml
+if printf '%s\n' "$staged_all" | grep -q '^public/olympiads/olympiads\.yml$'; then
+  printf '%s\n' "$staged_all" | grep -q '^public/olympiads/olympiads\.json$' \
+    || gen_warns="${gen_warns}  olympiads.json not staged — run: python pipeline/scripts/build_olympiads.py\n"
+fi
+
+if [ -n "$gen_warns" ]; then
+  printf '\n\033[33m⚠️  stale generated file — a source is staged but its JSON manifest is not:\033[0m\n' >&2
+  printf '%b' "$gen_warns" >&2
+  printf 'The Astro homepage and the iOS/Android apps read the JSON, not the source.\nRebuild and stage the JSON, or use --no-verify if intentional.\n\n' >&2
+fi
+
 if [ -n "$img_warns" ] || [ -n "$pdf_warns" ]; then
   printf '\n\033[33m⚠️  bloat warning — staged files exceed soft limits (commit will proceed):\033[0m\n' >&2
   if [ -n "$img_warns" ]; then
