@@ -251,10 +251,6 @@
   subject: Physics
   date: March 2024
   name: Johns Hopkins University Center for Talented Youth AP Physics 1
-- type: olympiad
-  subject: Physics
-  date: February 2024
-  name: USA Physics Olympiad F=ma Qualifying Exam
 - type: textbook
   subject: Chemistry
   date: May 2026
