@@ -306,7 +306,7 @@
   subject: Chemistry
   date: April 2025
   name: United States National Chemistry Olympiad National Exam
-  invited: true
+  attended: true
 - type: textbook
   subject: Chemistry
   date: February 2025
