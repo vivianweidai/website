@@ -2,11 +2,11 @@
   "items": [
     {
       "id": 1,
-      "type": "textbook",
+      "type": "olympiad",
       "subject": "Mathematics",
-      "date": "June 2026",
-      "sort_key": "2026-06",
-      "name": "AwesomeMath Summer Program",
+      "date": "January 2026",
+      "sort_key": "2026-01",
+      "name": "Caltech Math Meet",
       "highlighted": 0
     },
     {

@@ -14,10 +14,10 @@
 #   attended:    true                                         (optional — renders ⭐, "ATTENDED"; invited + actually went)
 #   competitive: true                                         (optional — renders 🎯, "competitive field / almost made cutoff")
 #   alternate:   true                                         (optional — renders 🇨🇦, "ALTERNATE")
-- type: textbook
+- type: olympiad
   subject: Mathematics
-  date: June 2026
-  name: AwesomeMath Summer Program
+  date: January 2026
+  name: Caltech Math Meet
 - type: textbook
   subject: Mathematics
   date: December 2025
