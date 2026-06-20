@@ -14,7 +14,7 @@
 #   attended:    true                                         (optional — renders ⭐, "ATTENDED"; invited + actually went)
 #   competitive: true                                         (optional — renders 🎯, "competitive field / almost made cutoff")
 #   alternate:   true                                         (optional — renders 🇨🇦, "ALTERNATE")
-- type: olympiad
+- type: textbook
   subject: Mathematics
   date: January 2026
   name: Caltech Math Meet
@@ -35,7 +35,7 @@
   subject: Mathematics
   date: October 2025
   name: Canadian Open Mathematics Challenge
-- type: olympiad
+- type: textbook
   subject: Mathematics
   date: October 2025
   name: Carnegie Mellon Winter Mathematics Competition
@@ -51,7 +51,7 @@
   subject: Mathematics
   date: May 2025
   name: Advanced Placement Calculus BC Exam
-- type: olympiad
+- type: textbook
   subject: Mathematics
   date: January 2025
   name: Caltech Math Meet

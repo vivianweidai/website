@@ -2,7 +2,7 @@
   "items": [
     {
       "id": 1,
-      "type": "olympiad",
+      "type": "textbook",
       "subject": "Mathematics",
       "date": "January 2026",
       "sort_key": "2026-01",
@@ -84,7 +84,7 @@
     },
     {
       "id": 10,
-      "type": "olympiad",
+      "type": "textbook",
       "subject": "Mathematics",
       "date": "January 2025",
       "sort_key": "2025-01",
