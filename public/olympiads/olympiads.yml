@@ -22,15 +22,15 @@
   subject: Mathematics
   date: December 2025
   name: 'Calculus: Early Transcendentals by James Stewart'
+- type: textbook
+  subject: Mathematics
+  date: December 2025
+  name: Athemath for Women in Math
 - type: olympiad
   subject: Mathematics
   date: November 2025
   name: American Mathematics Competition 12
   competitive: true
-- type: textbook
-  subject: Mathematics
-  date: December 2025
-  name: Athemath for Women in Math
 - type: olympiad
   subject: Mathematics
   date: October 2025
@@ -157,6 +157,12 @@
   subject: Computing
   date: December 2023
   name: USA Computing Olympiad Bronze Exam
+- type: olympiad
+  subject: Physics
+  subjects: [Physics, Chemistry, Biology]
+  date: August 2026
+  name: Junior Science Olympiad of Canada National Camp
+  invited: true
 - type: textbook
   subject: Physics
   date: May 2026
@@ -167,24 +173,18 @@
   name: 'Advanced Placement Physics C: Electricity and Magnetism Exam'
 - type: olympiad
   subject: Physics
-  date: April 2026
-  name: Canadian Association of Physicists High School Prize Exam
-- type: olympiad
-  subject: Physics
   subjects: [Physics, Chemistry, Biology]
   date: May 2026
   name: Junior Science Olympiad of Canada Exam
   competitive: true
 - type: olympiad
   subject: Physics
-  date: February 2026
-  name: USA Physics Olympiad F=ma Qualifying Exam
+  date: April 2026
+  name: Canadian Association of Physicists High School Prize Exam
 - type: olympiad
   subject: Physics
-  subjects: [Physics, Chemistry, Biology]
-  date: August 2026
-  name: Junior Science Olympiad of Canada National Camp
-  invited: true
+  date: February 2026
+  name: USA Physics Olympiad F=ma Qualifying Exam
 - type: olympiad
   subject: Physics
   subjects: [Physics, Chemistry, Biology]
@@ -221,14 +221,14 @@
   subject: Physics
   date: April 2025
   name: Canadian Association of Physicists High School Prize Exam
-- type: textbook
-  subject: Physics
-  date: January 2025
-  name: The Art of Problem Solving Physics F=ma Series
 - type: olympiad
   subject: Physics
   date: February 2025
   name: USA Physics Olympiad F=ma Qualifying Exam
+- type: textbook
+  subject: Physics
+  date: January 2025
+  name: The Art of Problem Solving Physics F=ma Series
 - type: olympiad
   subject: Physics
   subjects: [Physics, Chemistry, Biology]
@@ -253,25 +253,6 @@
   name: Johns Hopkins University Center for Talented Youth AP Physics 1
 - type: textbook
   subject: Chemistry
-  date: May 2026
-  name: Advanced Placement Chemistry Exam
-- type: olympiad
-  subject: Chemistry
-  date: April 2026
-  name: Canadian Chemistry Olympiad Exam
-  competitive: true
-- type: textbook
-  subject: Chemistry
-  date: February 2026
-  name: Canadian Chemistry Olympiad Training Course by Ivan Shershnev
-  highlighted: true
-- type: olympiad
-  subject: Chemistry
-  date: March 2026
-  name: United States National Chemistry Olympiad Local Exam
-  competitive: true
-- type: textbook
-  subject: Chemistry
   date: September 2026
   name: University of Nevada Reno Organic Chemistry for Scientists and Professionals
 - type: textbook
@@ -284,12 +265,31 @@
   name: Organic Chemistry as a Second Language by David Klein
 - type: textbook
   subject: Chemistry
+  date: May 2026
+  name: Advanced Placement Chemistry Exam
+- type: olympiad
+  subject: Chemistry
+  date: April 2026
+  name: Canadian Chemistry Olympiad Exam
+  competitive: true
+- type: textbook
+  subject: Chemistry
   date: April 2026
   name: The Art of Problem Solving Chemistry Worldwide Online Olympiad Training A
 - type: textbook
   subject: Chemistry
   date: April 2026
   name: The Art of Problem Solving Chemistry Worldwide Online Olympiad Training B
+- type: olympiad
+  subject: Chemistry
+  date: March 2026
+  name: United States National Chemistry Olympiad Local Exam
+  competitive: true
+- type: textbook
+  subject: Chemistry
+  date: February 2026
+  name: Canadian Chemistry Olympiad Training Course by Ivan Shershnev
+  highlighted: true
 - type: textbook
   subject: Chemistry
   date: September 2025
@@ -309,11 +309,6 @@
   attended: true
 - type: textbook
   subject: Chemistry
-  date: February 2025
-  name: Chemistry by Zumdahl and Zumdahl
-  highlighted: true
-- type: textbook
-  subject: Chemistry
   date: April 2025
   name: Washington University Chemistry Tournament
 - type: olympiad
@@ -325,6 +320,11 @@
   subject: Chemistry
   date: March 2025
   name: University of California Berkeley Chemistry Tournament
+- type: textbook
+  subject: Chemistry
+  date: February 2025
+  name: Chemistry by Zumdahl and Zumdahl
+  highlighted: true
 - type: textbook
   subject: Chemistry
   date: May 2024
@@ -353,11 +353,6 @@
   competitive: true
 - type: textbook
   subject: Biology
-  date: January 2025
-  name: 'Biology: A Global Approach by Neil A. Campbell'
-  highlighted: true
-- type: textbook
-  subject: Biology
   date: May 2025
   name: Advanced Placement Psychology Exam
 - type: textbook
@@ -372,6 +367,11 @@
   subject: Biology
   date: February 2025
   name: USA Biology Olympiad Open Exam
+- type: textbook
+  subject: Biology
+  date: January 2025
+  name: 'Biology: A Global Approach by Neil A. Campbell'
+  highlighted: true
 - type: textbook
   subject: Biology
   date: May 2024
@@ -413,16 +413,16 @@
   date: March 2026
   name: Canadian Astronomy and Astrophysics Olympiad Senior Exam
   competitive: true
-- type: textbook
-  subject: Astronomy
-  date: January 2026
-  name: Foundations of Astrophysics by Barbara Ryden and Bradley Peterson
-  highlighted: true
 - type: olympiad
   subject: Astronomy
   date: February 2026
   name: USA Astronomy and Astrophysics Olympiad First Round Exam
   competitive: true
+- type: textbook
+  subject: Astronomy
+  date: January 2026
+  name: Foundations of Astrophysics by Barbara Ryden and Bradley Peterson
+  highlighted: true
 - type: olympiad
   subject: Astronomy
   date: May 2025

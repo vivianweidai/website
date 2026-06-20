@@ -20,6 +20,15 @@
     },
     {
       "id": 3,
+      "type": "textbook",
+      "subject": "Mathematics",
+      "date": "December 2025",
+      "sort_key": "2025-12",
+      "name": "Athemath for Women in Math",
+      "highlighted": 0
+    },
+    {
+      "id": 4,
       "type": "olympiad",
       "subject": "Mathematics",
       "date": "November 2025",
@@ -27,15 +36,6 @@
       "name": "American Mathematics Competition 12",
       "highlighted": 0,
       "competitive": 1
-    },
-    {
-      "id": 4,
-      "type": "textbook",
-      "subject": "Mathematics",
-      "date": "December 2025",
-      "sort_key": "2025-12",
-      "name": "Athemath for Women in Math",
-      "highlighted": 0
     },
     {
       "id": 5,
@@ -318,6 +318,21 @@
     },
     {
       "id": 36,
+      "type": "olympiad",
+      "subject": "Physics",
+      "date": "August 2026",
+      "sort_key": "2026-08",
+      "name": "Junior Science Olympiad of Canada National Camp",
+      "highlighted": 0,
+      "subjects": [
+        "Physics",
+        "Chemistry",
+        "Biology"
+      ],
+      "invited": 1
+    },
+    {
+      "id": 37,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2026",
@@ -326,21 +341,12 @@
       "highlighted": 0
     },
     {
-      "id": 37,
+      "id": 38,
       "type": "textbook",
       "subject": "Physics",
       "date": "May 2026",
       "sort_key": "2026-05",
       "name": "Advanced Placement Physics C: Electricity and Magnetism Exam",
-      "highlighted": 0
-    },
-    {
-      "id": 38,
-      "type": "olympiad",
-      "subject": "Physics",
-      "date": "April 2026",
-      "sort_key": "2026-04",
-      "name": "Canadian Association of Physicists High School Prize Exam",
       "highlighted": 0
     },
     {
@@ -362,25 +368,19 @@
       "id": 40,
       "type": "olympiad",
       "subject": "Physics",
-      "date": "February 2026",
-      "sort_key": "2026-02",
-      "name": "USA Physics Olympiad F=ma Qualifying Exam",
+      "date": "April 2026",
+      "sort_key": "2026-04",
+      "name": "Canadian Association of Physicists High School Prize Exam",
       "highlighted": 0
     },
     {
       "id": 41,
       "type": "olympiad",
       "subject": "Physics",
-      "date": "August 2026",
-      "sort_key": "2026-08",
-      "name": "Junior Science Olympiad of Canada National Camp",
-      "highlighted": 0,
-      "subjects": [
-        "Physics",
-        "Chemistry",
-        "Biology"
-      ],
-      "invited": 1
+      "date": "February 2026",
+      "sort_key": "2026-02",
+      "name": "USA Physics Olympiad F=ma Qualifying Exam",
+      "highlighted": 0
     },
     {
       "id": 42,
@@ -468,20 +468,20 @@
     },
     {
       "id": 50,
-      "type": "textbook",
-      "subject": "Physics",
-      "date": "January 2025",
-      "sort_key": "2025-01",
-      "name": "The Art of Problem Solving Physics F=ma Series",
-      "highlighted": 0
-    },
-    {
-      "id": 51,
       "type": "olympiad",
       "subject": "Physics",
       "date": "February 2025",
       "sort_key": "2025-02",
       "name": "USA Physics Olympiad F=ma Qualifying Exam",
+      "highlighted": 0
+    },
+    {
+      "id": 51,
+      "type": "textbook",
+      "subject": "Physics",
+      "date": "January 2025",
+      "sort_key": "2025-01",
+      "name": "The Art of Problem Solving Physics F=ma Series",
       "highlighted": 0
     },
     {
@@ -538,13 +538,40 @@
       "id": 57,
       "type": "textbook",
       "subject": "Chemistry",
+      "date": "September 2026",
+      "sort_key": "2026-09",
+      "name": "University of Nevada Reno Organic Chemistry for Scientists and Professionals",
+      "highlighted": 0
+    },
+    {
+      "id": 58,
+      "type": "textbook",
+      "subject": "Chemistry",
+      "date": "July 2026",
+      "sort_key": "2026-07",
+      "name": "Descriptive Inorganic, Coordination, and Solid State Chemistry by Glen E. Rodgers",
+      "highlighted": 0
+    },
+    {
+      "id": 59,
+      "type": "textbook",
+      "subject": "Chemistry",
+      "date": "July 2026",
+      "sort_key": "2026-07",
+      "name": "Organic Chemistry as a Second Language by David Klein",
+      "highlighted": 0
+    },
+    {
+      "id": 60,
+      "type": "textbook",
+      "subject": "Chemistry",
       "date": "May 2026",
       "sort_key": "2026-05",
       "name": "Advanced Placement Chemistry Exam",
       "highlighted": 0
     },
     {
-      "id": 58,
+      "id": 61,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2026",
@@ -554,16 +581,25 @@
       "competitive": 1
     },
     {
-      "id": 59,
+      "id": 62,
       "type": "textbook",
       "subject": "Chemistry",
-      "date": "February 2026",
-      "sort_key": "2026-02",
-      "name": "Canadian Chemistry Olympiad Training Course by Ivan Shershnev",
-      "highlighted": 1
+      "date": "April 2026",
+      "sort_key": "2026-04",
+      "name": "The Art of Problem Solving Chemistry Worldwide Online Olympiad Training A",
+      "highlighted": 0
     },
     {
-      "id": 60,
+      "id": 63,
+      "type": "textbook",
+      "subject": "Chemistry",
+      "date": "April 2026",
+      "sort_key": "2026-04",
+      "name": "The Art of Problem Solving Chemistry Worldwide Online Olympiad Training B",
+      "highlighted": 0
+    },
+    {
+      "id": 64,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "March 2026",
@@ -573,49 +609,13 @@
       "competitive": 1
     },
     {
-      "id": 61,
-      "type": "textbook",
-      "subject": "Chemistry",
-      "date": "September 2026",
-      "sort_key": "2026-09",
-      "name": "University of Nevada Reno Organic Chemistry for Scientists and Professionals",
-      "highlighted": 0
-    },
-    {
-      "id": 62,
-      "type": "textbook",
-      "subject": "Chemistry",
-      "date": "July 2026",
-      "sort_key": "2026-07",
-      "name": "Descriptive Inorganic, Coordination, and Solid State Chemistry by Glen E. Rodgers",
-      "highlighted": 0
-    },
-    {
-      "id": 63,
-      "type": "textbook",
-      "subject": "Chemistry",
-      "date": "July 2026",
-      "sort_key": "2026-07",
-      "name": "Organic Chemistry as a Second Language by David Klein",
-      "highlighted": 0
-    },
-    {
-      "id": 64,
-      "type": "textbook",
-      "subject": "Chemistry",
-      "date": "April 2026",
-      "sort_key": "2026-04",
-      "name": "The Art of Problem Solving Chemistry Worldwide Online Olympiad Training A",
-      "highlighted": 0
-    },
-    {
       "id": 65,
       "type": "textbook",
       "subject": "Chemistry",
-      "date": "April 2026",
-      "sort_key": "2026-04",
-      "name": "The Art of Problem Solving Chemistry Worldwide Online Olympiad Training B",
-      "highlighted": 0
+      "date": "February 2026",
+      "sort_key": "2026-02",
+      "name": "Canadian Chemistry Olympiad Training Course by Ivan Shershnev",
+      "highlighted": 1
     },
     {
       "id": 66,
@@ -658,22 +658,13 @@
       "id": 70,
       "type": "textbook",
       "subject": "Chemistry",
-      "date": "February 2025",
-      "sort_key": "2025-02",
-      "name": "Chemistry by Zumdahl and Zumdahl",
-      "highlighted": 1
-    },
-    {
-      "id": 71,
-      "type": "textbook",
-      "subject": "Chemistry",
       "date": "April 2025",
       "sort_key": "2025-04",
       "name": "Washington University Chemistry Tournament",
       "highlighted": 0
     },
     {
-      "id": 72,
+      "id": 71,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "March 2025",
@@ -683,13 +674,22 @@
       "competitive": 1
     },
     {
-      "id": 73,
+      "id": 72,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "March 2025",
       "sort_key": "2025-03",
       "name": "University of California Berkeley Chemistry Tournament",
       "highlighted": 0
+    },
+    {
+      "id": 73,
+      "type": "textbook",
+      "subject": "Chemistry",
+      "date": "February 2025",
+      "sort_key": "2025-02",
+      "name": "Chemistry by Zumdahl and Zumdahl",
+      "highlighted": 1
     },
     {
       "id": 74,
@@ -751,22 +751,13 @@
       "id": 80,
       "type": "textbook",
       "subject": "Biology",
-      "date": "January 2025",
-      "sort_key": "2025-01",
-      "name": "Biology: A Global Approach by Neil A. Campbell",
-      "highlighted": 1
-    },
-    {
-      "id": 81,
-      "type": "textbook",
-      "subject": "Biology",
       "date": "May 2025",
       "sort_key": "2025-05",
       "name": "Advanced Placement Psychology Exam",
       "highlighted": 0
     },
     {
-      "id": 82,
+      "id": 81,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2025",
@@ -775,7 +766,7 @@
       "highlighted": 0
     },
     {
-      "id": 83,
+      "id": 82,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2025",
@@ -784,13 +775,22 @@
       "highlighted": 0
     },
     {
-      "id": 84,
+      "id": 83,
       "type": "olympiad",
       "subject": "Biology",
       "date": "February 2025",
       "sort_key": "2025-02",
       "name": "USA Biology Olympiad Open Exam",
       "highlighted": 0
+    },
+    {
+      "id": 84,
+      "type": "textbook",
+      "subject": "Biology",
+      "date": "January 2025",
+      "sort_key": "2025-01",
+      "name": "Biology: A Global Approach by Neil A. Campbell",
+      "highlighted": 1
     },
     {
       "id": 85,
@@ -880,15 +880,6 @@
     },
     {
       "id": 94,
-      "type": "textbook",
-      "subject": "Astronomy",
-      "date": "January 2026",
-      "sort_key": "2026-01",
-      "name": "Foundations of Astrophysics by Barbara Ryden and Bradley Peterson",
-      "highlighted": 1
-    },
-    {
-      "id": 95,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2026",
@@ -896,6 +887,15 @@
       "name": "USA Astronomy and Astrophysics Olympiad First Round Exam",
       "highlighted": 0,
       "competitive": 1
+    },
+    {
+      "id": 95,
+      "type": "textbook",
+      "subject": "Astronomy",
+      "date": "January 2026",
+      "sort_key": "2026-01",
+      "name": "Foundations of Astrophysics by Barbara Ryden and Bradley Peterson",
+      "highlighted": 1
     },
     {
       "id": 96,
