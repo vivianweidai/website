@@ -194,16 +194,27 @@ import PageFooter from '../../layouts/PageFooter.astro';
       position: absolute;
       inset: 0;
       background-color: #fff44f;
+      z-index: -1;
+    }
+    /* Sweep lives on ::after and animates `transform` (compositor-only) rather
+       than `background-position`, so the row's text never repaints mid-flash
+       and keeps crisp subpixel antialiasing. */
+    .timeline .entry.hl::after {
+      content: '';
+      position: absolute;
+      inset: 0;
       background-image: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.7) 50%, transparent 100%);
       background-size: 50% 100%;
       background-repeat: no-repeat;
-      background-position: -100% 0;
+      background-position: left center;
+      transform: translateX(-120%);
+      pointer-events: none;
       z-index: -1;
     }
-    .timeline .entry.hl:hover::before { animation: hl-ripple 1.0s ease-out; }
+    .timeline .entry.hl:hover::after { animation: hl-ripple 1.0s ease-out; }
     @keyframes hl-ripple {
-      from { background-position: -60% 0; }
-      to   { background-position: 200% 0; }
+      from { transform: translateX(-120%); }
+      to   { transform: translateX(220%); }
     }
 
     /* Hover-only ripple — same yellow sweep + badge flash as .hl, but no
@@ -216,7 +227,9 @@ import PageFooter from '../../layouts/PageFooter.astro';
       background-image: linear-gradient(100deg, transparent 0%, #fff44f 50%, transparent 100%);
       background-size: 50% 100%;
       background-repeat: no-repeat;
-      background-position: -100% 0;
+      background-position: left center;
+      transform: translateX(-120%);
+      pointer-events: none;
       z-index: -1;
     }
     .timeline .entry.hl-hover:hover::before { animation: hl-ripple 1.0s ease-out; }
