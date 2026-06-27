@@ -240,6 +240,30 @@ struct TechDetailView: View {
                         .foregroundStyle(.primary)
                 }
 
+                if let toys = tech.toys, !toys.isEmpty {
+                    Divider().padding(.vertical, 4)
+
+                    Text("Toys")
+                        .font(.system(size: 17, weight: .bold))
+
+                    VStack(spacing: 0) {
+                        ForEach(toys) { toy in
+                            TechToyRow(toy: toy)
+                            if toy.id != toys.last?.id {
+                                Divider()
+                            }
+                        }
+                    }
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(ResearchColors.cardBackground)
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.black.opacity(0.08), lineWidth: 1)
+                    )
+                }
+
                 Divider().padding(.vertical, 4)
 
                 Text("Projects")
@@ -276,6 +300,30 @@ struct TechDetailView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+    }
+}
+
+private struct TechToyRow: View {
+    let toy: ResearchToy
+
+    var body: some View {
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(toy.name)
+                    .font(.system(size: 14, weight: .semibold))
+                    .fixedSize(horizontal: false, vertical: true)
+                if !toy.description.isEmpty {
+                    Text(toy.description)
+                        .font(.system(size: 12))
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 12)
+        .contentShape(Rectangle())
     }
 }
 

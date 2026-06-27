@@ -17,6 +17,16 @@
               "available": 1,
               "tech_url": "/research/technology/mathematics/Numerical/",
               "hero": "/research/technology/mathematics/Numerical/numerical.png",
+              "toys": [
+                {
+                  "name": "NumPy",
+                  "description": "Linear algebra and vector math"
+                },
+                {
+                  "name": "SciPy",
+                  "description": "Scientific computing"
+                }
+              ],
               "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
               "projects": [
                 {
@@ -44,6 +54,12 @@
               "available": 1,
               "tech_url": "/research/technology/mathematics/Symbolic/",
               "hero": "/research/technology/mathematics/Symbolic/wolfram.png",
+              "toys": [
+                {
+                  "name": "Wolfram",
+                  "description": "Symbolic computation engine"
+                }
+              ],
               "url": "https://www.wolframcloud.com/obj/jamesdai/Published/exoplanets.nb"
             }
           ]
@@ -59,6 +75,16 @@
               "available": 1,
               "tech_url": "/research/technology/mathematics/Graphic/",
               "hero": "/research/technology/mathematics/Graphic/graphic.png",
+              "toys": [
+                {
+                  "name": "Matplotlib",
+                  "description": "2D and 3D"
+                },
+                {
+                  "name": "Wolfram",
+                  "description": "Custom rendering"
+                }
+              ],
               "url": "/research/projects/20260404%20Four%20Point%20Probe/",
               "projects": [
                 {
@@ -86,6 +112,12 @@
               "available": 1,
               "tech_url": "/research/technology/mathematics/Typeset/",
               "hero": "/research/technology/mathematics/Typeset/latex.png",
+              "toys": [
+                {
+                  "name": "LaTeX",
+                  "description": "Document typesetting"
+                }
+              ],
               "url": "/curriculum/",
               "projects": [
                 {
@@ -120,6 +152,12 @@
               "available": 1,
               "tech_url": "/research/technology/computing/Statistics/",
               "hero": "/research/technology/computing/Statistics/inference.png",
+              "toys": [
+                {
+                  "name": "SciPy",
+                  "description": "Statistical inference"
+                }
+              ],
               "projects": [
                 {
                   "date": "2025-02-25",
@@ -138,7 +176,13 @@
               "specs": "Classic models",
               "available": 1,
               "tech_url": "/research/technology/computing/Machine%20Learning/",
-              "hero": "/research/technology/computing/Machine%20Learning/kaggle.png"
+              "hero": "/research/technology/computing/Machine%20Learning/kaggle.png",
+              "toys": [
+                {
+                  "name": "scikit-learn",
+                  "description": "Classification and regression"
+                }
+              ]
             },
             {
               "id": 7,
@@ -146,7 +190,13 @@
               "specs": "Neural networks",
               "available": 1,
               "tech_url": "/research/technology/computing/Deep%20Learning/",
-              "hero": "/research/technology/computing/Deep%20Learning/pytorch.png"
+              "hero": "/research/technology/computing/Deep%20Learning/pytorch.png",
+              "toys": [
+                {
+                  "name": "PyTorch",
+                  "description": "Deep learning framework"
+                }
+              ]
             }
           ]
         },
@@ -161,6 +211,16 @@
               "available": 1,
               "tech_url": "/research/technology/computing/Repository/",
               "hero": "/research/technology/computing/Repository/github.jpeg",
+              "toys": [
+                {
+                  "name": "GitHub",
+                  "description": "Version control and hosting"
+                },
+                {
+                  "name": "Jupyter",
+                  "description": "Interactive notebooks"
+                }
+              ],
               "url": "https://github.com/vivianweidai",
               "projects": [
                 {
@@ -179,7 +239,17 @@
               "specs": "Environment and ID",
               "available": 1,
               "tech_url": "/research/technology/computing/Snapshot/",
-              "hero": "/research/technology/computing/Snapshot/docker.png"
+              "hero": "/research/technology/computing/Snapshot/docker.png",
+              "toys": [
+                {
+                  "name": "Docker",
+                  "description": "Container platform"
+                },
+                {
+                  "name": "Zenodo",
+                  "description": "DOI-issuing data archive"
+                }
+              ]
             }
           ]
         }
@@ -201,7 +271,13 @@
               "specs": "Push and pull",
               "available": 1,
               "tech_url": "/research/technology/physics/Force/",
-              "hero": "/research/technology/physics/Force/force.jpg"
+              "hero": "/research/technology/physics/Force/force.jpg",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct Force and Acceleration Sensor",
+                  "description": "Force gauge with accelerometer"
+                }
+              ]
             },
             {
               "id": 11,
@@ -209,7 +285,13 @@
               "specs": "Ultrasonic ranger",
               "available": 1,
               "tech_url": "/research/technology/physics/Distance/",
-              "hero": "/research/technology/physics/Distance/motion-detector.jpg"
+              "hero": "/research/technology/physics/Distance/motion-detector.jpg",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct Motion Detector",
+                  "description": "Distance, velocity and acceleration"
+                }
+              ]
             },
             {
               "id": 12,
@@ -217,7 +299,13 @@
               "specs": "Beam timing",
               "available": 1,
               "tech_url": "/research/technology/physics/Time/",
-              "hero": "/research/technology/physics/Time/photogate.jpg"
+              "hero": "/research/technology/physics/Time/photogate.jpg",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct Photogate",
+                  "description": "Light beam timer"
+                }
+              ]
             }
           ]
         },
@@ -231,7 +319,13 @@
               "specs": "Sealed pressure",
               "available": 1,
               "tech_url": "/research/technology/physics/Pressure/",
-              "hero": "/research/technology/physics/Pressure/gas-pressure.jpg"
+              "hero": "/research/technology/physics/Pressure/gas-pressure.jpg",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct Gas Pressure Sensor",
+                  "description": "Sealed syringe gas pressure"
+                }
+              ]
             },
             {
               "id": 14,
@@ -239,7 +333,13 @@
               "specs": "Light scattering",
               "available": 1,
               "tech_url": "/research/technology/physics/Turbidity/",
-              "hero": "/research/technology/physics/Turbidity/turbidity.jpg"
+              "hero": "/research/technology/physics/Turbidity/turbidity.jpg",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct Turbidity",
+                  "description": "Light scattering for solution clarity"
+                }
+              ]
             }
           ]
         },
@@ -253,7 +353,13 @@
               "specs": "Hall effect",
               "available": 1,
               "tech_url": "/research/technology/physics/Magnetism/",
-              "hero": "/research/technology/physics/Magnetism/magnetic-field.jpg"
+              "hero": "/research/technology/physics/Magnetism/magnetic-field.jpg",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct 3-Axis Magnetic Field Sensor",
+                  "description": "Hall sensor"
+                }
+              ]
             },
             {
               "id": 16,
@@ -261,7 +367,17 @@
               "specs": "Disperse light",
               "available": 1,
               "tech_url": "/research/technology/physics/Spectrometer/",
-              "hero": "/research/technology/physics/Spectrometer/spectrometer.jpeg"
+              "hero": "/research/technology/physics/Spectrometer/spectrometer.jpeg",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct Fluorescence/UV-VIS Spectrophotometer",
+                  "description": "Visible light spectrometer"
+                },
+                {
+                  "name": "Vernier Spectrophotometer Optical Fiber",
+                  "description": "Spectra outside of cuvettes"
+                }
+              ]
             },
             {
               "id": 17,
@@ -269,7 +385,13 @@
               "specs": "Phase combining",
               "available": 0,
               "tech_url": "/research/technology/physics/Interferometer/",
-              "hero": "/research/technology/physics/Interferometer/interferometer.png"
+              "hero": "/research/technology/physics/Interferometer/interferometer.png",
+              "toys": [
+                {
+                  "name": "PASCO Precision Interferometer OS-9255A",
+                  "description": "Michelson interferometer"
+                }
+              ]
             }
           ]
         }
@@ -292,6 +414,28 @@
               "available": 1,
               "tech_url": "/research/technology/physics/Circuits/",
               "hero": "/research/technology/physics/Circuits/circuits.jpeg",
+              "toys": [
+                {
+                  "name": "TOAUTO DS90 Soldering Station",
+                  "description": "Soldering iron"
+                },
+                {
+                  "name": "SainSmart Magnetic Helping Hands Soldering Station",
+                  "description": "Soldering work holder"
+                },
+                {
+                  "name": "Digilent Analog Discovery 3",
+                  "description": "Oscilloscope, generator and analyzer"
+                },
+                {
+                  "name": "Korad KA3005P",
+                  "description": "Benchtop power supply"
+                },
+                {
+                  "name": "Fluke 117",
+                  "description": "Handheld multimeter"
+                }
+              ],
               "projects": [
                 {
                   "date": "2026-04-04",
@@ -315,7 +459,13 @@
               "specs": "Filament fabrication",
               "available": 1,
               "tech_url": "/research/technology/physics/3D%20Printing/",
-              "hero": "/research/technology/physics/3D%20Printing/3d-printing.jpeg"
+              "hero": "/research/technology/physics/3D%20Printing/3d-printing.jpeg",
+              "toys": [
+                {
+                  "name": "Prusa CORE One+",
+                  "description": "Enclosed FDM printer"
+                }
+              ]
             }
           ]
         }
@@ -338,6 +488,24 @@
               "available": 1,
               "tech_url": "/research/technology/chemistry/IR%20Spectroscopy/",
               "hero": "/research/technology/chemistry/IR%20Spectroscopy/irspectroscopy.jpeg",
+              "toys": [
+                {
+                  "name": "Thermo Scientific Nicolet 380 FT-IR Spectrometer",
+                  "description": "Benchtop IR"
+                },
+                {
+                  "name": "Bruker Tensor 27 Hyperion FT-IR Microscope",
+                  "description": "Microscope IR"
+                },
+                {
+                  "name": "Mettler Toledo ReactIR iC10",
+                  "description": "In-situ IR"
+                },
+                {
+                  "name": "Renishaw inVia Raman Microscope",
+                  "description": "Nonpolar bonds"
+                }
+              ],
               "projects": [
                 {
                   "date": "2026-04-19",
@@ -356,6 +524,28 @@
               "available": 1,
               "tech_url": "/research/technology/chemistry/UV-Vis%20Spectroscopy/",
               "hero": "/research/technology/chemistry/UV-Vis%20Spectroscopy/spectrophotometer.jpeg",
+              "toys": [
+                {
+                  "name": "Shimadzu UV-2550 UV-Vis Spectrophotometer",
+                  "description": "Benchtop UV-Vis"
+                },
+                {
+                  "name": "Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer",
+                  "description": "Benchtop fluorometer"
+                },
+                {
+                  "name": "PerkinElmer Lambda 750 UV-Vis-NIR Spectrophotometer",
+                  "description": "Benchtop UV-Vis-NIR"
+                },
+                {
+                  "name": "VTSYIQI Visible Spectrophotometer",
+                  "description": "Benchtop visible"
+                },
+                {
+                  "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
+                  "description": "Portable UV-Vis and fluorescence"
+                }
+              ],
               "projects": [
                 {
                   "date": "2026-04-20",
@@ -387,7 +577,13 @@
               "specs": "Large biomolecules",
               "available": 1,
               "tech_url": "/research/technology/chemistry/MALDI/",
-              "hero": "/research/technology/chemistry/MALDI/hero.jpg"
+              "hero": "/research/technology/chemistry/MALDI/hero.jpg",
+              "toys": [
+                {
+                  "name": "Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer",
+                  "description": "Linear time of flight"
+                }
+              ]
             },
             {
               "id": 24,
@@ -395,7 +591,17 @@
               "specs": "Nonvolatile small molecules",
               "available": 1,
               "tech_url": "/research/technology/chemistry/Liquid%20Chromatography%20MS/",
-              "hero": "/research/technology/chemistry/Liquid%20Chromatography%20MS/hero.jpg"
+              "hero": "/research/technology/chemistry/Liquid%20Chromatography%20MS/hero.jpg",
+              "toys": [
+                {
+                  "name": "Waters Micromass ZQ Alliance e2695 LC-MS",
+                  "description": "Unit mass"
+                },
+                {
+                  "name": "Agilent 1200 Series HPLC 6230A TOF LC-MS",
+                  "description": "Exact mass"
+                }
+              ]
             },
             {
               "id": 25,
@@ -403,7 +609,13 @@
               "specs": "Volatile small molecules",
               "available": 1,
               "tech_url": "/research/technology/chemistry/Gas%20Chromatography%20MS/",
-              "hero": "/research/technology/chemistry/Gas%20Chromatography%20MS/hero.jpg"
+              "hero": "/research/technology/chemistry/Gas%20Chromatography%20MS/hero.jpg",
+              "toys": [
+                {
+                  "name": "Agilent 7890A GC 5975C Inert MSD",
+                  "description": "Mass fingerprints"
+                }
+              ]
             }
           ]
         },
@@ -417,7 +629,13 @@
               "specs": "Net rotation angle",
               "available": 1,
               "tech_url": "/research/technology/chemistry/Optical%20Rotation/",
-              "hero": "/research/technology/chemistry/Optical%20Rotation/polarimeter.jpg"
+              "hero": "/research/technology/chemistry/Optical%20Rotation/polarimeter.jpg",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct Polarimeter",
+                  "description": "Single angle rotation"
+                }
+              ]
             },
             {
               "id": 27,
@@ -425,7 +643,13 @@
               "specs": "Full spectrum chirality",
               "available": 1,
               "tech_url": "/research/technology/chemistry/CD%20Spectroscopy/",
-              "hero": "/research/technology/chemistry/CD%20Spectroscopy/cd-spectroscopy.jpeg"
+              "hero": "/research/technology/chemistry/CD%20Spectroscopy/cd-spectroscopy.jpeg",
+              "toys": [
+                {
+                  "name": "Jasco J-1500 CD Spectrometer",
+                  "description": "Differential absorbance"
+                }
+              ]
             }
           ]
         }
@@ -448,6 +672,20 @@
               "available": 1,
               "tech_url": "/research/technology/chemistry/Centrifugation/",
               "hero": "/research/technology/chemistry/Centrifugation/centrifugation.jpeg",
+              "toys": [
+                {
+                  "name": "Thermo Scientific Sorvall RT3 Centrifuge",
+                  "description": "Benchtop swing bucket"
+                },
+                {
+                  "name": "DiaMed ID-Centrifuge",
+                  "description": "Card centrifuge"
+                },
+                {
+                  "name": "Scientific Industries Vortex-Genie 2",
+                  "description": "Homogenize sample"
+                }
+              ],
               "projects": [
                 {
                   "date": "2026-04-11",
@@ -466,7 +704,17 @@
               "specs": "Solubles",
               "available": 1,
               "tech_url": "/research/technology/chemistry/Liquid%20Chromatography/",
-              "hero": "/research/technology/chemistry/Liquid%20Chromatography/hero.jpg"
+              "hero": "/research/technology/chemistry/Liquid%20Chromatography/hero.jpg",
+              "toys": [
+                {
+                  "name": "Waters Micromass ZQ Alliance e2695 LC-MS",
+                  "description": "Sort by hydrophobicity"
+                },
+                {
+                  "name": "Agilent 1200 Series HPLC 6230A TOF LC-MS",
+                  "description": "Sort by hydrophobicity"
+                }
+              ]
             },
             {
               "id": 30,
@@ -474,7 +722,17 @@
               "specs": "Volatiles",
               "available": 1,
               "tech_url": "/research/technology/chemistry/Gas%20Chromatography/",
-              "hero": "/research/technology/chemistry/Gas%20Chromatography/hero.jpg"
+              "hero": "/research/technology/chemistry/Gas%20Chromatography/hero.jpg",
+              "toys": [
+                {
+                  "name": "Agilent 7890A GC 5975C Inert MSD",
+                  "description": "Sort by volatility"
+                },
+                {
+                  "name": "Agilent 7890 GC-FID Chiral",
+                  "description": "Sort by chirality"
+                }
+              ]
             }
           ]
         },
@@ -489,6 +747,16 @@
               "available": 1,
               "tech_url": "/research/technology/chemistry/Melting%20Point/",
               "hero": "/research/technology/chemistry/Melting%20Point/melting-point.jpeg",
+              "toys": [
+                {
+                  "name": "SRS OptiMelt Automated Melting Point System",
+                  "description": "Melting point range"
+                },
+                {
+                  "name": "Vernier Go Direct Temperature Probe",
+                  "description": "Temperature probe"
+                }
+              ],
               "tested": false,
               "projects": [
                 {
@@ -507,7 +775,25 @@
               "specs": "Heat flow",
               "available": 1,
               "tech_url": "/research/technology/chemistry/Calorimetry/",
-              "hero": "/research/technology/chemistry/Calorimetry/calorimetry.jpeg"
+              "hero": "/research/technology/chemistry/Calorimetry/calorimetry.jpeg",
+              "toys": [
+                {
+                  "name": "TA Instruments DSC Q20",
+                  "description": "Heat flow over temperature"
+                },
+                {
+                  "name": "TA Instruments DSC Q100",
+                  "description": "Separate reversing transitions"
+                },
+                {
+                  "name": "TA Instruments Tzero Sample Encapsulation Press",
+                  "description": "Seal sample pans"
+                },
+                {
+                  "name": "TA Instruments Tzero Aluminum Pan and Lid",
+                  "description": "Standard sample pans"
+                }
+              ]
             },
             {
               "id": 33,
@@ -515,7 +801,21 @@
               "specs": "Mass loss",
               "available": 1,
               "tech_url": "/research/technology/chemistry/Thermogravimetry/",
-              "hero": "/research/technology/chemistry/Thermogravimetry/thermogravimetry.jpeg"
+              "hero": "/research/technology/chemistry/Thermogravimetry/thermogravimetry.jpeg",
+              "toys": [
+                {
+                  "name": "TA Instruments TGA Q50",
+                  "description": "Mass loss over temperature"
+                },
+                {
+                  "name": "TA Instruments TGA Q50 Hangdown Wire",
+                  "description": "Suspend sample pan"
+                },
+                {
+                  "name": "TA Instruments TGA Ceramic Pan",
+                  "description": "Ceramic sample pan"
+                }
+              ]
             }
           ]
         },
@@ -529,7 +829,17 @@
               "specs": "Ion activity",
               "available": 1,
               "tech_url": "/research/technology/chemistry/Potentiometry/",
-              "hero": "/research/technology/chemistry/Potentiometry/potentiometry.png"
+              "hero": "/research/technology/chemistry/Potentiometry/potentiometry.png",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct pH Sensor",
+                  "description": "Hold current read voltage - which ion"
+                },
+                {
+                  "name": "VWR pHenomenal pH 1100 L",
+                  "description": "Benchtop pH meter"
+                }
+              ]
             },
             {
               "id": 35,
@@ -537,7 +847,13 @@
               "specs": "Ion content",
               "available": 1,
               "tech_url": "/research/technology/chemistry/Conductometry/",
-              "hero": "/research/technology/chemistry/Conductometry/conductometry.png"
+              "hero": "/research/technology/chemistry/Conductometry/conductometry.png",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct Conductivity Probe",
+                  "description": "Apply voltage read current - all ions"
+                }
+              ]
             },
             {
               "id": 36,
@@ -545,7 +861,13 @@
               "specs": "Redox species",
               "available": 0,
               "tech_url": "/research/technology/chemistry/Voltammetry/",
-              "hero": "/research/technology/chemistry/Voltammetry/voltammetry.png"
+              "hero": "/research/technology/chemistry/Voltammetry/voltammetry.png",
+              "toys": [
+                {
+                  "name": "PalmSens EmStat Pico",
+                  "description": "Sweep voltage read current - what is active"
+                }
+              ]
             }
           ]
         }
@@ -567,7 +889,17 @@
               "specs": "Surfaces",
               "available": 1,
               "tech_url": "/research/technology/biology/Handheld/",
-              "hero": "/research/technology/biology/Handheld/handheld.jpeg"
+              "hero": "/research/technology/biology/Handheld/handheld.jpeg",
+              "toys": [
+                {
+                  "name": "Dino-Lite AF4515T-FUW Digital Microscope",
+                  "description": "Portable microscope"
+                },
+                {
+                  "name": "Dino-Lite MS35B Vertical Mount Stand",
+                  "description": "Fixed mount"
+                }
+              ]
             },
             {
               "id": 38,
@@ -575,7 +907,13 @@
               "specs": "Organisms",
               "available": 1,
               "tech_url": "/research/technology/biology/Stereo/",
-              "hero": "/research/technology/biology/Stereo/stereo.jpeg"
+              "hero": "/research/technology/biology/Stereo/stereo.jpeg",
+              "toys": [
+                {
+                  "name": "AmScope SM-4TZ-144 Trinocular Stereo Microscope with 5MP Camera",
+                  "description": "Stereo microscope"
+                }
+              ]
             },
             {
               "id": 39,
@@ -583,7 +921,13 @@
               "specs": "Cells",
               "available": 1,
               "tech_url": "/research/technology/biology/Compound/",
-              "hero": "/research/technology/biology/Compound/compound.jpeg"
+              "hero": "/research/technology/biology/Compound/compound.jpeg",
+              "toys": [
+                {
+                  "name": "Swift Optical SW380T Trinocular Compound Microscope",
+                  "description": "Cellular microscope"
+                }
+              ]
             }
           ]
         },
@@ -597,7 +941,13 @@
               "specs": "Brain waves",
               "available": 0,
               "tech_url": "/research/technology/biology/EEG/",
-              "hero": "/research/technology/biology/EEG/eeg.png"
+              "hero": "/research/technology/biology/EEG/eeg.png",
+              "toys": [
+                {
+                  "name": "InteraXon Muse 2 Headband",
+                  "description": "Head electrodes"
+                }
+              ]
             },
             {
               "id": 41,
@@ -613,7 +963,13 @@
               "specs": "Heart rhythm",
               "available": 1,
               "tech_url": "/research/technology/biology/EKG/",
-              "hero": "/research/technology/biology/EKG/ekg.jpg"
+              "hero": "/research/technology/biology/EKG/ekg.jpg",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct EKG Sensor",
+                  "description": "Chest electrodes"
+                }
+              ]
             }
           ]
         },
@@ -627,7 +983,13 @@
               "specs": "Breath volume",
               "available": 1,
               "tech_url": "/research/technology/biology/Spirometer/",
-              "hero": "/research/technology/biology/Spirometer/spirometer.jpg"
+              "hero": "/research/technology/biology/Spirometer/spirometer.jpg",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct Spirometer",
+                  "description": "Portable spirometer"
+                }
+              ]
             },
             {
               "id": 44,
@@ -635,7 +997,13 @@
               "specs": "Metabolic gases",
               "available": 1,
               "tech_url": "/research/technology/biology/Gas%20Exchange/",
-              "hero": "/research/technology/biology/Gas%20Exchange/gas-exchange.jpg"
+              "hero": "/research/technology/biology/Gas%20Exchange/gas-exchange.jpg",
+              "toys": [
+                {
+                  "name": "Vernier Go Direct O2 + CO2 Gas Sensor Bundle",
+                  "description": "Optical gas probe"
+                }
+              ]
             }
           ]
         }
@@ -658,6 +1026,12 @@
               "available": 1,
               "tech_url": "/research/technology/biology/PCR/",
               "hero": "/research/technology/biology/PCR/pcr.png",
+              "toys": [
+                {
+                  "name": "miniPCR mini16 Thermal Cycler",
+                  "description": "Portable cycler"
+                }
+              ],
               "tested": false,
               "projects": [
                 {
@@ -691,7 +1065,13 @@
               "specs": "Entire strand",
               "available": 0,
               "tech_url": "/research/technology/biology/Long-Read/",
-              "hero": "/research/technology/biology/Long-Read/long-read.png"
+              "hero": "/research/technology/biology/Long-Read/long-read.png",
+              "toys": [
+                {
+                  "name": "Oxford Nanopore MinION Mk1B",
+                  "description": "Portable sequencer"
+                }
+              ]
             },
             {
               "id": 48,
@@ -714,6 +1094,12 @@
               "available": 1,
               "tech_url": "/research/technology/biology/Cell-Free/",
               "hero": "/research/technology/biology/Cell-Free/cell-free.png",
+              "toys": [
+                {
+                  "name": "BioBits Cell-Free System",
+                  "description": "Cell-free reaction"
+                }
+              ],
               "tested": false,
               "projects": [
                 {
@@ -734,6 +1120,16 @@
               "available": 1,
               "tech_url": "/research/technology/biology/Fluorescence/",
               "hero": "/research/technology/biology/Fluorescence/fluorescence.png",
+              "toys": [
+                {
+                  "name": "P51 Molecular Fluorescence Viewer",
+                  "description": "Compact UV viewer"
+                },
+                {
+                  "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
+                  "description": "Quantitative excitation"
+                }
+              ],
               "tested": false,
               "projects": [
                 {
@@ -767,7 +1163,17 @@
               "specs": "Smart telescopes",
               "available": 1,
               "tech_url": "/research/technology/astronomy/Amateur/",
-              "hero": "/research/technology/astronomy/Amateur/amateur.png"
+              "hero": "/research/technology/astronomy/Amateur/amateur.png",
+              "toys": [
+                {
+                  "name": "ZWO Seestar S30 Pro",
+                  "description": "Smart amateur telescope"
+                },
+                {
+                  "name": "ZWO Seestar TH10 Tilting Wedge",
+                  "description": "Equatorial alignment"
+                }
+              ]
             },
             {
               "id": 52,
@@ -775,7 +1181,17 @@
               "specs": "Ground observatories",
               "available": 1,
               "tech_url": "/research/technology/astronomy/Earth/",
-              "hero": "/research/technology/astronomy/Earth/horsehead.jpeg"
+              "hero": "/research/technology/astronomy/Earth/horsehead.jpeg",
+              "toys": [
+                {
+                  "name": "UBC Thunderbird South Observatory",
+                  "description": "Remote access to Cerro Tololo Chile"
+                },
+                {
+                  "name": "Great Basin Observatory",
+                  "description": "Remote access to Great Basin National Park"
+                }
+              ]
             }
           ]
         },
@@ -789,7 +1205,17 @@
               "specs": "Radio telescopes",
               "available": 1,
               "tech_url": "/research/technology/astronomy/Radio/",
-              "hero": "/research/technology/astronomy/Radio/radio.jpeg"
+              "hero": "/research/technology/astronomy/Radio/radio.jpeg",
+              "toys": [
+                {
+                  "name": "NASA Radio JOVE RJK2p Antenna Kit",
+                  "description": "Receive radio signals"
+                },
+                {
+                  "name": "SDRplay RSP1B",
+                  "description": "Decode radio signals"
+                }
+              ]
             },
             {
               "id": 54,
@@ -797,7 +1223,13 @@
               "specs": "Space telescopes",
               "available": 1,
               "tech_url": "/research/technology/astronomy/Space/",
-              "hero": "/research/technology/astronomy/Space/space.png"
+              "hero": "/research/technology/astronomy/Space/space.png",
+              "toys": [
+                {
+                  "name": "MAST Portal",
+                  "description": "Space telescope data"
+                }
+              ]
             }
           ]
         }
@@ -819,7 +1251,21 @@
               "specs": "Position catalogs",
               "available": 1,
               "tech_url": "/research/technology/astronomy/Astrometry/",
-              "hero": "/research/technology/astronomy/Astrometry/astrometry.png"
+              "hero": "/research/technology/astronomy/Astrometry/astrometry.png",
+              "toys": [
+                {
+                  "name": "ZWO Seestar S30 Pro",
+                  "description": "Smart amateur telescope"
+                },
+                {
+                  "name": "Seestar S30 Bahtinov Focus Mask",
+                  "description": "Confirm focus for star positions"
+                },
+                {
+                  "name": "Gaia Archive",
+                  "description": "Reference for plate solving"
+                }
+              ]
             },
             {
               "id": 56,
@@ -827,7 +1273,21 @@
               "specs": "Light curves",
               "available": 1,
               "tech_url": "/research/technology/astronomy/Photometry/",
-              "hero": "/research/technology/astronomy/Photometry/photometry.png"
+              "hero": "/research/technology/astronomy/Photometry/photometry.png",
+              "toys": [
+                {
+                  "name": "ZWO Seestar S30 Pro",
+                  "description": "Smart amateur telescope"
+                },
+                {
+                  "name": "Seestar S30 Bahtinov Focus Mask",
+                  "description": "Confirm focus for stable flux"
+                },
+                {
+                  "name": "AAVSO Database",
+                  "description": "Reference for variable stars"
+                }
+              ]
             },
             {
               "id": 57,
@@ -835,7 +1295,33 @@
               "specs": "Spectra",
               "available": 1,
               "tech_url": "/research/technology/astronomy/Spectroscopy/",
-              "hero": "/research/technology/astronomy/Spectroscopy/spectroscopy.png"
+              "hero": "/research/technology/astronomy/Spectroscopy/spectroscopy.png",
+              "toys": [
+                {
+                  "name": "ZWO Seestar S30 Pro",
+                  "description": "Smart amateur telescope"
+                },
+                {
+                  "name": "Seestar S30 1.25\" Filter Adapter",
+                  "description": "Holds grating filter"
+                },
+                {
+                  "name": "Paton Hawksley Star Analyser 100 Grating",
+                  "description": "Reveal spectrum fingerprint"
+                },
+                {
+                  "name": "Pickles Stellar Atlas",
+                  "description": "Reference for stellar spectra"
+                },
+                {
+                  "name": "Vernier Go Direct Fluorescence/UV-VIS Spectrophotometer",
+                  "description": "Visible spectra for the Sun"
+                },
+                {
+                  "name": "Vernier Spectrophotometer Optical Fiber",
+                  "description": "Spectra outside of cuvettes"
+                }
+              ]
             }
           ]
         },
@@ -849,7 +1335,21 @@
               "specs": "Events",
               "available": 1,
               "tech_url": "/research/technology/astronomy/Transient/",
-              "hero": "/research/technology/astronomy/Transient/transient.png"
+              "hero": "/research/technology/astronomy/Transient/transient.png",
+              "toys": [
+                {
+                  "name": "ZWO Seestar S30 Pro",
+                  "description": "Smart amateur telescope"
+                },
+                {
+                  "name": "Transient Name Server",
+                  "description": "Registry for new transients"
+                },
+                {
+                  "name": "WISeREP",
+                  "description": "Reference for supernova typing"
+                }
+              ]
             },
             {
               "id": 59,
@@ -857,7 +1357,17 @@
               "specs": "Morphology",
               "available": 1,
               "tech_url": "/research/technology/astronomy/Galaxies/",
-              "hero": "/research/technology/astronomy/Galaxies/galaxies.png"
+              "hero": "/research/technology/astronomy/Galaxies/galaxies.png",
+              "toys": [
+                {
+                  "name": "ZWO Seestar S30 Pro",
+                  "description": "Smart amateur telescope"
+                },
+                {
+                  "name": "Galaxy Zoo",
+                  "description": "Reference for morphologies"
+                }
+              ]
             }
           ]
         }

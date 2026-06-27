@@ -11,6 +11,7 @@ Output shape:
   {"topics": [{id, science, science_slug, topic,
     categories: [{id, category,
       techs: [{id, tech, specs, available, tech_url, hero?, url?,
+              toys?: [{name, description}],
               projects?: [{date, title, url, sciences[]}]}]
     }]
   }]}
@@ -80,6 +81,29 @@ def hero_for_tech(science_folder: str, tech_name: str) -> str | None:
         return hero
     base = f"/research/technology/{science_folder}/{urllib.parse.quote(tech_name)}/"
     return base + urllib.parse.quote(hero)
+
+
+def toys_for_tech(science_folder: str, tech_name: str) -> list[dict]:
+    """Return the Toys list for a tech by reading its index.md frontmatter
+    (`toys:` array of {name, description}). Returns [] when no tech folder
+    exists yet or the frontmatter has no toys. Baked into technology.json
+    so iOS/Android render the same Toys list the website shows from the
+    tech-page frontmatter."""
+    fm = _read_frontmatter(TECH_DIR / science_folder / tech_name / "index.md")
+    if not fm:
+        return []
+    toys = fm.get("toys")
+    if not isinstance(toys, list):
+        return []
+    out = []
+    for toy in toys:
+        if not isinstance(toy, dict) or "name" not in toy:
+            continue
+        out.append({
+            "name": toy["name"],
+            "description": toy.get("description", ""),
+        })
+    return out
 
 
 def projects_per_tech() -> dict[str, list[dict]]:
@@ -155,6 +179,9 @@ def build() -> list[dict]:
                 hero = hero_for_tech(folder, tech["tech"])
                 if hero:
                     t["hero"] = hero
+                toys = toys_for_tech(folder, tech["tech"])
+                if toys:
+                    t["toys"] = toys
                 if tech.get("url"):
                     t["url"] = tech["url"]
                 if "tested" in tech:

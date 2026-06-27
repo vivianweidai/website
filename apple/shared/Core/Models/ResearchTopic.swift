@@ -29,10 +29,11 @@ public struct ResearchTech: Codable, Identifiable, Hashable, Sendable {
     public let url: String?
     public let hero: String?
     public let techUrl: String?
+    public let toys: [ResearchToy]?
     public let projects: [ResearchTechProject]?
 
     enum CodingKeys: String, CodingKey {
-        case id, tech, specs, available, url, hero, projects
+        case id, tech, specs, available, url, hero, toys, projects
         case techUrl = "tech_url"
     }
 
@@ -63,6 +64,17 @@ public struct ResearchTech: Codable, Identifiable, Hashable, Sendable {
         let encoded = trimmed.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? trimmed
         return URL(string: "https://vivianweidai.com/" + encoded)
     }
+}
+
+/// A physical instrument that enables a Tech. Mirrors the `toys:` array
+/// in each tech page's `index.md` frontmatter, baked into technology.json
+/// by `build_technology.py`. Rendered as the Toys list on the tech detail
+/// view, matching the website's tech page.
+public struct ResearchToy: Codable, Hashable, Sendable, Identifiable {
+    public let name: String
+    public let description: String
+
+    public var id: String { name }
 }
 
 public struct ResearchTechResponse: Codable, Sendable {
