@@ -111,9 +111,9 @@ private struct TechnologyBlock: View {
         VStack(alignment: .leading, spacing: 0) {
             Text(category.category)
                 .font(.system(size: 13, weight: .semibold))
-                .frame(maxWidth: .infinity, minHeight: 28, alignment: .leading)
                 .padding(.leading, 14)
                 .padding(.trailing, 12)
+                .frame(maxWidth: .infinity, minHeight: 28, alignment: .leading)
                 .background(ResearchColors.technologyHeader)
 
             ForEach(category.techs) { tech in
@@ -156,7 +156,7 @@ private struct TechRow: View {
 
     @ViewBuilder
     private var rowBody: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 8) {
+        HStack(alignment: .center, spacing: 8) {
             VStack(alignment: .leading, spacing: 2) {
                 Text(tech.tech)
                     .font(.system(size: 14, weight: .semibold))
@@ -169,10 +169,10 @@ private struct TechRow: View {
                 }
             }
             Spacer(minLength: 0)
-            if tech.isAvailable {
-                Image(systemName: "checkmark")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundStyle(Color(red: 0.10, green: 0.50, blue: 0.22))
+            if hasLink {
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(.tertiary)
             }
         }
         .padding(.vertical, 8)
@@ -219,30 +219,7 @@ struct TechDetailView: View {
                     )
                 }
 
-                HStack(spacing: 8) {
-                    Text(tech.tech)
-                        .font(.system(size: 24, weight: .bold))
-                    SubjectChip(subject: topic.science)
-                    Spacer(minLength: 0)
-                }
-
-                HStack(spacing: 6) {
-                    Text(topic.topic).fontWeight(.semibold)
-                    Text("·").foregroundStyle(.secondary)
-                    Text(category.category).fontWeight(.semibold)
-                }
-                .font(.system(size: 13))
-                .foregroundStyle(.secondary)
-
-                if let specs = tech.specs, !specs.isEmpty {
-                    Text(specs + ".")
-                        .font(.system(size: 14))
-                        .foregroundStyle(.primary)
-                }
-
                 if let toys = tech.toys, !toys.isEmpty {
-                    Divider().padding(.vertical, 4)
-
                     Text("Toys")
                         .font(.system(size: 17, weight: .bold))
 
@@ -296,10 +273,18 @@ struct TechDetailView: View {
             .padding(.horizontal, 14)
             .padding(.vertical, 14)
         }
-        .navigationTitle(tech.tech)
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                HStack(spacing: 8) {
+                    Text(tech.tech)
+                        .font(.system(size: 17, weight: .bold))
+                    SubjectChip(subject: topic.science)
+                }
+            }
+        }
     }
 }
 
@@ -347,10 +332,6 @@ private struct TechProjectRow: View {
 
     private var rowBody: some View {
         HStack(alignment: .firstTextBaseline, spacing: 10) {
-            Text(formatDate(project.date))
-                .font(.system(size: 12))
-                .foregroundStyle(.secondary)
-                .frame(width: 100, alignment: .leading)
             VStack(alignment: .leading, spacing: 4) {
                 Text(project.title)
                     .font(.system(size: 14, weight: .medium))
@@ -368,27 +349,6 @@ private struct TechProjectRow: View {
         .padding(.vertical, 8)
         .padding(.horizontal, 12)
         .contentShape(Rectangle())
-    }
-
-    private func formatDate(_ iso: String) -> String {
-        // "2026-04-27" → "April 27th 2026"
-        let parts = iso.split(separator: "-")
-        guard parts.count == 3,
-              let year = Int(parts[0]),
-              let month = Int(parts[1]),
-              let day = Int(parts[2]),
-              (1...12).contains(month) else { return iso }
-        let months = ["January", "February", "March", "April", "May", "June",
-                      "July", "August", "September", "October", "November", "December"]
-        return "\(months[month - 1]) \(ordinal(day)) \(year)"
-    }
-
-    private func ordinal(_ d: Int) -> String {
-        let j = d % 10, k = d % 100
-        if j == 1 && k != 11 { return "\(d)st" }
-        if j == 2 && k != 12 { return "\(d)nd" }
-        if j == 3 && k != 13 { return "\(d)rd" }
-        return "\(d)th"
     }
 }
 

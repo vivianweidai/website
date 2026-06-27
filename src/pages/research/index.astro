@@ -377,8 +377,11 @@ import PageFooter from '../../layouts/PageFooter.astro';
       .tech-table td { display: block; padding: 0; }
 
       /* Category row: category text flex-grows on the left, COMPLETE
-         badge centered in 6rem right column. */
-      tr.tech-cat-row { display: flex; align-items: center; padding: .7em 0 .7em .8rem; }
+         badge centered in 6rem right column. Background goes on the flex
+         row itself — when a category has no ACCESS/TESTED badge the right
+         cell is empty and collapses to zero height, so a td-only background
+         would stop after the text. */
+      tr.tech-cat-row { display: flex; align-items: center; padding: .7em 0 .7em .8rem; background: #f6f8fa; }
       tr.tech-cat-row td { display: block !important; padding: 0 !important; font-size: 1em; }
       tr.tech-cat-row td:first-child { flex: 1; }
       tr.tech-cat-row td.tech-access { flex: 0 0 6rem; width: 6rem; height: auto; margin: 0; overflow: visible; text-align: center; }
