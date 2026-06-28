@@ -137,10 +137,9 @@ struct CurriculumSubjectView: View {
 
 // MARK: - Section → Topics
 
-/// Level 3: a single section expanded into its topics. One row per topic;
-/// the subtitle lists the actual table names belonging to that topic
-/// (in source-of-truth order) so the user sees concrete content, not
-/// just a count.
+/// Level 3: a single section expanded into its topics. One row per topic,
+/// showing just the topic heading — this is an intermediate navigation
+/// page, so the concrete table names are deferred to the topic view.
 ///
 /// Like `CurriculumSubjectView`, this carries the subject color through
 /// a manual breadcrumb strip below the navigation bar rather than
@@ -161,16 +160,9 @@ struct CurriculumSectionView: View {
             List {
                 ForEach(section.topics) { topic in
                     NavigationLink(value: CurriculumDestination.topic(subject, section, topic)) {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(topic.name)
-                                .font(.system(size: 16, weight: .semibold))
-                            Text(topic.tables.map(\.name).joined(separator: ", "))
-                                .font(.system(size: 12))
-                                .foregroundStyle(.secondary)
-                                .lineLimit(2)
-                                .truncationMode(.tail)
-                        }
-                        .padding(.vertical, 4)
+                        Text(topic.name)
+                            .font(.system(size: 16, weight: .semibold))
+                            .padding(.vertical, 4)
                     }
                 }
             }
