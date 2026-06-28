@@ -212,7 +212,6 @@ const nextMeta = navMeta(nextTech);
       <ul class="updates-list">
         {projList.map((p) => (
           <li data-subj={p.chips[0]?.slug ?? ''}>
-            <span class="update-date">{p.date}</span>
             <span class="update-body">
               <a href={p.href}>{p.title}</a>
               {p.chips.map((c) => (
