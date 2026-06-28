@@ -49,8 +49,8 @@ Fifty-six valid readings at 9 µA. Three non-conductive samples (leaf, DVD, pape
 <div class="tech-table">
 <div class="tech-table-header">Technology</div>
 <ul class="updates-list">
-  <li data-subj="phys"><span class="update-date">Electronics</span> <span class="update-name"><a href="/research/technology/physics/Circuits/">Circuits</a></span> <span class="update-desc">Voltage and waveforms</span> <a class="chip phys" href="/research/#phys">Physics</a></li>
   <li data-subj="comp"><span class="update-date">Produce</span> <span class="update-name"><a href="/research/technology/computing/Repository/">Repository</a></span> <span class="update-desc">Data code notebooks</span> <a class="chip comp" href="/research/#comp">Computing</a></li>
+  <li data-subj="phys"><span class="update-date">Electronics</span> <span class="update-name"><a href="/research/technology/physics/Circuits/">Circuits</a></span> <span class="update-desc">Voltage and waveforms</span> <a class="chip phys" href="/research/#phys">Physics</a></li>
 </ul>
 </div>
 </div>
