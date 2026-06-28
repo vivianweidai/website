@@ -84,21 +84,12 @@ import PageFooter from '../../layouts/PageFooter.astro';
           + '<span class="tech-topic-title">' + esc(topic.topic) + '</span>'
           + '<span class="tech-topic-chip"><a class="chip ' + topic.science_slug + '" href="/research/#' + topic.science_slug + '">' + esc(topic.science) + '</a></span>'
           + '</div>';
-        html += '<table class="tech-table"><colgroup><col style="width:28%"><col><col style="width:7rem"></colgroup><tbody>';
+        html += '<table class="tech-table"><colgroup><col style="width:28%"><col></colgroup><tbody>';
 
         topic.categories.forEach(function (cat) {
           var catSlug = cat.category.toLowerCase().replace(/\s+/g, '-');
-          var catComplete = cat.techs.length > 0 && cat.techs.every(function (t) { return t.available; });
-          var techTested = function (t) {
-            return (typeof t.tested === 'boolean') ? t.tested : !!(t.projects && t.projects.length > 0);
-          };
-          var catTested = catComplete && cat.techs.every(techTested);
-          var catMark = catTested
-            ? '<span class="tech-cat-complete tech-cat-tested tech-tip" data-tip="Toys tested">TESTED</span>'
-            : (catComplete ? '<span class="tech-cat-complete tech-tip" data-tip="Access granted">ACCESS</span>' : '');
           html += '<tr class="tech-cat-row" id="cat-' + topic.science_slug + '-' + topicSlug + '-' + catSlug + '">'
             + '<td colspan="2" style="padding-left:1.4em;font-weight:700">' + esc(cat.category) + '</td>'
-            + '<td class="tech-access">' + catMark + '</td>'
             + '</tr>';
 
           cat.techs.forEach(function (tech) {
@@ -106,15 +97,10 @@ import PageFooter from '../../layouts/PageFooter.astro';
             if (tech.tech_url) {
               name = '<a href="' + tech.tech_url + '">' + name + '</a>';
             }
-            var tested = techTested(tech);
-            var access = tech.available
-              ? '<span class="tech-avail tech-tip" data-tip="' + (tested ? 'Tested' : 'Accessed') + '">' + (tested ? '&#10003;' : '&ndash;') + '</span>'
-              : '';
 
             html += '<tr class="tech-row">'
               + '<td style="padding-left:2.8em">' + name + '</td>'
               + '<td class="tech-specs">' + esc(tech.specs) + '</td>'
-              + '<td class="tech-access">' + access + '</td>'
               + '</tr>';
           });
         });
@@ -308,46 +294,8 @@ import PageFooter from '../../layouts/PageFooter.astro';
     }
 
     .tech-specs { color: #1f2328; }
-    .tech-access { width: 7rem; text-align: center; }
     @media (hover: hover) {
       .tech-row:hover td { background: #eef1f4; }
-    }
-    .tech-avail { color: #656d76; font-size: .85em; }
-    .tech-cat-complete {
-      display: inline-block;
-      font-size: .6em;
-      font-weight: 600;
-      letter-spacing: .12em;
-      background: #eaecef;
-      color: #656d76;
-      padding: .25em .55em;
-      border-radius: 3px;
-      vertical-align: middle;
-    }
-
-    .tech-tip { position: relative; cursor: default; }
-    .tech-tip::after {
-      content: attr(data-tip);
-      position: absolute;
-      bottom: calc(100% + 4px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1f2328;
-      color: #fff;
-      font-size: .72rem;
-      font-weight: 500;
-      letter-spacing: 0;
-      text-transform: none;
-      padding: .25em .55em;
-      border-radius: 4px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .1s ease-out;
-      z-index: 10;
-    }
-    @media (hover: hover) {
-      .tech-tip:hover::after { opacity: 1; }
     }
 
     .chip {
@@ -365,9 +313,7 @@ import PageFooter from '../../layouts/PageFooter.astro';
     @media (max-width: 600px) {
       .tabs .tab-labels label { padding: 0.45em 0.7em; font-size: 0.8em; }
 
-      /* Single 6rem right-side column shared across header / category /
-         tech rows so the science chip, COMPLETE badge, and ✓ all
-         vertically line up at the same horizontal center. */
+      /* 6rem right column holds the science chip. */
       .tech-card-header { grid-template-columns: 1fr 6rem; padding: .6em 0; }
       .tech-card-header .tech-topic-title { padding-left: .8rem; }
       .tech-card-header .tech-topic-chip { text-align: center; }
@@ -376,25 +322,18 @@ import PageFooter from '../../layouts/PageFooter.astro';
       .tech-table colgroup { display: none; }
       .tech-table td { display: block; padding: 0; }
 
-      /* Category row: category text flex-grows on the left, COMPLETE
-         badge centered in 6rem right column. Background goes on the flex
-         row itself — when a category has no ACCESS/TESTED badge the right
-         cell is empty and collapses to zero height, so a td-only background
-         would stop after the text. */
+      /* Category row: category text flex-grows on the left. Background goes
+         on the flex row itself. */
       tr.tech-cat-row { display: flex; align-items: center; padding: .7em 0 .7em .8rem; background: #f6f8fa; border-bottom: 1px solid #eaecef; }
       tr.tech-cat-row td { display: block !important; padding: 0 !important; font-size: 1em; border-bottom: none !important; }
       tr.tech-cat-row td:first-child { flex: 1; }
-      tr.tech-cat-row td.tech-access { flex: 0 0 6rem; width: 6rem; height: auto; margin: 0; overflow: visible; text-align: center; }
 
-      /* Tech row: name on its own row (flex-basis 100%), then specs +
-         ✓ share row 2. ✓ centered in the 6rem right column so it
-         lines up with the chip and COMPLETE badge above. */
+      /* Tech row: name on its own row (flex-basis 100%), specs below. */
       tr.tech-row { display: flex; flex-wrap: wrap; align-items: center; padding: .4em 0 .4em .8rem; border-bottom: 1px solid #f0f0f0; }
       tr.tech-row:last-child { border-bottom: none; }
       tr.tech-row td { display: block !important; padding: 0 !important; }
       tr.tech-row td:first-child { flex-basis: 100%; }
       tr.tech-row td.tech-specs { flex: 1 1 auto; font-size: .88em; color: #656d76; padding-top: .1em !important; }
-      tr.tech-row td.tech-access { flex: 0 0 6rem; width: 6rem; height: auto; margin: 0; overflow: visible; text-align: center; }
     }
 
     #tech-all:checked ~ .tab-labels label[for="tech-all"] { color: #656d76; border-bottom-color: #656d76; background: #e8e8e8; }
