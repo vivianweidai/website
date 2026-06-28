@@ -97,7 +97,7 @@ private struct TopicCard: View {
             Spacer(minLength: 0)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.vertical, 10)
+        .padding(.vertical, 13)
         .padding(.leading, 14)
         .padding(.trailing, 12)
     }
@@ -113,7 +113,7 @@ private struct TechnologyBlock: View {
                 .font(.system(size: 13, weight: .semibold))
                 .padding(.leading, 14)
                 .padding(.trailing, 12)
-                .frame(maxWidth: .infinity, minHeight: 28, alignment: .leading)
+                .frame(maxWidth: .infinity, minHeight: 38, alignment: .leading)
                 .background(ResearchColors.technologyHeader)
 
             ForEach(category.techs) { tech in
@@ -157,17 +157,9 @@ private struct TechRow: View {
     @ViewBuilder
     private var rowBody: some View {
         HStack(alignment: .center, spacing: 8) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(tech.tech)
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(hasLink ? Color.accentColor : Color.primary)
-                if let specs = tech.specs, !specs.isEmpty {
-                    Text(specs)
-                        .font(.system(size: 12))
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-            }
+            Text(tech.tech)
+                .font(.system(size: 16, weight: .regular))
+                .foregroundStyle(hasLink ? Color.accentColor : Color.primary)
             Spacer(minLength: 0)
             if hasLink {
                 Image(systemName: "chevron.right")
@@ -175,7 +167,7 @@ private struct TechRow: View {
                     .foregroundStyle(.tertiary)
             }
         }
-        .padding(.vertical, 8)
+        .frame(minHeight: 44)
         .padding(.leading, 28)
         .padding(.trailing, 12)
         .contentShape(Rectangle())

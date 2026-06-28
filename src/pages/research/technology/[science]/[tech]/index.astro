@@ -33,10 +33,6 @@ for (const t of techData.topics) {
     }
   }
 }
-const slug = (s: string) => s.toLowerCase().replace(/\s+/g, '-');
-const topicSlug = slug(topic);
-const catSlug = slug(category);
-
 // Reverse-lookup every project that uses this tech. Source of truth is
 // each project's `tech:` frontmatter array.
 const projects = await getCollection('projects');
@@ -182,10 +178,6 @@ const nextMeta = navMeta(nextTech);
         <span class="tech-specs-inline">{specs}</span>
       )}</h1>
       <span class="tech-context">
-        <a class="tech-context-link" href={`/research/#${science_slug}/${topicSlug}/${catSlug}`}>{category}</a>
-        <span class="tech-context-sep"> · </span>
-        <a class="tech-context-link" href={`/research/#${science_slug}/${topicSlug}`}>{topic}</a>
-        <span class="tech-context-sep"> · </span>
         <a class={`chip ${science_slug}`} href={`/research/#${science_slug}`}>{science}</a>
       </span>
     </div>
