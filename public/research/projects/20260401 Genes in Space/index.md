@@ -38,9 +38,9 @@ Cardiomyocyte cultures carrying both wild-type and known mutant MYBPC3 variants 
 <div class="tech-table">
 <div class="tech-table-header">Technology</div>
 <ul class="updates-list">
-  <li data-subj="bio"><span class="update-date">Amplification</span> <span class="update-name"><a href="/research/technology/biology/PCR/">PCR</a></span> <span class="update-desc">Endpoint amplify</span> <a class="chip bio" href="/research/#bio">Biology</a></li>
-  <li data-subj="bio"><span class="update-date">Expression</span> <span class="update-name"><a href="/research/technology/biology/Cell-Free/">Cell-Free</a></span> <span class="update-desc">DNA to proteins</span> <a class="chip bio" href="/research/#bio">Biology</a></li>
-  <li data-subj="bio"><span class="update-date">Expression</span> <span class="update-name"><a href="/research/technology/biology/Fluorescence/">Fluorescence</a></span> <span class="update-desc">UV glow</span> <a class="chip bio" href="/research/#bio">Biology</a></li>
+  <li data-subj="bio"><span class="update-name"><a href="/research/technology/biology/PCR/">PCR</a></span> <span class="update-desc">Endpoint amplify</span> <a class="chip bio" href="/research/#bio">Biology</a></li>
+  <li data-subj="bio"><span class="update-name"><a href="/research/technology/biology/Cell-Free/">Cell-Free</a></span> <span class="update-desc">DNA to proteins</span> <a class="chip bio" href="/research/#bio">Biology</a></li>
+  <li data-subj="bio"><span class="update-name"><a href="/research/technology/biology/Fluorescence/">Fluorescence</a></span> <span class="update-desc">UV glow</span> <a class="chip bio" href="/research/#bio">Biology</a></li>
 </ul>
 </div>
 </div>

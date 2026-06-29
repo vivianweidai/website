@@ -203,11 +203,6 @@ const SLUG: Record<string, string> = {
     .updates-list li[data-subj="chem"]  { --accent: var(--subj-chem); }
     .updates-list li[data-subj="bio"]   { --accent: var(--subj-bio); }
     .updates-list li[data-subj="astro"] { --accent: var(--subj-astro); }
-    .updates-list .update-date {
-      flex: 0 0 9em;
-      color: #656d76;
-      font-size: 0.9em;
-    }
     .updates-list .update-name { flex: 0 0 12em; white-space: nowrap; }
     .updates-list .update-desc {
       flex: 1;
@@ -217,7 +212,6 @@ const SLUG: Record<string, string> = {
     .updates-list .update-body { flex: 1; }
     .updates-list .chip { margin-left: 0.2em; }
     @media (max-width: 600px) {
-      .updates-list .update-date,
       .updates-list .update-desc { display: none; }
     }
   </style>
