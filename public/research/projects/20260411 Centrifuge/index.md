@@ -65,13 +65,3 @@ Four tubes were loaded into the Sorvall, balanced across the rotor (<a href="htt
 - **Tube 4 — Milk + vinegar** — acid curdled casein into a pellet below clear whey (<a href="https://vivianweidai.com/research/projects/20260411%20Centrifuge/photos/data/data21.jpeg">Data 21</a>, <a href="https://vivianweidai.com/research/projects/20260411%20Centrifuge/photos/data/data22.jpeg">Data 22</a>, <a href="https://vivianweidai.com/research/projects/20260411%20Centrifuge/photos/data/data23.jpeg">Data 23</a>)
 
 Centrifugation works best on emulsions and suspensions (milk, yogurt, unfiltered vinegar) where particles of different densities are physically mixed but not dissolved.
-
-<div id="technology" class="tech-table-wrap">
-<div class="tech-table">
-<div class="tech-table-header">Technology</div>
-<ul class="updates-list">
-  <li data-subj="chem"><span class="update-name"><a href="/research/technology/chemistry/Spectrometry/">Spectrometry</a></span> <span class="update-desc">Separation and mass</span> <a class="chip chem" href="/research/#chem">Chemistry</a></li>
-  <li data-subj="chem"><span class="update-name"><a href="/research/technology/chemistry/Electrochemistry/">Electrochemistry</a></span> <span class="update-desc">Ions and redox</span> <a class="chip chem" href="/research/#chem">Chemistry</a></li>
-</ul>
-</div>
-</div>

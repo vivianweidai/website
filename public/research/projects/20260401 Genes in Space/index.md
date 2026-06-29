@@ -32,14 +32,3 @@ Microgravity differentially reduces MYBPC3 gene expression in mutant versus wild
 | Readout | Fluorescence band intensity comparison (ISS vs. Earth) |
 
 Cardiomyocyte cultures carrying both wild-type and known mutant MYBPC3 variants are prepared on Earth. Identical sample sets are sent to the ISS and processed in parallel on the ground as controls. On the ISS, mRNA transcripts of MYBPC3 are amplified using the **miniPCR Thermal Cycler** and detected with the **P51 Fluorescence Viewer**, comparing band intensity between ISS and Earth samples. The **BioBits Cell Free System** is used to express cMyBP-C protein from the amplified cDNA, testing whether microgravity affects protein translation as well as transcription. See the <a href="https://github.com/vivianweidai/science/blob/main/public/research/projects/20260401%20Genes%20in%20Space/output/20260331%20Genes%20in%20Space.pdf" rel="noopener">proposal document</a> and <a href="https://github.com/vivianweidai/science/tree/main/public/research/projects/20260401%20Genes%20in%20Space/papers" rel="noopener">reference literature</a>.
-
-<div id="technology" class="tech-table-wrap">
-<div class="tech-table">
-<div class="tech-table-header">Technology</div>
-<ul class="updates-list">
-  <li data-subj="bio"><span class="update-name"><a href="/research/technology/biology/PCR/">PCR</a></span> <span class="update-desc">Endpoint amplify</span> <a class="chip bio" href="/research/#bio">Biology</a></li>
-  <li data-subj="bio"><span class="update-name"><a href="/research/technology/biology/Cell-Free/">Cell-Free</a></span> <span class="update-desc">DNA to proteins</span> <a class="chip bio" href="/research/#bio">Biology</a></li>
-  <li data-subj="bio"><span class="update-name"><a href="/research/technology/biology/Fluorescence/">Fluorescence</a></span> <span class="update-desc">UV glow</span> <a class="chip bio" href="/research/#bio">Biology</a></li>
-</ul>
-</div>
-</div>

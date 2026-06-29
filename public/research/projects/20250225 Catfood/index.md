@@ -46,13 +46,3 @@ Raw data was recorded on handwritten data sheets and photographed. Variables tra
 ## Results
 
 Over 30 days, Mi chose red on 13 days and green on 17 days. A chi-squared goodness-of-fit test with one degree of freedom yielded a test statistic of 0.533, well below the critical value of 3.841 at 95% confidence. The null hypothesis (no color preference) was not rejected. **Mi shows no statistically significant preference for red or green cat food.** The chi-squared test and supporting plots are in the analysis <a href="https://github.com/vivianweidai/science/blob/main/public/research/projects/20250225%20Catfood/output/catfood_analysis.ipynb" rel="noopener">notebook</a> and are reproducible on <a href="https://colab.research.google.com/github/vivianweidai/science/blob/main/public/research/projects/20250225%20Catfood/output/catfood_analysis.ipynb" rel="noopener">colab</a>. See also the full <a href="https://github.com/vivianweidai/science/blob/main/public/research/projects/20250225%20Catfood/output/20250225%20Catfood.pdf" rel="noopener">written report</a>.
-
-<div id="technology" class="tech-table-wrap">
-<div class="tech-table">
-<div class="tech-table-header">Technology</div>
-<ul class="updates-list">
-  <li data-subj="comp"><span class="update-name"><a href="/research/technology/computing/Statistics/">Statistics</a></span> <span class="update-desc">Inference</span> <a class="chip comp" href="/research/#comp">Computing</a></li>
-  <li data-subj="comp"><span class="update-name"><a href="/research/technology/computing/Publishing/">Publishing</a></span> <span class="update-desc">Data code notebooks</span> <a class="chip comp" href="/research/#comp">Computing</a></li>
-</ul>
-</div>
-</div>

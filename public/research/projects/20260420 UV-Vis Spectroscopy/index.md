@@ -119,12 +119,3 @@ The UV-2550 yields λ<sub>max</sub> and A across 200–800 nm; both feed the Flu
 <img src="output/images/lambda750_water.png" alt="Lambda 750 distilled water NIR spectrum" class="result-img">
 
 Distilled water on the Lambda 750. O–H overtones at ~970, 1200 and 1450 nm; detector pinned past ~1500 nm.
-
-<div id="technology" class="tech-table-wrap">
-<div class="tech-table">
-<div class="tech-table-header">Technology</div>
-<ul class="updates-list">
-  <li data-subj="chem"><span class="update-name"><a href="/research/technology/chemistry/Spectroscopy/">Spectroscopy</a></span> <span class="update-desc">Bonds, absorbance, chirality</span> <a class="chip chem" href="/research/#chem">Chemistry</a></li>
-</ul>
-</div>
-</div>
