@@ -33,26 +33,24 @@ const RESEARCH_LATEST = {
   biology:     { name: 'Centrifugation and pH of Everyday Liquids',           url: '/research/projects/20260411%20Centrifuge/'                                    },
   astronomy:   { name: 'Meow to Mars — Will Space Help or Hurt Mi’s Heart?',  url: '/research/projects/20260401%20Genes%20in%20Space/',                 mi: true },
 };
-// Total research projects per science — counted by each project's declared
-// `sciences` (deduped across the techs it appears under). Drives the count
-// badge in the Research tab, which links to /research/#<anchor>.
+// Total research projects per science — the distinct projects that appear
+// under that science's technology cards (i.e. use a tech belonging to the
+// science), matching what its /research/#<anchor> tab shows. A project counts
+// only where its techs live, so e.g. a project using only biology techs does
+// not count toward astronomy even if it's astronomy-flavored.
 const RESEARCH_PROJECT_COUNT = {};
 {
-  const counted = new Set();
+  const seen = {}; // science (full word) -> Set of distinct project urls
   for (const t of techData.topics) {
+    const slug = t.science.toLowerCase();
+    if (!seen[slug]) seen[slug] = new Set();
     for (const cat of t.categories) {
       for (const tech of cat.techs) {
-        for (const p of tech.projects ?? []) {
-          if (counted.has(p.url)) continue;
-          counted.add(p.url);
-          for (const sci of p.sciences ?? []) {
-            const slug = sci.toLowerCase();
-            RESEARCH_PROJECT_COUNT[slug] = (RESEARCH_PROJECT_COUNT[slug] ?? 0) + 1;
-          }
-        }
+        for (const p of tech.projects ?? []) seen[slug].add(p.url);
       }
     }
   }
+  for (const slug of Object.keys(seen)) RESEARCH_PROJECT_COUNT[slug] = seen[slug].size;
 }
 const TABS = [
   { key: 'curriculum', label: 'Curriculum' },
@@ -408,22 +406,26 @@ const TABS = [
     }
     .curr-rows-secs .mi-icon img { height: 0.95em; }
     .curr-rows-secs .mi-icon:hover { text-decoration: none; }
+    /* Same white bordered pill as the research tab's project badge
+       (.home-proj-badge). */
     .curr-rows-pdf {
       flex: 0 0 auto;
-      margin-right: 0.7em;
-      padding: 0.18em 0.65em;
-      border: 1px solid #d1d9e0;
-      border-radius: 999px;
-      background: #f6f8fa;
-      color: #57606a;
-      font-size: 0.82em;
-      letter-spacing: 0.02em;
+      margin-right: 0.9em;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.12em 0.55em;
+      border: 1px solid #d8dee4;
+      border-radius: 6px;
+      background: #fff;
+      color: #475059;
+      font-size: 0.8em;
       text-decoration: none;
       white-space: nowrap;
+      transition: border-color 0.15s ease, color 0.15s ease;
     }
     .curr-rows-pdf:hover {
-      background: #eaeef2;
-      color: #1f2328;
+      border-color: #0969da;
+      color: #0969da;
       text-decoration: none;
     }
 
