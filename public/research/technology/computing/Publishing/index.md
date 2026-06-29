@@ -5,6 +5,7 @@ science_slug: comp
 topic: Experiment
 category: Produce
 hero: github.jpeg
+hero_position: top
 toys:
   - name: GitHub
     description: Version control and hosting
