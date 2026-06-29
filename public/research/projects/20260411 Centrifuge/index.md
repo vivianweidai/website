@@ -2,6 +2,7 @@
 project: Centrifuge
 tech:
   - Separation
+  - Electrochemistry
 title: "Centrifugation and pH of Everyday Liquids"
 sciences:
   - Chemistry
@@ -70,6 +71,7 @@ Centrifugation works best on emulsions and suspensions (milk, yogurt, unfiltered
 <div class="tech-table-header">Technology</div>
 <ul class="updates-list">
   <li data-subj="chem"><span class="update-name"><a href="/research/technology/chemistry/Separation/">Separation</a></span> <span class="update-desc">Sort components</span> <a class="chip chem" href="/research/#chem">Chemistry</a></li>
+  <li data-subj="chem"><span class="update-name"><a href="/research/technology/chemistry/Electrochemistry/">Electrochemistry</a></span> <span class="update-desc">Ions and redox</span> <a class="chip chem" href="/research/#chem">Chemistry</a></li>
 </ul>
 </div>
 </div>

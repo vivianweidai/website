@@ -6,19 +6,19 @@ topic: Stimulate
 category: Thermal
 hero: thermal.jpeg
 toys:
+  - name: Vernier Go Direct Temperature Probe
+    description: Temperature probe
+    short: Temperature
   - name: SRS OptiMelt Automated Melting Point System
     description: Melting point range
     short: Melting Point
     url: /research/projects/20260405%20Melting%20Point/
-  - name: Vernier Go Direct Temperature Probe
-    description: Temperature probe
-    short: Temperature Probe
   - name: TA Instruments DSC Q20
     description: Heat flow over temperature
-    short: DSC
+    short: Calorimetry
   - name: TA Instruments DSC Q100
     description: Separate reversing transitions
-    short: DSC
+    short: Calorimetry
   - name: TA Instruments Tzero Sample Encapsulation Press
     description: Seal sample pans
     chip: false
@@ -27,7 +27,7 @@ toys:
     chip: false
   - name: TA Instruments TGA Q50
     description: Mass loss over temperature
-    short: TGA
+    short: Thermogravimetry
   - name: TA Instruments TGA Q50 Hangdown Wire
     description: Suspend sample pan
     chip: false

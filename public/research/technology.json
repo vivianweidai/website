@@ -571,25 +571,25 @@
               "hero": "/research/technology/chemistry/Thermal/thermal.jpeg",
               "toys": [
                 {
+                  "name": "Vernier Go Direct Temperature Probe",
+                  "description": "Temperature probe",
+                  "short": "Temperature"
+                },
+                {
                   "name": "SRS OptiMelt Automated Melting Point System",
                   "description": "Melting point range",
                   "url": "/research/projects/20260405%20Melting%20Point/",
                   "short": "Melting Point"
                 },
                 {
-                  "name": "Vernier Go Direct Temperature Probe",
-                  "description": "Temperature probe",
-                  "short": "Temperature Probe"
-                },
-                {
                   "name": "TA Instruments DSC Q20",
                   "description": "Heat flow over temperature",
-                  "short": "DSC"
+                  "short": "Calorimetry"
                 },
                 {
                   "name": "TA Instruments DSC Q100",
                   "description": "Separate reversing transitions",
-                  "short": "DSC"
+                  "short": "Calorimetry"
                 },
                 {
                   "name": "TA Instruments Tzero Sample Encapsulation Press",
@@ -604,7 +604,7 @@
                 {
                   "name": "TA Instruments TGA Q50",
                   "description": "Mass loss over temperature",
-                  "short": "TGA"
+                  "short": "Thermogravimetry"
                 },
                 {
                   "name": "TA Instruments TGA Q50 Hangdown Wire",
@@ -643,20 +643,35 @@
               "hero": "/research/technology/chemistry/Electrochemistry/electrochemistry.png",
               "toys": [
                 {
-                  "name": "Vernier Go Direct pH Sensor",
-                  "description": "Hold current read voltage - which ion"
+                  "name": "VWR pHenomenal pH 1100 L",
+                  "description": "Benchtop pH meter",
+                  "url": "/research/projects/20260411%20Centrifuge/",
+                  "short": "pH"
                 },
                 {
-                  "name": "VWR pHenomenal pH 1100 L",
-                  "description": "Benchtop pH meter"
+                  "name": "Vernier Go Direct pH Sensor",
+                  "description": "Hold current read voltage - which ion",
+                  "short": "pH"
                 },
                 {
                   "name": "Vernier Go Direct Conductivity Probe",
-                  "description": "Apply voltage read current - all ions"
+                  "description": "Apply voltage read current - all ions",
+                  "short": "Conductivity"
                 },
                 {
                   "name": "PalmSens EmStat Pico",
-                  "description": "Sweep voltage read current - what is active"
+                  "description": "Sweep voltage read current - what is active",
+                  "short": "Voltammetry"
+                }
+              ],
+              "projects": [
+                {
+                  "date": "2026-04-11",
+                  "title": "Centrifugation and pH of Everyday Liquids",
+                  "url": "/research/projects/20260411%20Centrifuge/",
+                  "sciences": [
+                    "Chemistry"
+                  ]
                 }
               ]
             }
