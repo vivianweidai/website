@@ -76,7 +76,9 @@ for (const proj of matched) {
 }
 
 projList.sort((a, b) =>
-  scienceRank(a) - scienceRank(b) || b.sortKey.localeCompare(a.sortKey));
+  // Within a science, list a tech's projects oldest-first (chronological —
+  // the order the experiments were run), so e.g. IR precedes UV-Vis.
+  scienceRank(a) - scienceRank(b) || a.sortKey.localeCompare(b.sortKey));
 
 // Resolve hero path. Frontmatter usually has a relative path like
 // `numpy.jpeg`; turn it into an absolute URL the browser can fetch.
