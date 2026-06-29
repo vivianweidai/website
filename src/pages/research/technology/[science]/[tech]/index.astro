@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import DefaultLayout from '../../../../../layouts/Default.astro';
 import PageHeader from '../../../../../layouts/PageHeader.astro';
 import PageFooter from '../../../../../layouts/PageFooter.astro';
+import techData from '../../../../../../public/research/technology.json';
 
 export async function getStaticPaths() {
   const techs = await getCollection('tech');
@@ -88,11 +89,29 @@ function resolveHero(h: string | undefined, folder: string, name: string): strin
   return `/research/technology/${folder}/${encodeURIComponent(name)}/${h.split('/').map(encodeURIComponent).join('/')}`;
 }
 const heroUrl = resolveHero(hero, scienceFolder, tech);
+
+// Keyboard-only prev/next: flatten every tech that has a page into one
+// canonical sequence so ← / → cycle through them (wrapping at the ends).
+// No visible nav — the hrefs are baked into data attributes for the script.
+const flatTechUrls: string[] = [];
+let currentIdx = -1;
+for (const t of techData.topics) {
+  for (const cat of t.categories) {
+    for (const tt of cat.techs) {
+      if (!tt.tech_url) continue;
+      if (tt.tech === tech && t.science_slug === science_slug) currentIdx = flatTechUrls.length;
+      flatTechUrls.push(tt.tech_url);
+    }
+  }
+}
+const N = flatTechUrls.length;
+const prevHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx - 1 + N) % N] : null;
+const nextHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx + 1) % N] : null;
 ---
 <DefaultLayout title={`${tech} — ${science}`}>
   <PageHeader title="Research" researchHref={`/research/#${science_slug}`} />
 
-  <div class="tech-page-wrap" data-back-href={`/research/#${science_slug}`}>
+  <div class="tech-page-wrap" data-back-href={`/research/#${science_slug}`} data-prev-href={prevHref} data-next-href={nextHref}>
   <article class={`tech-page tech-accent-${science_slug} card-pop-in`}>
     <div class="tech-title">
       <h1>{tech}</h1>
@@ -333,20 +352,25 @@ const heroUrl = resolveHero(hero, scienceFolder, tech);
   </style>
 
   <script is:inline>
-    // Esc returns to the science's /research/ section. The href is baked
-    // into the card wrapper's data-back-href. Skipped when typing in a form
-    // field or holding a modifier key.
+    // Keyboard-only nav (no visible links): ← / → cycle through tech cards,
+    // Esc returns to the science's /research/ section. Hrefs are baked into
+    // the card wrapper's data attributes. Skipped when typing in a form field
+    // or holding a modifier key.
     (function () {
       var wrap = document.querySelector('.tech-page-wrap');
-      var backHref = wrap && wrap.dataset.backHref;
-      if (!backHref) return;
+      if (!wrap) return;
       document.addEventListener('keydown', function (e) {
-        if (e.key !== 'Escape') return;
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Escape') return;
         if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
         var t = e.target;
         if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+        var href;
+        if (e.key === 'ArrowLeft') href = wrap.dataset.prevHref;
+        else if (e.key === 'ArrowRight') href = wrap.dataset.nextHref;
+        else href = wrap.dataset.backHref;
+        if (!href) return;
         e.preventDefault();
-        window.location.href = backHref;
+        window.location.href = href;
       });
     })();
   </script>
