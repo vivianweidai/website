@@ -120,8 +120,17 @@ import PageFooter from '../../layouts/PageFooter.astro';
             // shows on the tech card. The project-count badge lives in its own
             // right-hand column so it stays vertically centered (whitespace
             // above/below) regardless of how the chips wrap.
+            // Dedupe identical chip labels so two toys sharing a short label
+            // (e.g. the two LC-MS instruments) collapse to one chip here; the
+            // tech card still lists every toy in full.
+            var seenChip = {};
             var toys = (tech.toys || []).map(function (toy) {
-              var label = esc(toy.short || toy.name);
+              return esc(toy.short || toy.name);
+            }).filter(function (label) {
+              if (seenChip[label]) return false;
+              seenChip[label] = 1;
+              return true;
+            }).map(function (label) {
               return url
                 ? '<a class="toy-chip" href="' + url + '">' + label + '</a>'
                 : '<span class="toy-chip">' + label + '</span>';
