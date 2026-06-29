@@ -17,6 +17,7 @@ toys:
     short: Oscilloscope
   - name: Korad KA3005P
     description: Benchtop power supply
+    short: Power Supply
   - name: Fluke 117
     description: Handheld multimeter
     short: Multimeter
