@@ -230,17 +230,17 @@
                 {
                   "name": "Vernier Go Direct Force and Acceleration Sensor",
                   "description": "Force gauge with accelerometer",
-                  "short": "Force & Acceleration"
+                  "short": "Force"
                 },
                 {
                   "name": "Vernier Go Direct Motion Detector",
                   "description": "Distance, velocity and acceleration",
-                  "short": "Motion Detector"
+                  "short": "Motion"
                 },
                 {
                   "name": "Vernier Go Direct Photogate",
                   "description": "Light beam timer",
-                  "short": "Photogate"
+                  "short": "Time"
                 }
               ]
             }
@@ -261,7 +261,7 @@
                 {
                   "name": "Vernier Go Direct Gas Pressure Sensor",
                   "description": "Sealed syringe gas pressure",
-                  "short": "Gas Pressure"
+                  "short": "Pressure"
                 },
                 {
                   "name": "Vernier Go Direct Turbidity",
@@ -287,12 +287,12 @@
                 {
                   "name": "Vernier Go Direct 3-Axis Magnetic Field Sensor",
                   "description": "Hall sensor",
-                  "short": "3-Axis Magnetic Field"
+                  "short": "Magnetism"
                 },
                 {
                   "name": "Vernier Go Direct Fluorescence/UV-VIS Spectrophotometer",
                   "description": "Visible light spectrometer",
-                  "short": "Fluorescence/UV-VIS"
+                  "short": "Spectrophotometer"
                 },
                 {
                   "name": "Vernier Spectrophotometer Optical Fiber",
@@ -326,7 +326,7 @@
                 {
                   "name": "TOAUTO DS90 Soldering Station",
                   "description": "Soldering iron",
-                  "short": "Soldering Station"
+                  "short": "Solder"
                 },
                 {
                   "name": "SainSmart Magnetic Helping Hands Soldering Station",
@@ -336,7 +336,7 @@
                 {
                   "name": "Digilent Analog Discovery 3",
                   "description": "Oscilloscope, generator and analyzer",
-                  "short": "Analog Discovery 3"
+                  "short": "Oscilloscope"
                 },
                 {
                   "name": "Korad KA3005P",
@@ -344,11 +344,13 @@
                 },
                 {
                   "name": "Fluke 117",
-                  "description": "Handheld multimeter"
+                  "description": "Handheld multimeter",
+                  "short": "Multimeter"
                 },
                 {
                   "name": "Prusa CORE One+",
-                  "description": "Enclosed FDM printer"
+                  "description": "Enclosed FDM printer",
+                  "short": "Printer"
                 }
               ],
               "projects": [
