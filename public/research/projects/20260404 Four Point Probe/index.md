@@ -2,7 +2,6 @@
 project: Four-Point Probe
 tech:
   - Engineering
-  - Publishing
 title: "Four-Point Probe of Sheet Resistance"
 sciences:
   - Physics
@@ -49,7 +48,6 @@ Fifty-six valid readings at 9 µA. Three non-conductive samples (leaf, DVD, pape
 <div class="tech-table">
 <div class="tech-table-header">Technology</div>
 <ul class="updates-list">
-  <li data-subj="comp"><span class="update-name"><a href="/research/technology/computing/Publishing/">Publishing</a></span> <span class="update-desc">Data code notebooks</span> <a class="chip comp" href="/research/#comp">Computing</a></li>
   <li data-subj="phys"><span class="update-name"><a href="/research/technology/physics/Engineering/">Engineering</a></span> <span class="update-desc">Circuits and fabrication</span> <a class="chip phys" href="/research/#phys">Physics</a></li>
 </ul>
 </div>
