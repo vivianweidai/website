@@ -373,42 +373,51 @@
                 {
                   "name": "Thermo Scientific Nicolet 380 FT-IR Spectrometer",
                   "description": "Benchtop IR",
-                  "url": "/research/projects/20260419%20IR%20Spectroscopy/"
+                  "url": "/research/projects/20260419%20IR%20Spectroscopy/",
+                  "short": "IR"
                 },
                 {
                   "name": "Bruker Tensor 27 Hyperion FT-IR Microscope",
-                  "description": "Microscope IR"
+                  "description": "Microscope IR",
+                  "short": "IR Microscope"
                 },
                 {
                   "name": "Mettler Toledo ReactIR iC10",
-                  "description": "In-situ IR"
+                  "description": "In-situ IR",
+                  "short": "In-situ IR"
                 },
                 {
                   "name": "Renishaw inVia Raman Microscope",
-                  "description": "Nonpolar bonds"
+                  "description": "Nonpolar bonds",
+                  "short": "Raman"
                 },
                 {
                   "name": "Shimadzu UV-2550 UV-Vis Spectrophotometer",
                   "description": "Benchtop UV-Vis",
-                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/"
+                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
+                  "short": "UV-Vis"
                 },
                 {
                   "name": "Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer",
                   "description": "Benchtop fluorometer",
-                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/"
+                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
+                  "short": "Fluorometer"
                 },
                 {
                   "name": "PerkinElmer Lambda 750 UV-Vis-NIR Spectrophotometer",
                   "description": "Benchtop UV-Vis-NIR",
-                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/"
+                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
+                  "short": "UV-Vis-NIR"
                 },
                 {
                   "name": "VTSYIQI Visible Spectrophotometer",
-                  "description": "Benchtop visible"
+                  "description": "Benchtop visible",
+                  "short": "Visible"
                 },
                 {
                   "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
-                  "description": "Portable UV-Vis and fluorescence"
+                  "description": "Portable UV-Vis and fluorescence",
+                  "short": "Portable UV-Vis"
                 }
               ],
               "projects": [
