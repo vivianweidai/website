@@ -2,7 +2,7 @@
 project: Cat Food Color Preference
 tech:
   - Statistics
-  - Typeset
+  - Graphic
 title: "Red or Green, What Colored Cat Food does Mi Prefer?"
 sciences:
   - Mathematics
@@ -52,7 +52,7 @@ Over 30 days, Mi chose red on 13 days and green on 17 days. A chi-squared goodne
 <div class="tech-table">
 <div class="tech-table-header">Technology</div>
 <ul class="updates-list">
-  <li data-subj="math"><span class="update-date">Display</span> <span class="update-name"><a href="/research/technology/mathematics/Typeset/">Typeset</a></span> <span class="update-desc">Equations and Reactions</span> <a class="chip math" href="/research/#math">Mathematics</a></li>
+  <li data-subj="math"><span class="update-date">Display</span> <span class="update-name"><a href="/research/technology/mathematics/Graphic/">Graphic</a></span> <span class="update-desc">2D and 3D</span> <a class="chip math" href="/research/#math">Mathematics</a></li>
   <li data-subj="comp"><span class="update-date">Predict</span> <span class="update-name"><a href="/research/technology/computing/Statistics/">Statistics</a></span> <span class="update-desc">Inference</span> <a class="chip comp" href="/research/#comp">Computing</a></li>
 </ul>
 </div>
