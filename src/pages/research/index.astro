@@ -319,14 +319,18 @@ import PageFooter from '../../layouts/PageFooter.astro';
       gap: .35em;
       min-width: 0;
     }
+    /* Science-colored toy chips (mirrors the olympiad subject chips) — more
+       saturated than the light hover tint, so they stay crisp on hover. */
     .toy-chip {
       font-size: .8em;
-      background: #eef1f4;
-      color: #3f4853;
+      background: var(--card-tint, #eef1f4);
+      color: #1f2328;
       padding: .1em .55em;
       border-radius: 5px;
       white-space: nowrap;
     }
+    /* Project badge stays a distinct white count pill (different role from a
+       toy chip); solid white keeps it crisp against the tinted hover row. */
     .proj-badge {
       flex-shrink: 0;
       display: inline-flex;
@@ -335,9 +339,9 @@ import PageFooter from '../../layouts/PageFooter.astro';
       font-size: .8em;
       color: #475059;
       padding: .12em .55em;
-      border: 1px solid #e1e6eb;
+      border: 1px solid #d8dee4;
       border-radius: 6px;
-      background: #fafbfc;
+      background: #fff;
       white-space: nowrap;
     }
     .proj-badge b { font-weight: 700; }
