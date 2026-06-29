@@ -4,7 +4,7 @@ science: Computing
 science_slug: comp
 topic: Experiment
 category: Predict
-hero: inference.png
+hero: catfood.jpeg
 toys:
   - name: SciPy
     description: Statistical inference
