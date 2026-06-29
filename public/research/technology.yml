@@ -86,19 +86,13 @@
           available: true
     - category: Fluids
       techs:
-        - tech: Pressure
-          specs: Sealed pressure
-          available: true
-        - tech: Turbidity
-          specs: Light scattering
+        - tech: Fluids
+          specs: Pressure and turbidity
           available: true
     - category: Electromagnetism
       techs:
-        - tech: Magnetism
-          specs: Hall effect
-          available: true
-        - tech: Spectrometer
-          specs: Disperse light
+        - tech: Electromagnetism
+          specs: Magnetism and spectra
           available: true
 
 - science: Physics
