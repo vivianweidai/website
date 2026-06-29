@@ -1,7 +1,7 @@
 ---
 project: IR Spectroscopy
 tech:
-  - IR Spectroscopy
+  - Spectroscopy
 title: "IR Spectroscopy - Test Run"
 sciences:
   - Chemistry
@@ -89,7 +89,7 @@ A background spectrum was collected first. The IR beam reflects inside the diamo
 <div class="tech-table">
 <div class="tech-table-header">Technology</div>
 <ul class="updates-list">
-  <li data-subj="chem"><span class="update-name"><a href="/research/technology/chemistry/IR%20Spectroscopy/">IR Spectroscopy</a></span> <span class="update-desc">Polar bonds</span> <a class="chip chem" href="/research/#chem">Chemistry</a></li>
+  <li data-subj="chem"><span class="update-name"><a href="/research/technology/chemistry/Spectroscopy/">Spectroscopy</a></span> <span class="update-desc">Bonds and absorbance</span> <a class="chip chem" href="/research/#chem">Chemistry</a></li>
 </ul>
 </div>
 </div>

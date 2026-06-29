@@ -97,12 +97,12 @@ import PageFooter from '../../layouts/PageFooter.astro';
           + '</div>';
         html += '<table class="tech-table"><colgroup><col style="width:24%"><col><col class="tech-proj-col"></colgroup><tbody>';
 
-        // Math, Computing & Physics render as a flat tech list (no category
-        // section headers); the other sciences keep their category headings
-        // for now. Physics' categories each collapse to a single same-named
-        // tech (Mechanics/Fluids/Electromagnetism) plus Engineering's
-        // Circuits/Fabrication, so the flat list reads cleanly without them.
-        var FLAT = { math: 1, comp: 1, phys: 1 };
+        // Math, Computing, Physics & Chemistry render as a flat tech list (no
+        // category section headers); the other sciences keep their category
+        // headings for now. Physics and Chemistry each collapse every category
+        // to a single same-named tech (Mechanics/Fluids/…; Spectroscopy/
+        // Spectrometry/…), so the flat list reads cleanly without the headers.
+        var FLAT = { math: 1, comp: 1, phys: 1, chem: 1 };
         var showCats = !FLAT[sci.science_slug];
         sci.categories.forEach(function (cat) {
           var catSlug = cat.category.toLowerCase().replace(/\s+/g, '-');

@@ -1,7 +1,7 @@
 ---
 project: UV-Vis Spectroscopy
 tech:
-  - UV-Vis Spectroscopy
+  - Spectroscopy
   - Numeric
   - Graphic
 title: "UV-Vis Spectroscopy - Test Run"
@@ -128,7 +128,7 @@ Distilled water on the Lambda 750. O–H overtones at ~970, 1200 and 1450 nm; de
 <ul class="updates-list">
   <li data-subj="math"><span class="update-name"><a href="/research/technology/mathematics/Numeric/">Numeric</a></span> <span class="update-desc">Approximate</span> <a class="chip math" href="/research/#math">Mathematics</a></li>
   <li data-subj="math"><span class="update-name"><a href="/research/technology/mathematics/Graphic/">Graphic</a></span> <span class="update-desc">2D and 3D</span> <a class="chip math" href="/research/#math">Mathematics</a></li>
-  <li data-subj="chem"><span class="update-name"><a href="/research/technology/chemistry/UV-Vis%20Spectroscopy/">UV-Vis Spectroscopy</a></span> <span class="update-desc">Absorbance</span> <a class="chip chem" href="/research/#chem">Chemistry</a></li>
+  <li data-subj="chem"><span class="update-name"><a href="/research/technology/chemistry/Spectroscopy/">Spectroscopy</a></span> <span class="update-desc">Bonds and absorbance</span> <a class="chip chem" href="/research/#chem">Chemistry</a></li>
 </ul>
 </div>
 </div>

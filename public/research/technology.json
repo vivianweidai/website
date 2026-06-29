@@ -363,11 +363,11 @@
           "techs": [
             {
               "id": 11,
-              "tech": "IR Spectroscopy",
-              "specs": "Polar bonds",
+              "tech": "Spectroscopy",
+              "specs": "Bonds and absorbance",
               "available": 1,
-              "tech_url": "/research/technology/chemistry/IR%20Spectroscopy/",
-              "hero": "/research/technology/chemistry/IR%20Spectroscopy/irspectroscopy.jpeg",
+              "tech_url": "/research/technology/chemistry/Spectroscopy/",
+              "hero": "/research/technology/chemistry/Spectroscopy/spectroscopy.jpeg",
               "toys": [
                 {
                   "name": "Thermo Scientific Nicolet 380 FT-IR Spectrometer",
@@ -385,27 +385,7 @@
                 {
                   "name": "Renishaw inVia Raman Microscope",
                   "description": "Nonpolar bonds"
-                }
-              ],
-              "projects": [
-                {
-                  "date": "2026-04-19",
-                  "title": "IR Spectroscopy - Test Run",
-                  "url": "/research/projects/20260419%20IR%20Spectroscopy/",
-                  "sciences": [
-                    "Chemistry"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": 12,
-              "tech": "UV-Vis Spectroscopy",
-              "specs": "Absorbance",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/UV-Vis%20Spectroscopy/",
-              "hero": "/research/technology/chemistry/UV-Vis%20Spectroscopy/spectrophotometer.jpeg",
-              "toys": [
+                },
                 {
                   "name": "Shimadzu UV-2550 UV-Vis Spectrophotometer",
                   "description": "Benchtop UV-Vis",
@@ -438,16 +418,16 @@
                   "sciences": [
                     "Chemistry"
                   ]
+                },
+                {
+                  "date": "2026-04-19",
+                  "title": "IR Spectroscopy - Test Run",
+                  "url": "/research/projects/20260419%20IR%20Spectroscopy/",
+                  "sciences": [
+                    "Chemistry"
+                  ]
                 }
               ]
-            },
-            {
-              "id": 13,
-              "tech": "NMR Spectroscopy",
-              "specs": "Spin states",
-              "available": 0,
-              "tech_url": "/research/technology/chemistry/NMR%20Spectroscopy/",
-              "hero": "/research/technology/chemistry/NMR%20Spectroscopy/nmr.jpg"
             }
           ]
         },
@@ -456,27 +436,17 @@
           "category": "Spectrometry",
           "techs": [
             {
-              "id": 14,
-              "tech": "MALDI",
-              "specs": "Large biomolecules",
+              "id": 12,
+              "tech": "Spectrometry",
+              "specs": "Mass fingerprints",
               "available": 1,
-              "tech_url": "/research/technology/chemistry/MALDI/",
-              "hero": "/research/technology/chemistry/MALDI/hero.jpg",
+              "tech_url": "/research/technology/chemistry/Spectrometry/",
+              "hero": "/research/technology/chemistry/Spectrometry/spectrometry.jpg",
               "toys": [
                 {
                   "name": "Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer",
                   "description": "Linear time of flight"
-                }
-              ]
-            },
-            {
-              "id": 15,
-              "tech": "Liquid Chromatography MS",
-              "specs": "Nonvolatile small molecules",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/Liquid%20Chromatography%20MS/",
-              "hero": "/research/technology/chemistry/Liquid%20Chromatography%20MS/hero.jpg",
-              "toys": [
+                },
                 {
                   "name": "Waters Micromass ZQ Alliance e2695 LC-MS",
                   "description": "Unit mass"
@@ -484,17 +454,7 @@
                 {
                   "name": "Agilent 1200 Series HPLC 6230A TOF LC-MS",
                   "description": "Exact mass"
-                }
-              ]
-            },
-            {
-              "id": 16,
-              "tech": "Gas Chromatography MS",
-              "specs": "Volatile small molecules",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/Gas%20Chromatography%20MS/",
-              "hero": "/research/technology/chemistry/Gas%20Chromatography%20MS/hero.jpg",
-              "toys": [
+                },
                 {
                   "name": "Agilent 7890A GC 5975C Inert MSD",
                   "description": "Mass fingerprints"
@@ -508,27 +468,17 @@
           "category": "Chiroptical",
           "techs": [
             {
-              "id": 17,
-              "tech": "Optical Rotation",
-              "specs": "Net rotation angle",
+              "id": 13,
+              "tech": "Chiroptical",
+              "specs": "Chirality",
               "available": 1,
-              "tech_url": "/research/technology/chemistry/Optical%20Rotation/",
-              "hero": "/research/technology/chemistry/Optical%20Rotation/polarimeter.jpg",
+              "tech_url": "/research/technology/chemistry/Chiroptical/",
+              "hero": "/research/technology/chemistry/Chiroptical/chiroptical.jpg",
               "toys": [
                 {
                   "name": "Vernier Go Direct Polarimeter",
                   "description": "Single angle rotation"
-                }
-              ]
-            },
-            {
-              "id": 18,
-              "tech": "CD Spectroscopy",
-              "specs": "Full spectrum chirality",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/CD%20Spectroscopy/",
-              "hero": "/research/technology/chemistry/CD%20Spectroscopy/cd-spectroscopy.jpeg",
-              "toys": [
+                },
                 {
                   "name": "Jasco J-1500 CD Spectrometer",
                   "description": "Differential absorbance"
@@ -550,12 +500,12 @@
           "category": "Separation",
           "techs": [
             {
-              "id": 19,
-              "tech": "Centrifugation",
-              "specs": "Density spin",
+              "id": 14,
+              "tech": "Separation",
+              "specs": "Sort components",
               "available": 1,
-              "tech_url": "/research/technology/chemistry/Centrifugation/",
-              "hero": "/research/technology/chemistry/Centrifugation/centrifugation.jpeg",
+              "tech_url": "/research/technology/chemistry/Separation/",
+              "hero": "/research/technology/chemistry/Separation/separation.jpeg",
               "toys": [
                 {
                   "name": "Thermo Scientific Sorvall RT3 Centrifuge",
@@ -569,6 +519,22 @@
                 {
                   "name": "Scientific Industries Vortex-Genie 2",
                   "description": "Homogenize sample"
+                },
+                {
+                  "name": "Waters Micromass ZQ Alliance e2695 LC-MS",
+                  "description": "Sort by hydrophobicity"
+                },
+                {
+                  "name": "Agilent 1200 Series HPLC 6230A TOF LC-MS",
+                  "description": "Sort by hydrophobicity"
+                },
+                {
+                  "name": "Agilent 7890A GC 5975C Inert MSD",
+                  "description": "Sort by volatility"
+                },
+                {
+                  "name": "Agilent 7890 GC-FID Chiral",
+                  "description": "Sort by chirality"
                 }
               ],
               "projects": [
@@ -582,42 +548,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "id": 20,
-              "tech": "Liquid Chromatography",
-              "specs": "Solubles",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/Liquid%20Chromatography/",
-              "hero": "/research/technology/chemistry/Liquid%20Chromatography/hero.jpg",
-              "toys": [
-                {
-                  "name": "Waters Micromass ZQ Alliance e2695 LC-MS",
-                  "description": "Sort by hydrophobicity"
-                },
-                {
-                  "name": "Agilent 1200 Series HPLC 6230A TOF LC-MS",
-                  "description": "Sort by hydrophobicity"
-                }
-              ]
-            },
-            {
-              "id": 21,
-              "tech": "Gas Chromatography",
-              "specs": "Volatiles",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/Gas%20Chromatography/",
-              "hero": "/research/technology/chemistry/Gas%20Chromatography/hero.jpg",
-              "toys": [
-                {
-                  "name": "Agilent 7890A GC 5975C Inert MSD",
-                  "description": "Sort by volatility"
-                },
-                {
-                  "name": "Agilent 7890 GC-FID Chiral",
-                  "description": "Sort by chirality"
-                }
-              ]
             }
           ]
         },
@@ -626,12 +556,12 @@
           "category": "Thermal",
           "techs": [
             {
-              "id": 22,
-              "tech": "Melting Point",
-              "specs": "Purity",
+              "id": 15,
+              "tech": "Thermal",
+              "specs": "Heat and mass",
               "available": 1,
-              "tech_url": "/research/technology/chemistry/Melting%20Point/",
-              "hero": "/research/technology/chemistry/Melting%20Point/melting-point.jpeg",
+              "tech_url": "/research/technology/chemistry/Thermal/",
+              "hero": "/research/technology/chemistry/Thermal/thermal.jpeg",
               "toys": [
                 {
                   "name": "SRS OptiMelt Automated Melting Point System",
@@ -641,28 +571,7 @@
                 {
                   "name": "Vernier Go Direct Temperature Probe",
                   "description": "Temperature probe"
-                }
-              ],
-              "tested": false,
-              "projects": [
-                {
-                  "date": "2026-04-05",
-                  "title": "Melting Point - Test Run",
-                  "url": "/research/projects/20260405%20Melting%20Point/",
-                  "sciences": [
-                    "Chemistry"
-                  ]
-                }
-              ]
-            },
-            {
-              "id": 23,
-              "tech": "Calorimetry",
-              "specs": "Heat flow",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/Calorimetry/",
-              "hero": "/research/technology/chemistry/Calorimetry/calorimetry.jpeg",
-              "toys": [
+                },
                 {
                   "name": "TA Instruments DSC Q20",
                   "description": "Heat flow over temperature"
@@ -678,17 +587,7 @@
                 {
                   "name": "TA Instruments Tzero Aluminum Pan and Lid",
                   "description": "Standard sample pans"
-                }
-              ]
-            },
-            {
-              "id": 24,
-              "tech": "Thermogravimetry",
-              "specs": "Mass loss",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/Thermogravimetry/",
-              "hero": "/research/technology/chemistry/Thermogravimetry/thermogravimetry.jpeg",
-              "toys": [
+                },
                 {
                   "name": "TA Instruments TGA Q50",
                   "description": "Mass loss over temperature"
@@ -701,6 +600,16 @@
                   "name": "TA Instruments TGA Ceramic Pan",
                   "description": "Ceramic sample pan"
                 }
+              ],
+              "projects": [
+                {
+                  "date": "2026-04-05",
+                  "title": "Melting Point - Test Run",
+                  "url": "/research/projects/20260405%20Melting%20Point/",
+                  "sciences": [
+                    "Chemistry"
+                  ]
+                }
               ]
             }
           ]
@@ -710,12 +619,12 @@
           "category": "Electrochemistry",
           "techs": [
             {
-              "id": 25,
-              "tech": "Potentiometry",
-              "specs": "Ion activity",
+              "id": 16,
+              "tech": "Electrochemistry",
+              "specs": "Ions and redox",
               "available": 1,
-              "tech_url": "/research/technology/chemistry/Potentiometry/",
-              "hero": "/research/technology/chemistry/Potentiometry/potentiometry.png",
+              "tech_url": "/research/technology/chemistry/Electrochemistry/",
+              "hero": "/research/technology/chemistry/Electrochemistry/electrochemistry.png",
               "toys": [
                 {
                   "name": "Vernier Go Direct pH Sensor",
@@ -724,31 +633,11 @@
                 {
                   "name": "VWR pHenomenal pH 1100 L",
                   "description": "Benchtop pH meter"
-                }
-              ]
-            },
-            {
-              "id": 26,
-              "tech": "Conductometry",
-              "specs": "Ion content",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/Conductometry/",
-              "hero": "/research/technology/chemistry/Conductometry/conductometry.png",
-              "toys": [
+                },
                 {
                   "name": "Vernier Go Direct Conductivity Probe",
                   "description": "Apply voltage read current - all ions"
-                }
-              ]
-            },
-            {
-              "id": 27,
-              "tech": "Voltammetry",
-              "specs": "Redox species",
-              "available": 0,
-              "tech_url": "/research/technology/chemistry/Voltammetry/",
-              "hero": "/research/technology/chemistry/Voltammetry/voltammetry.png",
-              "toys": [
+                },
                 {
                   "name": "PalmSens EmStat Pico",
                   "description": "Sweep voltage read current - what is active"
@@ -770,7 +659,7 @@
           "category": "Microscopy",
           "techs": [
             {
-              "id": 28,
+              "id": 17,
               "tech": "Handheld",
               "specs": "Surfaces",
               "available": 1,
@@ -788,7 +677,7 @@
               ]
             },
             {
-              "id": 29,
+              "id": 18,
               "tech": "Stereo",
               "specs": "Organisms",
               "available": 1,
@@ -802,7 +691,7 @@
               ]
             },
             {
-              "id": 30,
+              "id": 19,
               "tech": "Compound",
               "specs": "Cells",
               "available": 1,
@@ -822,7 +711,7 @@
           "category": "Vitals",
           "techs": [
             {
-              "id": 31,
+              "id": 20,
               "tech": "EEG",
               "specs": "Brain waves",
               "available": 0,
@@ -836,7 +725,7 @@
               ]
             },
             {
-              "id": 32,
+              "id": 21,
               "tech": "fNIRS",
               "specs": "Blood flow",
               "available": 0,
@@ -844,7 +733,7 @@
               "hero": "/research/technology/biology/fNIRS/fnirs.png"
             },
             {
-              "id": 33,
+              "id": 22,
               "tech": "EKG",
               "specs": "Heart rhythm",
               "available": 1,
@@ -864,7 +753,7 @@
           "category": "Respiration",
           "techs": [
             {
-              "id": 34,
+              "id": 23,
               "tech": "Spirometer",
               "specs": "Breath volume",
               "available": 1,
@@ -878,7 +767,7 @@
               ]
             },
             {
-              "id": 35,
+              "id": 24,
               "tech": "Gas Exchange",
               "specs": "Metabolic gases",
               "available": 1,
@@ -906,7 +795,7 @@
           "category": "Amplification",
           "techs": [
             {
-              "id": 36,
+              "id": 25,
               "tech": "PCR",
               "specs": "Endpoint amplify",
               "available": 1,
@@ -932,7 +821,7 @@
               ]
             },
             {
-              "id": 37,
+              "id": 26,
               "tech": "qPCR",
               "specs": "Real-time count",
               "available": 0,
@@ -946,7 +835,7 @@
           "category": "Sequencing",
           "techs": [
             {
-              "id": 38,
+              "id": 27,
               "tech": "Long-Read",
               "specs": "Entire strand",
               "available": 0,
@@ -960,7 +849,7 @@
               ]
             },
             {
-              "id": 39,
+              "id": 28,
               "tech": "Short-Read",
               "specs": "Parallel fragments",
               "available": 0,
@@ -974,7 +863,7 @@
           "category": "Expression",
           "techs": [
             {
-              "id": 40,
+              "id": 29,
               "tech": "Cell-Free",
               "specs": "DNA to proteins",
               "available": 1,
@@ -1000,7 +889,7 @@
               ]
             },
             {
-              "id": 41,
+              "id": 30,
               "tech": "Fluorescence",
               "specs": "UV glow",
               "available": 1,
@@ -1044,7 +933,7 @@
           "category": "Visible",
           "techs": [
             {
-              "id": 42,
+              "id": 31,
               "tech": "Amateur",
               "specs": "Smart telescopes",
               "available": 1,
@@ -1062,7 +951,7 @@
               ]
             },
             {
-              "id": 43,
+              "id": 32,
               "tech": "Earth",
               "specs": "Ground observatories",
               "available": 1,
@@ -1086,7 +975,7 @@
           "category": "Invisible",
           "techs": [
             {
-              "id": 44,
+              "id": 33,
               "tech": "Radio",
               "specs": "Radio telescopes",
               "available": 1,
@@ -1104,7 +993,7 @@
               ]
             },
             {
-              "id": 45,
+              "id": 34,
               "tech": "Space",
               "specs": "Space telescopes",
               "available": 1,
@@ -1132,7 +1021,7 @@
           "category": "Analysis",
           "techs": [
             {
-              "id": 46,
+              "id": 35,
               "tech": "Astrometry",
               "specs": "Position catalogs",
               "available": 1,
@@ -1154,7 +1043,7 @@
               ]
             },
             {
-              "id": 47,
+              "id": 36,
               "tech": "Photometry",
               "specs": "Light curves",
               "available": 1,
@@ -1176,7 +1065,7 @@
               ]
             },
             {
-              "id": 48,
+              "id": 37,
               "tech": "Spectroscopy",
               "specs": "Spectra",
               "available": 1,
@@ -1207,6 +1096,24 @@
                   "name": "Vernier Spectrophotometer Optical Fiber",
                   "description": "Spectra outside of cuvettes"
                 }
+              ],
+              "projects": [
+                {
+                  "date": "2026-04-20",
+                  "title": "UV-Vis Spectroscopy - Test Run",
+                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
+                  "sciences": [
+                    "Chemistry"
+                  ]
+                },
+                {
+                  "date": "2026-04-19",
+                  "title": "IR Spectroscopy - Test Run",
+                  "url": "/research/projects/20260419%20IR%20Spectroscopy/",
+                  "sciences": [
+                    "Chemistry"
+                  ]
+                }
               ]
             }
           ]
@@ -1216,7 +1123,7 @@
           "category": "Classification",
           "techs": [
             {
-              "id": 49,
+              "id": 38,
               "tech": "Transient",
               "specs": "Events",
               "available": 1,
@@ -1238,7 +1145,7 @@
               ]
             },
             {
-              "id": 50,
+              "id": 39,
               "tech": "Galaxies",
               "specs": "Morphology",
               "available": 1,

@@ -113,32 +113,18 @@
   categories:
     - category: Spectroscopy
       techs:
-        - tech: IR Spectroscopy
-          specs: Polar bonds
+        - tech: Spectroscopy
+          specs: Bonds and absorbance
           available: true
-        - tech: UV-Vis Spectroscopy
-          specs: Absorbance
-          available: true
-        - tech: NMR Spectroscopy
-          specs: Spin states
     - category: Spectrometry
       techs:
-        - tech: MALDI
-          specs: Large biomolecules
-          available: true
-        - tech: Liquid Chromatography MS
-          specs: Nonvolatile small molecules
-          available: true
-        - tech: Gas Chromatography MS
-          specs: Volatile small molecules
+        - tech: Spectrometry
+          specs: Mass fingerprints
           available: true
     - category: Chiroptical
       techs:
-        - tech: Optical Rotation
-          specs: Net rotation angle
-          available: true
-        - tech: CD Spectroscopy
-          specs: Full spectrum chirality
+        - tech: Chiroptical
+          specs: Chirality
           available: true
 
 - science: Chemistry
@@ -146,37 +132,19 @@
   categories:
     - category: Separation
       techs:
-        - tech: Centrifugation
-          specs: Density spin
-          available: true
-        - tech: Liquid Chromatography
-          specs: Solubles
-          available: true
-        - tech: Gas Chromatography
-          specs: Volatiles
+        - tech: Separation
+          specs: Sort components
           available: true
     - category: Thermal
       techs:
-        - tech: Melting Point
-          specs: Purity
-          available: true
-          tested: false
-        - tech: Calorimetry
-          specs: Heat flow
-          available: true
-        - tech: Thermogravimetry
-          specs: Mass loss
+        - tech: Thermal
+          specs: Heat and mass
           available: true
     - category: Electrochemistry
       techs:
-        - tech: Potentiometry
-          specs: Ion activity
+        - tech: Electrochemistry
+          specs: Ions and redox
           available: true
-        - tech: Conductometry
-          specs: Ion content
-          available: true
-        - tech: Voltammetry
-          specs: Redox species
 
 # ═══════════════════════════════════════════════════════════════
 # BIOLOGY

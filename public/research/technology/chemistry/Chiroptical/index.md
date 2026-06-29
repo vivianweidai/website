@@ -1,11 +1,13 @@
 ---
-tech: Optical Rotation
+tech: Chiroptical
 science: Chemistry
 science_slug: chem
 topic: Identify
 category: Chiroptical
-hero: polarimeter.jpg
+hero: chiroptical.jpg
 toys:
   - name: Vernier Go Direct Polarimeter
     description: Single angle rotation
+  - name: Jasco J-1500 CD Spectrometer
+    description: Differential absorbance
 ---
