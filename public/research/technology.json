@@ -1049,24 +1049,6 @@
                   "name": "Vernier Spectrophotometer Optical Fiber",
                   "description": "Spectra outside of cuvettes"
                 }
-              ],
-              "projects": [
-                {
-                  "date": "2026-04-20",
-                  "title": "UV-Vis Spectroscopy - Test Run",
-                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-                  "sciences": [
-                    "Chemistry"
-                  ]
-                },
-                {
-                  "date": "2026-04-19",
-                  "title": "IR Spectroscopy - Test Run",
-                  "url": "/research/projects/20260419%20IR%20Spectroscopy/",
-                  "sciences": [
-                    "Chemistry"
-                  ]
-                }
               ]
             }
           ]

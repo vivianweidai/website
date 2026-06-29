@@ -195,8 +195,12 @@ def build() -> list[dict]:
                 if "tested" in tech:
                     t["tested"] = bool(tech["tested"])
                 # Reverse-scanned projects (whose frontmatter `tech:`
-                # array references this tech), newest first.
-                projects = list(proj_index.get(tech["tech"], []))
+                # array references this tech), newest first. Filter by science
+                # too — two sciences can share a tech name (e.g. Chemistry and
+                # Astronomy both have "Spectroscopy"), so a project only attaches
+                # where its own sciences include this tech's science.
+                projects = [p for p in proj_index.get(tech["tech"], [])
+                            if e["science"] in (p.get("sciences") or [])]
                 if projects:
                     projects.sort(key=lambda p: p["date"], reverse=True)
                     t["projects"] = projects

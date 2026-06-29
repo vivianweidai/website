@@ -23,7 +23,11 @@ const { tech, science, science_slug, hero, hero_position } = entry.data;
 // Reverse-lookup every project that uses this tech. Source of truth is
 // each project's `tech:` frontmatter array.
 const projects = await getCollection('projects');
-const matched = projects.filter((p) => (p.data.tech ?? []).includes(tech));
+// Match by tech name AND science — two sciences can share a tech name
+// (Chemistry and Astronomy both have "Spectroscopy"), so a project only shows
+// on the page whose science it actually belongs to.
+const matched = projects.filter((p) =>
+  (p.data.tech ?? []).includes(tech) && (p.data.sciences ?? []).includes(science));
 
 const MONTHS = ['January','February','March','April','May','June',
                 'July','August','September','October','November','December'];
