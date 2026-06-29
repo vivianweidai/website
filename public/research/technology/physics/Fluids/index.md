@@ -8,8 +8,8 @@ hero: gas-pressure.jpg
 toys:
   - name: Vernier Go Direct Gas Pressure Sensor
     description: Sealed syringe gas pressure
-    image: gas-pressure.jpg
+    short: Gas Pressure
   - name: Vernier Go Direct Turbidity
     description: Light scattering for solution clarity
-    image: turbidity.jpg
+    short: Turbidity
 ---

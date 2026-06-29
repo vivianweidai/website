@@ -54,10 +54,10 @@ const tech = defineCollection({
       description: z.string(),
       // Optional link target for the toy name (e.g. the project that used it).
       url: z.string().optional(),
-      // Optional per-toy image (relative to the tech folder). When a tech
-      // bundles several toys, hovering a toy in the list swaps the hero to
-      // this image.
-      image: z.string().optional(),
+      // Optional short label for the /research/ listing chips (the full
+      // `name` still shows on the tech card). Keeps each tech's chip row to
+      // a single line.
+      short: z.string().optional(),
     })).optional(),
   }),
 });

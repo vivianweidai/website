@@ -8,11 +8,11 @@ hero: force.jpg
 toys:
   - name: Vernier Go Direct Force and Acceleration Sensor
     description: Force gauge with accelerometer
-    image: force.jpg
+    short: Force & Acceleration
   - name: Vernier Go Direct Motion Detector
     description: Distance, velocity and acceleration
-    image: motion-detector.jpg
+    short: Motion Detector
   - name: Vernier Go Direct Photogate
     description: Light beam timer
-    image: photogate.jpg
+    short: Photogate
 ---

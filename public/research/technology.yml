@@ -100,11 +100,8 @@
   categories:
     - category: Engineering
       techs:
-        - tech: Circuits
-          specs: Voltage and waveforms
-          available: true
-        - tech: Fabrication
-          specs: Filament fabrication
+        - tech: Engineering
+          specs: Circuits and fabrication
           available: true
 
 # ═══════════════════════════════════════════════════════════════

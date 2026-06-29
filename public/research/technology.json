@@ -243,17 +243,17 @@
                 {
                   "name": "Vernier Go Direct Force and Acceleration Sensor",
                   "description": "Force gauge with accelerometer",
-                  "image": "force.jpg"
+                  "short": "Force & Acceleration"
                 },
                 {
                   "name": "Vernier Go Direct Motion Detector",
                   "description": "Distance, velocity and acceleration",
-                  "image": "motion-detector.jpg"
+                  "short": "Motion Detector"
                 },
                 {
                   "name": "Vernier Go Direct Photogate",
                   "description": "Light beam timer",
-                  "image": "photogate.jpg"
+                  "short": "Photogate"
                 }
               ]
             }
@@ -274,12 +274,12 @@
                 {
                   "name": "Vernier Go Direct Gas Pressure Sensor",
                   "description": "Sealed syringe gas pressure",
-                  "image": "gas-pressure.jpg"
+                  "short": "Gas Pressure"
                 },
                 {
                   "name": "Vernier Go Direct Turbidity",
                   "description": "Light scattering for solution clarity",
-                  "image": "turbidity.jpg"
+                  "short": "Turbidity"
                 }
               ]
             }
@@ -300,17 +300,17 @@
                 {
                   "name": "Vernier Go Direct 3-Axis Magnetic Field Sensor",
                   "description": "Hall sensor",
-                  "image": "magnetic-field.jpg"
+                  "short": "3-Axis Magnetic Field"
                 },
                 {
                   "name": "Vernier Go Direct Fluorescence/UV-VIS Spectrophotometer",
                   "description": "Visible light spectrometer",
-                  "image": "spectrometer.jpeg"
+                  "short": "Fluorescence/UV-VIS"
                 },
                 {
                   "name": "Vernier Spectrophotometer Optical Fiber",
                   "description": "Spectra outside of cuvettes",
-                  "image": "spectrometer.jpeg"
+                  "short": "Optical Fiber"
                 }
               ]
             }
@@ -330,19 +330,21 @@
           "techs": [
             {
               "id": 10,
-              "tech": "Circuits",
-              "specs": "Voltage and waveforms",
+              "tech": "Engineering",
+              "specs": "Circuits and fabrication",
               "available": 1,
-              "tech_url": "/research/technology/physics/Circuits/",
-              "hero": "/research/technology/physics/Circuits/circuits.jpeg",
+              "tech_url": "/research/technology/physics/Engineering/",
+              "hero": "/research/technology/physics/Engineering/circuits.jpeg",
               "toys": [
                 {
                   "name": "TOAUTO DS90 Soldering Station",
-                  "description": "Soldering iron"
+                  "description": "Soldering iron",
+                  "short": "Soldering Station"
                 },
                 {
                   "name": "Digilent Analog Discovery 3",
-                  "description": "Oscilloscope, generator and analyzer"
+                  "description": "Oscilloscope, generator and analyzer",
+                  "short": "Analog Discovery 3"
                 },
                 {
                   "name": "Korad KA3005P",
@@ -351,6 +353,10 @@
                 {
                   "name": "Fluke 117",
                   "description": "Handheld multimeter"
+                },
+                {
+                  "name": "Prusa CORE One+",
+                  "description": "Enclosed FDM printer"
                 }
               ],
               "projects": [
@@ -361,20 +367,6 @@
                   "sciences": [
                     "Physics"
                   ]
-                }
-              ]
-            },
-            {
-              "id": 11,
-              "tech": "Fabrication",
-              "specs": "Filament fabrication",
-              "available": 1,
-              "tech_url": "/research/technology/physics/Fabrication/",
-              "hero": "/research/technology/physics/Fabrication/3d-printing.jpeg",
-              "toys": [
-                {
-                  "name": "Prusa CORE One+",
-                  "description": "Enclosed FDM printer"
                 }
               ]
             }
@@ -393,7 +385,7 @@
           "category": "Spectroscopy",
           "techs": [
             {
-              "id": 12,
+              "id": 11,
               "tech": "IR Spectroscopy",
               "specs": "Polar bonds",
               "available": 1,
@@ -430,7 +422,7 @@
               ]
             },
             {
-              "id": 13,
+              "id": 12,
               "tech": "UV-Vis Spectroscopy",
               "specs": "Absorbance",
               "available": 1,
@@ -473,7 +465,7 @@
               ]
             },
             {
-              "id": 14,
+              "id": 13,
               "tech": "NMR Spectroscopy",
               "specs": "Spin states",
               "available": 0,
@@ -487,7 +479,7 @@
           "category": "Spectrometry",
           "techs": [
             {
-              "id": 15,
+              "id": 14,
               "tech": "MALDI",
               "specs": "Large biomolecules",
               "available": 1,
@@ -501,7 +493,7 @@
               ]
             },
             {
-              "id": 16,
+              "id": 15,
               "tech": "Liquid Chromatography MS",
               "specs": "Nonvolatile small molecules",
               "available": 1,
@@ -519,7 +511,7 @@
               ]
             },
             {
-              "id": 17,
+              "id": 16,
               "tech": "Gas Chromatography MS",
               "specs": "Volatile small molecules",
               "available": 1,
@@ -539,7 +531,7 @@
           "category": "Chiroptical",
           "techs": [
             {
-              "id": 18,
+              "id": 17,
               "tech": "Optical Rotation",
               "specs": "Net rotation angle",
               "available": 1,
@@ -553,7 +545,7 @@
               ]
             },
             {
-              "id": 19,
+              "id": 18,
               "tech": "CD Spectroscopy",
               "specs": "Full spectrum chirality",
               "available": 1,
@@ -581,7 +573,7 @@
           "category": "Separation",
           "techs": [
             {
-              "id": 20,
+              "id": 19,
               "tech": "Centrifugation",
               "specs": "Density spin",
               "available": 1,
@@ -615,7 +607,7 @@
               ]
             },
             {
-              "id": 21,
+              "id": 20,
               "tech": "Liquid Chromatography",
               "specs": "Solubles",
               "available": 1,
@@ -633,7 +625,7 @@
               ]
             },
             {
-              "id": 22,
+              "id": 21,
               "tech": "Gas Chromatography",
               "specs": "Volatiles",
               "available": 1,
@@ -657,7 +649,7 @@
           "category": "Thermal",
           "techs": [
             {
-              "id": 23,
+              "id": 22,
               "tech": "Melting Point",
               "specs": "Purity",
               "available": 1,
@@ -687,7 +679,7 @@
               ]
             },
             {
-              "id": 24,
+              "id": 23,
               "tech": "Calorimetry",
               "specs": "Heat flow",
               "available": 1,
@@ -713,7 +705,7 @@
               ]
             },
             {
-              "id": 25,
+              "id": 24,
               "tech": "Thermogravimetry",
               "specs": "Mass loss",
               "available": 1,
@@ -741,7 +733,7 @@
           "category": "Electrochemistry",
           "techs": [
             {
-              "id": 26,
+              "id": 25,
               "tech": "Potentiometry",
               "specs": "Ion activity",
               "available": 1,
@@ -759,7 +751,7 @@
               ]
             },
             {
-              "id": 27,
+              "id": 26,
               "tech": "Conductometry",
               "specs": "Ion content",
               "available": 1,
@@ -773,7 +765,7 @@
               ]
             },
             {
-              "id": 28,
+              "id": 27,
               "tech": "Voltammetry",
               "specs": "Redox species",
               "available": 0,
@@ -801,7 +793,7 @@
           "category": "Microscopy",
           "techs": [
             {
-              "id": 29,
+              "id": 28,
               "tech": "Handheld",
               "specs": "Surfaces",
               "available": 1,
@@ -819,7 +811,7 @@
               ]
             },
             {
-              "id": 30,
+              "id": 29,
               "tech": "Stereo",
               "specs": "Organisms",
               "available": 1,
@@ -833,7 +825,7 @@
               ]
             },
             {
-              "id": 31,
+              "id": 30,
               "tech": "Compound",
               "specs": "Cells",
               "available": 1,
@@ -853,7 +845,7 @@
           "category": "Vitals",
           "techs": [
             {
-              "id": 32,
+              "id": 31,
               "tech": "EEG",
               "specs": "Brain waves",
               "available": 0,
@@ -867,7 +859,7 @@
               ]
             },
             {
-              "id": 33,
+              "id": 32,
               "tech": "fNIRS",
               "specs": "Blood flow",
               "available": 0,
@@ -875,7 +867,7 @@
               "hero": "/research/technology/biology/fNIRS/fnirs.png"
             },
             {
-              "id": 34,
+              "id": 33,
               "tech": "EKG",
               "specs": "Heart rhythm",
               "available": 1,
@@ -895,7 +887,7 @@
           "category": "Respiration",
           "techs": [
             {
-              "id": 35,
+              "id": 34,
               "tech": "Spirometer",
               "specs": "Breath volume",
               "available": 1,
@@ -909,7 +901,7 @@
               ]
             },
             {
-              "id": 36,
+              "id": 35,
               "tech": "Gas Exchange",
               "specs": "Metabolic gases",
               "available": 1,
@@ -937,7 +929,7 @@
           "category": "Amplification",
           "techs": [
             {
-              "id": 37,
+              "id": 36,
               "tech": "PCR",
               "specs": "Endpoint amplify",
               "available": 1,
@@ -963,7 +955,7 @@
               ]
             },
             {
-              "id": 38,
+              "id": 37,
               "tech": "qPCR",
               "specs": "Real-time count",
               "available": 0,
@@ -977,7 +969,7 @@
           "category": "Sequencing",
           "techs": [
             {
-              "id": 39,
+              "id": 38,
               "tech": "Long-Read",
               "specs": "Entire strand",
               "available": 0,
@@ -991,7 +983,7 @@
               ]
             },
             {
-              "id": 40,
+              "id": 39,
               "tech": "Short-Read",
               "specs": "Parallel fragments",
               "available": 0,
@@ -1005,7 +997,7 @@
           "category": "Expression",
           "techs": [
             {
-              "id": 41,
+              "id": 40,
               "tech": "Cell-Free",
               "specs": "DNA to proteins",
               "available": 1,
@@ -1031,7 +1023,7 @@
               ]
             },
             {
-              "id": 42,
+              "id": 41,
               "tech": "Fluorescence",
               "specs": "UV glow",
               "available": 1,
@@ -1075,7 +1067,7 @@
           "category": "Visible",
           "techs": [
             {
-              "id": 43,
+              "id": 42,
               "tech": "Amateur",
               "specs": "Smart telescopes",
               "available": 1,
@@ -1093,7 +1085,7 @@
               ]
             },
             {
-              "id": 44,
+              "id": 43,
               "tech": "Earth",
               "specs": "Ground observatories",
               "available": 1,
@@ -1117,7 +1109,7 @@
           "category": "Invisible",
           "techs": [
             {
-              "id": 45,
+              "id": 44,
               "tech": "Radio",
               "specs": "Radio telescopes",
               "available": 1,
@@ -1135,7 +1127,7 @@
               ]
             },
             {
-              "id": 46,
+              "id": 45,
               "tech": "Space",
               "specs": "Space telescopes",
               "available": 1,
@@ -1163,7 +1155,7 @@
           "category": "Analysis",
           "techs": [
             {
-              "id": 47,
+              "id": 46,
               "tech": "Astrometry",
               "specs": "Position catalogs",
               "available": 1,
@@ -1185,7 +1177,7 @@
               ]
             },
             {
-              "id": 48,
+              "id": 47,
               "tech": "Photometry",
               "specs": "Light curves",
               "available": 1,
@@ -1207,7 +1199,7 @@
               ]
             },
             {
-              "id": 49,
+              "id": 48,
               "tech": "Spectroscopy",
               "specs": "Spectra",
               "available": 1,
@@ -1247,7 +1239,7 @@
           "category": "Classification",
           "techs": [
             {
-              "id": 50,
+              "id": 49,
               "tech": "Transient",
               "specs": "Events",
               "available": 1,
@@ -1269,7 +1261,7 @@
               ]
             },
             {
-              "id": 51,
+              "id": 50,
               "tech": "Galaxies",
               "specs": "Morphology",
               "available": 1,

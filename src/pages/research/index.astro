@@ -95,7 +95,7 @@ import PageFooter from '../../layouts/PageFooter.astro';
         html += '<div class="tech-card-header">'
           + '<span class="tech-topic-title">' + esc(sci.science) + '</span>'
           + '</div>';
-        html += '<table class="tech-table"><colgroup><col style="width:24%"><col></colgroup><tbody>';
+        html += '<table class="tech-table"><colgroup><col style="width:24%"><col><col class="tech-proj-col"></colgroup><tbody>';
 
         // Math, Computing & Physics render as a flat tech list (no category
         // section headers); the other sciences keep their category headings
@@ -108,23 +108,25 @@ import PageFooter from '../../layouts/PageFooter.astro';
           var catSlug = cat.category.toLowerCase().replace(/\s+/g, '-');
           if (showCats) {
             html += '<tr class="tech-cat-row" id="cat-' + sci.science_slug + '-' + catSlug + '">'
-              + '<td colspan="2" style="padding-left:1.4em;font-weight:700">' + esc(cat.category) + '</td>'
+              + '<td colspan="3" style="padding-left:1.4em;font-weight:700">' + esc(cat.category) + '</td>'
               + '</tr>';
           }
 
           cat.techs.forEach(function (tech) {
             var url = tech.tech_url;
             var name = url ? '<a href="' + url + '">' + esc(tech.tech) + '</a>' : esc(tech.tech);
-            // Meta: every toy name as a chip, plus a bordered count badge
-            // for the projects that have used this tech. Toys live in their
-            // own wrap so the badge stays vertically centered when they wrap.
-            // Chips + badge all link to the tech card, same as the name.
+            // Toy chips use each toy's short label (falling back to the full
+            // name) so a tech's chips fit one line here; the full name still
+            // shows on the tech card. The project-count badge lives in its own
+            // right-hand column so it stays vertically centered (whitespace
+            // above/below) regardless of how the chips wrap.
             var toys = (tech.toys || []).map(function (toy) {
-              var label = esc(toy.name);
+              var label = esc(toy.short || toy.name);
               return url
                 ? '<a class="toy-chip" href="' + url + '">' + label + '</a>'
                 : '<span class="toy-chip">' + label + '</span>';
             }).join('');
+            var toyCell = toys ? '<span class="toy-wrap">' + toys + '</span>' : '';
             var np = (tech.projects || []).length;
             var projInner = '<b>' + np + '</b> project' + (np > 1 ? 's' : '');
             var proj = np
@@ -132,13 +134,11 @@ import PageFooter from '../../layouts/PageFooter.astro';
                   ? '<a class="proj-badge" href="' + url + '">' + projInner + '</a>'
                   : '<span class="proj-badge">' + projInner + '</span>')
               : '';
-            var meta = (toys || proj)
-              ? '<span class="tech-meta-row"><span class="toy-wrap">' + toys + '</span>' + proj + '</span>'
-              : '';
 
             html += '<tr class="tech-row">'
               + '<td class="tech-name">' + name + '</td>'
-              + '<td class="tech-meta">' + meta + '</td>'
+              + '<td class="tech-meta">' + toyCell + '</td>'
+              + '<td class="tech-proj">' + proj + '</td>'
               + '</tr>';
           });
         });
@@ -312,14 +312,13 @@ import PageFooter from '../../layouts/PageFooter.astro';
     }
 
     .tech-row td.tech-name { padding-left: 2.8em; }
-    /* Meta cell: toy-name chips wrap on the left; the project badge is a
-       sibling kept vertically centered against the (possibly multi-line)
-       chip block via the row's align-items:center. */
-    .tech-meta-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1em;
+    /* Project badge sits in its own fixed-width right column, vertically
+       centered (default td middle-align) so it floats with whitespace above
+       and below when the toy chips wrap to multiple lines. */
+    .tech-proj-col { width: 6.5em; }
+    .tech-proj {
+      text-align: right;
+      white-space: nowrap;
     }
     .toy-wrap {
       display: flex;
