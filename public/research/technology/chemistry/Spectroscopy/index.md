@@ -5,6 +5,7 @@ science_slug: chem
 topic: Analyze
 category: Spectroscopy
 hero: spectroscopy.jpeg
+hero_position: center 60%
 toys:
   - name: Thermo Scientific Nicolet 380 FT-IR Spectrometer
     description: Benchtop IR
