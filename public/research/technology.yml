@@ -108,6 +108,43 @@
 # CHEMISTRY
 # ═══════════════════════════════════════════════════════════════
 
+# Display order is Spectroscopy, Separation, Spectrometry, Chiroptical,
+# Thermal, Electrochemistry — the flat /research/ list concatenates categories
+# in source order. Blocks are split into contiguous same-topic runs so each
+# tech keeps its correct topic (Identify = characterize the sample,
+# Stimulate = act on it) while producing that interleaved order.
+- science: Chemistry
+  topic: Identify
+  categories:
+    - category: Spectroscopy
+      techs:
+        - tech: Spectroscopy
+          specs: Bonds and absorbance
+          available: true
+
+- science: Chemistry
+  topic: Stimulate
+  categories:
+    - category: Separation
+      techs:
+        - tech: Separation
+          specs: Sort components
+          available: true
+
+- science: Chemistry
+  topic: Identify
+  categories:
+    - category: Spectrometry
+      techs:
+        - tech: Spectrometry
+          specs: Mass fingerprints
+          available: true
+    - category: Chiroptical
+      techs:
+        - tech: Chiroptical
+          specs: Chirality
+          available: true
+
 - science: Chemistry
   topic: Stimulate
   categories:
@@ -120,30 +157,6 @@
       techs:
         - tech: Electrochemistry
           specs: Ions and redox
-          available: true
-    - category: Separation
-      techs:
-        - tech: Separation
-          specs: Sort components
-          available: true
-
-- science: Chemistry
-  topic: Identify
-  categories:
-    - category: Spectroscopy
-      techs:
-        - tech: Spectroscopy
-          specs: Bonds and absorbance
-          available: true
-    - category: Spectrometry
-      techs:
-        - tech: Spectrometry
-          specs: Mass fingerprints
-          available: true
-    - category: Chiroptical
-      techs:
-        - tech: Chiroptical
-          specs: Chirality
           available: true
 
 # ═══════════════════════════════════════════════════════════════
