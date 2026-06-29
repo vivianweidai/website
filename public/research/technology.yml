@@ -67,7 +67,7 @@
           available: true
     - category: Produce
       techs:
-        - tech: Repository
+        - tech: Publishing
           specs: Data code notebooks
           available: true
           url: https://github.com/vivianweidai

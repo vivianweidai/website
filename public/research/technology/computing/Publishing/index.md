@@ -1,5 +1,5 @@
 ---
-tech: Repository
+tech: Publishing
 science: Computing
 science_slug: comp
 topic: Experiment

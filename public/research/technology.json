@@ -183,11 +183,11 @@
           "techs": [
             {
               "id": 6,
-              "tech": "Repository",
+              "tech": "Publishing",
               "specs": "Data code notebooks",
               "available": 1,
-              "tech_url": "/research/technology/computing/Repository/",
-              "hero": "/research/technology/computing/Repository/github.jpeg",
+              "tech_url": "/research/technology/computing/Publishing/",
+              "hero": "/research/technology/computing/Publishing/github.jpeg",
               "toys": [
                 {
                   "name": "GitHub",
