@@ -1,10 +1,10 @@
 ---
-tech: Numerical
+tech: Numeric
 science: Mathematics
 science_slug: math
 topic: Calculate
 category: Solve
-hero: numerical.png
+hero: numeric.png
 toys:
   - name: NumPy
     description: Linear algebra and vector math

@@ -2,7 +2,7 @@
 project: IR Spectroscopy
 tech:
   - IR Spectroscopy
-  - Numerical
+  - Numeric
   - Graphic
 title: "IR Spectroscopy - Test Run"
 sciences:
@@ -91,7 +91,7 @@ A background spectrum was collected first. The IR beam reflects inside the diamo
 <div class="tech-table">
 <div class="tech-table-header">Technology</div>
 <ul class="updates-list">
-  <li data-subj="math"><span class="update-date">Solve</span> <span class="update-name"><a href="/research/technology/mathematics/Numerical/">Numerical</a></span> <span class="update-desc">Approximate</span> <a class="chip math" href="/research/#math">Mathematics</a></li>
+  <li data-subj="math"><span class="update-date">Solve</span> <span class="update-name"><a href="/research/technology/mathematics/Numeric/">Numeric</a></span> <span class="update-desc">Approximate</span> <a class="chip math" href="/research/#math">Mathematics</a></li>
   <li data-subj="math"><span class="update-date">Display</span> <span class="update-name"><a href="/research/technology/mathematics/Graphic/">Graphic</a></span> <span class="update-desc">2D and 3D</span> <a class="chip math" href="/research/#math">Mathematics</a></li>
   <li data-subj="chem"><span class="update-date">Spectroscopy</span> <span class="update-name"><a href="/research/technology/chemistry/IR%20Spectroscopy/">IR Spectroscopy</a></span> <span class="update-desc">Polar bonds</span> <a class="chip chem" href="/research/#chem">Chemistry</a></li>
 </ul>

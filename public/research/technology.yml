@@ -35,7 +35,7 @@
   categories:
     - category: Solve
       techs:
-        - tech: Numerical
+        - tech: Numeric
           specs: Approximate
           available: true
           url: /research/projects/20260420%20UV-Vis%20Spectroscopy/
@@ -64,9 +64,6 @@
           available: true
         - tech: Machine Learning
           specs: Classic models
-          available: true
-        - tech: Deep Learning
-          specs: Neural networks
           available: true
     - category: Produce
       techs:
