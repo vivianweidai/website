@@ -336,7 +336,7 @@ import PageFooter from '../../layouts/PageFooter.astro';
       text-decoration: none;
       transition: filter 0.15s ease;
     }
-    a.toy-chip:hover { filter: brightness(0.93); }
+    a.toy-chip:hover { filter: brightness(0.93); text-decoration: none; }
     /* Project badge stays a distinct white count pill (different role from a
        toy chip); solid white keeps it crisp against the tinted hover row. */
     .proj-badge {
@@ -355,7 +355,7 @@ import PageFooter from '../../layouts/PageFooter.astro';
       transition: border-color 0.15s ease, color 0.15s ease;
     }
     .proj-badge b { font-weight: 700; }
-    a.proj-badge:hover { border-color: #0969da; color: #0969da; }
+    a.proj-badge:hover { border-color: #0969da; color: #0969da; text-decoration: none; }
     @media (hover: hover) {
       .tech-row:hover td { background: color-mix(in srgb, var(--card-tint, #d1d9e0) 35%, white); }
     }
