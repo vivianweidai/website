@@ -38,13 +38,13 @@ struct ResearchView: View {
     }
 
     private func content(topics: [ResearchTopic]) -> some View {
-        let filtered = filteredTopics(topics)
+        let groups = scienceGroups(topics)
         return ScrollView {
             LazyVStack(alignment: .leading, spacing: 14) {
-                ForEach(filtered) { topic in
-                    TopicCard(topic: topic)
+                ForEach(groups) { group in
+                    ScienceCard(group: group)
                 }
-                if filtered.isEmpty {
+                if groups.isEmpty {
                     Text("No toys yet.")
                         .font(.system(size: 14))
                         .foregroundStyle(.secondary)
@@ -55,20 +55,62 @@ struct ResearchView: View {
             .padding(.vertical, 12)
         }
     }
+
+    /// Merge the JSON's per-topic entries into one group per science, in the
+    /// order each science first appears. The webapp dropped the topic layer,
+    /// so the app now shows a single card per science with its categories
+    /// concatenated in source order.
+    private func scienceGroups(_ topics: [ResearchTopic]) -> [ScienceCard.Group] {
+        var order: [String] = []
+        var name: [String: String] = [:]
+        var cats: [String: [ResearchCategory]] = [:]
+        for t in filteredTopics(topics) {
+            if cats[t.scienceSlug] == nil {
+                order.append(t.scienceSlug)
+                name[t.scienceSlug] = t.science
+            }
+            cats[t.scienceSlug, default: []].append(contentsOf: t.categories)
+        }
+        return order.map {
+            ScienceCard.Group(science: name[$0]!, scienceSlug: $0, categories: cats[$0]!)
+        }
+    }
 }
 
-// MARK: - Topic card
+// MARK: - Science card
 
-private struct TopicCard: View {
-    let topic: ResearchTopic
+private struct ScienceCard: View {
+    struct Group: Identifiable {
+        let science: String
+        let scienceSlug: String
+        let categories: [ResearchCategory]
+        var id: String { scienceSlug }
+    }
+
+    let group: Group
+
+    /// Math & Computing render as a flat tech list (no category headers),
+    /// matching the webapp.
+    private var showCategoryHeaders: Bool {
+        group.scienceSlug != "math" && group.scienceSlug != "comp"
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            header
+            Text(group.science)
+                .font(.system(size: 16, weight: .bold))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.vertical, 13)
+                .padding(.leading, 14)
+                .padding(.trailing, 12)
             Divider()
             VStack(alignment: .leading, spacing: 0) {
-                ForEach(topic.categories) { category in
-                    TechnologyBlock(topic: topic, category: category)
+                ForEach(group.categories) { category in
+                    TechnologyBlock(
+                        science: group.science,
+                        category: category,
+                        showHeader: showCategoryHeaders
+                    )
                 }
             }
         }
@@ -78,46 +120,36 @@ private struct TopicCard: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(SubjectPalette.color(for: topic.science).opacity(0.7), lineWidth: 1)
+                .stroke(SubjectPalette.color(for: group.science).opacity(0.7), lineWidth: 1)
         )
         .overlay(alignment: .leading) {
-            // Left accent bar, mirrors webapp .techs-accent-* border.
+            // Left accent bar, mirrors webapp .tech-accent-* border.
             RoundedRectangle(cornerRadius: 2)
-                .fill(SubjectPalette.color(for: topic.science))
+                .fill(SubjectPalette.color(for: group.science))
                 .frame(width: 4)
         }
         .padding(.horizontal, 12)
     }
-
-    private var header: some View {
-        HStack(spacing: 6) {
-            Text(topic.topic)
-                .font(.system(size: 15, weight: .bold))
-            SubjectChip(subject: topic.science)
-            Spacer(minLength: 0)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.vertical, 13)
-        .padding(.leading, 14)
-        .padding(.trailing, 12)
-    }
 }
 
 private struct TechnologyBlock: View {
-    let topic: ResearchTopic
+    let science: String
     let category: ResearchCategory
+    let showHeader: Bool
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(category.category)
-                .font(.system(size: 13, weight: .semibold))
-                .padding(.leading, 14)
-                .padding(.trailing, 12)
-                .frame(maxWidth: .infinity, minHeight: 38, alignment: .leading)
-                .background(ResearchColors.technologyHeader)
+            if showHeader {
+                Text(category.category)
+                    .font(.system(size: 13, weight: .semibold))
+                    .padding(.leading, 14)
+                    .padding(.trailing, 12)
+                    .frame(maxWidth: .infinity, minHeight: 38, alignment: .leading)
+                    .background(ResearchColors.technologyHeader)
+            }
 
             ForEach(category.techs) { tech in
-                TechRow(topic: topic, category: category, tech: tech)
+                TechRow(science: science, tech: tech)
                 if tech.id != category.techs.last?.id {
                     Divider().padding(.leading, 28)
                 }
@@ -127,18 +159,18 @@ private struct TechnologyBlock: View {
 }
 
 private struct TechRow: View {
-    let topic: ResearchTopic
-    let category: ResearchCategory
+    let science: String
     let tech: ResearchTech
     @Environment(\.openURL) private var openURL
 
     private var hasLink: Bool { tech.techUrl != nil || tech.externalURL != nil }
+    private var projectCount: Int { tech.projects?.count ?? 0 }
 
     var body: some View {
         Group {
             if tech.techUrl != nil {
                 NavigationLink {
-                    TechDetailView(topic: topic, category: category, tech: tech)
+                    TechDetailView(science: science, tech: tech)
                 } label: {
                     rowBody
                 }
@@ -161,6 +193,11 @@ private struct TechRow: View {
                 .font(.system(size: 16, weight: .regular))
                 .foregroundStyle(hasLink ? Color.accentColor : Color.primary)
             Spacer(minLength: 0)
+            if projectCount > 0 {
+                Text("\(projectCount) project\(projectCount == 1 ? "" : "s")")
+                    .font(.system(size: 12))
+                    .foregroundStyle(.secondary)
+            }
             if hasLink {
                 Image(systemName: "chevron.right")
                     .font(.system(size: 13, weight: .semibold))
@@ -182,9 +219,24 @@ private struct TechRow: View {
 /// approach because most tech `index.md` bodies are empty by design (the
 /// data-bearing fields live in `technology.json`).
 struct TechDetailView: View {
-    let topic: ResearchTopic
-    let category: ResearchCategory
+    let science: String
     let tech: ResearchTech
+
+    private static let scienceRank: [String: Int] = [
+        "Mathematics": 0, "Computing": 1, "Physics": 2,
+        "Chemistry": 3, "Biology": 4, "Astronomy": 5,
+    ]
+
+    /// Projects sorted by canonical science order (primary science chip),
+    /// then newest-first within a science — matches the webapp tech page.
+    private var sortedProjects: [ResearchTechProject] {
+        (tech.projects ?? []).sorted { a, b in
+            let ra = Self.scienceRank[a.sciences.first ?? ""] ?? Int.max
+            let rb = Self.scienceRank[b.sciences.first ?? ""] ?? Int.max
+            if ra != rb { return ra < rb }
+            return a.date > b.date
+        }
+    }
 
     var body: some View {
         ScrollView {
@@ -238,11 +290,11 @@ struct TechDetailView: View {
                 Text("Projects")
                     .font(.system(size: 17, weight: .bold))
 
-                if let projects = tech.projects, !projects.isEmpty {
+                if !sortedProjects.isEmpty {
                     VStack(spacing: 0) {
-                        ForEach(projects) { p in
+                        ForEach(sortedProjects) { p in
                             TechProjectRow(project: p)
-                            if p.id != projects.last?.id {
+                            if p.id != sortedProjects.last?.id {
                                 Divider()
                             }
                         }
@@ -273,7 +325,7 @@ struct TechDetailView: View {
                 HStack(spacing: 8) {
                     Text(tech.tech)
                         .font(.system(size: 17, weight: .bold))
-                    SubjectChip(subject: topic.science)
+                    SubjectChip(subject: science)
                 }
             }
         }
@@ -282,12 +334,36 @@ struct TechDetailView: View {
 
 private struct TechToyRow: View {
     let toy: ResearchToy
+    @Environment(\.openURL) private var openURL
+
+    private var hasLink: Bool { toy.projectIndexURL != nil || toy.externalURL != nil }
 
     var body: some View {
+        Group {
+            if let indexURL = toy.projectIndexURL {
+                NavigationLink {
+                    ProjectDetailView(title: toy.name, indexURL: indexURL)
+                } label: {
+                    rowBody
+                }
+                .buttonStyle(.plain)
+            } else if let external = toy.externalURL {
+                Button { openURL(external) } label: {
+                    rowBody
+                }
+                .buttonStyle(.plain)
+            } else {
+                rowBody
+            }
+        }
+    }
+
+    private var rowBody: some View {
         HStack(alignment: .firstTextBaseline, spacing: 8) {
             VStack(alignment: .leading, spacing: 4) {
                 Text(toy.name)
                     .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(hasLink ? Color.accentColor : Color.primary)
                     .fixedSize(horizontal: false, vertical: true)
                 if !toy.description.isEmpty {
                     Text(toy.description)
@@ -297,6 +373,11 @@ private struct TechToyRow: View {
                 }
             }
             Spacer(minLength: 0)
+            if hasLink {
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundStyle(.tertiary)
+            }
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 12)
@@ -525,9 +606,7 @@ private struct ProjectTechnologySection: View {
                 VStack(spacing: 0) {
                     ForEach(Array(resolved.enumerated()), id: \.element.id) { idx, r in
                         NavigationLink {
-                            TechDetailView(
-                                topic: r.topic, category: r.category, tech: r.tech
-                            )
+                            TechDetailView(science: r.topic.science, tech: r.tech)
                         } label: {
                             ProjectTechnologyRow(resolved: r)
                         }
@@ -555,21 +634,9 @@ private struct ProjectTechnologyRow: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 10) {
-            Text(resolved.category.category)
-                .font(.system(size: 12))
-                .foregroundStyle(.secondary)
-                .frame(width: 110, alignment: .leading)
-            VStack(alignment: .leading, spacing: 4) {
-                Text(resolved.tech.tech)
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(Color.accentColor)
-                if let specs = resolved.tech.specs, !specs.isEmpty {
-                    Text(specs)
-                        .font(.system(size: 12))
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-            }
+            Text(resolved.tech.tech)
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundStyle(Color.accentColor)
             Spacer(minLength: 6)
             SubjectChip(subject: resolved.topic.science)
         }

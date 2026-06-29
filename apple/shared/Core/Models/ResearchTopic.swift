@@ -73,8 +73,28 @@ public struct ResearchTech: Codable, Identifiable, Hashable, Sendable {
 public struct ResearchToy: Codable, Hashable, Sendable, Identifiable {
     public let name: String
     public let description: String
+    /// Optional link target for the toy name — usually the project page
+    /// that used the instrument. Mirrors the toy `url` field added to the
+    /// tech-page frontmatter and baked into technology.json.
+    public let url: String?
 
     public var id: String { name }
+
+    /// In-app project `index.md` URL when the toy links to a research project.
+    public var projectIndexURL: URL? {
+        guard let url, url.hasPrefix("/research/projects/") else { return nil }
+        let trimmed = String(url.dropFirst())
+        let withIndex = trimmed.hasSuffix("/") ? trimmed + "index.md" : trimmed + "/index.md"
+        return URL(string: "https://vivianweidai.com/" + withIndex)
+    }
+
+    /// External URL for non-project toy links (vendor pages, etc.).
+    public var externalURL: URL? {
+        guard let url, projectIndexURL == nil else { return nil }
+        if url.hasPrefix("http://") || url.hasPrefix("https://") { return URL(string: url) }
+        let trimmed = url.hasPrefix("/") ? String(url.dropFirst()) : url
+        return URL(string: "https://vivianweidai.com/" + trimmed)
+    }
 }
 
 public struct ResearchTechResponse: Codable, Sendable {

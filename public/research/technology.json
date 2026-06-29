@@ -345,20 +345,6 @@
                   "description": "Spectra outside of cuvettes"
                 }
               ]
-            },
-            {
-              "id": 14,
-              "tech": "Interferometer",
-              "specs": "Phase combining",
-              "available": 0,
-              "tech_url": "/research/technology/physics/Interferometer/",
-              "hero": "/research/technology/physics/Interferometer/interferometer.png",
-              "toys": [
-                {
-                  "name": "PASCO Precision Interferometer OS-9255A",
-                  "description": "Michelson interferometer"
-                }
-              ]
             }
           ]
         }
@@ -375,7 +361,7 @@
           "category": "Engineering",
           "techs": [
             {
-              "id": 15,
+              "id": 14,
               "tech": "Circuits",
               "specs": "Voltage and waveforms",
               "available": 1,
@@ -415,7 +401,7 @@
               ]
             },
             {
-              "id": 16,
+              "id": 15,
               "tech": "Fabrication",
               "specs": "Filament fabrication",
               "available": 1,
@@ -443,7 +429,7 @@
           "category": "Spectroscopy",
           "techs": [
             {
-              "id": 17,
+              "id": 16,
               "tech": "IR Spectroscopy",
               "specs": "Polar bonds",
               "available": 1,
@@ -480,7 +466,7 @@
               ]
             },
             {
-              "id": 18,
+              "id": 17,
               "tech": "UV-Vis Spectroscopy",
               "specs": "Absorbance",
               "available": 1,
@@ -523,7 +509,7 @@
               ]
             },
             {
-              "id": 19,
+              "id": 18,
               "tech": "NMR Spectroscopy",
               "specs": "Spin states",
               "available": 0,
@@ -537,7 +523,7 @@
           "category": "Spectrometry",
           "techs": [
             {
-              "id": 20,
+              "id": 19,
               "tech": "MALDI",
               "specs": "Large biomolecules",
               "available": 1,
@@ -551,7 +537,7 @@
               ]
             },
             {
-              "id": 21,
+              "id": 20,
               "tech": "Liquid Chromatography MS",
               "specs": "Nonvolatile small molecules",
               "available": 1,
@@ -569,7 +555,7 @@
               ]
             },
             {
-              "id": 22,
+              "id": 21,
               "tech": "Gas Chromatography MS",
               "specs": "Volatile small molecules",
               "available": 1,
@@ -589,7 +575,7 @@
           "category": "Chiroptical",
           "techs": [
             {
-              "id": 23,
+              "id": 22,
               "tech": "Optical Rotation",
               "specs": "Net rotation angle",
               "available": 1,
@@ -603,7 +589,7 @@
               ]
             },
             {
-              "id": 24,
+              "id": 23,
               "tech": "CD Spectroscopy",
               "specs": "Full spectrum chirality",
               "available": 1,
@@ -631,7 +617,7 @@
           "category": "Separation",
           "techs": [
             {
-              "id": 25,
+              "id": 24,
               "tech": "Centrifugation",
               "specs": "Density spin",
               "available": 1,
@@ -665,7 +651,7 @@
               ]
             },
             {
-              "id": 26,
+              "id": 25,
               "tech": "Liquid Chromatography",
               "specs": "Solubles",
               "available": 1,
@@ -683,7 +669,7 @@
               ]
             },
             {
-              "id": 27,
+              "id": 26,
               "tech": "Gas Chromatography",
               "specs": "Volatiles",
               "available": 1,
@@ -707,7 +693,7 @@
           "category": "Thermal",
           "techs": [
             {
-              "id": 28,
+              "id": 27,
               "tech": "Melting Point",
               "specs": "Purity",
               "available": 1,
@@ -737,7 +723,7 @@
               ]
             },
             {
-              "id": 29,
+              "id": 28,
               "tech": "Calorimetry",
               "specs": "Heat flow",
               "available": 1,
@@ -763,7 +749,7 @@
               ]
             },
             {
-              "id": 30,
+              "id": 29,
               "tech": "Thermogravimetry",
               "specs": "Mass loss",
               "available": 1,
@@ -791,7 +777,7 @@
           "category": "Electrochemistry",
           "techs": [
             {
-              "id": 31,
+              "id": 30,
               "tech": "Potentiometry",
               "specs": "Ion activity",
               "available": 1,
@@ -809,7 +795,7 @@
               ]
             },
             {
-              "id": 32,
+              "id": 31,
               "tech": "Conductometry",
               "specs": "Ion content",
               "available": 1,
@@ -823,7 +809,7 @@
               ]
             },
             {
-              "id": 33,
+              "id": 32,
               "tech": "Voltammetry",
               "specs": "Redox species",
               "available": 0,
@@ -851,7 +837,7 @@
           "category": "Microscopy",
           "techs": [
             {
-              "id": 34,
+              "id": 33,
               "tech": "Handheld",
               "specs": "Surfaces",
               "available": 1,
@@ -869,7 +855,7 @@
               ]
             },
             {
-              "id": 35,
+              "id": 34,
               "tech": "Stereo",
               "specs": "Organisms",
               "available": 1,
@@ -883,7 +869,7 @@
               ]
             },
             {
-              "id": 36,
+              "id": 35,
               "tech": "Compound",
               "specs": "Cells",
               "available": 1,
@@ -903,7 +889,7 @@
           "category": "Vitals",
           "techs": [
             {
-              "id": 37,
+              "id": 36,
               "tech": "EEG",
               "specs": "Brain waves",
               "available": 0,
@@ -917,7 +903,7 @@
               ]
             },
             {
-              "id": 38,
+              "id": 37,
               "tech": "fNIRS",
               "specs": "Blood flow",
               "available": 0,
@@ -925,7 +911,7 @@
               "hero": "/research/technology/biology/fNIRS/fnirs.png"
             },
             {
-              "id": 39,
+              "id": 38,
               "tech": "EKG",
               "specs": "Heart rhythm",
               "available": 1,
@@ -945,7 +931,7 @@
           "category": "Respiration",
           "techs": [
             {
-              "id": 40,
+              "id": 39,
               "tech": "Spirometer",
               "specs": "Breath volume",
               "available": 1,
@@ -959,7 +945,7 @@
               ]
             },
             {
-              "id": 41,
+              "id": 40,
               "tech": "Gas Exchange",
               "specs": "Metabolic gases",
               "available": 1,
@@ -987,7 +973,7 @@
           "category": "Amplification",
           "techs": [
             {
-              "id": 42,
+              "id": 41,
               "tech": "PCR",
               "specs": "Endpoint amplify",
               "available": 1,
@@ -1013,7 +999,7 @@
               ]
             },
             {
-              "id": 43,
+              "id": 42,
               "tech": "qPCR",
               "specs": "Real-time count",
               "available": 0,
@@ -1027,7 +1013,7 @@
           "category": "Sequencing",
           "techs": [
             {
-              "id": 44,
+              "id": 43,
               "tech": "Long-Read",
               "specs": "Entire strand",
               "available": 0,
@@ -1041,7 +1027,7 @@
               ]
             },
             {
-              "id": 45,
+              "id": 44,
               "tech": "Short-Read",
               "specs": "Parallel fragments",
               "available": 0,
@@ -1055,7 +1041,7 @@
           "category": "Expression",
           "techs": [
             {
-              "id": 46,
+              "id": 45,
               "tech": "Cell-Free",
               "specs": "DNA to proteins",
               "available": 1,
@@ -1081,7 +1067,7 @@
               ]
             },
             {
-              "id": 47,
+              "id": 46,
               "tech": "Fluorescence",
               "specs": "UV glow",
               "available": 1,
@@ -1125,7 +1111,7 @@
           "category": "Visible",
           "techs": [
             {
-              "id": 48,
+              "id": 47,
               "tech": "Amateur",
               "specs": "Smart telescopes",
               "available": 1,
@@ -1143,7 +1129,7 @@
               ]
             },
             {
-              "id": 49,
+              "id": 48,
               "tech": "Earth",
               "specs": "Ground observatories",
               "available": 1,
@@ -1167,7 +1153,7 @@
           "category": "Invisible",
           "techs": [
             {
-              "id": 50,
+              "id": 49,
               "tech": "Radio",
               "specs": "Radio telescopes",
               "available": 1,
@@ -1185,7 +1171,7 @@
               ]
             },
             {
-              "id": 51,
+              "id": 50,
               "tech": "Space",
               "specs": "Space telescopes",
               "available": 1,
@@ -1213,7 +1199,7 @@
           "category": "Analysis",
           "techs": [
             {
-              "id": 52,
+              "id": 51,
               "tech": "Astrometry",
               "specs": "Position catalogs",
               "available": 1,
@@ -1235,7 +1221,7 @@
               ]
             },
             {
-              "id": 53,
+              "id": 52,
               "tech": "Photometry",
               "specs": "Light curves",
               "available": 1,
@@ -1257,7 +1243,7 @@
               ]
             },
             {
-              "id": 54,
+              "id": 53,
               "tech": "Spectroscopy",
               "specs": "Spectra",
               "available": 1,
@@ -1297,7 +1283,7 @@
           "category": "Classification",
           "techs": [
             {
-              "id": 55,
+              "id": 54,
               "tech": "Transient",
               "specs": "Events",
               "available": 1,
@@ -1319,7 +1305,7 @@
               ]
             },
             {
-              "id": 56,
+              "id": 55,
               "tech": "Galaxies",
               "specs": "Morphology",
               "available": 1,

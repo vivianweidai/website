@@ -106,8 +106,6 @@
         - tech: Spectrometer
           specs: Disperse light
           available: true
-        - tech: Interferometer
-          specs: Phase combining
 
 - science: Physics
   topic: Build
