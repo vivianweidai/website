@@ -19,20 +19,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { tech, science, science_slug, topic, category, hero, hero_position } = entry.data;
-
-// Tech spec text comes from technology.json (built from technology.yml —
-// single source of truth for tech text).
-let specs = '';
-for (const t of techData.topics) {
-  if (t.science_slug !== science_slug || t.topic !== topic) continue;
-  for (const cat of t.categories) {
-    if (cat.category !== category) continue;
-    for (const tt of cat.techs) {
-      if (tt.tech === tech) specs = tt.specs;
-    }
-  }
-}
+const { tech, science, science_slug, hero, hero_position } = entry.data;
 // Reverse-lookup every project that uses this tech. Source of truth is
 // each project's `tech:` frontmatter array.
 const projects = await getCollection('projects');
@@ -182,9 +169,7 @@ const nextMeta = navMeta(nextTech);
   <div class="tech-page-wrap">
   <article class={`tech-page tech-accent-${science_slug} card-pop-in`}>
     <div class="tech-title">
-      <h1>{tech}{specs && (
-        <span class="tech-specs-inline">{specs}</span>
-      )}</h1>
+      <h1>{tech}</h1>
       <span class="tech-context">
         <a class={`chip ${science_slug}`} href={`/research/#${science_slug}`}>{science}</a>
       </span>
@@ -319,13 +304,6 @@ const nextMeta = navMeta(nextTech);
       margin: 0;
       border-bottom: none;
       padding-bottom: 0;
-    }
-    .tech-page .tech-title h1 .tech-specs-inline {
-      font-weight: 400;
-      font-size: 0.65em;
-      color: #656d76;
-      margin-left: 0.5em;
-      vertical-align: baseline;
     }
     .tech-page .tech-context {
       display: inline-flex;
