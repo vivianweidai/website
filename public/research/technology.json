@@ -377,21 +377,6 @@
                   "short": "IR"
                 },
                 {
-                  "name": "Bruker Tensor 27 Hyperion FT-IR Microscope",
-                  "description": "Microscope IR",
-                  "short": "IR Microscope"
-                },
-                {
-                  "name": "Mettler Toledo ReactIR iC10",
-                  "description": "In-situ IR",
-                  "short": "In-situ IR"
-                },
-                {
-                  "name": "Renishaw inVia Raman Microscope",
-                  "description": "Nonpolar bonds",
-                  "short": "Raman"
-                },
-                {
                   "name": "Shimadzu UV-2550 UV-Vis Spectrophotometer",
                   "description": "Benchtop UV-Vis",
                   "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",

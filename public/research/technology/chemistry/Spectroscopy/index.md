@@ -10,15 +10,6 @@ toys:
     description: Benchtop IR
     short: IR
     url: /research/projects/20260419%20IR%20Spectroscopy/
-  - name: Bruker Tensor 27 Hyperion FT-IR Microscope
-    description: Microscope IR
-    short: IR Microscope
-  - name: Mettler Toledo ReactIR iC10
-    description: In-situ IR
-    short: In-situ IR
-  - name: Renishaw inVia Raman Microscope
-    description: Nonpolar bonds
-    short: Raman
   - name: Shimadzu UV-2550 UV-Vis Spectrophotometer
     description: Benchtop UV-Vis
     short: UV-Vis
