@@ -3,7 +3,6 @@ import { getCollection, render } from 'astro:content';
 import DefaultLayout from '../../../../../layouts/Default.astro';
 import PageHeader from '../../../../../layouts/PageHeader.astro';
 import PageFooter from '../../../../../layouts/PageFooter.astro';
-import techData from '../../../../../../public/research/technology.json';
 
 export async function getStaticPaths() {
   const techs = await getCollection('tech');
@@ -89,84 +88,11 @@ function resolveHero(h: string | undefined, folder: string, name: string): strin
   return `/research/technology/${folder}/${encodeURIComponent(name)}/${h.split('/').map(encodeURIComponent).join('/')}`;
 }
 const heroUrl = resolveHero(hero, scienceFolder, tech);
-
-// ----- Cross-tech prev/next nav -----
-// Flatten technology.yml's topic → category → tech hierarchy into a single
-// canonical sequence so prev/next can cycle through every tech on the
-// site (and roll over from one science's last tech into the next
-// science's first). Only techs with a template page (tech_url present)
-// are included — placeholder techs without pages would dead-end the nav.
-type FlatTech = {
-  tech: string;
-  tech_url: string;
-  topic: string;
-  science: string;
-  science_slug: string;
-};
-const flatTechs: FlatTech[] = [];
-for (const t of techData.topics) {
-  for (const cat of t.categories) {
-    for (const tt of cat.techs) {
-      if (!tt.tech_url) continue;
-      flatTechs.push({
-        tech: tt.tech,
-        tech_url: tt.tech_url,
-        topic: t.topic,
-        science: t.science,
-        science_slug: t.science_slug,
-      });
-    }
-  }
-}
-const currentIdx = flatTechs.findIndex(
-  (ft) => ft.tech === tech && ft.science_slug === science_slug,
-);
-// Wrap around at the ends so prev on the very first tech lands on the
-// last, and next on the very last tech lands on the first.
-const N = flatTechs.length;
-const prevTech = currentIdx >= 0 && N > 1 ? flatTechs[(currentIdx - 1 + N) % N] : null;
-const nextTech = currentIdx >= 0 && N > 1 ? flatTechs[(currentIdx + 1) % N] : null;
-
-// Topic is intentionally not included in the nav since it has no landing
-// page — only Tech and the Science chip get rendered. crossScience drives
-// whether the chip appears at all.
-function navMeta(target: FlatTech | null) {
-  if (!target) return null;
-  return {
-    ...target,
-    crossScience: target.science_slug !== science_slug,
-  };
-}
-const prevMeta = navMeta(prevTech);
-const nextMeta = navMeta(nextTech);
 ---
 <DefaultLayout title={`${tech} — ${science}`}>
   <PageHeader title="Research" researchHref={`/research/#${science_slug}`} />
 
-  <div class="tech-prevnext" data-prev-href={prevMeta?.tech_url} data-next-href={nextMeta?.tech_url} data-back-href={`/research/#${science_slug}`}>
-    {prevMeta ? (
-      <span class="tech-prevnext-side prev">
-        <span class="tech-prevnext-arrow">←</span>
-        <a href={prevMeta.tech_url}>{prevMeta.tech}</a>
-        {prevMeta.crossScience && (<>
-          <span class="tech-prevnext-sep">·</span>
-          <a class={`chip ${prevMeta.science_slug}`} href={`/research/#${prevMeta.science_slug}`}>{prevMeta.science}</a>
-        </>)}
-      </span>
-    ) : (<span class="tech-prevnext-side spacer">←</span>)}
-    {nextMeta ? (
-      <span class="tech-prevnext-side next">
-        {nextMeta.crossScience && (<>
-          <a class={`chip ${nextMeta.science_slug}`} href={`/research/#${nextMeta.science_slug}`}>{nextMeta.science}</a>
-          <span class="tech-prevnext-sep">·</span>
-        </>)}
-        <a href={nextMeta.tech_url}>{nextMeta.tech}</a>
-        <span class="tech-prevnext-arrow">→</span>
-      </span>
-    ) : (<span class="tech-prevnext-side spacer">→</span>)}
-  </div>
-
-  <div class="tech-page-wrap">
+  <div class="tech-page-wrap" data-back-href={`/research/#${science_slug}`}>
   <article class={`tech-page tech-accent-${science_slug} card-pop-in`}>
     <div class="tech-title">
       <h1>{tech}</h1>
@@ -235,43 +161,12 @@ const nextMeta = navMeta(nextTech);
        cards: 1 px gray border + 4 px science-colored left accent +
        a very soft science-tinted wash so the page signals "you're
        on a reference card" at a glance. */
-    /* Cross-tech prev/next nav — sits OUTSIDE the .tech-page-wrap card,
-       above and below it. Each side packs three independently-clickable
-       parts (tech · topic · science chip) separated by middle dots, with
-       the arrow as a non-interactive cap. Mirrors .curr-prevnext. */
-    .tech-prevnext {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1em;
-      font-size: 0.9em;
-    }
-    .tech-prevnext-side {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4em;
-      flex-wrap: wrap;
-      max-width: 48%;
-      line-height: 1.5;
-    }
-    .tech-prevnext-side.next { justify-content: flex-end; }
-    .tech-prevnext-side a {
-      color: #0969da;
-      text-decoration: none;
-      font-weight: 400;
-    }
-    .tech-prevnext-side a:hover { text-decoration: underline; }
-    .tech-prevnext-side a.chip:hover { text-decoration: none; }
-    .tech-prevnext-arrow { color: #0969da; }
-    .tech-prevnext-sep   { color: #1f2328; opacity: 0.4; }
-    .tech-prevnext-side.spacer { visibility: hidden; }
-    .tech-prevnext { margin: 1.5em 0; }
 
     /* Hover hit-region wrapper — 2 px of bottom/right padding catches the
        cursor when the article lifts up-and-left on hover (same trick as
        .tech-card-wrap). */
     .tech-page-wrap {
-      margin: 0;
+      margin: 1.5em 0 0;
       padding: 0 2px 2px 0;
     }
     .tech-page {
@@ -438,25 +333,20 @@ const nextMeta = navMeta(nextTech);
   </style>
 
   <script is:inline>
-    // Keyboard shortcuts: ← → cycle through techs; Esc returns to the
-    // science's /research/ section. Hrefs are baked into .tech-prevnext
-    // data attributes. Skipped when the user is typing in a form field
-    // or holding a modifier key.
+    // Esc returns to the science's /research/ section. The href is baked
+    // into the card wrapper's data-back-href. Skipped when typing in a form
+    // field or holding a modifier key.
     (function () {
-      var nav = document.querySelector('.tech-prevnext');
-      if (!nav) return;
+      var wrap = document.querySelector('.tech-page-wrap');
+      var backHref = wrap && wrap.dataset.backHref;
+      if (!backHref) return;
       document.addEventListener('keydown', function (e) {
-        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Escape') return;
+        if (e.key !== 'Escape') return;
         if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
         var t = e.target;
         if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
-        var href;
-        if (e.key === 'ArrowLeft') href = nav.dataset.prevHref;
-        else if (e.key === 'ArrowRight') href = nav.dataset.nextHref;
-        else href = nav.dataset.backHref;
-        if (!href) return;
         e.preventDefault();
-        window.location.href = href;
+        window.location.href = backHref;
       });
     })();
   </script>

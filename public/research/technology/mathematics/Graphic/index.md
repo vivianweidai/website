@@ -6,10 +6,10 @@ topic: Calculate
 category: Display
 hero: latex.png
 toys:
+  - name: LaTeX
+    description: Document typesetting
   - name: Matplotlib
     description: 2D and 3D
   - name: Wolfram
     description: Custom rendering
-  - name: LaTeX
-    description: Document typesetting
 ---
