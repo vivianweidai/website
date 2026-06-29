@@ -256,7 +256,7 @@
               "specs": "Pressure and turbidity",
               "available": 1,
               "tech_url": "/research/technology/physics/Fluids/",
-              "hero": "/research/technology/physics/Fluids/gas-pressure.jpg",
+              "hero": "/research/technology/physics/Fluids/fluids.jpeg",
               "toys": [
                 {
                   "name": "Vernier Go Direct Gas Pressure Sensor",
@@ -282,7 +282,7 @@
               "specs": "Magnetism and spectra",
               "available": 1,
               "tech_url": "/research/technology/physics/Electromagnetism/",
-              "hero": "/research/technology/physics/Electromagnetism/magnetic-field.jpg",
+              "hero": "/research/technology/physics/Electromagnetism/electromagnetism.jpeg",
               "toys": [
                 {
                   "name": "Vernier Go Direct 3-Axis Magnetic Field Sensor",

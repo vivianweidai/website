@@ -4,7 +4,7 @@ science: Physics
 science_slug: phys
 topic: Measure
 category: Fluids
-hero: gas-pressure.jpg
+hero: fluids.jpeg
 toys:
   - name: Vernier Go Direct Gas Pressure Sensor
     description: Sealed syringe gas pressure
