@@ -5,7 +5,6 @@ tech:
 title: "Centrifugation and pH of Everyday Liquids"
 sciences:
   - Chemistry
-  - Biology
 ---
 
 <div class="photo-grid" id="photo-grid">

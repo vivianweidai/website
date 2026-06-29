@@ -551,8 +551,7 @@
                   "title": "Centrifugation and pH of Everyday Liquids",
                   "url": "/research/projects/20260411%20Centrifuge/",
                   "sciences": [
-                    "Chemistry",
-                    "Biology"
+                    "Chemistry"
                   ]
                 }
               ]
@@ -574,39 +573,48 @@
                 {
                   "name": "SRS OptiMelt Automated Melting Point System",
                   "description": "Melting point range",
-                  "url": "/research/projects/20260405%20Melting%20Point/"
+                  "url": "/research/projects/20260405%20Melting%20Point/",
+                  "short": "Melting Point"
                 },
                 {
                   "name": "Vernier Go Direct Temperature Probe",
-                  "description": "Temperature probe"
+                  "description": "Temperature probe",
+                  "short": "Temperature Probe"
                 },
                 {
                   "name": "TA Instruments DSC Q20",
-                  "description": "Heat flow over temperature"
+                  "description": "Heat flow over temperature",
+                  "short": "DSC"
                 },
                 {
                   "name": "TA Instruments DSC Q100",
-                  "description": "Separate reversing transitions"
+                  "description": "Separate reversing transitions",
+                  "short": "DSC"
                 },
                 {
                   "name": "TA Instruments Tzero Sample Encapsulation Press",
-                  "description": "Seal sample pans"
+                  "description": "Seal sample pans",
+                  "chip": false
                 },
                 {
                   "name": "TA Instruments Tzero Aluminum Pan and Lid",
-                  "description": "Standard sample pans"
+                  "description": "Standard sample pans",
+                  "chip": false
                 },
                 {
                   "name": "TA Instruments TGA Q50",
-                  "description": "Mass loss over temperature"
+                  "description": "Mass loss over temperature",
+                  "short": "TGA"
                 },
                 {
                   "name": "TA Instruments TGA Q50 Hangdown Wire",
-                  "description": "Suspend sample pan"
+                  "description": "Suspend sample pan",
+                  "chip": false
                 },
                 {
                   "name": "TA Instruments TGA Ceramic Pan",
-                  "description": "Ceramic sample pan"
+                  "description": "Ceramic sample pan",
+                  "chip": false
                 }
               ],
               "projects": [
@@ -822,8 +830,7 @@
                   "title": "Meow to Mars — Will Space Help or Hurt Mi's Heart?",
                   "url": "/research/projects/20260401%20Genes%20in%20Space/",
                   "sciences": [
-                    "Biology",
-                    "Astronomy"
+                    "Biology"
                   ]
                 }
               ]
@@ -890,8 +897,7 @@
                   "title": "Meow to Mars — Will Space Help or Hurt Mi's Heart?",
                   "url": "/research/projects/20260401%20Genes%20in%20Space/",
                   "sciences": [
-                    "Biology",
-                    "Astronomy"
+                    "Biology"
                   ]
                 }
               ]
@@ -920,8 +926,7 @@
                   "title": "Meow to Mars — Will Space Help or Hurt Mi's Heart?",
                   "url": "/research/projects/20260401%20Genes%20in%20Space/",
                   "sciences": [
-                    "Biology",
-                    "Astronomy"
+                    "Biology"
                   ]
                 }
               ]

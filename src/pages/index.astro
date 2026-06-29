@@ -30,8 +30,9 @@ const RESEARCH_LATEST = {
   computing:   { name: 'Red or Green, What Colored Cat Food does Mi Prefer?', url: '/research/projects/20250225%20Catfood/',                            mi: true },
   physics:     { name: 'Four-Point Probe of Sheet Resistance',                url: '/research/projects/20260404%20Four%20Point%20Probe/'                          },
   chemistry:   { name: 'IR Spectroscopy - Test Run',                          url: '/research/projects/20260419%20IR%20Spectroscopy/'                             },
-  biology:     { name: 'Centrifugation and pH of Everyday Liquids',           url: '/research/projects/20260411%20Centrifuge/'                                    },
-  astronomy:   { name: 'Meow to Mars — Will Space Help or Hurt Mi’s Heart?',  url: '/research/projects/20260401%20Genes%20in%20Space/',                 mi: true },
+  biology:     { name: 'Meow to Mars — Will Space Help or Hurt Mi’s Heart?',  url: '/research/projects/20260401%20Genes%20in%20Space/',                 mi: true },
+  // No astronomy research project yet — the row renders blank (guarded below).
+  astronomy:   null,
 };
 // Total research projects per science — the distinct projects that appear
 // under that science's technology cards (i.e. use a tech belonging to the
@@ -110,11 +111,15 @@ const TABS = [
             )}
           </div>
           <div class="curr-rows-secs" data-tab="research">
-            <a href={RESEARCH_LATEST[subjSlug].url}>{RESEARCH_LATEST[subjSlug].name}</a>
-            {RESEARCH_LATEST[subjSlug].mi && (
-              <a class="photo-icon mi-icon" href="/mi.jpeg">
-                <img src="/mi.svg" alt="Mi" />
-              </a>
+            {RESEARCH_LATEST[subjSlug]?.name && (
+              <>
+                <a href={RESEARCH_LATEST[subjSlug].url}>{RESEARCH_LATEST[subjSlug].name}</a>
+                {RESEARCH_LATEST[subjSlug].mi && (
+                  <a class="photo-icon mi-icon" href="/mi.jpeg">
+                    <img src="/mi.svg" alt="Mi" />
+                  </a>
+                )}
+              </>
             )}
           </div>
 
