@@ -3,7 +3,7 @@ tech: Circuits
 science: Physics
 science_slug: phys
 topic: Build
-category: Electronics
+category: Engineering
 hero: circuits.jpeg
 toys:
   - name: TOAUTO DS90 Soldering Station

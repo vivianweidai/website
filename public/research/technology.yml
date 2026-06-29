@@ -71,9 +71,6 @@
           specs: Data code notebooks
           available: true
           url: https://github.com/vivianweidai
-        - tech: Snapshot
-          specs: Environment and ID
-          available: true
 
 # ═══════════════════════════════════════════════════════════════
 # PHYSICS
@@ -82,7 +79,7 @@
 - science: Physics
   topic: Measure
   categories:
-    - category: Motion
+    - category: Mechanics
       techs:
         - tech: Force
           specs: Push and pull
@@ -115,13 +112,11 @@
 - science: Physics
   topic: Build
   categories:
-    - category: Electronics
+    - category: Engineering
       techs:
         - tech: Circuits
           specs: Voltage and waveforms
           available: true
-    - category: Prototypes
-      techs:
         - tech: 3D Printing
           specs: Filament fabrication
           available: true

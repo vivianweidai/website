@@ -10,4 +10,8 @@ toys:
     description: Version control and hosting
   - name: Jupyter
     description: Interactive notebooks
+  - name: Docker
+    description: Container platform
+  - name: Zenodo
+    description: DOI-issuing data archive
 ---

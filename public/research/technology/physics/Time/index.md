@@ -3,7 +3,7 @@ tech: Time
 science: Physics
 science_slug: phys
 topic: Measure
-category: Motion
+category: Mechanics
 hero: photogate.jpg
 toys:
   - name: Vernier Go Direct Photogate
