@@ -187,7 +187,9 @@ const nextMeta = navMeta(nextTech);
           {entry.data.toys.map((toy) => (
             <li data-subj={science_slug}>
               <span class="update-body">
-                <span class="toy-name">{toy.name}</span>
+                {toy.url
+                  ? <a href={toy.url}>{toy.name}</a>
+                  : <span class="toy-name">{toy.name}</span>}
                 <span class="toy-desc">{toy.description}</span>
               </span>
             </li>

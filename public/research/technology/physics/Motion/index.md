@@ -1,5 +1,5 @@
 ---
-tech: Distance
+tech: Motion
 science: Physics
 science_slug: phys
 topic: Measure

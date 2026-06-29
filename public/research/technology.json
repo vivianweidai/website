@@ -248,11 +248,11 @@
             },
             {
               "id": 8,
-              "tech": "Distance",
+              "tech": "Motion",
               "specs": "Ultrasonic ranger",
               "available": 1,
-              "tech_url": "/research/technology/physics/Distance/",
-              "hero": "/research/technology/physics/Distance/motion-detector.jpg",
+              "tech_url": "/research/technology/physics/Motion/",
+              "hero": "/research/technology/physics/Motion/motion-detector.jpg",
               "toys": [
                 {
                   "name": "Vernier Go Direct Motion Detector",
@@ -452,7 +452,8 @@
               "toys": [
                 {
                   "name": "Thermo Scientific Nicolet 380 FT-IR Spectrometer",
-                  "description": "Benchtop IR"
+                  "description": "Benchtop IR",
+                  "url": "/research/projects/20260419%20IR%20Spectroscopy/"
                 },
                 {
                   "name": "Bruker Tensor 27 Hyperion FT-IR Microscope",
@@ -488,15 +489,18 @@
               "toys": [
                 {
                   "name": "Shimadzu UV-2550 UV-Vis Spectrophotometer",
-                  "description": "Benchtop UV-Vis"
+                  "description": "Benchtop UV-Vis",
+                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/"
                 },
                 {
                   "name": "Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer",
-                  "description": "Benchtop fluorometer"
+                  "description": "Benchtop fluorometer",
+                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/"
                 },
                 {
                   "name": "PerkinElmer Lambda 750 UV-Vis-NIR Spectrophotometer",
-                  "description": "Benchtop UV-Vis-NIR"
+                  "description": "Benchtop UV-Vis-NIR",
+                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/"
                 },
                 {
                   "name": "VTSYIQI Visible Spectrophotometer",
@@ -636,7 +640,8 @@
               "toys": [
                 {
                   "name": "Thermo Scientific Sorvall RT3 Centrifuge",
-                  "description": "Benchtop swing bucket"
+                  "description": "Benchtop swing bucket",
+                  "url": "/research/projects/20260411%20Centrifuge/"
                 },
                 {
                   "name": "DiaMed ID-Centrifuge",
@@ -711,7 +716,8 @@
               "toys": [
                 {
                   "name": "SRS OptiMelt Automated Melting Point System",
-                  "description": "Melting point range"
+                  "description": "Melting point range",
+                  "url": "/research/projects/20260405%20Melting%20Point/"
                 },
                 {
                   "name": "Vernier Go Direct Temperature Probe",

@@ -8,6 +8,7 @@ hero: irspectroscopy.jpeg
 toys:
   - name: Thermo Scientific Nicolet 380 FT-IR Spectrometer
     description: Benchtop IR
+    url: /research/projects/20260419%20IR%20Spectroscopy/
   - name: Bruker Tensor 27 Hyperion FT-IR Microscope
     description: Microscope IR
   - name: Mettler Toledo ReactIR iC10

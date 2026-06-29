@@ -8,6 +8,7 @@ hero: centrifugation.jpeg
 toys:
   - name: Thermo Scientific Sorvall RT3 Centrifuge
     description: Benchtop swing bucket
+    url: /research/projects/20260411%20Centrifuge/
   - name: DiaMed ID-Centrifuge
     description: Card centrifuge
   - name: Scientific Industries Vortex-Genie 2

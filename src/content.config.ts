@@ -52,6 +52,8 @@ const tech = defineCollection({
     toys: z.array(z.object({
       name: z.string(),
       description: z.string(),
+      // Optional link target for the toy name (e.g. the project that used it).
+      url: z.string().optional(),
     })).optional(),
   }),
 });

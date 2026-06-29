@@ -84,7 +84,7 @@
         - tech: Force
           specs: Push and pull
           available: true
-        - tech: Distance
+        - tech: Motion
           specs: Ultrasonic ranger
           available: true
         - tech: Time

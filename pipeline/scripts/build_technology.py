@@ -99,10 +99,13 @@ def toys_for_tech(science_folder: str, tech_name: str) -> list[dict]:
     for toy in toys:
         if not isinstance(toy, dict) or "name" not in toy:
             continue
-        out.append({
+        entry = {
             "name": toy["name"],
             "description": toy.get("description", ""),
-        })
+        }
+        if toy.get("url"):
+            entry["url"] = toy["url"]
+        out.append(entry)
     return out
 
 
