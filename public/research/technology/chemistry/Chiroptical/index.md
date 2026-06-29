@@ -4,7 +4,7 @@ science: Chemistry
 science_slug: chem
 topic: Identify
 category: Chiroptical
-hero: chiroptical.jpg
+hero: chiroptical.jpeg
 toys:
   - name: Vernier Go Direct Polarimeter
     description: Single angle rotation
