@@ -8,7 +8,7 @@ hero: circuits.jpeg
 toys:
   - name: TOAUTO DS90 Soldering Station
     description: Soldering iron
-    short: Solder
+    short: Soldering
   - name: SainSmart Magnetic Helping Hands Soldering Station
     description: Soldering work holder
     short: Helping Hands

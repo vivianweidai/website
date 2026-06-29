@@ -1,10 +1,10 @@
 ---
-tech: Fluids
+tech: Thermodynamics
 science: Physics
 science_slug: phys
 topic: Measure
-category: Fluids
-hero: fluids.jpeg
+category: Thermodynamics
+hero: thermodynamics.jpeg
 hero_position: center 58%
 toys:
   - name: Vernier Go Direct Gas Pressure Sensor

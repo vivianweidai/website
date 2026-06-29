@@ -84,9 +84,9 @@
         - tech: Mechanics
           specs: Force, motion and timing
           available: true
-    - category: Fluids
+    - category: Thermodynamics
       techs:
-        - tech: Fluids
+        - tech: Thermodynamics
           specs: Pressure and turbidity
           available: true
     - category: Electromagnetism

@@ -231,15 +231,15 @@
         },
         {
           "id": 6,
-          "category": "Fluids",
+          "category": "Thermodynamics",
           "techs": [
             {
               "id": 8,
-              "tech": "Fluids",
+              "tech": "Thermodynamics",
               "specs": "Pressure and turbidity",
               "available": 1,
-              "tech_url": "/research/technology/physics/Fluids/",
-              "hero": "/research/technology/physics/Fluids/fluids.jpeg",
+              "tech_url": "/research/technology/physics/Thermodynamics/",
+              "hero": "/research/technology/physics/Thermodynamics/thermodynamics.jpeg",
               "toys": [
                 {
                   "name": "Vernier Go Direct Gas Pressure Sensor",
@@ -309,7 +309,7 @@
                 {
                   "name": "TOAUTO DS90 Soldering Station",
                   "description": "Soldering iron",
-                  "short": "Solder"
+                  "short": "Soldering"
                 },
                 {
                   "name": "SainSmart Magnetic Helping Hands Soldering Station",
