@@ -33,14 +33,26 @@ const RESEARCH_LATEST = {
   biology:     { name: 'Centrifugation and pH of Everyday Liquids',           url: '/research/projects/20260411%20Centrifuge/'                                    },
   astronomy:   { name: 'Meow to Mars — Will Space Help or Hurt Mi’s Heart?',  url: '/research/projects/20260401%20Genes%20in%20Space/',                 mi: true },
 };
-// Two research topics per science, sourced from technology.yml. Drives the
-// right-hand chips in the Research tab — both link to the science's
-// filtered view at /research/#<anchor>.
-const RESEARCH_TOPICS = {};
-for (const t of techData.topics) {
-  const slug = t.science.toLowerCase();
-  if (!RESEARCH_TOPICS[slug]) RESEARCH_TOPICS[slug] = [];
-  RESEARCH_TOPICS[slug].push(t.topic);
+// Total research projects per science — counted by each project's declared
+// `sciences` (deduped across the techs it appears under). Drives the count
+// badge in the Research tab, which links to /research/#<anchor>.
+const RESEARCH_PROJECT_COUNT = {};
+{
+  const counted = new Set();
+  for (const t of techData.topics) {
+    for (const cat of t.categories) {
+      for (const tech of cat.techs) {
+        for (const p of tech.projects ?? []) {
+          if (counted.has(p.url)) continue;
+          counted.add(p.url);
+          for (const sci of p.sciences ?? []) {
+            const slug = sci.toLowerCase();
+            RESEARCH_PROJECT_COUNT[slug] = (RESEARCH_PROJECT_COUNT[slug] ?? 0) + 1;
+          }
+        }
+      }
+    }
+  }
 }
 const TABS = [
   { key: 'curriculum', label: 'Curriculum' },
@@ -114,12 +126,9 @@ const TABS = [
             <span class="olympiad-badge" data-tab="olympiads">{OLYMPIAD_LATEST[subjSlug].badge || olyKind.toUpperCase()}</span>
           )}
           <span class="curr-rows-topics" data-tab="research">
-            {RESEARCH_TOPICS[subjSlug].map((topic, k) => (
-              <>
-                {k > 0 && <span class="sep">·</span>}
-                <a href={`/research/#${SUBJ_ANCHOR[subjSlug]}/${topic.toLowerCase().replace(/\s+/g, '-')}`}>{topic}</a>
-              </>
-            ))}
+            <a class="home-proj-badge" href={`/research/#${SUBJ_ANCHOR[subjSlug]}`}>
+              <b>{RESEARCH_PROJECT_COUNT[subjSlug] ?? 0}</b> {(RESEARCH_PROJECT_COUNT[subjSlug] ?? 0) === 1 ? 'project' : 'projects'}
+            </a>
           </span>
         </div>
       );
@@ -428,16 +437,25 @@ const TABS = [
     .curr-rows-topics {
       flex: 0 0 auto;
       margin-right: 0.9em;
-      font-size: 0.85em;
       white-space: nowrap;
     }
-    .curr-rows-topics a {
-      color: #57606a;
+    /* Project-count badge — mirrors the research page's .proj-badge: a white
+       bordered count pill. Links to the science's filtered research view. */
+    .home-proj-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.32em;
+      font-size: 0.8em;
+      color: #475059;
       text-decoration: none;
-      padding: 0 0.18em;
+      padding: 0.12em 0.55em;
+      border: 1px solid #d8dee4;
+      border-radius: 6px;
+      background: #fff;
+      transition: border-color 0.15s ease, color 0.15s ease;
     }
-    .curr-rows-topics a:hover { color: #0969da; text-decoration: underline; }
-    .curr-rows-topics .sep { color: #b1b7be; padding: 0 0.15em; }
+    .home-proj-badge b { font-weight: 700; }
+    .home-proj-badge:hover { border-color: #0969da; color: #0969da; }
 
     /* Olympiad row content uses flex so the achievement icon sits on the
        same vertical centerline as the text instead of dropping below the
