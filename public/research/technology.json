@@ -392,17 +392,17 @@
                   "name": "PerkinElmer Lambda 750 UV-Vis-NIR Spectrophotometer",
                   "description": "Benchtop UV-Vis-NIR",
                   "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-                  "short": "UV-Vis-NIR"
+                  "short": "UV-Vis"
                 },
                 {
                   "name": "VTSYIQI Visible Spectrophotometer",
                   "description": "Benchtop visible",
-                  "short": "Visible"
+                  "short": "UV-Vis"
                 },
                 {
                   "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
                   "description": "Portable UV-Vis and fluorescence",
-                  "short": "Portable UV-Vis"
+                  "short": "UV-Vis"
                 }
               ],
               "projects": [
