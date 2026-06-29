@@ -105,6 +105,8 @@ def toys_for_tech(science_folder: str, tech_name: str) -> list[dict]:
         }
         if toy.get("url"):
             entry["url"] = toy["url"]
+        if toy.get("image"):
+            entry["image"] = toy["image"]
         out.append(entry)
     return out
 

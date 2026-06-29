@@ -90,6 +90,12 @@ function resolveHero(h: string | undefined, folder: string, name: string): strin
 }
 const heroUrl = resolveHero(hero, scienceFolder, tech);
 
+// Per-toy hero images. When a toy carries its own `image`, hovering that
+// toy in the list swaps the hero to it (see inline script below). Resolve
+// each to an absolute URL alongside the main hero.
+const toyHeroes = (entry.data.toys ?? []).map((toy) =>
+  resolveHero(toy.image, scienceFolder, tech));
+
 // Keyboard-only prev/next: flatten every tech that has a page into one
 // canonical sequence so ← / → cycle through them (wrapping at the ends).
 // No visible nav — the hrefs are baked into data attributes for the script.
@@ -121,7 +127,7 @@ const nextHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx + 1) % N] :
     </div>
     {heroUrl && (
       <div class="hero-single">
-        <img src={heroUrl} alt={tech} style={hero_position ? `object-position: ${hero_position};` : undefined} />
+        <img id="tech-hero" src={heroUrl} data-default-src={heroUrl} alt={tech} style={hero_position ? `object-position: ${hero_position};` : undefined} />
       </div>
     )}
 
@@ -129,8 +135,8 @@ const nextHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx + 1) % N] :
       <>
         <h2>Toys</h2>
         <ul class="updates-list toy-list">
-          {entry.data.toys.map((toy) => (
-            <li data-subj={science_slug}>
+          {entry.data.toys.map((toy, i) => (
+            <li data-subj={science_slug} data-hero={toyHeroes[i] ?? undefined}>
               <span class="update-body">
                 {toy.url
                   ? <a href={toy.url}>{toy.name}</a>
@@ -371,6 +377,29 @@ const nextHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx + 1) % N] :
         if (!href) return;
         e.preventDefault();
         window.location.href = href;
+      });
+    })();
+
+    // Toy hover → hero swap: when a tech bundles several toys, hovering a
+    // toy row that carries a data-hero swaps the hero image to that toy's
+    // photo; leaving the toy list restores the default hero. Preloads the
+    // toy images once so the swap is instant.
+    (function () {
+      var hero = document.getElementById('tech-hero');
+      if (!hero) return;
+      var list = document.querySelector('.toy-list');
+      if (!list) return;
+      var rows = list.querySelectorAll('li[data-hero]');
+      if (!rows.length) return;
+      rows.forEach(function (li) {
+        var src = li.dataset.hero;
+        if (src) { var img = new Image(); img.src = src; }
+        li.addEventListener('mouseenter', function () {
+          if (li.dataset.hero) hero.src = li.dataset.hero;
+        });
+      });
+      list.addEventListener('mouseleave', function () {
+        hero.src = hero.dataset.defaultSrc;
       });
     })();
   </script>

@@ -81,14 +81,8 @@
   categories:
     - category: Mechanics
       techs:
-        - tech: Force
-          specs: Push and pull
-          available: true
-        - tech: Motion
-          specs: Ultrasonic ranger
-          available: true
-        - tech: Time
-          specs: Beam timing
+        - tech: Mechanics
+          specs: Force, motion and timing
           available: true
     - category: Fluids
       techs:
