@@ -124,7 +124,9 @@ import PageFooter from '../../layouts/PageFooter.astro';
             // (e.g. the two LC-MS instruments) collapse to one chip here; the
             // tech card still lists every toy in full.
             var seenChip = {};
-            var toys = (tech.toys || []).map(function (toy) {
+            var toys = (tech.toys || []).filter(function (toy) {
+              return toy.chip !== false;
+            }).map(function (toy) {
               return esc(toy.short || toy.name);
             }).filter(function (label) {
               if (seenChip[label]) return false;

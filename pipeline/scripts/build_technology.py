@@ -107,6 +107,9 @@ def toys_for_tech(science_folder: str, tech_name: str) -> list[dict]:
             entry["url"] = toy["url"]
         if toy.get("short"):
             entry["short"] = toy["short"]
+        # Only emit when explicitly hidden; default (shown) stays implicit.
+        if toy.get("chip") is False:
+            entry["chip"] = False
         out.append(entry)
     return out
 

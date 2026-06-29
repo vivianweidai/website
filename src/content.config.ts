@@ -58,6 +58,10 @@ const tech = defineCollection({
       // `name` still shows on the tech card). Keeps each tech's chip row to
       // a single line.
       short: z.string().optional(),
+      // Set false to omit this toy from the /research/ listing chips while
+      // keeping it on the tech card (e.g. a sample-prep tool that doesn't
+      // fit the tech's chip vocabulary). Defaults to shown.
+      chip: z.boolean().optional(),
     })).optional(),
   }),
 });
