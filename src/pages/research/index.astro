@@ -109,19 +109,24 @@ import PageFooter from '../../layouts/PageFooter.astro';
           }
 
           cat.techs.forEach(function (tech) {
-            var name = esc(tech.tech);
-            if (tech.tech_url) {
-              name = '<a href="' + tech.tech_url + '">' + name + '</a>';
-            }
+            var url = tech.tech_url;
+            var name = url ? '<a href="' + url + '">' + esc(tech.tech) + '</a>' : esc(tech.tech);
             // Meta: every toy name as a chip, plus a bordered count badge
             // for the projects that have used this tech. Toys live in their
             // own wrap so the badge stays vertically centered when they wrap.
+            // Chips + badge all link to the tech card, same as the name.
             var toys = (tech.toys || []).map(function (toy) {
-              return '<span class="toy-chip">' + esc(toy.name) + '</span>';
+              var label = esc(toy.name);
+              return url
+                ? '<a class="toy-chip" href="' + url + '">' + label + '</a>'
+                : '<span class="toy-chip">' + label + '</span>';
             }).join('');
             var np = (tech.projects || []).length;
+            var projInner = '<b>' + np + '</b> project' + (np > 1 ? 's' : '');
             var proj = np
-              ? '<span class="proj-badge"><b>' + np + '</b> project' + (np > 1 ? 's' : '') + '</span>'
+              ? (url
+                  ? '<a class="proj-badge" href="' + url + '">' + projInner + '</a>'
+                  : '<span class="proj-badge">' + projInner + '</span>')
               : '';
             var meta = (toys || proj)
               ? '<span class="tech-meta-row"><span class="toy-wrap">' + toys + '</span>' + proj + '</span>'
@@ -328,7 +333,10 @@ import PageFooter from '../../layouts/PageFooter.astro';
       padding: .1em .55em;
       border-radius: 5px;
       white-space: nowrap;
+      text-decoration: none;
+      transition: filter 0.15s ease;
     }
+    a.toy-chip:hover { filter: brightness(0.93); }
     /* Project badge stays a distinct white count pill (different role from a
        toy chip); solid white keeps it crisp against the tinted hover row. */
     .proj-badge {
@@ -343,8 +351,11 @@ import PageFooter from '../../layouts/PageFooter.astro';
       border-radius: 6px;
       background: #fff;
       white-space: nowrap;
+      text-decoration: none;
+      transition: border-color 0.15s ease, color 0.15s ease;
     }
     .proj-badge b { font-weight: 700; }
+    a.proj-badge:hover { border-color: #0969da; color: #0969da; }
     @media (hover: hover) {
       .tech-row:hover td { background: color-mix(in srgb, var(--card-tint, #d1d9e0) 35%, white); }
     }
