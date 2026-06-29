@@ -455,8 +455,6 @@
     html += '<div class="curr-breadcrumb" data-subj="' + snap.subject + '">'
          + '<span class="curr-breadcrumb-title">' + escapeHtml(topic.name) + '</span>'
          + '<span class="curr-breadcrumb-meta">'
-         +   '<a href="#" data-action="section-view">' + escapeHtml(sec.name) + '</a>'
-         +   '<span class="sep">·</span>'
          +   '<a class="chip ' + SHORT_SLUGS[snap.subject] + '" data-action="subject" href="/curriculum/#' + snap.subject + '">' + escapeHtml(subj.name) + '</a>'
          + '</span>'
          + '</div>';
@@ -501,16 +499,6 @@
       state = { view: 'grid', highlightSubject: snap.subject };
       render();
     });
-    widget.querySelector('[data-action="section-view"]').addEventListener('click', function (e) {
-      e.preventDefault();
-      state = {
-        view: 'grid',
-        highlightSubject: snap.subject,
-        highlightSectionIdx: snap.sectionIdx,
-      };
-      render();
-    });
-
   }
 
   function whenKatexReady(cb) {
