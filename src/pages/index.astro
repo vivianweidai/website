@@ -130,9 +130,11 @@ const TABS = [
             <span class="olympiad-badge" data-tab="olympiads">{OLYMPIAD_LATEST[subjSlug].badge || olyKind.toUpperCase()}</span>
           )}
           <span class="curr-rows-topics" data-tab="research">
-            <a class="home-proj-badge" href={`/research/#${SUBJ_ANCHOR[subjSlug]}`}>
-              <b>{RESEARCH_PROJECT_COUNT[subjSlug] ?? 0}</b> {(RESEARCH_PROJECT_COUNT[subjSlug] ?? 0) === 1 ? 'project' : 'projects'}
-            </a>
+            {(RESEARCH_PROJECT_COUNT[subjSlug] ?? 0) > 0 && (
+              <a class="home-proj-badge" href={`/research/#${SUBJ_ANCHOR[subjSlug]}`}>
+                <b>{RESEARCH_PROJECT_COUNT[subjSlug]}</b> {RESEARCH_PROJECT_COUNT[subjSlug] === 1 ? 'project' : 'projects'}
+              </a>
+            )}
           </span>
         </div>
       );
