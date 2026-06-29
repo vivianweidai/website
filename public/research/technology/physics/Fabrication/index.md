@@ -1,5 +1,5 @@
 ---
-tech: 3D Printing
+tech: Fabrication
 science: Physics
 science_slug: phys
 topic: Build

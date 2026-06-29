@@ -416,11 +416,11 @@
             },
             {
               "id": 16,
-              "tech": "3D Printing",
+              "tech": "Fabrication",
               "specs": "Filament fabrication",
               "available": 1,
-              "tech_url": "/research/technology/physics/3D%20Printing/",
-              "hero": "/research/technology/physics/3D%20Printing/3d-printing.jpeg",
+              "tech_url": "/research/technology/physics/Fabrication/",
+              "hero": "/research/technology/physics/Fabrication/3d-printing.jpeg",
               "toys": [
                 {
                   "name": "Prusa CORE One+",

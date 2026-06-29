@@ -117,7 +117,7 @@
         - tech: Circuits
           specs: Voltage and waveforms
           available: true
-        - tech: 3D Printing
+        - tech: Fabrication
           specs: Filament fabrication
           available: true
 
