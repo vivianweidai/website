@@ -114,26 +114,6 @@
 - science: Chemistry
   topic: Analyze
   categories:
-    - category: Spectroscopy
-      techs:
-        - tech: Spectroscopy
-          specs: Bonds and absorbance
-          available: true
-    - category: Separation
-      techs:
-        - tech: Separation
-          specs: Sort components
-          available: true
-    - category: Spectrometry
-      techs:
-        - tech: Spectrometry
-          specs: Mass fingerprints
-          available: true
-    - category: Chiroptical
-      techs:
-        - tech: Chiroptical
-          specs: Chirality
-          available: true
     - category: Thermal
       techs:
         - tech: Thermal
@@ -143,6 +123,16 @@
       techs:
         - tech: Electrochemistry
           specs: Ions and redox
+          available: true
+    - category: Spectroscopy
+      techs:
+        - tech: Spectroscopy
+          specs: Bonds, absorbance, chirality
+          available: true
+    - category: Spectrometry
+      techs:
+        - tech: Spectrometry
+          specs: Separation and mass
           available: true
 
 # ═══════════════════════════════════════════════════════════════

@@ -360,202 +360,10 @@
       "categories": [
         {
           "id": 9,
-          "category": "Spectroscopy",
-          "techs": [
-            {
-              "id": 11,
-              "tech": "Spectroscopy",
-              "specs": "Bonds and absorbance",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/Spectroscopy/",
-              "hero": "/research/technology/chemistry/Spectroscopy/spectroscopy.jpeg",
-              "toys": [
-                {
-                  "name": "Thermo Scientific Nicolet 380 FT-IR Spectrometer",
-                  "description": "Benchtop IR",
-                  "url": "/research/projects/20260419%20IR%20Spectroscopy/",
-                  "short": "IR"
-                },
-                {
-                  "name": "Shimadzu UV-2550 UV-Vis Spectrophotometer",
-                  "description": "Benchtop UV-Vis",
-                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-                  "short": "UV-Vis"
-                },
-                {
-                  "name": "Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer",
-                  "description": "Benchtop fluorometer",
-                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-                  "short": "Fluorometer"
-                },
-                {
-                  "name": "PerkinElmer Lambda 750 UV-Vis-NIR Spectrophotometer",
-                  "description": "Benchtop UV-Vis-NIR",
-                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-                  "short": "UV-Vis"
-                },
-                {
-                  "name": "VTSYIQI Visible Spectrophotometer",
-                  "description": "Benchtop visible",
-                  "short": "UV-Vis"
-                },
-                {
-                  "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
-                  "description": "Portable UV-Vis and fluorescence",
-                  "short": "UV-Vis"
-                }
-              ],
-              "projects": [
-                {
-                  "date": "2026-04-20",
-                  "title": "UV-Vis Spectroscopy - Test Run",
-                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-                  "sciences": [
-                    "Chemistry"
-                  ]
-                },
-                {
-                  "date": "2026-04-19",
-                  "title": "IR Spectroscopy - Test Run",
-                  "url": "/research/projects/20260419%20IR%20Spectroscopy/",
-                  "sciences": [
-                    "Chemistry"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": 10,
-          "category": "Separation",
-          "techs": [
-            {
-              "id": 12,
-              "tech": "Separation",
-              "specs": "Sort components",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/Separation/",
-              "hero": "/research/technology/chemistry/Separation/separation.jpeg",
-              "toys": [
-                {
-                  "name": "Thermo Scientific Sorvall RT3 Centrifuge",
-                  "description": "Benchtop swing bucket",
-                  "url": "/research/projects/20260411%20Centrifuge/",
-                  "short": "Centrifuge"
-                },
-                {
-                  "name": "DiaMed ID-Centrifuge",
-                  "description": "Card centrifuge",
-                  "short": "Centrifuge"
-                },
-                {
-                  "name": "Scientific Industries Vortex-Genie 2",
-                  "description": "Homogenize sample",
-                  "chip": false
-                },
-                {
-                  "name": "Waters Micromass ZQ Alliance e2695 LC-MS",
-                  "description": "Sort by hydrophobicity",
-                  "short": "Liquid Chromatography"
-                },
-                {
-                  "name": "Agilent 1200 Series HPLC 6230A TOF LC-MS",
-                  "description": "Sort by hydrophobicity",
-                  "short": "Liquid Chromatography"
-                },
-                {
-                  "name": "Agilent 7890A GC 5975C Inert MSD",
-                  "description": "Sort by volatility",
-                  "short": "Gas Chromatography"
-                },
-                {
-                  "name": "Agilent 7890 GC-FID Chiral",
-                  "description": "Sort by chirality",
-                  "short": "Gas Chromatography"
-                }
-              ],
-              "projects": [
-                {
-                  "date": "2026-04-11",
-                  "title": "Centrifugation and pH of Everyday Liquids",
-                  "url": "/research/projects/20260411%20Centrifuge/",
-                  "sciences": [
-                    "Chemistry"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": 11,
-          "category": "Spectrometry",
-          "techs": [
-            {
-              "id": 13,
-              "tech": "Spectrometry",
-              "specs": "Mass fingerprints",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/Spectrometry/",
-              "hero": "/research/technology/chemistry/Spectrometry/spectrometry.jpg",
-              "toys": [
-                {
-                  "name": "Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer",
-                  "description": "Linear time of flight",
-                  "short": "MALDI"
-                },
-                {
-                  "name": "Waters Micromass ZQ Alliance e2695 LC-MS",
-                  "description": "Unit mass",
-                  "short": "LC-MS"
-                },
-                {
-                  "name": "Agilent 1200 Series HPLC 6230A TOF LC-MS",
-                  "description": "Exact mass",
-                  "short": "LC-MS"
-                },
-                {
-                  "name": "Agilent 7890A GC 5975C Inert MSD",
-                  "description": "Mass fingerprints",
-                  "short": "GC-MS"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": 12,
-          "category": "Chiroptical",
-          "techs": [
-            {
-              "id": 14,
-              "tech": "Chiroptical",
-              "specs": "Chirality",
-              "available": 1,
-              "tech_url": "/research/technology/chemistry/Chiroptical/",
-              "hero": "/research/technology/chemistry/Chiroptical/chiroptical.jpeg",
-              "toys": [
-                {
-                  "name": "Vernier Go Direct Polarimeter",
-                  "description": "Single angle rotation",
-                  "short": "Polarimeter"
-                },
-                {
-                  "name": "Jasco J-1500 CD Spectrometer",
-                  "description": "Differential absorbance",
-                  "short": "CD Spectrometer"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": 13,
           "category": "Thermal",
           "techs": [
             {
-              "id": 15,
+              "id": 11,
               "tech": "Thermal",
               "specs": "Heat and mass",
               "available": 1,
@@ -623,11 +431,11 @@
           ]
         },
         {
-          "id": 14,
+          "id": 10,
           "category": "Electrochemistry",
           "techs": [
             {
-              "id": 16,
+              "id": 12,
               "tech": "Electrochemistry",
               "specs": "Ions and redox",
               "available": 1,
@@ -668,6 +476,151 @@
               ]
             }
           ]
+        },
+        {
+          "id": 11,
+          "category": "Spectroscopy",
+          "techs": [
+            {
+              "id": 13,
+              "tech": "Spectroscopy",
+              "specs": "Bonds, absorbance, chirality",
+              "available": 1,
+              "tech_url": "/research/technology/chemistry/Spectroscopy/",
+              "hero": "/research/technology/chemistry/Spectroscopy/spectroscopy.jpeg",
+              "toys": [
+                {
+                  "name": "Thermo Scientific Nicolet 380 FT-IR Spectrometer",
+                  "description": "Benchtop IR",
+                  "url": "/research/projects/20260419%20IR%20Spectroscopy/",
+                  "short": "IR"
+                },
+                {
+                  "name": "Shimadzu UV-2550 UV-Vis Spectrophotometer",
+                  "description": "Benchtop UV-Vis",
+                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
+                  "short": "UV-Vis"
+                },
+                {
+                  "name": "Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer",
+                  "description": "Benchtop fluorometer",
+                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
+                  "short": "Fluorometer"
+                },
+                {
+                  "name": "PerkinElmer Lambda 750 UV-Vis-NIR Spectrophotometer",
+                  "description": "Benchtop UV-Vis-NIR",
+                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
+                  "short": "UV-Vis"
+                },
+                {
+                  "name": "VTSYIQI Visible Spectrophotometer",
+                  "description": "Benchtop visible",
+                  "short": "UV-Vis"
+                },
+                {
+                  "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
+                  "description": "Portable UV-Vis and fluorescence",
+                  "short": "UV-Vis"
+                },
+                {
+                  "name": "Vernier Go Direct Polarimeter",
+                  "description": "Single angle rotation",
+                  "short": "Polarimeter"
+                },
+                {
+                  "name": "Jasco J-1500 CD Spectrometer",
+                  "description": "Differential absorbance",
+                  "short": "CD Spectrometer"
+                }
+              ],
+              "projects": [
+                {
+                  "date": "2026-04-20",
+                  "title": "UV-Vis Spectroscopy - Test Run",
+                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
+                  "sciences": [
+                    "Chemistry"
+                  ]
+                },
+                {
+                  "date": "2026-04-19",
+                  "title": "IR Spectroscopy - Test Run",
+                  "url": "/research/projects/20260419%20IR%20Spectroscopy/",
+                  "sciences": [
+                    "Chemistry"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "category": "Spectrometry",
+          "techs": [
+            {
+              "id": 14,
+              "tech": "Spectrometry",
+              "specs": "Separation and mass",
+              "available": 1,
+              "tech_url": "/research/technology/chemistry/Spectrometry/",
+              "hero": "/research/technology/chemistry/Spectrometry/spectrometry.jpg",
+              "toys": [
+                {
+                  "name": "Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer",
+                  "description": "Linear time of flight",
+                  "short": "MALDI"
+                },
+                {
+                  "name": "Waters Micromass ZQ Alliance e2695 LC-MS",
+                  "description": "Liquid chromatography, unit mass",
+                  "short": "LC-MS"
+                },
+                {
+                  "name": "Agilent 1200 Series HPLC 6230A TOF LC-MS",
+                  "description": "Liquid chromatography, exact mass",
+                  "short": "LC-MS"
+                },
+                {
+                  "name": "Agilent 7890A GC 5975C Inert MSD",
+                  "description": "Gas chromatography, mass fingerprints",
+                  "short": "GC-MS"
+                },
+                {
+                  "name": "Agilent 7890 GC-FID Chiral",
+                  "description": "Gas chromatography, chirality",
+                  "short": "Chiral GC"
+                },
+                {
+                  "name": "Thermo Scientific Sorvall RT3 Centrifuge",
+                  "description": "Benchtop swing bucket",
+                  "url": "/research/projects/20260411%20Centrifuge/",
+                  "short": "Centrifuge"
+                },
+                {
+                  "name": "DiaMed ID-Centrifuge",
+                  "description": "Card centrifuge",
+                  "short": "Centrifuge"
+                },
+                {
+                  "name": "Scientific Industries Vortex-Genie 2",
+                  "description": "Homogenize sample",
+                  "chip": false
+                }
+              ],
+              "projects": [
+                {
+                  "date": "2026-04-11",
+                  "title": "Centrifugation and pH of Everyday Liquids",
+                  "url": "/research/projects/20260411%20Centrifuge/",
+                  "sciences": [
+                    "Chemistry"
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -678,11 +631,11 @@
       "topic": "Image",
       "categories": [
         {
-          "id": 15,
+          "id": 13,
           "category": "Microscopy",
           "techs": [
             {
-              "id": 17,
+              "id": 15,
               "tech": "Handheld",
               "specs": "Surfaces",
               "available": 1,
@@ -700,7 +653,7 @@
               ]
             },
             {
-              "id": 18,
+              "id": 16,
               "tech": "Stereo",
               "specs": "Organisms",
               "available": 1,
@@ -714,7 +667,7 @@
               ]
             },
             {
-              "id": 19,
+              "id": 17,
               "tech": "Compound",
               "specs": "Cells",
               "available": 1,
@@ -730,11 +683,11 @@
           ]
         },
         {
-          "id": 16,
+          "id": 14,
           "category": "Vitals",
           "techs": [
             {
-              "id": 20,
+              "id": 18,
               "tech": "EEG",
               "specs": "Brain waves",
               "available": 0,
@@ -748,7 +701,7 @@
               ]
             },
             {
-              "id": 21,
+              "id": 19,
               "tech": "fNIRS",
               "specs": "Blood flow",
               "available": 0,
@@ -756,7 +709,7 @@
               "hero": "/research/technology/biology/fNIRS/fnirs.png"
             },
             {
-              "id": 22,
+              "id": 20,
               "tech": "EKG",
               "specs": "Heart rhythm",
               "available": 1,
@@ -772,11 +725,11 @@
           ]
         },
         {
-          "id": 17,
+          "id": 15,
           "category": "Respiration",
           "techs": [
             {
-              "id": 23,
+              "id": 21,
               "tech": "Spirometer",
               "specs": "Breath volume",
               "available": 1,
@@ -790,7 +743,7 @@
               ]
             },
             {
-              "id": 24,
+              "id": 22,
               "tech": "Gas Exchange",
               "specs": "Metabolic gases",
               "available": 1,
@@ -814,11 +767,11 @@
       "topic": "Replicate",
       "categories": [
         {
-          "id": 18,
+          "id": 16,
           "category": "Amplification",
           "techs": [
             {
-              "id": 25,
+              "id": 23,
               "tech": "PCR",
               "specs": "Endpoint amplify",
               "available": 1,
@@ -843,7 +796,7 @@
               ]
             },
             {
-              "id": 26,
+              "id": 24,
               "tech": "qPCR",
               "specs": "Real-time count",
               "available": 0,
@@ -853,11 +806,11 @@
           ]
         },
         {
-          "id": 19,
+          "id": 17,
           "category": "Sequencing",
           "techs": [
             {
-              "id": 27,
+              "id": 25,
               "tech": "Long-Read",
               "specs": "Entire strand",
               "available": 0,
@@ -871,7 +824,7 @@
               ]
             },
             {
-              "id": 28,
+              "id": 26,
               "tech": "Short-Read",
               "specs": "Parallel fragments",
               "available": 0,
@@ -881,11 +834,11 @@
           ]
         },
         {
-          "id": 20,
+          "id": 18,
           "category": "Expression",
           "techs": [
             {
-              "id": 29,
+              "id": 27,
               "tech": "Cell-Free",
               "specs": "DNA to proteins",
               "available": 1,
@@ -910,7 +863,7 @@
               ]
             },
             {
-              "id": 30,
+              "id": 28,
               "tech": "Fluorescence",
               "specs": "UV glow",
               "available": 1,
@@ -949,11 +902,11 @@
       "topic": "Observe",
       "categories": [
         {
-          "id": 21,
+          "id": 19,
           "category": "Visible",
           "techs": [
             {
-              "id": 31,
+              "id": 29,
               "tech": "Amateur",
               "specs": "Smart telescopes",
               "available": 1,
@@ -971,7 +924,7 @@
               ]
             },
             {
-              "id": 32,
+              "id": 30,
               "tech": "Earth",
               "specs": "Ground observatories",
               "available": 1,
@@ -991,11 +944,11 @@
           ]
         },
         {
-          "id": 22,
+          "id": 20,
           "category": "Invisible",
           "techs": [
             {
-              "id": 33,
+              "id": 31,
               "tech": "Radio",
               "specs": "Radio telescopes",
               "available": 1,
@@ -1013,7 +966,7 @@
               ]
             },
             {
-              "id": 34,
+              "id": 32,
               "tech": "Space",
               "specs": "Space telescopes",
               "available": 1,
@@ -1037,11 +990,11 @@
       "topic": "Decode",
       "categories": [
         {
-          "id": 23,
+          "id": 21,
           "category": "Analysis",
           "techs": [
             {
-              "id": 35,
+              "id": 33,
               "tech": "Astrometry",
               "specs": "Position catalogs",
               "available": 1,
@@ -1063,7 +1016,7 @@
               ]
             },
             {
-              "id": 36,
+              "id": 34,
               "tech": "Photometry",
               "specs": "Light curves",
               "available": 1,
@@ -1085,7 +1038,7 @@
               ]
             },
             {
-              "id": 37,
+              "id": 35,
               "tech": "Spectroscopy",
               "specs": "Spectra",
               "available": 1,
@@ -1139,11 +1092,11 @@
           ]
         },
         {
-          "id": 24,
+          "id": 22,
           "category": "Classification",
           "techs": [
             {
-              "id": 38,
+              "id": 36,
               "tech": "Transient",
               "specs": "Events",
               "available": 1,
@@ -1165,7 +1118,7 @@
               ]
             },
             {
-              "id": 39,
+              "id": 37,
               "tech": "Galaxies",
               "specs": "Morphology",
               "available": 1,
