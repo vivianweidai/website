@@ -10,6 +10,4 @@ toys:
     description: Document typesetting
   - name: Matplotlib
     description: 2D and 3D
-  - name: Wolfram
-    description: Custom rendering
 ---

@@ -83,10 +83,6 @@
                 {
                   "name": "Matplotlib",
                   "description": "2D and 3D"
-                },
-                {
-                  "name": "Wolfram",
-                  "description": "Custom rendering"
                 }
               ],
               "url": "/research/projects/20260404%20Four%20Point%20Probe/",
