@@ -27,17 +27,7 @@
                   "description": "Scientific computing"
                 }
               ],
-              "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-              "projects": [
-                {
-                  "date": "2026-04-20",
-                  "title": "UV-Vis Spectroscopy - Test Run",
-                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-                  "sciences": [
-                    "Chemistry"
-                  ]
-                }
-              ]
+              "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/"
             },
             {
               "id": 2,
@@ -77,17 +67,7 @@
                   "description": "Document typesetting"
                 }
               ],
-              "url": "/research/projects/20260404%20Four%20Point%20Probe/",
-              "projects": [
-                {
-                  "date": "2026-04-20",
-                  "title": "UV-Vis Spectroscopy - Test Run",
-                  "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-                  "sciences": [
-                    "Chemistry"
-                  ]
-                }
-              ]
+              "url": "/research/projects/20260404%20Four%20Point%20Probe/"
             }
           ]
         }
