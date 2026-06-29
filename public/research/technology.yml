@@ -109,6 +109,25 @@
 # ═══════════════════════════════════════════════════════════════
 
 - science: Chemistry
+  topic: Stimulate
+  categories:
+    - category: Thermal
+      techs:
+        - tech: Thermal
+          specs: Heat and mass
+          available: true
+    - category: Electrochemistry
+      techs:
+        - tech: Electrochemistry
+          specs: Ions and redox
+          available: true
+    - category: Separation
+      techs:
+        - tech: Separation
+          specs: Sort components
+          available: true
+
+- science: Chemistry
   topic: Identify
   categories:
     - category: Spectroscopy
@@ -125,25 +144,6 @@
       techs:
         - tech: Chiroptical
           specs: Chirality
-          available: true
-
-- science: Chemistry
-  topic: Stimulate
-  categories:
-    - category: Separation
-      techs:
-        - tech: Separation
-          specs: Sort components
-          available: true
-    - category: Thermal
-      techs:
-        - tech: Thermal
-          specs: Heat and mass
-          available: true
-    - category: Electrochemistry
-      techs:
-        - tech: Electrochemistry
-          specs: Ions and redox
           available: true
 
 # ═══════════════════════════════════════════════════════════════
