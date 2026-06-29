@@ -73,54 +73,6 @@
     return null;
   }
 
-  // Render a prev/next nav side. Three independently-clickable parts
-  // separated by middle dots: the leaf topic (jumps to that topic), the
-  // section name (only shown when crossing sections — jumps to the grid
-  // with that section highlighted), the subject chip (only shown when
-  // crossing subjects — jumps to the grid with that subject column
-  // highlighted). The arrow is a non-interactive cap.
-  function buildNavLink(adj, currentSubject, currentSectionIdx, direction) {
-    var sideClass = 'curr-prevnext-side ' + (direction > 0 ? 'next' : 'prev');
-    var arrow = direction > 0 ? '→' : '←';
-    if (!adj) return '<span class="' + sideClass + ' spacer">' + arrow + '</span>';
-
-    var subj = manifest[adj.subject];
-    var sec = subj.sections[adj.sectionIdx];
-    var topic = sec.topics[adj.topicIdx];
-    var crossSection = adj.sectionIdx !== currentSectionIdx || adj.subject !== currentSubject;
-    var crossSubject = adj.subject !== currentSubject;
-
-    var topicAttrs = ' data-action="topic"'
-                   + ' data-subject="' + adj.subject + '"'
-                   + ' data-section="' + adj.sectionIdx + '"'
-                   + ' data-topic="' + adj.topicIdx + '"';
-    var parts = ['<a href="#"' + topicAttrs + '>' + escapeHtml(topic.name) + '</a>'];
-
-    if (crossSection) {
-      var sectionAttrs = ' data-action="section"'
-                       + ' data-subject="' + adj.subject + '"'
-                       + ' data-section="' + adj.sectionIdx + '"';
-      parts.push('<a href="#"' + sectionAttrs + '>' + escapeHtml(sec.name) + '</a>');
-    }
-    if (crossSubject) {
-      var subjectAttrs = ' data-action="subject"'
-                       + ' data-subject="' + adj.subject + '"';
-      parts.push('<a class="chip ' + SHORT_SLUGS[adj.subject] + '" href="#"' + subjectAttrs + '>' + escapeHtml(subj.name) + '</a>');
-    }
-
-    // Topic always sits closest to the arrow (clicking the leaf is what
-    // advances): prev side lays out as topic · section · chip, next side
-    // reverses to chip · section · topic so the cursor stays anchored to
-    // the same screen position when clicking repeatedly.
-    var sep = '<span class="curr-prevnext-sep">·</span>';
-    var ordered = direction > 0 ? parts.slice().reverse() : parts;
-    var inside = ordered.join(sep);
-    var arrowSpan = '<span class="curr-prevnext-arrow">' + arrow + '</span>';
-    return direction > 0
-      ? '<span class="' + sideClass + '">' + inside + ' ' + arrowSpan + '</span>'
-      : '<span class="' + sideClass + '">' + arrowSpan + ' ' + inside + '</span>';
-  }
-
   var manifest = null;
   var pendingHash = parseHash();
   var state = { view: 'grid' };
@@ -498,8 +450,7 @@
     var sec = subj.sections[snap.sectionIdx];
     var topic = sec.topics[snap.topicIdx];
 
-    var html = '<div class="curr-prevnext"></div>';
-    html += '<div class="curr-topic-wrap">';
+    var html = '<div class="curr-topic-wrap">';
     html += '<div class="curr-topic card-pop-in" data-subj="' + snap.subject + '">';
     html += '<div class="curr-breadcrumb" data-subj="' + snap.subject + '">'
          + '<span class="curr-breadcrumb-title">' + escapeHtml(topic.name) + '</span>'
@@ -560,43 +511,6 @@
       render();
     });
 
-    // Prev/next walks the entire curriculum: same section first, then
-    // adjacent section, then adjacent subject. Each link carries the
-    // target (subject, section, topic) so a single handler can jump
-    // anywhere — no stepwise increment of state.topicIdx.
-    var prev = findAdjacent(snap.subject, snap.sectionIdx, snap.topicIdx, -1);
-    var next = findAdjacent(snap.subject, snap.sectionIdx, snap.topicIdx, +1);
-    var navHtml = buildNavLink(prev, snap.subject, snap.sectionIdx, -1)
-                + buildNavLink(next, snap.subject, snap.sectionIdx, +1);
-    widget.querySelectorAll('.curr-prevnext').forEach(function (nav) {
-      nav.innerHTML = navHtml;
-      nav.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function (e) {
-          e.preventDefault();
-          var action = a.dataset.action;
-          if (action === 'topic') {
-            state = {
-              view: 'topic',
-              subject: a.dataset.subject,
-              sectionIdx: parseInt(a.dataset.section, 10),
-              topicIdx: parseInt(a.dataset.topic, 10),
-            };
-          } else if (action === 'section') {
-            state = {
-              view: 'grid',
-              highlightSubject: a.dataset.subject,
-              highlightSectionIdx: parseInt(a.dataset.section, 10),
-            };
-          } else if (action === 'subject') {
-            state = {
-              view: 'grid',
-              highlightSubject: a.dataset.subject,
-            };
-          }
-          render();
-        });
-      });
-    });
   }
 
   function whenKatexReady(cb) {

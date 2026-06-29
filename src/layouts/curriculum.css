@@ -275,37 +275,6 @@ a.curr-col-head:hover {
 }
 .curr-topic-body .katex { font-size: 1em; }
 
-/* Prev/next nav sits OUTSIDE the .curr-topic card. Each side packs
-   three independently-clickable parts (topic · section · subject chip)
-   separated by middle dots, with the arrow as a non-interactive cap. */
-.curr-prevnext {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1em;
-  font-size: 0.9em;
-}
-.curr-prevnext-side {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  flex-wrap: wrap;
-  max-width: 48%;
-  line-height: 1.5;
-}
-.curr-prevnext-side.next { justify-content: flex-end; }
-.curr-prevnext-side a {
-  color: #0969da;
-  text-decoration: none;
-  font-weight: 400;
-}
-.curr-prevnext-side a:hover { text-decoration: underline; }
-.curr-prevnext-side a.chip:hover { text-decoration: none; }
-.curr-prevnext-arrow { color: #0969da; }
-.curr-prevnext-sep   { color: #1f2328; opacity: 0.4; }
-.curr-prevnext-side.spacer { visibility: hidden; }
-.curr-prevnext { margin: 1.5em 0; }
-
 .curr-loading {
   color: #8c959f;
   font-style: italic;
