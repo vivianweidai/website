@@ -63,6 +63,13 @@ const SCIENCE_SHORT: Record<string, string> = {
   Mathematics: 'math', Computing: 'comp', Physics: 'phys',
   Chemistry: 'chem', Biology: 'bio', Astronomy: 'astro',
 };
+// Canonical science order — projects sort by their primary (first) science
+// in this order, then newest-first within the same science.
+const SCIENCE_ORDER = ['math', 'comp', 'phys', 'chem', 'bio', 'astro'];
+const scienceRank = (p: ProjRow): number => {
+  const i = SCIENCE_ORDER.indexOf(p.chips[0]?.slug ?? '');
+  return i < 0 ? SCIENCE_ORDER.length : i;
+};
 
 for (const proj of matched) {
   const folder = proj.id;
@@ -81,7 +88,8 @@ for (const proj of matched) {
   });
 }
 
-projList.sort((a, b) => b.sortKey.localeCompare(a.sortKey));
+projList.sort((a, b) =>
+  scienceRank(a) - scienceRank(b) || b.sortKey.localeCompare(a.sortKey));
 
 // Resolve hero path. Frontmatter usually has a relative path like
 // `numpy.jpeg`; turn it into an absolute URL the browser can fetch.
