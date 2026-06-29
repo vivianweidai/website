@@ -4,7 +4,8 @@ science: Chemistry
 science_slug: chem
 topic: Stimulate
 category: Electrochemistry
-hero: electrochemistry.png
+hero: electrochemistry.jpeg
+hero_position: center 58%
 toys:
   - name: VWR pHenomenal pH 1100 L
     description: Benchtop pH meter
