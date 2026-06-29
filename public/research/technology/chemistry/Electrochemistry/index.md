@@ -2,7 +2,7 @@
 tech: Electrochemistry
 science: Chemistry
 science_slug: chem
-topic: Stimulate
+topic: Analyze
 category: Electrochemistry
 hero: electrochemistry.jpeg
 hero_position: center 54%

@@ -2,7 +2,7 @@
 tech: Spectroscopy
 science: Chemistry
 science_slug: chem
-topic: Identify
+topic: Analyze
 category: Spectroscopy
 hero: spectroscopy.jpeg
 toys:

@@ -2,7 +2,7 @@
 tech: Thermal
 science: Chemistry
 science_slug: chem
-topic: Stimulate
+topic: Analyze
 category: Thermal
 hero: thermal.jpeg
 toys:

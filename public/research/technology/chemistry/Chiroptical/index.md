@@ -2,7 +2,7 @@
 tech: Chiroptical
 science: Chemistry
 science_slug: chem
-topic: Identify
+topic: Analyze
 category: Chiroptical
 hero: chiroptical.jpeg
 hero_position: center 65%

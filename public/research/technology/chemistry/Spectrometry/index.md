@@ -2,7 +2,7 @@
 tech: Spectrometry
 science: Chemistry
 science_slug: chem
-topic: Identify
+topic: Analyze
 category: Spectrometry
 hero: spectrometry.jpg
 toys:

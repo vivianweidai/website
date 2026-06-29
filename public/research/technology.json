@@ -356,7 +356,7 @@
       "id": 5,
       "science": "Chemistry",
       "science_slug": "chem",
-      "topic": "Identify",
+      "topic": "Analyze",
       "categories": [
         {
           "id": 9,
@@ -425,15 +425,7 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "science": "Chemistry",
-      "science_slug": "chem",
-      "topic": "Stimulate",
-      "categories": [
+        },
         {
           "id": 10,
           "category": "Separation",
@@ -495,15 +487,7 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": 7,
-      "science": "Chemistry",
-      "science_slug": "chem",
-      "topic": "Identify",
-      "categories": [
+        },
         {
           "id": 11,
           "category": "Spectrometry",
@@ -565,15 +549,7 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "science": "Chemistry",
-      "science_slug": "chem",
-      "topic": "Stimulate",
-      "categories": [
+        },
         {
           "id": 13,
           "category": "Thermal",
@@ -696,7 +672,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": 6,
       "science": "Biology",
       "science_slug": "bio",
       "topic": "Image",
@@ -832,7 +808,7 @@
       ]
     },
     {
-      "id": 10,
+      "id": 7,
       "science": "Biology",
       "science_slug": "bio",
       "topic": "Replicate",
@@ -967,7 +943,7 @@
       ]
     },
     {
-      "id": 11,
+      "id": 8,
       "science": "Astronomy",
       "science_slug": "astro",
       "topic": "Observe",
@@ -1055,7 +1031,7 @@
       ]
     },
     {
-      "id": 12,
+      "id": 9,
       "science": "Astronomy",
       "science_slug": "astro",
       "topic": "Decode",

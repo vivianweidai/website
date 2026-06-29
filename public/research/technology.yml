@@ -108,32 +108,22 @@
 # CHEMISTRY
 # ═══════════════════════════════════════════════════════════════
 
-# Display order is Spectroscopy, Separation, Spectrometry, Chiroptical,
-# Thermal, Electrochemistry — the flat /research/ list concatenates categories
-# in source order. Blocks are split into contiguous same-topic runs so each
-# tech keeps its correct topic (Identify = characterize the sample,
-# Stimulate = act on it) while producing that interleaved order.
+# Flat list — categories render in source order on /research/. No sub-grouping
+# (the old Identify/Stimulate topics were dropped); `topic` is just the
+# science-level label now.
 - science: Chemistry
-  topic: Identify
+  topic: Analyze
   categories:
     - category: Spectroscopy
       techs:
         - tech: Spectroscopy
           specs: Bonds and absorbance
           available: true
-
-- science: Chemistry
-  topic: Stimulate
-  categories:
     - category: Separation
       techs:
         - tech: Separation
           specs: Sort components
           available: true
-
-- science: Chemistry
-  topic: Identify
-  categories:
     - category: Spectrometry
       techs:
         - tech: Spectrometry
@@ -144,10 +134,6 @@
         - tech: Chiroptical
           specs: Chirality
           available: true
-
-- science: Chemistry
-  topic: Stimulate
-  categories:
     - category: Thermal
       techs:
         - tech: Thermal

@@ -2,7 +2,7 @@
 tech: Separation
 science: Chemistry
 science_slug: chem
-topic: Stimulate
+topic: Analyze
 category: Separation
 hero: separation.jpeg
 toys:
