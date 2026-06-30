@@ -73,23 +73,6 @@ public final class ContentStore {
         }
     }
 
-    /// Look up a tech by name and return its parent science + the tech,
-    /// or nil if the tech isn't present in `sciences` (or `sciences`
-    /// hasn't loaded yet). Used by ProjectDetailView to render the
-    /// native tech table from a project's `tech:` front-matter array —
-    /// each tech resolves to its parent science for the chip.
-    public func findTech(named: String) -> (
-        science: ResearchScience, tech: ResearchTech
-    )? {
-        guard let sciences else { return nil }
-        for science in sciences {
-            if let tech = science.techs.first(where: { $0.tech == named }) {
-                return (science, tech)
-            }
-        }
-        return nil
-    }
-
     private func loadSciences() async {
         do {
             sciences = try await APIClient.shared.listResearchSciences()

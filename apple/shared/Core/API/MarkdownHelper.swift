@@ -91,22 +91,38 @@ public enum MarkdownHelper {
     /// Returns an empty string when no usable title field is present.
     /// Call against raw front-matter-bearing markdown *before*
     /// `stripFrontMatter`, then prepend the result to the stripped body.
-    public static func synthesizeProjectTitle(from md: String) -> String {
+    ///
+    /// `techPills` mirrors the webapp project page (Project.astro): one
+    /// science-colored pill per tech the project used, resolved by the
+    /// caller against technology.json (the parent science gives the chip
+    /// color). When empty, falls back to plain science-name pills from the
+    /// `sciences:`/`science:` front matter — the same fallback the webapp
+    /// uses for a project that declares no techs.
+    public static func synthesizeProjectTitle(
+        from md: String,
+        techPills: [(label: String, slug: String)] = []
+    ) -> String {
         let title = extractScalar(from: md, key: "title")
             ?? extractScalar(from: md, key: "tech")
         guard let title else { return "" }
-        var sciences = extractPhotos(from: md, key: "sciences")
-        if sciences.isEmpty, let single = extractScalar(from: md, key: "science") {
-            sciences = [single]
-        }
         let slugs: [String: String] = [
             "Mathematics": "math", "Computing": "comp", "Physics": "phys",
             "Chemistry": "chem", "Biology": "bio", "Astronomy": "astro",
         ]
-        let chips = sciences.compactMap { s -> String? in
-            guard let slug = slugs[s] else { return nil }
-            return "<span class=\"chip \(slug)\">\(s)</span>"
-        }.joined()
+        let pills: [(label: String, slug: String)]
+        if !techPills.isEmpty {
+            pills = techPills
+        } else {
+            var sciences = extractPhotos(from: md, key: "sciences")
+            if sciences.isEmpty, let single = extractScalar(from: md, key: "science") {
+                sciences = [single]
+            }
+            pills = sciences.compactMap { s in
+                guard let slug = slugs[s] else { return nil }
+                return (label: s, slug: slug)
+            }
+        }
+        let chips = pills.map { "<span class=\"chip \($0.slug)\">\($0.label)</span>" }.joined()
         let chipBlock = chips.isEmpty ? "" : "<span class=\"project-chips\">\(chips)</span>"
         return "<div class=\"project-title\"><h1>\(title)</h1>\(chipBlock)</div>\n\n"
     }

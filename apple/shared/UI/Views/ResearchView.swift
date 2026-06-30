@@ -373,9 +373,9 @@ private struct TechProjectRow: View {
 struct ProjectDetailView: View {
     let title: String
     let indexURL: URL
+    @State private var store = ContentStore.shared
     @State private var markdown: String = ""
     @State private var loading = true
-    @State private var techNames: [String] = []
 
     var body: some View {
         Group {
@@ -384,14 +384,7 @@ struct ProjectDetailView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 0) {
-                        MarkdownWebView(markdown: markdown)
-                        if !techNames.isEmpty {
-                            ProjectTechnologySection(techNames: techNames)
-                                .padding(.horizontal, 14)
-                                .padding(.bottom, 14)
-                        }
-                    }
+                    MarkdownWebView(markdown: markdown)
                 }
             }
         }
@@ -401,6 +394,10 @@ struct ProjectDetailView: View {
         #endif
         .task {
             do {
+                // Sciences power the title-row tech pills; idempotent +
+                // cached, so this returns immediately when already loaded.
+                await store.preloadAll()
+
                 let (data, _) = try await URLSession.shared.data(from: indexURL)
                 var md = String(data: data, encoding: .utf8) ?? ""
 
@@ -416,12 +413,15 @@ struct ProjectDetailView: View {
                     photos = await Self.scanProjectPhotos(indexURL: indexURL).shuffled()
                 }
 
-                // Capture the project's `tech:` front-matter array before
-                // we strip; that's the source for the native Technology
-                // table that replaces the inline `<ul class="updates-list">`.
-                techNames = MarkdownHelper.extractPhotos(from: md, key: "tech")
+                // Title-row pills mirror the webapp project page: one
+                // science-colored pill per tech the project used, resolved
+                // against technology.json. Replaces both the old plain
+                // science-name title pills and the bottom Technology table.
+                let techNames = MarkdownHelper.extractPhotos(from: md, key: "tech")
+                let projSciences = MarkdownHelper.extractPhotos(from: md, key: "sciences")
+                let pills = titlePills(techNames: techNames, projectSciences: projSciences)
 
-                let titleBlock = MarkdownHelper.synthesizeProjectTitle(from: md)
+                let titleBlock = MarkdownHelper.synthesizeProjectTitle(from: md, techPills: pills)
                 md = MarkdownHelper.stripFrontMatter(md)
                 md = titleBlock + md
                 md = MarkdownHelper.stripTechnologySection(md)
@@ -435,6 +435,36 @@ struct ProjectDetailView: View {
             }
             loading = false
         }
+    }
+
+    /// Resolve a project's `tech:` front-matter names into title-row pills,
+    /// matching the webapp (Project.astro): one science-colored pill per
+    /// tech, ordered by the tech's global id (science order, then within a
+    /// science) so the sequence matches the /research/ listing. A tech name
+    /// can live in more than one science (Chemistry and Astronomy both have
+    /// "Spectroscopy"), so disambiguate by the project's own `sciences:`.
+    /// Returns [] when sciences haven't loaded — the caller then falls back
+    /// to plain science-name pills, same as the webapp's no-tech fallback.
+    private func titlePills(
+        techNames: [String], projectSciences: [String]
+    ) -> [(label: String, slug: String)] {
+        guard let sciences = store.sciences else { return [] }
+        var ranked: [(label: String, slug: String, id: Int)] = []
+        for name in techNames {
+            var candidates: [(science: ResearchScience, tech: ResearchTech)] = []
+            for science in sciences {
+                if let tech = science.techs.first(where: { $0.tech == name }) {
+                    candidates.append((science, tech))
+                }
+            }
+            guard !candidates.isEmpty else { continue }
+            let pick = candidates.first { projectSciences.contains($0.science.science) }
+                ?? candidates[0]
+            ranked.append((label: name, slug: pick.science.scienceSlug, id: pick.tech.id))
+        }
+        return ranked
+            .sorted { $0.id < $1.id }
+            .map { (label: $0.label, slug: $0.slug) }
     }
 
     /// Fetch the union of image filenames under a project's
@@ -489,100 +519,6 @@ struct ProjectDetailView: View {
 private struct GitHubContentEntry: Decodable {
     let name: String
     let type: String
-}
-
-// MARK: - Project Technology section
-
-/// Native rendering of the Technology section for a project page —
-/// replaces the inline `<ul class="updates-list">` HTML that was
-/// shipped in markdown bodies. The list of toys comes from the
-/// project's `tech:` front-matter array; each tech is resolved via
-/// ContentStore (technology.json) for its parent science, and tapping a
-/// row navigates internally to TechDetailView (no Safari bounce). Techs
-/// missing from ContentStore (e.g. typo or not yet in technology.yml)
-/// are silently skipped.
-private struct ResolvedTech: Identifiable {
-    let science: ResearchScience
-    let tech: ResearchTech
-    var id: String { tech.tech }
-}
-
-private struct ProjectTechnologySection: View {
-    let techNames: [String]
-    @State private var store = ContentStore.shared
-
-    private static let scienceRank: [String: Int] = [
-        "Mathematics": 0, "Computing": 1, "Physics": 2,
-        "Chemistry": 3, "Biology": 4, "Astronomy": 5,
-    ]
-
-    /// Resolve each tech name against ContentStore and sort:
-    /// 1. by science in math → comp → phys → chem → bio → astro order;
-    /// 2. within a science, by `tech.id` (which monotonically increases
-    ///    in technology.yml authoring order, so this preserves the
-    ///    intra-subject sequence the user laid out in the source file).
-    private var resolved: [ResolvedTech] {
-        techNames
-            .compactMap { name -> ResolvedTech? in
-                guard let r = store.findTech(named: name) else { return nil }
-                return ResolvedTech(science: r.science, tech: r.tech)
-            }
-            .sorted { a, b in
-                let ra = Self.scienceRank[a.science.science] ?? Int.max
-                let rb = Self.scienceRank[b.science.science] ?? Int.max
-                if ra != rb { return ra < rb }
-                return a.tech.id < b.tech.id
-            }
-    }
-
-    var body: some View {
-        if !resolved.isEmpty {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Technology")
-                    .font(.system(size: 17, weight: .bold))
-                    .padding(.top, 8)
-
-                VStack(spacing: 0) {
-                    ForEach(Array(resolved.enumerated()), id: \.element.id) { idx, r in
-                        NavigationLink {
-                            TechDetailView(science: r.science.science, tech: r.tech)
-                        } label: {
-                            ProjectTechnologyRow(resolved: r)
-                        }
-                        .buttonStyle(.plain)
-                        if idx != resolved.count - 1 {
-                            Divider()
-                        }
-                    }
-                }
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(ResearchColors.cardBackground)
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.black.opacity(0.08), lineWidth: 1)
-                )
-            }
-        }
-    }
-}
-
-private struct ProjectTechnologyRow: View {
-    let resolved: ResolvedTech
-
-    var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 10) {
-            Text(resolved.tech.tech)
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundStyle(Color.accentColor)
-            Spacer(minLength: 6)
-            SubjectChip(subject: resolved.science.science)
-        }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 12)
-        .contentShape(Rectangle())
-    }
 }
 
 // MARK: - Subject filter (shared pattern with OlympiadsView)
