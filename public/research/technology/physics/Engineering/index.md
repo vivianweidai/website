@@ -22,6 +22,6 @@ toys:
     description: Handheld multimeter
     short: Multimeter
   - name: Prusa CORE One+
-    description: Enclosed FDM printer
+    description: Enclosed 3D printer
     short: Printer
 ---
