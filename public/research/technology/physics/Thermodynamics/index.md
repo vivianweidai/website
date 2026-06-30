@@ -5,7 +5,7 @@ science_slug: phys
 topic: Measure
 category: Thermodynamics
 hero: thermodynamics.jpeg
-hero_position: center 58%
+hero_position: center 53%
 toys:
   - name: Vernier Go Direct Gas Pressure Sensor
     description: Sealed syringe gas pressure
