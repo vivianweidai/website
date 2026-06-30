@@ -2,7 +2,7 @@ package com.vivianweidai.science.core.api
 
 import com.vivianweidai.science.core.model.Activity
 import com.vivianweidai.science.core.model.ActivityList
-import com.vivianweidai.science.core.model.ResearchTopic
+import com.vivianweidai.science.core.model.ResearchScience
 import com.vivianweidai.science.core.model.ResearchTechResponse
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -18,7 +18,7 @@ class ApiClient {
     private val mutex = Mutex()
     private val json = Json { ignoreUnknownKeys = true }
     private var cachedActivities: List<Activity>? = null
-    private var cachedTopics: List<ResearchTopic>? = null
+    private var cachedSciences: List<ResearchScience>? = null
 
     suspend fun listActivities(): List<Activity> = mutex.withLock {
         cachedActivities?.let { return it }
@@ -28,17 +28,17 @@ class ApiClient {
         list
     }
 
-    suspend fun listResearchTopics(): List<ResearchTopic> = mutex.withLock {
-        cachedTopics?.let { return it }
+    suspend fun listResearchSciences(): List<ResearchScience> = mutex.withLock {
+        cachedSciences?.let { return it }
         val body = Http.getString(TECH_URL)
-        val topics = json.decodeFromString<ResearchTechResponse>(body).topics
-        cachedTopics = topics
-        topics
+        val sciences = json.decodeFromString<ResearchTechResponse>(body).sciences
+        cachedSciences = sciences
+        sciences
     }
 
     suspend fun invalidate() = mutex.withLock {
         cachedActivities = null
-        cachedTopics = null
+        cachedSciences = null
     }
 
     companion object {

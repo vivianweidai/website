@@ -3,17 +3,11 @@
 #   Toy  = a specific physical instrument that enables a Tech.
 # Run `python pipeline/scripts/build_technology.py` after edits to regenerate JSON.
 #
-# Streamlined two-shape schema (no more topic tier):
+# Flat schema — one entry per science, each a plain list of techs:
 #   science:    Biology | Chemistry | Physics | Computing |          (required)
 #               Mathematics | Astronomy
-#   then EXACTLY ONE of:
-#     techs:        flat list of techs — renders as a plain list, no headers
-#                   (Math, Computing, Physics, Chemistry, Astronomy)
-#     categories:   list of {category, techs} — renders category headers
-#                   (use only where the grouping is real, e.g. Biology)
-#
-#   A tech entry:
-#     - tech:       string — tech name (a row on Research)           (required)
+#   techs:      list of techs (a row on the Research page)           (required)
+#     - tech:       string — tech name                               (required)
 #       specs:      string — key specs                               (required)
 #       available:  true                                             (optional — set when a Toy enables it)
 #       url:        string — external URL (links the tech name)      (optional)
@@ -103,63 +97,51 @@
       available: true
 
 # ═══════════════════════════════════════════════════════════════
-# BIOLOGY  — keeps category grouping (genuine multi-tech groups)
+# BIOLOGY
 # ═══════════════════════════════════════════════════════════════
 
 - science: Biology
-  categories:
-    - category: Microscopy
-      techs:
-        - tech: Handheld
-          specs: Surfaces
-          available: true
-        - tech: Stereo
-          specs: Organisms
-          available: true
-        - tech: Compound
-          specs: Cells
-          available: true
-    - category: Vitals
-      techs:
-        - tech: EEG
-          specs: Brain waves
-        - tech: fNIRS
-          specs: Blood flow
-        - tech: EKG
-          specs: Heart rhythm
-          available: true
-    - category: Respiration
-      techs:
-        - tech: Spirometer
-          specs: Breath volume
-          available: true
-        - tech: Gas Exchange
-          specs: Metabolic gases
-          available: true
-    - category: Amplification
-      techs:
-        - tech: PCR
-          specs: Endpoint amplify
-          available: true
-          tested: false
-        - tech: qPCR
-          specs: Real-time count
-    - category: Sequencing
-      techs:
-        - tech: Long-Read
-          specs: Entire strand
-        - tech: Short-Read
-          specs: Parallel fragments
-    - category: Expression
-      techs:
-        - tech: Cell-Free
-          specs: DNA to proteins
-          available: true
-          tested: false
-        - tech: Fluorescence
-          specs: UV glow
-          available: true
-          tested: false
+  techs:
+    - tech: Handheld
+      specs: Surfaces
+      available: true
+    - tech: Stereo
+      specs: Organisms
+      available: true
+    - tech: Compound
+      specs: Cells
+      available: true
+    - tech: EEG
+      specs: Brain waves
+    - tech: fNIRS
+      specs: Blood flow
+    - tech: EKG
+      specs: Heart rhythm
+      available: true
+    - tech: Spirometer
+      specs: Breath volume
+      available: true
+    - tech: Gas Exchange
+      specs: Metabolic gases
+      available: true
+    - tech: PCR
+      specs: Endpoint amplify
+      available: true
+      tested: false
+    - tech: qPCR
+      specs: Real-time count
+    - tech: Long-Read
+      specs: Entire strand
+    - tech: Short-Read
+      specs: Parallel fragments
+    - tech: Cell-Free
+      specs: DNA to proteins
+      available: true
+      tested: false
+    - tech: Fluorescence
+      specs: UV glow
+      available: true
+      tested: false
 
 # ═══════════════════════════════════════════════════════════════
 # ASTRONOMY

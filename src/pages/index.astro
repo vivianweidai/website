@@ -43,13 +43,11 @@ const RESEARCH_LATEST = {
 const RESEARCH_PROJECT_COUNT = {};
 {
   const seen = {}; // science (full word) -> Set of distinct project urls
-  for (const t of techData.topics) {
-    const slug = t.science.toLowerCase();
+  for (const s of techData.sciences) {
+    const slug = s.science.toLowerCase();
     if (!seen[slug]) seen[slug] = new Set();
-    for (const cat of t.categories) {
-      for (const tech of cat.techs) {
-        for (const p of tech.projects ?? []) seen[slug].add(p.url);
-      }
+    for (const tech of s.techs) {
+      for (const p of tech.projects ?? []) seen[slug].add(p.url);
     }
   }
   for (const slug of Object.keys(seen)) RESEARCH_PROJECT_COUNT[slug] = seen[slug].size;

@@ -1,9 +1,9 @@
 import SwiftUI
 import ScienceCore
 
-/// Toy browser matching the webapp /research/ page. Topics are grouped
-/// cards with a subject chip, each containing rows of technologies and
-/// their toys. Source of truth: content/research/technology.json.
+/// Toy browser matching the webapp /research/ page. One card per science,
+/// each a flat list of technologies and their toys. Source of truth:
+/// public/research/technology.json.
 struct ResearchView: View {
     @State private var store = ContentStore.shared
     @State private var subject: SubjectFilter = SubjectFilter.randomResearchSubject()
@@ -11,9 +11,9 @@ struct ResearchView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if let topics = store.topics {
-                    content(topics: topics)
-                } else if let errorMessage = store.topicsError {
+                if let sciences = store.sciences {
+                    content(sciences: sciences)
+                } else if let errorMessage = store.sciencesError {
                     ErrorState(message: errorMessage)
                 } else {
                     LoadingState(
@@ -32,19 +32,19 @@ struct ResearchView: View {
         }
     }
 
-    private func filteredTopics(_ topics: [ResearchTopic]) -> [ResearchTopic] {
-        guard case .named(let name) = subject else { return topics }
-        return topics.filter { $0.science == name }
+    private func filteredSciences(_ sciences: [ResearchScience]) -> [ResearchScience] {
+        guard case .named(let name) = subject else { return sciences }
+        return sciences.filter { $0.science == name }
     }
 
-    private func content(topics: [ResearchTopic]) -> some View {
-        let groups = scienceGroups(topics)
+    private func content(sciences: [ResearchScience]) -> some View {
+        let visible = filteredSciences(sciences)
         return ScrollView {
             LazyVStack(alignment: .leading, spacing: 14) {
-                ForEach(groups) { group in
-                    ScienceCard(group: group)
+                ForEach(visible) { science in
+                    ScienceCard(science: science)
                 }
-                if groups.isEmpty {
+                if visible.isEmpty {
                     Text("No toys yet.")
                         .font(.system(size: 14))
                         .foregroundStyle(.secondary)
@@ -55,43 +55,16 @@ struct ResearchView: View {
             .padding(.vertical, 12)
         }
     }
-
-    /// Merge the JSON's per-topic entries into one group per science, in the
-    /// order each science first appears. The webapp dropped the topic layer,
-    /// so the app now shows a single card per science with its categories
-    /// concatenated in source order.
-    private func scienceGroups(_ topics: [ResearchTopic]) -> [ScienceCard.Group] {
-        var order: [String] = []
-        var name: [String: String] = [:]
-        var cats: [String: [ResearchCategory]] = [:]
-        for t in filteredTopics(topics) {
-            if cats[t.scienceSlug] == nil {
-                order.append(t.scienceSlug)
-                name[t.scienceSlug] = t.science
-            }
-            cats[t.scienceSlug, default: []].append(contentsOf: t.categories)
-        }
-        return order.map {
-            ScienceCard.Group(science: name[$0]!, scienceSlug: $0, categories: cats[$0]!)
-        }
-    }
 }
 
 // MARK: - Science card
 
 private struct ScienceCard: View {
-    struct Group: Identifiable {
-        let science: String
-        let scienceSlug: String
-        let categories: [ResearchCategory]
-        var id: String { scienceSlug }
-    }
-
-    let group: Group
+    let science: ResearchScience
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(group.science)
+            Text(science.science)
                 .font(.system(size: 16, weight: .bold))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, 13)
@@ -99,16 +72,11 @@ private struct ScienceCard: View {
                 .padding(.trailing, 12)
             Divider()
             VStack(alignment: .leading, spacing: 0) {
-                ForEach(group.categories) { category in
-                    // Header shows only for named categories. Flat sciences
-                    // ship one empty-named category (see build_technology.py),
-                    // so they render as a plain tech list; Biology keeps its
-                    // named groups. Data-driven — no per-science list here.
-                    TechnologyBlock(
-                        science: group.science,
-                        category: category,
-                        showHeader: !category.category.isEmpty
-                    )
+                ForEach(science.techs) { tech in
+                    TechRow(science: science.science, tech: tech)
+                    if tech.id != science.techs.last?.id {
+                        Divider().padding(.leading, 28)
+                    }
                 }
             }
         }
@@ -118,41 +86,15 @@ private struct ScienceCard: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(SubjectPalette.color(for: group.science).opacity(0.7), lineWidth: 1)
+                .stroke(SubjectPalette.color(for: science.science).opacity(0.7), lineWidth: 1)
         )
         .overlay(alignment: .leading) {
             // Left accent bar, mirrors webapp .tech-accent-* border.
             RoundedRectangle(cornerRadius: 2)
-                .fill(SubjectPalette.color(for: group.science))
+                .fill(SubjectPalette.color(for: science.science))
                 .frame(width: 4)
         }
         .padding(.horizontal, 12)
-    }
-}
-
-private struct TechnologyBlock: View {
-    let science: String
-    let category: ResearchCategory
-    let showHeader: Bool
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            if showHeader {
-                Text(category.category)
-                    .font(.system(size: 13, weight: .semibold))
-                    .padding(.leading, 14)
-                    .padding(.trailing, 12)
-                    .frame(maxWidth: .infinity, minHeight: 38, alignment: .leading)
-                    .background(ResearchColors.technologyHeader)
-            }
-
-            ForEach(category.techs) { tech in
-                TechRow(science: science, tech: tech)
-                if tech.id != category.techs.last?.id {
-                    Divider().padding(.leading, 28)
-                }
-            }
-        }
     }
 }
 
@@ -555,13 +497,12 @@ private struct GitHubContentEntry: Decodable {
 /// replaces the inline `<ul class="updates-list">` HTML that was
 /// shipped in markdown bodies. The list of toys comes from the
 /// project's `tech:` front-matter array; each tech is resolved via
-/// ContentStore (technology.json) for parent topic/category and specs,
-/// and tapping a row navigates internally to TechDetailView (no
-/// Safari bounce). Techs missing from ContentStore (e.g. typo or
-/// not yet in technology.yml) are silently skipped.
+/// ContentStore (technology.json) for its parent science, and tapping a
+/// row navigates internally to TechDetailView (no Safari bounce). Techs
+/// missing from ContentStore (e.g. typo or not yet in technology.yml)
+/// are silently skipped.
 private struct ResolvedTech: Identifiable {
-    let topic: ResearchTopic
-    let category: ResearchCategory
+    let science: ResearchScience
     let tech: ResearchTech
     var id: String { tech.tech }
 }
@@ -584,11 +525,11 @@ private struct ProjectTechnologySection: View {
         techNames
             .compactMap { name -> ResolvedTech? in
                 guard let r = store.findTech(named: name) else { return nil }
-                return ResolvedTech(topic: r.topic, category: r.category, tech: r.tech)
+                return ResolvedTech(science: r.science, tech: r.tech)
             }
             .sorted { a, b in
-                let ra = Self.scienceRank[a.topic.science] ?? Int.max
-                let rb = Self.scienceRank[b.topic.science] ?? Int.max
+                let ra = Self.scienceRank[a.science.science] ?? Int.max
+                let rb = Self.scienceRank[b.science.science] ?? Int.max
                 if ra != rb { return ra < rb }
                 return a.tech.id < b.tech.id
             }
@@ -604,7 +545,7 @@ private struct ProjectTechnologySection: View {
                 VStack(spacing: 0) {
                     ForEach(Array(resolved.enumerated()), id: \.element.id) { idx, r in
                         NavigationLink {
-                            TechDetailView(science: r.topic.science, tech: r.tech)
+                            TechDetailView(science: r.science.science, tech: r.tech)
                         } label: {
                             ProjectTechnologyRow(resolved: r)
                         }
@@ -636,7 +577,7 @@ private struct ProjectTechnologyRow: View {
                 .font(.system(size: 14, weight: .semibold))
                 .foregroundStyle(Color.accentColor)
             Spacer(minLength: 6)
-            SubjectChip(subject: resolved.topic.science)
+            SubjectChip(subject: resolved.science.science)
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 12)

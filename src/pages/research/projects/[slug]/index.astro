@@ -9,13 +9,11 @@ import techData from '../../../../../public/research/technology.json';
 // one science (Chemistry and Astronomy both have "Spectroscopy"), so each
 // project disambiguates by its own sciences below.
 const TECH_INDEX: Record<string, { url: string; science: string; slug: string }[]> = {};
-for (const t of techData.topics) {
-  for (const cat of t.categories) {
-    for (const tech of cat.techs) {
-      (TECH_INDEX[tech.tech] ??= []).push({
-        url: tech.tech_url, science: t.science, slug: t.science_slug,
-      });
-    }
+for (const s of techData.sciences) {
+  for (const tech of s.techs) {
+    (TECH_INDEX[tech.tech] ??= []).push({
+      url: tech.tech_url, science: s.science, slug: s.science_slug,
+    });
   }
 }
 

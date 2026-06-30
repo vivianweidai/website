@@ -20,7 +20,7 @@ public actor APIClient {
     private let session: URLSession
     private let decoder: JSONDecoder
     private var cachedActivities: [Activity]?
-    private var cachedTopics: [ResearchTopic]?
+    private var cachedSciences: [ResearchScience]?
 
     public init(session: URLSession = .shared) {
         self.session = session
@@ -39,18 +39,18 @@ public actor APIClient {
         return items
     }
 
-    public func listResearchTopics() async throws -> [ResearchTopic] {
-        if let cachedTopics { return cachedTopics }
-        let topics = try await get(url: Self.techURL, as: ResearchTechResponse.self).topics
-        cachedTopics = topics
-        return topics
+    public func listResearchSciences() async throws -> [ResearchScience] {
+        if let cachedSciences { return cachedSciences }
+        let sciences = try await get(url: Self.techURL, as: ResearchTechResponse.self).sciences
+        cachedSciences = sciences
+        return sciences
     }
 
     /// Invalidate caches — wired to pull-to-refresh so users can force
     /// a round trip when they've just pushed new YAML.
     public func invalidate() {
         cachedActivities = nil
-        cachedTopics = nil
+        cachedSciences = nil
     }
 
     // MARK: - Private

@@ -4,8 +4,7 @@ import com.vivianweidai.science.core.api.ApiClient
 import com.vivianweidai.science.core.api.CurriculumLoader
 import com.vivianweidai.science.core.model.Activity
 import com.vivianweidai.science.core.model.CurriculumManifest
-import com.vivianweidai.science.core.model.ResearchCategory
-import com.vivianweidai.science.core.model.ResearchTopic
+import com.vivianweidai.science.core.model.ResearchScience
 import com.vivianweidai.science.core.model.ResearchTech
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
@@ -40,8 +39,8 @@ class ContentStore(
     private val _activities = MutableStateFlow<List<Activity>?>(null)
     val activities: StateFlow<List<Activity>?> = _activities.asStateFlow()
 
-    private val _topics = MutableStateFlow<List<ResearchTopic>?>(null)
-    val topics: StateFlow<List<ResearchTopic>?> = _topics.asStateFlow()
+    private val _sciences = MutableStateFlow<List<ResearchScience>?>(null)
+    val sciences: StateFlow<List<ResearchScience>?> = _sciences.asStateFlow()
 
     private val _manifest = MutableStateFlow<CurriculumManifest?>(null)
     val manifest: StateFlow<CurriculumManifest?> = _manifest.asStateFlow()
@@ -49,8 +48,8 @@ class ContentStore(
     private val _activitiesError = MutableStateFlow<String?>(null)
     val activitiesError: StateFlow<String?> = _activitiesError.asStateFlow()
 
-    private val _topicsError = MutableStateFlow<String?>(null)
-    val topicsError: StateFlow<String?> = _topicsError.asStateFlow()
+    private val _sciencesError = MutableStateFlow<String?>(null)
+    val sciencesError: StateFlow<String?> = _sciencesError.asStateFlow()
 
     private val _manifestError = MutableStateFlow<String?>(null)
     val manifestError: StateFlow<String?> = _manifestError.asStateFlow()
@@ -64,7 +63,7 @@ class ContentStore(
         val job = preloadMutex.withLock {
             inFlight ?: scope.async {
                 val a = async { loadActivities() }
-                val t = async { loadTopics() }
+                val t = async { loadSciences() }
                 val m = async { loadManifest() }
                 awaitAll(a, t, m)
                 Unit
@@ -83,10 +82,10 @@ class ContentStore(
         api.invalidate()
         curriculum.invalidate()
         _activities.value = null
-        _topics.value = null
+        _sciences.value = null
         _manifest.value = null
         _activitiesError.value = null
-        _topicsError.value = null
+        _sciencesError.value = null
         _manifestError.value = null
         preloadAll()
     }
@@ -97,27 +96,24 @@ class ContentStore(
             .onFailure { _activitiesError.value = it.message ?: it::class.simpleName }
     }
 
-    /** Look up a tech by name and return the topic + category + tech
-     *  triple, or null if the tech isn't present in `topics` (or `topics`
+    /** Look up a tech by name and return its parent science + the tech,
+     *  or null if the tech isn't present in `sciences` (or `sciences`
      *  hasn't loaded yet). Used by ProjectDetailScreen to render the
-     *  native tech table from a project's `tech:` front-matter
-     *  array — each tech resolves to its parent topic for the science
-     *  chip and its parent category for the row label. */
-    fun findTech(name: String): Triple<ResearchTopic, ResearchCategory, ResearchTech>? {
-        val all = _topics.value ?: return null
-        for (topic in all) {
-            for (category in topic.categories) {
-                val tech = category.techs.firstOrNull { it.tech == name }
-                if (tech != null) return Triple(topic, category, tech)
-            }
+     *  native tech table from a project's `tech:` front-matter array —
+     *  each tech resolves to its parent science for the chip. */
+    fun findTech(name: String): Pair<ResearchScience, ResearchTech>? {
+        val all = _sciences.value ?: return null
+        for (science in all) {
+            val tech = science.techs.firstOrNull { it.tech == name }
+            if (tech != null) return Pair(science, tech)
         }
         return null
     }
 
-    private suspend fun loadTopics() {
-        runCatching { api.listResearchTopics() }
-            .onSuccess { _topics.value = it; _topicsError.value = null }
-            .onFailure { _topicsError.value = it.message ?: it::class.simpleName }
+    private suspend fun loadSciences() {
+        runCatching { api.listResearchSciences() }
+            .onSuccess { _sciences.value = it; _sciencesError.value = null }
+            .onFailure { _sciencesError.value = it.message ?: it::class.simpleName }
     }
 
     private suspend fun loadManifest() {

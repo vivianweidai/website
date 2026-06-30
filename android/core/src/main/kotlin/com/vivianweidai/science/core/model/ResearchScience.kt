@@ -4,20 +4,14 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import java.net.URLEncoder
 
-/** Strongly-typed mirror of `public/research/technology.json`. */
+/** Strongly-typed mirror of `public/research/technology.json`. One entry per
+ *  science, each a flat list of techs (the old topic/category grouping tiers
+ *  were dropped). */
 @Serializable
-data class ResearchTopic(
+data class ResearchScience(
     val id: Int,
     val science: String,
     @SerialName("science_slug") val scienceSlug: String,
-    val topic: String,
-    val categories: List<ResearchCategory>,
-)
-
-@Serializable
-data class ResearchCategory(
-    val id: Int,
-    val category: String,
     val techs: List<ResearchTech>,
 )
 
@@ -59,7 +53,7 @@ data class ResearchTech(
 }
 
 @Serializable
-data class ResearchTechResponse(val topics: List<ResearchTopic>)
+data class ResearchTechResponse(val sciences: List<ResearchScience>)
 
 /** Per-tech project entry baked into technology.json by build_technology.py —
  *  reverse-scanned from research projects whose frontmatter `tech:` array

@@ -101,13 +101,11 @@ const heroUrl = resolveHero(hero, scienceFolder, tech);
 // No visible nav — the hrefs are baked into data attributes for the script.
 const flatTechUrls: string[] = [];
 let currentIdx = -1;
-for (const t of techData.topics) {
-  for (const cat of t.categories) {
-    for (const tt of cat.techs) {
-      if (!tt.tech_url) continue;
-      if (tt.tech === tech && t.science_slug === science_slug) currentIdx = flatTechUrls.length;
-      flatTechUrls.push(tt.tech_url);
-    }
+for (const s of techData.sciences) {
+  for (const tt of s.techs) {
+    if (!tt.tech_url) continue;
+    if (tt.tech === tech && s.science_slug === science_slug) currentIdx = flatTechUrls.length;
+    flatTechUrls.push(tt.tech_url);
   }
 }
 const N = flatTechUrls.length;

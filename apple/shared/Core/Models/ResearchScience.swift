@@ -1,24 +1,18 @@
 import Foundation
 
 /// Strongly-typed mirror of `public/research/technology.json`, the source of
-/// truth for the Research page's tech browser.
-public struct ResearchTopic: Codable, Identifiable, Hashable, Sendable {
+/// truth for the Research page's tech browser. One entry per science, each a
+/// flat list of techs (the old topic/category grouping tiers were dropped).
+public struct ResearchScience: Codable, Identifiable, Hashable, Sendable {
     public let id: Int
     public let science: String
     public let scienceSlug: String
-    public let topic: String
-    public let categories: [ResearchCategory]
+    public let techs: [ResearchTech]
 
     enum CodingKeys: String, CodingKey {
-        case id, science, topic, categories
+        case id, science, techs
         case scienceSlug = "science_slug"
     }
-}
-
-public struct ResearchCategory: Codable, Identifiable, Hashable, Sendable {
-    public let id: Int
-    public let category: String
-    public let techs: [ResearchTech]
 }
 
 public struct ResearchTech: Codable, Identifiable, Hashable, Sendable {
@@ -98,7 +92,7 @@ public struct ResearchToy: Codable, Hashable, Sendable, Identifiable {
 }
 
 public struct ResearchTechResponse: Codable, Sendable {
-    public let topics: [ResearchTopic]
+    public let sciences: [ResearchScience]
 }
 
 /// Per-tech project entry — reverse-scanned from research projects

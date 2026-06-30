@@ -55,19 +55,18 @@ import com.vivianweidai.science.core.api.Http
 import com.vivianweidai.science.core.api.MarkdownHelper
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import com.vivianweidai.science.core.model.ResearchCategory
-import com.vivianweidai.science.core.model.ResearchTopic
+import com.vivianweidai.science.core.model.ResearchScience
 import com.vivianweidai.science.core.model.ResearchTech
 import com.vivianweidai.science.core.model.ResearchTechProject
 import java.net.URLEncoder
 
-/** Tech browser mirroring the webapp at /research/. Topics grouped into
- *  cards with subject chip; each card nests categories + their techs. */
+/** Tech browser mirroring the webapp at /research/. One card per science,
+ *  each a flat list of techs. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ResearchView(store: ContentStore, modifier: Modifier = Modifier) {
-    val topics by store.topics.collectAsStateWithLifecycle()
-    val error by store.topicsError.collectAsStateWithLifecycle()
+    val sciences by store.sciences.collectAsStateWithLifecycle()
+    val error by store.sciencesError.collectAsStateWithLifecycle()
     val nav = rememberNavController()
 
     var filter by rememberSaveable(
@@ -94,8 +93,8 @@ fun ResearchView(store: ContentStore, modifier: Modifier = Modifier) {
             ) { p ->
                 Box(Modifier.padding(p)) {
                     when {
-                        topics != null -> TopicList(
-                            topics = topics!!.filterBy(filter),
+                        sciences != null -> ScienceList(
+                            sciences = sciences!!.filterBy(filter),
                             onTech = { name ->
                                 // URLEncoder uses '+' for spaces, but NavHost path
                                 // args decode with %20 semantics — so swap '+'
@@ -151,22 +150,22 @@ fun ResearchView(store: ContentStore, modifier: Modifier = Modifier) {
     }
 }
 
-private fun List<ResearchTopic>.filterBy(filter: SubjectFilter): List<ResearchTopic> =
+private fun List<ResearchScience>.filterBy(filter: SubjectFilter): List<ResearchScience> =
     when (filter) {
         SubjectFilter.All -> this
         is SubjectFilter.Named -> filter { it.science == filter.name }
     }
 
 @Composable
-private fun TopicList(
-    topics: List<ResearchTopic>,
+private fun ScienceList(
+    sciences: List<ResearchScience>,
     onTech: (String) -> Unit,
 ) {
     LazyColumn(
         contentPadding = androidx.compose.foundation.layout.PaddingValues(vertical = 12.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-        if (topics.isEmpty()) {
+        if (sciences.isEmpty()) {
             item {
                 Text(
                     text = "No tech yet.",
@@ -177,21 +176,21 @@ private fun TopicList(
                 )
             }
         }
-        items(topics, key = { it.id }) { topic ->
-            TopicCard(topic, onTech)
+        items(sciences, key = { it.id }) { science ->
+            ScienceCard(science, onTech)
         }
     }
 }
 
 @Composable
-private fun TopicCard(
-    topic: ResearchTopic,
+private fun ScienceCard(
+    science: ResearchScience,
     onTech: (String) -> Unit,
 ) {
     Surface(
         shape = RoundedCornerShape(10.dp),
         color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
-        border = BorderStroke(1.dp, SubjectPalette.color(topic.science).copy(alpha = 0.7f)),
+        border = BorderStroke(1.dp, SubjectPalette.color(science.science).copy(alpha = 0.7f)),
         modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp),
     ) {
         Row {
@@ -200,14 +199,13 @@ private fun TopicCard(
                 modifier = Modifier
                     .width(4.dp)
                     .fillMaxSize()
-                    .background(SubjectPalette.color(topic.science))
+                    .background(SubjectPalette.color(science.science))
             )
             Column(Modifier.weight(1f)) {
-                // Header — the science name (topic == science now). No chip:
-                // the title already names the science, and the accent bar +
-                // border carry its color. Matches iOS's ScienceCard header.
+                // Header — the science name. No chip: the title already names
+                // the science, and the accent bar + border carry its color.
                 Text(
-                    topic.science,
+                    science.science,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
@@ -215,38 +213,12 @@ private fun TopicCard(
                         .padding(start = 14.dp, end = 12.dp, top = 10.dp, bottom = 10.dp),
                 )
                 HorizontalDivider()
-                topic.categories.forEach { category ->
-                    TechnologyBlock(category, onTech)
+                science.techs.forEachIndexed { i, tech ->
+                    TechRow(tech, onTech)
+                    if (i != science.techs.lastIndex) {
+                        HorizontalDivider(modifier = Modifier.padding(start = 28.dp))
+                    }
                 }
-            }
-        }
-    }
-}
-
-@Composable
-private fun TechnologyBlock(
-    category: ResearchCategory,
-    onTech: (String) -> Unit,
-) {
-    Column {
-        // Header shows only for named categories. Flat sciences ship one
-        // empty-named category (see build_technology.py), so they render as a
-        // plain tech list; Biology keeps its named groups.
-        if (category.category.isNotEmpty()) {
-            Text(
-                text = category.category,
-                fontSize = 13.sp,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.surfaceContainer)
-                    .padding(start = 14.dp, end = 12.dp, top = 6.dp, bottom = 6.dp),
-            )
-        }
-        category.techs.forEachIndexed { i, tech ->
-            TechRow(tech, onTech)
-            if (i != category.techs.lastIndex) {
-                HorizontalDivider(modifier = Modifier.padding(start = 28.dp))
             }
         }
     }
@@ -366,10 +338,10 @@ private fun ProjectDetailScreen(
 
 // ---------- Tech detail ----------
 
-/** Native tech page — renders title, science chip, topic·category
- *  context, hero image, spec description, and the projects list, all
- *  from `technology.json` data. Replaces the previous markdown-passthrough
- *  approach because most tech `index.md` bodies are empty by design. */
+/** Native tech page — renders title, science chip, hero image, spec
+ *  description, and the projects list, all from `technology.json` data.
+ *  Replaces the previous markdown-passthrough approach because most tech
+ *  `index.md` bodies are empty by design. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TechDetailScreen(
@@ -378,8 +350,8 @@ private fun TechDetailScreen(
     onBack: () -> Unit,
     onProject: (String, String) -> Unit,
 ) {
-    val topics by store.topics.collectAsStateWithLifecycle()
-    val resolved = remember(topics, techName) { store.findTech(techName) }
+    val sciences by store.sciences.collectAsStateWithLifecycle()
+    val resolved = remember(sciences, techName) { store.findTech(techName) }
 
     Scaffold(
         topBar = {
@@ -396,7 +368,7 @@ private fun TechDetailScreen(
         Box(Modifier.padding(p).fillMaxSize()) {
             if (resolved == null) {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    if (topics == null) {
+                    if (sciences == null) {
                         androidx.compose.material3.CircularProgressIndicator()
                     } else {
                         Text(
@@ -407,7 +379,7 @@ private fun TechDetailScreen(
                     }
                 }
             } else {
-                val (topic, category, tech) = resolved
+                val (science, tech) = resolved
                 LazyColumn(
                     contentPadding = androidx.compose.foundation.layout.PaddingValues(14.dp),
                     verticalArrangement = Arrangement.spacedBy(14.dp),
@@ -431,20 +403,7 @@ private fun TechDetailScreen(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             Text(tech.tech, fontSize = 22.sp, fontWeight = FontWeight.Bold)
-                            SubjectChip(topic.science)
-                        }
-                    }
-                    // Category context line — only for grouped sciences
-                    // (Biology). Flat sciences carry an empty category name,
-                    // and the science already shows as a chip by the title.
-                    if (category.category.isNotEmpty()) {
-                        item {
-                            Text(
-                                category.category,
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
+                            SubjectChip(science.science)
                         }
                     }
                     if (!tech.specs.isNullOrEmpty()) {
@@ -549,16 +508,16 @@ private fun formatProjectDate(iso: String): String {
  *  replaces the inline `<ul class="updates-list">` HTML that was
  *  shipped in markdown bodies. The list of techs comes from the
  *  project's `tech:` front-matter array; each tech is resolved via
- *  ContentStore for parent topic/category + specs, and tapping a
- *  row navigates internally to TechDetailScreen. */
+ *  ContentStore for its parent science, and tapping a row navigates
+ *  internally to TechDetailScreen. */
 @Composable
 private fun ProjectTechnologySection(
     store: ContentStore,
     techNames: List<String>,
     onTech: (String) -> Unit,
 ) {
-    val topics by store.topics.collectAsStateWithLifecycle()
-    val resolved = remember(topics, techNames) {
+    val sciences by store.sciences.collectAsStateWithLifecycle()
+    val resolved = remember(sciences, techNames) {
         val rank = mapOf(
             "Mathematics" to 0, "Computing" to 1, "Physics" to 2,
             "Chemistry" to 3, "Biology" to 4, "Astronomy" to 5,
@@ -566,7 +525,7 @@ private fun ProjectTechnologySection(
         techNames.mapNotNull { store.findTech(it) }
             .sortedWith(compareBy(
                 { rank[it.first.science] ?: Int.MAX_VALUE },
-                { it.third.id },
+                { it.second.id },
             ))
     }
     if (resolved.isEmpty()) return
@@ -582,7 +541,7 @@ private fun ProjectTechnologySection(
             border = BorderStroke(1.dp, Color.Black.copy(alpha = 0.08f)),
         ) {
             Column {
-                resolved.forEachIndexed { i, (topic, category, tech) ->
+                resolved.forEachIndexed { i, (science, tech) ->
                     Surface(
                         onClick = { onTech(tech.tech) },
                         color = Color.Transparent,
@@ -594,12 +553,6 @@ private fun ProjectTechnologySection(
                                 .padding(horizontal = 12.dp, vertical = 8.dp),
                             horizontalArrangement = Arrangement.spacedBy(10.dp),
                         ) {
-                            Text(
-                                category.category,
-                                fontSize = 12.sp,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                modifier = Modifier.width(110.dp),
-                            )
                             Column(Modifier.weight(1f)) {
                                 Text(
                                     tech.tech,
@@ -615,7 +568,7 @@ private fun ProjectTechnologySection(
                                     )
                                 }
                             }
-                            SubjectChip(topic.science)
+                            SubjectChip(science.science)
                         }
                     }
                     if (i != resolved.lastIndex) HorizontalDivider()

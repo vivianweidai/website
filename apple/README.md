@@ -27,7 +27,7 @@ Three tabs:
   from `olympiads/olympiads.json` (built from
   `olympiads.yml` via `pipeline/scripts/build_olympiads.py`).
 - **Research** — tech browser driven by `research/technology.json`
-  (topics → categories → techs). Project links open an in-app markdown
+  (one card per science → flat techs). Project links open an in-app markdown
   render of the project's `index.md`; external links (photos, GitHub,
   Colab, Wolfram, etc.) hand off to Safari.
 
@@ -40,7 +40,7 @@ apple/
 ├── shared/
 │   ├── Core/                 ScienceCore library (platform-neutral)
 │   │   ├── ContentStore.swift @Observable store shared by all 3 tabs
-│   │   ├── Models/           Activity, ResearchTopic, CurriculumManifest
+│   │   ├── Models/           Activity, ResearchScience, CurriculumManifest
 │   │   ├── API/              APIClient, CurriculumLoader, MarkdownHelper
 │   │   └── Grouping/         ActivityGrouping, SubjectPaletteRGB
 │   └── UI/                   ScienceCoreUI library (iOS-only)

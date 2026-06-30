@@ -18,11 +18,11 @@ public final class ContentStore {
     public static let shared = ContentStore()
 
     public var activities: [Activity]?
-    public var topics: [ResearchTopic]?
+    public var sciences: [ResearchScience]?
     public var manifest: CurriculumManifest?
 
     public var activitiesError: String?
-    public var topicsError: String?
+    public var sciencesError: String?
     public var manifestError: String?
 
     private var preloadTask: Task<Void, Never>?
@@ -40,7 +40,7 @@ public final class ContentStore {
         }
         let task = Task {
             async let a: Void = self.loadActivities()
-            async let t: Void = self.loadTopics()
+            async let t: Void = self.loadSciences()
             async let m: Void = self.loadManifest()
             _ = await (a, t, m)
         }
@@ -56,10 +56,10 @@ public final class ContentStore {
         await APIClient.shared.invalidate()
         await CurriculumLoader.shared.invalidate()
         activities = nil
-        topics = nil
+        sciences = nil
         manifest = nil
         activitiesError = nil
-        topicsError = nil
+        sciencesError = nil
         manifestError = nil
         await preloadAll()
     }
@@ -73,32 +73,29 @@ public final class ContentStore {
         }
     }
 
-    /// Look up a tech by name and return the topic + category + tech
-    /// triple, or nil if the tech isn't present in `topics` (or `topics`
+    /// Look up a tech by name and return its parent science + the tech,
+    /// or nil if the tech isn't present in `sciences` (or `sciences`
     /// hasn't loaded yet). Used by ProjectDetailView to render the
-    /// native tech table from a project's `tech:` front-matter
-    /// array — each tech resolves to its parent topic for the science
-    /// chip and its parent category for the row label.
+    /// native tech table from a project's `tech:` front-matter array —
+    /// each tech resolves to its parent science for the chip.
     public func findTech(named: String) -> (
-        topic: ResearchTopic, category: ResearchCategory, tech: ResearchTech
+        science: ResearchScience, tech: ResearchTech
     )? {
-        guard let topics else { return nil }
-        for topic in topics {
-            for category in topic.categories {
-                if let tech = category.techs.first(where: { $0.tech == named }) {
-                    return (topic, category, tech)
-                }
+        guard let sciences else { return nil }
+        for science in sciences {
+            if let tech = science.techs.first(where: { $0.tech == named }) {
+                return (science, tech)
             }
         }
         return nil
     }
 
-    private func loadTopics() async {
+    private func loadSciences() async {
         do {
-            topics = try await APIClient.shared.listResearchTopics()
-            topicsError = nil
+            sciences = try await APIClient.shared.listResearchSciences()
+            sciencesError = nil
         } catch {
-            topicsError = error.localizedDescription
+            sciencesError = error.localizedDescription
         }
     }
 

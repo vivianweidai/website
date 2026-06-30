@@ -4,26 +4,16 @@
 Source of truth:  public/research/technology.yml
 Output:           public/research/technology.json
 
-Streamlined input schema (one entry per science): each science declares
-EXACTLY ONE of
-  techs:        flat list of techs (Math, Computing, Physics, Chemistry,
-                Astronomy) — rendered as a plain list, no headers
-  categories:   list of {category, techs} (Biology) — rendered with headers
+Flat schema — one entry per science, each a plain list of techs:
+  input:   [{science, techs: [{tech, specs, available?, url?, tested?}]}]
+  output:  {"sciences": [{id, science, science_slug,
+              techs: [{id, tech, specs, available, tech_url, hero?, url?,
+                      tested?, toys?: [{name, description}],
+                      projects?: [{date, title, url, sciences[]}]}]
+          }]}
 
-Output shape (unchanged, so iOS/Android/webapp consumers stay put):
-  {"topics": [{id, science, science_slug, topic,
-    categories: [{id, category,
-      techs: [{id, tech, specs, available, tech_url, hero?, url?,
-              toys?: [{name, description}],
-              projects?: [{date, title, url, sciences[]}]}]
-    }]
-  }]}
-
-For a flat science the build synthesizes a single category with an EMPTY
-name; clients render a category header only when the name is non-empty,
-so "flat vs grouped" is fully data-driven (no hardcoded science lists).
-`topic` is emitted as the science name — vestigial, kept only because the
-typed iOS/Android models still decode it as a required field.
+The old topic/category grouping tiers were dropped — every science now
+renders as a flat tech list, so the data carries no grouping metadata.
 
 The `projects[]` list is the one source for tech↔project links. It's
 assembled by reverse-scanning every research project's `index.md`
@@ -162,106 +152,80 @@ def build() -> list[dict]:
     if not isinstance(data, list):
         raise ValueError("technology.yml must be a YAML list")
     proj_index = projects_per_tech()
-    topics = []
-    cat_id = tech_id = 0
+    sciences = []
+    tech_id = 0
     for i, e in enumerate(data):
         if "science" not in e:
             raise ValueError(f"science[{i}] missing 'science'")
         if e["science"] not in SCIENCES:
             raise ValueError(f"science[{i}] invalid science {e['science']!r}")
+        if "techs" not in e:
+            raise ValueError(f"science[{i}] ({e['science']}) missing 'techs'")
 
-        # Exactly one of `techs` (flat) or `categories` (grouped). A flat
-        # science is normalized to one empty-named category so the rest of
-        # the build — and every consumer — sees the same categories→techs shape.
-        has_techs = "techs" in e
-        has_cats = "categories" in e
-        if has_techs == has_cats:
-            raise ValueError(
-                f"science[{i}] ({e['science']}) needs exactly one of "
-                f"'techs' or 'categories'")
-        categories = e["categories"] if has_cats else [{"category": "", "techs": e["techs"]}]
-
-        cats_out = []
-        for j, cat in enumerate(categories):
-            if "category" not in cat:
-                raise ValueError(f"science[{i}].cat[{j}] missing 'category'")
-            cat_id += 1
-            techs_out = []
-            for k, tech in enumerate(cat.get("techs") or []):
-                for f in ("tech", "specs"):
-                    if f not in tech:
-                        raise ValueError(f"science[{i}].cat[{j}].tech[{k}] missing {f!r}")
-                tech_id += 1
-                folder = SCIENCE_FOLDERS[e["science"]]
-                t: dict = {
-                    "id": tech_id,
-                    "tech": tech["tech"],
-                    "specs": tech["specs"],
-                    "available": 1 if tech.get("available") else 0,
-                    "tech_url": (
-                        f"/research/technology/{folder}/"
-                        f"{urllib.parse.quote(tech['tech'])}/"
-                    ),
-                }
-                hero = hero_for_tech(folder, tech["tech"])
-                if hero:
-                    t["hero"] = hero
-                toys = toys_for_tech(folder, tech["tech"])
-                if toys:
-                    t["toys"] = toys
-                if tech.get("url"):
-                    t["url"] = tech["url"]
-                if "tested" in tech:
-                    t["tested"] = bool(tech["tested"])
-                # Reverse-scanned projects (whose frontmatter `tech:`
-                # array references this tech), newest first. Filter by science
-                # too — two sciences can share a tech name (e.g. Chemistry and
-                # Astronomy both have "Spectroscopy"), so a project only attaches
-                # where its own sciences include this tech's science.
-                projects = [p for p in proj_index.get(tech["tech"], [])
-                            if e["science"] in (p.get("sciences") or [])]
-                if projects:
-                    projects.sort(key=lambda p: p["date"], reverse=True)
-                    t["projects"] = projects
-                techs_out.append(t)
-            cats_out.append({
-                "id": cat_id,
-                "category": cat["category"],
-                "techs": techs_out,
-            })
-        topics.append({
+        folder = SCIENCE_FOLDERS[e["science"]]
+        techs_out = []
+        for k, tech in enumerate(e["techs"]):
+            for f in ("tech", "specs"):
+                if f not in tech:
+                    raise ValueError(f"science[{i}].tech[{k}] missing {f!r}")
+            tech_id += 1
+            t: dict = {
+                "id": tech_id,
+                "tech": tech["tech"],
+                "specs": tech["specs"],
+                "available": 1 if tech.get("available") else 0,
+                "tech_url": (
+                    f"/research/technology/{folder}/"
+                    f"{urllib.parse.quote(tech['tech'])}/"
+                ),
+            }
+            hero = hero_for_tech(folder, tech["tech"])
+            if hero:
+                t["hero"] = hero
+            toys = toys_for_tech(folder, tech["tech"])
+            if toys:
+                t["toys"] = toys
+            if tech.get("url"):
+                t["url"] = tech["url"]
+            if "tested" in tech:
+                t["tested"] = bool(tech["tested"])
+            # Reverse-scanned projects (whose frontmatter `tech:`
+            # array references this tech), newest first. Filter by science
+            # too — two sciences can share a tech name (e.g. Chemistry and
+            # Astronomy both have "Spectroscopy"), so a project only attaches
+            # where its own sciences include this tech's science.
+            projects = [p for p in proj_index.get(tech["tech"], [])
+                        if e["science"] in (p.get("sciences") or [])]
+            if projects:
+                projects.sort(key=lambda p: p["date"], reverse=True)
+                t["projects"] = projects
+            techs_out.append(t)
+        sciences.append({
             "id": i + 1,
             "science": e["science"],
             "science_slug": SCIENCE_SLUGS[e["science"]],
-            "topic": e["science"],  # vestigial; kept for model-decode compat
-            "categories": cats_out,
+            "techs": techs_out,
         })
-    return topics
+    return sciences
 
 
 def main() -> int:
     try:
-        topics = build()
+        sciences = build()
     except ValueError as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
-    payload = {"topics": topics}
+    payload = {"sciences": sciences}
     out = CONTENT / "technology.json"
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
-    n_cats = sum(len(t["categories"]) for t in topics)
-    n_techs = sum(len(cat["techs"]) for t in topics for cat in t["categories"])
-    avail = sum(1 for t in topics for cat in t["categories"]
-                for tech in cat["techs"] if tech["available"])
+    n_techs = sum(len(s["techs"]) for s in sciences)
+    avail = sum(1 for s in sciences for tech in s["techs"] if tech["available"])
     print(f"wrote {out.relative_to(ROOT)}")
-    print(f"  {len(topics)} topics, {n_cats} categories, {n_techs} techs")
-    by = {}
-    for t in topics:
-        by.setdefault(t["science"], [0, 0, 0])
-        by[t["science"]][0] += 1
-        by[t["science"]][1] += len(t["categories"])
-        by[t["science"]][2] += sum(len(cat["techs"]) for cat in t["categories"])
-    for s in sorted(by):
-        print(f"    {s}: {by[s][0]} topics, {by[s][1]} cats, {by[s][2]} techs")
+    print(f"  {len(sciences)} sciences, {n_techs} techs")
+    for s in sciences:
+        n = len(s["techs"])
+        a = sum(1 for tech in s["techs"] if tech["available"])
+        print(f"    {s['science']}: {n} techs ({a} available)")
     print(f"  available: {avail}")
     return 0
 
