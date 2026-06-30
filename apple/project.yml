@@ -23,6 +23,8 @@ targets:
     dependencies:
       - package: ScienceCore
         product: ScienceCoreUI
+      - target: ScienceWatch
+        embed: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.vivianweidai.science
