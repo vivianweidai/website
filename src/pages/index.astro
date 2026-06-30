@@ -14,7 +14,7 @@ const SUBJ_ANCHOR = {
   chemistry: 'chem', biology: 'bio', astronomy: 'astro',
 };
 // Latest olympiad result per subject, picked from public/olympiads/olympiads.yml.
-// kind mirrors the olympiads page: 'invited' (⭐ sparkle) | 'competitive' (🎯 wiggle) | 'alternate' (🇨🇦 wave) | ''.
+// kind mirrors the olympiads page: 'invited' (⭐ sparkle) | 'competitive' (🎯 wiggle) | 'alternate' (🇨🇦 wave) | 'team' (🇨🇦 wave) | ''.
 // Optional `badge` overrides the hover badge label (defaults to kind.toUpperCase()) —
 // e.g. an invited camp Vivian actually attended shows 'ATTENDED' but keeps the ⭐ styling.
 const OLYMPIAD_LATEST = {
@@ -23,7 +23,7 @@ const OLYMPIAD_LATEST = {
   physics:     { name: 'Junior Science Olympiad of Canada National Camp',                     icon: '⭐', kind: 'invited',     date: 'August 2026'  },
   chemistry:   { name: 'Canadian Chemistry Olympiad Exam',                                    icon: '🎯',  kind: 'competitive', date: 'April 2026'    },
   biology:     { name: 'Canadian Biology Olympiad Competition Exam',                          icon: '🎯',  kind: 'competitive', date: 'April 2026'    },
-  astronomy:   { name: 'International Olympiad on Astronomy and Astrophysics',                 icon: '🇨🇦', kind: 'alternate',   date: 'October 2026' },
+  astronomy:   { name: 'International Olympiad on Astronomy and Astrophysics Junior',          icon: '🇨🇦', kind: 'team',        date: 'November 2026' },
 };
 const RESEARCH_LATEST = {
   // No mathematics research project yet — the row renders blank (guarded below).
@@ -126,7 +126,7 @@ const TABS = [
 
           <a class="curr-rows-pdf" data-tab="curriculum" href={`/curriculum/notes/${subjSlug}.pdf`}>pdf</a>
           <span class="curr-rows-date" data-tab="olympiads">{OLYMPIAD_LATEST[subjSlug].date}</span>
-          {(olyKind === 'competitive' || olyKind === 'invited' || olyKind === 'alternate') && (
+          {(olyKind === 'competitive' || olyKind === 'invited' || olyKind === 'alternate' || olyKind === 'team') && (
             <span class="olympiad-badge" data-tab="olympiads">{OLYMPIAD_LATEST[subjSlug].badge || olyKind.toUpperCase()}</span>
           )}
           <span class="curr-rows-topics" data-tab="research">
@@ -305,12 +305,14 @@ const TABS = [
        active when the Olympiads tab is showing. */
     .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="competitive"],
     .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="invited"],
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="alternate"] {
+    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="alternate"],
+    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="team"] {
       isolation: isolate;
     }
     .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="competitive"]::before,
     .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="invited"]::before,
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="alternate"]::before {
+    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="alternate"]::before,
+    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="team"]::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -323,7 +325,8 @@ const TABS = [
     }
     .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="competitive"]:hover::before,
     .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="invited"]:hover::before,
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="alternate"]:hover::before {
+    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="alternate"]:hover::before,
+    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="team"]:hover::before {
       animation: oly-row-ripple 1.0s ease-out;
     }
     @keyframes oly-row-ripple {
@@ -358,7 +361,8 @@ const TABS = [
        badge-flash timing exactly). Only fires for rows that have a badge. */
     .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="competitive"]:hover .curr-rows-date,
     .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="invited"]:hover .curr-rows-date,
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="alternate"]:hover .curr-rows-date {
+    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="alternate"]:hover .curr-rows-date,
+    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="team"]:hover .curr-rows-date {
       animation: oly-date-mute 1.0s ease-out;
     }
     @keyframes oly-date-mute {
@@ -517,9 +521,12 @@ const TABS = [
       80%  { transform: scale(1.12) rotate(-4deg); filter: drop-shadow(0 0 4px rgba(255,200,40,0.6)); }
       100% { transform: scale(1) rotate(0); filter: none; }
     }
-    .status-emoji-alternate .glyph { transform-origin: left center; display: inline-block; }
+    .status-emoji-alternate .glyph,
+    .status-emoji-team .glyph { transform-origin: left center; display: inline-block; }
     .status-emoji-alternate:hover .glyph,
-    .curr-rows-row:hover .status-emoji-alternate .glyph {
+    .status-emoji-team:hover .glyph,
+    .curr-rows-row:hover .status-emoji-alternate .glyph,
+    .curr-rows-row:hover .status-emoji-team .glyph {
       animation: status-wave 0.7s ease;
     }
     @keyframes status-wave {
