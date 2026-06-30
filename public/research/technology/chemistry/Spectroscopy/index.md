@@ -23,11 +23,11 @@ toys:
     description: Benchtop UV-Vis-NIR
     short: UV-Vis
     url: /research/projects/20260420%20UV-Vis%20Spectroscopy/
-  - name: VTSYIQI Visible Spectrophotometer
-    description: Benchtop visible
-    short: UV-Vis
   - name: Vernier Go Direct Fluorescence UV-VIS Spectrophotometer
     description: Portable UV-Vis and fluorescence
+    short: UV-Vis
+  - name: VTSYIQI Visible Spectrophotometer
+    description: Benchtop visible
     short: UV-Vis
   - name: Vernier Go Direct Polarimeter
     description: Single angle rotation
