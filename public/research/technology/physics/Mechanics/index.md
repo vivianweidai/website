@@ -5,6 +5,7 @@ science_slug: phys
 topic: Measure
 category: Mechanics
 hero: mechanics.jpeg
+hero_position: center 60%
 toys:
   - name: Vernier Go Direct Force and Acceleration Sensor
     description: Force gauge with accelerometer
