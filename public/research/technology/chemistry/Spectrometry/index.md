@@ -10,9 +10,6 @@ toys:
     description: Benchtop swing bucket
     short: Centrifuge
     url: /research/projects/20260411%20Centrifuge/
-  - name: DiaMed ID-Centrifuge
-    description: Card centrifuge
-    short: Centrifuge
   - name: Scientific Industries Vortex-Genie 2
     description: Homogenize sample
     chip: false
