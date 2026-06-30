@@ -369,7 +369,7 @@ import PageFooter from '../../layouts/PageFooter.astro';
             ? '<svg class="rings-icon" viewBox="0 0 50 24" width="20" height="10"><circle cx="8" cy="8" r="6" fill="none" stroke="#0081C8" stroke-width="1.5"/><circle cx="18" cy="8" r="6" fill="none" stroke="#000" stroke-width="1.5"/><circle cx="28" cy="8" r="6" fill="none" stroke="#EE334E" stroke-width="1.5"/><circle cx="13" cy="14" r="6" fill="none" stroke="#FCB131" stroke-width="1.5"/><circle cx="23" cy="14" r="6" fill="none" stroke="#00A651" stroke-width="1.5"/></svg>'
             : '<span class="type-icon">📖</span>';
           var cls = e.highlighted ? ' hl' : ((e.invited || e.attended || e.competitive || e.alternate || e.team) ? ' hl-hover' : '');
-          var badgeLabel = e.highlighted ? 'FOUNDATION' : e.attended ? 'ATTENDED' : e.invited ? 'INVITED' : e.competitive ? 'COMPETITIVE' : e.team ? 'TEAM' : e.alternate ? 'ALTERNATE' : null;
+          var badgeLabel = e.highlighted ? 'FOUNDATION' : e.attended ? 'ATTENDED' : e.invited ? 'INVITED' : e.competitive ? 'COMPETITIVE' : e.team ? 'TEAM CANADA' : e.alternate ? 'ALTERNATE' : null;
           var delay = (0.05 + entryIdx * 0.025).toFixed(2);
           entryIdx++;
           html += '<div class="entry fade-in' + cls + '" data-subject="' + SUBJECT_SLUGS[e.subject] + '" style="animation-delay:' + delay + 's">'
