@@ -89,14 +89,6 @@ private struct ScienceCard: View {
 
     let group: Group
 
-    /// Math, Computing, Physics & Chemistry render as a flat tech list (no
-    /// category headers), matching the webapp's `FLAT` set. These sciences
-    /// each have one tech per category, so the headers just duplicate the row.
-    private static let flatSciences: Set<String> = ["math", "comp", "phys", "chem"]
-    private var showCategoryHeaders: Bool {
-        !Self.flatSciences.contains(group.scienceSlug)
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(group.science)
@@ -108,10 +100,14 @@ private struct ScienceCard: View {
             Divider()
             VStack(alignment: .leading, spacing: 0) {
                 ForEach(group.categories) { category in
+                    // Header shows only for named categories. Flat sciences
+                    // ship one empty-named category (see build_technology.py),
+                    // so they render as a plain tech list; Biology keeps its
+                    // named groups. Data-driven — no per-science list here.
                     TechnologyBlock(
                         science: group.science,
                         category: category,
-                        showHeader: showCategoryHeaders
+                        showHeader: !category.category.isEmpty
                     )
                 }
             }

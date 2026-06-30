@@ -4,10 +4,13 @@
 Source of truth:  public/research/technology.yml
 Output:           public/research/technology.json
 
-Three-level schema:
-  topics[] → categories[] → techs[]
+Streamlined input schema (one entry per science): each science declares
+EXACTLY ONE of
+  techs:        flat list of techs (Math, Computing, Physics, Chemistry,
+                Astronomy) — rendered as a plain list, no headers
+  categories:   list of {category, techs} (Biology) — rendered with headers
 
-Output shape:
+Output shape (unchanged, so iOS/Android/webapp consumers stay put):
   {"topics": [{id, science, science_slug, topic,
     categories: [{id, category,
       techs: [{id, tech, specs, available, tech_url, hero?, url?,
@@ -15,6 +18,12 @@ Output shape:
               projects?: [{date, title, url, sciences[]}]}]
     }]
   }]}
+
+For a flat science the build synthesizes a single category with an EMPTY
+name; clients render a category header only when the name is non-empty,
+so "flat vs grouped" is fully data-driven (no hardcoded science lists).
+`topic` is emitted as the science name — vestigial, kept only because the
+typed iOS/Android models still decode it as a required field.
 
 The `projects[]` list is the one source for tech↔project links. It's
 assembled by reverse-scanning every research project's `index.md`
@@ -156,22 +165,32 @@ def build() -> list[dict]:
     topics = []
     cat_id = tech_id = 0
     for i, e in enumerate(data):
-        for f in ("science", "topic", "categories"):
-            if f not in e:
-                raise ValueError(f"topic[{i}] missing {f!r}")
+        if "science" not in e:
+            raise ValueError(f"science[{i}] missing 'science'")
         if e["science"] not in SCIENCES:
-            raise ValueError(f"topic[{i}] invalid science {e['science']!r}")
+            raise ValueError(f"science[{i}] invalid science {e['science']!r}")
+
+        # Exactly one of `techs` (flat) or `categories` (grouped). A flat
+        # science is normalized to one empty-named category so the rest of
+        # the build — and every consumer — sees the same categories→techs shape.
+        has_techs = "techs" in e
+        has_cats = "categories" in e
+        if has_techs == has_cats:
+            raise ValueError(
+                f"science[{i}] ({e['science']}) needs exactly one of "
+                f"'techs' or 'categories'")
+        categories = e["categories"] if has_cats else [{"category": "", "techs": e["techs"]}]
 
         cats_out = []
-        for j, cat in enumerate(e["categories"]):
+        for j, cat in enumerate(categories):
             if "category" not in cat:
-                raise ValueError(f"topic[{i}].cat[{j}] missing 'category'")
+                raise ValueError(f"science[{i}].cat[{j}] missing 'category'")
             cat_id += 1
             techs_out = []
             for k, tech in enumerate(cat.get("techs") or []):
                 for f in ("tech", "specs"):
                     if f not in tech:
-                        raise ValueError(f"topic[{i}].cat[{j}].tech[{k}] missing {f!r}")
+                        raise ValueError(f"science[{i}].cat[{j}].tech[{k}] missing {f!r}")
                 tech_id += 1
                 folder = SCIENCE_FOLDERS[e["science"]]
                 t: dict = {
@@ -214,7 +233,7 @@ def build() -> list[dict]:
             "id": i + 1,
             "science": e["science"],
             "science_slug": SCIENCE_SLUGS[e["science"]],
-            "topic": e["topic"],
+            "topic": e["science"],  # vestigial; kept for model-decode compat
             "categories": cats_out,
         })
     return topics

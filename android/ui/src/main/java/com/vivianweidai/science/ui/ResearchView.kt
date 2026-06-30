@@ -203,22 +203,17 @@ private fun TopicCard(
                     .background(SubjectPalette.color(topic.science))
             )
             Column(Modifier.weight(1f)) {
-                // Header
-                Row(
+                // Header — the science name (topic == science now). No chip:
+                // the title already names the science, and the accent bar +
+                // border carry its color. Matches iOS's ScienceCard header.
+                Text(
+                    topic.science,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 14.dp, end = 12.dp, top = 10.dp, bottom = 10.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(6.dp),
-                ) {
-                    Text(
-                        topic.topic,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.weight(1f, fill = false),
-                    )
-                    SubjectChip(topic.science)
-                }
+                )
                 HorizontalDivider()
                 topic.categories.forEach { category ->
                     TechnologyBlock(category, onTech)
@@ -234,15 +229,20 @@ private fun TechnologyBlock(
     onTech: (String) -> Unit,
 ) {
     Column {
-        Text(
-            text = category.category,
-            fontSize = 13.sp,
-            fontWeight = FontWeight.SemiBold,
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.surfaceContainer)
-                .padding(start = 14.dp, end = 12.dp, top = 6.dp, bottom = 6.dp),
-        )
+        // Header shows only for named categories. Flat sciences ship one
+        // empty-named category (see build_technology.py), so they render as a
+        // plain tech list; Biology keeps its named groups.
+        if (category.category.isNotEmpty()) {
+            Text(
+                text = category.category,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.surfaceContainer)
+                    .padding(start = 14.dp, end = 12.dp, top = 6.dp, bottom = 6.dp),
+            )
+        }
         category.techs.forEachIndexed { i, tech ->
             TechRow(tech, onTech)
             if (i != category.techs.lastIndex) {
@@ -434,15 +434,11 @@ private fun TechDetailScreen(
                             SubjectChip(topic.science)
                         }
                     }
-                    item {
-                        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                            Text(
-                                topic.topic,
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                            Text("·", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    // Category context line — only for grouped sciences
+                    // (Biology). Flat sciences carry an empty category name,
+                    // and the science already shows as a chip by the title.
+                    if (category.category.isNotEmpty()) {
+                        item {
                             Text(
                                 category.category,
                                 fontSize = 13.sp,

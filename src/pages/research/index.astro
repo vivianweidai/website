@@ -97,16 +97,14 @@ import PageFooter from '../../layouts/PageFooter.astro';
           + '</div>';
         html += '<table class="tech-table"><colgroup><col style="width:24%"><col><col class="tech-proj-col"></colgroup><tbody>';
 
-        // Math, Computing, Physics & Chemistry render as a flat tech list (no
-        // category section headers); the other sciences keep their category
-        // headings for now. Physics and Chemistry each collapse every category
-        // to a single same-named tech (Mechanics/Fluids/…; Spectroscopy/
-        // Spectrometry/…), so the flat list reads cleanly without the headers.
-        var FLAT = { math: 1, comp: 1, phys: 1, chem: 1 };
-        var showCats = !FLAT[sci.science_slug];
+        // A category header renders only when the category has a name. Flat
+        // sciences (everything except Biology) ship one empty-named category
+        // from build_technology.py, so they read as a plain tech list; Biology
+        // keeps its named groups (Microscopy, Vitals, …). Fully data-driven —
+        // no hardcoded science list here.
         sci.categories.forEach(function (cat) {
-          var catSlug = cat.category.toLowerCase().replace(/\s+/g, '-');
-          if (showCats) {
+          if (cat.category) {
+            var catSlug = cat.category.toLowerCase().replace(/\s+/g, '-');
             html += '<tr class="tech-cat-row" id="cat-' + sci.science_slug + '-' + catSlug + '">'
               + '<td colspan="3" style="padding-left:1.4em;font-weight:700">' + esc(cat.category) + '</td>'
               + '</tr>';

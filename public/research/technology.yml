@@ -3,18 +3,21 @@
 #   Toy  = a specific physical instrument that enables a Tech.
 # Run `python pipeline/scripts/build_technology.py` after edits to regenerate JSON.
 #
-# Three-level schema:
-#   science:      Biology | Chemistry | Physics | Computing |        (required)
-#                 Mathematics | Astronomy
-#   topic:        string — top-level heading (e.g. Vibrational Spectroscopy) (required)
-#   categories:   list of categories within this topic               (required)
-#     - category:     string — category name (e.g. Infrared)         (required)
-#       techs:        list of techs in this category                 (optional — omit if no techs yet)
-#         - tech:         string — tech name (a row on Research)     (required)
-#           specs:        string — key specs                         (required)
-#           available:    true                                       (optional — set when at least one Toy enables it)
-#           url:          string — external URL                      (optional — links tech name to any URL)
-#           tested:       false                                       (optional — manual override; default = has at least one project)
+# Streamlined two-shape schema (no more topic tier):
+#   science:    Biology | Chemistry | Physics | Computing |          (required)
+#               Mathematics | Astronomy
+#   then EXACTLY ONE of:
+#     techs:        flat list of techs — renders as a plain list, no headers
+#                   (Math, Computing, Physics, Chemistry, Astronomy)
+#     categories:   list of {category, techs} — renders category headers
+#                   (use only where the grouping is real, e.g. Biology)
+#
+#   A tech entry:
+#     - tech:       string — tech name (a row on Research)           (required)
+#       specs:      string — key specs                               (required)
+#       available:  true                                             (optional — set when a Toy enables it)
+#       url:        string — external URL (links the tech name)      (optional)
+#       tested:     false                                            (optional — override; default = has a project)
 #
 # Tech ↔ project links are populated via reverse-scan: declare the tech in
 # the project's `index.md` frontmatter `tech:` array and it shows up on
@@ -23,124 +26,87 @@
 # Tested vs Accessed marker on /research/:
 #   ✓ Tested  = at least one project links to the tech (default)
 #   – Accessed = available but no projects yet
-#   Override with `tested: true|false` to force the marker regardless of project links
-#   (e.g. project exists but instrument was broken so no real test happened).
+#   Override with `tested: true|false` to force the marker regardless of links.
 
 # ═══════════════════════════════════════════════════════════════
 # MATHEMATICS
 # ═══════════════════════════════════════════════════════════════
 
 - science: Mathematics
-  topic: Calculate
-  categories:
-    - category: Solve
-      techs:
-        - tech: Numeric
-          specs: Approximate
-          available: true
-          url: /research/projects/20260420%20UV-Vis%20Spectroscopy/
-        - tech: Symbolic
-          specs: Exact
-          available: true
-          url: https://www.wolframcloud.com/obj/jamesdai/Published/exoplanets.nb
-    - category: Display
-      techs:
-        - tech: Graphic
-          specs: 2D and 3D
-          available: true
-          url: /research/projects/20260404%20Four%20Point%20Probe/
+  techs:
+    - tech: Numeric
+      specs: Approximate
+      available: true
+      url: /research/projects/20260420%20UV-Vis%20Spectroscopy/
+    - tech: Symbolic
+      specs: Exact
+      available: true
+      url: https://www.wolframcloud.com/obj/jamesdai/Published/exoplanets.nb
+    - tech: Graphic
+      specs: 2D and 3D
+      available: true
+      url: /research/projects/20260404%20Four%20Point%20Probe/
 
 # ═══════════════════════════════════════════════════════════════
 # COMPUTING
 # ═══════════════════════════════════════════════════════════════
 
 - science: Computing
-  topic: Experiment
-  categories:
-    - category: Predict
-      techs:
-        - tech: Statistics
-          specs: Inference
-          available: true
-        - tech: Machine Learning
-          specs: Classic models
-          available: true
-    - category: Produce
-      techs:
-        - tech: Publishing
-          specs: Data code notebooks
-          available: true
-          url: https://github.com/vivianweidai
+  techs:
+    - tech: Statistics
+      specs: Inference
+      available: true
+    - tech: Machine Learning
+      specs: Classic models
+      available: true
+    - tech: Publishing
+      specs: Data code notebooks
+      available: true
+      url: https://github.com/vivianweidai
 
 # ═══════════════════════════════════════════════════════════════
 # PHYSICS
 # ═══════════════════════════════════════════════════════════════
 
 - science: Physics
-  topic: Measure
-  categories:
-    - category: Mechanics
-      techs:
-        - tech: Mechanics
-          specs: Force, motion and timing
-          available: true
-    - category: Thermodynamics
-      techs:
-        - tech: Thermodynamics
-          specs: Pressure and turbidity
-          available: true
-    - category: Electromagnetism
-      techs:
-        - tech: Electromagnetism
-          specs: Magnetism and spectra
-          available: true
-
-- science: Physics
-  topic: Build
-  categories:
-    - category: Engineering
-      techs:
-        - tech: Engineering
-          specs: Circuits and fabrication
-          available: true
+  techs:
+    - tech: Mechanics
+      specs: Force, motion and timing
+      available: true
+    - tech: Thermodynamics
+      specs: Pressure and turbidity
+      available: true
+    - tech: Electromagnetism
+      specs: Magnetism and spectra
+      available: true
+    - tech: Engineering
+      specs: Circuits and fabrication
+      available: true
 
 # ═══════════════════════════════════════════════════════════════
 # CHEMISTRY
 # ═══════════════════════════════════════════════════════════════
 
-# Flat list — categories render in source order on /research/. No sub-grouping
-# (the old Identify/Stimulate topics were dropped); `topic` is just the
-# science-level label now.
 - science: Chemistry
-  topic: Analyze
-  categories:
-    - category: Thermal
-      techs:
-        - tech: Thermal
-          specs: Heat and mass
-          available: true
-    - category: Electrochemistry
-      techs:
-        - tech: Electrochemistry
-          specs: Ions and redox
-          available: true
-    - category: Spectroscopy
-      techs:
-        - tech: Spectroscopy
-          specs: Bonds, absorbance, chirality
-          available: true
-    - category: Spectrometry
-      techs:
-        - tech: Spectrometry
-          specs: Separation and mass
-          available: true
+  techs:
+    - tech: Thermal
+      specs: Heat and mass
+      available: true
+    - tech: Electrochemistry
+      specs: Ions and redox
+      available: true
+    - tech: Spectroscopy
+      specs: Bonds, absorbance, chirality
+      available: true
+    - tech: Spectrometry
+      specs: Separation and mass
+      available: true
 
 # ═══════════════════════════════════════════════════════════════
-# BIOLOGY
+# BIOLOGY  — keeps category grouping (genuine multi-tech groups)
 # ═══════════════════════════════════════════════════════════════
 
 - science: Biology
-  topic: Image
   categories:
     - category: Microscopy
       techs:
@@ -170,10 +136,6 @@
         - tech: Gas Exchange
           specs: Metabolic gases
           available: true
-
-- science: Biology
-  topic: Replicate
-  categories:
     - category: Amplification
       techs:
         - tech: PCR
@@ -204,44 +166,31 @@
 # ═══════════════════════════════════════════════════════════════
 
 - science: Astronomy
-  topic: Observe
-  categories:
-    - category: Visible
-      techs:
-        - tech: Amateur
-          specs: Smart telescopes
-          available: true
-        - tech: Earth
-          specs: Ground observatories
-          available: true
-    - category: Invisible
-      techs:
-        - tech: Radio
-          specs: Radio telescopes
-          available: true
-        - tech: Space
-          specs: Space telescopes
-          available: true
-
-- science: Astronomy
-  topic: Decode
-  categories:
-    - category: Analysis
-      techs:
-        - tech: Astrometry
-          specs: Position catalogs
-          available: true
-        - tech: Photometry
-          specs: Light curves
-          available: true
-        - tech: Spectroscopy
-          specs: Spectra
-          available: true
-    - category: Classification
-      techs:
-        - tech: Transient
-          specs: Events
-          available: true
-        - tech: Galaxies
-          specs: Morphology
-          available: true
+  techs:
+    - tech: Amateur
+      specs: Smart telescopes
+      available: true
+    - tech: Earth
+      specs: Ground observatories
+      available: true
+    - tech: Radio
+      specs: Radio telescopes
+      available: true
+    - tech: Space
+      specs: Space telescopes
+      available: true
+    - tech: Astrometry
+      specs: Position catalogs
+      available: true
+    - tech: Photometry
+      specs: Light curves
+      available: true
+    - tech: Spectroscopy
+      specs: Spectra
+      available: true
+    - tech: Transient
+      specs: Events
+      available: true
+    - tech: Galaxies
+      specs: Morphology
+      available: true

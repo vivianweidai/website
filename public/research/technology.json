@@ -4,11 +4,11 @@
       "id": 1,
       "science": "Mathematics",
       "science_slug": "math",
-      "topic": "Calculate",
+      "topic": "Mathematics",
       "categories": [
         {
           "id": 1,
-          "category": "Solve",
+          "category": "",
           "techs": [
             {
               "id": 1,
@@ -43,13 +43,7 @@
                 }
               ],
               "url": "https://www.wolframcloud.com/obj/jamesdai/Published/exoplanets.nb"
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "category": "Display",
-          "techs": [
+            },
             {
               "id": 3,
               "tech": "Graphic",
@@ -77,11 +71,11 @@
       "id": 2,
       "science": "Computing",
       "science_slug": "comp",
-      "topic": "Experiment",
+      "topic": "Computing",
       "categories": [
         {
-          "id": 3,
-          "category": "Predict",
+          "id": 2,
+          "category": "",
           "techs": [
             {
               "id": 4,
@@ -124,13 +118,7 @@
                   "description": "Deep learning framework"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 4,
-          "category": "Produce",
-          "techs": [
+            },
             {
               "id": 6,
               "tech": "Publishing",
@@ -176,11 +164,11 @@
       "id": 3,
       "science": "Physics",
       "science_slug": "phys",
-      "topic": "Measure",
+      "topic": "Physics",
       "categories": [
         {
-          "id": 5,
-          "category": "Mechanics",
+          "id": 3,
+          "category": "",
           "techs": [
             {
               "id": 7,
@@ -206,13 +194,7 @@
                   "short": "Time"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 6,
-          "category": "Thermodynamics",
-          "techs": [
+            },
             {
               "id": 8,
               "tech": "Thermodynamics",
@@ -232,13 +214,7 @@
                   "short": "Turbidity"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 7,
-          "category": "Electromagnetism",
-          "techs": [
+            },
             {
               "id": 9,
               "tech": "Electromagnetism",
@@ -263,21 +239,7 @@
                   "short": "Optical Fiber"
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "science": "Physics",
-      "science_slug": "phys",
-      "topic": "Build",
-      "categories": [
-        {
-          "id": 8,
-          "category": "Engineering",
-          "techs": [
+            },
             {
               "id": 10,
               "tech": "Engineering",
@@ -333,14 +295,14 @@
       ]
     },
     {
-      "id": 5,
+      "id": 4,
       "science": "Chemistry",
       "science_slug": "chem",
-      "topic": "Analyze",
+      "topic": "Chemistry",
       "categories": [
         {
-          "id": 9,
-          "category": "Thermal",
+          "id": 4,
+          "category": "",
           "techs": [
             {
               "id": 11,
@@ -407,13 +369,7 @@
                   ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 10,
-          "category": "Electrochemistry",
-          "techs": [
+            },
             {
               "id": 12,
               "tech": "Electrochemistry",
@@ -454,13 +410,7 @@
                   ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 11,
-          "category": "Spectroscopy",
-          "techs": [
+            },
             {
               "id": 13,
               "tech": "Spectroscopy",
@@ -532,13 +482,7 @@
                   ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 12,
-          "category": "Spectrometry",
-          "techs": [
+            },
             {
               "id": 14,
               "tech": "Spectrometry",
@@ -605,13 +549,13 @@
       ]
     },
     {
-      "id": 6,
+      "id": 5,
       "science": "Biology",
       "science_slug": "bio",
-      "topic": "Image",
+      "topic": "Biology",
       "categories": [
         {
-          "id": 13,
+          "id": 5,
           "category": "Microscopy",
           "techs": [
             {
@@ -663,7 +607,7 @@
           ]
         },
         {
-          "id": 14,
+          "id": 6,
           "category": "Vitals",
           "techs": [
             {
@@ -705,7 +649,7 @@
           ]
         },
         {
-          "id": 15,
+          "id": 7,
           "category": "Respiration",
           "techs": [
             {
@@ -737,17 +681,9 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": 7,
-      "science": "Biology",
-      "science_slug": "bio",
-      "topic": "Replicate",
-      "categories": [
+        },
         {
-          "id": 16,
+          "id": 8,
           "category": "Amplification",
           "techs": [
             {
@@ -786,7 +722,7 @@
           ]
         },
         {
-          "id": 17,
+          "id": 9,
           "category": "Sequencing",
           "techs": [
             {
@@ -814,7 +750,7 @@
           ]
         },
         {
-          "id": 18,
+          "id": 10,
           "category": "Expression",
           "techs": [
             {
@@ -876,14 +812,14 @@
       ]
     },
     {
-      "id": 8,
+      "id": 6,
       "science": "Astronomy",
       "science_slug": "astro",
-      "topic": "Observe",
+      "topic": "Astronomy",
       "categories": [
         {
-          "id": 19,
-          "category": "Visible",
+          "id": 11,
+          "category": "",
           "techs": [
             {
               "id": 29,
@@ -920,13 +856,7 @@
                   "description": "Remote access to Great Basin National Park"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 20,
-          "category": "Invisible",
-          "techs": [
+            },
             {
               "id": 31,
               "tech": "Radio",
@@ -958,21 +888,7 @@
                   "description": "Space telescope data"
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 9,
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "topic": "Decode",
-      "categories": [
-        {
-          "id": 21,
-          "category": "Analysis",
-          "techs": [
+            },
             {
               "id": 33,
               "tech": "Astrometry",
@@ -1050,13 +966,7 @@
                   "description": "Spectra outside of cuvettes"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 22,
-          "category": "Classification",
-          "techs": [
+            },
             {
               "id": 36,
               "tech": "Transient",
