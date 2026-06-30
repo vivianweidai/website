@@ -403,6 +403,7 @@
   date: June 2026
   name: Canadian Astronomy and Astrophysics Olympiad Junior National Camp
   attended: true
+  team: true
 - type: olympiad
   subject: Astronomy
   date: May 2026

@@ -21,7 +21,7 @@ One set of samples through two instruments: the UV-2550 measures which colors of
 
 | Toolkit | Details |
 |----------|---------|
-| Instruments | Shimadzu UV-2550 UV-Vis Spectrophotometer and Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer |
+| Instruments | Shimadzu UV-2550 UV-Vis Spectrophotometer, Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer, and PerkinElmer Lambda 750 UV-Vis-NIR Spectrophotometer |
 | Cuvettes | 10 mm fluorescence-grade quartz, four clear sides |
 | Software | UVProbe (Shimadzu), FluorEssence (Horiba) |
 | Blanks | Distilled water (aqueous), 95% ethanol (ethanol samples) |
