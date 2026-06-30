@@ -273,7 +273,7 @@ private struct ActivityRow: View {
                     if activity.competitive == 1 {
                         Text("🎯").font(.system(size: 12))
                     }
-                    if activity.alternate == 1 {
+                    if activity.alternate == 1 || activity.team == 1 {
                         Text("🇨🇦").font(.system(size: 12))
                     }
                 }

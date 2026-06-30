@@ -13,10 +13,11 @@ public struct Activity: Identifiable, Hashable, Codable, Sendable {
     public let attended: Int?
     public let competitive: Int?
     public let alternate: Int?
+    public let team: Int?
 
     enum CodingKeys: String, CodingKey {
         case id, type, subject, date, name, highlighted, subjects
-        case invited, attended, competitive, alternate
+        case invited, attended, competitive, alternate, team
         case sortKey = "sort_key"
     }
 

@@ -89,10 +89,12 @@ private struct ScienceCard: View {
 
     let group: Group
 
-    /// Math & Computing render as a flat tech list (no category headers),
-    /// matching the webapp.
+    /// Math, Computing, Physics & Chemistry render as a flat tech list (no
+    /// category headers), matching the webapp's `FLAT` set. These sciences
+    /// each have one tech per category, so the headers just duplicate the row.
+    private static let flatSciences: Set<String> = ["math", "comp", "phys", "chem"]
     private var showCategoryHeaders: Bool {
-        group.scienceSlug != "math" && group.scienceSlug != "comp"
+        !Self.flatSciences.contains(group.scienceSlug)
     }
 
     var body: some View {
