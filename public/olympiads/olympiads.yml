@@ -386,6 +386,11 @@
   name: Johns Hopkins University Center for Talented Youth AP Biology
 - type: olympiad
   subject: Astronomy
+  date: November 2026
+  name: International Olympiad on Astronomy and Astrophysics for Juniors
+  team: true
+- type: olympiad
+  subject: Astronomy
   date: October 2026
   name: International Olympiad on Astronomy and Astrophysics
   alternate: true
