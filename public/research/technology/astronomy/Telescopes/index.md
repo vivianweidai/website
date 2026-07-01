@@ -16,8 +16,4 @@ toys:
   - name: Great Basin Observatory
     description: Remote access to Great Basin National Park
     short: Earth
-  - name: MAST Portal
-    description: Space telescope data
-    short: Space
-    chip: false
 ---
