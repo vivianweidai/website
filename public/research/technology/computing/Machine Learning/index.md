@@ -2,7 +2,7 @@
 tech: Machine Learning
 science: Computing
 science_slug: comp
-hero: kaggle.png
+hero: ctybiology.jpeg
 toys:
   - name: scikit-learn
     description: Classification and regression

@@ -2,8 +2,7 @@
 tech: Publishing
 science: Computing
 science_slug: comp
-hero: github.jpeg
-hero_position: top
+hero: ptable.jpeg
 toys:
   - name: GitHub
     description: Version control and hosting
