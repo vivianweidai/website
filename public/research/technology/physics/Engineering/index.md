@@ -10,14 +10,6 @@ toys:
   - name: Digilent Analog Discovery 3
     description: Oscilloscope, generator and analyzer
     short: Oscilloscope
-  - name: Korad KA3005P
-    description: Benchtop power supply
-    short: Power Supply
-    chip: false
-  - name: Fluke 117
-    description: Handheld multimeter
-    short: Multimeter
-    chip: false
   - name: Prusa CORE One+
     description: Enclosed 3D printer
     short: 3D Printer
