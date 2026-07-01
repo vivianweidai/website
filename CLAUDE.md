@@ -58,73 +58,12 @@ All instrument names in code and prose must exactly match what's in `archives/te
 
 ## REPO STRUCTURE
 
-Top-level: `apple/ android/ pipeline/ public/ src/` plus the Astro config files. Five directories — minimal because of one deliberate convention deviation (see below).
+Top-level: `apple/ android/ pipeline/ public/ src/` plus Astro config. Five dirs — minimal because of one deliberate deviation (below). The plain layout is in `README.md`; the non-obvious parts:
 
-```
-science/
-├── astro.config.mjs        # Astro config (trailingSlash: 'always', site: vivianweidai.com)
-├── package.json            # Astro deps + dev/build scripts (no pre/post-build hooks needed)
-├── tsconfig.json           # Astro strict TS preset
-├── pnpm-lock.yaml
-├── CLAUDE.md · README.md · IDEAS.md · .gitignore
-│
-├── src/                    # Astro source
-│   ├── content.config.ts   # Content collections: projects + tech
-│   ├── layouts/            # Astro components AND their associated CSS/JS:
-│   │                       #   Default.astro + Project.astro
-│   │                       #   base.css / tabs.css / curriculum.css   (imported by .astro)
-│   │                       #   curriculum.js                          (imported via ?url)
-│   └── pages/              # File-based routing
-│       ├── index.astro     # /
-│       ├── curriculum/     # /curriculum/
-│       ├── olympiads/      # /olympiads/
-│       ├── research/       # /research/ + dynamic /research/projects/[slug]/ + /research/technology/[science]/[tech]/
-│       └── privacy.md      # /privacy/
-│
-├── archives/               # Reference materials — read by Claude/the user, NOT
-│                           # served on vivianweidai.com. Top-level (outside public/)
-│                           # so faculty/lab catalogue filenames stay private.
-│   ├── technology/         # toys.pdf + lab/faculty catalogues + comparison
-│   └── toys/<Toy>/         # Per-Toy reference photos + walk-up guide PDF
-│
-├── pipeline/
-│   ├── worker/             # Cloudflare Worker (ASSETS passthrough)
-│   │   ├── wrangler.toml   # name=science, [assets] dir=./dist (Astro outputs here)
-│   │   ├── package.json
-│   │   └── src/index.js    # `env.ASSETS.fetch(request)`
-│   └── scripts/            # Python build scripts
-│       ├── build_olympiads.py / build_technology.py  # YAML → JSON
-│       └── build_curriculum.py                 # .docx → markdown + curriculum.json
-│
-├── public/                 # Astro public/ — served at site root; our source-of-truth lives directly here
-│   ├── curriculum/
-│   │   ├── notes/                # Per-discipline PDF (linked from homepage). The DOCX
-│   │   │                         #   sources were dropped after the one-time build (commit
-│   │   │                         #   f8e7ad3); re-add a subject's .docx here to rebuild it.
-│   │   ├── source/               # Per-discipline markdown (build_curriculum.py output;
-│   │   │                         #   ALSO fetched by Apple+Android apps for in-app rendering)
-│   │   └── curriculum.json       # Generated manifest — DO NOT EDIT BY HAND
-│   ├── olympiads/
-│   │   ├── olympiads.yml         # Source of truth — edit, then rebuild
-│   │   └── olympiads.json        # Generated — DO NOT EDIT BY HAND
-│   └── research/
-│       ├── projects/<folder>/    # YYYYMMDD Project Name
-│       │   ├── index.md          # Project page (Content Collection 'projects')
-│       │   ├── data/             # Raw instrument data
-│       │   ├── photos/           # setup/, samples/, data/ (data excluded from shuffle)
-│       │   ├── papers/           # Background papers
-│       │   └── output/           # Analysis scripts, notebooks, plots
-│       ├── technology/<science>/<Tech>/ # Per-Tech template page (Content Collection 'tech');
-│       │                         #   <science> is the full word (mathematics, computing,
-│       │                         #   etc.) to mirror public/curriculum/source/
-│       │   ├── index.md          # Frontmatter `hero:` points to a sibling file
-│       │   └── *.jpeg / *.jpg    # Photos sit flat next to index.md (no photos/)
-│       ├── technology.yml              # Source of truth — edit, then rebuild
-│       └── technology.json             # Generated — DO NOT EDIT BY HAND
-│
-├── apple/                  # iOS + watchOS app source (SwiftPM + XcodeGen)
-└── android/                # Android + Wear OS source (Gradle multi-module)
-```
+- **`src/`** — `content.config.ts` (Content Collections: **`projects`** + **`tech`**); `layouts/` holds the `.astro` components *and* their imported CSS/JS; `pages/` is file-based routing (`research/` carries the dynamic `[slug]` project route + `[science]/[tech]` tech route).
+- **`archives/`** — reference materials (toys.pdf, lab/faculty catalogues, per-Toy walk-up guides), kept **top-level so the private filenames stay off the served site**; `archives/README.md` is the legend (live / dormant / survey).
+- **`pipeline/worker/`** — CF Worker (ASSETS passthrough → `dist/`). **`pipeline/scripts/`** — `build_olympiads.py` / `build_technology.py` (YAML→JSON) + `build_curriculum.py` (.docx→markdown).
+- **`public/`** — source-of-truth served verbatim at the site root (the deviation). Areas: `curriculum/` (`source/*.md` + `curriculum.json`), `olympiads/` (`olympiads.yml`), `research/` (`projects/<YYYYMMDD Name>/`, `technology/<science>/<Tech>/index.md` with a sibling `hero:` image + flat photos, `technology.yml`). `<science>` is the full word (mathematics, computing…) to mirror `curriculum/source/`. **Every `*.json` under `public/` is generated — DO NOT edit by hand; edit the `.yml` and rebuild.**
 
 **Convention deviation: no top-level `content/`; everything goes directly under `public/`.** The cross-repo convention puts source-of-truth in a top-level `content/` dir. We deviate because Astro already has a special `public/` dir (served verbatim at the site root). With our setup, `public/` IS the content dir — files at `public/X/Y` serve at `/X/Y`. No `content/` layer, no `/content/` URL prefix, no sync step. The Astro Content Collection loader points at `public/research/projects/`; the dynamic route's photo discovery walks the same path. Apple/Android fetch from `vivianweidai.com/{olympiads,research,curriculum}/...`.
 
@@ -213,87 +152,25 @@ This repo is synced to GitHub at `vivianweidai/science` and served at `vivianwei
 
 ## PROJECT README TEMPLATE
 
-When creating a new project README, use this template:
+Project pages are **`index.md`** (not `README.md`). Model new ones on an existing page (e.g. `20260420 UV-Vis Spectroscopy/index.md`). Required structure:
 
-### Template A: Multiple photos (4+)
+**Frontmatter → title → hero.** `---` / `project: [Short Name]` / `---`, then `# [Experiment Title]`, then the hero:
+- **4+ photos** → a shuffle grid (pool auto-populates from `photos/setup/` + `samples/`; no `photos:` array, no inline script):
+  ```html
+  <div class="photo-grid" id="photo-grid"><img id="photo-0" alt="…"><img id="photo-1" alt="…"><img id="photo-2" alt="…"><img id="photo-3" alt="…"></div>
+  <button class="shuffle-btn" onclick="shufflePhotos()">Shuffle Photos</button>
+  ```
+- **1 photo** → `<div class="hero-single"><img src="photos/[file]" alt="…"></div>`
+- Then `<div class="project-meta">[Month Dayth Year]<br>[Instrument name]</div>`.
 
-```markdown
----
-project: [Short Project Name]
----
+**Body sections, in order:** `## Overview` (1–2 para) · `## Setup` (Category/Details table + procedure prose) · `## Samples` (**top-level `##`**, not under Setup; Category/Samples table) · `## Data` (format; if `photos/data/` has data sheets, add a hand-coded `#data-grid` of plain `<img>` pointing at them — `three-col` for 3, shuffle button only if >4) · `## Results` (link **written report → static notebook → Colab**, in that order).
 
-# [Experiment Title]
-
-<div class="photo-grid" id="photo-grid">
-  <img id="photo-0" alt="Experiment photo">
-  <img id="photo-1" alt="Experiment photo">
-  <img id="photo-2" alt="Experiment photo">
-  <img id="photo-3" alt="Experiment photo">
-</div>
-<button class="shuffle-btn" onclick="shufflePhotos()">Shuffle Photos</button>
-
-<div class="project-meta">[Month Dayth Year]<br>[Instrument name]</div>
+**End with the footer div:**
+```html
+<div class="footer"><div class="footer-nav"><a href="/curriculum/">Curriculum</a><a href="/olympiads/">Olympiads</a><a href="/research/">Research</a></div><a class="footer-github" href="https://github.com/vivianweidai/science/tree/main/[URL-encoded folder]">View on GitHub</a></div>
 ```
 
-The shuffle pool is populated automatically by `src/pages/research/projects/[slug]/index.astro` — it scans every image file under `photos/` (both `setup/` and `samples/` subfolders). No `photos:` array, no `_pagePhotos` inline script. Drop a new photo into `photos/` and it joins the shuffle on next page load.
-
-### Template B: Single photo
-
-```markdown
----
-project: [Short Project Name]
----
-
-# [Experiment Title]
-
-<div class="hero-single"><img src="photos/[filename]" alt="[description]"></div>
-
-<div class="project-meta">[Month Dayth Year]<br>[Instrument name]</div>
-```
-
-### Common sections (both templates)
-
-```markdown
-## Overview
-
-[1-2 paragraph description]
-
-## Setup
-
-| Category | Details |
-|----------|---------|
-| [Category] | [details] |
-
-[Prose description of the experimental procedure, flowing naturally from the materials table above.]
-
-## Samples
-
-| Category | Samples |
-|----------|---------|
-| [Category] | [samples] |
-
-[Description of samples.]
-
-## Data
-
-[Description of data format and what was recorded.]
-
-[If `photos/data/` contains data-sheet images, add a hand-coded photo grid here (plain `<img>` markup pointing at `photos/data/data1.jpeg`, etc.). Show all photos without a shuffle button if count <= 4. Only add a shuffle button if there are more photos than grid slots. Use `three-col` class for 3 images. This grid is independent from the top PHOTOS shuffler — `photos/data/` is filtered out of the shuffle pool.]
-
-## Results
-
-[Summary. Link to written report first, then notebook:]
-
-See the <a href="https://github.com/vivianweidai/science/blob/main/[path]">written report</a>, the <a href="https://github.com/vivianweidai/science/blob/main/[path]">static notebook</a> or <a href="https://colab.research.google.com/github/vivianweidai/science/blob/main/[path]">run the reproducible analysis yourself</a>.
-
----
-
-<div class="footer"><div class="footer-nav"><a href="/curriculum/">Curriculum</a><a href="/olympiads/">Olympiads</a><a href="/research/">Research</a></div><a class="footer-github" href="https://github.com/vivianweidai/science/tree/main/[URL-encoded folder name]">View on GitHub</a></div>
-```
-
-Always use `index.md` (not `README.md`) for project pages. Always include the footer div. The top-page shuffle is auto-populated from `photos/setup/` (and `photos/samples/` if present); a hand-coded in-page data grid points at `photos/data/` images. **Samples** is a top-level `##` section (not a subsection of Setup).
-
-**Never add a "#" / row-number column to any table** — in Setup, Samples, Results, or anywhere else. Markdown tables already read as a list; a numbering column only adds visual noise. If ordering matters, convey it through row sequence alone. This rule is repo-wide, not sample-table-specific.
+**Never add a "#" / row-number column to any table** (Setup, Samples, Results, anywhere) — markdown tables already read as a list; convey ordering by row sequence alone. Repo-wide rule.
 
 ## TECHNOLOGY TABLE AT THE BOTTOM OF EACH PROJECT
 
