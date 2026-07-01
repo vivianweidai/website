@@ -311,29 +311,9 @@
               "short": "Calorimetry"
             },
             {
-              "name": "TA Instruments Tzero Sample Encapsulation Press",
-              "description": "Seal sample pans",
-              "chip": false
-            },
-            {
-              "name": "TA Instruments Tzero Aluminum Pan and Lid",
-              "description": "Standard sample pans",
-              "chip": false
-            },
-            {
               "name": "TA Instruments TGA Q50",
               "description": "Mass loss over temperature",
               "short": "Thermogravimetry"
-            },
-            {
-              "name": "TA Instruments TGA Q50 Hangdown Wire",
-              "description": "Suspend sample pan",
-              "chip": false
-            },
-            {
-              "name": "TA Instruments TGA Ceramic Pan",
-              "description": "Ceramic sample pan",
-              "chip": false
             }
           ],
           "projects": [
@@ -423,11 +403,6 @@
             {
               "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
               "description": "Portable UV-Vis and fluorescence",
-              "short": "UV-Vis"
-            },
-            {
-              "name": "VTSYIQI Visible Spectrophotometer",
-              "description": "Benchtop visible",
               "short": "UV-Vis"
             },
             {
@@ -729,11 +704,6 @@
           "tech_url": "/research/technology/astronomy/Classification/",
           "hero": "/research/technology/astronomy/Classification/observatory.jpeg",
           "toys": [
-            {
-              "name": "ZWO Seestar S30 Pro",
-              "description": "Smart amateur telescope",
-              "chip": false
-            },
             {
               "name": "Transient Name Server",
               "description": "Registry for new transients",

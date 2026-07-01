@@ -17,19 +17,7 @@ toys:
   - name: TA Instruments DSC Q100
     description: Separate reversing transitions
     short: Calorimetry
-  - name: TA Instruments Tzero Sample Encapsulation Press
-    description: Seal sample pans
-    chip: false
-  - name: TA Instruments Tzero Aluminum Pan and Lid
-    description: Standard sample pans
-    chip: false
   - name: TA Instruments TGA Q50
     description: Mass loss over temperature
     short: Thermogravimetry
-  - name: TA Instruments TGA Q50 Hangdown Wire
-    description: Suspend sample pan
-    chip: false
-  - name: TA Instruments TGA Ceramic Pan
-    description: Ceramic sample pan
-    chip: false
 ---
