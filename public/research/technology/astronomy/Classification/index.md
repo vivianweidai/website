@@ -5,12 +5,12 @@ science_slug: astro
 hero: classification.jpeg
 toys:
   - name: Transient Name Server
-    description: Registry for new transients
+    description: Transient registry
     short: Transient
   - name: WISeREP
-    description: Reference for supernova typing
+    description: Supernova references
     chip: false
   - name: Galaxy Zoo
-    description: Reference for morphologies
+    description: Morphology references
     short: Galaxies
 ---
