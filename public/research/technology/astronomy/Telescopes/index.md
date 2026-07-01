@@ -4,7 +4,7 @@ science: Astronomy
 science_slug: astro
 hero: telescopes.jpeg
 toys:
-  - name: ZWO Seestar S30 Pro
+  - name: ZWO Seestar S30 Pro with Tilting Wedge
     description: Smart amateur telescope
     short: Amateur
   - name: UBC Thunderbird South Observatory
