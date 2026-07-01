@@ -9,17 +9,10 @@ toys:
     description: Benchtop IR
     short: IR
     url: /research/projects/20260419%20IR%20Spectroscopy/
-  - name: Shimadzu UV-2550 UV-Vis Spectrophotometer
-    description: Benchtop UV-Vis
-    short: UV-Vis
-    url: /research/projects/20260420%20UV-Vis%20Spectroscopy/
-  - name: Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer
-    description: Benchtop fluorometer
-    short: Fluorometer
-    url: /research/projects/20260420%20UV-Vis%20Spectroscopy/
   - name: Vernier Go Direct Fluorescence UV-VIS Spectrophotometer
     description: Portable UV-Vis and fluorescence
     short: UV-Vis
+    url: /research/projects/20260420%20UV-Vis%20Spectroscopy/
   - name: Vernier Go Direct Polarimeter
     description: Single angle rotation
     short: Polarimeter

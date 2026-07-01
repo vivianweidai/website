@@ -336,20 +336,9 @@
               "short": "IR"
             },
             {
-              "name": "Shimadzu UV-2550 UV-Vis Spectrophotometer",
-              "description": "Benchtop UV-Vis",
-              "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-              "short": "UV-Vis"
-            },
-            {
-              "name": "Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer",
-              "description": "Benchtop fluorometer",
-              "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-              "short": "Fluorometer"
-            },
-            {
               "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
               "description": "Portable UV-Vis and fluorescence",
+              "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
               "short": "UV-Vis"
             },
             {
