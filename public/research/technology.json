@@ -484,7 +484,7 @@
             {
               "name": "ZWO Seestar S30 Pro with Tilting Wedge",
               "description": "Optical signals",
-              "short": "Amateur"
+              "short": "Optical"
             },
             {
               "name": "NASA Radio JOVE RJK2p Antenna Kit",
@@ -552,7 +552,7 @@
             {
               "name": "Transient Name Server",
               "description": "Transient registry",
-              "short": "Transient"
+              "short": "Transients"
             },
             {
               "name": "WISeREP",

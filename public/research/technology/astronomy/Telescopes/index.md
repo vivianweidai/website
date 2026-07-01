@@ -6,7 +6,7 @@ hero: telescopes.jpeg
 toys:
   - name: ZWO Seestar S30 Pro with Tilting Wedge
     description: Optical signals
-    short: Amateur
+    short: Optical
   - name: NASA Radio JOVE RJK2p Antenna Kit
     description: Radio signals
     short: Radio

@@ -6,7 +6,7 @@ hero: classification.jpeg
 toys:
   - name: Transient Name Server
     description: Transient registry
-    short: Transient
+    short: Transients
   - name: WISeREP
     description: Supernova references
     chip: false
