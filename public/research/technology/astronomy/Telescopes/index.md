@@ -19,4 +19,5 @@ toys:
   - name: MAST Portal
     description: Space telescope data
     short: Space
+    chip: false
 ---
