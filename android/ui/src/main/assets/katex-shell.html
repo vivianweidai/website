@@ -261,9 +261,23 @@
           firstRow.parentNode.removeChild(firstRow);
         }
 
-        // Step 2: compute colspan from the first remaining data row.
-        var sampleRow = table.rows[0];
-        var colspan = sampleRow ? sampleRow.cells.length : 3;
+        // Step 2: compute colspan as the widest data row, summing each
+        // cell's colSpan. Some rows lead with a `<td colspan="2">`
+        // content cell (fewer <td>s than the true column count), so
+        // measuring the first row's cell count alone undercounts the
+        // columns and leaves the injected table-name header stopping
+        // short of the table's right edge.
+        var colspan = 3;
+        var maxCols = 0;
+        for (var wr = 0; wr < table.rows.length; wr++) {
+          var rowWidth = 0;
+          var wcells = table.rows[wr].cells;
+          for (var wc = 0; wc < wcells.length; wc++) {
+            rowWidth += wcells[wc].colSpan || 1;
+          }
+          if (rowWidth > maxCols) maxCols = rowWidth;
+        }
+        if (maxCols > 0) colspan = maxCols;
 
         // Step 3: tag first-column cells with curr-group-cell so the
         // CSS rules for gray background and zebra-stripe exclusion
