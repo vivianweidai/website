@@ -8,7 +8,7 @@ toys:
     description: Chest electrodes
     short: EKG
   - name: Vernier Go Direct Spirometer
-    description: Portable spirometer
+    description: Gas volume
     short: Spirometer
   - name: Vernier Go Direct O2 + CO2 Gas Sensor Bundle
     description: Gas exchange
