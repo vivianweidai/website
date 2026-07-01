@@ -40,10 +40,10 @@ The old topic/category grouping tiers were dropped — `technology.yml` is now o
 
 ## REFERENCE MATERIALS
 
-All background materials live in the repo under `archives/` at the **top level — NOT inside `public/`**, so they aren't served on vivianweidai.com (filenames disclose UNR/UBC/faculty references). Read these as needed for instrument details, context, and research planning:
+All background materials live in the repo under `archives/` at the **top level — NOT inside `public/`**, so they aren't served on vivianweidai.com (filenames disclose UNR/UBC/faculty references). **`archives/README.md` is the legend** — read it first; it maps every file to live / dormant / survey and records the 2026-07-01 cull. Read the rest as needed for instrument details, context, and research planning:
 
-- **`archives/technology/`** — canonical instrument list (`toys.pdf`), plus technology landscape, UNR/UBC lab and faculty catalogues, and the university comparison. (Filename `toys.pdf` is the canonical Toy catalog under the new vocabulary — it lists physical instruments, which IS what we call Toys now.)
-- **`archives/toys/<Toy>/`** — per-Toy folder of reference photos and the walk-up guide PDF (flat layout — `photo1.jpeg`, …, `<Toy>.pdf`).
+- **`archives/technology/`** — canonical instrument list (`toys.pdf`) + technology landscape (`technology.pdf`), still load-bearing; plus the historical university-landscape survey (`professors`/`laboratories`/`cores`/`comparison`/`unr`/`ubc` PDFs), retained as cull provenance + Tier-4 expansion map, not page scope. (`toys.pdf` is the canonical Toy catalog under the new vocabulary — it lists physical instruments, which IS what we call Toys now.)
+- **`archives/toys/<Toy>/`** — per-Toy folder of reference photos and the walk-up guide PDF (flat layout — `photo1.jpeg`, …, `<Toy>.pdf`). 8 folders are **live** (on a tech page); 6 are **dormant** (SIL-accessible but curated off the page on 2026-07-01) — see the README. The archive intentionally holds more instruments than the page shows; don't re-add dormant/archive-only instruments to the page.
 
 `IDEAS.md` at the repo root is a living backlog of research project ideas — promote one to `public/research/projects/YYYYMMDD Name/` when a pilot starts.
 
