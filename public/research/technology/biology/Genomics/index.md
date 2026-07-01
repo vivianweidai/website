@@ -5,7 +5,7 @@ science_slug: bio
 hero: genomics.jpeg
 toys:
   - name: miniPCR mini16 Thermal Cycler
-    description: Portable cycler
+    description: Gene amplification
     short: PCR
   - name: GELATO Electrophoresis and Visualization System
     description: Electrophoresis and transilluminator

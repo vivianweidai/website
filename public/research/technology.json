@@ -442,7 +442,7 @@
           "toys": [
             {
               "name": "miniPCR mini16 Thermal Cycler",
-              "description": "Portable cycler",
+              "description": "Gene amplification",
               "short": "PCR"
             },
             {
