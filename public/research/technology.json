@@ -406,17 +406,17 @@
           "toys": [
             {
               "name": "Dino-Lite AF4515T-FUW Digital Microscope",
-              "description": "Portable microscope",
+              "description": "Portable",
               "short": "Portable"
             },
             {
               "name": "AmScope SM-4TZ-144 Trinocular Stereo Microscope",
-              "description": "Stereo microscope",
+              "description": "Stereo",
               "short": "Stereo"
             },
             {
               "name": "Swift Optical SW380T Trinocular Compound Microscope",
-              "description": "Cellular microscope",
+              "description": "Cellular",
               "short": "Compound"
             }
           ]
@@ -589,7 +589,7 @@
           "tech": "Classification",
           "specs": "Events and morphology",
           "tech_url": "/research/technology/astronomy/Classification/",
-          "hero": "/research/technology/astronomy/Classification/orion.jpeg",
+          "hero": "/research/technology/astronomy/Classification/classification.jpeg",
           "toys": [
             {
               "name": "Transient Name Server",
