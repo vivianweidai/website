@@ -17,6 +17,6 @@ toys:
     description: Reveal spectrum fingerprint
     short: Spectroscopy
   - name: Pickles Stellar Atlas
-    description: Reference for stellar spectra
+    description: Spectroscopy references
     chip: false
 ---
