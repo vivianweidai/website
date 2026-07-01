@@ -374,12 +374,6 @@
           "hero": "/research/technology/chemistry/Spectrometry/spectrometry.jpg",
           "toys": [
             {
-              "name": "Thermo Scientific Sorvall RT3 Centrifuge",
-              "description": "Benchtop swing bucket",
-              "url": "/research/projects/20260411%20Centrifuge/",
-              "short": "Centrifuge"
-            },
-            {
               "name": "Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer",
               "description": "Linear time of flight",
               "short": "MALDI"
@@ -403,16 +397,6 @@
               "name": "Agilent 7890 GC-FID Chiral",
               "description": "Gas chromatography - chirality",
               "short": "Chiral GC"
-            }
-          ],
-          "projects": [
-            {
-              "date": "2026-04-11",
-              "title": "Centrifugation and pH of Everyday Liquids",
-              "url": "/research/projects/20260411%20Centrifuge/",
-              "sciences": [
-                "Chemistry"
-              ]
             }
           ]
         }

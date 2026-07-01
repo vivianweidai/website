@@ -4,10 +4,6 @@ science: Chemistry
 science_slug: chem
 hero: spectrometry.jpg
 toys:
-  - name: Thermo Scientific Sorvall RT3 Centrifuge
-    description: Benchtop swing bucket
-    short: Centrifuge
-    url: /research/projects/20260411%20Centrifuge/
   - name: Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer
     description: Linear time of flight
     short: MALDI
