@@ -10,7 +10,7 @@
           "tech": "Numeric",
           "specs": "Approximate",
           "tech_url": "/research/technology/mathematics/Numeric/",
-          "hero": "/research/technology/mathematics/Numeric/numeric.png",
+          "hero": "/research/technology/mathematics/Numeric/numeric.jpeg",
           "toys": [
             {
               "name": "NumPy",
@@ -27,7 +27,7 @@
           "tech": "Symbolic",
           "specs": "Exact",
           "tech_url": "/research/technology/mathematics/Symbolic/",
-          "hero": "/research/technology/mathematics/Symbolic/wolfram.png",
+          "hero": "/research/technology/mathematics/Symbolic/symbolic.jpeg",
           "toys": [
             {
               "name": "Wolfram",
@@ -40,7 +40,7 @@
           "tech": "Graphic",
           "specs": "2D and 3D",
           "tech_url": "/research/technology/mathematics/Graphic/",
-          "hero": "/research/technology/mathematics/Graphic/latex.png",
+          "hero": "/research/technology/mathematics/Graphic/graphic.jpeg",
           "toys": [
             {
               "name": "Matplotlib",
@@ -87,7 +87,7 @@
           "tech": "Machine Learning",
           "specs": "Classic models",
           "tech_url": "/research/technology/computing/Machine%20Learning/",
-          "hero": "/research/technology/computing/Machine%20Learning/kaggle.png",
+          "hero": "/research/technology/computing/Machine%20Learning/ctybiology.jpeg",
           "toys": [
             {
               "name": "scikit-learn",
@@ -104,7 +104,7 @@
           "tech": "Publishing",
           "specs": "Data code notebooks",
           "tech_url": "/research/technology/computing/Publishing/",
-          "hero": "/research/technology/computing/Publishing/github.jpeg",
+          "hero": "/research/technology/computing/Publishing/ptable.jpeg",
           "toys": [
             {
               "name": "GitHub",
@@ -199,7 +199,8 @@
             {
               "name": "Vernier Spectrophotometer Optical Fiber",
               "description": "Spectra outside of cuvettes",
-              "short": "Optical Fiber"
+              "short": "Optical Fiber",
+              "chip": false
             },
             {
               "name": "Vernier Go Direct 3-Axis Magnetic Field Sensor",
@@ -219,12 +220,6 @@
               "name": "TOAUTO DS90 Soldering Station",
               "description": "Soldering iron",
               "short": "Soldering"
-            },
-            {
-              "name": "SainSmart Magnetic Helping Hands Soldering Station",
-              "description": "Soldering work holder",
-              "short": "Helping Hands",
-              "chip": false
             },
             {
               "name": "Digilent Analog Discovery 3",
@@ -656,7 +651,7 @@
           "tech": "Classification",
           "specs": "Events and morphology",
           "tech_url": "/research/technology/astronomy/Classification/",
-          "hero": "/research/technology/astronomy/Classification/observatory.jpeg",
+          "hero": "/research/technology/astronomy/Classification/orion.jpeg",
           "toys": [
             {
               "name": "Transient Name Server",

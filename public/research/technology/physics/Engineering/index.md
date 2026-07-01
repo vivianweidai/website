@@ -7,10 +7,6 @@ toys:
   - name: TOAUTO DS90 Soldering Station
     description: Soldering iron
     short: Soldering
-  - name: SainSmart Magnetic Helping Hands Soldering Station
-    description: Soldering work holder
-    short: Helping Hands
-    chip: false
   - name: Digilent Analog Discovery 3
     description: Oscilloscope, generator and analyzer
     short: Oscilloscope

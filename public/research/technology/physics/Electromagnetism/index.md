@@ -11,6 +11,7 @@ toys:
   - name: Vernier Spectrophotometer Optical Fiber
     description: Spectra outside of cuvettes
     short: Optical Fiber
+    chip: false
   - name: Vernier Go Direct 3-Axis Magnetic Field Sensor
     description: Hall sensor
     short: Magnetism
