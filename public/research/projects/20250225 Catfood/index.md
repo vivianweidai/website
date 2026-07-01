@@ -2,7 +2,6 @@
 project: Cat Food Color Preference
 tech:
   - Statistics
-  - Publishing
 title: "Red or Green, What Colored Cat Food does Mi Prefer?"
 sciences:
   - Computing

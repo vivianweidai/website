@@ -122,16 +122,6 @@
               "name": "Zenodo",
               "description": "DOI-issuing data archive"
             }
-          ],
-          "projects": [
-            {
-              "date": "2025-02-25",
-              "title": "Red or Green, What Colored Cat Food does Mi Prefer?",
-              "url": "/research/projects/20250225%20Catfood/",
-              "sciences": [
-                "Computing"
-              ]
-            }
           ]
         }
       ]
