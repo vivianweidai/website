@@ -517,12 +517,12 @@
           "toys": [
             {
               "name": "Gaia Archive",
-              "description": "Reference for plate solving",
+              "description": "Astrometry references",
               "short": "Astrometry"
             },
             {
               "name": "AAVSO Database",
-              "description": "Reference for variable stars",
+              "description": "Photometry references",
               "short": "Photometry"
             },
             {
