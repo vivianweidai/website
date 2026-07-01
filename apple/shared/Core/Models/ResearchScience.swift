@@ -19,15 +19,13 @@ public struct ResearchTech: Codable, Identifiable, Hashable, Sendable {
     public let id: Int
     public let tech: String
     public let specs: String?
-    public let available: Int?
-    public let url: String?
     public let hero: String?
     public let techUrl: String?
     public let toys: [ResearchToy]?
     public let projects: [ResearchTechProject]?
 
     enum CodingKeys: String, CodingKey {
-        case id, tech, specs, available, url, hero, toys, projects
+        case id, tech, specs, hero, toys, projects
         case techUrl = "tech_url"
     }
 
@@ -42,21 +40,6 @@ public struct ResearchTech: Codable, Identifiable, Hashable, Sendable {
         }
         let trimmed = hero.hasPrefix("/") ? String(hero.dropFirst()) : hero
         return URL(string: "https://vivianweidai.com/" + trimmed)
-    }
-
-    public var isAvailable: Bool { (available ?? 0) == 1 }
-
-    /// External URL for the tech-name link (Wolfram, GitHub, Colab,
-    /// vendor pages, etc.). Repo-relative paths are resolved against
-    /// `vivianweidai.com`; absolute URLs pass through.
-    public var externalURL: URL? {
-        guard let raw = url else { return nil }
-        if raw.hasPrefix("http://") || raw.hasPrefix("https://") {
-            return URL(string: raw)
-        }
-        let trimmed = raw.hasPrefix("/") ? String(raw.dropFirst()) : raw
-        let encoded = trimmed.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? trimmed
-        return URL(string: "https://vivianweidai.com/" + encoded)
     }
 }
 

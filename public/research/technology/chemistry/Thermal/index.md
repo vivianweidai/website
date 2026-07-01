@@ -14,9 +14,6 @@ toys:
   - name: TA Instruments DSC Q20
     description: Heat flow over temperature
     short: Calorimetry
-  - name: TA Instruments DSC Q100
-    description: Separate reversing transitions
-    short: Calorimetry
   - name: TA Instruments TGA Q50
     description: Mass loss over temperature
     short: Thermogravimetry

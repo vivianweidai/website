@@ -21,7 +21,7 @@ One set of samples through two instruments: the UV-2550 measures which colors of
 
 | Toolkit | Details |
 |----------|---------|
-| Instruments | Shimadzu UV-2550 UV-Vis Spectrophotometer, Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer, and PerkinElmer Lambda 750 UV-Vis-NIR Spectrophotometer |
+| Instruments | Shimadzu UV-2550 UV-Vis Spectrophotometer and Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer |
 | Cuvettes | 10 mm fluorescence-grade quartz, four clear sides |
 | Software | UVProbe (Shimadzu), FluorEssence (Horiba) |
 | Blanks | Distilled water (aqueous), 95% ethanol (ethanol samples) |
@@ -32,7 +32,7 @@ One set of samples through two instruments: the UV-2550 measures which colors of
 
 Six fluorophores plus two blanks. Four water-baseline samples first — quinine (antimalarial, from tonic water), yellow highlighter (fluorescein-family dye), pink highlighter (rhodamine-family dye), salicylate (pharmaceutical, from aspirin + NaHCO₃) — then re-baseline and run two ethanol extracts: curcumin (turmeric) and green tea extract.
 
-The UV-2550 yields λ<sub>max</sub> and A across 200–800 nm; both feed the FluoroMax — λ<sub>max</sub> sets λ<sub>ex</sub>, A sets the dilution factor D = A / 0.05 (the FluoroMax needs A ≈ 0.05 to avoid inner-filter effects). Stocks start at 1 drop in 3 mL solvent and dilute iteratively to land in the 0.3–0.8 A sweet spot; each baseline is followed by its solvent blank rescanned as a sample to confirm it returns flat near zero. The FluoroMax then runs two scans per sample — emission (fix λ<sub>ex</sub>, sweep λ<sub>em</sub>) and excitation (fix λ<sub>em</sub>, sweep λ<sub>ex</sub>). An EEM scan is planned for green tea extract. Raw files live under <a href="https://github.com/vivianweidai/science/tree/main/public/research/projects/20260420%20UV-Vis%20Spectroscopy/data" rel="noopener">data</a>; all UV-Vis, fluorescence and Lambda 750 plots were generated in the analysis <a href="https://github.com/vivianweidai/science/blob/main/public/research/projects/20260420%20UV-Vis%20Spectroscopy/output/uv_spectroscopy.ipynb" rel="noopener">notebook</a>, reproducible on <a href="https://colab.research.google.com/github/vivianweidai/science/blob/main/public/research/projects/20260420%20UV-Vis%20Spectroscopy/output/uv_spectroscopy.ipynb" rel="noopener">colab</a>.
+The UV-2550 yields λ<sub>max</sub> and A across 200–800 nm; both feed the FluoroMax — λ<sub>max</sub> sets λ<sub>ex</sub>, A sets the dilution factor D = A / 0.05 (the FluoroMax needs A ≈ 0.05 to avoid inner-filter effects). Stocks start at 1 drop in 3 mL solvent and dilute iteratively to land in the 0.3–0.8 A sweet spot; each baseline is followed by its solvent blank rescanned as a sample to confirm it returns flat near zero. The FluoroMax then runs two scans per sample — emission (fix λ<sub>ex</sub>, sweep λ<sub>em</sub>) and excitation (fix λ<sub>em</sub>, sweep λ<sub>ex</sub>). An EEM scan is planned for green tea extract. Raw files live under <a href="https://github.com/vivianweidai/science/tree/main/public/research/projects/20260420%20UV-Vis%20Spectroscopy/data" rel="noopener">data</a>; all UV-Vis and fluorescence plots were generated in the analysis <a href="https://github.com/vivianweidai/science/blob/main/public/research/projects/20260420%20UV-Vis%20Spectroscopy/output/uv_spectroscopy.ipynb" rel="noopener">notebook</a>, reproducible on <a href="https://colab.research.google.com/github/vivianweidai/science/blob/main/public/research/projects/20260420%20UV-Vis%20Spectroscopy/output/uv_spectroscopy.ipynb" rel="noopener">colab</a>.
 
 ## Results
 
@@ -113,9 +113,3 @@ The UV-2550 yields λ<sub>max</sub> and A across 200–800 nm; both feed the Flu
     <p>ESIPT: λ<sub>ex</sub> 301, λ<sub>em</sub> 409, Stokes 108 nm — excited-state proton transfer.</p>
   </div>
 </div>
-
-### Solvent NIR
-
-<img src="output/images/lambda750_water.png" alt="Lambda 750 distilled water NIR spectrum" class="result-img">
-
-Distilled water on the Lambda 750. O–H overtones at ~970, 1200 and 1450 nm; detector pinned past ~1500 nm.

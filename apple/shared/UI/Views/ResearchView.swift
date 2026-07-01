@@ -101,9 +101,8 @@ private struct ScienceCard: View {
 private struct TechRow: View {
     let science: String
     let tech: ResearchTech
-    @Environment(\.openURL) private var openURL
 
-    private var hasLink: Bool { tech.techUrl != nil || tech.externalURL != nil }
+    private var hasLink: Bool { tech.techUrl != nil }
     private var projectCount: Int { tech.projects?.count ?? 0 }
 
     var body: some View {
@@ -112,11 +111,6 @@ private struct TechRow: View {
                 NavigationLink {
                     TechDetailView(science: science, tech: tech)
                 } label: {
-                    rowBody
-                }
-                .buttonStyle(.plain)
-            } else if let external = tech.externalURL {
-                Button { openURL(external) } label: {
                     rowBody
                 }
                 .buttonStyle(.plain)

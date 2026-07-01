@@ -9,18 +9,10 @@
 #   techs:      list of techs (a row on the Research page)           (required)
 #     - tech:       string — tech name                               (required)
 #       specs:      string — key specs                               (required)
-#       available:  true                                             (optional — set when a Toy enables it)
-#       url:        string — external URL (links the tech name)      (optional)
-#       tested:     false                                            (optional — override; default = has a project)
 #
 # Tech ↔ project links are populated via reverse-scan: declare the tech in
 # the project's `index.md` frontmatter `tech:` array and it shows up on
 # the tech page automatically.
-#
-# Tested vs Accessed marker on /research/:
-#   ✓ Tested  = at least one project links to the tech (default)
-#   – Accessed = available but no projects yet
-#   Override with `tested: true|false` to force the marker regardless of links.
 
 # ═══════════════════════════════════════════════════════════════
 # MATHEMATICS
@@ -30,16 +22,10 @@
   techs:
     - tech: Numeric
       specs: Approximate
-      available: true
-      url: /research/projects/20260420%20UV-Vis%20Spectroscopy/
     - tech: Symbolic
       specs: Exact
-      available: true
-      url: https://www.wolframcloud.com/obj/jamesdai/Published/exoplanets.nb
     - tech: Graphic
       specs: 2D and 3D
-      available: true
-      url: /research/projects/20260404%20Four%20Point%20Probe/
 
 # ═══════════════════════════════════════════════════════════════
 # COMPUTING
@@ -49,14 +35,10 @@
   techs:
     - tech: Statistics
       specs: Inference
-      available: true
     - tech: Machine Learning
       specs: Classic models
-      available: true
     - tech: Publishing
       specs: Data code notebooks
-      available: true
-      url: https://github.com/vivianweidai
 
 # ═══════════════════════════════════════════════════════════════
 # PHYSICS
@@ -66,16 +48,12 @@
   techs:
     - tech: Mechanics
       specs: Force, motion and timing
-      available: true
     - tech: Thermodynamics
       specs: Pressure and turbidity
-      available: true
     - tech: Electromagnetism
       specs: Magnetism and spectra
-      available: true
     - tech: Engineering
       specs: Circuits and fabrication
-      available: true
 
 # ═══════════════════════════════════════════════════════════════
 # CHEMISTRY
@@ -85,16 +63,12 @@
   techs:
     - tech: Thermal
       specs: Heat and mass
-      available: true
     - tech: Electrochemistry
       specs: Ions and redox
-      available: true
     - tech: Spectroscopy
       specs: Bonds, absorbance, chirality
-      available: true
     - tech: Spectrometry
       specs: Separation and mass
-      available: true
 
 # ═══════════════════════════════════════════════════════════════
 # BIOLOGY
@@ -104,14 +78,10 @@
   techs:
     - tech: Microscopes
       specs: Surfaces to cells
-      available: true
     - tech: Physiology
       specs: Live body signals
-      available: true
     - tech: Genomics
       specs: Amplify, read, express
-      available: true
-      tested: false
 
 # ═══════════════════════════════════════════════════════════════
 # ASTRONOMY
@@ -121,10 +91,7 @@
   techs:
     - tech: Telescopes
       specs: Light collectors
-      available: true
     - tech: Measurements
       specs: Position, brightness, spectra
-      available: true
     - tech: Classification
       specs: Events and morphology
-      available: true

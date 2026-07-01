@@ -5,10 +5,10 @@ Source of truth:  public/research/technology.yml
 Output:           public/research/technology.json
 
 Flat schema — one entry per science, each a plain list of techs:
-  input:   [{science, techs: [{tech, specs, available?, url?, tested?}]}]
+  input:   [{science, techs: [{tech, specs}]}]
   output:  {"sciences": [{id, science, science_slug,
-              techs: [{id, tech, specs, available, tech_url, hero?, url?,
-                      tested?, toys?: [{name, description}],
+              techs: [{id, tech, specs, tech_url, hero?,
+                      toys?: [{name, description, short?, chip?, url?}],
                       projects?: [{date, title, url, sciences[]}]}]
           }]}
 
@@ -173,7 +173,6 @@ def build() -> list[dict]:
                 "id": tech_id,
                 "tech": tech["tech"],
                 "specs": tech["specs"],
-                "available": 1 if tech.get("available") else 0,
                 "tech_url": (
                     f"/research/technology/{folder}/"
                     f"{urllib.parse.quote(tech['tech'])}/"
@@ -185,10 +184,6 @@ def build() -> list[dict]:
             toys = toys_for_tech(folder, tech["tech"])
             if toys:
                 t["toys"] = toys
-            if tech.get("url"):
-                t["url"] = tech["url"]
-            if "tested" in tech:
-                t["tested"] = bool(tech["tested"])
             # Reverse-scanned projects (whose frontmatter `tech:`
             # array references this tech), newest first. Filter by science
             # too — two sciences can share a tech name (e.g. Chemistry and
@@ -219,14 +214,10 @@ def main() -> int:
     out = CONTENT / "technology.json"
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
     n_techs = sum(len(s["techs"]) for s in sciences)
-    avail = sum(1 for s in sciences for tech in s["techs"] if tech["available"])
     print(f"wrote {out.relative_to(ROOT)}")
     print(f"  {len(sciences)} sciences, {n_techs} techs")
     for s in sciences:
-        n = len(s["techs"])
-        a = sum(1 for tech in s["techs"] if tech["available"])
-        print(f"    {s['science']}: {n} techs ({a} available)")
-    print(f"  available: {avail}")
+        print(f"    {s['science']}: {len(s['techs'])} techs")
     return 0
 
 

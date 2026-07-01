@@ -8,25 +8,19 @@ toys:
     description: Benchtop swing bucket
     short: Centrifuge
     url: /research/projects/20260411%20Centrifuge/
-  - name: DiaMed ID-Centrifuge
-    description: Card centrifuge
-    short: Centrifuge
-  - name: Scientific Industries Vortex-Genie 2
-    description: Homogenize sample
-    chip: false
   - name: Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer
     description: Linear time of flight
     short: MALDI
   - name: Waters Micromass ZQ Alliance e2695 LC-MS
-    description: Liquid chromatography, unit mass
+    description: Liquid chromatography - unit mass
     short: LC-MS
   - name: Agilent 1200 Series HPLC 6230A TOF LC-MS
-    description: Liquid chromatography, exact mass
+    description: Liquid chromatography - exact mass
     short: LC-MS
   - name: Agilent 7890A GC 5975C Inert MSD
-    description: Gas chromatography, mass fingerprints
+    description: Gas chromatography - mass fingerprints
     short: GC-MS
   - name: Agilent 7890 GC-FID Chiral
-    description: Gas chromatography, chirality
+    description: Gas chromatography - chirality
     short: Chiral GC
 ---

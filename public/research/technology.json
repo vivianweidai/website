@@ -9,7 +9,6 @@
           "id": 1,
           "tech": "Numeric",
           "specs": "Approximate",
-          "available": 1,
           "tech_url": "/research/technology/mathematics/Numeric/",
           "hero": "/research/technology/mathematics/Numeric/numeric.png",
           "toys": [
@@ -21,14 +20,12 @@
               "name": "SciPy",
               "description": "Scientific computing"
             }
-          ],
-          "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/"
+          ]
         },
         {
           "id": 2,
           "tech": "Symbolic",
           "specs": "Exact",
-          "available": 1,
           "tech_url": "/research/technology/mathematics/Symbolic/",
           "hero": "/research/technology/mathematics/Symbolic/wolfram.png",
           "toys": [
@@ -36,14 +33,12 @@
               "name": "Wolfram",
               "description": "Symbolic computation engine"
             }
-          ],
-          "url": "https://www.wolframcloud.com/obj/jamesdai/Published/exoplanets.nb"
+          ]
         },
         {
           "id": 3,
           "tech": "Graphic",
           "specs": "2D and 3D",
-          "available": 1,
           "tech_url": "/research/technology/mathematics/Graphic/",
           "hero": "/research/technology/mathematics/Graphic/latex.png",
           "toys": [
@@ -55,8 +50,7 @@
               "name": "LaTeX",
               "description": "Document typesetting"
             }
-          ],
-          "url": "/research/projects/20260404%20Four%20Point%20Probe/"
+          ]
         }
       ]
     },
@@ -69,7 +63,6 @@
           "id": 4,
           "tech": "Statistics",
           "specs": "Inference",
-          "available": 1,
           "tech_url": "/research/technology/computing/Statistics/",
           "hero": "/research/technology/computing/Statistics/catfood.jpeg",
           "toys": [
@@ -93,7 +86,6 @@
           "id": 5,
           "tech": "Machine Learning",
           "specs": "Classic models",
-          "available": 1,
           "tech_url": "/research/technology/computing/Machine%20Learning/",
           "hero": "/research/technology/computing/Machine%20Learning/kaggle.png",
           "toys": [
@@ -111,7 +103,6 @@
           "id": 6,
           "tech": "Publishing",
           "specs": "Data code notebooks",
-          "available": 1,
           "tech_url": "/research/technology/computing/Publishing/",
           "hero": "/research/technology/computing/Publishing/github.jpeg",
           "toys": [
@@ -132,7 +123,6 @@
               "description": "DOI-issuing data archive"
             }
           ],
-          "url": "https://github.com/vivianweidai",
           "projects": [
             {
               "date": "2025-02-25",
@@ -155,7 +145,6 @@
           "id": 7,
           "tech": "Mechanics",
           "specs": "Force, motion and timing",
-          "available": 1,
           "tech_url": "/research/technology/physics/Mechanics/",
           "hero": "/research/technology/physics/Mechanics/mechanics.jpeg",
           "toys": [
@@ -180,7 +169,6 @@
           "id": 8,
           "tech": "Thermodynamics",
           "specs": "Pressure and turbidity",
-          "available": 1,
           "tech_url": "/research/technology/physics/Thermodynamics/",
           "hero": "/research/technology/physics/Thermodynamics/thermodynamics.jpeg",
           "toys": [
@@ -200,7 +188,6 @@
           "id": 9,
           "tech": "Electromagnetism",
           "specs": "Magnetism and spectra",
-          "available": 1,
           "tech_url": "/research/technology/physics/Electromagnetism/",
           "hero": "/research/technology/physics/Electromagnetism/electromagnetism.jpeg",
           "toys": [
@@ -225,7 +212,6 @@
           "id": 10,
           "tech": "Engineering",
           "specs": "Circuits and fabrication",
-          "available": 1,
           "tech_url": "/research/technology/physics/Engineering/",
           "hero": "/research/technology/physics/Engineering/circuits.jpeg",
           "toys": [
@@ -285,7 +271,6 @@
           "id": 11,
           "tech": "Thermal",
           "specs": "Heat and mass",
-          "available": 1,
           "tech_url": "/research/technology/chemistry/Thermal/",
           "hero": "/research/technology/chemistry/Thermal/thermal.jpeg",
           "toys": [
@@ -303,11 +288,6 @@
             {
               "name": "TA Instruments DSC Q20",
               "description": "Heat flow over temperature",
-              "short": "Calorimetry"
-            },
-            {
-              "name": "TA Instruments DSC Q100",
-              "description": "Separate reversing transitions",
               "short": "Calorimetry"
             },
             {
@@ -331,7 +311,6 @@
           "id": 12,
           "tech": "Electrochemistry",
           "specs": "Ions and redox",
-          "available": 1,
           "tech_url": "/research/technology/chemistry/Electrochemistry/",
           "hero": "/research/technology/chemistry/Electrochemistry/electrochemistry.jpeg",
           "toys": [
@@ -372,7 +351,6 @@
           "id": 13,
           "tech": "Spectroscopy",
           "specs": "Bonds, absorbance, chirality",
-          "available": 1,
           "tech_url": "/research/technology/chemistry/Spectroscopy/",
           "hero": "/research/technology/chemistry/Spectroscopy/spectroscopy.jpeg",
           "toys": [
@@ -393,12 +371,6 @@
               "description": "Benchtop fluorometer",
               "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
               "short": "Fluorometer"
-            },
-            {
-              "name": "PerkinElmer Lambda 750 UV-Vis-NIR Spectrophotometer",
-              "description": "Benchtop UV-Vis-NIR",
-              "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
-              "short": "UV-Vis"
             },
             {
               "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
@@ -439,7 +411,6 @@
           "id": 14,
           "tech": "Spectrometry",
           "specs": "Separation and mass",
-          "available": 1,
           "tech_url": "/research/technology/chemistry/Spectrometry/",
           "hero": "/research/technology/chemistry/Spectrometry/spectrometry.jpg",
           "toys": [
@@ -450,38 +421,28 @@
               "short": "Centrifuge"
             },
             {
-              "name": "DiaMed ID-Centrifuge",
-              "description": "Card centrifuge",
-              "short": "Centrifuge"
-            },
-            {
-              "name": "Scientific Industries Vortex-Genie 2",
-              "description": "Homogenize sample",
-              "chip": false
-            },
-            {
               "name": "Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer",
               "description": "Linear time of flight",
               "short": "MALDI"
             },
             {
               "name": "Waters Micromass ZQ Alliance e2695 LC-MS",
-              "description": "Liquid chromatography, unit mass",
+              "description": "Liquid chromatography - unit mass",
               "short": "LC-MS"
             },
             {
               "name": "Agilent 1200 Series HPLC 6230A TOF LC-MS",
-              "description": "Liquid chromatography, exact mass",
+              "description": "Liquid chromatography - exact mass",
               "short": "LC-MS"
             },
             {
               "name": "Agilent 7890A GC 5975C Inert MSD",
-              "description": "Gas chromatography, mass fingerprints",
+              "description": "Gas chromatography - mass fingerprints",
               "short": "GC-MS"
             },
             {
               "name": "Agilent 7890 GC-FID Chiral",
-              "description": "Gas chromatography, chirality",
+              "description": "Gas chromatography - chirality",
               "short": "Chiral GC"
             }
           ],
@@ -507,7 +468,6 @@
           "id": 15,
           "tech": "Microscopes",
           "specs": "Surfaces to cells",
-          "available": 1,
           "tech_url": "/research/technology/biology/Microscopes/",
           "hero": "/research/technology/biology/Microscopes/microscopes.jpeg",
           "toys": [
@@ -532,7 +492,6 @@
           "id": 16,
           "tech": "Physiology",
           "specs": "Live body signals",
-          "available": 1,
           "tech_url": "/research/technology/biology/Physiology/",
           "hero": "/research/technology/biology/Physiology/physiology.jpeg",
           "toys": [
@@ -567,7 +526,6 @@
           "id": 17,
           "tech": "Genomics",
           "specs": "Amplify, read, express",
-          "available": 1,
           "tech_url": "/research/technology/biology/Genomics/",
           "hero": "/research/technology/biology/Genomics/genomics.jpeg",
           "toys": [
@@ -592,7 +550,6 @@
               "short": "Sequencing"
             }
           ],
-          "tested": false,
           "projects": [
             {
               "date": "2026-04-01",
@@ -615,7 +572,6 @@
           "id": 18,
           "tech": "Telescopes",
           "specs": "Light collectors",
-          "available": 1,
           "tech_url": "/research/technology/astronomy/Telescopes/",
           "hero": "/research/technology/astronomy/Telescopes/telescopes.jpeg",
           "toys": [
@@ -660,7 +616,6 @@
           "id": 19,
           "tech": "Measurements",
           "specs": "Position, brightness, spectra",
-          "available": 1,
           "tech_url": "/research/technology/astronomy/Measurements/",
           "hero": "/research/technology/astronomy/Measurements/horsehead.jpeg",
           "toys": [
@@ -700,7 +655,6 @@
           "id": 20,
           "tech": "Classification",
           "specs": "Events and morphology",
-          "available": 1,
           "tech_url": "/research/technology/astronomy/Classification/",
           "hero": "/research/technology/astronomy/Classification/observatory.jpeg",
           "toys": [

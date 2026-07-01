@@ -19,7 +19,6 @@ const projects = defineCollection({
     // Render the Mi cat icon next to the H1 — only the two cat-themed
     // projects use this.
     mi: z.boolean().optional(),
-    data_photos: z.array(z.string()).optional(),
     // Techs this project uses. Drives the auto-populated Projects section
     // on each /research/technology/<sci>/<Tech>/ page.
     tech: z.array(z.string()).optional(),

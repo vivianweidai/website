@@ -17,10 +17,6 @@ toys:
     description: Benchtop fluorometer
     short: Fluorometer
     url: /research/projects/20260420%20UV-Vis%20Spectroscopy/
-  - name: PerkinElmer Lambda 750 UV-Vis-NIR Spectrophotometer
-    description: Benchtop UV-Vis-NIR
-    short: UV-Vis
-    url: /research/projects/20260420%20UV-Vis%20Spectroscopy/
   - name: Vernier Go Direct Fluorescence UV-VIS Spectrophotometer
     description: Portable UV-Vis and fluorescence
     short: UV-Vis
