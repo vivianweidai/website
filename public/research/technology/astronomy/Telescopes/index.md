@@ -14,10 +14,7 @@ toys:
     description: Remote access to Great Basin National Park
     short: Earth
   - name: NASA Radio JOVE RJK2p Antenna Kit
-    description: Receive radio signals
-    short: Radio
-  - name: SDRplay RSP1B
-    description: Decode radio signals
+    description: Radio signals
     short: Radio
   - name: MAST Portal
     description: Space telescope data
