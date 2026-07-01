@@ -262,13 +262,8 @@
             {
               "name": "Vernier Go Direct Temperature Probe",
               "description": "Temperature probe",
-              "short": "Temperature"
-            },
-            {
-              "name": "SRS OptiMelt Automated Melting Point System",
-              "description": "Melting point range",
               "url": "/research/projects/20260405%20Melting%20Point/",
-              "short": "Melting Point"
+              "short": "Temperature"
             },
             {
               "name": "TA Instruments DSC Q20",
