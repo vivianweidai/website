@@ -2,7 +2,7 @@
 tech: Publishing
 science: Computing
 science_slug: comp
-hero: ptable.jpeg
+hero: prism.jpeg
 toys:
   - name: GitHub
     description: Version control and hosting
