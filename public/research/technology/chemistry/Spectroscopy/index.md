@@ -2,8 +2,6 @@
 tech: Spectroscopy
 science: Chemistry
 science_slug: chem
-topic: Analyze
-category: Spectroscopy
 hero: spectroscopy.jpeg
 hero_position: center 60%
 toys:

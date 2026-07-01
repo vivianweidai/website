@@ -2,8 +2,6 @@
 tech: Spectrometry
 science: Chemistry
 science_slug: chem
-topic: Analyze
-category: Spectrometry
 hero: spectrometry.jpg
 toys:
   - name: Thermo Scientific Sorvall RT3 Centrifuge

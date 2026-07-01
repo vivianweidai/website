@@ -2,8 +2,6 @@
 tech: Publishing
 science: Computing
 science_slug: comp
-topic: Experiment
-category: Produce
 hero: github.jpeg
 hero_position: top
 toys:

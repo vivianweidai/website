@@ -2,8 +2,6 @@
 tech: Graphic
 science: Mathematics
 science_slug: math
-topic: Calculate
-category: Display
 hero: latex.png
 toys:
   - name: Matplotlib

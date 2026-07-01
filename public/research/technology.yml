@@ -102,44 +102,14 @@
 
 - science: Biology
   techs:
-    - tech: Handheld
-      specs: Surfaces
+    - tech: Microscopes
+      specs: Surfaces to cells
       available: true
-    - tech: Stereo
-      specs: Organisms
+    - tech: Physiology
+      specs: Live body signals
       available: true
-    - tech: Compound
-      specs: Cells
-      available: true
-    - tech: EEG
-      specs: Brain waves
-    - tech: fNIRS
-      specs: Blood flow
-    - tech: EKG
-      specs: Heart rhythm
-      available: true
-    - tech: Spirometer
-      specs: Breath volume
-      available: true
-    - tech: Gas Exchange
-      specs: Metabolic gases
-      available: true
-    - tech: PCR
-      specs: Endpoint amplify
-      available: true
-      tested: false
-    - tech: qPCR
-      specs: Real-time count
-    - tech: Long-Read
-      specs: Entire strand
-    - tech: Short-Read
-      specs: Parallel fragments
-    - tech: Cell-Free
-      specs: DNA to proteins
-      available: true
-      tested: false
-    - tech: Fluorescence
-      specs: UV glow
+    - tech: Genomics
+      specs: Amplify, read, express
       available: true
       tested: false
 
@@ -149,30 +119,12 @@
 
 - science: Astronomy
   techs:
-    - tech: Amateur
-      specs: Smart telescopes
+    - tech: Telescopes
+      specs: Light collectors
       available: true
-    - tech: Earth
-      specs: Ground observatories
+    - tech: Measurements
+      specs: Position, brightness, spectra
       available: true
-    - tech: Radio
-      specs: Radio telescopes
-      available: true
-    - tech: Space
-      specs: Space telescopes
-      available: true
-    - tech: Astrometry
-      specs: Position catalogs
-      available: true
-    - tech: Photometry
-      specs: Light curves
-      available: true
-    - tech: Spectroscopy
-      specs: Spectra
-      available: true
-    - tech: Transient
-      specs: Events
-      available: true
-    - tech: Galaxies
-      specs: Morphology
+    - tech: Classification
+      specs: Events and morphology
       available: true

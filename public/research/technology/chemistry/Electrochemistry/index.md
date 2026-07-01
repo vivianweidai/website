@@ -2,8 +2,6 @@
 tech: Electrochemistry
 science: Chemistry
 science_slug: chem
-topic: Analyze
-category: Electrochemistry
 hero: electrochemistry.jpeg
 hero_position: center 54%
 toys:

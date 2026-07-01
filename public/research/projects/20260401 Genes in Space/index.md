@@ -1,9 +1,7 @@
 ---
 project: Genes in Space
 tech:
-  - PCR
-  - Cell-Free
-  - Fluorescence
+  - Genomics
 title: "Meow to Mars — Will Space Help or Hurt Mi's Heart?"
 sciences:
   - Biology

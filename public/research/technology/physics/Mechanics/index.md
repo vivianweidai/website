@@ -2,8 +2,6 @@
 tech: Mechanics
 science: Physics
 science_slug: phys
-topic: Measure
-category: Mechanics
 hero: mechanics.jpeg
 hero_position: center 60%
 toys:

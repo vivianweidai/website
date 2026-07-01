@@ -39,8 +39,6 @@ const tech = defineCollection({
     tech: z.string(),
     science: z.string(),
     science_slug: z.string(),
-    topic: z.string(),
-    category: z.string(),
     hero: z.string().optional(),
     // Optional CSS object-position override for cropping the hero (e.g.
     // "top" or "center 30%"). Default is center; tweak when the

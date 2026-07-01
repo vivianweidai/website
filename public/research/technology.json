@@ -530,209 +530,96 @@
       "techs": [
         {
           "id": 15,
-          "tech": "Handheld",
-          "specs": "Surfaces",
+          "tech": "Microscopes",
+          "specs": "Surfaces to cells",
           "available": 1,
-          "tech_url": "/research/technology/biology/Handheld/",
-          "hero": "/research/technology/biology/Handheld/handheld.jpeg",
+          "tech_url": "/research/technology/biology/Microscopes/",
+          "hero": "/research/technology/biology/Microscopes/microscopes.jpeg",
           "toys": [
             {
               "name": "Dino-Lite AF4515T-FUW Digital Microscope",
-              "description": "Portable microscope"
+              "description": "Portable microscope",
+              "short": "Portable"
             },
             {
-              "name": "Dino-Lite MS35B Vertical Mount Stand",
-              "description": "Fixed mount"
+              "name": "AmScope SM-4TZ-144 Trinocular Stereo Microscope",
+              "description": "Stereo microscope",
+              "short": "Stereo"
+            },
+            {
+              "name": "Swift Optical SW380T Trinocular Compound Microscope",
+              "description": "Cellular microscope",
+              "short": "Compound"
             }
           ]
         },
         {
           "id": 16,
-          "tech": "Stereo",
-          "specs": "Organisms",
+          "tech": "Physiology",
+          "specs": "Live body signals",
           "available": 1,
-          "tech_url": "/research/technology/biology/Stereo/",
-          "hero": "/research/technology/biology/Stereo/stereo.jpeg",
+          "tech_url": "/research/technology/biology/Physiology/",
+          "hero": "/research/technology/biology/Physiology/physiology.jpeg",
           "toys": [
             {
-              "name": "AmScope SM-4TZ-144 Trinocular Stereo Microscope with 5MP Camera",
-              "description": "Stereo microscope"
+              "name": "Vernier Go Direct EKG Sensor",
+              "description": "Chest electrodes",
+              "short": "EKG"
+            },
+            {
+              "name": "Vernier Go Direct Spirometer",
+              "description": "Portable spirometer",
+              "short": "Spirometer"
+            },
+            {
+              "name": "Vernier Go Direct O2 + CO2 Gas Sensor Bundle",
+              "description": "Optical gas probe",
+              "short": "O₂/CO₂"
+            },
+            {
+              "name": "InteraXon Muse 2 Headband",
+              "description": "Head electrodes",
+              "short": "EEG"
+            },
+            {
+              "name": "Mendi Headband",
+              "description": "Forehead blood-oxygen",
+              "short": "fNIRS"
             }
           ]
         },
         {
           "id": 17,
-          "tech": "Compound",
-          "specs": "Cells",
+          "tech": "Genomics",
+          "specs": "Amplify, read, express",
           "available": 1,
-          "tech_url": "/research/technology/biology/Compound/",
-          "hero": "/research/technology/biology/Compound/compound.jpeg",
-          "toys": [
-            {
-              "name": "Swift Optical SW380T Trinocular Compound Microscope",
-              "description": "Cellular microscope"
-            }
-          ]
-        },
-        {
-          "id": 18,
-          "tech": "EEG",
-          "specs": "Brain waves",
-          "available": 0,
-          "tech_url": "/research/technology/biology/EEG/",
-          "hero": "/research/technology/biology/EEG/eeg.png",
-          "toys": [
-            {
-              "name": "InteraXon Muse 2 Headband",
-              "description": "Head electrodes"
-            }
-          ]
-        },
-        {
-          "id": 19,
-          "tech": "fNIRS",
-          "specs": "Blood flow",
-          "available": 0,
-          "tech_url": "/research/technology/biology/fNIRS/",
-          "hero": "/research/technology/biology/fNIRS/fnirs.png"
-        },
-        {
-          "id": 20,
-          "tech": "EKG",
-          "specs": "Heart rhythm",
-          "available": 1,
-          "tech_url": "/research/technology/biology/EKG/",
-          "hero": "/research/technology/biology/EKG/ekg.jpg",
-          "toys": [
-            {
-              "name": "Vernier Go Direct EKG Sensor",
-              "description": "Chest electrodes"
-            }
-          ]
-        },
-        {
-          "id": 21,
-          "tech": "Spirometer",
-          "specs": "Breath volume",
-          "available": 1,
-          "tech_url": "/research/technology/biology/Spirometer/",
-          "hero": "/research/technology/biology/Spirometer/spirometer.jpg",
-          "toys": [
-            {
-              "name": "Vernier Go Direct Spirometer",
-              "description": "Portable spirometer"
-            }
-          ]
-        },
-        {
-          "id": 22,
-          "tech": "Gas Exchange",
-          "specs": "Metabolic gases",
-          "available": 1,
-          "tech_url": "/research/technology/biology/Gas%20Exchange/",
-          "hero": "/research/technology/biology/Gas%20Exchange/gas-exchange.jpg",
-          "toys": [
-            {
-              "name": "Vernier Go Direct O2 + CO2 Gas Sensor Bundle",
-              "description": "Optical gas probe"
-            }
-          ]
-        },
-        {
-          "id": 23,
-          "tech": "PCR",
-          "specs": "Endpoint amplify",
-          "available": 1,
-          "tech_url": "/research/technology/biology/PCR/",
-          "hero": "/research/technology/biology/PCR/pcr.png",
+          "tech_url": "/research/technology/biology/Genomics/",
+          "hero": "/research/technology/biology/Genomics/genomics.jpeg",
           "toys": [
             {
               "name": "miniPCR mini16 Thermal Cycler",
-              "description": "Portable cycler"
-            }
-          ],
-          "tested": false,
-          "projects": [
+              "description": "Portable cycler",
+              "short": "PCR"
+            },
             {
-              "date": "2026-04-01",
-              "title": "Meow to Mars — Will Space Help or Hurt Mi's Heart?",
-              "url": "/research/projects/20260401%20Genes%20in%20Space/",
-              "sciences": [
-                "Biology"
-              ]
-            }
-          ]
-        },
-        {
-          "id": 24,
-          "tech": "qPCR",
-          "specs": "Real-time count",
-          "available": 0,
-          "tech_url": "/research/technology/biology/qPCR/",
-          "hero": "/research/technology/biology/qPCR/qpcr.png"
-        },
-        {
-          "id": 25,
-          "tech": "Long-Read",
-          "specs": "Entire strand",
-          "available": 0,
-          "tech_url": "/research/technology/biology/Long-Read/",
-          "hero": "/research/technology/biology/Long-Read/long-read.png",
-          "toys": [
-            {
-              "name": "Oxford Nanopore MinION Mk1B",
-              "description": "Portable sequencer"
-            }
-          ]
-        },
-        {
-          "id": 26,
-          "tech": "Short-Read",
-          "specs": "Parallel fragments",
-          "available": 0,
-          "tech_url": "/research/technology/biology/Short-Read/",
-          "hero": "/research/technology/biology/Short-Read/short-read.png"
-        },
-        {
-          "id": 27,
-          "tech": "Cell-Free",
-          "specs": "DNA to proteins",
-          "available": 1,
-          "tech_url": "/research/technology/biology/Cell-Free/",
-          "hero": "/research/technology/biology/Cell-Free/cell-free.png",
-          "toys": [
-            {
-              "name": "BioBits Cell-Free System",
-              "description": "Cell-free reaction"
-            }
-          ],
-          "tested": false,
-          "projects": [
-            {
-              "date": "2026-04-01",
-              "title": "Meow to Mars — Will Space Help or Hurt Mi's Heart?",
-              "url": "/research/projects/20260401%20Genes%20in%20Space/",
-              "sciences": [
-                "Biology"
-              ]
-            }
-          ]
-        },
-        {
-          "id": 28,
-          "tech": "Fluorescence",
-          "specs": "UV glow",
-          "available": 1,
-          "tech_url": "/research/technology/biology/Fluorescence/",
-          "hero": "/research/technology/biology/Fluorescence/fluorescence.png",
-          "toys": [
+              "name": "GELATO Electrophoresis and Visualization System",
+              "description": "Electrophoresis and transilluminator",
+              "short": "Electrophoresis"
+            },
             {
               "name": "P51 Molecular Fluorescence Viewer",
-              "description": "Compact UV viewer"
+              "description": "Blue-light sample viewer",
+              "short": "Fluorescence"
             },
             {
               "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
-              "description": "Quantitative excitation"
+              "description": "Nucleic-acid quantification",
+              "short": "Fluorescence"
+            },
+            {
+              "name": "Oxford Nanopore MinION Mk1B",
+              "description": "Portable sequencer",
+              "short": "Sequencing"
             }
           ],
           "tested": false,
@@ -755,188 +642,117 @@
       "science_slug": "astro",
       "techs": [
         {
-          "id": 29,
-          "tech": "Amateur",
-          "specs": "Smart telescopes",
+          "id": 18,
+          "tech": "Telescopes",
+          "specs": "Light collectors",
           "available": 1,
-          "tech_url": "/research/technology/astronomy/Amateur/",
-          "hero": "/research/technology/astronomy/Amateur/amateur.png",
+          "tech_url": "/research/technology/astronomy/Telescopes/",
+          "hero": "/research/technology/astronomy/Telescopes/telescopes.jpeg",
           "toys": [
             {
               "name": "ZWO Seestar S30 Pro",
-              "description": "Smart amateur telescope"
+              "description": "Smart amateur telescope",
+              "short": "Amateur"
             },
             {
               "name": "ZWO Seestar TH10 Tilting Wedge",
-              "description": "Equatorial alignment"
-            }
-          ]
-        },
-        {
-          "id": 30,
-          "tech": "Earth",
-          "specs": "Ground observatories",
-          "available": 1,
-          "tech_url": "/research/technology/astronomy/Earth/",
-          "hero": "/research/technology/astronomy/Earth/horsehead.jpeg",
-          "toys": [
+              "description": "Equatorial alignment",
+              "chip": false
+            },
             {
               "name": "UBC Thunderbird South Observatory",
-              "description": "Remote access to Cerro Tololo Chile"
+              "description": "Remote access to Cerro Tololo Chile",
+              "short": "Earth"
             },
             {
               "name": "Great Basin Observatory",
-              "description": "Remote access to Great Basin National Park"
-            }
-          ]
-        },
-        {
-          "id": 31,
-          "tech": "Radio",
-          "specs": "Radio telescopes",
-          "available": 1,
-          "tech_url": "/research/technology/astronomy/Radio/",
-          "hero": "/research/technology/astronomy/Radio/radio.jpeg",
-          "toys": [
+              "description": "Remote access to Great Basin National Park",
+              "short": "Earth"
+            },
             {
               "name": "NASA Radio JOVE RJK2p Antenna Kit",
-              "description": "Receive radio signals"
+              "description": "Receive radio signals",
+              "short": "Radio"
             },
             {
               "name": "SDRplay RSP1B",
-              "description": "Decode radio signals"
-            }
-          ]
-        },
-        {
-          "id": 32,
-          "tech": "Space",
-          "specs": "Space telescopes",
-          "available": 1,
-          "tech_url": "/research/technology/astronomy/Space/",
-          "hero": "/research/technology/astronomy/Space/space.png",
-          "toys": [
+              "description": "Decode radio signals",
+              "short": "Radio"
+            },
             {
               "name": "MAST Portal",
-              "description": "Space telescope data"
+              "description": "Space telescope data",
+              "short": "Space"
             }
           ]
         },
         {
-          "id": 33,
-          "tech": "Astrometry",
-          "specs": "Position catalogs",
+          "id": 19,
+          "tech": "Measurements",
+          "specs": "Position, brightness, spectra",
           "available": 1,
-          "tech_url": "/research/technology/astronomy/Astrometry/",
-          "hero": "/research/technology/astronomy/Astrometry/astrometry.png",
+          "tech_url": "/research/technology/astronomy/Measurements/",
+          "hero": "/research/technology/astronomy/Measurements/horsehead.jpeg",
           "toys": [
             {
               "name": "ZWO Seestar S30 Pro",
-              "description": "Smart amateur telescope"
-            },
-            {
-              "name": "Seestar S30 Bahtinov Focus Mask",
-              "description": "Confirm focus for star positions"
-            },
-            {
-              "name": "Gaia Archive",
-              "description": "Reference for plate solving"
-            }
-          ]
-        },
-        {
-          "id": 34,
-          "tech": "Photometry",
-          "specs": "Light curves",
-          "available": 1,
-          "tech_url": "/research/technology/astronomy/Photometry/",
-          "hero": "/research/technology/astronomy/Photometry/photometry.png",
-          "toys": [
-            {
-              "name": "ZWO Seestar S30 Pro",
-              "description": "Smart amateur telescope"
-            },
-            {
-              "name": "Seestar S30 Bahtinov Focus Mask",
-              "description": "Confirm focus for stable flux"
-            },
-            {
-              "name": "AAVSO Database",
-              "description": "Reference for variable stars"
-            }
-          ]
-        },
-        {
-          "id": 35,
-          "tech": "Spectroscopy",
-          "specs": "Spectra",
-          "available": 1,
-          "tech_url": "/research/technology/astronomy/Spectroscopy/",
-          "hero": "/research/technology/astronomy/Spectroscopy/spectroscopy.png",
-          "toys": [
-            {
-              "name": "ZWO Seestar S30 Pro",
-              "description": "Smart amateur telescope"
+              "description": "Smart amateur telescope",
+              "chip": false
             },
             {
               "name": "Seestar S30 1.25\" Filter Adapter",
-              "description": "Holds grating filter"
+              "description": "Holds grating filter",
+              "chip": false
             },
             {
               "name": "Paton Hawksley Star Analyser 100 Grating",
-              "description": "Reveal spectrum fingerprint"
+              "description": "Reveal spectrum fingerprint",
+              "short": "Spectroscopy"
+            },
+            {
+              "name": "Gaia Archive",
+              "description": "Reference for plate solving",
+              "short": "Astrometry"
+            },
+            {
+              "name": "AAVSO Database",
+              "description": "Reference for variable stars",
+              "short": "Photometry"
             },
             {
               "name": "Pickles Stellar Atlas",
-              "description": "Reference for stellar spectra"
-            },
-            {
-              "name": "Vernier Go Direct Fluorescence/UV-VIS Spectrophotometer",
-              "description": "Visible spectra for the Sun"
-            },
-            {
-              "name": "Vernier Spectrophotometer Optical Fiber",
-              "description": "Spectra outside of cuvettes"
+              "description": "Reference for stellar spectra",
+              "chip": false
             }
           ]
         },
         {
-          "id": 36,
-          "tech": "Transient",
-          "specs": "Events",
+          "id": 20,
+          "tech": "Classification",
+          "specs": "Events and morphology",
           "available": 1,
-          "tech_url": "/research/technology/astronomy/Transient/",
-          "hero": "/research/technology/astronomy/Transient/transient.png",
+          "tech_url": "/research/technology/astronomy/Classification/",
+          "hero": "/research/technology/astronomy/Classification/observatory.jpeg",
           "toys": [
             {
               "name": "ZWO Seestar S30 Pro",
-              "description": "Smart amateur telescope"
+              "description": "Smart amateur telescope",
+              "chip": false
             },
             {
               "name": "Transient Name Server",
-              "description": "Registry for new transients"
+              "description": "Registry for new transients",
+              "short": "Transient"
             },
             {
               "name": "WISeREP",
-              "description": "Reference for supernova typing"
-            }
-          ]
-        },
-        {
-          "id": 37,
-          "tech": "Galaxies",
-          "specs": "Morphology",
-          "available": 1,
-          "tech_url": "/research/technology/astronomy/Galaxies/",
-          "hero": "/research/technology/astronomy/Galaxies/galaxies.png",
-          "toys": [
-            {
-              "name": "ZWO Seestar S30 Pro",
-              "description": "Smart amateur telescope"
+              "description": "Reference for supernova typing",
+              "chip": false
             },
             {
               "name": "Galaxy Zoo",
-              "description": "Reference for morphologies"
+              "description": "Reference for morphologies",
+              "short": "Galaxies"
             }
           ]
         }

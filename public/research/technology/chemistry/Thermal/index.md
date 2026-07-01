@@ -2,8 +2,6 @@
 tech: Thermal
 science: Chemistry
 science_slug: chem
-topic: Analyze
-category: Thermal
 hero: thermal.jpeg
 toys:
   - name: Vernier Go Direct Temperature Probe

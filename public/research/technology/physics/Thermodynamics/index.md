@@ -2,8 +2,6 @@
 tech: Thermodynamics
 science: Physics
 science_slug: phys
-topic: Measure
-category: Thermodynamics
 hero: thermodynamics.jpeg
 hero_position: center 53%
 toys:

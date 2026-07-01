@@ -2,8 +2,6 @@
 tech: Electromagnetism
 science: Physics
 science_slug: phys
-topic: Measure
-category: Electromagnetism
 hero: electromagnetism.jpeg
 hero_position: center 62%
 toys:
