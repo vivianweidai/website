@@ -2,7 +2,7 @@
 tech: Graphic
 science: Mathematics
 science_slug: math
-hero: latex.png
+hero: graphic.jpeg
 toys:
   - name: Matplotlib
     description: 2D and 3D

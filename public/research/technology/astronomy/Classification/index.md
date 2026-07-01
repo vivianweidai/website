@@ -2,7 +2,7 @@
 tech: Classification
 science: Astronomy
 science_slug: astro
-hero: observatory.jpeg
+hero: orion.jpeg
 toys:
   - name: Transient Name Server
     description: Registry for new transients

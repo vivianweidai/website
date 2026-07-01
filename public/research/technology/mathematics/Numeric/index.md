@@ -2,7 +2,7 @@
 tech: Numeric
 science: Mathematics
 science_slug: math
-hero: numeric.png
+hero: numeric.jpeg
 toys:
   - name: NumPy
     description: Linear algebra and vector math
