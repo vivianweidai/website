@@ -13,9 +13,6 @@ toys:
   - name: P51 Molecular Fluorescence Viewer
     description: Blue-light sample viewer
     short: Fluorescence
-  - name: Vernier Go Direct Fluorescence UV-VIS Spectrophotometer
-    description: Nucleic-acid quantification
-    short: Fluorescence
   - name: Oxford Nanopore MinION Mk1B
     description: Portable sequencer
     short: Sequencing
