@@ -13,6 +13,6 @@ toys:
     description: Apply voltage, read current — all ions
     short: Conductivity
   - name: PalmSens EmStat Pico
-    description: Sweep voltage, read current — which redox species
+    description: Sweep voltage, read current — which ions
     short: Voltammetry
 ---

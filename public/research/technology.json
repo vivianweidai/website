@@ -322,7 +322,7 @@
             },
             {
               "name": "PalmSens EmStat Pico",
-              "description": "Sweep voltage, read current — which redox species",
+              "description": "Sweep voltage, read current — which ions",
               "short": "Voltammetry"
             }
           ],
