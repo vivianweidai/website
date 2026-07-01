@@ -337,7 +337,7 @@
             },
             {
               "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
-              "description": "Portable UV-Vis and fluorescence",
+              "description": "UV-Vis and fluorescence",
               "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
               "short": "UV-Vis"
             },
@@ -375,7 +375,7 @@
           "toys": [
             {
               "name": "Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer",
-              "description": "Laser desorption",
+              "description": "No separation, large molecules",
               "short": "MALDI"
             },
             {
