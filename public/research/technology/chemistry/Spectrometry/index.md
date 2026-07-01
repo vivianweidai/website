@@ -5,7 +5,7 @@ science_slug: chem
 hero: spectrometry.jpg
 toys:
   - name: Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer
-    description: No separation, large molecules
+    description: No separation
     short: MALDI
   - name: Agilent 1200 Series HPLC 6230A TOF LC-MS
     description: Liquid chromatography

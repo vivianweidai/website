@@ -375,7 +375,7 @@
           "toys": [
             {
               "name": "Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer",
-              "description": "No separation, large molecules",
+              "description": "No separation",
               "short": "MALDI"
             },
             {
