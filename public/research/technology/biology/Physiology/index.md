@@ -12,5 +12,5 @@ toys:
     short: Spirometer
   - name: Vernier Go Direct O2 + CO2 Gas Sensor Bundle
     description: Gas exchange
-    short: O₂/CO₂
+    short: Respiration
 ---
