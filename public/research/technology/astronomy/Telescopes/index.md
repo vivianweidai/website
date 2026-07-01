@@ -11,10 +11,10 @@ toys:
     description: Radio signals
     short: Radio
   - name: UBC Thunderbird South Observatory
-    description: Remote access to Cerro Tololo Chile
+    description: Remote access
     short: Earth
   - name: Great Basin Observatory
-    description: Remote access to Great Basin National Park
+    description: Remote access
     short: Earth
   - name: MAST Portal
     description: Space telescope data
