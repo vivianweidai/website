@@ -13,7 +13,4 @@ toys:
   - name: P51 Molecular Fluorescence Viewer
     description: Blue-light sample viewer
     short: Fluorescence
-  - name: Oxford Nanopore MinION Mk1B
-    description: Portable sequencer
-    short: Sequencing
 ---
