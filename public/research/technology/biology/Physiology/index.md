@@ -11,7 +11,7 @@ toys:
     description: Portable spirometer
     short: Spirometer
   - name: Vernier Go Direct O2 + CO2 Gas Sensor Bundle
-    description: Optical gas probe
+    description: Gas exchange
     short: O₂/CO₂
   - name: InteraXon Muse 2 Headband
     description: Head electrodes
