@@ -12,5 +12,5 @@ toys:
     short: Photometry
   - name: Pickles Stellar Atlas
     description: Spectroscopy references
-    chip: false
+    short: Spectroscopy
 ---
