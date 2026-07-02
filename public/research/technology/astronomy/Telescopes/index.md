@@ -7,9 +7,6 @@ toys:
   - name: ZWO Seestar S30 Pro with Tilting Wedge
     description: Optical signals
     short: Optical
-  - name: NASA Radio JOVE RJK2p Antenna Kit
-    description: Radio signals
-    short: Radio
   - name: UBC Thunderbird South Observatory
     description: Remote access
     short: Earth
