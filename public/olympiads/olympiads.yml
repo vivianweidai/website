@@ -253,10 +253,6 @@
   name: Johns Hopkins University Center for Talented Youth AP Physics 1
 - type: textbook
   subject: Chemistry
-  date: September 2026
-  name: University of Nevada Reno Organic Chemistry for Scientists and Professionals
-- type: textbook
-  subject: Chemistry
   date: July 2026
   name: Descriptive Inorganic, Coordination, and Solid State Chemistry by Glen E. Rodgers
 - type: textbook
@@ -337,10 +333,6 @@
   subject: Chemistry
   date: March 2024
   name: Johns Hopkins University Center for Talented Youth AP Chemistry
-- type: textbook
-  subject: Biology
-  date: September 2026
-  name: Davidson Academy of Nevada Advanced Biology and Laboratory
 - type: olympiad
   subject: Biology
   date: April 2026
@@ -394,10 +386,6 @@
   date: October 2026
   name: International Olympiad on Astronomy and Astrophysics
   alternate: true
-- type: textbook
-  subject: Astronomy
-  date: September 2026
-  name: University of Nevada Reno Astrophysical Measurements and Astrophysics
 - type: olympiad
   subject: Astronomy
   date: June 2026

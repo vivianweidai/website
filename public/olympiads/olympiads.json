@@ -538,9 +538,9 @@
       "id": 57,
       "type": "textbook",
       "subject": "Chemistry",
-      "date": "September 2026",
-      "sort_key": "2026-09",
-      "name": "University of Nevada Reno Organic Chemistry for Scientists and Professionals",
+      "date": "July 2026",
+      "sort_key": "2026-07",
+      "name": "Descriptive Inorganic, Coordination, and Solid State Chemistry by Glen E. Rodgers",
       "highlighted": 0
     },
     {
@@ -549,20 +549,11 @@
       "subject": "Chemistry",
       "date": "July 2026",
       "sort_key": "2026-07",
-      "name": "Descriptive Inorganic, Coordination, and Solid State Chemistry by Glen E. Rodgers",
-      "highlighted": 0
-    },
-    {
-      "id": 59,
-      "type": "textbook",
-      "subject": "Chemistry",
-      "date": "July 2026",
-      "sort_key": "2026-07",
       "name": "Organic Chemistry as a Second Language by David Klein",
       "highlighted": 0
     },
     {
-      "id": 60,
+      "id": 59,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "May 2026",
@@ -571,7 +562,7 @@
       "highlighted": 0
     },
     {
-      "id": 61,
+      "id": 60,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2026",
@@ -581,7 +572,7 @@
       "competitive": 1
     },
     {
-      "id": 62,
+      "id": 61,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "April 2026",
@@ -590,7 +581,7 @@
       "highlighted": 0
     },
     {
-      "id": 63,
+      "id": 62,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "April 2026",
@@ -599,7 +590,7 @@
       "highlighted": 0
     },
     {
-      "id": 64,
+      "id": 63,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "March 2026",
@@ -609,7 +600,7 @@
       "competitive": 1
     },
     {
-      "id": 65,
+      "id": 64,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "February 2026",
@@ -618,7 +609,7 @@
       "highlighted": 1
     },
     {
-      "id": 66,
+      "id": 65,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "September 2025",
@@ -627,7 +618,7 @@
       "highlighted": 0
     },
     {
-      "id": 67,
+      "id": 66,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "May 2025",
@@ -636,7 +627,7 @@
       "highlighted": 0
     },
     {
-      "id": 68,
+      "id": 67,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2025",
@@ -645,7 +636,7 @@
       "highlighted": 0
     },
     {
-      "id": 69,
+      "id": 68,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2025",
@@ -655,7 +646,7 @@
       "attended": 1
     },
     {
-      "id": 70,
+      "id": 69,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "April 2025",
@@ -664,7 +655,7 @@
       "highlighted": 0
     },
     {
-      "id": 71,
+      "id": 70,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "March 2025",
@@ -674,7 +665,7 @@
       "competitive": 1
     },
     {
-      "id": 72,
+      "id": 71,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "March 2025",
@@ -683,7 +674,7 @@
       "highlighted": 0
     },
     {
-      "id": 73,
+      "id": 72,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "February 2025",
@@ -692,7 +683,7 @@
       "highlighted": 1
     },
     {
-      "id": 74,
+      "id": 73,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "May 2024",
@@ -701,7 +692,7 @@
       "highlighted": 0
     },
     {
-      "id": 75,
+      "id": 74,
       "type": "olympiad",
       "subject": "Chemistry",
       "date": "April 2024",
@@ -710,7 +701,7 @@
       "highlighted": 0
     },
     {
-      "id": 76,
+      "id": 75,
       "type": "textbook",
       "subject": "Chemistry",
       "date": "March 2024",
@@ -719,16 +710,7 @@
       "highlighted": 0
     },
     {
-      "id": 77,
-      "type": "textbook",
-      "subject": "Biology",
-      "date": "September 2026",
-      "sort_key": "2026-09",
-      "name": "Davidson Academy of Nevada Advanced Biology and Laboratory",
-      "highlighted": 0
-    },
-    {
-      "id": 78,
+      "id": 76,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2026",
@@ -738,7 +720,7 @@
       "competitive": 1
     },
     {
-      "id": 79,
+      "id": 77,
       "type": "olympiad",
       "subject": "Biology",
       "date": "February 2026",
@@ -748,7 +730,7 @@
       "competitive": 1
     },
     {
-      "id": 80,
+      "id": 78,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2025",
@@ -757,7 +739,7 @@
       "highlighted": 0
     },
     {
-      "id": 81,
+      "id": 79,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2025",
@@ -766,7 +748,7 @@
       "highlighted": 0
     },
     {
-      "id": 82,
+      "id": 80,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2025",
@@ -775,7 +757,7 @@
       "highlighted": 0
     },
     {
-      "id": 83,
+      "id": 81,
       "type": "olympiad",
       "subject": "Biology",
       "date": "February 2025",
@@ -784,7 +766,7 @@
       "highlighted": 0
     },
     {
-      "id": 84,
+      "id": 82,
       "type": "textbook",
       "subject": "Biology",
       "date": "January 2025",
@@ -793,7 +775,7 @@
       "highlighted": 1
     },
     {
-      "id": 85,
+      "id": 83,
       "type": "textbook",
       "subject": "Biology",
       "date": "May 2024",
@@ -802,7 +784,7 @@
       "highlighted": 0
     },
     {
-      "id": 86,
+      "id": 84,
       "type": "olympiad",
       "subject": "Biology",
       "date": "April 2024",
@@ -811,7 +793,7 @@
       "highlighted": 0
     },
     {
-      "id": 87,
+      "id": 85,
       "type": "textbook",
       "subject": "Biology",
       "date": "March 2024",
@@ -820,7 +802,7 @@
       "highlighted": 0
     },
     {
-      "id": 88,
+      "id": 86,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "November 2026",
@@ -830,7 +812,7 @@
       "team": 1
     },
     {
-      "id": 89,
+      "id": 87,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "October 2026",
@@ -840,16 +822,7 @@
       "alternate": 1
     },
     {
-      "id": 90,
-      "type": "textbook",
-      "subject": "Astronomy",
-      "date": "September 2026",
-      "sort_key": "2026-09",
-      "name": "University of Nevada Reno Astrophysical Measurements and Astrophysics",
-      "highlighted": 0
-    },
-    {
-      "id": 91,
+      "id": 88,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "June 2026",
@@ -859,7 +832,7 @@
       "attended": 1
     },
     {
-      "id": 92,
+      "id": 89,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2026",
@@ -869,7 +842,7 @@
       "attended": 1
     },
     {
-      "id": 93,
+      "id": 90,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2026",
@@ -879,7 +852,7 @@
       "competitive": 1
     },
     {
-      "id": 94,
+      "id": 91,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2026",
@@ -889,7 +862,7 @@
       "competitive": 1
     },
     {
-      "id": 95,
+      "id": 92,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2026",
@@ -899,7 +872,7 @@
       "competitive": 1
     },
     {
-      "id": 96,
+      "id": 93,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "January 2026",
@@ -908,7 +881,7 @@
       "highlighted": 1
     },
     {
-      "id": 97,
+      "id": 94,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "May 2025",
@@ -917,7 +890,7 @@
       "highlighted": 0
     },
     {
-      "id": 98,
+      "id": 95,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2025",
@@ -926,7 +899,7 @@
       "highlighted": 0
     },
     {
-      "id": 99,
+      "id": 96,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2025",
@@ -935,7 +908,7 @@
       "highlighted": 0
     },
     {
-      "id": 100,
+      "id": 97,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "August 2024",
@@ -944,7 +917,7 @@
       "highlighted": 0
     },
     {
-      "id": 101,
+      "id": 98,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "July 2024",
@@ -953,7 +926,7 @@
       "highlighted": 0
     },
     {
-      "id": 102,
+      "id": 99,
       "type": "textbook",
       "subject": "Astronomy",
       "date": "June 2024",
@@ -962,7 +935,7 @@
       "highlighted": 0
     },
     {
-      "id": 103,
+      "id": 100,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "March 2024",
@@ -971,7 +944,7 @@
       "highlighted": 0
     },
     {
-      "id": 104,
+      "id": 101,
       "type": "olympiad",
       "subject": "Astronomy",
       "date": "February 2024",
