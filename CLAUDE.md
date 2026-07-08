@@ -18,7 +18,7 @@ A Technology is "available" to us when we have at least one Toy that enables it.
 The Research collection is grounded in **Toys we can regularly touch.** Tiers, in order of preference:
 
 1. **Home lab** (foundational) — instruments owned and operated at the home location. Hands-on, daily access.
-2. **Shared Instruments Lab** (foundational) — UNR's SIL, 24/7 walk-in access, low-profile mode (see global CLAUDE.md).
+2. ~~**Shared Instruments Lab** — UNR's SIL, 24/7 walk-in access~~ — **RETIRED July 2026** (access ended with the Vancouver move; see REFERENCE MATERIALS). No longer an access tier — don't propose SIL instruments. *(Open item: 8 SIL instruments still have live tech pages on the site — keep as past-work portfolio or pull? James's call.)*
 3. **Remote terminals into partner observatories** — UBC Thunderbird South, Great Basin Observatory. Real instrument time, just operated over a network.
 4. **Pay-per-use / mail-in services** (future) — for sophisticated Technologies we can't reasonably own. Add only after Tiers 1–3 cover the foundational science.
 
@@ -40,14 +40,9 @@ The old topic/category grouping tiers were dropped — `technology.yml` is now o
 
 ## REFERENCE MATERIALS
 
-All background materials live in the repo under `archives/` at the **top level — NOT inside `public/`**, so they aren't served on vivianweidai.com (filenames disclose UNR/UBC/faculty references). **`archives/README.md` is the legend** — read it first; it maps every file to live / dormant / survey and records the 2026-07-01 cull. Read the rest as needed for instrument details, context, and research planning:
-
-- **`archives/technology/`** — canonical instrument list (`toys.pdf`) + technology landscape (`technology.pdf`), still load-bearing; plus the historical university-landscape survey (`professors`/`laboratories`/`cores`/`comparison`/`unr`/`ubc` PDFs), retained as cull provenance + Tier-4 expansion map, not page scope. (`toys.pdf` is the canonical Toy catalog under the new vocabulary — it lists physical instruments, which IS what we call Toys now.)
-- **`archives/toys/<Toy>/`** — per-Toy folder of reference photos and the walk-up guide PDF (flat layout — `photo1.jpeg`, …, `<Toy>.pdf`). 8 folders are **live** (on a tech page); 6 are **dormant** (SIL-accessible but curated off the page on 2026-07-01) — see the README. The archive intentionally holds more instruments than the page shows; don't re-add dormant/archive-only instruments to the page.
+The former top-level `archives/` folder (canonical instrument catalogs, per-Toy walk-up guides, and the UNR/UBC landscape survey) was **removed in July 2026 when UNR SIL access ended with the Vancouver move** — recoverable from git history if ever needed. The **live registry of instruments is now `public/research/technology.yml`** (the source of truth); all instrument names in code and prose must match it exactly.
 
 `IDEAS.md` at the repo root is a living backlog of research project ideas — promote one to `public/research/projects/YYYYMMDD Name/` when a pilot starts.
-
-All instrument names in code and prose must exactly match what's in `archives/technology/toys.pdf`.
 
 ## STACK
 
@@ -61,7 +56,6 @@ All instrument names in code and prose must exactly match what's in `archives/te
 Top-level: `apple/ android/ pipeline/ public/ src/` plus Astro config. Five dirs — minimal because of one deliberate deviation (below). The plain layout is in `README.md`; the non-obvious parts:
 
 - **`src/`** — `content.config.ts` (Content Collections: **`projects`** + **`tech`**); `layouts/` holds the `.astro` components *and* their imported CSS/JS; `pages/` is file-based routing (`research/` carries the dynamic `[slug]` project route + `[science]/[tech]` tech route).
-- **`archives/`** — reference materials (toys.pdf, lab/faculty catalogues, per-Toy walk-up guides), kept **top-level so the private filenames stay off the served site**; `archives/README.md` is the legend (live / dormant / survey).
 - **`pipeline/worker/`** — CF Worker (ASSETS passthrough → `dist/`). **`pipeline/scripts/`** — `build_olympiads.py` / `build_technology.py` (YAML→JSON) + `build_curriculum.py` (.docx→markdown).
 - **`public/`** — source-of-truth served verbatim at the site root (the deviation). Areas: `curriculum/` (`source/*.md` + `curriculum.json`), `olympiads/` (`olympiads.yml`), `research/` (`projects/<YYYYMMDD Name>/`, `technology/<science>/<Tech>/index.md` with a sibling `hero:` image + flat photos, `technology.yml`). `<science>` is the full word (mathematics, computing…) to mirror `curriculum/source/`. **Every `*.json` under `public/` is generated — DO NOT edit by hand; edit the `.yml` and rebuild.**
 
@@ -100,7 +94,7 @@ YYYYMMDD Project Name/
 - **One-off HTML mockups (non-Astro)** — keep in `~/GITHUB/scratch/<topic>.html` per the global convention; serve with `live-server` if needed. Don't recreate the in-repo `scratch/` Jekyll preview folder — Astro's dev server replaces it.
 - **Layout-aware Astro mockups** — drop a temp `.astro` file under `src/pages/scratch-<topic>.astro`, view via `pnpm dev`, then `git restore` to remove. Same exception pattern as other Astro repos.
 - **Showing the user — default is Safari.** After a change, open the relevant URL in Safari (`open -a Safari 'http://127.0.0.1:4321/<path>'`) so the user sees the real rendering natively. `qlmanage -t -s 1200 -o /tmp <file>.html` is only an inline-in-chat fallback.
-- **Promoting from scratch to site** — move the chosen asset into the appropriate tracked path (e.g. `archives/technology/`, `archives/toys/<Toy>/`, or a project's `output/`).
+- **Promoting from scratch to site** — move the chosen asset into the appropriate tracked path (e.g. a tech folder under `public/research/technology/`, or a project's `output/`).
 
 ## ANALYSIS GUIDELINES
 
@@ -130,7 +124,7 @@ Existing pages that model this style: `20260419 IR Spectroscopy/index.md` and `2
 
 ## INSTRUMENTS
 
-**All instrument names must exactly match the canonical Toy List** (`archives/technology/toys.pdf`). When referencing any instrument, verify the name — do not abbreviate, add prefixes, or rearrange words. The live registry of instruments and which technologies they enable is `public/research/technology.yml`; per-instrument data-format notes live in the relevant project's `index.md` Setup table.
+**All instrument names must exactly match the live registry** (`public/research/technology.yml`). When referencing any instrument, verify the name — do not abbreviate, add prefixes, or rearrange words. That registry is the source of truth for instruments and which technologies they enable; per-instrument data-format notes live in the relevant project's `index.md` Setup table.
 
 ## GITHUB & VISIBILITY
 
