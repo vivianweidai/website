@@ -18,7 +18,7 @@ A Technology is "available" to us when we have at least one Toy that enables it.
 The Research collection is grounded in **Toys we can regularly touch.** Tiers, in order of preference:
 
 1. **Home lab** (foundational) — instruments owned and operated at the home location. Hands-on, daily access.
-2. ~~**Shared Instruments Lab** — UNR's SIL, 24/7 walk-in access~~ — **RETIRED July 2026** (access ended with the Vancouver move; see REFERENCE MATERIALS). No longer an access tier — don't propose SIL instruments. *(Open item: 8 SIL instruments still have live tech pages on the site — keep as past-work portfolio or pull? James's call.)*
+2. ~~**Shared Instruments Lab** — UNR's SIL, 24/7 walk-in access~~ — **RETIRED July 2026** (access ended with the Vancouver move; see REFERENCE MATERIALS). No longer an access tier — don't propose SIL instruments for *new* work. The 8 SIL instruments that already have tech pages **stay on the site as historical/past-work projects** (decided July 2026) — don't pull them, but don't add new SIL-based projects either. New research centers on the Vancouver home lab.
 3. **Remote terminals into partner observatories** — UBC Thunderbird South, Great Basin Observatory. Real instrument time, just operated over a network.
 4. **Pay-per-use / mail-in services** (future) — for sophisticated Technologies we can't reasonably own. Add only after Tiers 1–3 cover the foundational science.
 
