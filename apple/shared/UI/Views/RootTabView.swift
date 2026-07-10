@@ -22,13 +22,13 @@ public struct RootTabView: View {
     public var body: some View {
         TabView(selection: $selection) {
             CurriculumView()
-                .tabItem { Label("Curriculum", systemImage: "book") }
+                .tabItem { Image(systemName: "book") }
                 .tag(Tab.curriculum)
             OlympiadsView()
-                .tabItem { Label("Olympiads", systemImage: "trophy") }
+                .tabItem { Image(systemName: "trophy") }
                 .tag(Tab.olympiads)
             ResearchView()
-                .tabItem { Label("Research", systemImage: "flask") }
+                .tabItem { Image(systemName: "flask") }
                 .tag(Tab.research)
         }
         .task { await store.preloadAll() }
