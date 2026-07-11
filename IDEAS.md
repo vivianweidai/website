@@ -23,11 +23,14 @@ At-a-glance status of live fronts. Thin index — details live in each front's o
 section or project folder. Update these lines as work moves.
 
 **Piloting / active**
-- **Home molecular-biology lab** — auditing the miniPCR kit set (S0–S3 done; S4/S5
-  pending); first real-PCR kits (PTC Taster + 16S Barcoding) ordered. → *Home
+- **Home molecular-biology lab** — ✅ **endpoint kit-set audit complete (S0–S5)**: every
+  instrument verified, consumables accounted for, workflows understood; bench is
+  Vivian-ready. First real-PCR kits (PTC Taster + 16S Barcoding) ordered. → *Home
   molecular-biology lab* section below.
 
 **On deck (next up)**
+- **Vivian's hands-on runs** — work the 5 endpoint labs in order (Microliter Madness →
+  Cat Genetics → Glow Lab → Forensics → BioBits before ~Nov 2026).
 - **PTC first-PCR run** — once the kits land (freezer; P200 gravimetric check first).
 - **TGA Q50** — thermogravimetric analysis, walk-up guide in hand.
 - **DNA barcoding of local biota** — flagship molecular-bio project; promote to a
@@ -262,7 +265,16 @@ Room-temp-but-dark: SeeGreen tabs, any diluted dye.
   compatible dyes, so our SeeGreen All-in-One tabs substitute for the guide's GelGreen.
   Remaining for the real run: thaw the frozen pre-made DNA (Victim/J.M./Evidence 1-2 +
   ladder); 12 µl loads → P20 not P200; gloves + eyewear.
-- **S5 BioBits** ⬜ pending audit (needs no instrument — quick).
+- **S5 BioBits** ✅ audited (2026-07-11) — fully self-contained: freeze-dried reagents
+  (freezer, KT-1910-02, exp ~early Nov 2026), DNA templates, its **own P51** (why we own
+  two), its **own 4 µl minipette**, guide. No shared instrument. Cell-free central dogma
+  in a tube: green = transcription (RNA), red = translation (protein), kanamycin blocks
+  the ribosome. **Read the prediction table with Vivian before opening — the prediction
+  IS the pedagogy.** Only 2 reactions' worth of reagent; run after Microliter Madness.
+- **★ ENDPOINT KIT-SET AUDIT COMPLETE (2026-07-11)** — all of S0–S5 swept: every
+  instrument verified, all consumables accounted for, every workflow understood. The
+  bench is Vivian-ready. Next phase is the actual hands-on runs (Vivian) + the real-PCR
+  expansion once the ordered kits land.
 - **First real-PCR kits ordered** (PTC Taster KT-1004-03 + 16S Barcoding KT-1015-01) →
   −20 °C freezer on arrival, 12-mo shelf life. Gear confirmed compatible. See the
   **molecular-bio expansion path** (Future topic structure → Biology).
