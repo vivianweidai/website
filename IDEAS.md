@@ -248,18 +248,31 @@ Room-temp-but-dark: SeeGreen tabs, any diluted dye.
 - **S0 Calibration** ✅ complete — scale traceable (50.000), both Gilsons feel good
   (gravimetric deferred to point-of-use), P20 technique learned, miniPCR ramp healthy.
 - **S1 Microliter Madness** ✅ audited — gear present, workflow understood, put away for Vivian.
-- **S2 Cat Genetics** 🟡 GELATO powers on & understood; still to eyeball casting tray + comb + distilled water.
+- **S2 Cat Genetics** ✅ GELATO gear audit complete (2026-07-11). Full kit confirmed
+  against the User's Guide: console + light-filtering buffer chamber + blue-filter
+  cover, casting platform + gel trays (2 small 60×60 + 2 large 120×60), double-sided
+  combs (25/13 + 13/9 teeth), gel-cutting/band-excision tray, Fold-a-View photo hood
+  (the folded blue slab), ClearView anti-fog spray, microfiber cloth. **Verify: unfold
+  the Fold-a-View to confirm; locate DNA visualization goggles (may be missing — minor,
+  amber cover filters the light) + the other 2 combs (store under the platform).**
 - **S3 DNA Glow Lab** ✅ audited — all gear present & located (buffers were in the fridge bag).
   Queued for the real run: P200 gravimetric check first; dilute dye <2 h before use; warm DMSO dye if frozen.
-- **S4 Forensics · S5 BioBits** ⬜ pending audit.
+- **S4 Forensics** ✅ hardware audited (2026-07-11) — same GELATO gel gear as S2, all
+  present. **SeeGreen-vs-GelGreen open item CLOSED:** the GELATO guide lists both as
+  compatible dyes, so our SeeGreen All-in-One tabs substitute for the guide's GelGreen.
+  Remaining for the real run: thaw the frozen pre-made DNA (Victim/J.M./Evidence 1-2 +
+  ladder); 12 µl loads → P20 not P200; gloves + eyewear.
+- **S5 BioBits** ⬜ pending audit (needs no instrument — quick).
 - **First real-PCR kits ordered** (PTC Taster KT-1004-03 + 16S Barcoding KT-1015-01) →
   −20 °C freezer on arrival, 12-mo shelf life. Gear confirmed compatible. See the
   **molecular-bio expansion path** (Future topic structure → Biology).
 
-**Open items:** confirm SeeGreen substitutes for GelGreen (Forensics) · eyeball GELATO
-casting tray + comb, get distilled water · second/third pipette stand (need three hangers)
-· identify the ~15 dropper bottles (probably microscopy stains → microscope, not DNA work)
-· ZWO Seestar S30 accessory kit turned up in lab boxes → belongs with the telescope.
+**Open items:** ~~SeeGreen↔GelGreen (Forensics)~~ CLOSED · ~~eyeball GELATO casting gear~~
+DONE · get a distilled-water jug (gels + ~350 mL running buffer) · confirm Fold-a-View
+unfolds + locate DNA visualization goggles + the other 2 combs · second/third pipette
+stand (need three hangers) · identify the ~15 dropper bottles (probably microscopy stains
+→ microscope, not DNA work) · ZWO Seestar S30 accessory kit turned up in lab boxes →
+belongs with the telescope · **S5 BioBits audit** (last one, needs no instrument).
 
 ## Idea backlog
 
