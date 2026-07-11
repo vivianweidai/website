@@ -1,8 +1,43 @@
-# Ideas — science
+# Research — ideation & progress
 
-Living backlog of research ideas. Public on purpose — we target underserved areas and do not care about being scooped. Ideas graduate out of this doc by getting promoted to `public/research/projects/YYYYMMDD Name/index.md` when a pilot actually starts.
+The living doc for the whole research program. Two jobs in one file:
 
-_Last updated 2026-04-25._
+1. **Ideation** — the idea backlog (below), organized by science, each with a status.
+   Public on purpose: we target underserved areas and don't care about being scooped.
+2. **Progress tracking** — the **Active work & progress** dashboard (next section) is
+   the at-a-glance "where are we"; in-flight fronts keep their own detail sections
+   (e.g. the home molecular-biology lab). Ideas graduate to
+   `public/research/projects/YYYYMMDD Name/index.md` when a pilot starts and get
+   published from there.
+
+Keep this doc current as work moves — bump an idea's `Status`, update a front's line
+in the dashboard, and log structural changes in the change log at the bottom.
+
+_Last updated 2026-07-11._
+
+---
+
+## Active work & progress
+
+At-a-glance status of live fronts. Thin index — details live in each front's own
+section or project folder. Update these lines as work moves.
+
+**Piloting / active**
+- **Home molecular-biology lab** — auditing the miniPCR kit set (S0–S3 done; S4/S5
+  pending); first real-PCR kits (PTC Taster + 16S Barcoding) ordered. → *Home
+  molecular-biology lab* section below.
+
+**On deck (next up)**
+- **PTC first-PCR run** — once the kits land (freezer; P200 gravimetric check first).
+- **TGA Q50** — thermogravimetric analysis, walk-up guide in hand.
+- **DNA barcoding of local biota** — flagship molecular-bio project; promote to a
+  project folder after the PTC training-wheels run succeeds.
+
+**Completed & published** (in `public/research/projects/`)
+- IR Spectroscopy · UV-Vis Spectroscopy (+ FluoroMax/Lambda 750/J-1500 side scans) ·
+  Four Point Probe.
+
+**Backlog** — ~30 raw ideas across all six sciences; see **Idea backlog** below.
 
 ## Goals
 
@@ -455,6 +490,7 @@ What is and isn't needed for the summer 2026 home lab.
 
 ## Change log
 
+- **2026-07-11** — Reframed the doc from "idea backlog" to the research program's **ideation + progress-tracking** doc: retitled, dual-purpose intro, and added an **Active work & progress** dashboard at the top (piloting / on deck / completed / backlog). Updated science `CLAUDE.md` to match.
 - **2026-07-11** — Consolidated the home molecular-biology lab reference into IDEAS.md as the **"Home molecular-biology lab — bench reference & progress"** section (kit set + lab order, per-lab notes, Session 0 calibration procedure, gear, cold chain, current audit status). Absorbed from the short-lived `homelab/molecular-biology.md`, which was removed — IDEAS.md now tracks both bench progress and ideation in one file.
 - **2026-07-11** — Added **molecular-bio expansion path** (miniPCR mini16X is a real thermal cycler; endpoint kits don't use PCR). Staged roadmap: training-wheels PTC Taster kit → roll-your-own (IDT primers + Taq master mix + self-extracted template + fresh plastic) → sequencing (mail-in Sanger now, MinION later). Added 2 Biology backlog rows (DNA barcoding of local biota; human genotype→phenotype family panel). Updated home-capability list to reflect the real molecular-bio bench (mini16X, GELATO, 2× P51, pipettes, balance). Source: home-lab miniPCR shakedown, working doc `~/GITHUB/scratch/minipcr-home-lab/plan.md`.
 - **2026-05-01** — Physics restructure (final): Move/Heat/Wave → **Measure + Build** (2 topics, verb pair matching every other science). Measure: Motion (Force, Distance, Time), Fluids (Pressure, Turbidity), Electromagnetism (Magnetic Field, Spectrometer, Interferometer — fields + optics merged). Build: Circuits (Rigol scope, TOAUTO soldering, SainSmart helping hands; Multimeter dropped as too basic), Prototypes (Bambu Lab A1 Mini placeholder for 3D Printing). Heat dropped — Vernier Temperature Probe became a toy under Chem React → Thermal → new **Melting Point** tech (with broken OptiMelt as historical toy). Vernier Conductivity Probe moved from Physics → Chem React → Conductometry (now available). Tech-name rename: Photogate→Time, Motion Detector→Distance, Gas Pressure→Pressure (toys describe the instrument, techs describe the measurement). Dropped unsupported physics tech files. Four Point Probe project relinked to new Circuits tech. All 6 sciences now at 2 topics each with verb-pair labels.

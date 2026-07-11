@@ -42,7 +42,7 @@ The old topic/category grouping tiers were dropped — `technology.yml` is now o
 
 The former top-level `archives/` folder (canonical instrument catalogs, per-Toy walk-up guides, and the UNR/UBC landscape survey) was **removed in July 2026 when UNR SIL access ended with the Vancouver move** — recoverable from git history if ever needed. The **live registry of instruments is now `public/research/technology.yml`** (the source of truth); all instrument names in code and prose must match it exactly.
 
-`IDEAS.md` at the repo root is a living backlog of research project ideas — promote one to `public/research/projects/YYYYMMDD Name/` when a pilot starts.
+`IDEAS.md` at the repo root is the research program's living doc — **both ideation (the idea backlog) and progress tracking (the "Active work & progress" dashboard + in-flight detail sections like the home molecular-biology lab)**. Promote an idea to `public/research/projects/YYYYMMDD Name/` when a pilot starts; keep the dashboard and idea statuses current as work moves.
 
 ## STACK
 
