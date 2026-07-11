@@ -47,6 +47,7 @@ An idea earns a project slot when it checks most of these:
 ### Non-toy experimental capability (home / kit-based)
 
 - Kitchen-scale wet-lab chemistry (cooking, buffering, extraction, pH).
+- **Molecular biology bench (miniPCR home lab)** — real capability, not a toy demo. **miniPCR mini16X** (full programmable thermal cycler — does real PCR, not just the endpoint labs we bought), **GELATO** electrophoresis + blue-LED transilluminator, **two P51** fluorescence viewers, ONiLAB P20 + Gilson P200/P1000 pipettes, milligram balance. The @home kits on hand (Microliter Madness, Cat Genetics, DNA Glow Lab, Forensics, BioBits) are *endpoint* labs; the hardware is fully PCR-capable the moment reagents are added. See **Molecular-bio expansion path** under Future topic structure.
 - Kit biology — Genes in Space kit (PCR-adjacent), centrifuge, basic microscopy.
 - Arduino / Raspberry Pi sensors if a project calls for it.
 
@@ -98,6 +99,8 @@ Organized by science discipline. Each idea lists status, primary instruments, on
 | **Protein secondary structure of commercial egg whites / casein / gelatin** | raw | J-1500 CD | CD on household proteins at controlled denaturation is rarely done outside of pure research labs. | JEI / Biochem. Mol. Biol. Educ. | α-helix / β-sheet deconvolution via convex mixture model. |
 | **Tea oxidation live (green → black) kinetics** | raw | UV-2550 + FluoroMax-3 | Industrial tea-processing data is usually endpoint; real-time home-replicated oxidation curves aren't. | JEI / LWT | Kinetic fit + theaflavin/thearubigin ratio regression. |
 | **Maillard browning in caramelization of honey / sugars / bread** | raw | UV-2550 | Classic Maillard kinetics under real home conditions (oven, toaster) vs. idealized industrial data is a gap. | JEI / J. Chem. Educ. | First-order kinetic fit at 420 nm across substrates. |
+| **DNA barcoding of local Vancouver biota (COI / rbcL / matK / ITS)** | raw | miniPCR mini16X + GELATO + mail-in Sanger | Household/citizen barcoding of local plants, insects, fungi, and market seafood — with a full extract→amplify→sequence→BLAST→BOLD pipeline — is a strong, genuinely novel JEI shape (each specimen is new data). Doubles as a wet-lab + bioinformatics cross-project. | JEI + BOLD submissions | Sequence QC + alignment + BLAST/phylo placement; the pipeline IS the result. |
+| **Human genotype→phenotype family panel (PTC TAS2R38, PV92 Alu, lactase MCM6)** | raw | miniPCR mini16X + GELATO | Classic markers, but running them as a *quantitative* family/population panel tied to Hardy–Weinberg and allele-frequency stats is an Olympiad-aligned pedagogical shape. | JEI / Biochem. Mol. Biol. Educ. | Allele-frequency estimation, HWE χ² test, small-sample inference. |
 
 ### Physics
 
@@ -252,6 +255,16 @@ Bacterial Culture, Antibiotic Susceptibility, Yeast Fermentation, Plant Tissue C
 
 When a Grow project commits with real toys (Drosophila vials + food, microbiology incubator + plates), promote the relevant techs back into a Grow topic on the page. Lowest-friction first launch: **Drosophila genetics** (~$100 from Carolina Biological — vials, food, white-eye + wild-type stocks, ice-knockout). Stereoscope under Image → Microscopy already covers sorting.
 
+### Biology — molecular-bio expansion path (miniPCR → real PCR → sequencing)
+
+The **mini16X is a full thermal cycler** — the endpoint @home kits on hand don't use its PCR capability at all (only the Glow Lab uses it, as a 96 °C heat source). Amplification is a reagents-away upgrade, and it's the highest-leverage biology capability we own. Staged so the first real PCR isn't also the first debugging session:
+
+1. **Training-wheels kit (next buy).** One pre-packaged miniPCR PCR lab — reagents guaranteed to work, self-contained, runs on mini16X + GELATO. Recommended: **PTC Taster (Genotype to Phenotype)** — swab own cheek → amplify TAS2R38 → restriction digest → gel; engaging + genotype-yourself payoff, no sequencing needed. Validates the full extract→amplify→visualize loop. ~$100–150 reagent pack; confirm current price.
+2. **Roll-your-own reagents.** Generic Taq **master mix** (miniPCR EZ, NEB, Promega — Amazon carries 2× mixes, ~$0.20–0.50/rxn) + **custom primers from IDT** (idtdna.com, a few $/pair, ships home — *this* is what makes any target reachable) + **self-extracted template** (Chelex / boil prep / spin column). ⚠️ real PCR needs **fresh 0.2 ml tubes + fresh filter tips** — the 2007 legacy plastic is fine for endpoint dye labs but not amplification (one stray molecule → a billion; contamination control is the whole game).
+3. **Read the amplicon.** The one real gap is sequencing. Near-term: **mail-in Sanger** (Azenta/Eurofins, ~$5–10/rxn). Down-the-road big-gear trigger: **Oxford Nanopore MinION** (~$1k) if barcoding sustains — turns the bench into a full sequencing lab.
+
+Flagship project target: **DNA barcoding of local biota** (backlog row above) — real research, cross-disciplinary (wet lab + bioinformatics), Olympiad-bio aligned, publishable. Promote to a project folder when the training-wheels kit run succeeds. In the Tech/Toy schema the miniPCR is a **Toy under Biology → Replicate** (amplification); BioBits/cell-free stays under **Cell-Free**.
+
 ### Vancouver lab buildout — pre-order priorities
 
 What is and isn't needed for the summer 2026 home lab.
@@ -283,6 +296,7 @@ What is and isn't needed for the summer 2026 home lab.
 
 ## Change log
 
+- **2026-07-11** — Added **molecular-bio expansion path** (miniPCR mini16X is a real thermal cycler; endpoint kits don't use PCR). Staged roadmap: training-wheels PTC Taster kit → roll-your-own (IDT primers + Taq master mix + self-extracted template + fresh plastic) → sequencing (mail-in Sanger now, MinION later). Added 2 Biology backlog rows (DNA barcoding of local biota; human genotype→phenotype family panel). Updated home-capability list to reflect the real molecular-bio bench (mini16X, GELATO, 2× P51, pipettes, balance). Source: home-lab miniPCR shakedown, working doc `~/GITHUB/scratch/minipcr-home-lab/plan.md`.
 - **2026-05-01** — Physics restructure (final): Move/Heat/Wave → **Measure + Build** (2 topics, verb pair matching every other science). Measure: Motion (Force, Distance, Time), Fluids (Pressure, Turbidity), Electromagnetism (Magnetic Field, Spectrometer, Interferometer — fields + optics merged). Build: Circuits (Rigol scope, TOAUTO soldering, SainSmart helping hands; Multimeter dropped as too basic), Prototypes (Bambu Lab A1 Mini placeholder for 3D Printing). Heat dropped — Vernier Temperature Probe became a toy under Chem React → Thermal → new **Melting Point** tech (with broken OptiMelt as historical toy). Vernier Conductivity Probe moved from Physics → Chem React → Conductometry (now available). Tech-name rename: Photogate→Time, Motion Detector→Distance, Gas Pressure→Pressure (toys describe the instrument, techs describe the measurement). Dropped unsupported physics tech files. Four Point Probe project relinked to new Circuits tech. All 6 sciences now at 2 topics each with verb-pair labels.
 - **2026-05-01** — Removed Bio Grow from `technology.yml`. The "techs" inside (Bacterial Culture, Drosophila Genetics, etc.) are project areas, not techs — same axis-mismatch as chem reaction types (acid/base, redox, precipitation). Bio sits at 2 topics (Image, Replicate); Grow returns when toys + project commit.
 - **2026-05-01** — Added Vancouver lab buildout pre-order list (cross-discipline bench bottlenecks: balance, microcentrifuge, vortex, hot plate). Dad's lab covers cold storage / incubation / laminar flow.
