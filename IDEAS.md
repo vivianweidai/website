@@ -67,6 +67,165 @@ An idea earns a project slot when it checks most of these:
 - **UV-Vis + Fluorescence (FluoroMax-3)** → same sample, absorption + emission + Stokes shift + quantum yield estimation.
 - **UV-Vis + CD (J-1500)** → chiral pigments (carotenoids) or protein samples.
 
+## Home molecular-biology lab — bench reference & progress
+
+Operational reference for the Vancouver home molecular-biology bench: the miniPCR
+kit set, the gear that runs it, and the hard-won procedure notes. Forward-looking
+ideas (PCR expansion path, DNA barcoding) are in **Future topic structure → Biology**
+and the **Biology idea backlog** below.
+
+Started as a multi-session shakedown (July 2026): run every kit once, hands-on, to
+learn what each instrument does. James audits gear + workflow; **Vivian does the
+actual hands-on labs.**
+
+### The kit set and lab order
+
+The @home kits we own are **endpoint labs** (dye, melting, electrophoresis) — none
+uses PCR amplification except the Glow Lab, which uses the thermal cycler only as a
+96 °C heat source. Ordered so **visible-failure labs come before silent-failure
+labs**, and so the earliest-expiring reagent (BioBits) isn't stranded.
+
+| # | Lab | Cat # | Teaches | Instruments | Pipette |
+|---|-----|-------|---------|-------------|---------|
+| 0 | Calibration & shakedown | — | metrology — prove the instruments are honest | scale, all pipettes, miniPCR (dry) | all |
+| 1 | Microliter Madness | KT-1101-01 | the micropipetting skill that gates every lab | none | P20 |
+| 2 | Cat Genetics (dye electrophoresis) | KT-1402-01 | gel mechanics, zero silent-failure risk | GELATO | P20 |
+| 3 | DNA Glow Lab | KT-1900-01 | DNA melting temperature (the physics behind PCR's 95 °C step) | miniPCR + P51 | P20, P200 |
+| 4 | Forensics: Wrongfully Convicted? | KT-1504-01 | first run combining real DNA + gel + staining | GELATO | P20 |
+| 5 | BioBits: Central Dogma | KT-1102-01 / reagents KT-1910-02 | cell-free transcription & translation, live | none (37 °C body heat) | its own 4 µl minipette |
+
+**Why this order:** molecular biology fails invisibly — a mispipetted reaction gives a
+blank gel with no clue why. The dye labs (1, 2) announce every mistake, so you build
+pipetting and electrophoresis in isolation before combining them with real DNA (3, 4).
+BioBits (5) floats — no instrument, no purchase — but has only **two reactions' worth
+of reagent** and expires ~early Nov 2026, so don't leave it past October.
+
+### Per-lab notes
+
+**S1 Microliter Madness** — reusable practice card + blue/yellow/red dyes (5 ml ea) +
+200 µl tips + guide. No pipette included; use the P20. Drills **2 µl and 5 µl** —
+harder than 20 µl and exactly the range the real labs need (BioBits/Glow Lab dispense
+4 µl). *Habit:* always use the smallest pipette whose range contains the volume.
+
+**S2 Cat Genetics** — colored dyes, no DNA. Melt a SeeGreen tab → pour gel → seat comb
+→ load → run → view under the amber lid. Reagents for 8 groups (botch-tolerant).
+**SeeGreen All-in-One tabs** = agarose + stain + TBE in one; store dark (photobleach).
+Distilled water for gels + diluting TBE (tap-water ions → hot gel → smeared bands).
+
+**S3 DNA Glow Lab** — the best lab, and the only one using the thermal cycler. Samples:
+AT-rich, GC-rich, 50:50, unknown. A dye fluoresces only bound to *double-stranded* DNA;
+heat the samples and the glow dies as the duplex denatures. GC-rich holds its glow to
+higher T (G:C = 3 H-bonds vs A:T = 2). The miniPCR steps through known temperatures so
+you read a **Tm number**; the P51 reads fluorescence. Follow-ons: 100 mM NaOH denatures
+by pH without heat; estimate the unknown's concentration from brightness.
+- Volumes: 4 µl DNA (P20); 40–65 µl samples + NaOH (P200); Buffer 1/2 at 275/255 µl
+  exceed the P200 ceiling → aliquot 135 µl twice.
+- **TIMING TRAP:** once diluted into Buffer 1, dye fluorescence holds only ~2 h at RT.
+  Dilute immediately before use, never the night before. (Diluted dye keeps ~72 h cold+dark.)
+- Concentrated dye is DMSO-based, **freezes at 4 °C** — may arrive solid; warm in a
+  fist. Keep foil-wrapped (photobleaches). **Bundle miniPCR + P51 + 0.2 ml strips.**
+
+**S4 Forensics** — first run with real DNA + gel + staining. Ships pre-made DNA
+(Victim, J.M., Evidence 1/2 + Fast DNA Ladder 1); no PCR. 12 µl loads → **use the P20,
+never the P200** (12 µl is 6% of P200 full scale, invisible double-digit error). Gloves
++ eyewear. Guide names GelGreen tabs; our SeeGreen tabs should substitute — **confirm.**
+
+**S5 BioBits** — four tubes: negative control (water), DNA A, DNA A + kanamycin, DNA B.
+Green = transcription, red = translation; kanamycin blocks the ribosome. **Read the
+prediction table with Vivian before opening anything** — the prediction IS the pedagogy.
+Only two reactions' worth; do it after Microliter Madness so the 4 µl-pellet mistakes
+are burned on a practice card first. Ships its own P51 + 4 µl minipette. Incubate 37 °C
+(fist/pocket) 15 min → RT overnight; read 8–72 h.
+
+### Session 0 — calibration procedure (metrology)
+
+Prove every instrument is honest before trusting it; the measurement chain has to
+bottom out on a traceable standard.
+
+- **0a Scale** (THINKSCALE 50 g × 0.001 g): battery in, solid surface away from airflow,
+  warm up, **run the CAL routine against the 50 g weight** (placing the weight in weigh
+  mode does NOT recalibrate). Re-weigh → 50.000. *After a good cal the same weight reads
+  nominal by construction — the real test is whether a third mass reads true (0c).*
+- **0b Gilsons:** cycle each plunger 20–30× full travel; grit/sticky return = dry O-ring
+  (cheap Gilson seal kit).
+- **0c Gravimetric check (the real test):** **weigh-by-difference, NOT a standing tare** —
+  record empty tube `m0`, dispense **10×**, record `m1`, water = `m1 − m0`. Ten dispenses
+  because one 20 µl shot = 20 mg and 1 mg readability is 5% quantization. *Why not a tare:
+  a cheap milligram scale drifts over the ~2 min of dispensing (a first attempt read an
+  impossible 52 µl/shot from pure tare drift).* Targets: P20→200 mg, P200→1000 mg,
+  P1000→10 000 mg (±1%). Reads accuracy, not scatter; a known bias is usable.
+- **Pipetting technique:** **first stop to fill, both stops to empty.** Press only to the
+  first (soft) stop before drawing up — going to the hard stop first over-draws.
+- **0d miniPCR dry-run:** run the built-in Quality control protocol empty. It heats the
+  **lid first** (~105 °C, anti-condensation) before the block ramps ~18→95 °C in <1 min.
+  Confirms heaters healthy + teaches the app. Full QC run ~3.7 h (burn-in); stop early.
+
+### Gear
+
+**Pipettes** — store hanging **tip-down** (liquid drains off the piston seal):
+
+| Pipette | Range | Source | Status |
+|---|---|---|---|
+| P20 | 2–20 µl | ONiLAB | new, ISO 8655 cert. Ships with stand, hex adjustment/ejector wrench (**keep — recalibration tool**), color ID clips, 200 µl tips |
+| P200 | 20–200 µl | Gilson Pipetman Classic (yellow) | cal due 2012-05; feels good; **gravimetric-verify before first real use (Glow Lab)** |
+| P1000 | 100–1000 µl | Gilson Pipetman Classic (blue) | cal due 2012-05; feels good; verify when first needed |
+
+**Consumables** — new fresh sterile: 2–200 µl tips (P20/P200), 1.5 mL microtubes, 8-strip
+0.2 ml PCR tubes (thermal-cycler samples). Legacy (fine for endpoint/water only): Zap +
+blue 1000 µl tips (P1000), one bag Sarstedt 2 ml screw tubes (leak-proof storage).
+⚠️ **Real PCR needs fresh plastic** (fresh filter tips + 0.2 ml tubes) — one stray
+molecule becomes a billion.
+
+**Instruments** — **miniPCR mini16X** (full programmable thermal cycler, BLE+USB, miniPCR
+v3.0 app; Glow Lab uses it as a heat source but it's PCR-capable for the expansion path).
+**GELATO** electrophoresis + integrated blue-LED transilluminator (**standalone, no app**:
+PSU 50–135 V, on-unit voltage+timer, amber viewing lid, phone doc-hood). **Two P51**
+fluorescence viewers (one for Glow Lab, one ships in BioBits). *Physics:* GELATO
+transilluminator and P51 use the same principle — blue-LED excitation + amber filter
+exploiting the **Stokes shift** (blue in → green out); dsDNA-binding dye fluoresces only
+when intercalated. Safe blue light, not UV.
+
+### Cold chain
+
+Label bins so nobody tosses reagents (a shared family freezer is the biggest risk).
+
+| Where | What | Lot | Deadline |
+|---|---|---|---|
+| Freezer −20 °C | BioBits Central Dogma (KT-1910-02) | BBT-251120 | ~early Nov 2026 |
+| Freezer −20 °C | Forensics (KT-1504-01) | EF-251110 | ~May 2027 |
+| Freezer −20 °C | PTC Taster Lab (KT-1004-03) | — | 12 mo from receipt |
+| Freezer −20 °C | 16S Barcoding (KT-1015-01) | — | 12 mo from receipt |
+| Fridge 4 °C | Glow Lab dye + DNA samples + buffers | GLO-2512 | — |
+
+Room-temp-but-dark: SeeGreen tabs, any diluted dye.
+
+### Standing gotchas
+
+- **Label the two power bricks:** big = GELATO, small = miniPCR (different voltages).
+- **Antifog spray lives with the GELATO** (transilluminator lid fogs over a warm gel).
+- Distilled water for gels + buffer; tap water fine for pipette calibration (soft Vancouver water).
+- **Buy PTC taste paper separately** for the PTC lab (Bartovation Super Taster kit,
+  amazon.ca) — it's the phenotype half, not in the kit. Only PTC + Control pair with the
+  TAS2R38 genotyping; Na Benzoate + Thiourea are bonus taste-genetics.
+
+### Current status (as of 2026-07-11)
+
+- **S0 Calibration** ✅ complete — scale traceable (50.000), both Gilsons feel good
+  (gravimetric deferred to point-of-use), P20 technique learned, miniPCR ramp healthy.
+- **S1 Microliter Madness** ✅ audited — gear present, workflow understood, put away for Vivian.
+- **S2 Cat Genetics** 🟡 GELATO powers on & understood; still to eyeball casting tray + comb + distilled water.
+- **S3 DNA Glow Lab** ✅ audited — all gear present & located (buffers were in the fridge bag).
+  Queued for the real run: P200 gravimetric check first; dilute dye <2 h before use; warm DMSO dye if frozen.
+- **S4 Forensics · S5 BioBits** ⬜ pending audit.
+- **First real-PCR kits ordered** (PTC Taster KT-1004-03 + 16S Barcoding KT-1015-01) →
+  −20 °C freezer on arrival, 12-mo shelf life. Gear confirmed compatible. See the
+  **molecular-bio expansion path** (Future topic structure → Biology).
+
+**Open items:** confirm SeeGreen substitutes for GelGreen (Forensics) · eyeball GELATO
+casting tray + comb, get distilled water · second/third pipette stand (need three hangers)
+· identify the ~15 dropper bottles (probably microscopy stains → microscope, not DNA work)
+· ZWO Seestar S30 accessory kit turned up in lab boxes → belongs with the telescope.
+
 ## Idea backlog
 
 Organized by science discipline. Each idea lists status, primary instruments, one-line hypothesis, why it's underserved, target publication venue, and ML hook (if any).
@@ -296,6 +455,7 @@ What is and isn't needed for the summer 2026 home lab.
 
 ## Change log
 
+- **2026-07-11** — Consolidated the home molecular-biology lab reference into IDEAS.md as the **"Home molecular-biology lab — bench reference & progress"** section (kit set + lab order, per-lab notes, Session 0 calibration procedure, gear, cold chain, current audit status). Absorbed from the short-lived `homelab/molecular-biology.md`, which was removed — IDEAS.md now tracks both bench progress and ideation in one file.
 - **2026-07-11** — Added **molecular-bio expansion path** (miniPCR mini16X is a real thermal cycler; endpoint kits don't use PCR). Staged roadmap: training-wheels PTC Taster kit → roll-your-own (IDT primers + Taq master mix + self-extracted template + fresh plastic) → sequencing (mail-in Sanger now, MinION later). Added 2 Biology backlog rows (DNA barcoding of local biota; human genotype→phenotype family panel). Updated home-capability list to reflect the real molecular-bio bench (mini16X, GELATO, 2× P51, pipettes, balance). Source: home-lab miniPCR shakedown, working doc `~/GITHUB/scratch/minipcr-home-lab/plan.md`.
 - **2026-05-01** — Physics restructure (final): Move/Heat/Wave → **Measure + Build** (2 topics, verb pair matching every other science). Measure: Motion (Force, Distance, Time), Fluids (Pressure, Turbidity), Electromagnetism (Magnetic Field, Spectrometer, Interferometer — fields + optics merged). Build: Circuits (Rigol scope, TOAUTO soldering, SainSmart helping hands; Multimeter dropped as too basic), Prototypes (Bambu Lab A1 Mini placeholder for 3D Printing). Heat dropped — Vernier Temperature Probe became a toy under Chem React → Thermal → new **Melting Point** tech (with broken OptiMelt as historical toy). Vernier Conductivity Probe moved from Physics → Chem React → Conductometry (now available). Tech-name rename: Photogate→Time, Motion Detector→Distance, Gas Pressure→Pressure (toys describe the instrument, techs describe the measurement). Dropped unsupported physics tech files. Four Point Probe project relinked to new Circuits tech. All 6 sciences now at 2 topics each with verb-pair labels.
 - **2026-05-01** — Removed Bio Grow from `technology.yml`. The "techs" inside (Bacterial Culture, Drosophila Genetics, etc.) are project areas, not techs — same axis-mismatch as chem reaction types (acid/base, redox, precipitation). Bio sits at 2 topics (Image, Replicate); Grow returns when toys + project commit.
