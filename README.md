@@ -1,6 +1,6 @@
 # Science
 
-Personal science portfolio and lab notebook — available on [web](https://vivianweidai.com), the [App Store](https://apps.apple.com/app/id6762091743) for iPhone and iPad (with an embedded Apple Watch companion), and [Google Play](https://play.google.com/store/apps/details?id=com.vivianweidai.science) for Android phones and Wear OS.
+Personal science portfolio and lab notebook — available on [web](https://vivianweidai.com) and the [App Store](https://apps.apple.com/app/id6762091743) for iPhone and iPad (with an embedded Apple Watch companion).
 
 ## What's Inside
 
@@ -23,7 +23,6 @@ public/                    Source-of-truth — served at site root, organized by
   olympiads/               photos/ + olympiads.{yml,json}
   research/                projects/ + technology/ + technology.{yml,json}
 apple/                     iOS + watchOS app (SwiftUI, read-only)
-android/                   Android + Wear OS port (Kotlin/Compose, read-only)
 ```
 
 ## Tech Stack
