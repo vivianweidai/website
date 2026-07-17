@@ -20,7 +20,7 @@ pipeline/worker/           Cloudflare Worker (Static Assets passthrough)
 pipeline/scripts/          Python build scripts (.docx → markdown, YAML → JSON)
 public/                    Source-of-truth — served at site root, organized by page
   curriculum/              notes/ + source/ + curriculum.json
-  olympiads/               photos/ + olympiads.{yml,json}
+  olympiads/               olympiads.{yml,json}
   research/                projects/ + technology/ + technology.{yml,json}
 apple/                     iOS + watchOS app (SwiftUI, read-only)
 ```

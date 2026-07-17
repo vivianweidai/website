@@ -153,23 +153,15 @@ Project pages are **`index.md`** (not `README.md`). Model new ones on an existin
 - **1 photo** → `<div class="hero-single"><img src="photos/[file]" alt="…"></div>`
 - Then `<div class="project-meta">[Month Dayth Year]<br>[Instrument name]</div>`.
 
-**Body sections, in order:** `## Overview` (1–2 para) · `## Setup` (Category/Details table + procedure prose) · `## Samples` (**top-level `##`**, not under Setup; Category/Samples table) · `## Data` (format; if `photos/data/` has data sheets, add a hand-coded `#data-grid` of plain `<img>` pointing at them — `three-col` for 3, shuffle button only if >4) · `## Results` (link **written report → static notebook → Colab**, in that order).
-
-**End with the footer div:**
-```html
-<div class="footer"><div class="footer-nav"><a href="/curriculum/">Curriculum</a><a href="/olympiads/">Olympiads</a><a href="/research/">Research</a></div><a class="footer-github" href="https://github.com/vivianweidai/science/tree/main/[URL-encoded folder]">View on GitHub</a></div>
-```
+**Body sections, in order:** `## Overview` (1–2 para) · `## Setup` (Category/Details table + procedure prose) · `## Samples` (**top-level `##`**, not under Setup; Category/Samples table) · `## Data` (format; if `photos/data/` has data sheets, add a hand-coded `#data-grid` of plain `<img>` pointing at them — `three-col` for 3, shuffle button only if >4) · `## Results` (link **written report → static notebook → Colab**, in that order). The `## Results` section is the last thing in the file — **do not add a footer or nav div.** `Project.astro` injects the `<PageFooter />` and the science-colored tech pills (from the `tech:` frontmatter) automatically; hand-coding them in `index.md` would double them up.
 
 **Never add a "#" / row-number column to any table** (Setup, Samples, Results, anywhere) — markdown tables already read as a list; convey ordering by row sequence alone. Repo-wide rule.
 
-## TECHNOLOGY TABLE AT THE BOTTOM OF EACH PROJECT
+## TECH ↔ PROJECT LINKS (no hand-coded tables)
 
-Most project `index.md` files end with a hand-coded **Technology** table — a `<div id="technology" class="tech-table-wrap">` listing each tech the project links to (matching the project's `tech:` frontmatter array). Each row encodes the category (date column), the tech name + URL, the spec (desc column), and the science chip:
+Projects and techs cross-link **automatically** — there is nothing to hand-edit or keep in sync:
 
-```html
-<li data-subj="bio"><span class="update-date">Expression</span> <span class="update-name"><a href="/research/technology/biology/Cell-Free/">Cell-Free</a></span> <span class="update-desc">DNA to proteins</span> <a class="chip bio" href="/research/#bio">Biology</a></li>
-```
+- **Project → tech:** `Project.astro` reads the project's `tech:` frontmatter array and renders one science-colored **pill** per tech in the title row, each linking to `/research/technology/<science>/<Tech>/`. (This replaced the old hand-coded `<div id="technology">` "Technology" tables in commit `ce2a710` — do **not** re-add such a table to any `index.md`.)
+- **Tech → project:** `build_technology.py` reverse-scans every project's `tech:` array and bakes the project list into each tech's entry in `technology.json`, which the research page, tech-detail pages, and Apple app all consume.
 
-**These tables must stay in sync with `public/research/technology.yml`.** The tech name and spec/description in each row are duplicates of `technology.yml` fields (`techs[].tech`, `techs[].specs`). When you edit a tech's spec in `technology.yml`, sweep every project's Technology table that lists that tech and update the duplicated text — otherwise the tech card and the project page disagree.
-
-**TODO — auto-generate.** Long-term, `build_technology.py` (or a sibling script) should regenerate these tables from `technology.yml` + each project's `tech:` array, treating the project page like the homepage's technology.json consumer rather than a hand-edited HTML island. Until that script exists, the manual sweep above is the workaround.
+So a tech's spec (`techs[].specs`) lives in exactly one place — `technology.yml` — and is no longer duplicated into project pages. Registering a project with a tech is a one-line frontmatter edit; rebuild with `python pipeline/scripts/build_technology.py`.
