@@ -13,7 +13,7 @@ The living doc for the whole research program. Two jobs in one file:
 Keep this doc current as work moves — bump an idea's `Status`, update a front's line
 in the dashboard, and log structural changes in the change log at the bottom.
 
-_Last updated 2026-07-11._
+_Last updated 2026-07-16 — reframed home-lab-first (SIL access retired): **Math + Computing** are the tool layer; **Physics · Chemistry · Biology · Astronomy** are the four research sciences._
 
 ---
 
@@ -32,64 +32,72 @@ section or project folder. Update these lines as work moves.
 - **Vivian's hands-on runs** — work the 5 endpoint labs in order (Microliter Madness →
   Cat Genetics → Glow Lab → Forensics → BioBits before ~Nov 2026).
 - **PTC first-PCR run** — once the kits land (freezer; P200 gravimetric check first).
-- **TGA Q50** — thermogravimetric analysis, walk-up guide in hand.
 - **DNA barcoding of local biota** — flagship molecular-bio project; promote to a
   project folder after the PTC training-wheels run succeeds.
+- **USAYPT 2027 physics** — prototype 1–2 of the four problems (Friction on a Roll /
+  Standing Waves / Diodes / Walking Statues); all home-scale, theory + experiment.
+- **Astronomy first light** — ZWO Seestar S30 + Star Analyser grating shakedown
+  (imaging → photometry → slitless spectroscopy).
 
 **Completed & published** (in `public/research/projects/`)
-- IR Spectroscopy · UV-Vis Spectroscopy (+ FluoroMax/Lambda 750/J-1500 side scans) ·
-  Four Point Probe.
+- IR Spectroscopy · UV-Vis Spectroscopy · Four Point Probe. *(SIL-era; kept as
+  historical past-work — those university instruments are no longer accessible.)*
 
-**Backlog** — ~30 raw ideas across all six sciences; see **Idea backlog** below.
+**Backlog** — home-lab-runnable ideas across the four research sciences (Physics ·
+Chemistry · Biology · Astronomy), with **Math + Computing as the cross-cutting tool
+layer**; see **Idea backlog** below.
 
 ## Goals
 
-- **Cover all six sciences** — Mathematics, Computing, Physics, Chemistry, Biology, Astronomy. Each should have at least one live project by end of 2026.
-- **Publish.** At least one JEI-level paper per year, one Journal of Chemical Education paper, and one submission into a real peer-reviewed adult venue (mentor co-author).
-- **Push our toy advantage.** Where we have hands-on walk-up access to instruments that other high-school researchers don't, the project should use those instruments as its primary readout, not as incidental confirmation.
-- **Target underserved areas.** Household-materials science, quantitative pedagogy, and cross-instrument combinations. Avoid re-running studies that already have hundreds of papers.
-- **Fold in machine learning** where it fits — spectral classification, chemometrics, kinetics fitting. Don't force ML into projects where a linear fit answers the question.
-- **Use curriculum knowledge.** Projects should draw on what we've studied (AP-level math through calculus; stats + inference; ML methods/algorithms; full AP chem + organic; AP-level physics incl. modern; AP-level bio incl. genetics, ecology, neuroscience; Olympiad-level astronomy).
+- **Four research sciences, two tool sciences.** **Physics, Chemistry, Biology, Astronomy** are the standalone research targets — each should carry at least one live home-lab project. **Mathematics + Computing** are the *foundational tool layer* (modeling, statistics, ML, simulation, signal processing) applied *across* the four, not pursued as standalone research.
+- **Home-lab-first.** As of the July 2026 Vancouver move, UNR SIL walk-up instrument access is retired. Every new idea must run on **toys we own and operate at home** — the miniPCR molecular-bio bench, the ZWO Seestar telescope, cameras + sensors, a soldering/scope/3D-print bench, and kitchen-scale wet chemistry. (The three completed SIL-instrument projects stay on the site as historical past-work.)
+- **Publish.** At least one JEI-level paper per year, a *Journal of Chemical Education*-level paper, and one submission into a real peer-reviewed adult venue (mentor co-author). Physics also competes at **USAYPT** (see Physics backlog).
+- **Push the owned-toy advantage.** Where we own an instrument other high-schoolers don't (the PCR bench, the Seestar), the project should use it as its *primary* readout — not incidental confirmation.
+- **Target underserved areas.** Local-biota barcoding, household-materials science with home readouts, quantitative pedagogy, cross-science combinations. Avoid re-running saturated studies.
+- **Fold in machine learning where it fits** — sequence bioinformatics, spectral/image classification, video pose-tracking, kinetics fitting. Don't force ML where a linear fit answers the question.
+- **Use curriculum knowledge.** Draw on what we've studied (AP-level math through calculus; stats + inference; ML methods/algorithms; full AP chem + organic; AP-level physics incl. modern; AP-level bio incl. genetics, ecology, neuroscience; Olympiad-level astronomy).
 
 ## Selection criteria (applied to every idea)
 
 An idea earns a project slot when it checks most of these:
 
-1. **Toy advantage** — uses a walk-up instrument we've already been trained on, OR one we can reach within the next visit (see Resources below).
-2. **Underserved** — literature search shows a clear gap at the household-sample or cross-instrument level, not yet saturated.
+1. **Owned-toy advantage** — runs on an instrument we own and operate at home (see the Home-lab inventory), not one we'd have to travel for.
+2. **Underserved** — literature search shows a clear gap (local samples, home readouts, cross-science), not yet saturated.
 3. **Curriculum fit** — connects to something we've already studied, so the analysis isn't a black box.
-4. **Cross-discipline leverage** — ideally spans two sciences or two instruments. Single-instrument projects are fine but lower priority unless the underserved angle is strong.
-5. **Publishable shape** — a clear hypothesis, a well-defined sample set, a figure set we can picture before starting.
-6. **ML-ready (when applicable)** — the data shape supports classification, regression, or clustering we can learn from.
+4. **Cross-discipline leverage** — ideally spans a research science + the Math/Computing tool layer, or two owned toys.
+5. **Publishable / competition shape** — a clear hypothesis, a well-defined sample set, a figure set we can picture before starting (or a USAYPT theory+experiment pairing).
+6. **ML-ready (when applicable)** — the data shape supports classification, regression, clustering, or a fit we can learn from.
 
-## Resources
+## Resources — the home-lab inventory
 
-### Toys with hands-on walk-up experience (our advantage)
+What we own and operate at home. (The UNR SIL university instruments — FT-IR, UV-2550, FluoroMax-3, Lambda 750, J-1500 CD, Jandel RM3, TGA, GC/MS — are retired as of the July 2026 move; see the change log. New ideas anchor on the toys below.)
 
-| Instrument | Discipline | Typical readout | Completed project |
-|---|---|---|---|
-| Thermo Scientific Nicolet 380 FT-IR Spectrometer | Chemistry | 4000–400 cm⁻¹ transmittance/absorbance | `20260419 IR Spectroscopy` |
-| Shimadzu UV-2550 UV/Vis Spectrophotometer | Chemistry | 200–1100 nm absorbance | `20260420 UV-Vis Spectroscopy` |
-| Horiba Jobin Yvon FluoroMax-3 Spectrofluorometer | Chemistry | 200–800 nm emission + excitation | `20260420 UV-Vis Spectroscopy` |
-| Jandel RM3 Four-Point Probe | Chemistry / Physics | Sheet resistance, resistivity | `20260404 Four Point Probe` |
-| PerkinElmer Lambda 750 UV/Vis/NIR | Chemistry | 190–3300 nm, integrating sphere | Side scan in `20260420` |
-| Jasco J-1500 CD Spectrometer | Chemistry / Biology | 163–950 nm circular dichroism | Side scan in `20260420` |
-| OptiMelt Automated Melting Point System | Chemistry | Melting point | Attempted in `20260405` — non-functional |
+### Molecular-biology bench — the flagship capability
+- **miniPCR mini16X** — full programmable thermal cycler (real PCR, not just endpoint demos)
+- **GELATO** — gel electrophoresis + integrated blue-LED transilluminator
+- **2× P51** fluorescence viewers · ONiLAB P20 + Gilson P200/P1000 pipettes · milligram balance
+- @home endpoint kits (Microliter Madness, Cat Genetics, Glow Lab, Forensics, BioBits) + first real-PCR kits (PTC Taster, 16S Barcoding). Full bench log in the **Home molecular-biology lab** section below.
 
-### Toys on deck (walk-up guide in hand, not yet run)
+### Astronomy
+- **ZWO Seestar S30** smart telescope — amateur imaging, photometry, astrometry
+- **Paton Hawksley Star Analyser 100** transmission grating — slitless spectroscopy on the Seestar (turns it into a spectrograph)
 
-- **TA Instruments TGA Q50** — thermogravimetric analysis (mass loss vs. temp). Next up.
-- Agilent 7890A GC / 5975C Inert MSD, Waters Micromass ZQ LC-MS, Shimadzu MALDI-8020 — guides available; unscheduled.
-- CEM Discover Microwave Reactor, Orec Ozonator — guides available.
+### Physics · electronics · fabrication
+- **Camera + video** → pose/motion tracking (Tracker / ML) for mechanics
+- **Microphone + FFT** → acoustics / standing waves
+- **Multimeter + Rigol oscilloscope + soldering bench** → circuits, diode I–V, foxhole radio
+- **Bambu Lab A1 Mini** 3D printer → jigs, rigs, scaled models · **Arduino / Raspberry Pi** sensors
+- Everyday mechanics props — bicycle wheel (friction), guitar (standing waves)
 
-### Non-toy experimental capability (home / kit-based)
+### Chemistry — home / kitchen-scale
+- Kitchen wet-lab — buffering, extraction, pH, kinetics, cooking-as-chemistry
+- **Vernier probes** — conductivity, temperature (melting point), O₂ · camera **colorimetry** (RGB) as a poor-man's spectrophotometer
+- Home electrochemistry — electrolysis / plating / simple cells (multimeter readout)
 
-- Kitchen-scale wet-lab chemistry (cooking, buffering, extraction, pH).
-- **Molecular biology bench (miniPCR home lab)** — real capability, not a toy demo. **miniPCR mini16X** (full programmable thermal cycler — does real PCR, not just the endpoint labs we bought), **GELATO** electrophoresis + blue-LED transilluminator, **two P51** fluorescence viewers, ONiLAB P20 + Gilson P200/P1000 pipettes, milligram balance. The @home kits on hand (Microliter Madness, Cat Genetics, DNA Glow Lab, Forensics, BioBits) are *endpoint* labs; the hardware is fully PCR-capable the moment reagents are added. See **Molecular-bio expansion path** under Future topic structure.
-- Kit biology — Genes in Space kit (PCR-adjacent), centrifuge, basic microscopy.
-- Arduino / Raspberry Pi sensors if a project calls for it.
+### Pre-order priorities (cross-discipline bench bottlenecks, ~$1,000–1,500)
+- Analytical balance (0.1 mg) · microcentrifuge · vortex mixer · hot plate / magnetic stirrer. *(Dad's lab covers cold storage / incubation / laminar flow.)*
 
-### Curriculum strengths (what we can analyze, not just measure)
+### Curriculum strengths (what we can *analyze*, not just measure)
 
 - **Mathematics** — through calculus incl. vectors, differentials, fields, approximation.
 - **Computing** — stats (distributions, inference, significance testing), algorithms, **Learning (Methods + Algorithms)** → ML foundation for classification / regression / clustering.
@@ -98,12 +106,12 @@ An idea earns a project slot when it checks most of these:
 - **Biology** — cells, genetics (Mendel, non-Mendel, expression, regulation, mutation), ecology, plants, animals, neuroscience.
 - **Astronomy** — Olympiad-level incl. observations, coordinates, mechanics, solar system, stars, cosmology.
 
-### Cross-instrument combinations (highest leverage)
+### Highest-leverage combinations (research science × tool layer)
 
-- **FT-IR + UV-Vis** on the same samples → polymer weathering (carbonyl index + yellowing), cooking-oil oxidation (C=O + conjugated dienes), natural-dye characterization (functional-group class + λmax).
-- **UV-Vis + Four-Point Probe** → DSSC workflow (dye absorption + substrate conductivity).
-- **UV-Vis + Fluorescence (FluoroMax-3)** → same sample, absorption + emission + Stokes shift + quantum yield estimation.
-- **UV-Vis + CD (J-1500)** → chiral pigments (carotenoids) or protein samples.
+- **PCR bench + bioinformatics (Computing)** → local-biota barcoding: wet lab produces sequences, ML/alignment turns them into IDs. The pipeline is the result.
+- **Seestar + image analysis (Computing)** → photometry light curves, astrometry, spectral reduction from the Star Analyser grating.
+- **Camera + Math/Computing** → pose-tracking kinematics + ODE/Bayesian fits for the USAYPT mechanics problems.
+- **Home probes + Math** → kinetics/thermochemistry time-series with proper uncertainty + model comparison.
 
 ## Home molecular-biology lab — bench reference & progress
 
@@ -288,101 +296,65 @@ belongs with the telescope · **S5 BioBits audit** (last one, needs no instrumen
 
 ## Idea backlog
 
-Organized by science discipline. Each idea lists status, primary instruments, one-line hypothesis, why it's underserved, target publication venue, and ML hook (if any).
+Reorganized around the home lab (July 2026). **Mathematics + Computing are the foundational tool layer** — methods applied *across* the four research sciences, not standalone projects. **Physics · Chemistry · Biology · Astronomy** are the standalone research targets, each anchored to owned toys. All SIL-instrument ideas were removed (see change log). Status key at the bottom.
 
-### Chemistry
+### 🔧 Foundational tool layer
 
-| Idea | Status | Instruments | Why underserved | Target venue | ML hook |
-|---|---|---|---|---|---|
-| **Anthocyanin pH ladder across household products** | raw | UV-2550 | Red-cabbage indicator is ubiquitous in hobby/pedagogy material but rarely tied to quantitative λmax shifts across realistic household-product diversity. | JEI / J. Chem. Educ. | Cluster household products in λmax × pH space; flag metal-complexation outliers. |
-| **Cooking-oil oxidation over reheat cycles** | raw | FT-IR + UV-2550 | Industrial oil-oxidation data doesn't map to home-kitchen reheat conditions; per-cycle home data is thin. | J. Chem. Educ. / Food Chemistry | Regression: cycle count → carbonyl index + 234 nm diene absorbance, across oil types. |
-| **Thermal-receipt paper BPA/BPS/BHPF survey** | raw | FT-IR | Receipt-paper developer replacements (BPA→BPS→BHPF) have rolled through retail with almost no public fingerprint survey by retailer/year. | JEI → Environ. Sci. Technol. Lett. (mentor) | Classifier: ATR spectrum → developer class. |
-| **Thrift-store textile authenticity (silk/cashmere/wool claims)** | raw | FT-IR | Single-fiber ATR classification hasn't been run at consumer-retail scale. | JEI / J. Chem. Educ. | Amide I/II band ratios + Random Forest to label protein vs. cellulose vs. synthetic. |
-| **Home-dryer lint microfiber survey** | raw | FT-IR | Indoor textile-microfiber shedding at household scale is under-reported vs. ocean/beach microplastics. | JEI → Mar. Pollut. Bull. (mentor) | Classifier: spectrum → polymer class (PET / nylon / acrylic / cotton blend). |
-| **Face-mask polymer aging (post-COVID archive)** | raw | FT-IR | Polypropylene non-woven aging under realistic storage (drawer, car, pocket) is not documented in the open literature. | JEI | Carbonyl-index regression vs. stated storage condition. |
-| **Produce-surface coating survey (apples, citrus, cucumber)** | raw | FT-IR | Wax/shellac/resin coatings vary by supplier and season; systematic ATR survey isn't published. | JEI / J. Agric. Food Chem. | Spectral clustering → supplier ID. |
-| **Reusable vs. single-use grocery-bag aging** | raw | FT-IR | Reusable-bag microplastic shedding is under-studied compared to single-use debate. | JEI → Chemosphere (mentor) | Weathering regression. |
-| **Tire-wear particles vs. roadside microplastics** | raw | FT-IR | Tire-wear is the largest urban microplastic source but rarely sampled at benchtop ATR scale. | Mar. Pollut. Bull. / Sci. Total Environ. (mentor) | Classifier: TWP vs. other polymer class. |
-| **Sunscreen UV-A/UV-B brand survey + photodegradation kinetics** | raw | UV-2550 (+ Lambda 750) | SPF claims are public; per-brand coverage curves and avobenzone decay rates aren't. | JEI → Photochem. Photobiol. A (mentor) | Kinetic fit + brand classifier from absorbance curve. |
-| **Laundry-dye wash-off kinetics** | raw | UV-2550 | Colorfastness is industry-measured by eye; quantitative per-cycle dye-release curves are thin. | JEI / J. Chem. Educ. | Kinetic fit (first/second order). |
-| **Anthocyanin stability under cooking (boil/steam/roast/microwave)** | raw | UV-2550 | Cross-source cooking-method comparison under identical protocol is under-documented. | J. Chem. Educ. / LWT | Degradation-rate regression. |
-| **Natural-dye DSSC screening — λmax vs. open-circuit voltage** | raw | UV-2550 + Jandel RM3 | Most DSSC papers use a single dye; a systematic λmax→efficiency correlation across 10–20 edible extracts is a publishable shape. | J. Chem. Educ. → Sol. Energy Mater. Sol. Cells (mentor) | Regression: dye spectral features → efficiency. |
+Not standalone projects — the modeling/analysis muscle every project below leans on. Each science project names which of these it exercises.
 
-### Biology
+**Mathematics — the modeling & analysis toolkit**
+- **Curve fitting + uncertainty propagation** — least-squares, error bars, CIs; the backbone of every dataset.
+- **Fourier / signal processing** — audio FFT (standing waves), image transforms.
+- **Differential-equation models** — damped/driven oscillators, rocking dynamics (Walking Statues), reaction kinetics, diffusion.
+- **Bayesian inference + model comparison** — posteriors on rate constants / damping; BIC/AIC between competing models. Pairs with any time-series.
+- **Numerical simulation** — ODE / finite-element solvers to compare theory against measurement (USAYPT wants both).
 
-| Idea | Status | Instruments | Why underserved | Target venue | ML hook |
-|---|---|---|---|---|---|
-| **Fruit-ripening pigment kinetics (banana, tomato, blueberry)** | raw | UV-2550 + FluoroMax-3 | Static ripeness snapshots are common; true kinetic time-series at home conditions are rare. | JEI / J. Chem. Educ. | Fit chlorophyll disappearance + carotenoid rise simultaneously; spectral unmixing. |
-| **Chlorophyll-a content as leaf-stress indicator (drought / salt / light)** | raw | UV-2550 + FluoroMax-3 | Plant-stress spectroscopy usually uses field reflectance; controlled benchtop extract-based comparisons at household-stressor level are thin. | JEI / Plant Physiology (mentor) | Regression: stress treatment → chlorophyll a/b ratio. |
-| **Catalase activity across potato varieties / storage conditions** | raw | UV-2550 | Enzyme kinetics (H₂O₂ decomposition) is classical — but supermarket-variety comparison is undocumented. | JEI / J. Biol. Ed. / J. Chem. Educ. | Michaelis-Menten fit; cluster varieties. |
-| **Protein secondary structure of commercial egg whites / casein / gelatin** | raw | J-1500 CD | CD on household proteins at controlled denaturation is rarely done outside of pure research labs. | JEI / Biochem. Mol. Biol. Educ. | α-helix / β-sheet deconvolution via convex mixture model. |
-| **Tea oxidation live (green → black) kinetics** | raw | UV-2550 + FluoroMax-3 | Industrial tea-processing data is usually endpoint; real-time home-replicated oxidation curves aren't. | JEI / LWT | Kinetic fit + theaflavin/thearubigin ratio regression. |
-| **Maillard browning in caramelization of honey / sugars / bread** | raw | UV-2550 | Classic Maillard kinetics under real home conditions (oven, toaster) vs. idealized industrial data is a gap. | JEI / J. Chem. Educ. | First-order kinetic fit at 420 nm across substrates. |
-| **DNA barcoding of local Vancouver biota (COI / rbcL / matK / ITS)** | raw | miniPCR mini16X + GELATO + mail-in Sanger | Household/citizen barcoding of local plants, insects, fungi, and market seafood — with a full extract→amplify→sequence→BLAST→BOLD pipeline — is a strong, genuinely novel JEI shape (each specimen is new data). Doubles as a wet-lab + bioinformatics cross-project. | JEI + BOLD submissions | Sequence QC + alignment + BLAST/phylo placement; the pipeline IS the result. |
-| **Human genotype→phenotype family panel (PTC TAS2R38, PV92 Alu, lactase MCM6)** | raw | miniPCR mini16X + GELATO | Classic markers, but running them as a *quantitative* family/population panel tied to Hardy–Weinberg and allele-frequency stats is an Olympiad-aligned pedagogical shape. | JEI / Biochem. Mol. Biol. Educ. | Allele-frequency estimation, HWE χ² test, small-sample inference. |
+**Computing — the computational & ML toolkit**
+- **Video pose / motion tracking** — extract kinematics from phone video (pendulum, rocking statue, rolling wheel).
+- **Audio analysis** — FFT/spectrogram pipelines for standing-wave frequencies.
+- **Sequence bioinformatics** — the barcoding pipeline (QC → align → BLAST/BOLD → phylogeny); the pipeline *is* the result.
+- **Image analysis** — Seestar photometry/astrometry reduction; RGB colorimetry from photos.
+- **Public-data ML** — CNN stellar classification on SDSS/LAMOST 1-D spectra.
 
-### Physics
+### 🔬 Physics — anchored on USAYPT 2027
 
-| Idea | Status | Instruments | Why underserved | Target venue | ML hook |
-|---|---|---|---|---|---|
-| **Sheet-resistance vs. sputter/anneal for PEDOT:PSS films (DMSO dopant)** | raw | Jandel RM3 + UV-2550 | Classic PEDOT:PSS conductivity boost is textbook; systematic kitchen-lab reproduction is a publishable pedagogical artifact. | J. Chem. Educ. / J. Mater. Educ. | Regression of conductivity vs. secondary-dopant concentration. |
-| **Bandgap of semiconductor powders via Tauc plot** | raw | Lambda 750 + UV-2550 | Quick-start Tauc-plot pedagogy across household-accessible semiconductors (TiO₂, ZnO, Fe₂O₃, CuO) with quantitative uncertainty. | J. Chem. Educ. | Linear-regression bandgap extraction with proper CI propagation. |
-| **Pendulum / damped oscillator — period & Q** | raw | Home (camera + ML pose tracking) | Every intro physics lab does this; nobody frames it as a Bayesian inverse problem. | JEI / Phys. Educ. | Pose-tracking ML + Bayesian fit of damping + drive. |
-| **DSSC I–V curves with natural dyes — efficiency benchmarking** | raw | Jandel RM3 + Home multimeter | Junction of physics + chemistry; efficiency measurements at household-reagent scale. | Sol. Energy Mater. Sol. Cells (mentor) | Efficiency regression from dye UV-Vis features. |
-| **Polarization of sky light (Rayleigh scattering) — angle map** | raw | Home polarizer + camera | Classroom demo; rarely published as a full angular map with ML. | Phys. Educ. / JEI | Fit Rayleigh model to pixel-level polarization intensity. |
+USAYPT explicitly rewards *clever inexpensive home-scale work over university equipment* — a perfect fit for the pivot. Each problem needs a paired **theory model + controlled experiment** (deductive + inductive). The four 2027 problems (Caltech, Jan 30–31 2027):
 
-### Computing
+| USAYPT 2027 problem | Home setup (owned toys) | Model / analysis (tool layer) |
+|---|---|---|
+| **Friction on a Roll** — rolling & braking friction vs. tire pressure, speed, surface | bicycle wheel, coast-down ramp, pressure gauge, video timing | energy-loss model (deformation + slip); why rolling-min ≠ braking-max; extrapolate to cars → fuel / CO₂ |
+| **Standing Waves** — string frequency vs. length/tension/density/amplitude; open vs. fretted | guitar + mic-FFT, tension/string swaps | wave-on-string derivation; does fretting-tension shift pitch off equal temperament; fret-placement correction |
+| **Diodes** — home-made crystal/oxide diodes: I–V, reproducibility vs. commercial | galena / oxidized-metal junctions, multimeter + scope, breadboard, foxhole radio | rectification model; sources of variability; why commercial pennies win |
+| **Walking Statues** — a Moai advancing by controlled rocking | 3D-printed scaled rigid bodies, video pose-tracking | rocking-dynamics ODE; step size / effort / stability; optimal base geometry vs. real Moai |
 
-(Projects where the primary contribution is algorithmic / ML, even if the data came from another discipline's instrument.)
+**Also home-runnable (non-USAYPT):**
+- **Pendulum / damped oscillator — period & Q as a Bayesian inverse problem** — camera pose-tracking + Bayesian fit of damping/drive. `raw`
+- **Sky-light polarization (Rayleigh) angular map** — polarizer + camera; fit the Rayleigh model to pixel intensity. `raw`
 
-| Idea | Status | Instruments | Why underserved | Target venue | ML hook |
-|---|---|---|---|---|---|
-| **ML classifier for microplastic polymer class from ATR-FTIR** | raw | FT-IR data | Open-source classifiers exist but aren't benchmarked on household-shedding samples (dryer lint, car upholstery, synthetic fabric). | JEI / Anal. Methods | CNN on raw spectrum OR Random Forest on band-integrated features. |
-| **Autoencoder for FT-IR spectral library compression + anomaly detection** | raw | FT-IR data | Library search is dominant; anomaly detection (unknown substance) is underexplored. | JEI / Anal. Chem. (mentor) | Convolutional autoencoder; reconstruction-error threshold. |
-| **Chemometric oil-authenticity PLS regression** | raw | FT-IR + UV-Vis | Olive-oil adulteration published often, but with small datasets; a home-scale benchmark is missing. | J. Chem. Educ. / Food Chemistry | Partial least squares regression. |
-| **Spectral unmixing of fruit-pigment mixtures (chlorophyll + carotenoid + anthocyanin)** | raw | UV-Vis + FluoroMax-3 | Non-negative matrix factorization on kitchen-chemistry mixtures is rare. | JEI / J. Chem. Educ. | NMF; cross-validate against known single-component spectra. |
-| **Bayesian kinetics fitting for enzyme / reaction time-series** | raw | UV-Vis time-series | Textbook regression ignores parameter uncertainty; Bayesian fits on home data are rare and pedagogically valuable. | J. Chem. Educ. | PyMC or numpyro; posterior on rate constant. |
+### 🧪 Chemistry — rebuilt around home readouts
 
-### Mathematics
+SIL spectroscopy is gone; these use home readouts (pH, camera colorimetry, Vernier probes, electrochemistry). **Thinnest section — where new ideation is most needed.**
+- **Anthocyanin pH ladder via camera colorimetry** — red-cabbage/berry indicator across household products; calibrate RGB-vs-pH instead of UV-Vis λmax. `raw` · J. Chem. Educ. · ML: cluster products in RGB×pH space.
+- **Electrosynthesis / electroplating** — water splitting, Cu plating from CuSO₄; track current/voltage + gas or mass yield. `raw` · anchors the planned **Transform** topic.
+- **Catalase / enzyme kinetics by O₂ evolution** — potato/liver H₂O₂ decomposition via Vernier O₂ or gas displacement; Michaelis–Menten. `raw` · J. Biol. Educ. / J. Chem. Educ.
+- **Reaction kinetics & thermochemistry by probe** — Vernier conductivity/temperature for rate laws + ΔH. `raw`
+- **Melting point / thermal transitions** — Vernier temperature probe (the "Melting Point" tech; OptiMelt retired). `raw`
 
-| Idea | Status | Instruments | Why underserved | Target venue | ML hook |
-|---|---|---|---|---|---|
-| **Beer-Lambert nonlinearity at high concentration** | raw | UV-2550 | Every textbook says "linear up to A ≈ 1"; quantitative deviation mapping as a function of molecular structure is rarely done. | J. Chem. Educ. | Residual regression vs. concentration. |
-| **Four-point-probe geometric correction factors for irregular samples** | raw | Jandel RM3 | Valdes corrections assume thin infinite plane; real household samples (non-rectangular films) deviate. Finite-element + measurement comparison is publishable. | J. Chem. Educ. / Rev. Sci. Instrum. (mentor) | Finite-element simulation vs. measured ratio. |
-| **Fourier transform of an FT-IR interferogram — pedagogical derivation** | raw | FT-IR raw interferogram | Every student uses FT-IR; almost none have seen the interferogram → spectrum transform done by hand. | J. Chem. Educ. / Am. J. Phys. | Walk through FFT from first principles with real data. |
-| **Tea-steeping diffusion model — Fickian vs. anomalous** | raw | UV-2550 time-series | Great real-world Fick's-law application; home dataset is a clean vehicle. | J. Chem. Educ. | Curve-fit diffusion equation; BIC comparison between Fickian and anomalous. |
+### 🧬 Biology — the home-lab flagship
 
-### Astronomy
+The molecular-bio bench is the strongest owned advantage; biology carries the program near-term.
+- **DNA barcoding of local Vancouver biota (COI / rbcL / matK / ITS)** — extract → amplify (mini16X) → gel (GELATO) → mail-in Sanger → BLAST/BOLD. Each specimen is new data; genuinely novel JEI shape + BOLD submissions; wet-lab × bioinformatics. **Flagship — promote to a project folder after the PTC training run.** `raw` · JEI + BOLD.
+- **Human genotype→phenotype family panel (PTC TAS2R38, PV92 Alu, lactase MCM6)** — quantitative panel tied to Hardy-Weinberg + allele-frequency stats. `raw` · Biochem. Mol. Biol. Educ. · ML: allele-freq estimation, HWE χ² test.
+- **Endpoint kit runs** (Microliter Madness → Cat Genetics → Glow Lab → Forensics → BioBits) — pedagogical, in progress; see the bench log. `piloting`
+- **Drosophila genetics** (~$100 Carolina kit) — classic crosses; lowest-friction "Grow" launch. `parked` (buy when Grow greenlit)
+- **Yeast fermentation / microbiology** — growth + kinetics with home probes + pre-order incubator gear. `parked`
 
-| Idea | Status | Instruments | Why underserved | Target venue | ML hook |
-|---|---|---|---|---|---|
-| **Solar spectrum through the window — Fraunhofer line mapping** | raw | UV-2550 | Lab UV-Vis can capture a real solar spectrum; almost no student paper reports Fraunhofer-line identifications at benchtop resolution. | JEI / Am. J. Phys. | Line-matching algorithm vs. NIST solar line database. |
-| **Atmospheric absorption via dual-time-of-day UV-Vis** | raw | UV-2550 | Beer-Lambert applied to the sun across a day — classic Langley plot, rarely replicated at home scale. | JEI / Am. J. Phys. | Langley-plot regression to infer exo-atmospheric flux. |
-| **Stellar classification via public spectra** | raw | SDSS / LAMOST public data | Pedagogically underserved at the high-school level. | JEI / Astron. Educ. Rev. | CNN on 1-D spectra → spectral class. |
-| **Light-pollution mapping — residential street survey** | raw | Lux meter + GPS | Citizen science exists; household-street-scale ML mapping is thin. | JEI / J. Quant. Spec. Rad. Transf. (mentor) | Spatial interpolation; ML regression on features (streetlights, canopy). |
-| **Eclipse UV-Vis during partial solar coverage** | raw | UV-2550 + opportunity | Opportunity-driven; time-resolved spectrum through partial eclipse is publishable curiosity. | JEI / Am. J. Phys. | Fit disk-coverage model to absorbance drop. |
+### 🔭 Astronomy — Seestar + public data
 
-## Instrument research-category reference
-
-Cheat sheet of what each hands-on toy is the *primary* tool for in the literature — for retrieval when brainstorming.
-
-### Nicolet 380 FT-IR (mid-IR ATR/transmission workhorse)
-Polymer/plastic identification · natural-product structural confirmation · food authenticity (oils, honey, milk) · microplastic ID · pharmaceutical polymorphs · forensics (paint, fiber, ink) · art conservation · polymer weathering (carbonyl index).
-
-### Shimadzu UV-2550 (200–1100 nm double-beam)
-Beer's-law quantitation · reaction kinetics · enzyme kinetics · natural-pigment quantitation (anthocyanins, chlorophyll, carotenoids) · nanoparticle plasmon sizing · bandgap (Tauc) · DNA/RNA/protein concentration · DSSC natural-dye screening.
-
-### Horiba FluoroMax-3 (spectrofluorometer)
-Fluorophore excitation/emission · quenching (Stern-Volmer) · quantum-dot / carbon-dot characterization · environmental fluorophores (PAHs, CDOM) · metal-ion sensors · protein tryptophan fluorescence · FRET · upconversion.
-
-### PerkinElmer Lambda 750 UV/Vis/NIR (190–3300 nm, integrating sphere)
-Solid-film optical properties · semiconductor bandgap on opaque samples · photovoltaic active-layer absorbance · textile/coating reflectance · tissue diffuse reflectance · NIR overtones (water content in food).
-
-### Jasco J-1500 CD (163–950 nm)
-Protein secondary structure · protein thermal stability · nucleic-acid conformation · drug-protein binding · chiral small-molecule assignment · amyloid / aggregation.
-
-### Jandel RM3 Four-Point Probe
-Transparent conductive oxides (ITO, FTO, AZO) · conductive polymers (PEDOT:PSS) · 2D materials (graphene, MXene) · solar-cell contact layers · printed/flexible electronics · doped-semiconductor QA.
+- **Amateur slitless spectroscopy** — Star Analyser grating on the Seestar → stellar spectral classification, emission-line objects. The grating makes the Seestar a spectrograph. `raw` · JEI / Astron. Educ. Rev.
+- **Photometry / light curves (Seestar)** — variable stars, exoplanet transits, asteroid rotation. `raw`
+- **Stellar classification via public spectra (SDSS/LAMOST) + CNN** — Computing crossover; underserved at HS level. `raw`
+- **Light-pollution mapping — residential street survey** — lux meter + GPS; spatial interpolation / ML. `raw` · JEI.
 
 ## Publication venue cheatsheet
 
@@ -427,7 +399,7 @@ Four tiers, from lowest bar to highest. Aim up — a rigorous household-material
 
 ### Non-journal recognition (in parallel)
 
-Regeneron ISEF · Regeneron STS · JSHS · USABO / USNCO / USAPhO Olympiads.
+Regeneron ISEF · Regeneron STS · JSHS · USABO / USNCO / USAPhO Olympiads · **USAYPT** (physics team tournament — the Physics track's competition anchor).
 
 ## Future topic structure
 
@@ -456,7 +428,7 @@ Current shape: **Measure + Build** (2 topics). Restructured 2026-05-01 to a verb
 
 Categories worth adding (within Measure or Build, when toys commit):
 
-- **Measure → Materials** — hardness, elastic modulus, fracture, viscosity. Bridges to Chem-Thermal (TGA-DSC of polymers).
+- **Measure → Materials** — hardness, elastic modulus, fracture, viscosity (home hammer-test rig, 3D-printed jigs).
 - **Measure → Acoustics** — sound waves, vibration, frequency analysis. Toys: Vernier Go Direct Sound, oscilloscope-on-mic.
 - **Build → Optics** — custom optical setups (lasers, prisms, polarization). When sustained optics work emerges.
 - **Build → Machining** — CNC, lathe, mill. Real maker capability.
@@ -515,6 +487,7 @@ What is and isn't needed for the summer 2026 home lab.
 
 ## Change log
 
+- **2026-07-16** — **Home-lab-first reframe.** Removed all UNR SIL-instrument ideas (FT-IR, UV-2550, FluoroMax-3, Lambda 750, J-1500 CD, Jandel RM3, TGA — access ended with the July 2026 Vancouver move). Reorganized the backlog into a **foundational tool layer (Math + Computing)** applied across four standalone research sciences (**Physics, Chemistry, Biology, Astronomy**). Physics now anchors on the **USAYPT 2027** problems (Friction on a Roll, Standing Waves, Diodes, Walking Statues). Replaced the Resources instrument tables with the owned home-lab inventory; deleted the (all-SIL) instrument-category reference. The three completed SIL projects stay on the site as historical past-work.
 - **2026-07-11** — Reframed the doc from "idea backlog" to the research program's **ideation + progress-tracking** doc: retitled, dual-purpose intro, and added an **Active work & progress** dashboard at the top (piloting / on deck / completed / backlog). Updated science `CLAUDE.md` to match.
 - **2026-07-11** — Consolidated the home molecular-biology lab reference into IDEAS.md as the **"Home molecular-biology lab — bench reference & progress"** section (kit set + lab order, per-lab notes, Session 0 calibration procedure, gear, cold chain, current audit status). Absorbed from the short-lived `homelab/molecular-biology.md`, which was removed — IDEAS.md now tracks both bench progress and ideation in one file.
 - **2026-07-11** — Added **molecular-bio expansion path** (miniPCR mini16X is a real thermal cycler; endpoint kits don't use PCR). Staged roadmap: training-wheels PTC Taster kit → roll-your-own (IDT primers + Taq master mix + self-extracted template + fresh plastic) → sequencing (mail-in Sanger now, MinION later). Added 2 Biology backlog rows (DNA barcoding of local biota; human genotype→phenotype family panel). Updated home-capability list to reflect the real molecular-bio bench (mini16X, GELATO, 2× P51, pipettes, balance). Source: home-lab miniPCR shakedown, working doc `~/GITHUB/scratch/minipcr-home-lab/plan.md`.
