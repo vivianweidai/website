@@ -55,7 +55,7 @@ The former top-level `archives/` folder (canonical instrument catalogs, per-Toy 
 
 Top-level: `apple/ pipeline/ public/ src/ work/` plus Astro config. `src/` + `public/` are Astro-mandated at root (can't move without relocating the whole app; `public/` is also our content dir — the deviation below). The plain layout is in `README.md`; the non-obvious parts:
 
-- **`work/`** — research works-in-progress, git-tracked but **NOT web-served**. One dir per science (`physics/`, `chemistry/`, `biology/`, `astronomy/`). Named `work/` (not `projects/`) so it sorts below `public/` and doesn't collide with `public/research/projects/`, which is the **completed, public-facing** report set served on the site. Promote a WIP into a dated `public/research/projects/YYYYMMDD Name/` folder only when it produces a publishable result.
+- **`work/`** — research works-in-progress, git-tracked but **NOT web-served**. One dir per science (`physics/`, `chemistry/`, `biology/`, `astronomy/`). Named `work/` (not `projects/`) so it sorts below `public/` and doesn't collide with `public/research/projects/`, which is the **completed, public-facing** report set served on the site. Promote a WIP into a dated `public/research/projects/YYYYMMDD Name/` folder only when it produces a publishable result. **`work/scratch/`** is the ephemeral scratchpad — **gitignored** (the repo's `scratch/` ignore matches it), the relocated home of the old `~/GITHUB/scratch/` for research work (2026-07-16). The three-stage pipeline: `work/scratch/<topic>` (ephemeral) → `work/<science>/` (tracked WIP) → `public/research/projects/` (published).
 
 - **`src/`** — `content.config.ts` (Content Collections: **`projects`** + **`tech`**); `layouts/` holds the `.astro` components *and* their imported CSS/JS; `pages/` is file-based routing (`research/` carries the dynamic `[slug]` project route + `[science]/[tech]` tech route).
 - **`pipeline/worker/`** — CF Worker (ASSETS passthrough → `dist/`). **`pipeline/scripts/`** — `build_olympiads.py` / `build_technology.py` (YAML→JSON) + `build_curriculum.py` (.docx→markdown).
@@ -93,7 +93,7 @@ YYYYMMDD Project Name/
 
 - **Build & deploy** — `pnpm build` from repo root (writes Astro output to `pipeline/worker/dist/`), then `cd pipeline/worker && pnpm run deploy` (wrangler ships dist via Static Assets binding). GitHub push is backup only.
 - **Local preview** — `pnpm dev` from the repo root (port 4321). Astro serves on save with hot reload. Use Safari for visual checks.
-- **One-off HTML mockups (non-Astro)** — keep in `~/GITHUB/scratch/<topic>.html` per the global convention; serve with `live-server` if needed. Don't recreate the in-repo `scratch/` Jekyll preview folder — Astro's dev server replaces it.
+- **One-off HTML mockups (non-Astro)** — keep in `work/scratch/<topic>.html` (gitignored) per the global convention; serve with `live-server` if needed.
 - **Layout-aware Astro mockups** — drop a temp `.astro` file under `src/pages/scratch-<topic>.astro`, view via `pnpm dev`, then `git restore` to remove. Same exception pattern as other Astro repos.
 - **Showing the user — default is Safari.** After a change, open the relevant URL in Safari (`open -a Safari 'http://127.0.0.1:4321/<path>'`) so the user sees the real rendering natively. `qlmanage -t -s 1200 -o /tmp <file>.html` is only an inline-in-chat fallback.
 - **Promoting from scratch to site** — move the chosen asset into the appropriate tracked path (e.g. a tech folder under `public/research/technology/`, or a project's `output/`).
