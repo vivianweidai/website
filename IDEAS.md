@@ -379,6 +379,8 @@ The **International Young Physicists' Tournament** — 17 open-ended research pr
 
 Top starters by owned-toy advantage: **2 Disc spectrometer** (spectroscopy), **4 Singing capacitor** + **16 Magnetic carousel** (electronics + magnetics), **15 Cold drink** (Vernier temp), **3 Snail ball** + **5 Y-pendulum** (clean mechanics via motion sensors).
 
+**Per-problem design checklist** (when picking a problem to prototype): a paired theory model + controlled experiment scoped to owned toys — name the independent variables, the sensor/readout, the measurement protocol, the expected functional form to fit, and the likely opponent attacks. Match every instrument name EXACTLY to the live registry `public/research/technology.yml`.
+
 **Non-tournament home ideas:** damped pendulum as a Bayesian inverse problem (pose-tracking + Bayesian fit); sky-light Rayleigh polarization map (polarizer + camera).
 
 ### 🧪 Chemistry — spectroscopy + electrochemistry + thermal (all home)

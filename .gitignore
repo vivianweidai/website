@@ -23,6 +23,8 @@ venv/
 apple/.build/
 apple/.swiftpm/
 apple/Science.xcodeproj/
+# App Store Connect account identifiers — private, never committed (public repo)
+apple/.release.env
 
 # Astro / Node / Wrangler
 node_modules/
