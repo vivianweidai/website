@@ -18,13 +18,14 @@ venv/
 # Environment files
 .env
 .env.local
-.wrangler/
+
+# Apple / Xcode (Science.xcodeproj is xcodegen-generated from apple/project.yml)
 apple/.build/
 apple/.swiftpm/
 apple/Science.xcodeproj/
-*.DS_Store
 
-# Astro / Node
+# Astro / Node / Wrangler
 node_modules/
 dist/
 .astro/
+.wrangler/
