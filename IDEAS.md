@@ -34,8 +34,8 @@ section or project folder. Update these lines as work moves.
 - **PTC first-PCR run** — once the kits land (freezer; P200 gravimetric check first).
 - **DNA barcoding of local biota** — flagship molecular-bio project; promote to a
   project folder after the PTC training-wheels run succeeds.
-- **USAYPT 2027 physics** — prototype 1–2 of the four problems (Friction on a Roll /
-  Standing Waves / Diodes / Walking Statues); all home-scale, theory + experiment.
+- **IYPT 2027 physics** — prototype 2–3 of the 17 problems best matched to our sensors
+  (Disc spectrometer · Cold drink · Magnetic carousel · Snail ball); theory + experiment.
 - **Astronomy first light** — ZWO Seestar S30 + Star Analyser grating shakedown
   (imaging → photometry → slitless spectroscopy).
 
@@ -70,29 +70,30 @@ An idea earns a project slot when it checks most of these:
 
 ## Resources — the home-lab inventory
 
-What we own and operate at home. (The UNR SIL university instruments — FT-IR, UV-2550, FluoroMax-3, Lambda 750, J-1500 CD, Jandel RM3, TGA, GC/MS — are retired as of the July 2026 move; see the change log. New ideas anchor on the toys below.)
+The real owned toys, from each tech page's `toys:` frontmatter (the source of truth), mapped to the site's science → tech structure. **Truly lost with SIL:** mid-IR structural ID (FT-IR), circular dichroism, NIR/integrating-sphere, mass spec (MALDI, LC-MS, GC-MS), chromatography, TGA/DSC, four-point probe. **Retained at home:** UV-Vis + fluorescence, polarimetry, full electrochemistry, thermal, mechanics, spectra, microscopy, physiology, genomics, telescope + archives.
 
-### Molecular-biology bench — the flagship capability
-- **miniPCR mini16X** — full programmable thermal cycler (real PCR, not just endpoint demos)
-- **GELATO** — gel electrophoresis + integrated blue-LED transilluminator
-- **2× P51** fluorescence viewers · ONiLAB P20 + Gilson P200/P1000 pipettes · milligram balance
-- @home endpoint kits (Microliter Madness, Cat Genetics, Glow Lab, Forensics, BioBits) + first real-PCR kits (PTC Taster, 16S Barcoding). Full bench log in the **Home molecular-biology lab** section below.
+### Chemistry
+- **Spectroscopy** — **Vernier Go Direct Fluorescence UV-VIS Spectrophotometer** (absorbance + fluorescence) · **Vernier Go Direct Polarimeter** (optical rotation)
+- **Electrochemistry** — **PalmSens EmStat Pico** (a real potentiostat — CV / LSV / amperometry) · **Vernier pH** · **Vernier Conductivity**
+- **Thermal** — **Vernier Temperature Probe** · plus kitchen wet-lab (buffering, extraction, cooking-as-chemistry)
+
+### Physics
+- **Mechanics** — **Vernier Force & Acceleration · Motion Detector · Photogate** + phone video / pose tracking
+- **Thermodynamics / fluids** — **Vernier Gas Pressure · Turbidity** (+ Temperature)
+- **Electromagnetism** — **Vernier UV-VIS + optical fiber** (emission spectra) · **Vernier 3-Axis Magnetic Field Sensor**
+- **Engineering** — **Digilent Analog Discovery 3** (scope + AWG + logic analyzer) · **TOAUTO DS90 soldering** · **Prusa CORE One+** 3D printer · microphone + FFT
+
+### Biology
+- **Genomics** — **miniPCR mini16** thermal cycler · **GELATO** electrophoresis + blue-LED viewer · **2× P51** · pipettes + balance (full bench log below)
+- **Microscopes** — **Dino-Lite AF4515T-FUW** digital · **AmScope SM-4TZ-144** stereo · **Swift SW380T** compound
+- **Physiology** — **Vernier Go Direct EKG · Spirometer · O₂+CO₂ gas sensor**
 
 ### Astronomy
-- **ZWO Seestar S30** smart telescope — amateur imaging, photometry, astrometry
-- **Paton Hawksley Star Analyser 100** transmission grating — slitless spectroscopy on the Seestar (turns it into a spectrograph)
+- **Telescopes** — **ZWO Seestar S30 Pro (tilting wedge)** · UBC Thunderbird South (remote partner)
+- **Data archives** — Gaia · AAVSO · MAST · Transient Name Server · WISeREP · Galaxy Zoo · Pickles Stellar Atlas
 
-### Physics · electronics · fabrication
-- **Camera + video** → pose/motion tracking (Tracker / ML) for mechanics
-- **Microphone + FFT** → acoustics / standing waves
-- **Multimeter + Rigol oscilloscope + soldering bench** → circuits, diode I–V, foxhole radio
-- **Bambu Lab A1 Mini** 3D printer → jigs, rigs, scaled models · **Arduino / Raspberry Pi** sensors
-- Everyday mechanics props — bicycle wheel (friction), guitar (standing waves)
-
-### Chemistry — home / kitchen-scale
-- Kitchen wet-lab — buffering, extraction, pH, kinetics, cooking-as-chemistry
-- **Vernier probes** — conductivity, temperature (melting point), O₂ · camera **colorimetry** (RGB) as a poor-man's spectrophotometer
-- Home electrochemistry — electrolysis / plating / simple cells (multimeter readout)
+### Math + Computing — the tool layer
+- NumPy · SciPy · Wolfram · Matplotlib · LaTeX · Jupyter · GitHub · Docker · Zenodo
 
 ### Pre-order priorities (cross-discipline bench bottlenecks, ~$1,000–1,500)
 - Analytical balance (0.1 mg) · microcentrifuge · vortex mixer · hot plate / magnetic stirrer. *(Dad's lab covers cold storage / incubation / laminar flow.)*
@@ -109,9 +110,9 @@ What we own and operate at home. (The UNR SIL university instruments — FT-IR, 
 ### Highest-leverage combinations (research science × tool layer)
 
 - **PCR bench + bioinformatics (Computing)** → local-biota barcoding: wet lab produces sequences, ML/alignment turns them into IDs. The pipeline is the result.
-- **Seestar + image analysis (Computing)** → photometry light curves, astrometry, spectral reduction from the Star Analyser grating.
-- **Camera + Math/Computing** → pose-tracking kinematics + ODE/Bayesian fits for the USAYPT mechanics problems.
-- **Home probes + Math** → kinetics/thermochemistry time-series with proper uncertainty + model comparison.
+- **Seestar + image analysis (Computing)** → photometry light curves + astrometry, cross-matched against Gaia / AAVSO.
+- **Camera / sensors + Math/Computing** → pose-tracking kinematics + ODE/Bayesian fits for the IYPT mechanics problems (Snail ball, Y-pendulum, Falling book cover).
+- **Vernier UV-VIS/potentiostat + Math** → kinetics / voltammetry / thermochem time-series with proper uncertainty + model comparison.
 
 ## Home molecular-biology lab — bench reference & progress
 
@@ -316,45 +317,81 @@ Not standalone projects — the modeling/analysis muscle every project below lea
 - **Image analysis** — Seestar photometry/astrometry reduction; RGB colorimetry from photos.
 - **Public-data ML** — CNN stellar classification on SDSS/LAMOST 1-D spectra.
 
-### 🔬 Physics — anchored on USAYPT 2027
+### 🔬 Physics — anchored on IYPT 2027
 
-USAYPT explicitly rewards *clever inexpensive home-scale work over university equipment* — a perfect fit for the pivot. Each problem needs a paired **theory model + controlled experiment** (deductive + inductive). The four 2027 problems (Caltech, Jan 30–31 2027):
+The **International Young Physicists' Tournament** — 17 open-ended research problems (40th IYPT, approved by the IOC July 2026). Each needs a paired **theory model + controlled experiment**. Nearly all are home-scale with our Vernier sensors + phone camera + Digilent scope + 3D printer + kitchen. Pick 2–3 to prototype; **★ = strongest fit to a specific owned instrument.**
 
-| USAYPT 2027 problem | Home setup (owned toys) | Model / analysis (tool layer) |
+| # | IYPT 2027 problem | Home setup (owned toys) |
 |---|---|---|
-| **Friction on a Roll** — rolling & braking friction vs. tire pressure, speed, surface | bicycle wheel, coast-down ramp, pressure gauge, video timing | energy-loss model (deformation + slip); why rolling-min ≠ braking-max; extrapolate to cars → fuel / CO₂ |
-| **Standing Waves** — string frequency vs. length/tension/density/amplitude; open vs. fretted | guitar + mic-FFT, tension/string swaps | wave-on-string derivation; does fretting-tension shift pitch off equal temperament; fret-placement correction |
-| **Diodes** — home-made crystal/oxide diodes: I–V, reproducibility vs. commercial | galena / oxidized-metal junctions, multimeter + scope, breadboard, foxhole radio | rectification model; sources of variability; why commercial pennies win |
-| **Walking Statues** — a Moai advancing by controlled rocking | 3D-printed scaled rigid bodies, video pose-tracking | rocking-dynamics ODE; step size / effort / stability; optimal base geometry vs. real Moai |
+| 1 | Pinhole sunglasses | pinhole-array film + camera + light meter — optics / myopia correction |
+| 2 ★ | **Disc spectrometer** | CD/Blu-ray reflection grating + camera → build a spectrometer; cross-check vs. the Vernier UV-VIS |
+| 3 ★ | **Snail ball** | 3D-printed hollow sphere + viscous fluid + ball; Motion Detector / Photogate / video on an incline |
+| 4 ★ | **Singing capacitor** | ceramic caps driven by the Digilent AWG; microphone + FFT |
+| 5 ★ | **Y-shaped (Bowditch) pendulum** | build the Y-string rig; video pose-tracking → Lissajous patterns |
+| 6 | Seeing sound | rubber membrane + loudspeaker (Digilent AWG) + laser/camera (Chladni-like patterns) |
+| 7 | Sinking funnel | funnel in a water column; Force sensor + video (damped oscillations) |
+| 8 | Upward-driven disc | disc sandwiched between two wheels; video tracking |
+| 9 | Photographic bokeh | slit in front of the camera lens; image analysis of anisotropic blur |
+| 10 ★ | **Air vortex** | magnetic stirrer + liquid; camera (air-channel formation vs. speed) |
+| 11 | Sound isolation | small door-gap openings; mic + Digilent + speaker (transmission vs. geometry) |
+| 12 | Dotted-line trick | chalk on a board; Force sensor + high-speed video (periodic stick-slip dots) |
+| 13 | Vortex pendulum | cylindrical bob in a flow channel; video (vortex-induced oscillation) |
+| 14 ★ | **Non-Newtonian worms** | cornflour suspension on a speaker cone; camera (kitchen + vibration) |
+| 15 ★ | **Cold drink** | ice + salt + alcohol; **Vernier Temperature** (cooling rate / lowest temp) |
+| 16 ★ | **Magnetic carousel** | neodymium magnets on a 3D-printed disc + steel ball; **Vernier 3-Axis Magnetic Field Sensor** + video |
+| 17 | Falling book cover | book-cover release; video pose-tracking (rigid-body dynamics) |
 
-**Also home-runnable (non-USAYPT):**
-- **Pendulum / damped oscillator — period & Q as a Bayesian inverse problem** — camera pose-tracking + Bayesian fit of damping/drive. `raw`
-- **Sky-light polarization (Rayleigh) angular map** — polarizer + camera; fit the Rayleigh model to pixel intensity. `raw`
+Top starters by owned-toy advantage: **2 Disc spectrometer** (spectroscopy), **4 Singing capacitor** + **16 Magnetic carousel** (electronics + magnetics), **15 Cold drink** (Vernier temp), **3 Snail ball** + **5 Y-pendulum** (clean mechanics via motion sensors).
 
-### 🧪 Chemistry — rebuilt around home readouts
+**Non-tournament home ideas:** damped pendulum as a Bayesian inverse problem (pose-tracking + Bayesian fit); sky-light Rayleigh polarization map (polarizer + camera).
 
-SIL spectroscopy is gone; these use home readouts (pH, camera colorimetry, Vernier probes, electrochemistry). **Thinnest section — where new ideation is most needed.**
-- **Anthocyanin pH ladder via camera colorimetry** — red-cabbage/berry indicator across household products; calibrate RGB-vs-pH instead of UV-Vis λmax. `raw` · J. Chem. Educ. · ML: cluster products in RGB×pH space.
-- **Electrosynthesis / electroplating** — water splitting, Cu plating from CuSO₄; track current/voltage + gas or mass yield. `raw` · anchors the planned **Transform** topic.
-- **Catalase / enzyme kinetics by O₂ evolution** — potato/liver H₂O₂ decomposition via Vernier O₂ or gas displacement; Michaelis–Menten. `raw` · J. Biol. Educ. / J. Chem. Educ.
-- **Reaction kinetics & thermochemistry by probe** — Vernier conductivity/temperature for rate laws + ΔH. `raw`
-- **Melting point / thermal transitions** — Vernier temperature probe (the "Melting Point" tech; OptiMelt retired). `raw`
+### 🧪 Chemistry — spectroscopy + electrochemistry + thermal (all home)
 
-### 🧬 Biology — the home-lab flagship
+Not gutted — UV-Vis/fluorescence, polarimetry, a real potentiostat, pH/conductivity, and temperature all run at home. (Only FT-IR structural ID, CD, NIR, mass-spec, and chromatography left with SIL.) Maps to the site's **Spectroscopy · Electrochemistry · Thermal** techs.
 
-The molecular-bio bench is the strongest owned advantage; biology carries the program near-term.
-- **DNA barcoding of local Vancouver biota (COI / rbcL / matK / ITS)** — extract → amplify (mini16X) → gel (GELATO) → mail-in Sanger → BLAST/BOLD. Each specimen is new data; genuinely novel JEI shape + BOLD submissions; wet-lab × bioinformatics. **Flagship — promote to a project folder after the PTC training run.** `raw` · JEI + BOLD.
-- **Human genotype→phenotype family panel (PTC TAS2R38, PV92 Alu, lactase MCM6)** — quantitative panel tied to Hardy-Weinberg + allele-frequency stats. `raw` · Biochem. Mol. Biol. Educ. · ML: allele-freq estimation, HWE χ² test.
-- **Endpoint kit runs** (Microliter Madness → Cat Genetics → Glow Lab → Forensics → BioBits) — pedagogical, in progress; see the bench log. `piloting`
-- **Drosophila genetics** (~$100 Carolina kit) — classic crosses; lowest-friction "Grow" launch. `parked` (buy when Grow greenlit)
-- **Yeast fermentation / microbiology** — growth + kinetics with home probes + pre-order incubator gear. `parked`
+**Spectroscopy — Vernier UV-VIS/fluorescence + Polarimeter:**
+- **Anthocyanin pH ladder across household products** — quantitative λmax/absorbance shifts vs. pH; underserved at realistic product diversity. `raw` · JEI / J. Chem. Educ. · ML: cluster in λmax×pH space.
+- **Fruit-ripening pigment kinetics** (banana/tomato/blueberry) — chlorophyll + carotenoid + anthocyanin absorbance/fluorescence time-series; NMF spectral unmixing. `raw`
+- **Catalase / enzyme kinetics** — potato/liver H₂O₂ by absorbance (or Vernier O₂); Michaelis–Menten. `raw`
+- **Tea oxidation & Maillard browning kinetics** — real-time absorbance; first-order fits across substrates/methods. `raw`
+- **Fluorescence quenching (quinine / riboflavin / chlorophyll)** — Stern–Volmer on the fluorescence channel; a capability most HS labs lack. `raw`
+- **Optical rotation of sugars / chiral extracts** (Polarimeter) — specific rotation, glucose mutarotation kinetics. `raw` — polarimeter toy-advantage.
 
-### 🔭 Astronomy — Seestar + public data
+**Electrochemistry — PalmSens EmStat Pico potentiostat + pH/conductivity:**
+- **Cyclic voltammetry of household redox couples** (vitamin C, ferro/ferricyanide, dopamine-in-banana) — real CV at HS level is rare and impressive. `raw` · anchors the **Electrochemistry** tech · ML: peak-feature classification.
+- **Electrosynthesis / electroplating** — water splitting, Cu plating from CuSO₄; charge vs. mass yield (Faraday's laws). `raw` · anchors the planned **Transform** topic.
+- **Conductometric / potentiometric titrations** — Vernier conductivity + pH; equivalence-point + kinetics. `raw`
 
-- **Amateur slitless spectroscopy** — Star Analyser grating on the Seestar → stellar spectral classification, emission-line objects. The grating makes the Seestar a spectrograph. `raw` · JEI / Astron. Educ. Rev.
-- **Photometry / light curves (Seestar)** — variable stars, exoplanet transits, asteroid rotation. `raw`
-- **Stellar classification via public spectra (SDSS/LAMOST) + CNN** — Computing crossover; underserved at HS level. `raw`
+**Thermal — Vernier Temperature:**
+- **Melting point / freezing-point depression / calorimetry** — thermal transitions, colligative properties, reaction ΔH. `raw`
+
+### 🧬 Biology — the home-lab flagship (genomics · microscopy · physiology)
+
+Three owned tech stacks; biology carries the program near-term.
+
+**Genomics — miniPCR + GELATO + P51:**
+- **DNA barcoding of local Vancouver biota (COI / rbcL / matK / ITS)** — extract → amplify → gel → mail-in Sanger → BLAST/BOLD. Each specimen is new data; genuinely novel JEI shape + BOLD submissions; wet-lab × bioinformatics. **Flagship — promote to a project folder after the PTC training run.** `raw`
+- **Human genotype→phenotype family panel (PTC TAS2R38, PV92 Alu, lactase MCM6)** — Hardy-Weinberg + allele-frequency stats. `raw` · Biochem. Mol. Biol. Educ.
+- **Endpoint kit runs** (Microliter Madness → … → BioBits) — pedagogical, in progress; see the bench log. `piloting`
+
+**Microscopy — Dino-Lite digital + AmScope stereo + Swift compound:**
+- **Quantitative cell/tissue morphometry** — onion/cheek cells, pond microfauna, pollen, stress-treated plant stomata; image-analysis pipeline (Computing crossover). `raw`
+- **Micro-materials & surfaces** (Dino-Lite digital) — textile fibers, microplastics, print/coating surfaces; recovers the "what material is this" angle *morphologically* (lost the FT-IR chemical version). `raw`
+
+**Physiology — Vernier EKG + spirometer + O₂/CO₂:**
+- **EKG / heart-rate variability under interventions** (exercise, breathing, caffeine) — ECG signal processing. `raw`
+- **Spirometry + respiratory-gas exchange** — lung volumes + O₂/CO₂ across activity; quantitative human physiology. `raw`
+
+**Grow (parked until toys/project commit):** Drosophila genetics (~$100 Carolina), yeast fermentation / microbiology.
+
+### 🔭 Astronomy — Seestar imaging/photometry + public archives
+
+Owned = the **Seestar S30 Pro** (imaging, photometry, astrometry) + public archives (Gaia, AAVSO, MAST, TNS, WISeREP, Galaxy Zoo, Pickles). No spectrograph yet.
+- **Photometry / light curves (Seestar)** — variable stars, exoplanet transits, asteroid rotation; AAVSO-submittable. `raw` · JEI / AAVSO.
+- **Astrometry (Seestar)** — asteroid/comet positions, proper-motion checks against Gaia. `raw`
+- **Stellar / transient classification via public archives + CNN** — SDSS/LAMOST spectra, TNS transients, Galaxy Zoo morphology; Computing crossover, underserved at HS level. `raw` · Astron. Educ. Rev.
 - **Light-pollution mapping — residential street survey** — lux meter + GPS; spatial interpolation / ML. `raw` · JEI.
+- **Cheap add-on to unlock spectroscopy:** a ~$100 Star Analyser 100 grating would make the Seestar a slitless spectrograph (stellar classification). *Not owned yet — acquire trigger.*
 
 ## Publication venue cheatsheet
 
@@ -399,7 +436,7 @@ Four tiers, from lowest bar to highest. Aim up — a rigorous household-material
 
 ### Non-journal recognition (in parallel)
 
-Regeneron ISEF · Regeneron STS · JSHS · USABO / USNCO / USAPhO Olympiads · **USAYPT** (physics team tournament — the Physics track's competition anchor).
+Regeneron ISEF · Regeneron STS · JSHS · USABO / USNCO / USAPhO Olympiads · **IYPT** (International Young Physicists' Tournament — the Physics track's competition anchor; its problems drive the Physics backlog).
 
 ## Future topic structure
 
@@ -487,7 +524,7 @@ What is and isn't needed for the summer 2026 home lab.
 
 ## Change log
 
-- **2026-07-16** — **Home-lab-first reframe.** Removed all UNR SIL-instrument ideas (FT-IR, UV-2550, FluoroMax-3, Lambda 750, J-1500 CD, Jandel RM3, TGA — access ended with the July 2026 Vancouver move). Reorganized the backlog into a **foundational tool layer (Math + Computing)** applied across four standalone research sciences (**Physics, Chemistry, Biology, Astronomy**). Physics now anchors on the **USAYPT 2027** problems (Friction on a Roll, Standing Waves, Diodes, Walking Statues). Replaced the Resources instrument tables with the owned home-lab inventory; deleted the (all-SIL) instrument-category reference. The three completed SIL projects stay on the site as historical past-work.
+- **2026-07-16** — **Home-lab-first reframe** (corrected against the real toy registry — each tech page's `toys:` frontmatter, not `technology.yml`). Dropped only the truly-lost SIL capabilities: FT-IR mid-IR, circular dichroism, NIR, mass spec (MALDI/LC-MS/GC-MS), chromatography, TGA/DSC, four-point probe. **Kept everything the home lab owns:** Vernier Go Direct UV-VIS/fluorescence spectrophotometer + optical fiber, Vernier Polarimeter, PalmSens EmStat Pico potentiostat, Vernier pH/conductivity/temperature/gas/turbidity/magnetic-field/force/motion/photogate/EKG/spirometer/O₂-CO₂ sensors, three microscopes (Dino-Lite / AmScope / Swift), Digilent Analog Discovery 3, Prusa CORE One+, the miniPCR bench, and the ZWO Seestar S30 Pro. Reorganized into a **tool layer (Math + Computing)** across four research sciences (**Physics, Chemistry, Biology, Astronomy**). **Physics re-anchored on IYPT 2027** (17 problems). Resources rebuilt from the registry; the all-SIL instrument-category reference deleted; the three completed SIL projects stay as historical past-work.
 - **2026-07-11** — Reframed the doc from "idea backlog" to the research program's **ideation + progress-tracking** doc: retitled, dual-purpose intro, and added an **Active work & progress** dashboard at the top (piloting / on deck / completed / backlog). Updated science `CLAUDE.md` to match.
 - **2026-07-11** — Consolidated the home molecular-biology lab reference into IDEAS.md as the **"Home molecular-biology lab — bench reference & progress"** section (kit set + lab order, per-lab notes, Session 0 calibration procedure, gear, cold chain, current audit status). Absorbed from the short-lived `homelab/molecular-biology.md`, which was removed — IDEAS.md now tracks both bench progress and ideation in one file.
 - **2026-07-11** — Added **molecular-bio expansion path** (miniPCR mini16X is a real thermal cycler; endpoint kits don't use PCR). Staged roadmap: training-wheels PTC Taster kit → roll-your-own (IDT primers + Taq master mix + self-extracted template + fresh plastic) → sequencing (mail-in Sanger now, MinION later). Added 2 Biology backlog rows (DNA barcoding of local biota; human genotype→phenotype family panel). Updated home-capability list to reflect the real molecular-bio bench (mini16X, GELATO, 2× P51, pipettes, balance). Source: home-lab miniPCR shakedown, working doc `~/GITHUB/scratch/minipcr-home-lab/plan.md`.
