@@ -82,10 +82,6 @@
   name: Precalculus Mathematics in a Nutshell by George F. Simmons
 - type: textbook
   subject: Computing
-  date: July 2026
-  name: Kaggle Machine Learning for Science
-- type: textbook
-  subject: Computing
   date: May 2026
   name: Machine Learning with PyTorch and Scikit-Learn by Sebastian Raschka
 - type: textbook
