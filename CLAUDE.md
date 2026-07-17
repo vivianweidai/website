@@ -53,7 +53,9 @@ The former top-level `archives/` folder (canonical instrument catalogs, per-Toy 
 
 ## REPO STRUCTURE
 
-Top-level: `apple/ pipeline/ public/ src/` plus Astro config. Four dirs — minimal because of one deliberate deviation (below). The plain layout is in `README.md`; the non-obvious parts:
+Top-level: `apple/ pipeline/ public/ src/ work/` plus Astro config. `src/` + `public/` are Astro-mandated at root (can't move without relocating the whole app; `public/` is also our content dir — the deviation below). The plain layout is in `README.md`; the non-obvious parts:
+
+- **`work/`** — research works-in-progress, git-tracked but **NOT web-served**. One dir per science (`physics/`, `chemistry/`, `biology/`, `astronomy/`). Named `work/` (not `projects/`) so it sorts below `public/` and doesn't collide with `public/research/projects/`, which is the **completed, public-facing** report set served on the site. Promote a WIP into a dated `public/research/projects/YYYYMMDD Name/` folder only when it produces a publishable result.
 
 - **`src/`** — `content.config.ts` (Content Collections: **`projects`** + **`tech`**); `layouts/` holds the `.astro` components *and* their imported CSS/JS; `pages/` is file-based routing (`research/` carries the dynamic `[slug]` project route + `[science]/[tech]` tech route).
 - **`pipeline/worker/`** — CF Worker (ASSETS passthrough → `dist/`). **`pipeline/scripts/`** — `build_olympiads.py` / `build_technology.py` (YAML→JSON) + `build_curriculum.py` (.docx→markdown).
