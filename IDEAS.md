@@ -32,12 +32,14 @@ section or project folder. Update these lines as work moves.
 - **Vivian's hands-on runs** — work the 5 endpoint labs in order (Microliter Madness →
   Cat Genetics → Glow Lab → Forensics → BioBits before ~Nov 2026).
 - **PTC first-PCR run** — once the kits land (freezer; P200 gravimetric check first).
-- **DNA barcoding of local biota** — flagship molecular-bio project; promote to a
-  project folder after the PTC training-wheels run succeeds.
+- **DNA barcoding of local biota** — flagship molecular-bio project + the **Biology activation
+  vehicle** (→ BOLD/iBOL submission, science fair); promote to a project folder after the PTC
+  training-wheels run succeeds.
 - **IYPT 2027 physics** — prototype 2–3 of the 17 problems best matched to our sensors
   (Disc spectrometer · Cold drink · Magnetic carousel · Snail ball); theory + experiment.
 - **Astronomy first light** — ZWO Seestar S30 Pro shakedown
-  (imaging → photometry → astrometry; a grating for spectroscopy is a later acquire).
+  (imaging → photometry → astrometry; a grating for spectroscopy is a later acquire) →
+  then join an **AAVSO photometry campaign** (the Astronomy activation vehicle).
 
 **Completed & published** (in `public/research/projects/`)
 - IR Spectroscopy · UV-Vis Spectroscopy · Four Point Probe. *(SIL-era; kept as
@@ -56,6 +58,40 @@ layer**; see **Idea backlog** below.
 - **Target underserved areas.** Local-biota barcoding, household-materials science with home readouts, quantitative pedagogy, cross-science combinations. Avoid re-running saturated studies.
 - **Fold in machine learning where it fits** — sequence bioinformatics, spectral/image classification, video pose-tracking, kinetics fitting. Don't force ML where a linear fit answers the question.
 - **Use curriculum knowledge.** Draw on what we've studied (AP-level math through calculus; stats + inference; ML methods/algorithms; full AP chem + organic; AP-level physics incl. modern; AP-level bio incl. genetics, ecology, neuroscience; Olympiad-level astronomy).
+- **Activation vehicles + external gates.** Each research science should have a recurring *project generator* that exercises an owned instrument and feeds real external gates — see the next section. IYPT is that vehicle for Physics; the others are named below.
+
+## Activation vehicles & external gates
+
+The program runs on one move: **build a home-lab research project, then submit it to every external gate it fits.** The project is the asset; the contests/venues are just distribution. Physics proved the template — one **IYPT** investigation can feed CaYPT, a science fair, and a mentored-research submission from a single build. Each science gets its own *activation vehicle*: a recurring source of open-ended projects tied to an owned toy. **Deprioritize team-debate formats** (IYPT/IYNT-style Science Fights) — favour individual research-project vehicles and pro-am campaigns. (Exam Olympiads are a separate track — see the olympiads registry.)
+
+### Per-science vehicle (verified 2026-07-16)
+
+| Science | Activation vehicle | Activates | Recurring project stream |
+|---|---|---|---|
+| Physics | **IYPT 2027** — the 17-problem set | Vernier sensors · Digilent · 3D printer · camera | pick a problem → paired theory + experiment (table below) |
+| Biology | **DNA barcoding → BOLD / iBOL** | the miniPCR bench, end-to-end | barcode local Vancouver biota → submit records with student attribution |
+| Astronomy | **AAVSO photometry campaigns** (+ NASA Exoplanet Watch for compute) | Seestar S30 — **photometry only** (no spectrograph) | join a live campaign → submit light curves to the AAVSO database |
+| Chemistry | **no dedicated vehicle exists** — PalmSens 6-experiment on-ramp → self-directed projects | PalmSens potentiostat · UV-Vis · polarimeter | CV / stripping voltammetry / UV-Vis kinetics from science-fair · RSC · ACS banks |
+
+**Honest gaps (from the 2026-07-16 deep search):**
+- **Chemistry has no BOLD/AAVSO analogue** — no curated open-ended citizen-science chemistry campaign activates the home instruments. Closest is PalmSens's six structured experiments (Cu/Ni deposition · Cottrell diffusion · cyclic voltammetry · heavy-metal stripping voltammetry · glucose-oxidase biosensor · Prussian-Blue H₂O₂) — a guided *curriculum* for the potentiostat, not a problem generator. So chemistry's real vehicle is **the science fair + a journal**, and projects are self-sourced.
+- **Astronomy — the 30 mm Seestar is small.** It joins **photometry** campaigns only. NASA Exoplanet Watch personal transit observing wants ≥4″/100 mm, so use it as a compute/archival path (robotic-telescope data + free EXOTIC software), not scope activation. IASC analyses *provided* survey images — a compute vehicle, not scope activation.
+- **Biology — barcoding is the cleanest 1:1 fit** to the bench (high-schoolers hit expert-level ID accuracy in the literature). CSHL's DNA Learning Center (dnabarcoding101.org) is a good protocol bank, but its named campaigns (Urban Barcode, Barcode Long Island) are NYC-geo-restricted — the open, enterable layer for a BC student is **BOLD/iBOL itself** (local-biota barcoding). Novel-species results are *possible, not guaranteed*.
+
+### External gates — the distribution list
+
+Individual, non-debate; one project can feed several. Personal-eligibility specifics are tracked privately, not in this public doc.
+
+| Gate | What it is | Canada / homeschool | Status |
+|---|---|---|---|
+| **Greater Vancouver Regional Science Fair (GVRSF)** → CWSF → Team Canada-ISEF | project fair, grades 7–12 | ✅ homeschool-eligible (BC 1701 status or birth-year; parent/educator signature substitutes; contact the committee chair to register) | **confirmed** |
+| **AAVSO / BOLD submissions** | the pro-am campaigns above *are* gates — records & light curves land with attribution | ✅ open worldwide | via the vehicles |
+| **JEI + high-school journals** | mentor-submitted publication (see venue cheatsheet) | open to international — verify | endpoint for any project |
+| **Sanofi Biogenius Canada** | mentored biotech research competition, regional → national → international | grades 9–12, Canada — homeschool TBD | unverified |
+| **MIT THINK Scholars** | proposal-stage project funding + mentorship | ⚠️ may require US enrollment/residence | **unresolved — key unknown** |
+| **Davidson Fellows** | scholarship, US citizen/PR under 18 | ⚠️ Canadian residence may disqualify | **unresolved — key unknown** |
+
+**Open verification items:** MIT THINK + Davidson eligibility for a Canada-resident dual-citizen (both unresolved by the search); Sanofi Biogenius Canada / JEI / Regeneron-ISEF-international specifics; whether any chemistry citizen-science data endpoint exists to mimic the BOLD/AAVSO submission loop (likely none).
 
 ## Selection criteria (applied to every idea)
 
@@ -347,7 +383,7 @@ Top starters by owned-toy advantage: **2 Disc spectrometer** (spectroscopy), **4
 
 ### 🧪 Chemistry — spectroscopy + electrochemistry + thermal (all home)
 
-Not gutted — UV-Vis/fluorescence, polarimetry, a real potentiostat, pH/conductivity, and temperature all run at home. (Only FT-IR structural ID, CD, NIR, mass-spec, and chromatography left with SIL.) Maps to the site's **Spectroscopy · Electrochemistry · Thermal** techs.
+Not gutted — UV-Vis/fluorescence, polarimetry, a real potentiostat, pH/conductivity, and temperature all run at home. (Only FT-IR structural ID, CD, NIR, mass-spec, and chromatography left with SIL.) Maps to the site's **Spectroscopy · Electrochemistry · Thermal** techs. **No dedicated activation vehicle exists** (no BOLD/AAVSO analogue for chemistry) — use the PalmSens six-experiment set as a potentiostat on-ramp, then self-source projects below; the gate is the **science fair + a journal** (see Activation vehicles above).
 
 **Spectroscopy — Vernier UV-VIS/fluorescence + Polarimeter:**
 - **Anthocyanin pH ladder across household products** — quantitative λmax/absorbance shifts vs. pH; underserved at realistic product diversity. `raw` · JEI / J. Chem. Educ. · ML: cluster in λmax×pH space.
@@ -367,7 +403,7 @@ Not gutted — UV-Vis/fluorescence, polarimetry, a real potentiostat, pH/conduct
 
 ### 🧬 Biology — the home-lab flagship (genomics · microscopy · physiology)
 
-Three owned tech stacks; biology carries the program near-term.
+Three owned tech stacks; biology carries the program near-term. **Activation vehicle: DNA barcoding → BOLD/iBOL** — the recurring project stream that maps 1:1 onto the miniPCR bench (see Activation vehicles above).
 
 **Genomics — miniPCR + GELATO + P51:**
 - **DNA barcoding of local Vancouver biota (COI / rbcL / matK / ITS)** — extract → amplify → gel → mail-in Sanger → BLAST/BOLD. Each specimen is new data; genuinely novel JEI shape + BOLD submissions; wet-lab × bioinformatics. **Flagship — promote to a project folder after the PTC training run.** `raw`
@@ -386,7 +422,7 @@ Three owned tech stacks; biology carries the program near-term.
 
 ### 🔭 Astronomy — Seestar imaging/photometry + public archives
 
-Owned = the **Seestar S30 Pro** (imaging, photometry, astrometry) + public archives (Gaia, AAVSO, MAST, TNS, WISeREP, Galaxy Zoo, Pickles). No spectrograph yet.
+Owned = the **Seestar S30 Pro** (imaging, photometry, astrometry) + public archives (Gaia, AAVSO, MAST, TNS, WISeREP, Galaxy Zoo, Pickles). No spectrograph yet. **Activation vehicle: AAVSO photometry campaigns** (photometry-tagged only — the 30 mm scope has no spectrograph), with NASA Exoplanet Watch as a compute/archival path (see Activation vehicles above).
 - **Photometry / light curves (Seestar)** — variable stars, exoplanet transits, asteroid rotation; AAVSO-submittable. `raw` · JEI / AAVSO.
 - **Astrometry (Seestar)** — asteroid/comet positions, proper-motion checks against Gaia. `raw`
 - **Stellar / transient classification via public archives + CNN** — SDSS/LAMOST spectra, TNS transients, Galaxy Zoo morphology; Computing crossover, underserved at HS level. `raw` · Astron. Educ. Rev.
@@ -436,7 +472,7 @@ Four tiers, from lowest bar to highest. Aim up — a rigorous household-material
 
 ### Non-journal recognition (in parallel)
 
-Regeneron ISEF · Regeneron STS · JSHS · USABO / USNCO / USAPhO Olympiads · **IYPT** (International Young Physicists' Tournament — the Physics track's competition anchor; its problems drive the Physics backlog).
+**Greater Vancouver Regional Science Fair → CWSF → Team Canada-ISEF** (the Canada-first, homeschool-eligible gate for any science) · Regeneron ISEF · Regeneron STS · JSHS · Sanofi Biogenius Canada (biology) · USABO / USNCO / USAPhO Olympiads · **IYPT** (International Young Physicists' Tournament — the Physics track's competition anchor; its problems drive the Physics backlog). See **Activation vehicles & external gates** for the full gate map.
 
 ## Future topic structure
 
@@ -524,6 +560,7 @@ What is and isn't needed for the summer 2026 home lab.
 
 ## Change log
 
+- **2026-07-16** — **Activation vehicles & external gates** section added (high-level scaffold: one project → many gates; "project is the asset, contests are distribution"). Named a per-science activation vehicle mirroring Physics/IYPT — **Biology → DNA barcoding to BOLD/iBOL** (cleanest 1:1 bench fit), **Astronomy → AAVSO photometry campaigns** (+ Exoplanet Watch for compute; 30 mm Seestar is photometry-only), **Chemistry → no dedicated vehicle exists** (PalmSens 6-experiment on-ramp → self-sourced projects; gate is the science fair + a journal). Verified gate: **GVRSF → CWSF → Team Canada-ISEF** is grade-9- and homeschool-accessible. Flagged unresolved: MIT THINK + Davidson Fellows eligibility for a Canada-resident dual-citizen. Per-science section anchors + dashboard + recognition list updated to match. Source: two deep-research runs (2026-07-16); personal-eligibility layer kept out of this public doc (private memory).
 - **2026-07-16** — **Home-lab-first reframe** (corrected against the real toy registry — each tech page's `toys:` frontmatter, not `technology.yml`). Dropped only the truly-lost SIL capabilities: FT-IR mid-IR, circular dichroism, NIR, mass spec (MALDI/LC-MS/GC-MS), chromatography, TGA/DSC, four-point probe. **Kept everything the home lab owns:** Vernier Go Direct UV-VIS/fluorescence spectrophotometer + optical fiber, Vernier Polarimeter, PalmSens EmStat Pico potentiostat, Vernier pH/conductivity/temperature/gas/turbidity/magnetic-field/force/motion/photogate/EKG/spirometer/O₂-CO₂ sensors, three microscopes (Dino-Lite / AmScope / Swift), Digilent Analog Discovery 3, Prusa CORE One+, the miniPCR bench, and the ZWO Seestar S30 Pro. Reorganized into a **tool layer (Math + Computing)** across four research sciences (**Physics, Chemistry, Biology, Astronomy**). **Physics re-anchored on IYPT 2027** (17 problems). Resources rebuilt from the registry; the all-SIL instrument-category reference deleted; the three completed SIL projects stay as historical past-work.
 - **2026-07-11** — Reframed the doc from "idea backlog" to the research program's **ideation + progress-tracking** doc: retitled, dual-purpose intro, and added an **Active work & progress** dashboard at the top (piloting / on deck / completed / backlog). Updated science `CLAUDE.md` to match.
 - **2026-07-11** — Consolidated the home molecular-biology lab reference into IDEAS.md as the **"Home molecular-biology lab — bench reference & progress"** section (kit set + lab order, per-lab notes, Session 0 calibration procedure, gear, cold chain, current audit status). Absorbed from the short-lived `homelab/molecular-biology.md`, which was removed — IDEAS.md now tracks both bench progress and ideation in one file.
