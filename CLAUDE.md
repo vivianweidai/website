@@ -93,7 +93,7 @@ YYYYMMDD Project Name/
 
 - **Build & deploy** — `pnpm build` from repo root (writes Astro output to `pipeline/worker/dist/`), then `cd pipeline/worker && pnpm run deploy` (wrangler ships dist via Static Assets binding). GitHub push is backup only.
 - **Local preview** — `pnpm dev` from the repo root (port 4321). Astro serves on save with hot reload. Use Safari for visual checks.
-- **One-off HTML mockups (non-Astro)** — keep in `work/scratch/<topic>.html` (tracked) per the global convention; serve with `live-server` if needed.
+- **One-off HTML mockups (non-Astro)** — keep in `work/scratch/<topic>.html` (tracked); serve with `live-server` if needed. (This repo is the sole home of the scratch convention — the cross-repo dotfiles doc no longer carries it.)
 - **Layout-aware Astro mockups** — drop a temp `.astro` file under `src/pages/scratch-<topic>.astro`, view via `pnpm dev`, then `git restore` to remove. Same exception pattern as other Astro repos.
 - **Showing the user — default is Safari.** After a change, open the relevant URL in Safari (`open -a Safari 'http://127.0.0.1:4321/<path>'`) so the user sees the real rendering natively. `qlmanage -t -s 1200 -o /tmp <file>.html` is only an inline-in-chat fallback.
 - **Promoting from scratch to site** — move the chosen asset into the appropriate tracked path (e.g. a tech folder under `public/research/technology/`, or a project's `output/`).
