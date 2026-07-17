@@ -36,8 +36,8 @@ section or project folder. Update these lines as work moves.
   project folder after the PTC training-wheels run succeeds.
 - **IYPT 2027 physics** — prototype 2–3 of the 17 problems best matched to our sensors
   (Disc spectrometer · Cold drink · Magnetic carousel · Snail ball); theory + experiment.
-- **Astronomy first light** — ZWO Seestar S30 + Star Analyser grating shakedown
-  (imaging → photometry → slitless spectroscopy).
+- **Astronomy first light** — ZWO Seestar S30 Pro shakedown
+  (imaging → photometry → astrometry; a grating for spectroscopy is a later acquire).
 
 **Completed & published** (in `public/research/projects/`)
 - IR Spectroscopy · UV-Vis Spectroscopy · Four Point Probe. *(SIL-era; kept as
@@ -51,7 +51,7 @@ layer**; see **Idea backlog** below.
 
 - **Four research sciences, two tool sciences.** **Physics, Chemistry, Biology, Astronomy** are the standalone research targets — each should carry at least one live home-lab project. **Mathematics + Computing** are the *foundational tool layer* (modeling, statistics, ML, simulation, signal processing) applied *across* the four, not pursued as standalone research.
 - **Home-lab-first.** As of the July 2026 Vancouver move, UNR SIL walk-up instrument access is retired. Every new idea must run on **toys we own and operate at home** — the miniPCR molecular-bio bench, the ZWO Seestar telescope, cameras + sensors, a soldering/scope/3D-print bench, and kitchen-scale wet chemistry. (The three completed SIL-instrument projects stay on the site as historical past-work.)
-- **Publish.** At least one JEI-level paper per year, a *Journal of Chemical Education*-level paper, and one submission into a real peer-reviewed adult venue (mentor co-author). Physics also competes at **USAYPT** (see Physics backlog).
+- **Publish.** At least one JEI-level paper per year, a *Journal of Chemical Education*-level paper, and one submission into a real peer-reviewed adult venue (mentor co-author). Physics also competes at **IYPT** (see Physics backlog).
 - **Push the owned-toy advantage.** Where we own an instrument other high-schoolers don't (the PCR bench, the Seestar), the project should use it as its *primary* readout — not incidental confirmation.
 - **Target underserved areas.** Local-biota barcoding, household-materials science with home readouts, quantitative pedagogy, cross-science combinations. Avoid re-running saturated studies.
 - **Fold in machine learning where it fits** — sequence bioinformatics, spectral/image classification, video pose-tracking, kinetics fitting. Don't force ML where a linear fit answers the question.
@@ -65,7 +65,7 @@ An idea earns a project slot when it checks most of these:
 2. **Underserved** — literature search shows a clear gap (local samples, home readouts, cross-science), not yet saturated.
 3. **Curriculum fit** — connects to something we've already studied, so the analysis isn't a black box.
 4. **Cross-discipline leverage** — ideally spans a research science + the Math/Computing tool layer, or two owned toys.
-5. **Publishable / competition shape** — a clear hypothesis, a well-defined sample set, a figure set we can picture before starting (or a USAYPT theory+experiment pairing).
+5. **Publishable / competition shape** — a clear hypothesis, a well-defined sample set, a figure set we can picture before starting (or an IYPT theory+experiment pairing).
 6. **ML-ready (when applicable)** — the data shape supports classification, regression, clustering, or a fit we can learn from.
 
 ## Resources — the home-lab inventory
@@ -306,9 +306,9 @@ Not standalone projects — the modeling/analysis muscle every project below lea
 **Mathematics — the modeling & analysis toolkit**
 - **Curve fitting + uncertainty propagation** — least-squares, error bars, CIs; the backbone of every dataset.
 - **Fourier / signal processing** — audio FFT (standing waves), image transforms.
-- **Differential-equation models** — damped/driven oscillators, rocking dynamics (Walking Statues), reaction kinetics, diffusion.
+- **Differential-equation models** — damped/driven oscillators, rolling/rocking dynamics (Snail ball, Falling book cover), reaction kinetics, diffusion.
 - **Bayesian inference + model comparison** — posteriors on rate constants / damping; BIC/AIC between competing models. Pairs with any time-series.
-- **Numerical simulation** — ODE / finite-element solvers to compare theory against measurement (USAYPT wants both).
+- **Numerical simulation** — ODE / finite-element solvers to compare theory against measurement (IYPT wants both).
 
 **Computing — the computational & ML toolkit**
 - **Video pose / motion tracking** — extract kinematics from phone video (pendulum, rocking statue, rolling wheel).
