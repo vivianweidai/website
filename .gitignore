@@ -5,7 +5,7 @@
 
 # Claude Code
 .claude/
-scratch/
+# (work/scratch/ is intentionally TRACKED — research scratch is backed up on GitHub)
 
 # Python
 __pycache__/
