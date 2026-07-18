@@ -1,5 +1,9 @@
 # SCIENCE — Claude Code Instructions
 
+Personal science portfolio + lab notebook — live on [vivianweidai.com](https://vivianweidai.com) and the [App Store](https://apps.apple.com/app/id6762091743) (iPhone + iPad, with an embedded Apple Watch companion). Curriculum reference tables, an Olympiad timeline, and hands-on research projects (raw data, photos, notebooks, reproducible pipelines).
+
+This CLAUDE.md is the repo's only doc — the README was folded in and deleted 2026-07-17 (Claude-maintained; even though the repo is public, James opted out of README upkeep).
+
 ## YOUR ROLE
 
 Process experimental data and build reproducible analysis pipelines. Parse raw instrument outputs, clean and validate data, perform statistical analysis, and generate visualizations.
@@ -53,7 +57,7 @@ The former top-level `archives/` folder (canonical instrument catalogs, per-Toy 
 
 ## REPO STRUCTURE
 
-Top-level: `apple/ pipeline/ public/ src/ work/` plus Astro config. `src/` + `public/` are Astro-mandated at root (can't move without relocating the whole app; `public/` is also our content dir — the deviation below). The plain layout is in `README.md`; the non-obvious parts:
+Top-level: `apple/ pipeline/ public/ src/ work/` plus Astro config. `src/` + `public/` are Astro-mandated at root (can't move without relocating the whole app; `public/` is also our content dir — the deviation below). The non-obvious parts:
 
 - **`work/`** — research works-in-progress, git-tracked but **NOT web-served**. One dir per science (`physics/`, `chemistry/`, `biology/`, `astronomy/`). Named `work/` (not `projects/`) so it sorts below `public/` and doesn't collide with `public/research/projects/`, which is the **completed, public-facing** report set served on the site. Promote a WIP into a dated `public/research/projects/YYYYMMDD Name/` folder only when it produces a publishable result. **`work/scratch/`** is the rough scratchpad — **tracked and pushed to GitHub** (backed up + distributed across machines; the relocated home of the old `~/GITHUB/scratch/` for research work, 2026-07-16). The three-stage pipeline: `work/scratch/<topic>` (rough/experimental) → `work/<science>/` (organized WIP) → `public/research/projects/` (published) — all tracked; the difference is polish and web-visibility, not whether it's in git.
 
