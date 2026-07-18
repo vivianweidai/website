@@ -1,177 +1,133 @@
 # SCIENCE — Claude Code Instructions
 
-Personal science portfolio + lab notebook — live on [vivianweidai.com](https://vivianweidai.com) and the [App Store](https://apps.apple.com/app/id6762091743) (iPhone + iPad, with an embedded Apple Watch companion). Curriculum reference tables, an Olympiad timeline, and hands-on research projects (raw data, photos, notebooks, reproducible pipelines).
+Personal science portfolio + lab notebook — live on [vivianweidai.com](https://vivianweidai.com) and the [App Store](https://apps.apple.com/app/id6762091743) (iPhone + iPad, with an embedded Apple Watch companion). Curriculum reference tables, an Olympiad timeline, and hands-on research projects (raw data, photos, notebooks, reproducible pipelines). Your role: process experimental data and build reproducible analysis pipelines — parse raw instrument outputs, clean and validate, analyze, visualize.
 
 This CLAUDE.md is the repo's only doc — the README was folded in and deleted 2026-07-17 (Claude-maintained; even though the repo is public, James opted out of README upkeep).
 
-## YOUR ROLE
+## STACK
 
-Process experimental data and build reproducible analysis pipelines. Parse raw instrument outputs, clean and validate data, perform statistical analysis, and generate visualizations.
+- **Astro 5** — static site generator. Builds to `pipeline/worker/dist/` (co-located with the Worker that serves it) via `outDir: '../pipeline/worker/dist'`.
+- **Cloudflare Workers + Static Assets** — serves the build output at `vivianweidai.com`. The Worker is a true passthrough to the `ASSETS` binding (no edge logic).
+- **GitHub** — source control only. Push triggers nothing.
+- **Apple** — native app in `apple/` consumes `vivianweidai.com/{olympiads,research,curriculum}/*.json` (and per-discipline markdown under `curriculum/source/`). See § APPLE APP.
 
-## MENTAL MODEL — TECHNOLOGIES AND TOYS
+## REPO STRUCTURE
 
-The Research pages on `vivianweidai.com/research/` are organized around two concepts:
+Top-level reads like every other repo: `apple/ web/ pipeline/ work/` + this doc. **The entire Astro app lives in `web/`** — its `astro.config.mjs`, `package.json`, `tsconfig.json`, `src/`, and `public/` (relocated from the repo root 2026-07-17 to keep the root clean; `src/`/`public/` stay at Astro's defaults *inside* `web/`). **All `pnpm` commands run from `web/`.**
 
-- **Technology (Tech)** — a research capability, a row on the Research page. Examples: *Spectroscopy*, *Earth*, *Photometry*, *Radio*. Each Technology represents a way of asking nature a question — capturing photons, classifying sources, decoding spectra.
-- **Toy** — a specific physical instrument that *enables* a Technology. Examples: *Paton Hawksley Star Analyser 100 Grating* (enables Spectroscopy), *ZWO Seestar S30 Pro* (enables Amateur, Spectroscopy, Photometry, Astrometry). Toys live inside the Technology's row on the page. One Toy can enable multiple Technologies.
+- **`web/src/`** — `content.config.ts` (Content Collections: **`projects`** + **`tech`**); `layouts/` holds the `.astro` components *and* their imported CSS/JS; `pages/` is file-based routing (`research/` carries the dynamic `[slug]` project route + `[science]/[tech]` tech route).
+- **`web/public/`** — source-of-truth served **verbatim at the site root**. Areas: `curriculum/` (`source/*.md` + `curriculum.json`), `olympiads/` (`olympiads.yml`), `research/` (`projects/<YYYYMMDD Name>/`, `technology/<science>/<Tech>/index.md` with a sibling `hero:` image + flat photos, `technology.yml`). `<science>` is the full word (mathematics, computing…) to mirror `curriculum/source/`.
+- **`pipeline/`** — `worker/` (CF Worker: ASSETS passthrough → `dist/`) + `scripts/` (`build_olympiads.py` / `build_technology.py`, YAML→JSON; `build_curriculum.py`, .docx→markdown). Scripts resolve paths from their own location, so run them **from the repo root**; they write into `web/public/`.
+- **`work/`** — research works-in-progress, git-tracked but **NOT web-served**. One dir per science (`physics/` `chemistry/` `biology/` `astronomy/`) + `IDEAS.md`. Named `work/` (not `projects/`) to stay distinct from the public `web/public/research/projects/`. **`work/scratch/`** is the rough scratchpad (tracked + pushed — backed up and distributed across machines; the relocated home of the old `~/GITHUB/scratch/`, 2026-07-16). Three-stage flow, all tracked — the difference is polish and web-visibility, not whether it's in git: `work/scratch/<topic>` (rough) → `work/<science>/` (organized WIP) → `web/public/research/projects/` (published).
+- **`work/IDEAS.md`** (moved from the repo root 2026-07-17) — the research program's living doc: **ideation** (idea backlog) + **progress tracking** (the "Active work & progress" dashboard and in-flight detail like the home molecular-biology lab). Promote an idea to a dated project folder when a pilot starts; keep the dashboard and idea statuses current.
 
-A Technology is "available" to us when we have at least one Toy that enables it.
+**Convention deviation: no top-level `content/`; source-of-truth lives under `web/public/`.** The cross-repo convention puts source-of-truth in a top-level `content/`. We deviate because Astro's `public/` is served verbatim at the site root — so `web/public/` **is** the content dir: a file at `web/public/X/Y` serves at `/X/Y`, 1:1, no rewrites, no sync step. Page URLs and asset URLs coexist under the same prefix (`/research/projects/<folder>/` is the rendered HTML; `/research/projects/<folder>/index.md` is the raw markdown the apps fetch; `/research/projects/<folder>/photos/…` are the photos). The Content Collection loader points at `./public/research/projects/` (relative to the `web/` Astro root); the dynamic route's photo discovery walks the same path.
 
-### Access principle
+## DATA MODEL — TECHNOLOGIES & TOYS
 
-The Research collection is grounded in **Toys we can regularly touch.** Tiers, in order of preference:
+The Research pages (`vivianweidai.com/research/`) are organized around two concepts:
 
-1. **Home lab** (foundational) — instruments owned and operated at the home location. Hands-on, daily access.
-2. ~~**Shared Instruments Lab** — UNR's SIL, 24/7 walk-in access~~ — **RETIRED July 2026** (access ended with the Vancouver move; see REFERENCE MATERIALS). No longer an access tier — don't propose SIL instruments for *new* work. The 8 SIL instruments that already have tech pages **stay on the site as historical/past-work projects** (decided July 2026) — don't pull them, but don't add new SIL-based projects either. New research centers on the Vancouver home lab.
-3. **Remote terminals into partner observatories** — UBC Thunderbird South. Real instrument time, just operated over a network.
-4. **Pay-per-use / mail-in services** (future) — for sophisticated Technologies we can't reasonably own. Add only after Tiers 1–3 cover the foundational science.
+- **Technology (Tech)** — a research capability, a row on the Research page (e.g. *Spectroscopy*, *Photometry*, *Radio*). A way of asking nature a question.
+- **Toy** — a specific physical instrument that *enables* a Technology (e.g. *Paton Hawksley Star Analyser 100 Grating* enables Spectroscopy; *ZWO Seestar S30 Pro* enables Amateur, Spectroscopy, Photometry, Astrometry). One Toy can enable multiple Techs. A Tech is "available" when we own ≥1 Toy that enables it.
 
-The order matters: don't propose a Tier-4 access path when a Tier-1/2/3 Toy could do the same job. The point of the page is "Technologies we can play with," not "Technologies that exist somewhere in the world."
+**Access tiers** (the collection is grounded in Toys we can regularly touch; prefer lower tiers — don't propose a Tier-4 path when a Tier-1/2/3 Toy does the job):
 
-### Schema mapping
+1. **Home lab** (foundational) — instruments owned + operated at home. Daily hands-on access. New research centers here.
+2. ~~**Shared Instruments Lab** (UNR SIL)~~ — **RETIRED July 2026** (access ended with the Vancouver move). Don't propose SIL instruments for *new* work. The 8 SIL instruments that already have tech pages **stay on the site as historical/past-work** — don't pull them, don't add new ones.
+3. **Remote terminals into partner observatories** — UBC Thunderbird South. Real instrument time, operated over a network.
+4. **Pay-per-use / mail-in services** (future) — for Techs we can't reasonably own. Add only after Tiers 1–3 cover the foundational science.
 
-The data layer matches this vocabulary end-to-end:
+**Schema** — the data layer matches this vocabulary end-to-end:
 
 | Layer | YAML/JSON field | Frontmatter | URL path | Astro collection |
 |---|---|---|---|---|
 | Science (card) | `science` | — | `/research/#<slug>` | — |
 | Tech (row) | `techs[].tech` | `tech:` | `/research/technology/<sci>/<Tech>/` | `tech` |
-| Toy (instrument) | `toys[].name` (under a tech's frontmatter) | `toys:` array | — | — |
+| Toy (instrument) | `toys[].name` (under a tech) | `toys:` array | — | — |
 
-The old topic/category grouping tiers were dropped — `technology.yml` is now one flat entry per science (`science:` + `techs:`), and `technology.json` carries no grouping metadata.
+`technology.yml` is **one flat entry per science** (`science:` + `techs:`; the old topic/category grouping tiers were dropped). It is the **source of truth for instruments and which Techs they enable**; a tech's spec (`techs[].specs`) lives here and nowhere else.
 
-`technology.yml` is the source of truth; `technology.json` is generated by `pipeline/scripts/build_technology.py` and consumed by both the Astro pages and the Apple app.
+**Instrument names must exactly match `technology.yml`** everywhere in code and prose — don't abbreviate, prefix, or rearrange words. (Per-instrument data-format notes belong in the project's `index.md` Setup table, not here.) The former top-level `archives/` folder — instrument catalogs, walk-up guides, the UNR/UBC landscape survey — was removed July 2026 when SIL access ended; recoverable from git history if ever needed.
 
-## REFERENCE MATERIALS
+## AUTHORING A RESEARCH PROJECT
 
-The former top-level `archives/` folder (canonical instrument catalogs, per-Toy walk-up guides, and the UNR/UBC landscape survey) was **removed in July 2026 when UNR SIL access ended with the Vancouver move** — recoverable from git history if ever needed. The **live registry of instruments is now `web/public/research/technology.yml`** (the source of truth); all instrument names in code and prose must match it exactly.
-
-`work/IDEAS.md` (moved from the repo root 2026-07-17) is the research program's living doc — **both ideation (the idea backlog) and progress tracking (the "Active work & progress" dashboard + in-flight detail sections like the home molecular-biology lab)**. Promote an idea to `web/public/research/projects/YYYYMMDD Name/` when a pilot starts; keep the dashboard and idea statuses current as work moves.
-
-## STACK
-
-- **Astro 5** — static site generator. Builds to `pipeline/worker/dist/` (co-located with the Worker that serves it).
-- **Cloudflare Workers + Static Assets** — serves the build output at `vivianweidai.com`. The Worker is a true passthrough to the `ASSETS` binding (no edge logic).
-- **GitHub** — source control only. Push triggers nothing.
-- **Apple** — native app in `apple/` consumes `vivianweidai.com/{olympiads,research,curriculum}/*.json` (and per-discipline markdown under `vivianweidai.com/curriculum/source/`).
-
-## REPO STRUCTURE
-
-Top-level: `apple/ web/ pipeline/ work/`. **The entire Astro app lives in `web/`** — its `astro.config.mjs`, `package.json`, `tsconfig.json`, `src/`, and `public/` (relocated from the repo root 2026-07-17 to keep the root clean; `src/`/`public/` stay at Astro's defaults *inside* `web/`, and `web/public/` doubles as our content dir — the deviation below). `pipeline/` = worker + Python build scripts; `work/` = research WIP. The non-obvious parts:
-
-- **`work/`** — research works-in-progress, git-tracked but **NOT web-served**. One dir per science (`physics/`, `chemistry/`, `biology/`, `astronomy/`), plus `IDEAS.md` (the program's living backlog + progress dashboard, moved here 2026-07-17). Named `work/` (not `projects/`) to stay distinct from `web/public/research/projects/`, the **completed, public-facing** report set served on the site. Promote a WIP into a dated `web/public/research/projects/YYYYMMDD Name/` folder only when it produces a publishable result. **`work/scratch/`** is the rough scratchpad — **tracked and pushed to GitHub** (backed up + distributed across machines; the relocated home of the old `~/GITHUB/scratch/` for research work, 2026-07-16). The three-stage pipeline: `work/scratch/<topic>` (rough/experimental) → `work/<science>/` (organized WIP) → `web/public/research/projects/` (published) — all tracked; the difference is polish and web-visibility, not whether it's in git.
-
-- **`web/src/`** — `content.config.ts` (Content Collections: **`projects`** + **`tech`**); `layouts/` holds the `.astro` components *and* their imported CSS/JS; `pages/` is file-based routing (`research/` carries the dynamic `[slug]` project route + `[science]/[tech]` tech route).
-- **`pipeline/worker/`** — CF Worker (ASSETS passthrough → `dist/`, which the Astro build in `web/` writes to via `outDir: '../pipeline/worker/dist'`). **`pipeline/scripts/`** — `build_olympiads.py` / `build_technology.py` (YAML→JSON) + `build_curriculum.py` (.docx→markdown); each resolves paths from its own location, so they run from the repo root and write into `web/public/`.
-- **`web/public/`** — source-of-truth served verbatim at the site root (the deviation). Areas: `curriculum/` (`source/*.md` + `curriculum.json`), `olympiads/` (`olympiads.yml`), `research/` (`projects/<YYYYMMDD Name>/`, `technology/<science>/<Tech>/index.md` with a sibling `hero:` image + flat photos, `technology.yml`). `<science>` is the full word (mathematics, computing…) to mirror `curriculum/source/`. **Every `*.json` under `web/public/` is generated — DO NOT edit by hand; edit the `.yml` and rebuild.**
-
-**Convention deviation: no top-level `content/`; source-of-truth lives under `web/public/`.** The cross-repo convention puts source-of-truth in a top-level `content/` dir. We deviate because Astro has a special `public/` dir (served verbatim at the site root); with our setup `web/public/` IS the content dir — files at `web/public/X/Y` serve at `/X/Y`. No `content/` layer, no `/content/` URL prefix, no sync step. The Astro Content Collection loader points at `./public/research/projects/` (relative to the `web/` Astro root); the dynamic route's photo discovery walks the same path. The Apple app fetches from `vivianweidai.com/{olympiads,research,curriculum}/...`.
-
-**URL ↔ disk mapping.** Pages have clean URLs (`/`, `/curriculum/`, `/research/projects/<folder>/`, etc.). Files under `web/public/<path>` serve at `/<path>` — 1:1 mapping, no rewrites. Page URLs and asset URLs coexist under the same prefix (e.g., `/research/projects/<folder>/` is the rendered HTML page; `/research/projects/<folder>/index.md` is the raw markdown the apps fetch; `/research/projects/<folder>/photos/...` are the photos).
-
-**Activities workflow.** `web/public/olympiads/olympiads.yml` is the single source of truth for olympiads and textbooks. After editing, run `python pipeline/scripts/build_olympiads.py` (from the repo root) to regenerate `web/public/olympiads/olympiads.json`, then `cd web && pnpm build && cd ../pipeline/worker && pnpm run deploy` to ship. The website (`/olympiads/` via client-side JS) and the Apple app both fetch the same JSON via `https://vivianweidai.com/olympiads/olympiads.json`. Same pattern for `technology.yml` (research). The curriculum is a **one-time build**: its `.docx` sources were dropped from the repo (commit f8e7ad3), so `curriculum.json` and `source/*.md` are now committed artifacts — re-add a subject's `.docx` to `web/public/curriculum/notes/` only if you need to regenerate it. No database, no API, no admin endpoint.
-
-Each research project lives in a date-prefixed folder under `research/projects/`:
+Each project is a date-prefixed folder under `web/public/research/projects/`. The public-facing overview is **`index.md`** (not `README.md`) — Astro's loader globs `*/index.md`, so the filename matters. Model new pages on `20260420 UV-Vis Spectroscopy/index.md` or `20260419 IR Spectroscopy/index.md`.
 
 ```
 YYYYMMDD Project Name/
-├── data/                   # Raw data from instruments (CSVs, spectra, etc.)
-├── photos/                 # Experiment photos, organized by purpose
-│   ├── setup/              # Setup + sample shots — feed the top-page shuffle
-│   ├── samples/            # (optional) sample close-ups — also shuffled
-│   └── data/               # Photographs of handwritten data sheets — excluded from shuffle, shown via a hand-coded in-page data grid
-├── papers/                 # Background papers
-├── output/                 # Analysis output: scripts, notebooks, figures, processed data
-│   ├── *.py / *.ipynb      # Analysis code
-│   ├── *.png               # Generated plots and visualizations
-│   └── *.csv / *.json      # Processed/cleaned data
-├── index.md                # Project overview, methods, results summary
+├── data/      # Raw instrument data (CSVs, spectra). NEVER modify — read-only.
+├── photos/    # Experiment photos, split by purpose (see below)
+│   ├── setup/    # Setup + sample shots — feed the top-page shuffle
+│   ├── samples/  # (optional) sample close-ups — also shuffled
+│   └── data/     # Handwritten data sheets — excluded from shuffle; shown via #data-grid
+├── papers/    # Background papers
+├── output/    # ALL generated output: *.py/*.ipynb, *.png plots, *.csv/*.json processed data
+└── index.md   # Overview, methods, results
 ```
 
-- **Never modify raw data files.** Read from `data/`; write all generated outputs to `output/`.
-- Create subdirectories (`data/`, `photos/`, `papers/`, `output/`) as needed when setting up or processing a project — existing projects use these names; follow the existing pattern rather than inventing new ones.
-- **Photo subfolders.** All experiment images live under `photos/`, split by purpose: `photos/setup/` (and optionally `photos/samples/`) for shots that should rotate through the top-page shuffle, and `photos/data/` for handwritten data sheets that are surfaced explicitly via a hand-coded in-page `#data-grid` (plain `<img>` markup in the body pointing at `photos/data/…`). The `[slug]/index.astro` route filters `photos/data/` out of the shuffle pool so data sheets never appear in the hero — keep this contract intact when adding new subfolders.
-- **Photo naming.** Within each subfolder, name files sequentially by chronological order: `setup1.jpeg`, `setup2.jpeg`, … and `data1.jpeg`, `data2.jpeg`, …. The numeric suffix encodes capture order (oldest = 1). Don't keep the original camera names like `20240920 Catfood G.jpeg` once a project is being committed — rename with `git mv` so the index.md frontmatter and any in-prose references stay short and stable.
+Create these subdirs as needed and follow the existing names rather than inventing new ones. **Never modify raw data** — read from `data/`, write everything generated to `output/`.
 
-## DEV WORKFLOW
+**Photos.** The shuffle pool is **auto-populated** by `Project.astro`: its `getStaticPaths` scans every `.jpg`/`.jpeg`/`.png` under `photos/` (`setup/` + `samples/`, **never `data/`**) and injects them as `window._pagePhotos`. So:
+- **Don't** list photos in frontmatter or add a per-page inline `_pagePhotos` script — the layout's shuffle script runs on every project page.
+- Name files sequentially in capture order: `setup1.jpeg`, `setup2.jpeg`, … / `data1.jpeg`, …. `git mv` originals (e.g. `20240920 Catfood G.jpeg`) so references stay short and stable.
+- `photos/data/` (handwritten sheets) is surfaced explicitly via a hand-coded in-page `#data-grid` of plain `<img>` — the `[slug]` route filters it out of the shuffle so it never hits the hero. Keep that contract if you add subfolders.
 
-- **Build & deploy** — `cd web && pnpm build` (Astro writes output to `../pipeline/worker/dist/`), then `cd pipeline/worker && pnpm run deploy` (wrangler ships dist via Static Assets binding). GitHub push is backup only. **All pnpm commands (dev/build/install) run from `web/`, not the repo root** — that's where the Astro `package.json` lives now.
-- **Local preview** — `cd web && pnpm dev` (port 4321). Astro serves on save with hot reload. Use Safari for visual checks.
-- **One-off HTML mockups (non-Astro)** — keep in `work/scratch/<topic>.html` (tracked); serve with `live-server` if needed. (This repo is the sole home of the scratch convention — the cross-repo dotfiles doc no longer carries it.)
-- **Layout-aware Astro mockups** — drop a temp `.astro` file under `web/src/pages/scratch-<topic>.astro`, view via `cd web && pnpm dev`, then `git restore` to remove. Same exception pattern as other Astro repos.
-- **Showing the user — default is Safari.** After a change, open the relevant URL in Safari (`open -a Safari 'http://127.0.0.1:4321/<path>'`) so the user sees the real rendering natively. `qlmanage -t -s 1200 -o /tmp <file>.html` is only an inline-in-chat fallback.
-- **Promoting from scratch to site** — move the chosen asset into the appropriate tracked path (e.g. a tech folder under `web/public/research/technology/`, or a project's `output/`).
-- **Pre-commit hook** — `.githooks/pre-commit` is committed but **activated per-clone**: run `git config core.hooksPath .githooks` once on a fresh machine. It's warn-only (never blocks): flags staged PDFs over the 5 MB soft cap, and flags a staged `.yml`/tech-page source whose generated JSON (`technology.json` / `olympiads.json`) isn't also staged — the drift that once shipped stale data to the app.
-
-## ANALYSIS GUIDELINES
-
-- **Tool choice is flexible** — use Python, R, Julia, shell scripts, or whatever fits the task best. Default to Python scientific stack (pandas, numpy, scipy, matplotlib, seaborn) when there's no strong reason to pick something else.
-- **Visualizations** — default to matplotlib/seaborn. Use clear axis labels, units, titles, and legends. Save figures as PNG (300 dpi).
-- **Reproducibility** — every analysis script should be runnable end-to-end from the project folder. Include comments explaining what each step does and why. Pin library versions in a `requirements.txt` if the pipeline uses non-standard packages.
-- **Data validation** — always inspect and summarize raw data before analysis (shape, missing values, outliers, units). Flag anything unexpected.
-- **Jupyter notebook conventions:**
-  - **Colab compatibility** — all data file references must use absolute GitHub raw URLs (e.g., `https://raw.githubusercontent.com/vivianweidai/science/main/...`) so notebooks work in Colab. Ship notebooks **with outputs** so GitHub renders results statically; Colab users re-run themselves.
-  - **Sections** — use numbered markdown heading cells (`## 1. Title`, `## 2. Title`, etc.) to separate logical sections. Typical flow: Data Collection → Load and Inspect Data → Visualize → Statistical Test → Conclusion.
-  - **Output styling** — use plain `print()` for text output. Keep code tight and minimal — no HTML boxes, no `IPython.display`, no extra spacing hacks.
-  - **Chart styling** — use matplotlib defaults (no custom fonts, no facecolor overrides). Use soft, muted pastels for colours — reference palette: Mathematics blue `#c5d9f7`, Computing purple `#d9ccee`, Physics coral `#f9c4a8`, Chemistry lime `#d4e8a0`, Biology teal `#a8ddd4`, Astronomy rose `#f4c2cb`. For data line traces use slightly deeper tones like `#d95f5f`. Always keep colours light and airy — never saturated or bold. Save as PNG (300 dpi). If a project produces many images, save into an `output/images/` subfolder; if only one or two images, save directly into `output/`.
-  - **Colab badge** — add a final markdown cell with `---` separator, then just the Colab badge image link (no descriptive text): `<a href="COLAB_URL"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" style="vertical-align:middle;"></a>`
-
-## WRITING STYLE FOR PROJECT PAGES
-
-Research project pages are **personal toolkit notes**, not publications. Their purpose is a fast future-you glance: what the tech does, what makes it different from its neighbors, and enough of a hook to go deeper if needed. They are the scaffold for real research, not the research itself.
-
-- **Note-and-bullet first.** Prefer short bullets over paragraphs. When a paragraph is needed, keep it to 1–2 sentences.
-- **Differentiate, don't summarize.** For every tech (and the toys that enable it), lead with what distinguishes it from the others on the page or in the repo. If two toys could both measure the same thing, say which one this page uses and why.
-- **Cut publication scaffolding.** No abstract-style intros, no "in this work we…", no restating what the reader can read below. Skip motivation paragraphs that aren't load-bearing.
-- **Use font styling judiciously.** One or two bolds per section at most — ideally only the proper noun of the instrument or the differentiator itself. Avoid stacking bold + italic + sub/superscripts unless the notation carries real information (λ<sub>max</sub> is fine; *italicizing every verb* is not).
-- **Push specifications to Setup tables.** Ranges, software names, filename patterns, cuvette sizes — all of that lives in the Setup or Data table, not in overview prose.
-- **Tabs and section-heads are the structure.** Let the page layout carry the differentiation (tabs per instrument, one section per pass) instead of explaining the structure in prose.
-
-Existing pages that model this style: `20260419 IR Spectroscopy/index.md` and `20260420 UV-Vis Spectroscopy/index.md`. When adding a new project or revising an old one, aim for their level of density.
-
-## INSTRUMENTS
-
-**All instrument names must exactly match the live registry** (`web/public/research/technology.yml`). When referencing any instrument, verify the name — do not abbreviate, add prefixes, or rearrange words. That registry is the source of truth for instruments and which technologies they enable; per-instrument data-format notes live in the relevant project's `index.md` Setup table.
-
-## GITHUB & VISIBILITY
-
-This repo is synced to GitHub at `vivianweidai/science` and served at `vivianweidai.com`. Everything is publicly viewable. Keep this in mind:
-- Do not commit sensitive or personal information.
-- **Never include researcher names or lab location in any public-facing files.** Project pages should include Date and Instrument but not Researchers or Location.
-- **PDFs** — soft cap 5 MB. Compress with `gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=out.pdf in.pdf` (use `/screen` for image-heavy manuals). After: verify a mid-doc page renders (`pdftoppm -r 60 -f 50 -l 50 out.pdf /tmp/check`), check page count matches, and that `gs` reported zero "Page drawing error" warnings. Tools: `brew install ghostscript poppler`.
-- **Photos:** If a project has 4+ photos, use the 2x2 photo grid with shuffle button. **The shuffle pool is auto-populated by `Project.astro`** — its `getStaticPaths` scans every `.jpg`/`.jpeg`/`.png` file under the project's `photos/` subtree (`photos/setup/` and `photos/samples/`, but never `photos/data/`) and injects them as `window._pagePhotos`. Do not list photos in front matter; do not add a per-page inline `_pagePhotos` script. Just include the `<div class="photo-grid">` + `<button class="shuffle-btn">` markup — the layout's inline shuffle script runs on every project page. If a project has only 1 photo, use a single hero image with `<div class="hero-single">` for rounded styling and controlled height.
-- **Date/Instrument metadata** should be right-aligned below the photos using `<div class="project-meta">`. Put Instrument on a new line with `<br>`.
-- **Results links** should point to the GitHub blob URL (e.g. `https://github.com/vivianweidai/science/blob/main/...`) so files render inside GitHub.
-- Ensure all code, data, and documentation is presentable and well-organized.
-- Each project's `index.md` (not README.md) serves as the public-facing overview. Astro's content collection loader globs `*/index.md` under `research/projects/`, so the filename matters.
-- **When creating a new project**, the project's `tech:` frontmatter array is the only registration step — `build_technology.py` reverse-scans projects and bakes them into `technology.json`, which the research page, tech detail pages, and Apple app all consume. Also add any new instrument as a Toy under the appropriate tech in `technology.yml`.
-- **Follow the global commit/push/deploy default.** For self-contained one-off changes (data row, typo, single feature), commit + push + `cd web && pnpm build && cd ../pipeline/worker && pnpm run deploy` per the cross-repo default in `~/.claude/CLAUDE.md`. Pause that default when iterating quickly on a multi-turn redesign. **Before any commit:** scan staged paths for oversized images (see the resize rule above) and shrink any offenders — once a large blob is in git history it stays there forever.
-
-## PROJECT README TEMPLATE
-
-Project pages are **`index.md`** (not `README.md`). Model new ones on an existing page (e.g. `20260420 UV-Vis Spectroscopy/index.md`). Required structure:
-
-**Frontmatter → title → hero.** `---` / `project: [Short Name]` / `---`, then `# [Experiment Title]`, then the hero:
-- **4+ photos** → a shuffle grid (pool auto-populates from `photos/setup/` + `samples/`; no `photos:` array, no inline script):
+**Page structure.** Frontmatter (`project: [Short Name]`) → `# [Experiment Title]` → hero → body. Hero:
+- **4+ photos** → shuffle grid (pool auto-populates; no `photos:` array, no inline script):
   ```html
   <div class="photo-grid" id="photo-grid"><img id="photo-0" alt="…"><img id="photo-1" alt="…"><img id="photo-2" alt="…"><img id="photo-3" alt="…"></div>
   <button class="shuffle-btn" onclick="shufflePhotos()">Shuffle Photos</button>
   ```
 - **1 photo** → `<div class="hero-single"><img src="photos/[file]" alt="…"></div>`
-- Then `<div class="project-meta">[Month Dayth Year]<br>[Instrument name]</div>`.
+- Then `<div class="project-meta">[Month Dayth Year]<br>[Instrument name]</div>` (right-aligned, Instrument on its own line).
 
-**Body sections, in order:** `## Overview` (1–2 para) · `## Setup` (Category/Details table + procedure prose) · `## Samples` (**top-level `##`**, not under Setup; Category/Samples table) · `## Data` (format; if `photos/data/` has data sheets, add a hand-coded `#data-grid` of plain `<img>` pointing at them — `three-col` for 3, shuffle button only if >4) · `## Results` (link **written report → static notebook → Colab**, in that order). The `## Results` section is the last thing in the file — **do not add a footer or nav div.** `Project.astro` injects the `<PageFooter />` and the science-colored tech pills (from the `tech:` frontmatter) automatically; hand-coding them in `index.md` would double them up.
+Body sections **in order**: `## Overview` (1–2 para) · `## Setup` (Category/Details table + procedure prose) · `## Samples` (**top-level `##`**, not under Setup) · `## Data` (format; if `photos/data/` has sheets, add the hand-coded `#data-grid` — `three-col` for 3, shuffle button only if >4) · `## Results` (link **written report → static notebook → Colab**, in that order). `## Results` is the **last thing in the file** — no footer or nav div: `Project.astro` injects `<PageFooter />` and the science-colored tech pills automatically. **Never add a `#`/row-number column to any table** (repo-wide rule) — row order conveys sequence.
 
-**Never add a "#" / row-number column to any table** (Setup, Samples, Results, anywhere) — markdown tables already read as a list; convey ordering by row sequence alone. Repo-wide rule.
+**Registering a project = one frontmatter edit.** The project's `tech:` array is the only registration step; `build_technology.py` reverse-scans it and bakes the project list into each tech's `technology.json` entry (consumed by the research page, tech-detail pages, and the Apple app). Add any new instrument as a Toy under the appropriate tech in `technology.yml`. Cross-links are fully automatic:
+- **Project → tech:** `Project.astro` renders one science-colored **pill** per `tech:` entry, linking to `/research/technology/<science>/<Tech>/`. (This replaced the old hand-coded `<div id="technology">` table in `ce2a710` — don't re-add such a table.)
+- **Tech → project:** the `build_technology.py` reverse-scan above.
 
-## TECH ↔ PROJECT LINKS (no hand-coded tables)
+**Writing style — toolkit notes, not publications.** A fast future-you glance at what the tech does and what makes it different from its neighbors; the scaffold for research, not the research. Model density: the two Spectroscopy pages above.
+- **Note-and-bullet first** — short bullets over paragraphs; 1–2 sentences when a paragraph is needed.
+- **Differentiate, don't summarize** — lead with what distinguishes each tech/toy from the others; if two toys measure the same thing, say which this page uses and why.
+- **Cut publication scaffolding** — no abstract intros, no "in this work we…", no non-load-bearing motivation.
+- **Font styling judicious** — one or two bolds per section (the instrument's proper noun or the differentiator). Sub/superscripts only when the notation carries information (`λ<sub>max</sub>` yes; italicizing every verb no).
+- **Push specs to Setup tables** — ranges, software names, filename patterns, cuvette sizes live in the Setup/Data table, not prose. Let tabs and section-heads carry the structure.
 
-Projects and techs cross-link **automatically** — there is nothing to hand-edit or keep in sync:
+## CONTENT BUILDS & DEPLOY
 
-- **Project → tech:** `Project.astro` reads the project's `tech:` frontmatter array and renders one science-colored **pill** per tech in the title row, each linking to `/research/technology/<science>/<Tech>/`. (This replaced the old hand-coded `<div id="technology">` "Technology" tables in commit `ce2a710` — do **not** re-add such a table to any `index.md`.)
-- **Tech → project:** `build_technology.py` reverse-scans every project's `tech:` array and bakes the project list into each tech's entry in `technology.json`, which the research page, tech-detail pages, and Apple app all consume.
+**Every `*.json` under `web/public/` is generated — never edit it by hand; edit the `.yml`/source and rebuild.** The website (client-side JS) and the Apple app fetch the same JSON, so a stale manifest silently ships bad data to the app (the `.githooks/pre-commit` guard exists for exactly this).
 
-So a tech's spec (`techs[].specs`) lives in exactly one place — `technology.yml` — and is no longer duplicated into project pages. Registering a project with a tech is a one-line frontmatter edit; rebuild with `python pipeline/scripts/build_technology.py`.
+- **Olympiads + textbooks** — edit `olympiads/olympiads.yml`, then `python pipeline/scripts/build_olympiads.py` (from repo root) → `olympiads.json`.
+- **Research** — edit `technology.yml` (+ project `tech:` frontmatter), then `python pipeline/scripts/build_technology.py` → `technology.json`.
+- **Curriculum** — a **one-time build**: the `.docx` sources were dropped (`f8e7ad3`), so `curriculum.json` and `source/*.md` are now committed artifacts. Re-add a subject's `.docx` to `web/public/curriculum/notes/` only to regenerate it. No database, no API, no admin endpoint.
+
+**Build & deploy** — `cd web && pnpm build` (writes to `../pipeline/worker/dist/`), then `cd pipeline/worker && pnpm run deploy` (wrangler ships `dist/` via Static Assets). GitHub push is backup only. Follow the global commit/push/deploy default for self-contained one-off changes; pause it while iterating on a multi-turn redesign.
+
+- **Local preview** — `cd web && pnpm dev` (port 4321, hot reload). After a change, `open -a Safari 'http://127.0.0.1:4321/<path>'` so the user sees the real native rendering (`qlmanage -t -s 1200 -o /tmp <file>.html` is only an inline-in-chat fallback).
+- **One-off mockups** — non-Astro HTML in `work/scratch/<topic>.html` (tracked; serve with `live-server`); layout-aware Astro in `web/src/pages/scratch-<topic>.astro`, view via `pnpm dev`, then `git restore`. Promote a chosen asset by moving it into the appropriate tracked path (a tech folder or a project's `output/`).
+- **Pre-commit hook** — `.githooks/pre-commit` is committed but **activated per-clone**: `git config core.hooksPath .githooks` once on a fresh machine. Warn-only (never blocks): flags staged PDFs over the 5 MB soft cap, and flags a staged source (`.yml` / tech-page `index.md`) whose generated JSON isn't also staged.
+
+## ANALYSIS & NOTEBOOKS
+
+- **Tools** — flexible; default to the Python scientific stack (pandas, numpy, scipy, matplotlib, seaborn) absent a strong reason otherwise.
+- **Reproducibility** — every script runnable end-to-end from the project folder, with comments explaining each step. Pin versions in `requirements.txt` if the pipeline uses non-standard packages. Always inspect/summarize raw data (shape, missing values, outliers, units) before analysis and flag anything unexpected.
+- **Visualizations** — matplotlib/seaborn with clear axis labels, units, titles, legends; save PNG at 300 dpi (into an `output/images/` subfolder if a project produces many, else directly into `output/`).
+- **Jupyter conventions:**
+  - **Colab compatibility** — data references use absolute GitHub raw URLs (`https://raw.githubusercontent.com/vivianweidai/science/main/...`); ship notebooks **with outputs** so GitHub renders statically.
+  - **Sections** — numbered markdown headings (`## 1. Title`, …); typical flow Data Collection → Load/Inspect → Visualize → Statistical Test → Conclusion.
+  - **Output** — plain `print()`; no HTML boxes, no `IPython.display`, no spacing hacks. Keep code tight.
+  - **Chart styling** — matplotlib defaults (no custom fonts/facecolors). Soft muted pastels: Mathematics `#c5d9f7`, Computing `#d9ccee`, Physics `#f9c4a8`, Chemistry `#d4e8a0`, Biology `#a8ddd4`, Astronomy `#f4c2cb`; data line traces slightly deeper (e.g. `#d95f5f`). Light and airy — never saturated or bold.
+  - **Colab badge** — final markdown cell: a `---` separator, then just the badge link (no text): `<a href="COLAB_URL"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" style="vertical-align:middle;"></a>`
+
+## VISIBILITY & SECURITY
+
+Synced to `vivianweidai/science` and served at `vivianweidai.com` — **everything is publicly viewable**.
+
+- **No sensitive or personal information.** In particular, **never include researcher names or lab location** in public-facing files — project pages carry Date + Instrument, not Researchers or Location.
+- **Results links** point to the GitHub blob URL (`https://github.com/vivianweidai/science/blob/main/...`) so files render inside GitHub.
+- **PDFs — soft cap 5 MB.** Compress: `gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=out.pdf in.pdf` (`/screen` for image-heavy manuals). Verify: a mid-doc page renders (`pdftoppm -r 60 -f 50 -l 50 out.pdf /tmp/check`), page count matches, and `gs` reported zero "Page drawing error" warnings. Tools: `brew install ghostscript poppler`.
+- **Before any commit, scan staged paths for oversized images** and shrink offenders — once a large blob is in git history it stays there forever.
 
 ## APPLE APP (`apple/`)
 
