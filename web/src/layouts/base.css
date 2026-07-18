@@ -4,7 +4,7 @@
  * curriculum column headers, olympiad tab pills, olympiad chips on
  * research project cards. Defined once here so a future tweak only
  * lands in one file. The
- * Swift apps under archives/apple/ have their own copy in
+ * Swift apps under apple/shared/Core/ have their own copy in
  * SubjectPaletteRGB (different language — unavoidable duplication).
  */
 :root {

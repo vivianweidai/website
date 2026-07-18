@@ -101,6 +101,7 @@ YYYYMMDD Project Name/
 - **Layout-aware Astro mockups** — drop a temp `.astro` file under `web/src/pages/scratch-<topic>.astro`, view via `cd web && pnpm dev`, then `git restore` to remove. Same exception pattern as other Astro repos.
 - **Showing the user — default is Safari.** After a change, open the relevant URL in Safari (`open -a Safari 'http://127.0.0.1:4321/<path>'`) so the user sees the real rendering natively. `qlmanage -t -s 1200 -o /tmp <file>.html` is only an inline-in-chat fallback.
 - **Promoting from scratch to site** — move the chosen asset into the appropriate tracked path (e.g. a tech folder under `web/public/research/technology/`, or a project's `output/`).
+- **Pre-commit hook** — `.githooks/pre-commit` is committed but **activated per-clone**: run `git config core.hooksPath .githooks` once on a fresh machine. It's warn-only (never blocks): flags staged PDFs over the 5 MB soft cap, and flags a staged `.yml`/tech-page source whose generated JSON (`technology.json` / `olympiads.json`) isn't also staged — the drift that once shipped stale data to the app.
 
 ## ANALYSIS GUIDELINES
 
@@ -172,9 +173,32 @@ Projects and techs cross-link **automatically** — there is nothing to hand-edi
 
 So a tech's spec (`techs[].specs`) lives in exactly one place — `technology.yml` — and is no longer duplicated into project pages. Registering a project with a tech is a one-line frontmatter edit; rebuild with `python pipeline/scripts/build_technology.py`.
 
-## APPLE APP — APP STORE RELEASE
+## APPLE APP (`apple/`)
 
-The native app in `apple/` ("My Science" on the App Store) is built + submitted from the main dev box. Run from `apple/`. **This repo is public — the concrete App Store Connect account identifiers (team ID, app ID, API Key ID, issuer, account-holder name) are NOT stored here.** Keep them in an untracked local file (`apple/.release.env`, gitignored) or the operator's own records; the `.p8` upload key stays at `~/.appstoreconnect/private_keys/` (600 perms) and is referenced by path, never committed.
+*(Architecture folded in from the retired `apple/README.md`, 2026-07-18 — `apple/` now holds only source + project files, like the other repos.)*
+
+Universal SwiftUI app ("My Science" on the App Store) mirroring vivianweidai.com on iPhone + iPad, with an embedded watchOS companion focused on the olympiads timeline. All data comes from public GitHub raw / `vivianweidai.com` URLs — no auth, no backend, no writes.
+
+### Architecture
+
+The SwiftPM package (`Package.swift`, iOS 17 + watchOS 10) is split in two so the watch target shares data + grouping logic without dragging in WebKit:
+
+- **`ScienceCore`** — platform-neutral `Models/`, `API/` clients, and the `ActivityGrouping` / `SubjectPaletteRGB` helpers (`shared/Core/`). Builds on iOS, watchOS, macOS.
+- **`ScienceCoreUI`** — iOS-only SwiftUI views + the KaTeX `MarkdownWebView` (`shared/UI/`). Depends on `ScienceCore`.
+
+The iPhone/iPad target (`ios/`) imports `ScienceCoreUI`; the watch target (`watch/`) imports only `ScienceCore` and owns its own views. The watch app is **embedded in the iOS bundle** — installing on iPhone auto-installs the companion on a paired watch. Bundle IDs `com.vivianweidai.science` / `.science.watchkitapp`.
+
+Three tabs (`shared/UI/Views/RootTabView.swift`), each reading a generated JSON manifest — the same ones the webapp uses:
+
+- **Curriculum** — cascading subject → section → topic → table browser from `curriculum/curriculum.json`; tables fetched from GitHub raw URLs, rendered with KaTeX in a `WKWebView`.
+- **Olympiads** — contests + unified textbooks from `olympiads/olympiads.json`. The watch companion renders this tab only (offline-first cache at `Caches/olympiads_cache.json`).
+- **Research** — tech browser from `research/technology.json` (one card per science → flat techs); project links open an in-app markdown render of the project's `index.md`, external links hand off to Safari.
+
+`apple/project.yml` is the XcodeGen spec (regenerate the gitignored `Science.xcodeproj` with `xcodegen generate`).
+
+### App Store release
+
+The native app is built + submitted from the main dev box. Run from `apple/`. **This repo is public — the concrete App Store Connect account identifiers (team ID, app ID, API Key ID, issuer, account-holder name) are NOT stored here.** Keep them in an untracked local file (`apple/.release.env`, gitignored) or the operator's own records; the `.p8` upload key stays at `~/.appstoreconnect/private_keys/` (600 perms) and is referenced by path, never committed.
 
 **Signing gotcha (the thing that wastes a cycle):** the dev box typically has only an *Apple Development* cert — **no distribution cert** — and an *App Manager* API key **cannot do cloud signing** (`No signing certificate "iOS Distribution" found`). Fix without an Admin key: run `xcodebuild -exportArchive` **without** the `-authenticationKey*` args so it re-signs for distribution via the **signed-in Xcode account session** (the team's account holder can create the dist cert/profiles silently with `-allowProvisioningUpdates`), export a local IPA, then upload separately with `altool`.
 
