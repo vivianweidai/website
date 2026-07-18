@@ -5,8 +5,9 @@ export default defineConfig({
   trailingSlash: 'always',
   // Tuck the build output inside pipeline/worker/ so it co-locates with
   // the Cloudflare Worker that serves it via the ASSETS binding.
-  // Also keeps the root tree cleaner — no top-level dist/.
-  outDir: './pipeline/worker/dist',
+  // Path is relative to this Astro root (web/); the worker is a sibling
+  // under the repo root, hence ../pipeline.
+  outDir: '../pipeline/worker/dist',
   build: {
     format: 'directory',
   },

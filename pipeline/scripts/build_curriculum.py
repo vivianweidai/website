@@ -366,8 +366,8 @@ def write_table_md(path: Path, table_name: str, rows: list[dict]) -> None:
 # --------------------------------------------------------------------------
 
 def build_all(root: Path) -> dict:
-    notes_dir = root / "public" / "curriculum" / "notes"
-    source_dir = root / "public" / "curriculum" / "source"
+    notes_dir = root / "web" / "public" / "curriculum" / "notes"
+    source_dir = root / "web" / "public" / "curriculum" / "source"
     manifest: dict = {}
 
     for subj_slug, subj_name in SUBJECT_NAMES.items():

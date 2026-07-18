@@ -34,7 +34,7 @@ except ImportError:
     sys.exit("PyYAML is required: pip install pyyaml")
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-CONTENT = ROOT / "public" / "research"
+CONTENT = ROOT / "web" / "public" / "research"
 PROJECTS = CONTENT / "projects"
 TECH_DIR = CONTENT / "technology"
 

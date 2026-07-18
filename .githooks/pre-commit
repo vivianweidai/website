@@ -34,14 +34,14 @@ staged_all=$(git diff --cached --name-only)
 gen_warns=""
 
 # technology.json ← technology.yml + every tech page's index.md frontmatter (hero)
-if printf '%s\n' "$staged_all" | grep -Eq '^public/research/technology\.yml$|^public/research/technology/.+/index\.md$'; then
-  printf '%s\n' "$staged_all" | grep -q '^public/research/technology\.json$' \
+if printf '%s\n' "$staged_all" | grep -Eq '^web/public/research/technology\.yml$|^web/public/research/technology/.+/index\.md$'; then
+  printf '%s\n' "$staged_all" | grep -q '^web/public/research/technology\.json$' \
     || gen_warns="${gen_warns}  technology.json not staged — run: python pipeline/scripts/build_technology.py\n"
 fi
 
 # olympiads.json ← olympiads.yml
-if printf '%s\n' "$staged_all" | grep -q '^public/olympiads/olympiads\.yml$'; then
-  printf '%s\n' "$staged_all" | grep -q '^public/olympiads/olympiads\.json$' \
+if printf '%s\n' "$staged_all" | grep -q '^web/public/olympiads/olympiads\.yml$'; then
+  printf '%s\n' "$staged_all" | grep -q '^web/public/olympiads/olympiads\.json$' \
     || gen_warns="${gen_warns}  olympiads.json not staged — run: python pipeline/scripts/build_olympiads.py\n"
 fi
 
