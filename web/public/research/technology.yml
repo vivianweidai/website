@@ -62,13 +62,11 @@
 - science: Chemistry
   techs:
     - tech: Thermal
-      specs: Heat and mass
+      specs: Heat
     - tech: Electrochemistry
-      specs: Ions and redox
+      specs: Ions
     - tech: Spectroscopy
-      specs: Bonds, absorbance, chirality
-    - tech: Spectrometry
-      specs: Separation and mass
+      specs: Absorbance, fluorescence, chirality
 
 # ═══════════════════════════════════════════════════════════════
 # BIOLOGY

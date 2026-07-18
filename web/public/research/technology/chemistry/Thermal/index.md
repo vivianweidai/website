@@ -8,10 +8,4 @@ toys:
     description: Temperature probe
     short: Temperature
     url: /research/projects/20260405%20Melting%20Point/
-  - name: TA Instruments DSC Q20
-    description: Heat flow over temperature
-    short: Calorimetry
-  - name: TA Instruments TGA Q50
-    description: Mass loss over temperature
-    short: Thermogravimetry
 ---

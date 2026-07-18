@@ -33,7 +33,8 @@ The Research pages (`vivianweidai.com/research/`) are organized around two conce
 **Access tiers** (the collection is grounded in Toys we can regularly touch; prefer lower tiers — don't propose a Tier-4 path when a Tier-1/2/3 Toy does the job):
 
 1. **Home lab** (foundational) — instruments owned + operated at home. Daily hands-on access. New research centers here.
-2. ~~**Shared Instruments Lab** (UNR SIL)~~ — **RETIRED July 2026** (access ended with the Vancouver move). Don't propose SIL instruments for *new* work. The 8 SIL instruments that already have tech pages **stay on the site as historical/past-work** — don't pull them, don't add new ones.
+2. ~~**Shared Instruments Lab** (UNR SIL)~~ — **RETIRED July 2026** (access ended with the Vancouver move), and **fully purged from the registry 2026-07-18**. The Toy list is now strictly *instruments we have at home* — no SIL instruments, and no aspirational purchases. Removed: the Nicolet 380 FT-IR (Spectroscopy), DSC Q20 + TGA Q50 (Thermal), and the whole **Spectrometry** tech (MALDI-TOF, LC-MS, GC-MS — it had no projects). The PalmSens EmStat Pico went with them: **we never owned it.** *(Supersedes the earlier "SIL instruments stay as historical past-work" rule — don't re-add them.)*
+   **Completed projects keep naming the instrument they actually used** — the IR Spectroscopy project still cites the Nicolet 380 in its Setup table, and Melting Point cites the OptiMelt. A project's instrument is a historical record and need not appear in `technology.yml`; the exact-name-match rule applies to *live* Toys.
 3. **Remote terminals into partner observatories** — UBC Thunderbird South. Real instrument time, operated over a network.
 4. **Pay-per-use / mail-in services** (future) — for Techs we can't reasonably own. Add only after Tiers 1–3 cover the foundational science.
 

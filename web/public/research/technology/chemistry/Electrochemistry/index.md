@@ -12,7 +12,4 @@ toys:
   - name: Vernier Go Direct Conductivity Probe
     description: Apply voltage, read current — all ions
     short: Conductivity
-  - name: PalmSens EmStat Pico
-    description: Sweep voltage, read current — which ions
-    short: Voltammetry
 ---

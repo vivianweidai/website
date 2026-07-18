@@ -243,7 +243,7 @@
         {
           "id": 11,
           "tech": "Thermal",
-          "specs": "Heat and mass",
+          "specs": "Heat",
           "tech_url": "/research/technology/chemistry/Thermal/",
           "hero": "/research/technology/chemistry/Thermal/thermal.jpeg",
           "toys": [
@@ -252,16 +252,6 @@
               "description": "Temperature probe",
               "url": "/research/projects/20260405%20Melting%20Point/",
               "short": "Temperature"
-            },
-            {
-              "name": "TA Instruments DSC Q20",
-              "description": "Heat flow over temperature",
-              "short": "Calorimetry"
-            },
-            {
-              "name": "TA Instruments TGA Q50",
-              "description": "Mass loss over temperature",
-              "short": "Thermogravimetry"
             }
           ],
           "projects": [
@@ -278,7 +268,7 @@
         {
           "id": 12,
           "tech": "Electrochemistry",
-          "specs": "Ions and redox",
+          "specs": "Ions",
           "tech_url": "/research/technology/chemistry/Electrochemistry/",
           "hero": "/research/technology/chemistry/Electrochemistry/electrochemistry.jpeg",
           "toys": [
@@ -292,11 +282,6 @@
               "name": "Vernier Go Direct Conductivity Probe",
               "description": "Apply voltage, read current — all ions",
               "short": "Conductivity"
-            },
-            {
-              "name": "PalmSens EmStat Pico",
-              "description": "Sweep voltage, read current — which ions",
-              "short": "Voltammetry"
             }
           ],
           "projects": [
@@ -313,16 +298,10 @@
         {
           "id": 13,
           "tech": "Spectroscopy",
-          "specs": "Bonds, absorbance, chirality",
+          "specs": "Absorbance, fluorescence, chirality",
           "tech_url": "/research/technology/chemistry/Spectroscopy/",
           "hero": "/research/technology/chemistry/Spectroscopy/spectroscopy.jpeg",
           "toys": [
-            {
-              "name": "Thermo Scientific Nicolet 380 FT-IR Spectrometer",
-              "description": "Benchtop IR",
-              "url": "/research/projects/20260419%20IR%20Spectroscopy/",
-              "short": "IR"
-            },
             {
               "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
               "description": "UV-Vis and fluorescence",
@@ -353,30 +332,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": 14,
-          "tech": "Spectrometry",
-          "specs": "Separation and mass",
-          "tech_url": "/research/technology/chemistry/Spectrometry/",
-          "hero": "/research/technology/chemistry/Spectrometry/spectrometry.jpg",
-          "toys": [
-            {
-              "name": "Shimadzu MALDI-8020 MALDI-TOF Mass Spectrometer",
-              "description": "No separation",
-              "short": "MALDI"
-            },
-            {
-              "name": "Agilent 1200 Series HPLC 6230A TOF LC-MS",
-              "description": "Liquid chromatography",
-              "short": "LC-MS"
-            },
-            {
-              "name": "Agilent 7890A GC 5975C Inert MSD",
-              "description": "Gas chromatography",
-              "short": "GC-MS"
-            }
-          ]
         }
       ]
     },
@@ -386,7 +341,7 @@
       "science_slug": "bio",
       "techs": [
         {
-          "id": 15,
+          "id": 14,
           "tech": "Microscopes",
           "specs": "Surfaces to cells",
           "tech_url": "/research/technology/biology/Microscopes/",
@@ -410,7 +365,7 @@
           ]
         },
         {
-          "id": 16,
+          "id": 15,
           "tech": "Physiology",
           "specs": "Live body signals",
           "tech_url": "/research/technology/biology/Physiology/",
@@ -434,7 +389,7 @@
           ]
         },
         {
-          "id": 17,
+          "id": 16,
           "tech": "Genomics",
           "specs": "Amplify, read, express",
           "tech_url": "/research/technology/biology/Genomics/",
@@ -475,7 +430,7 @@
       "science_slug": "astro",
       "techs": [
         {
-          "id": 18,
+          "id": 17,
           "tech": "Telescopes",
           "specs": "Light collectors",
           "tech_url": "/research/technology/astronomy/Telescopes/",
@@ -499,7 +454,7 @@
           ]
         },
         {
-          "id": 19,
+          "id": 18,
           "tech": "Measurements",
           "specs": "Position, brightness, spectra",
           "tech_url": "/research/technology/astronomy/Measurements/",
@@ -523,7 +478,7 @@
           ]
         },
         {
-          "id": 20,
+          "id": 19,
           "tech": "Classification",
           "specs": "Events and morphology",
           "tech_url": "/research/technology/astronomy/Classification/",
