@@ -627,6 +627,12 @@ private struct SubjectChip: View {
     var body: some View {
         Text(subject)
             .font(.system(size: 10, weight: .semibold))
+            .lineLimit(1)
+            // Never truncate the science label — the chip lives in the
+            // width-limited .principal toolbar area next to the tech title,
+            // where a plain Text would compress to "Mathemati…". fixedSize
+            // pins it to its full intrinsic width.
+            .fixedSize()
             .padding(.horizontal, 7)
             .padding(.vertical, 2)
             .background(Capsule().fill(SubjectPalette.color(for: subject)))
