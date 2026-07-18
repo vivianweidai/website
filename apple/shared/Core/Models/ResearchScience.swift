@@ -1,6 +1,6 @@
 import Foundation
 
-/// Strongly-typed mirror of `public/research/technology.json`, the source of
+/// Strongly-typed mirror of `web/public/research/technology.json`, the source of
 /// truth for the Research page's tech browser. One entry per science, each a
 /// flat list of techs (the old topic/category grouping tiers were dropped).
 public struct ResearchScience: Codable, Identifiable, Hashable, Sendable {

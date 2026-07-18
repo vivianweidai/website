@@ -5,7 +5,7 @@ import ScienceCore
 /// vertical list of the six subjects in canonical order (Mathematics first,
 /// Astronomy last). Tapping a subject cascades into sections → topics →
 /// tables, each level preserving the order that `build_curriculum.py`
-/// writes into `content/curriculum/curriculum.json`.
+/// writes into `web/public/curriculum/curriculum.json`.
 ///
 /// Navigation is value-driven (`NavigationStack(path:)`) so the
 /// breadcrumb in `CurriculumTopicView` can pop multiple levels at once

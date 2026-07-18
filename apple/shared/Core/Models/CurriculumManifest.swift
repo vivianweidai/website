@@ -1,6 +1,6 @@
 import Foundation
 
-/// Strongly-typed mirror of `public/curriculum/curriculum.json`, which is
+/// Strongly-typed mirror of `web/public/curriculum/curriculum.json`, which is
 /// the single source of truth for curriculum structure and ordering.
 ///
 /// The build script (`pipeline/scripts/build_curriculum.py`) emits subjects,

@@ -26,7 +26,7 @@ export async function getStaticPaths() {
     // generateId in content.config.ts preserves the original folder name as id.
     const folder = entry.id;
 
-    // Discover photos under public/research/projects/<folder>/photos/, excluding photos/data/.
+    // Discover photos under web/public/research/projects/<folder>/photos/, excluding photos/data/.
     // Photos serve at /research/projects/<folder>/photos/... (Astro public/ → URL root).
     const photosRoot = join(process.cwd(), 'public', 'research', 'projects', folder, 'photos');
     const photos: string[] = [];

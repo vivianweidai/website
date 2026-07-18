@@ -1,6 +1,6 @@
 import Foundation
 
-/// Loads the curriculum manifest from `content/curriculum/curriculum.json`
+/// Loads the curriculum manifest from `web/public/curriculum/curriculum.json`
 /// and fetches individual table markdown files on demand. Replaces the
 /// older `NotesLoader` which walked the GitHub contents API and therefore
 /// got section/topic ordering wrong (alphabetical instead of the canonical

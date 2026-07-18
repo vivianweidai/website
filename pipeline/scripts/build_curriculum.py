@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Regenerate curriculum markdown files and public/curriculum/curriculum.json
-from the Word (.docx) source documents in public/curriculum/notes/.
+"""Regenerate curriculum markdown files and web/public/curriculum/curriculum.json
+from the Word (.docx) source documents in web/public/curriculum/notes/.
 
 Single source of truth: each subject's .docx file contains the complete
 curriculum with tables, LaTeX formulas (as Office Math), and yellow
@@ -451,7 +451,7 @@ def main() -> None:
     root = Path(__file__).resolve().parent.parent.parent
     manifest = build_all(root)
 
-    out_path = root / "public" / "curriculum" / "curriculum.json"
+    out_path = root / "web" / "public" / "curriculum" / "curriculum.json"
     out_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
 
     total_tables = 0

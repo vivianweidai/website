@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build public/research/technology.json from the YAML source of truth.
+"""Build web/public/research/technology.json from the YAML source of truth.
 
-Source of truth:  public/research/technology.yml
-Output:           public/research/technology.json
+Source of truth:  web/public/research/technology.yml
+Output:           web/public/research/technology.json
 
 Flat schema — one entry per science, each a plain list of techs:
   input:   [{science, techs: [{tech, specs}]}]
@@ -44,7 +44,7 @@ SCIENCE_SLUGS = {
     "Biology": "bio", "Chemistry": "chem", "Physics": "phys",
     "Computing": "comp", "Mathematics": "math", "Astronomy": "astro",
 }
-# Folder name on disk and in URLs — full word, matching public/curriculum/source.
+# Folder name on disk and in URLs — full word, matching web/public/curriculum/source.
 SCIENCE_FOLDERS = {
     "Biology": "biology", "Chemistry": "chemistry", "Physics": "physics",
     "Computing": "computing", "Mathematics": "mathematics", "Astronomy": "astronomy",

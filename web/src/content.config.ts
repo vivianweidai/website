@@ -26,7 +26,7 @@ const projects = defineCollection({
 });
 
 // Per-tech template pages — one folder per tech under
-// public/research/technology/<science_slug>/<Tech Name>/index.md.
+// web/public/research/technology/<science_slug>/<Tech Name>/index.md.
 // id is "<science_slug>/<tech>" so the dynamic route can split params.
 const tech = defineCollection({
   loader: glob({
