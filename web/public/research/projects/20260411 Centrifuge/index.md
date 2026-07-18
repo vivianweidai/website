@@ -41,7 +41,7 @@ Five everyday liquids were loaded into labeled 50 mL centrifuge tubes. Each samp
 
 ## Data
 
-The pH readings were recorded from photographs of the VWR pHenomenal pH 1100 L display. Nine mystery lab solutions were also measured for pH practice. Raw data photos are in the <a href="https://github.com/vivianweidai/science/tree/main/public/research/projects/20260411%20Centrifuge/photos" rel="noopener">photos</a> directory.
+The pH readings were recorded from photographs of the VWR pHenomenal pH 1100 L display. Nine mystery lab solutions were also measured for pH practice. Raw data photos are in the <a href="https://github.com/vivianweidai/science/tree/main/web/public/research/projects/20260411%20Centrifuge/photos" rel="noopener">photos</a> directory.
 
 | Sample | pH | Photo | Notes |
 |--------|:--:|:-----:|-------|

@@ -479,7 +479,7 @@ struct ProjectDetailView: View {
         let folder = parts[idxPos - 1]
         // public/ is the on-disk root mapped to the site root; that's
         // what the GitHub Contents API needs to see.
-        let folderPath = "public/research/projects/\(folder)"
+        let folderPath = "web/public/research/projects/\(folder)"
 
         var all: [String] = []
         for sub in ["photos/setup", "photos/samples"] {
