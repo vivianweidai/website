@@ -5,7 +5,7 @@ science_slug: phys
 hero: electromagnetism.jpeg
 hero_position: center 62%
 toys:
-  - name: Vernier Go Direct Fluorescence/UV-VIS Spectrophotometer
+  - name: Vernier Go Direct Fluorescence UV-VIS Spectrophotometer
     description: Visible light spectrometer
     short: Spectrophotometer
   - name: Vernier Spectrophotometer Optical Fiber
