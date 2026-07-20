@@ -5,7 +5,7 @@ science_slug: bio
 hero: microscopes.jpeg
 toys:
   - name: Dino-Lite AF4515T-FUW Digital Microscope
-    description: Surface, white light and UV fluorescence
+    description: Surface
     short: Surface
   - name: AmScope SM-4TZ-144 Trinocular Stereo Microscope
     description: Stereo

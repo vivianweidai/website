@@ -48,6 +48,8 @@ The Research pages (`vivianweidai.com/research/`) are organized around two conce
 
 `technology.yml` is **one flat entry per science** (`science:` + `techs:`; the old topic/category grouping tiers were dropped). It is the **source of truth for instruments and which Techs they enable**; a tech's spec (`techs[].specs`) lives here and nowhere else.
 
+**🔒 The public site stays high-level and concise — LOCKED.** Tech pages and toy `description`/`short` fields are a **one-or-two-word summary of what the instrument is for**, not a capability inventory. New capabilities, accessories, verified specs, safety notes and operating nuance go in **`work/IDEAS.md`**, never onto the public pages. This has now been decided twice (the Star Analyser 100, 2026-07-19: *"a grating is an accessory rather than a headline instrument, so ownership is recorded here only"*; the Dino-Lite's UV fluorescence, same day, reverted). **Don't propose enriching a toy description because a capability turns out to be more interesting than its label suggests** — that's exactly the impulse the lock exists to stop. The registry answers *what do we own*; IDEAS.md answers *what can it do*.
+
 **Instrument names must exactly match `technology.yml`** everywhere in code and prose — don't abbreviate, prefix, or rearrange words. (Per-instrument data-format notes belong in the project's `index.md` Setup table, not here.) The former top-level `archives/` folder — instrument catalogs, walk-up guides, the UNR/UBC landscape survey — was removed July 2026 when SIL access ended; recoverable from git history if ever needed.
 
 ## AUTHORING A RESEARCH PROJECT
