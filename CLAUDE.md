@@ -52,6 +52,16 @@ The Research pages (`vivianweidai.com/research/`) are organized around two conce
 
 **Instrument names must exactly match `technology.yml`** everywhere in code and prose — don't abbreviate, prefix, or rearrange words. (Per-instrument data-format notes belong in the project's `index.md` Setup table, not here.) The former top-level `archives/` folder — instrument catalogs, walk-up guides, the UNR/UBC landscape survey — was removed July 2026 when SIL access ended; recoverable from git history if ever needed.
 
+## PREPPING A RUN (`work/IDEAS.md` projects)
+
+When James asks to go deeper on a project from `work/IDEAS.md`, two things are wanted and a third is not:
+
+- **The steps of the run, concretely.** What happens in what order, what's being measured, where the technique is fiddly, and what failure looks like — including failures that produce a plausible-but-wrong number rather than an obvious error.
+- **Acquisition bottlenecks.** Which reagents, samples or consumables are *not* already in the house, and which are slow or awkward to get. Flag them early: with many projects live across the sciences, anything waiting on an order yields to something that isn't, so knowing the bottleneck reorders the queue rather than blocking it.
+- **Do not compare units of work across sciences.** No "this is a fraction of an IYPT problem," no effort-equivalence between chemistry and biology and astronomy. **James handles parallelization and scheduling himself** and does not need Claude's estimate of relative size.
+
+Findings from a deep dive get folded back into that project's entry in `work/IDEAS.md` — the doc carries decisions, numbers, hazards and gotchas, not the walkthrough prose, which is cheap to regenerate.
+
 ## AUTHORING A RESEARCH PROJECT
 
 Each project is a date-prefixed folder under `web/public/research/projects/`. The public-facing overview is **`index.md`** (not `README.md`) — Astro's loader globs `*/index.md`, so the filename matters. Model new pages on `20260420 UV-Vis Spectroscopy/index.md` or `20260419 IR Spectroscopy/index.md`.
