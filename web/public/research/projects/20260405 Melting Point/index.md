@@ -2,7 +2,7 @@
 project: Melting Point
 tech:
   - Thermal
-title: "Melting Point - Test Run"
+title: "Melting Point"
 sciences:
   - Chemistry
 ---
