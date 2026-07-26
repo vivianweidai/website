@@ -8,98 +8,47 @@ sciences:
 ---
 
 <div class="sky-hero">
-  <video src="media/sun-loop.mp4" poster="media/sun-loop-poster.jpg" autoplay loop muted playsinline preload="auto" aria-label="The Sun in white light, sunspot groups crossing the disk"></video>
-  <p class="sky-hero-cap">The Sun in white light — a 6-second look through the solar filter, July 24</p>
+  <video src="media/Solar_video__2026-07-24-164602-Solar.mp4" autoplay loop muted playsinline preload="auto"></video>
 </div>
-
-<div class="project-meta">July 2026<br>ZWO Seestar S30 Pro with Tilting Wedge</div>
-
-## Overview
-
-A running gallery of what the back-yard scope has caught. Nothing here is a measurement — these are the frames that came out looking like something, kept because they are worth looking at.
-
-The Seestar shoots and exports **portrait**, 2160 × 3840, so the whole gallery is built that way: tall tiles, videos looping in place. Everything below is a stack of 10-second sub-frames (5 s for the fastest one) taken through the IR-cut filter, then cropped, flattened and stretched — no other retouching.
-
-## Setup
-
-| Toolkit | Details |
-|----------|---------|
-| Instrument | ZWO Seestar S30 Pro with Tilting Wedge |
-| Optics | 160 mm focal length, IR-cut filter, gain 200 |
-| Sub-frames | 10 s each (5 s on RR Lyrae); 5 to 425 of them per stack |
-| Export | 2160 × 3840 JPEG + FITS, plus H.264 clips for the live views |
-| Processing | Centre crop, sky-gradient subtraction, asinh stretch, chroma denoise — <a href="https://github.com/vivianweidai/science/blob/main/web/public/research/projects/20260725%20Stargazing/output/build_gallery.py" rel="noopener">build_gallery.py</a> |
-
-## Sun
 
 <div class="sky-grid">
   <figure class="sky-tile">
-    <a href="media/sun-clouds.mp4">
-      <video src="media/sun-clouds.mp4" poster="media/sun-clouds-poster.jpg" autoplay loop muted playsinline preload="auto" aria-label="Cloud drifting across the solar disk"></video>
-    </a>
-    <figcaption><b>Cloud transit</b><span>17 s live view · July 1</span></figcaption>
+    <a href="media/M_31__Stacked_17_M_31_10.0s_IRCUT_20260725-014442.jpg"><img src="media/M_31__Stacked_17_M_31_10.0s_IRCUT_20260725-014442.jpg" alt="M 31" loading="lazy"></a>
+    <figcaption><b>M 31</b><span>17 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="media/sun-sunspots.jpg">
-      <img src="media/sun-sunspots.jpg" alt="The whole solar disk with several sunspot groups" loading="lazy">
-    </a>
-    <figcaption><b>Sunspot groups</b><span>Whole disk · July 24</span></figcaption>
+    <a href="media/M_13__Stacked_30_M_13_10.0s_IRCUT_20260721-215926.jpg"><img src="media/M_13__Stacked_30_M_13_10.0s_IRCUT_20260721-215926.jpg" alt="M 13" loading="lazy"></a>
+    <figcaption><b>M 13</b><span>30 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="media/sun-haze.jpg">
-      <img src="media/sun-haze.jpg" alt="The Sun seen through high cloud, mottled and dimmed" loading="lazy">
-    </a>
-    <figcaption><b>Through high cloud</b><span>Whole disk · July 1</span></figcaption>
-  </figure>
-</div>
-
-## Galaxies and Clusters
-
-<div class="sky-grid">
-  <figure class="sky-tile">
-    <a href="media/m31.jpg">
-      <img src="media/m31.jpg" alt="The Andromeda Galaxy with its two bright satellite galaxies" loading="lazy">
-    </a>
-    <figcaption><b>M 31 — Andromeda</b><span>17 × 10 s · with M 32 and M 110</span></figcaption>
+    <a href="media/M_51__Stacked_30_M_51_10.0s_IRCUT_20260704-222846.jpg"><img src="media/M_51__Stacked_30_M_51_10.0s_IRCUT_20260704-222846.jpg" alt="M 51" loading="lazy"></a>
+    <figcaption><b>M 51</b><span>30 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="media/m13.jpg">
-      <img src="media/m13.jpg" alt="The globular cluster M 13, resolving into individual stars" loading="lazy">
-    </a>
-    <figcaption><b>M 13 — Hercules Cluster</b><span>30 × 10 s · edges resolving</span></figcaption>
-  </figure>
-</div>
-
-## Stars
-
-<div class="sky-grid">
-  <figure class="sky-tile">
-    <a href="media/vega.jpg">
-      <img src="media/vega.jpg" alt="Vega blazing in a dense field of fainter stars" loading="lazy">
-    </a>
-    <figcaption><b>Vega</b><span>24 × 10 s · α Lyrae</span></figcaption>
+    <a href="media/NGC_5907__Stacked_9_NGC_5907_10.0s_IRCUT_20260704-223446.jpg"><img src="media/NGC_5907__Stacked_9_NGC_5907_10.0s_IRCUT_20260704-223446.jpg" alt="NGC 5907" loading="lazy"></a>
+    <figcaption><b>NGC 5907</b><span>9 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="media/deneb.jpg">
-      <img src="media/deneb.jpg" alt="Deneb inside the crowded star fields of Cygnus" loading="lazy">
-    </a>
-    <figcaption><b>Deneb</b><span>32 × 10 s · α Cygni</span></figcaption>
+    <a href="media/Vega__Stacked_8_Vega_10.0s_IRCUT_20260725-011926.jpg"><img src="media/Vega__Stacked_8_Vega_10.0s_IRCUT_20260725-011926.jpg" alt="Vega" loading="lazy"></a>
+    <figcaption><b>Vega</b><span>8 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="media/rr-lyrae.jpg">
-      <img src="media/rr-lyrae.jpg" alt="The crowded Milky Way field around the variable star RR Lyrae" loading="lazy">
-    </a>
-    <figcaption><b>RR Lyrae</b><span>425 × 5 s · 35 minutes deep</span></figcaption>
+    <a href="media/Deneb__Stacked_32_Deneb_10.0s_IRCUT_20260725-015351.jpg"><img src="media/Deneb__Stacked_32_Deneb_10.0s_IRCUT_20260725-015351.jpg" alt="Deneb" loading="lazy"></a>
+    <figcaption><b>Deneb</b><span>32 × 10s</span></figcaption>
+  </figure>
+  <figure class="sky-tile">
+    <a href="media/RR_Lyrae__Stacked_21_RR_Lyrae_5.0s_IRCUT_20260725-020642.jpg"><img src="media/RR_Lyrae__Stacked_21_RR_Lyrae_5.0s_IRCUT_20260725-020642.jpg" alt="RR Lyrae" loading="lazy"></a>
+    <figcaption><b>RR Lyrae</b><span>21 × 5s</span></figcaption>
   </figure>
 </div>
 
 <style>
-/* Gallery of Seestar captures. Everything is 9:16 because the scope exports
-   9:16 — tiles, hero and videos all keep that shape rather than cropping to
-   landscape. Dark plate behind the tiles so the sky reads as sky. */
+/* Every frame is a Seestar export, untouched — the scope shoots 9:16, so the
+   tiles are 9:16 and object-fit never actually crops anything. Dark plate
+   behind them so the sky reads as sky. */
 .sky-hero {
-  margin: 1.2em 0 0.4em;
-  padding: 1.2em 1em 1em;
+  margin: 1.2em 0 0.6em;
+  padding: 1.1em;
   background: radial-gradient(120% 90% at 50% 0%, #1b1f2a 0%, #0b0d12 70%);
   border-radius: 10px;
   text-align: center;
@@ -113,16 +62,10 @@ The Seestar shoots and exports **portrait**, 2160 × 3840, so the whole gallery 
   background: #000;
   box-shadow: 0 10px 34px rgba(0, 0, 0, 0.55);
 }
-.sky-hero-cap {
-  margin: 0.9em 0 0;
-  color: #b6bdc9;
-  font-size: 0.82em;
-}
-
 .sky-grid {
   display: grid;
-  /* Capped at 240px rather than 1fr: a two-tile row would otherwise stretch
-     each portrait tile to ~440 x 780 and swallow the page. */
+  /* Capped at 240px rather than 1fr: a short row would otherwise stretch each
+     portrait tile to ~440 x 780 and swallow the page. */
   grid-template-columns: repeat(auto-fit, minmax(160px, 240px));
   justify-content: center;
   gap: 0.75em;
@@ -133,8 +76,7 @@ The Seestar shoots and exports **portrait**, 2160 × 3840, so the whole gallery 
 }
 .sky-tile { margin: 0; }
 .sky-tile a { display: block; }
-.sky-tile img,
-.sky-tile video {
+.sky-tile img {
   display: block;
   width: 100%;
   aspect-ratio: 9 / 16;
@@ -143,27 +85,29 @@ The Seestar shoots and exports **portrait**, 2160 × 3840, so the whole gallery 
   background: #000;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.sky-tile a:hover img,
-.sky-tile a:hover video {
+.sky-tile a:hover img {
   transform: scale(1.02);
   box-shadow: 0 8px 22px rgba(120, 150, 220, 0.28);
 }
+/* Target left, stack right, on one line. */
 .sky-tile figcaption {
-  padding: 0.55em 0.1em 0.2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.6em;
+  padding: 0.55em 0.15em 0.2em;
   line-height: 1.35;
 }
 .sky-tile figcaption b {
-  display: block;
   color: #e8ecf3;
   font-size: 0.82em;
 }
 .sky-tile figcaption span {
-  display: block;
   color: #8d95a3;
   font-size: 0.74em;
+  white-space: nowrap;
 }
 @media (prefers-reduced-motion: reduce) {
-  .sky-tile a:hover img,
-  .sky-tile a:hover video { transform: none; }
+  .sky-tile a:hover img { transform: none; }
 }
 </style>
