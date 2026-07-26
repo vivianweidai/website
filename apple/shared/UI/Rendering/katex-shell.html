@@ -156,6 +156,9 @@
 
   .katex { font-size: 1em; }
   img { max-width: 100%; height: auto; border-radius: 8px; margin: 4px 0; }
+  /* Gallery pages open with a video hero. Page CSS (kept, see renderMarkdown)
+     sizes it inside its band; this is the floor for any page without one. */
+  video { max-width: 100%; height: auto; border-radius: 8px; }
   /* Phone-width native shell: photos flow in a single column. The
      webapp uses a 2-col grid, but at 390-430pt wide each column is
      too narrow to read the photo content — single column reads
@@ -231,17 +234,22 @@
     // fetches raw markdown directly so we have to do it here.
     md = md.replace(/^---\s*\n[\s\S]*?\n---\s*\n?/, '');
 
-    // Defense-in-depth strips for legacy markdown patterns. As of the
+    // Defense-in-depth strip for a legacy kramdown wrapper. As of the
     // 2026-04-25 Astro migration the live markdown is clean (Astro/remark
-    // doesn't need `markdown="1"`, all per-project styles moved into
-    // src/layouts/Project.astro and tabs.css), so these are no-ops on
-    // current content — kept so the shell stays robust to any future
-    // markdown that slips a `<style>` or kramdown wrapper back in.
+    // doesn't need `markdown="1"`), so this is a no-op on current content.
     md = md.replace(
       /<div[^>]*\bmarkdown\s*=\s*["']1["'][^>]*>([\s\S]*?)<\/div>/g,
       '$1'
     );
-    md = md.replace(/<style[\s\S]*?<\/style>/g, '');
+    // Page-level <style> blocks are KEPT (they used to be stripped here).
+    // Gallery pages — Stargazing, Cellgazing — carry their whole layout
+    // inline: the hero band that crops the video, the tile grid, the
+    // caption rows. Stripping it left the video unplaceable and the
+    // captions run together. CommonMark treats <style> as a type-1 HTML
+    // block, so marked passes it through blank lines and all, and a
+    // <style> inserted via innerHTML applies normally. The trailing
+    // <script> blocks those pages ship do NOT run under innerHTML, which
+    // is why the lightbox is handled natively (see the imageTap bridge).
 
     var content = document.getElementById('content');
     content.innerHTML = marked.parse(md);
@@ -417,6 +425,64 @@
         img.addEventListener('error', postHeight);
       }
     });
+
+    // Image taps open the native full-screen viewer instead of Safari.
+    // Gallery tiles are wrapped in `<a href="…jpg">` for a page lightbox
+    // that can't run here (innerHTML never executes <script>), so a tap
+    // used to reach the navigation delegate as a plain link activation
+    // and bounce the reader out of the app. Plain <img> photos post too,
+    // so every image on a project page zooms the same way.
+    function isImageHref(href) {
+      return /\.(jpe?g|png|gif|webp|avif)(\?.*)?$/i.test(href || '');
+    }
+
+    // Every visible image on the page, in document order — the viewer
+    // pages through them. Skips the hidden lightbox placeholders those
+    // gallery pages ship (empty src, inside a [hidden] container).
+    function tappableImages() {
+      var out = [];
+      content.querySelectorAll('img').forEach(function (img) {
+        if (!img.getAttribute('src')) return;
+        if (img.closest('[hidden]')) return;
+        var wrap = img.closest('a');
+        out.push(wrap && isImageHref(wrap.href) ? wrap.href : img.src);
+      });
+      return out;
+    }
+
+    if (!content._imageTapBound) {
+      content._imageTapBound = true;
+      content.addEventListener('click', function (e) {
+        var target = e.target;
+        if (!target || !target.closest) return;
+        var img = target.closest('img');
+        var anchor = target.closest('a');
+        var src = null;
+        if (img) {
+          src = anchor && isImageHref(anchor.href) ? anchor.href : img.src;
+        } else if (anchor && isImageHref(anchor.href)) {
+          src = anchor.href;
+        }
+        // Not an image: let the click through so the native navigation
+        // delegate can hand notebooks / repo links to Safari as before.
+        if (!src) return;
+        e.preventDefault();
+
+        var sources = tappableImages();
+        var index = sources.indexOf(src);
+        if (index < 0) { sources = [src]; index = 0; }
+
+        if (window.webkit && window.webkit.messageHandlers &&
+            window.webkit.messageHandlers.imageTap) {
+          window.webkit.messageHandlers.imageTap.postMessage({
+            sources: sources, index: index
+          });
+        } else if (window.AndroidBridge && window.AndroidBridge.openImage) {
+          // Android bridge: see MarkdownWebView.kt in the Android app.
+          window.AndroidBridge.openImage(src);
+        }
+      });
+    }
   };
 </script>
 </body>

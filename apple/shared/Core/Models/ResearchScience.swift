@@ -87,6 +87,11 @@ public struct ResearchTechProject: Codable, Hashable, Sendable, Identifiable {
     public let title: String
     public let url: String
     public let sciences: [String]
+    /// Shuffle-pool photos, project-folder-relative (`photos/setup/setup1.jpeg`).
+    /// Baked in by `build_technology.py`, mirroring the build-time scan the
+    /// website's `[slug]` route does. Absent for gallery projects, which lay
+    /// out their own tiles.
+    public let photos: [String]?
 
     public var id: String { url }
 
@@ -95,5 +100,39 @@ public struct ResearchTechProject: Codable, Hashable, Sendable, Identifiable {
         let trimmed = url.hasPrefix("/") ? String(url.dropFirst()) : url
         let withIndex = trimmed.hasSuffix("/") ? trimmed + "index.md" : trimmed + "/index.md"
         return URL(string: "https://vivianweidai.com/" + withIndex)
+    }
+
+    /// Project folder name (`20260405 Melting Point`), percent-decoded — the
+    /// stable key for matching a project across the manifest and a URL.
+    public var folderName: String? {
+        ResearchTechProject.folderName(inPath: url)
+    }
+
+    /// Last non-empty path component, ignoring a trailing `index.md`, decoded.
+    static func folderName(inPath path: String) -> String? {
+        var parts = path.split(separator: "/").map(String.init)
+        if parts.last == "index.md" { parts.removeLast() }
+        guard let last = parts.last else { return nil }
+        return last.removingPercentEncoding ?? last
+    }
+}
+
+public extension Array where Element == ResearchScience {
+    /// Shuffle-pool photos for the project whose `index.md` is at `indexURL`.
+    /// The manifest is the single source — the app used to walk the GitHub
+    /// contents API here, which is unauthenticated (60 req/hr, shared per
+    /// egress IP) and fails silently, leaving an empty photo grid.
+    func projectPhotos(forIndexURL indexURL: URL) -> [String] {
+        guard let folder = ResearchTechProject.folderName(inPath: indexURL.path) else {
+            return []
+        }
+        for science in self {
+            for tech in science.techs {
+                for project in tech.projects ?? [] where project.folderName == folder {
+                    if let photos = project.photos, !photos.isEmpty { return photos }
+                }
+            }
+        }
+        return []
     }
 }

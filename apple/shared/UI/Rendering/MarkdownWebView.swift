@@ -35,17 +35,24 @@ public struct MarkdownWebView: View {
     let markdown: String
     let tableName: String?
     let highlightedRows: [Int]
+    let onImageTap: (([URL], Int) -> Void)?
 
     @State private var contentHeight: CGFloat = 80
 
+    /// `onImageTap` receives every image on the page in document order plus
+    /// the index of the tapped one, so the host can present a pageable
+    /// zoomable viewer. When nil, image taps fall back to the plain link
+    /// behaviour (Safari).
     public init(
         markdown: String,
         tableName: String? = nil,
-        highlightedRows: [Int] = []
+        highlightedRows: [Int] = [],
+        onImageTap: (([URL], Int) -> Void)? = nil
     ) {
         self.markdown = markdown
         self.tableName = tableName
         self.highlightedRows = highlightedRows
+        self.onImageTap = onImageTap
     }
 
     public var body: some View {
@@ -53,6 +60,7 @@ public struct MarkdownWebView: View {
             markdown: markdown,
             tableName: tableName,
             highlightedRows: highlightedRows,
+            onImageTap: onImageTap,
             contentHeight: $contentHeight
         )
         .frame(height: contentHeight)
@@ -63,6 +71,7 @@ private struct MarkdownWebViewRep: UIViewRepresentable {
     let markdown: String
     let tableName: String?
     let highlightedRows: [Int]
+    let onImageTap: (([URL], Int) -> Void)?
     @Binding var contentHeight: CGFloat
 
     struct RenderOptions {
@@ -76,6 +85,15 @@ private struct MarkdownWebViewRep: UIViewRepresentable {
         // JS → Swift bridge: katex-shell.html posts scrollHeight here
         // after each render so we can size the outer SwiftUI frame.
         config.userContentController.add(context.coordinator, name: "contentHeight")
+        // …and the tapped image (plus the page's full image list) here,
+        // so taps open the native viewer instead of Safari.
+        config.userContentController.add(context.coordinator, name: "imageTap")
+        // Gallery pages lead with an autoplaying muted clip. Without both
+        // of these iOS refuses to start it and takes the hero band over
+        // full screen on play — the Stargazing hero rendered as a blank
+        // band because of it.
+        config.allowsInlineMediaPlayback = true
+        config.mediaTypesRequiringUserActionForPlayback = []
 
         let view = WKWebView(frame: .zero, configuration: config)
         view.isOpaque = false
@@ -101,6 +119,7 @@ private struct MarkdownWebViewRep: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
+        context.coordinator.onImageTap = onImageTap
         context.coordinator.render(
             RenderOptions(
                 markdown: markdown,
@@ -111,7 +130,7 @@ private struct MarkdownWebViewRep: UIViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator(contentHeight: $contentHeight)
+        Coordinator(contentHeight: $contentHeight, onImageTap: onImageTap)
     }
 
     final class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
@@ -119,9 +138,11 @@ private struct MarkdownWebViewRep: UIViewRepresentable {
         var pendingOptions: RenderOptions?
         var loaded = false
         var contentHeight: Binding<CGFloat>
+        var onImageTap: (([URL], Int) -> Void)?
 
-        init(contentHeight: Binding<CGFloat>) {
+        init(contentHeight: Binding<CGFloat>, onImageTap: (([URL], Int) -> Void)?) {
             self.contentHeight = contentHeight
+            self.onImageTap = onImageTap
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -145,7 +166,16 @@ private struct MarkdownWebViewRep: UIViewRepresentable {
         ) {
             if navigationAction.navigationType == .linkActivated,
                let url = navigationAction.request.url {
-                UIApplication.shared.open(url)
+                // Belt-and-braces for image links: the shell's tap bridge
+                // already preventDefaults these, but if it ever misses one
+                // the viewer is still the right destination, not Safari.
+                let ext = url.pathExtension.lowercased()
+                if let onImageTap,
+                   ["jpg", "jpeg", "png", "gif", "webp", "avif"].contains(ext) {
+                    onImageTap([url], 0)
+                } else {
+                    UIApplication.shared.open(url)
+                }
                 decisionHandler(.cancel)
                 return
             }
@@ -160,14 +190,26 @@ private struct MarkdownWebViewRep: UIViewRepresentable {
             _ userContentController: WKUserContentController,
             didReceive message: WKScriptMessage
         ) {
-            guard message.name == "contentHeight" else { return }
-            if let number = message.body as? NSNumber {
-                let height = CGFloat(truncating: number)
-                if height > 0 {
-                    DispatchQueue.main.async {
-                        self.contentHeight.wrappedValue = height
+            switch message.name {
+            case "contentHeight":
+                if let number = message.body as? NSNumber {
+                    let height = CGFloat(truncating: number)
+                    if height > 0 {
+                        DispatchQueue.main.async {
+                            self.contentHeight.wrappedValue = height
+                        }
                     }
                 }
+            case "imageTap":
+                guard let onImageTap,
+                      let body = message.body as? [String: Any],
+                      let strings = body["sources"] as? [String] else { return }
+                let urls = strings.compactMap(URL.init(string:))
+                let index = min(max(body["index"] as? Int ?? 0, 0), max(urls.count - 1, 0))
+                guard !urls.isEmpty else { return }
+                DispatchQueue.main.async { onImageTap(urls, index) }
+            default:
+                return
             }
         }
 
@@ -200,15 +242,18 @@ public struct MarkdownWebView: View {
     let markdown: String
     let tableName: String?
     let highlightedRows: [Int]
+    let onImageTap: (([URL], Int) -> Void)?
 
     public init(
         markdown: String,
         tableName: String? = nil,
-        highlightedRows: [Int] = []
+        highlightedRows: [Int] = [],
+        onImageTap: (([URL], Int) -> Void)? = nil
     ) {
         self.markdown = markdown
         self.tableName = tableName
         self.highlightedRows = highlightedRows
+        self.onImageTap = onImageTap
     }
 
     public var body: some View {

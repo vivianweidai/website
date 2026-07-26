@@ -361,6 +361,15 @@ private struct TechProjectRow: View {
 
 // MARK: - Project detail
 
+/// A tapped image plus the rest of the page's images, handed to the
+/// full-screen viewer. Identifiable so `.fullScreenCover(item:)` presents
+/// (and re-presents on a different tile) without a separate flag.
+private struct ViewerImages: Identifiable {
+    let sources: [URL]
+    let index: Int
+    var id: String { "\(index)|\(sources.first?.absoluteString ?? "")" }
+}
+
 /// Loads a research project's index.md from GitHub raw and renders it
 /// inside the app with the shared KaTeX markdown webview. Avoids the
 /// Safari bounce the user was seeing when tapping a project tech.
@@ -370,6 +379,7 @@ struct ProjectDetailView: View {
     @State private var store = ContentStore.shared
     @State private var markdown: String = ""
     @State private var loading = true
+    @State private var viewerImages: ViewerImages?
 
     var body: some View {
         Group {
@@ -378,13 +388,18 @@ struct ProjectDetailView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ScrollView {
-                    MarkdownWebView(markdown: markdown)
+                    MarkdownWebView(markdown: markdown) { urls, index in
+                        viewerImages = ViewerImages(sources: urls, index: index)
+                    }
                 }
             }
         }
         .navigationTitle(title)
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        .fullScreenCover(item: $viewerImages) { images in
+            ImageViewerView(sources: images.sources, index: images.index)
+        }
         #endif
         .task {
             do {
@@ -400,11 +415,13 @@ struct ProjectDetailView: View {
                 let dataPhotos = MarkdownHelper.extractPhotos(from: md, key: "data_photos")
 
                 // Modern projects don't list photos in front matter — the
-                // Astro layout scans photos/setup + photos/samples at build
-                // time. Replicate that by querying the GitHub contents
-                // API so the in-app grid has sources to show.
+                // Astro layout scans photos/ at build time and
+                // build_technology.py bakes the same list into
+                // technology.json, which the store already holds.
                 if photos.isEmpty {
-                    photos = await Self.scanProjectPhotos(indexURL: indexURL).shuffled()
+                    photos = (store.sciences ?? [])
+                        .projectPhotos(forIndexURL: indexURL)
+                        .shuffled()
                 }
 
                 // Title-row pills mirror the webapp project page: one
@@ -461,58 +478,6 @@ struct ProjectDetailView: View {
             .map { (label: $0.label, slug: $0.slug) }
     }
 
-    /// Fetch the union of image filenames under a project's
-    /// `photos/setup/` and `photos/samples/` via the GitHub contents
-    /// API. Returns relative paths (e.g. `photos/setup/setup1.jpeg`) so
-    /// they resolve through `MarkdownHelper.resolveRelativeURLs` with
-    /// the project folder as base. Silent on failure — photos are
-    /// decorative; a broken network should not crash the page.
-    ///
-    /// `indexURL` here is the deployed-site URL (`https://vivianweidai.com/research/projects/{folder}/index.md`),
-    /// not a GitHub raw URL — we fetch markdown over the website. The
-    /// repo + branch are hardcoded since this app only ever reads its
-    /// own repo.
-    private static func scanProjectPhotos(indexURL: URL) async -> [String] {
-        let parts = indexURL.path.split(separator: "/").map(String.init)
-        guard let idxPos = parts.firstIndex(of: "index.md"),
-              idxPos > 0 else { return [] }
-        let folder = parts[idxPos - 1]
-        // public/ is the on-disk root mapped to the site root; that's
-        // what the GitHub Contents API needs to see.
-        let folderPath = "web/public/research/projects/\(folder)"
-
-        var all: [String] = []
-        for sub in ["photos/setup", "photos/samples"] {
-            let apiPath = "\(folderPath)/\(sub)"
-            let encoded = apiPath.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? apiPath
-            guard let url = URL(string: "https://api.github.com/repos/vivianweidai/science/contents/\(encoded)?ref=main") else {
-                continue
-            }
-            var req = URLRequest(url: url)
-            req.setValue("application/vnd.github+json", forHTTPHeaderField: "accept")
-            do {
-                let (data, response) = try await URLSession.shared.data(for: req)
-                guard let http = response as? HTTPURLResponse,
-                      (200..<300).contains(http.statusCode) else { continue }
-                let entries = try JSONDecoder().decode([GitHubContentEntry].self, from: data)
-                for e in entries where e.type == "file" {
-                    let lower = e.name.lowercased()
-                    if lower.hasSuffix(".jpg") || lower.hasSuffix(".jpeg")
-                        || lower.hasSuffix(".png") {
-                        all.append("\(sub)/\(e.name)")
-                    }
-                }
-            } catch {
-                continue
-            }
-        }
-        return all
-    }
-}
-
-private struct GitHubContentEntry: Decodable {
-    let name: String
-    let type: String
 }
 
 // MARK: - Subject filter (shared pattern with OlympiadsView)

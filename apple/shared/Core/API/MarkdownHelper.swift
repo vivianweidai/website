@@ -7,7 +7,11 @@ public enum MarkdownHelper {
     // MARK: - Cached regex patterns
 
     private static let mdImageRegex = try! NSRegularExpression(pattern: #"(\!\[[^\]]*\]\()(?!https?://)([^\)]+)(\))"#)
-    private static let htmlImgRegex = try! NSRegularExpression(pattern: #"(<img\s[^>]*src=")(?!https?://)([^"]+)(")"#)
+    /// `src="…"` on any media element. `<video>`/`<source>` are in here
+    /// because gallery pages (Stargazing) open with a video hero — leaving
+    /// them out left the tag pointing at a relative path the file:// shell
+    /// could never resolve, so the hero band rendered empty.
+    private static let htmlMediaRegex = try! NSRegularExpression(pattern: #"(<(?:img|video|source|audio)\s[^>]*src=")(?!https?://)([^"]+)(")"#)
     /// Markdown hyperlinks `[text](path)` with a relative target — the
     /// `(?<!!)` negative lookbehind excludes image syntax `![...](...)`
     /// which is handled by `mdImageRegex`. Used so links to extension
@@ -220,8 +224,8 @@ public enum MarkdownHelper {
         // Markdown images: ![alt](relative)
         result = replaceRelativePaths(in: result, regex: mdImageRegex, base: base, group: 2)
 
-        // HTML images: <img src="relative">
-        result = replaceRelativePaths(in: result, regex: htmlImgRegex, base: base, group: 2)
+        // HTML media: <img src="relative">, <video src="relative">, …
+        result = replaceRelativePaths(in: result, regex: htmlMediaRegex, base: base, group: 2)
 
         // Markdown hyperlinks: [text](relative) — exclude images via
         // the negative lookbehind in the regex.

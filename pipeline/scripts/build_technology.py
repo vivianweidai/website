@@ -9,7 +9,7 @@ Flat schema — one entry per science, each a plain list of techs:
   output:  {"sciences": [{id, science, science_slug,
               techs: [{id, tech, specs, tech_url, hero?,
                       toys?: [{name, description, short?, chip?, url?}],
-                      projects?: [{date, title, url, sciences[]}]}]
+                      projects?: [{date, title, url, sciences[], photos?[]}]}]
           }]}
 
 The old topic/category grouping tiers were dropped — every science now
@@ -113,6 +113,40 @@ def toys_for_tech(science_folder: str, tech_name: str) -> list[dict]:
     return out
 
 
+PHOTO_EXTS = (".jpg", ".jpeg", ".png")
+
+
+def photos_for_project(proj: Path) -> list[str]:
+    """Return the project's shuffle-pool photos as folder-relative paths
+    (e.g. `photos/setup/setup1.jpeg`).
+
+    Mirrors the build-time walk in `pages/research/projects/[slug]/index.astro`:
+    every image under `photos/`, recursively, except `photos/data/` — those
+    are handwritten data sheets, surfaced by a hand-coded grid rather than
+    the hero shuffle. Keep the two in step if either changes.
+
+    Baked into technology.json so the native apps get the same pool from a
+    manifest they already load, instead of walking the GitHub contents API
+    at runtime (unauthenticated, rate-limited, and silently empty when it
+    fails — which is how the in-app photo grid went blank)."""
+    root = proj / "photos"
+    if not root.is_dir():
+        return []
+    out: list[str] = []
+
+    def walk(d: Path) -> None:
+        for f in sorted(d.iterdir()):
+            if f.is_dir():
+                if f.parent == root and f.name == "data":
+                    continue
+                walk(f)
+            elif f.suffix.lower() in PHOTO_EXTS:
+                out.append(f"photos/{f.relative_to(root).as_posix()}")
+
+    walk(root)
+    return out
+
+
 def projects_per_tech() -> dict[str, list[dict]]:
     """Scan every research project's index.md and return a reverse map
     from tech name to the list of projects that reference it via the
@@ -137,13 +171,17 @@ def projects_per_tech() -> dict[str, list[dict]]:
         title = fm.get("title", fm.get("project", ""))
         sciences = list(fm.get("sciences") or [])
         url = f"/research/projects/{urllib.parse.quote(proj.name)}/"
+        photos = photos_for_project(proj)
         for t in fm.get("tech") or []:
-            by_tech.setdefault(str(t), []).append({
+            entry = {
                 "date": date_iso,
                 "title": title,
                 "url": url,
                 "sciences": sciences,
-            })
+            }
+            if photos:
+                entry["photos"] = photos
+            by_tech.setdefault(str(t), []).append(entry)
     return by_tech
 
 
