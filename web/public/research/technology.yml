@@ -92,4 +92,4 @@
     - tech: Measurements
       specs: Position, brightness, spectra
     - tech: Classification
-      specs: Events and morphology
+      specs: Types, events, morphology

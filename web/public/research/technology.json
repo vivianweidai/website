@@ -500,19 +500,19 @@
         {
           "id": 19,
           "tech": "Classification",
-          "specs": "Events and morphology",
+          "specs": "Types, events, morphology",
           "tech_url": "/research/technology/astronomy/Classification/",
           "hero": "/research/technology/astronomy/Classification/classification.jpeg",
           "toys": [
             {
+              "name": "SIMBAD",
+              "description": "Spectral types",
+              "short": "Stars"
+            },
+            {
               "name": "Transient Name Server",
               "description": "Transient registry",
               "short": "Transients"
-            },
-            {
-              "name": "WISeREP",
-              "description": "Supernova references",
-              "chip": false
             },
             {
               "name": "Galaxy Zoo",
