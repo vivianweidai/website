@@ -2,7 +2,7 @@
 project: IR Spectroscopy
 tech:
   - Spectroscopy
-title: "IR Spectroscopy - Test Run"
+title: "IR Spectroscopy"
 sciences:
   - Chemistry
 ---
