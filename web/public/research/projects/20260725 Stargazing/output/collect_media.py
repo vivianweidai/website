@@ -13,6 +13,9 @@ folder is duplicates, clouded-out Moon shots and the FITS stacks (huge, and
 their headers carry the observing site).
 
 Run:  python3 output/collect_media.py     (prints the hero + tiles for index.md)
+
+Only that block is generated — index.md's <style> and the lightbox markup
+and script below it are hand-maintained, so paste the output above them.
 """
 
 import os

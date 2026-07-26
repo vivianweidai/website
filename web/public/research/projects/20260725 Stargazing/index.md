@@ -46,21 +46,28 @@ sciences:
 /* Every frame is a Seestar export, untouched — the scope shoots 9:16, so the
    tiles are 9:16 and object-fit never actually crops anything. Dark plate
    behind them so the sky reads as sky. */
+/* Wide banner cropped to the disk. The clip is portrait 9:16 with the Sun
+   filling 0.54 of the frame height, so scaling it to 172% of the band height
+   and clipping the overflow leaves the disk spanning ~92% of the band — the
+   empty sky above and below is cut, not letterboxed. translateX corrects for
+   the Sun sitting 1.5% right of frame centre. */
 .sky-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 5 / 2;
   margin: 1.2em 0 0.6em;
-  padding: 1.1em;
-  background: radial-gradient(120% 90% at 50% 0%, #1b1f2a 0%, #0b0d12 70%);
+  overflow: hidden;
   border-radius: 10px;
-  text-align: center;
+  /* Matched to the clip's own corner tone (rgb 9,4,1) so the band reads as
+     one surface instead of a video pasted on a plate. */
+  background: radial-gradient(circle at 50% 50%, #120802 0%, #090401 60%, #070300 100%);
 }
 .sky-hero video {
-  width: 100%;
-  max-width: 300px;
-  aspect-ratio: 9 / 16;
-  object-fit: cover;
-  border-radius: 8px;
-  background: #000;
-  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.55);
+  height: 172%;
+  width: auto;
+  max-width: none;
+  transform: translateX(-1.5%);
 }
 .sky-grid {
   display: grid;
@@ -110,4 +117,141 @@ sciences:
 @media (prefers-reduced-motion: reduce) {
   .sky-tile a:hover img { transform: none; }
 }
+/* Full-screen viewer for a clicked tile: photo, the same caption the tile
+   carries, and arrows through the set. */
+.sky-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 2.5vh 1vw;
+  background: rgba(6, 7, 10, 0.97);
+}
+.sky-lightbox[hidden] { display: none; }
+.sky-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0;
+  min-width: 0;
+}
+.sky-stage img {
+  display: block;
+  width: auto;
+  max-width: 84vw;
+  max-height: 86vh;
+  border-radius: 6px;
+}
+.sky-stage figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.6em;
+  padding: 0.7em 0.15em 0;
+}
+.sky-stage figcaption b { color: #e8ecf3; font-size: 0.9em; }
+.sky-stage figcaption span { color: #8d95a3; font-size: 0.8em; white-space: nowrap; }
+.sky-nav,
+.sky-close {
+  flex: none;
+  border: none;
+  background: transparent;
+  color: #8d95a3;
+  font-family: inherit;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+.sky-nav { padding: 0.2em 0.5em; font-size: 3em; }
+.sky-nav:hover,
+.sky-close:hover { color: #e8ecf3; }
+.sky-close {
+  position: absolute;
+  top: 0.6em;
+  right: 0.9em;
+  padding: 0.1em 0.3em;
+  font-size: 2em;
+}
+@media (max-width: 600px) {
+  .sky-nav { font-size: 2.2em; padding: 0.2em 0.15em; }
+  .sky-stage img { max-width: 78vw; }
+}
 </style>
+
+<div class="sky-lightbox" id="sky-lightbox" hidden>
+  <button class="sky-nav sky-prev" type="button" aria-label="Previous image">‹</button>
+  <figure class="sky-stage">
+    <img id="sky-shot" alt="">
+    <figcaption><b id="sky-name"></b><span id="sky-meta"></span></figcaption>
+  </figure>
+  <button class="sky-nav sky-next" type="button" aria-label="Next image">›</button>
+  <button class="sky-close" type="button" aria-label="Close">×</button>
+</div>
+
+<script>
+// Tiles open in place instead of navigating to the bare .jpg, so the arrows
+// (and ← →, and swipe-free clicks) can move through the set. The tile markup
+// stays the source of truth: href, name and stack are read back out of it.
+(function () {
+  var tiles = [].slice.call(document.querySelectorAll('.sky-tile'));
+  if (!tiles.length) return;
+
+  var shots = tiles.map(function (tile) {
+    return {
+      src: tile.querySelector('a').getAttribute('href'),
+      name: tile.querySelector('figcaption b').textContent,
+      meta: tile.querySelector('figcaption span').textContent
+    };
+  });
+
+  var box = document.getElementById('sky-lightbox');
+  var img = document.getElementById('sky-shot');
+  var name = document.getElementById('sky-name');
+  var meta = document.getElementById('sky-meta');
+  var at = 0;
+
+  function show(i) {
+    at = (i + shots.length) % shots.length;   // wrap at both ends
+    var shot = shots[at];
+    img.src = shot.src;
+    img.alt = shot.name;
+    name.textContent = shot.name;
+    meta.textContent = shot.meta;
+  }
+
+  function open(i) {
+    show(i);
+    box.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    box.hidden = true;
+    img.src = '';
+    document.body.style.overflow = '';
+  }
+
+  tiles.forEach(function (tile, i) {
+    tile.querySelector('a').addEventListener('click', function (e) {
+      e.preventDefault();
+      open(i);
+    });
+  });
+
+  box.querySelector('.sky-prev').addEventListener('click', function () { show(at - 1); });
+  box.querySelector('.sky-next').addEventListener('click', function () { show(at + 1); });
+  box.querySelector('.sky-close').addEventListener('click', close);
+  // Clicking the backdrop closes; clicking the photo or a button does not.
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (box.hidden) return;
+    if (e.key === 'ArrowLeft') show(at - 1);
+    else if (e.key === 'ArrowRight') show(at + 1);
+    else if (e.key === 'Escape') close();
+  });
+})();
+</script>
