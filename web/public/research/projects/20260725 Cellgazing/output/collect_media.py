@@ -40,7 +40,7 @@ KEEP = [
     ("TS-20250307151924476.jpeg", "leaf-epidermis.jpg",
      "Leaf epidermis", "peel · stomata", False),
     ("TS-20250305001552414.jpeg", "tissue-section.jpg",
-     "Tissue", "lobules · septa", False),
+     "Tissue", "stained · lobules septa", False),
 ]
 
 

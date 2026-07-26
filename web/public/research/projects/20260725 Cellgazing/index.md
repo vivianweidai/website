@@ -18,7 +18,7 @@ sciences:
   </figure>
   <figure class="cell-tile">
     <a href="data/tissue-section.jpg"><img src="data/tissue-section.jpg" alt="Tissue" loading="lazy"></a>
-    <figcaption><b>Tissue</b><span>lobules · septa</span></figcaption>
+    <figcaption><b>Tissue</b><span>stained · lobules septa</span></figcaption>
   </figure>
 </div>
 
