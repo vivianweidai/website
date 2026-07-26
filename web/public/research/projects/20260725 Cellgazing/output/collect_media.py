@@ -11,8 +11,16 @@ so the window is cropped out. Nothing inside the window is touched: no resize,
 no stretch, no colour change. If the original capture ever turns up, replace it
 and drop the crop.
 
-Sources live in ``work/biology/data/``. KEEP is a hand-picked list -- widen it
-by adding rows rather than globbing, so the gallery stays curated.
+SOURCES ARE NO LONGER RETAINED. ``work/biology/data/`` was cleared once the
+gallery was published -- that folder is reserved for future biology runs, and
+the two tiles in ``../data/`` ARE the originals, copied byte for byte, so
+nothing was lost. Only the hero differs: its crop is baked into the published
+file. This script is kept as the provenance record -- it says exactly which
+capture became which tile -- and it becomes runnable again the moment new
+captures are dropped into SRC.
+
+KEEP is a hand-picked list; widen it by adding rows rather than globbing, so
+the gallery stays curated.
 
 Run:  python3 output/collect_media.py     (prints the tile block for index.md)
 
