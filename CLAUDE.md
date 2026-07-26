@@ -116,6 +116,7 @@ Body sections **in order**: `## Overview` (1–2 para) · `## Setup` (Category/D
 - **Olympiads + textbooks** — edit `olympiads/olympiads.yml`, then `python pipeline/scripts/build_olympiads.py` (from repo root) → `olympiads.json`.
 - **Research** — edit `technology.yml` (+ project `tech:` frontmatter), then `python pipeline/scripts/build_technology.py` → `technology.json`.
 - **Curriculum** — a **one-time build**: the `.docx` sources were dropped (`f8e7ad3`), so `curriculum.json` and `source/*.md` are now committed artifacts. Re-add a subject's `.docx` to `web/public/curriculum/notes/` only to regenerate it. No database, no API, no admin endpoint.
+- **`work/overview.pdf`** (the shareable three-pager; not web-served) — **generated from `work/scratch/overview.html`**, which is the source. Never edit the PDF: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=work/overview.pdf "file:///Users/jamesdai/GITHUB/science/work/scratch/overview.html"` (verified 2026-07-25 to reproduce the committed file byte-for-byte apart from its CreationDate). Page 2 mirrors §2's instrument runs, page 3 the per-science project lists — keep both in step with `work/IDEAS.md`.
 
 **Build & deploy** — `cd web && pnpm build` (writes to `../pipeline/worker/dist/`), then `cd pipeline/worker && pnpm run deploy` (wrangler ships `dist/` via Static Assets). GitHub push is backup only. Follow the global commit/push/deploy default for self-contained one-off changes; pause it while iterating on a multi-turn redesign.
 
