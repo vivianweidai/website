@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Copy the chosen Seestar captures into the project's media/ folder, byte for byte.
+"""Copy the chosen Seestar captures into the project's data/ folder, byte for byte.
 
 Deliberately a copy and nothing else — no crop, no stretch, no re-encode, not
 even a metadata strip. The gallery shows what the Seestar wrote; anything that
@@ -23,7 +23,7 @@ import re
 import shutil
 
 SRC = os.path.expanduser("~/GITHUB/science/work/astronomy/data")
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "media")
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
 
 # Clip that plays large at the top of the page, above the grid.
 HERO = ("Solar_video", "2026-07-24-164602-Solar.mp4")
@@ -64,7 +64,7 @@ def copy(folder, fname):
 def tile_html(folder, fname, dst):
     name, meta = label(folder, fname)
     return (f'  <figure class="sky-tile">\n'
-            f'    <a href="media/{dst}"><img src="media/{dst}" alt="{name}" '
+            f'    <a href="data/{dst}"><img src="data/{dst}" alt="{name}" '
             f'loading="lazy"></a>\n'
             f'    <figcaption><b>{name}</b><span>{meta}</span></figcaption>\n'
             f'  </figure>')
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     hero = copy(*HERO)
     print(f'<div class="sky-hero">\n'
-          f'  <video src="media/{hero}" autoplay loop muted playsinline '
+          f'  <video src="data/{hero}" autoplay loop muted playsinline '
           f'preload="auto"></video>\n</div>\n')
     print('<div class="sky-grid">')
     for folder, fname in KEEP:

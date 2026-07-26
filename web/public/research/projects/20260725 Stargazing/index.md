@@ -8,36 +8,36 @@ sciences:
 ---
 
 <div class="sky-hero">
-  <video src="media/Solar_video__2026-07-24-164602-Solar.mp4" autoplay loop muted playsinline preload="auto"></video>
+  <video src="data/Solar_video__2026-07-24-164602-Solar.mp4" autoplay loop muted playsinline preload="auto"></video>
 </div>
 
 <div class="sky-grid">
   <figure class="sky-tile">
-    <a href="media/M_31__Stacked_17_M_31_10.0s_IRCUT_20260725-014442.jpg"><img src="media/M_31__Stacked_17_M_31_10.0s_IRCUT_20260725-014442.jpg" alt="M 31" loading="lazy"></a>
+    <a href="data/M_31__Stacked_17_M_31_10.0s_IRCUT_20260725-014442.jpg"><img src="data/M_31__Stacked_17_M_31_10.0s_IRCUT_20260725-014442.jpg" alt="M 31" loading="lazy"></a>
     <figcaption><b>M 31</b><span>17 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="media/M_13__Stacked_30_M_13_10.0s_IRCUT_20260721-215926.jpg"><img src="media/M_13__Stacked_30_M_13_10.0s_IRCUT_20260721-215926.jpg" alt="M 13" loading="lazy"></a>
+    <a href="data/M_13__Stacked_30_M_13_10.0s_IRCUT_20260721-215926.jpg"><img src="data/M_13__Stacked_30_M_13_10.0s_IRCUT_20260721-215926.jpg" alt="M 13" loading="lazy"></a>
     <figcaption><b>M 13</b><span>30 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="media/M_51__Stacked_30_M_51_10.0s_IRCUT_20260704-222846.jpg"><img src="media/M_51__Stacked_30_M_51_10.0s_IRCUT_20260704-222846.jpg" alt="M 51" loading="lazy"></a>
+    <a href="data/M_51__Stacked_30_M_51_10.0s_IRCUT_20260704-222846.jpg"><img src="data/M_51__Stacked_30_M_51_10.0s_IRCUT_20260704-222846.jpg" alt="M 51" loading="lazy"></a>
     <figcaption><b>M 51</b><span>30 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="media/NGC_5907__Stacked_9_NGC_5907_10.0s_IRCUT_20260704-223446.jpg"><img src="media/NGC_5907__Stacked_9_NGC_5907_10.0s_IRCUT_20260704-223446.jpg" alt="NGC 5907" loading="lazy"></a>
+    <a href="data/NGC_5907__Stacked_9_NGC_5907_10.0s_IRCUT_20260704-223446.jpg"><img src="data/NGC_5907__Stacked_9_NGC_5907_10.0s_IRCUT_20260704-223446.jpg" alt="NGC 5907" loading="lazy"></a>
     <figcaption><b>NGC 5907</b><span>9 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="media/Vega__Stacked_8_Vega_10.0s_IRCUT_20260725-011926.jpg"><img src="media/Vega__Stacked_8_Vega_10.0s_IRCUT_20260725-011926.jpg" alt="Vega" loading="lazy"></a>
+    <a href="data/Vega__Stacked_8_Vega_10.0s_IRCUT_20260725-011926.jpg"><img src="data/Vega__Stacked_8_Vega_10.0s_IRCUT_20260725-011926.jpg" alt="Vega" loading="lazy"></a>
     <figcaption><b>Vega</b><span>8 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="media/Deneb__Stacked_32_Deneb_10.0s_IRCUT_20260725-015351.jpg"><img src="media/Deneb__Stacked_32_Deneb_10.0s_IRCUT_20260725-015351.jpg" alt="Deneb" loading="lazy"></a>
+    <a href="data/Deneb__Stacked_32_Deneb_10.0s_IRCUT_20260725-015351.jpg"><img src="data/Deneb__Stacked_32_Deneb_10.0s_IRCUT_20260725-015351.jpg" alt="Deneb" loading="lazy"></a>
     <figcaption><b>Deneb</b><span>32 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="media/RR_Lyrae__Stacked_21_RR_Lyrae_5.0s_IRCUT_20260725-020642.jpg"><img src="media/RR_Lyrae__Stacked_21_RR_Lyrae_5.0s_IRCUT_20260725-020642.jpg" alt="RR Lyrae" loading="lazy"></a>
+    <a href="data/RR_Lyrae__Stacked_21_RR_Lyrae_5.0s_IRCUT_20260725-020642.jpg"><img src="data/RR_Lyrae__Stacked_21_RR_Lyrae_5.0s_IRCUT_20260725-020642.jpg" alt="RR Lyrae" loading="lazy"></a>
     <figcaption><b>RR Lyrae</b><span>21 × 5s</span></figcaption>
   </figure>
 </div>
