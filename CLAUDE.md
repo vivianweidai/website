@@ -80,6 +80,8 @@ YYYYMMDD Project Name/
 
 Create these subdirs as needed and follow the existing names rather than inventing new ones. **Never modify raw data** — read from `data/`, write everything generated to `output/`.
 
+**Gallery projects** (`20260725 Stargazing`) are the one deviation: their curated JPEG/MP4 tiles live in **`media/`**, *not* `photos/`, precisely so the `[slug]` route's shuffle scan skips them — a gallery page hand-lays out its own grid and would fight the auto hero. The originals stay in `work/<science>/data/` (gitignored when they're instrument-sized), and an `output/build_*.py` regenerates `media/` from them, so the crops and stretches are reproducible rather than hand-edited. Never publish raw Seestar FITS: its headers carry `SITELAT`/`SITELONG` — see § VISIBILITY & SECURITY.
+
 **Photos.** The shuffle pool is **auto-populated** by `Project.astro`: its `getStaticPaths` scans every `.jpg`/`.jpeg`/`.png` under `photos/` (`setup/` + `samples/`, **never `data/`**) and injects them as `window._pagePhotos`. So:
 - **Don't** list photos in frontmatter or add a per-page inline `_pagePhotos` script — the layout's shuffle script runs on every project page.
 - Name files sequentially in capture order: `setup1.jpeg`, `setup2.jpeg`, … / `data1.jpeg`, …. `git mv` originals (e.g. `20240920 Catfood G.jpeg`) so references stay short and stable.

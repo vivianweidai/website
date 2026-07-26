@@ -451,6 +451,16 @@
               "description": "Space telescope data",
               "short": "Space"
             }
+          ],
+          "projects": [
+            {
+              "date": "2026-07-25",
+              "title": "Stargazing",
+              "url": "/research/projects/20260725%20Stargazing/",
+              "sciences": [
+                "Astronomy"
+              ]
+            }
           ]
         },
         {
