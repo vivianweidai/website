@@ -31,3 +31,10 @@ node_modules/
 dist/
 .astro/
 .wrangler/
+
+# Seestar interop — keep large app binaries + any stray keys out of git
+# (the interop key lives at ~/.config/seestar/, outside the repo)
+*.apk
+*.xapk
+*.pem
+*.key
