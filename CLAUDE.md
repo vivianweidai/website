@@ -127,6 +127,14 @@ Body sections **in order**: `## Overview` (1–2 para) · `## Setup` (Category/D
 ## ANALYSIS & NOTEBOOKS
 
 - **Tools** — flexible; default to the Python scientific stack (pandas, numpy, scipy, matplotlib, seaborn) absent a strong reason otherwise.
+- ⚠️ **Astronomy reduction needs the repo venv at `work/astronomy/.venv`** — `astropy` / `astroquery` / `scipy` are **not installed system-wide on any interpreter**, so `python3 script.py` fails with `ModuleNotFoundError` no matter which python you reach for. Run these as `work/astronomy/.venv/bin/python output/<script>.py`. The venv is gitignored (`.venv/`), so **a fresh clone must rebuild it**:
+
+  ```sh
+  cd work/astronomy && /opt/homebrew/bin/python3.14 -m venv .venv
+  .venv/bin/pip install astropy astroquery numpy scipy matplotlib
+  ```
+
+  Created 2026-07-29, after the working copy was found to be living in an **ephemeral session scratchpad** that would have vanished before the next observing night. Plate solving is separate and system-wide: `/opt/homebrew/bin/solve-field` (astrometry.net) with the Gaia index files 4212–4216.
 - **Reproducibility** — every script runnable end-to-end from the project folder, with comments explaining each step. Pin versions in `requirements.txt` if the pipeline uses non-standard packages. Always inspect/summarize raw data (shape, missing values, outliers, units) before analysis and flag anything unexpected.
 - **Visualizations** — matplotlib/seaborn with clear axis labels, units, titles, legends; save PNG at 300 dpi (into an `output/images/` subfolder if a project produces many, else directly into `output/`).
 - **Jupyter conventions:**
