@@ -62,6 +62,8 @@ When James asks to go deeper on a project from `work/IDEAS.md`, two things are w
 
 Findings from a deep dive get folded back into that project's entry in `work/IDEAS.md` — the doc carries decisions, numbers, hazards and gotchas, not the walkthrough prose, which is cheap to regenerate.
 
+**Update `IDEAS.md` continuously while brainstorming — don't wait to be asked, and don't batch it to the end of a session.** A brainstorm that revises what a project needs (or corrects a wrong read of one) is exactly the durable content the doc exists to hold; leaving it in chat loses it. **Record corrections as corrections** — say what the earlier read was and that it was wrong, so a future session doesn't re-derive the same mistake from the stale sketch that's still sitting in a table nearby.
+
 ## AUTHORING A RESEARCH PROJECT
 
 Each project is a date-prefixed folder under `web/public/research/projects/`. The public-facing overview is **`index.md`** (not `README.md`) — Astro's loader globs `*/index.md`, so the filename matters. Model new pages on `20260420 UV-Vis Spectroscopy/index.md` or `20260419 IR Spectroscopy/index.md`.
