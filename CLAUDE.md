@@ -80,7 +80,7 @@ YYYYMMDD Project Name/
 
 Create these subdirs as needed and follow the existing names rather than inventing new ones. **Never modify raw data** — read from `data/`, write everything generated to `output/`.
 
-**Gallery projects** (`20260725 Stargazing`, `20260725 Cellgazing`) are the one deviation: their curated JPEG/MP4 tiles live in **`data/`**, *not* `photos/`, precisely so the `[slug]` route's shuffle scan skips them (renamed from `media/` 2026-07-25 — the tiles are byte-for-byte instrument captures, so `data/` names them honestly) — a gallery page hand-lays out its own grid and would fight the auto hero. The originals stay in `work/<science>/data/` (gitignored when they're instrument-sized), and an `output/collect_media.py` regenerates `data/` from them, so the crops and stretches are reproducible rather than hand-edited. Never publish raw Seestar FITS: its headers carry `SITELAT`/`SITELONG` — see § VISIBILITY & SECURITY.
+**Gallery projects** (`20260725 Stargazing`, `20260725 Cellgazing`) are the one deviation: their curated JPEG/MP4 tiles live in **`data/`**, *not* `photos/`, precisely so the `[slug]` route's shuffle scan skips them (renamed from `media/` 2026-07-25 — the tiles are byte-for-byte instrument captures, so `data/` names them honestly) — a gallery page hand-lays out its own grid and would fight the auto hero. The originals stay in `work/<science>/data/` (gitignored when they're instrument-sized), and an `output/collect_media.py` regenerates `data/` from them, so the crops and stretches are reproducible rather than hand-edited. Raw Seestar FITS **may be published as-is** — its `SITELAT`/`SITELONG` headers no longer need scrubbing (decided 2026-07-29; see § VISIBILITY & SECURITY).
 
 **Photos.** The shuffle pool is **auto-populated** by `Project.astro`: its `getStaticPaths` scans every `.jpg`/`.jpeg`/`.png` under `photos/` (`setup/` + `samples/`, **never `data/`**) and injects them as `window._pagePhotos`. So:
 - **Don't** list photos in frontmatter or add a per-page inline `_pagePhotos` script — the layout's shuffle script runs on every project page.
@@ -140,7 +140,8 @@ Body sections **in order**: `## Overview` (1–2 para) · `## Setup` (Category/D
 
 Synced to `vivianweidai/science` and served at `vivianweidai.com` — **everything is publicly viewable**.
 
-- **No sensitive or personal information.** In particular, **never include researcher names or lab location** in public-facing files — project pages carry Date + Instrument, not Researchers or Location.
+- **No sensitive or personal information.** In particular, **never include researcher names** in public-facing files — project pages carry Date + Instrument, not Researchers.
+- **Observing location is publishable** (decided 2026-07-29, superseding the earlier "never include lab location" rule). Seestar FITS keep their `SITELAT`/`SITELONG` headers, and a project page may name the observing site. Researcher names stay off the site regardless — the two were previously one rule and are now decoupled.
 - **Results links** point to the GitHub blob URL (`https://github.com/vivianweidai/science/blob/main/...`) so files render inside GitHub.
 - **PDFs — soft cap 5 MB.** Compress: `gs -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=out.pdf in.pdf` (`/screen` for image-heavy manuals). Verify: a mid-doc page renders (`pdftoppm -r 60 -f 50 -l 50 out.pdf /tmp/check`), page count matches, and `gs` reported zero "Page drawing error" warnings. Tools: `brew install ghostscript poppler`.
 - **Before any commit, scan staged paths for oversized images** and shrink offenders — once a large blob is in git history it stays there forever.

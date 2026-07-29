@@ -17,8 +17,8 @@ sciences:
     <figcaption><b>M 31</b><span>17 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="data/M_13__Stacked_30_M_13_10.0s_IRCUT_20260721-215926.jpg"><img src="data/M_13__Stacked_30_M_13_10.0s_IRCUT_20260721-215926.jpg" alt="M 13" loading="lazy"></a>
-    <figcaption><b>M 13</b><span>30 × 10s</span></figcaption>
+    <a href="data/M_13__Stacked_5_M_13_60.0s_IRCUT_20260728-225801.jpg"><img src="data/M_13__Stacked_5_M_13_60.0s_IRCUT_20260728-225801.jpg" alt="M 13" loading="lazy"></a>
+    <figcaption><b>M 13</b><span>5 × 60s</span></figcaption>
   </figure>
   <figure class="sky-tile">
     <a href="data/M_51__Stacked_30_M_51_10.0s_IRCUT_20260704-222846.jpg"><img src="data/M_51__Stacked_30_M_51_10.0s_IRCUT_20260704-222846.jpg" alt="M 51" loading="lazy"></a>
@@ -39,6 +39,26 @@ sciences:
   <figure class="sky-tile">
     <a href="data/RR_Lyrae__Stacked_21_RR_Lyrae_5.0s_IRCUT_20260725-020642.jpg"><img src="data/RR_Lyrae__Stacked_21_RR_Lyrae_5.0s_IRCUT_20260725-020642.jpg" alt="RR Lyrae" loading="lazy"></a>
     <figcaption><b>RR Lyrae</b><span>21 × 5s</span></figcaption>
+  </figure>
+  <figure class="sky-tile">
+    <a href="data/Delta_Cygni__Stacked_54_Delta_Cygni_5.0s_IRCUT_20260728-223243.jpg"><img src="data/Delta_Cygni__Stacked_54_Delta_Cygni_5.0s_IRCUT_20260728-223243.jpg" alt="Delta Cygni" loading="lazy"></a>
+    <figcaption><b>Delta Cygni</b><span>54 × 5s</span></figcaption>
+  </figure>
+  <figure class="sky-tile">
+    <a href="data/V530_Lyrae_sub__Light_V530_Lyrae_2.0s_IRCUT_20260728-232423.jpg"><img src="data/V530_Lyrae_sub__Light_V530_Lyrae_2.0s_IRCUT_20260728-232423.jpg" alt="Vega spectrum" loading="lazy"></a>
+    <figcaption><b>Vega spectrum</b><span>1 × 2s</span></figcaption>
+  </figure>
+  <figure class="sky-tile">
+    <a href="data/Vega_sub__Light_Vega_10.0s_LP_20260728-233740.jpg"><img src="data/Vega_sub__Light_Vega_10.0s_LP_20260728-233740.jpg" alt="Vega spectrum" loading="lazy"></a>
+    <figcaption><b>Vega spectrum</b><span>1 × 10s</span></figcaption>
+  </figure>
+  <figure class="sky-tile">
+    <a href="data/Juno_sub__Light_Juno_20.0s_IRCUT_20260729-000521.jpg"><img src="data/Juno_sub__Light_Juno_20.0s_IRCUT_20260729-000521.jpg" alt="Juno — before" loading="lazy"></a>
+    <figcaption><b>Juno — before</b><span>1 × 20s</span></figcaption>
+  </figure>
+  <figure class="sky-tile">
+    <a href="data/Juno_sub__Light_Juno_20.0s_IRCUT_20260729-003012.jpg"><img src="data/Juno_sub__Light_Juno_20.0s_IRCUT_20260729-003012.jpg" alt="Juno — after" loading="lazy"></a>
+    <figcaption><b>Juno — after</b><span>1 × 20s</span></figcaption>
   </figure>
 </div>
 
