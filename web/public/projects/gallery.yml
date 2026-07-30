@@ -84,18 +84,6 @@
 - src: 20260404 Four Point Probe/output/mean_sheet_resistance.png
   caption: Sheet resistance, at last
   science: Mathematics
-- src: 20250225 Catfood/output/catfood_preference.png
-  caption: He has a preference
-  science: Computing
-- src: 20250225 Catfood/photos/setup/setup5.jpeg
-  caption: Two bowls, twenty trials
-  science: Computing
-- src: 20250225 Catfood/photos/setup/setup9.jpeg
-  caption: Mi came back
-  science: Computing
-
-# ── project cards ───────────────────────────────────────────────────
-
 - folder: 20260420 UV-Vis Spectroscopy
   hero: photos/samples/samples6.jpeg
   science: Chemistry

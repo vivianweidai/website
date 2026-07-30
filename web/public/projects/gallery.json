@@ -171,11 +171,11 @@
       "kind": "photo",
       "science": "Physics",
       "science_slug": "phys",
-      "caption": "A Vacuum Chamber",
-      "src": "/projects/gallery/thumbs/gallery-physics-20260601-a-vacuum-chamber-fcda86.jpeg",
-      "full": "/projects/gallery/physics/20260601%20A%20Vacuum%20Chamber.jpeg",
+      "caption": "Force Motion Photogate",
+      "src": "/projects/gallery/thumbs/gallery-physics-20260629-force-motion-photogate-5e1d7e.jpeg",
+      "full": "/projects/gallery/physics/20260629%20Force%20Motion%20Photogate.jpeg",
       "w": 1000,
-      "h": 416,
+      "h": 750,
       "date": "2026-06"
     },
     {
@@ -204,31 +204,20 @@
       "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
-      "caption": "Dusk From The Balcony",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260601-dusk-from-the-balcony-0efa63.jpeg",
-      "full": "/projects/gallery/astronomy/20260601%20Dusk%20From%20The%20Balcony.jpeg",
+      "caption": "The Seestar Folded",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260601-the-seestar-folded-0048e0.jpeg",
+      "full": "/projects/gallery/astronomy/20260601%20The%20Seestar%20Folded.jpeg",
       "w": 1000,
-      "h": 416,
-      "date": "2026-06"
-    },
-    {
-      "kind": "photo",
-      "science": "Computing",
-      "science_slug": "comp",
-      "caption": "The Plan On Poster Board",
-      "src": "/projects/gallery/thumbs/gallery-computing-20260601-the-plan-on-poster-bo-3fa206.jpeg",
-      "full": "/projects/gallery/computing/20260601%20The%20Plan%20On%20Poster%20Board.jpeg",
-      "w": 1000,
-      "h": 416,
+      "h": 250,
       "date": "2026-06"
     },
     {
       "kind": "photo",
       "science": "Physics",
       "science_slug": "phys",
-      "caption": "Force Motion Photogate",
-      "src": "/projects/gallery/thumbs/gallery-physics-20260629-force-motion-photogate-5e1d7e.jpeg",
-      "full": "/projects/gallery/physics/20260629%20Force%20Motion%20Photogate.jpeg",
+      "caption": "Gas Pressure And Turbidity",
+      "src": "/projects/gallery/thumbs/gallery-physics-20260629-gas-pressure-and-turbid-ce7a0b.jpeg",
+      "full": "/projects/gallery/physics/20260629%20Gas%20Pressure%20And%20Turbidity.jpeg",
       "w": 1000,
       "h": 750,
       "date": "2026-06"
@@ -257,22 +246,11 @@
     },
     {
       "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "The Seestar Folded",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260601-the-seestar-folded-0048e0.jpeg",
-      "full": "/projects/gallery/astronomy/20260601%20The%20Seestar%20Folded.jpeg",
-      "w": 1000,
-      "h": 250,
-      "date": "2026-06"
-    },
-    {
-      "kind": "photo",
       "science": "Physics",
       "science_slug": "phys",
-      "caption": "Gas Pressure And Turbidity",
-      "src": "/projects/gallery/thumbs/gallery-physics-20260629-gas-pressure-and-turbid-ce7a0b.jpeg",
-      "full": "/projects/gallery/physics/20260629%20Gas%20Pressure%20And%20Turbidity.jpeg",
+      "caption": "The Magnetic Field Sensor",
+      "src": "/projects/gallery/thumbs/gallery-physics-20260629-the-magnetic-field-sens-1ab4bb.jpeg",
+      "full": "/projects/gallery/physics/20260629%20The%20Magnetic%20Field%20Sensor.jpeg",
       "w": 1000,
       "h": 750,
       "date": "2026-06"
@@ -297,17 +275,6 @@
       "full": "/projects/gallery/biology/20260601%20The%20Stereo%20Scope.jpeg",
       "w": 1000,
       "h": 250,
-      "date": "2026-06"
-    },
-    {
-      "kind": "photo",
-      "science": "Physics",
-      "science_slug": "phys",
-      "caption": "The Magnetic Field Sensor",
-      "src": "/projects/gallery/thumbs/gallery-physics-20260629-the-magnetic-field-sens-1ab4bb.jpeg",
-      "full": "/projects/gallery/physics/20260629%20The%20Magnetic%20Field%20Sensor.jpeg",
-      "w": 1000,
-      "h": 750,
       "date": "2026-06"
     },
     {
@@ -819,50 +786,6 @@
       "date": "2025-03"
     },
     {
-      "kind": "photo",
-      "science": "Computing",
-      "science_slug": "comp",
-      "caption": "He has a preference",
-      "src": "/projects/gallery/thumbs/20250225-catfood-output-catfood-preference-64060f.png",
-      "full": "/projects/20250225%20Catfood/output/catfood_preference.png",
-      "w": 1000,
-      "h": 1000,
-      "date": "2025-02"
-    },
-    {
-      "kind": "photo",
-      "science": "Physics",
-      "science_slug": "phys",
-      "caption": "Soldering",
-      "src": "/projects/gallery/thumbs/gallery-physics-20250209-soldering-99053a.jpeg",
-      "full": "/projects/gallery/physics/20250209%20Soldering.jpeg",
-      "w": 1000,
-      "h": 750,
-      "date": "2025-02"
-    },
-    {
-      "kind": "photo",
-      "science": "Computing",
-      "science_slug": "comp",
-      "caption": "Two bowls, twenty trials",
-      "src": "/projects/gallery/thumbs/20250225-catfood-photos-setup-setup5-faaaee.jpeg",
-      "full": "/projects/20250225%20Catfood/photos/setup/setup5.jpeg",
-      "w": 1000,
-      "h": 750,
-      "date": "2025-02"
-    },
-    {
-      "kind": "photo",
-      "science": "Computing",
-      "science_slug": "comp",
-      "caption": "Mi came back",
-      "src": "/projects/gallery/thumbs/20250225-catfood-photos-setup-setup9-9c51c9.jpeg",
-      "full": "/projects/20250225%20Catfood/photos/setup/setup9.jpeg",
-      "w": 1000,
-      "h": 750,
-      "date": "2025-02"
-    },
-    {
       "kind": "project",
       "science": "Computing",
       "science_slug": "comp",
@@ -888,6 +811,17 @@
     },
     {
       "kind": "photo",
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "Soldering",
+      "src": "/projects/gallery/thumbs/gallery-physics-20250209-soldering-99053a.jpeg",
+      "full": "/projects/gallery/physics/20250209%20Soldering.jpeg",
+      "w": 1000,
+      "h": 750,
+      "date": "2025-02"
+    },
+    {
+      "kind": "photo",
       "science": "Computing",
       "science_slug": "comp",
       "caption": "Mi",
@@ -907,12 +841,12 @@
     {
       "science": "Computing",
       "slug": "comp",
-      "count": 7
+      "count": 3
     },
     {
       "science": "Physics",
       "slug": "phys",
-      "count": 8
+      "count": 7
     },
     {
       "science": "Chemistry",
@@ -927,7 +861,7 @@
     {
       "science": "Astronomy",
       "slug": "astro",
-      "count": 17
+      "count": 16
     }
   ]
 }
