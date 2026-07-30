@@ -85,8 +85,8 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent.parent
 CONTENT = ROOT / "web" / "public" / "projects"
 SRC = CONTENT / "gallery.yml"
+GALLERY = CONTENT / "gallery"
 OUT = CONTENT / "gallery.json"
-TECH_JSON = CONTENT / "technology.json"
 
 SCIENCE_SLUGS = {
     "Mathematics": "math", "Computing": "comp", "Physics": "phys",
@@ -94,6 +94,10 @@ SCIENCE_SLUGS = {
 }
 # Wall order, top of the filter row to the bottom — mirrors the Olympiads page.
 SCIENCE_ORDER = ["Mathematics", "Computing", "Physics", "Chemistry", "Biology", "Astronomy"]
+# Folder under gallery/ per science — the full word, matching the convention
+# curriculum/source/ already uses. The folder IS the tag: a picture's science
+# is where it sits, not something declared about it.
+SCIENCE_FOLDERS = {name: name.lower() for name in SCIENCE_ORDER}
 
 MONTHS = ["January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]
@@ -104,6 +108,13 @@ THUMB_EDGE = 1000    # px on the long edge — a landscape tile spans two
                      # columns (~450 CSS px), so this keeps it retina-sharp
 THUMB_BYTES = 200_000  # anything smaller than this is already web-sized
 made: set[str] = set()  # thumbs this run touched; the rest get pruned
+
+
+def caption_from(name: str) -> str:
+    """'20260730 M 31.jpg' -> 'M 31'. The date prefix sorts the wall and is
+    never displayed, so the caption is whatever is left of the filename."""
+    stem = name.rsplit(".", 1)[0]
+    return re.sub(r"^\d{8}[ _-]+", "", stem).strip()
 
 
 def slug(s: str) -> str:
@@ -364,44 +375,6 @@ def _exif_month(path: Path) -> str | None:
 
 # ── toy vocabulary ───────────────────────────────────────────────────
 
-def catalog_by_science() -> tuple[dict[str, list[dict]], dict[str, dict[str, str]]]:
-    """Read technology.json into the two lookups the wall needs.
-
-    Returns (techs, toy_to_tech):
-      techs        science → its categories, each {label, slug, count, toys[]},
-                   with toys nested underneath. The wall filters in three
-                   tiers — science, then category, then a single toy — so the
-                   default view stays a short menu of four categories rather
-                   than eleven instruments, and the fine-grained tags are still
-                   one click away. Picking a category implies every toy in it.
-      toy_to_tech  science → {toy label → category label}, for rolling a
-                   gallery row's instrument up to its category. Within a
-                   science each toy sits under exactly one category, so the
-                   rollup is unambiguous.
-    """
-    data = json.loads(TECH_JSON.read_text())
-    techs: dict[str, list[dict]] = {}
-    toy_to_tech: dict[str, dict[str, str]] = {}
-    for sci in data["sciences"]:
-        rows = []
-        mapping: dict[str, str] = {}
-        for tech in sci["techs"]:
-            seen: set[str] = set()
-            toys = []
-            for toy in tech.get("toys", []):
-                label = toy.get("short") or toy["name"]
-                mapping.setdefault(label, tech["tech"])
-                mapping.setdefault(toy["name"], tech["tech"])
-                if label in seen:
-                    continue
-                seen.add(label)
-                toys.append({"label": label, "name": toy["name"],
-                             "slug": slug(label), "count": 0})
-            rows.append({"label": tech["tech"], "slug": slug(tech["tech"]),
-                         "count": 0, "toys": toys})
-        techs[sci["science"]] = rows
-        toy_to_tech[sci["science"]] = mapping
-    return techs, toy_to_tech
 
 
 def read_title(folder: Path) -> str:
@@ -413,135 +386,103 @@ def read_title(folder: Path) -> str:
 
 
 def build() -> dict:
-    entries = yaml.safe_load(SRC.read_text())
+    tiles: list[dict] = []
+    seen_src: dict[str, str] = {}
+    seen_bytes: dict[str, str] = {}
+
+    def add(rel: str, science: str, caption: str, where: str,
+            kind: str = "photo", href: str | None = None) -> None:
+        path = CONTENT / rel
+        if not path.is_file():
+            raise ValueError(f"{where}: no such file {rel!r}")
+        # One picture, one place on the wall — checked by path and again by
+        # content, because the same capture reaching the wall under two names
+        # is the failure that actually happened once already.
+        if rel in seen_src:
+            raise ValueError(f"{where}: {rel!r} already used by {seen_src[rel]}")
+        seen_src[rel] = where
+        digest = hashlib.sha1(path.read_bytes()).hexdigest()
+        if digest in seen_bytes:
+            raise ValueError(
+                f"{where}: {rel!r} is byte-identical to {seen_bytes[digest]}. "
+                "Same picture, two names — keep one.")
+        seen_bytes[digest] = where
+
+        src, w, h = thumbnail(rel, path)
+        tile = {
+            "kind": kind,
+            "science": science,
+            "science_slug": SCIENCE_SLUGS[science],
+            "caption": caption,
+            "src": src,             # what the wall loads
+            "full": url_for(rel),   # the original, for the viewer
+            "w": w,
+            "h": h,
+        }
+        if href:
+            tile["href"] = href
+
+        # Sorting only — the wall never shows a date.
+        date = _filename_month(path) or _exif_month(path)
+        if not date:
+            raise ValueError(
+                f"{where}: cannot date {rel!r} — name it 'YYYYMMDD Some Name.ext'")
+        tile["date"] = date
+
+        if path.suffix.lower() in VIDEO_EXTS:
+            tile["video"] = True
+            poster = path.parent / (path.stem + ".poster.jpg")
+            if poster.is_file():
+                purl, pw, ph = thumbnail(str(poster.relative_to(CONTENT)), poster)
+                tile["poster"] = purl
+                # The still is the honest shape of the frame; a container's own
+                # dimensions can disagree with its rotation matrix.
+                tile["w"], tile["h"] = pw, ph
+
+        tiles.append(tile)
+
+    # ── 1. everything filed under gallery/<science>/ ─────────────────
+    # No YAML at all for these: the folder is the science, the YYYYMMDD prefix
+    # is the sort key, and the rest of the filename is the caption. Dropping a
+    # file into gallery/astronomy/ puts it on the wall.
+    for science, folder in SCIENCE_FOLDERS.items():
+        d = GALLERY / folder
+        if not d.is_dir():
+            continue
+        for f in sorted(d.iterdir()):
+            if f.name.startswith(".") or not f.is_file():
+                continue
+            if f.suffix.lower() not in (".jpg", ".jpeg", ".png") + VIDEO_EXTS:
+                continue
+            if f.name.endswith(".poster.jpg"):
+                continue          # a clip's still, not a tile of its own
+            rel = str(f.relative_to(CONTENT))
+            add(rel, science, caption_from(f.name), f"gallery/{folder}/{f.name}")
+
+    # ── 2. gallery.yml ──────────────────────────────────────────────
+    # Only two things still need it: project cards, and pictures that live
+    # inside a project folder and should also appear on the wall (referenced
+    # in place, never copied, so the bytes stay in git once).
+    entries = yaml.safe_load(SRC.read_text()) or []
     if not isinstance(entries, list):
         raise ValueError("gallery.yml must be a YAML list")
-
-    techs, toy_to_tech = catalog_by_science()
-    tiles = []
-    seen_src: dict[str, int] = {}
-    seen_bytes: dict[str, int] = {}
 
     for i, e in enumerate(entries):
         where = f"gallery.yml[{i}]"
         science = e.get("science")
         if science not in SCIENCE_SLUGS:
-            raise ValueError(f"{where}: science must be one of {sorted(SCIENCE_SLUGS)}, got {science!r}")
-
-        tile: dict = {
-            "science": science,
-            "science_slug": SCIENCE_SLUGS[science],
-        }
-
+            raise ValueError(
+                f"{where}: science must be one of {sorted(SCIENCE_SLUGS)}, got {science!r}")
         if "folder" in e:
-            folder = CONTENT / e["folder"]
-            if not folder.is_dir():
+            proj = CONTENT / e["folder"]
+            if not proj.is_dir():
                 raise ValueError(f"{where}: no such project folder {e['folder']!r}")
-            rel = f"{e['folder']}/{e['hero']}"
-            tile["caption"] = e.get("caption") or read_title(folder)
-            tile["href"] = url_for(e["folder"] + "/")
-            tile["kind"] = "project"
+            add(f"{e['folder']}/{e['hero']}", science,
+                e.get("caption") or read_title(proj), where,
+                kind="project", href=url_for(e["folder"] + "/"))
         else:
             rel = e["src"]
-            tile["caption"] = e.get("caption", "")
-            tile["kind"] = "photo"
-
-        path = CONTENT / rel
-        if not path.is_file():
-            raise ValueError(f"{where}: no such file {rel!r}")
-        # One picture, one place on the wall. This mostly catches a project
-        # card whose hero is also listed as a standalone tile — which reads as
-        # the grid stuttering rather than as two entries.
-        if rel in seen_src:
-            raise ValueError(
-                f"{where}: {rel!r} is already used by gallery.yml[{seen_src[rel]}]. "
-                "A project card's hero should not also be a photo tile.")
-        seen_src[rel] = i
-        # …and again by content, because the same capture reaching the wall
-        # under two names is the failure that actually happened: a staged copy
-        # was ingested next to the original it had been copied from.
-        digest = hashlib.sha1(path.read_bytes()).hexdigest()
-        if digest in seen_bytes:
-            raise ValueError(
-                f"{where}: {rel!r} is byte-identical to gallery.yml[{seen_bytes[digest]}]. "
-                "Same picture, two names — keep one.")
-        seen_bytes[digest] = i
-        src, w, h = thumbnail(rel, path)
-        tile["src"] = src            # what the wall loads
-        tile["full"] = url_for(rel)  # the original, for anything that wants it
-        tile["w"], tile["h"] = w, h
-
-        date = str(e["date"]) if e.get("date") else (_filename_month(path) or _exif_month(path))
-        if not date:
-            raise ValueError(
-                f"{where}: cannot date {rel!r} — name it 'YYYYMMDD …' or add `date: YYYY-MM`")
-        if not re.fullmatch(r"\d{4}-\d{2}", date):
-            raise ValueError(f"{where}: date must be YYYY-MM, got {date!r}")
-        tile["date"] = date
-        tile["date_label"] = f"{MONTHS[int(date[5:7]) - 1]} {date[:4]}"
-
-        if path.suffix.lower() in VIDEO_EXTS:
-            tile["video"] = True
-            poster = path.with_suffix("").with_suffix(".poster.jpg")
-            if not poster.is_file():
-                poster = path.parent / (path.stem + ".poster.jpg")
-            if poster.is_file():
-                prel = str(poster.relative_to(CONTENT))
-                purl, pw, ph = thumbnail(prel, poster)
-                tile["poster"] = purl
-                # The still is the honest shape of the frame; the container's
-                # own dimensions can disagree with a rotation matrix.
-                tile["w"], tile["h"] = pw, ph
-
-        if e.get("note"):
-            tile["note"] = e["note"]
-
-        # `toy:` names the specific instrument and shows in the caption.
-        # `tech:` is the category (or categories) the wall filters on, and is
-        # normally derived from the toy. Give it explicitly when a picture
-        # belongs to a category but to no instrument we own (the retired FT-IR
-        # work), or when it honestly belongs to several — a book of contest
-        # problems is Numeric and Symbolic and Graphic at once, and picking one
-        # threw the other two away.
-        #
-        #     tech: Symbolic                      one category
-        #     tech: [Numeric, Symbolic, Graphic]  several
-        #
-        # A tile appears under every category it lists, and each one counts it.
-        toy = e.get("toy")
-        raw = e.get("tech")
-        wanted = [] if raw is None else ([raw] if isinstance(raw, str) else list(raw))
-        if toy:
-            mapping = toy_to_tech.get(science, {})
-            if toy not in mapping:
-                owned = ", ".join(sorted(set(mapping)))
-                raise ValueError(f"{where}: {science} owns no toy {toy!r}. Owned: {owned}")
-            tile["toy"] = toy
-            if mapping[toy] not in wanted:
-                wanted.append(mapping[toy])
-
-        labels, slugs = [], []
-        for name in wanted:
-            match = next((t for t in techs.get(science, []) if t["label"] == name), None)
-            if not match:
-                have = ", ".join(t["label"] for t in techs.get(science, []))
-                raise ValueError(f"{where}: {science} has no category {name!r}. Has: {have}")
-            if match["slug"] in slugs:
-                raise ValueError(f"{where}: category {name!r} listed twice")
-            labels.append(match["label"])
-            slugs.append(match["slug"])
-            match["count"] += 1
-            if toy:
-                hit = next((x for x in match["toys"]
-                            if x["label"] == toy or x["name"] == toy), None)
-                if hit:
-                    tile["toy_slug"] = hit["slug"]
-                    hit["count"] += 1
-        if labels:
-            tile["techs"] = labels
-            tile["tech_slugs"] = slugs
-
-        tiles.append(tile)
+            add(rel, science, e.get("caption") or caption_from(rel.split("/")[-1]), where)
 
     # Newest month first — but *within* a month, deal the tiles out round-robin
     # across the sciences instead of keeping gallery.yml order. Without this a
@@ -564,14 +505,14 @@ def build() -> dict:
         by_month.setdefault(t["date"], []).append(t)
     tiles = [t for month in sorted(by_month, reverse=True) for t in interleave(by_month[month])]
 
-    sciences = []
-    for name in SCIENCE_ORDER:
-        sciences.append({
+    sciences = [
+        {
             "science": name,
             "slug": SCIENCE_SLUGS[name],
             "count": sum(1 for t in tiles if t["science"] == name),
-            "techs": techs.get(name, []),
-        })
+        }
+        for name in SCIENCE_ORDER
+    ]
     if THUMBS.is_dir():
         for f in THUMBS.iterdir():
             if f.name not in made:
@@ -591,9 +532,7 @@ def main() -> int:
     print(f"  {len(payload['tiles'])} tiles "
           f"({sum(1 for t in payload['tiles'] if t['kind'] == 'project')} project cards)")
     for s in payload["sciences"]:
-        tagged = sum(t["count"] for t in s["techs"])
-        print(f"    {s['science']:<12} {s['count']:>3} tiles, "
-              f"{len(s['techs'])} categories ({tagged} tagged)")
+        print(f"    {s['science']:<12} {s['count']:>3} tiles")
     return 0
 
 

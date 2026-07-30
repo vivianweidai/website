@@ -7,6 +7,9 @@ import Foundation
 /// renders the same wall from the same file, so a row added on the Mac shows
 /// up here the next time the app fetches — no app release needed.
 ///
+/// A picture belongs to exactly one science, and that science is the folder it
+/// sits in under gallery/ — there is no tagging layer above it.
+///
 /// Two kinds of tile share the list:
 ///   photo    a picture (or a clip). Tapping opens the full-resolution viewer.
 ///   project  a link to a write-up. `href` is the project page's path; tapping
@@ -33,7 +36,7 @@ public struct GalleryTile: Codable, Sendable, Identifiable {
     public let science: String
     public let scienceSlug: String
     public let kind: String
-    public let dateLabel: String
+    /// Sorting only — the wall never shows a date, on either surface.
     public let date: String
     public let w: Int
     public let h: Int
@@ -47,7 +50,6 @@ public struct GalleryTile: Codable, Sendable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case src, full, caption, science, kind, date, w, h, href, video, poster
         case scienceSlug = "science_slug"
-        case dateLabel = "date_label"
     }
 
     /// Stable across a refresh — `full` is unique per tile because the build
@@ -63,7 +65,7 @@ public struct GalleryTile: Codable, Sendable, Identifiable {
     public var fullURL: URL? { Self.absolute(full) }
 
     /// A project card's `index.md`, for the in-app markdown reader — the same
-    /// resolution `ResearchToy.projectIndexURL` does for a toy's project link.
+    /// resolution the website's project cards use.
     public var projectIndexURL: URL? {
         guard isProject, let href else { return nil }
         let path = href.hasSuffix("/") ? href + "index.md" : href + "/index.md"

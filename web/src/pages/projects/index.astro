@@ -61,14 +61,12 @@ const spanFor = (t) => {
         <figure class="tile tile-photo" tabindex="0" role="button" aria-label={`Open ${t.caption}`}
            data-sci={t.science_slug} data-w={t.w} data-h={t.h} data-cols={colsFor(t)}
            data-full={t.full} data-video={t.video ? '1' : ''}
+           data-caption={t.caption} data-science={t.science}
            style={`--tint: var(--subj-${t.science_slug}); grid-column: span ${colsFor(t)}; grid-row-end: span ${spanFor(t)}`}>
           {t.video
             ? <video src={t.src} poster={t.poster} width={t.w} height={t.h} autoplay loop muted playsinline preload="metadata" />
             : <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />}
-          <figcaption class="tile-cap">
-            <span class="cap-text">{t.caption}</span>
-            <span class="cap-pill">{t.science}</span>
-          </figcaption>
+          {t.video && <span class="tile-play" aria-hidden="true">▶</span>}
         </figure>
       )
     ))}
@@ -198,7 +196,9 @@ const spanFor = (t) => {
           full.onload = function () { img.src = full.src; };
           full.src = t.dataset.full;
         }
-        lbCap.innerHTML = t.querySelector('.tile-cap').innerHTML;
+        lbCap.innerHTML = '<span class="cap-text"></span><span class="cap-pill"></span>';
+        lbCap.querySelector('.cap-text').textContent = t.dataset.caption || '';
+        lbCap.querySelector('.cap-pill').textContent = t.dataset.science || '';
         document.getElementById('lb-prev').disabled = at === 0;
         document.getElementById('lb-next').disabled = at === openable.length - 1;
         preload(at + 1);
@@ -349,14 +349,14 @@ const spanFor = (t) => {
     .tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
     /* A clip is the one moving thing on the wall — say so, quietly, so the
        motion reads as deliberate rather than as a broken image. */
-    .tile video + .tile-cap::before {
-      content: '▶';
+    .tile-play {
       position: absolute;
-      top: -1.6em;
       left: 0.6em;
+      bottom: 0.5em;
       font-size: 0.7em;
       color: rgba(255, 255, 255, 0.85);
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+      pointer-events: none;
     }
     @media (hover: hover) {
       .tile:hover {
@@ -366,17 +366,6 @@ const spanFor = (t) => {
       }
     }
 
-    /* Science stripe down the left edge — the only always-on marker of which
-       tab a picture belongs to. */
-    .tile-photo::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: var(--tint);
-    }
 
     .tile-cap {
       position: absolute;
@@ -385,13 +374,11 @@ const spanFor = (t) => {
       padding: 2.2em 0.6em 0.55em;
       background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.42) 55%, transparent);
       color: #fff;
-      opacity: 0;
-      transition: opacity 0.2s ease;
     }
-    .tile:hover .tile-cap { opacity: 1; }
-    /* One line of text on the left, the science on the right. Nothing else —
-       no note line, no instrument, no date. The picture is the content; this
-       is the label. */
+    /* Captions belong to project cards and the lightbox only. A photo tile
+       carries no text at all — no caption, no science, nothing on hover. The
+       picture is the whole content; its caption survives as the img alt and
+       is read back off the tile's dataset when the lightbox opens. */
     .tile-cap {
       display: flex;
       align-items: flex-end;
@@ -544,10 +531,9 @@ const spanFor = (t) => {
 
     @media (max-width: 600px) {
       .wall { grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); }
-      .tile-cap { opacity: 1; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .tile, .tile-cap { transition: none; }
+      .tile { transition: none; }
     }
   </style>
 

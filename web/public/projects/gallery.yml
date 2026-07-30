@@ -1,371 +1,119 @@
-# THE WALL — every picture on /projects/, in one list.
+# THE WALL — the rows that still need a manifest.
 #
-# Run `python3 pipeline/scripts/build_gallery.py` after editing. The script
-# validates every path and tag and fails loudly, so a mistake here is a build
-# error rather than a hole in the grid.
+# Most pictures do not appear here at all. Anything under
+# gallery/<science>/ is picked up automatically:
 #
-# ── a photo tile ────────────────────────────────────────────────────
-#   - src:      path under web/public/projects/ — i.e. what follows
-#               /projects/ in the URL. Required.
-#     caption:  the subject, a few words. Required in practice.
-#     note:     optional second line — exposure, condition, what went wrong.
-#     science:  one of the six. Required.
-#     toy:      optional. Must be a toy that science owns (see technology.yml).
+#   gallery/astronomy/20260730 M 31.jpg
+#            ^ the science      ^ sorts the wall   ^ the caption
 #
-#     tech:     optional. The CATEGORY the wall filters on, and it takes
-#               either one name or a list:
-#                   tech: Symbolic
-#                   tech: [Numeric, Symbolic, Graphic]
-#               A tile shows under every category it lists and each one counts
-#               it. Normally you do not write this at all — it is derived from
-#               `toy:`. Give it when a picture belongs to a category but to no
-#               instrument we own, or when it honestly belongs to several.
-#     date:     optional YYYY-MM. Omit it and the month is read from the
-#               photo's own EXIF; only supply it when the file has none
-#               (Seestar exports, generated plots, screenshots).
+# The folder is the science, the YYYYMMDD prefix is the sort key (never shown),
+# and the rest of the filename is the caption. Drop a file in and run
+# `python3 pipeline/scripts/build_gallery.py`. Nothing to write here.
 #
-# ── a project card ──────────────────────────────────────────────────
-#   - folder:   project folder name. hero: picks the image that fronts it.
-#     The caption is read from that project's index.md title — never retyped.
+# Two things still need a row:
 #
-# ── where the pixels live ───────────────────────────────────────────
-#   <YYYYMMDD Project Name>/…   pictures that belong to a project. Point at
-#                               them in place; never copy into gallery/.
-#   gallery/<YYYY-MM>/…         pictures that belong to no project. One folder
-#                               per month, created when that month needs one.
+#   a project card — links to a write-up instead of opening the picture.
+#     - folder:   the project folder
+#       hero:     which of its images fronts the card
+#       science:  required, exactly one
+#       (the caption is read from that project's index.md title)
 #
-# ════════════════════════════════════════════════════════════════════
-# ASTRONOMY
-# ════════════════════════════════════════════════════════════════════
-
-# The Stargazing project folder was retired 2026-07-30 — like Cellgazing it was
-# a gallery page pretending to be a write-up, so its frames became plain tiles.
-# work/astronomy/output/collect_media.py still copies them out of the raw
-# captures byte-for-byte and prints these rows.
+#   a picture that lives inside a project folder and should also be on the
+#   wall. Referenced in place — never copied into gallery/, or the same bytes
+#   land in git twice, which the build rejects by content hash.
+#     - src:      path under web/public/projects/
+#       science:  required, exactly one
+#       caption:  optional; defaults to the filename
 #
-# Seestar exports carry no EXIF, so every one of these needs an explicit date.
+# One science per picture. Not two, not none.
 
-# The one moving thing on the wall. Autoplays muted and loops.
-- src: gallery/photos/20260724 The Sun.mp4
-  caption: The Sun, turning over
-  note: Full-disc clip through the solar filter
-  science: Astronomy
-  toy: Optical
 
-- src: gallery/photos/20260730 M 31.jpg
-  caption: M 31
-  note: 25 × 20s — the dust lane and M110, without touching the stretch
-  science: Astronomy
-  toy: Optical
-- src: gallery/photos/20260730 NGC 7000 Field.jpg
-  caption: NGC 7000
-  note: 20 × 20s
-  science: Astronomy
-  toy: Optical
-- src: gallery/photos/20260728 M 13.jpg
-  caption: M 13
-  note: 5 × 60s
-  science: Astronomy
-  toy: Optical
-- src: gallery/photos/20260704 M 51.jpg
-  caption: M 51
-  note: 30 × 10s
-  science: Astronomy
-  toy: Optical
-- src: gallery/photos/20260704 NGC 5907.jpg
-  caption: NGC 5907
-  note: 9 × 10s
-  science: Astronomy
-  toy: Optical
-- src: gallery/photos/20260729 Albireo Field Of Spectra.jpg
-  caption: Albireo
-  note: Every star in the field smeared into its own spectrum — by accident
-  science: Astronomy
-  toy: Optical
-- src: gallery/photos/20260729 Vega Dispersed.jpg
-  caption: Vega, dispersed
-  note: Grating mounted backwards
-  science: Astronomy
-  toy: Optical
-- src: gallery/photos/20260728 Vega Dispersed LP.jpg
-  caption: Vega, dispersed
-  note: 1 × 10s, light-pollution filter
-  science: Astronomy
-  toy: Optical
-- src: gallery/photos/20260729 Juno Before.jpg
-  caption: Juno
-  note: Before
-  science: Astronomy
-  toy: Optical
-- src: gallery/photos/20260729 Juno After.jpg
-  caption: Juno
-  note: Twenty-five minutes later — it moved
-  science: Astronomy
-  toy: Optical
-
-# Night of 2026-07-29 — first fully programmatic session: slew, plate solve,
-# focus, capture and retrieval all driven from the Mac with no phone app in the
-# loop. Staged with metadata in work/scratch/gallery/; the caveats there are
-# what these notes are drawn from. The two RAW frames are byte-for-byte Seestar
-# output (Telescopes); the three plots are our own reduction, which is why they
-# carry `tech:` directly instead of borrowing a reference atlas as their toy.
-- src: gallery/photos/20260729 Vega Balmer Series.png
-  caption: Vega's Balmer series
-  note: 30 × 5s. All four hydrogen lines at 18–22 sigma
-  science: Astronomy
-  tech: Measurements
-- src: gallery/photos/20260729 Wavelength Solution.png
-  caption: Wavelength solution
-  note: 0.185 nm rms across 246 nm — the out-of-sample number, not the flattering one
-  science: Astronomy
-  tech: Measurements
-- src: gallery/photos/20260729 A0V Against K3II.png
-  caption: A0V against K3II
-  note: Four deep hydrogen lines against a forest of metal lines. Albireo rests on 3 subs — suggestive, not settled
-  science: Astronomy
-  tech: Measurements
-
-- src: gallery/photos/20260601 The Seestar Folded.jpeg
-  caption: The Seestar, folded
-  science: Astronomy
-  toy: Optical
-- src: gallery/photos/20251217 Horsehead.jpeg
-  caption: Horsehead
-  science: Astronomy
-  toy: Astrometry
-- src: gallery/photos/20260601 Dusk From The Balcony.jpeg
-  caption: Dusk, from the balcony
-  note: The sky we actually get
-  science: Astronomy
-
-# ════════════════════════════════════════════════════════════════════
-# BIOLOGY
-# ════════════════════════════════════════════════════════════════════
-
-# Cellgazing was a project folder that only ever held three microscope frames
-# and a hand-laid-out grid — i.e. a gallery pretending to be a write-up. Folded
-# into the wall 2026-07-30; the frames now live in gallery/2025-03/, dated by
-# their own EXIF rather than by the folder they used to sit in.
-- src: gallery/photos/20250305 Tissue Section.jpg
-  caption: Tissue section
-  note: 400×
-  science: Biology
-  toy: Compound
-- src: gallery/photos/20250307 Leaf Epidermis.jpg
-  caption: Leaf epidermis
-  note: Stomata everywhere
-  science: Biology
-  toy: Stereo
-- src: gallery/photos/20250301 Reticulate Specimen.jpg
-  caption: Reticulate specimen
-  note: Handheld, no stage
-  science: Biology
-  toy: Surface
-
-- src: gallery/photos/20260601 The Stereo Scope.jpeg
-  caption: The stereo scope on its boom
-  science: Biology
-  toy: Stereo
-- src: gallery/photos/20260601 GELATO.jpeg
-  caption: GELATO, out of the box
-  science: Biology
-  toy: Electrophoresis
-- src: gallery/photos/20260601 Spirometer.jpeg
-  caption: Spirometer, mouthpiece off
-  science: Biology
-  toy: Spirometer
-
-# ════════════════════════════════════════════════════════════════════
-# CHEMISTRY
-# ════════════════════════════════════════════════════════════════════
+# ── pictures inside project folders ─────────────────────────────────
 
 - src: 20260420 UV-Vis Spectroscopy/photos/samples/samples3.jpeg
   caption: The amber bottle shelf
   science: Chemistry
-  toy: UV-Vis
 - src: 20260420 UV-Vis Spectroscopy/photos/samples/samples4.jpeg
   caption: Everything coloured we could find
   science: Chemistry
-  toy: UV-Vis
 - src: 20260420 UV-Vis Spectroscopy/photos/samples/samples5.jpeg
   caption: Cuvettes loaded
   science: Chemistry
-  toy: UV-Vis
 - src: 20260420 UV-Vis Spectroscopy/photos/samples/samples7.jpeg
   caption: Yellow in the beam
   science: Chemistry
-  toy: UV-Vis
 - src: 20260420 UV-Vis Spectroscopy/photos/setup/setup5.jpeg
   caption: Inside the sample compartment
   science: Chemistry
-  toy: UV-Vis
-- src: gallery/photos/20260629 The Spectrophotometer.jpeg
-  caption: The spectrophotometer and its cuvette holder
-  science: Chemistry
-  toy: UV-Vis
-
-# The IR work used the Nicolet 380 at the shared lab — retired with the move,
-# so these carry no toy tag. Nothing we own does IR.
 - src: 20260419 IR Spectroscopy/photos/setup/setup3.jpeg
   caption: The bench setup, laptop attached
   science: Chemistry
-
-- src: gallery/photos/20260601 The Temperature Probe.jpeg
-  caption: The probe that goes in everything
-  science: Chemistry
-  toy: Temperature
-
 - src: 20260411 Centrifuge/photos/samples/samples7.jpeg
   caption: Colour-coded by condition
   science: Chemistry
-  toy: Conductivity
 - src: 20260411 Centrifuge/photos/samples/samples9.jpeg
   caption: Rack of everything
   science: Chemistry
-  toy: pH
 - src: 20260411 Centrifuge/photos/samples/samples12.jpeg
   caption: Blue and orange
   science: Chemistry
-  toy: Conductivity
 - src: 20260411 Centrifuge/photos/setup/setup1.jpeg
   caption: The centrifuge, spun down
   science: Chemistry
-  toy: pH
 - src: 20260411 Centrifuge/photos/setup/setup3.jpeg
   caption: Weighing it out
   science: Chemistry
-  toy: pH
 - src: 20260411 Centrifuge/photos/setup/setup5.jpeg
   caption: The mixer, mid-bench
   science: Chemistry
-  toy: pH
-- src: gallery/photos/20260628 pH And Conductivity.jpeg
-  caption: pH and conductivity, side by side
-  science: Chemistry
-  toy: pH
-
-# ════════════════════════════════════════════════════════════════════
-# PHYSICS
-# ════════════════════════════════════════════════════════════════════
-
-- src: gallery/photos/20250209 Soldering.jpeg
-  caption: Soldering, scope on standby
-  science: Physics
-  tech: Electromagnetism
-- src: gallery/photos/20260629 Force Motion Photogate.jpeg
-  caption: Force, motion, photogate
-  science: Physics
-  toy: Force
-- src: gallery/photos/20260629 Gas Pressure And Turbidity.jpeg
-  caption: Gas pressure and turbidity
-  science: Physics
-  toy: Pressure
-- src: gallery/photos/20260629 The Magnetic Field Sensor.jpeg
-  caption: The 3-axis magnetic field sensor
-  science: Physics
-  toy: Magnetism
-
-# The four-point probe itself was a shared-lab instrument; the jig that held
-# the coupons was ours, printed downstairs.
 - src: 20260404 Four Point Probe/photos/samples/samples2.jpeg
   caption: Foil, leaf, spoon, key
-  note: Anything in the house that conducts
   science: Physics
-  tech: Electromagnetism
 - src: 20260404 Four Point Probe/photos/setup/setup13.jpeg
   caption: Four probes down
   science: Physics
-  tech: Electromagnetism
-- src: gallery/photos/20260601 A Vacuum Chamber.jpeg
-  caption: A vacuum chamber, up close
-  science: Physics
-
-# ════════════════════════════════════════════════════════════════════
-# MATHEMATICS — the analysis, not the apparatus. Every plot on the site
-# was drawn by matplotlib, which is what makes this a real tab and not a
-# placeholder.
-# ════════════════════════════════════════════════════════════════════
-
 - src: 20260420 UV-Vis Spectroscopy/output/images/uvvis_overlay.png
   caption: Four traces, one axis
   science: Mathematics
-  toy: Matplotlib
 - src: 20260420 UV-Vis Spectroscopy/output/images/fluoromax_quinine.png
   caption: Quinine, emitting
   science: Mathematics
-  toy: Matplotlib
 - src: 20260419 IR Spectroscopy/output/images/chem_oh_spectrum.png
   caption: That fat O–H band
   science: Mathematics
-  toy: Matplotlib
 - src: 20260404 Four Point Probe/output/mean_sheet_resistance.png
   caption: Sheet resistance, at last
   science: Mathematics
-  toy: Matplotlib
-- src: gallery/photos/20250101 The Art Of Problem Solving.jpeg
-  caption: The Art of Problem Solving
-  science: Mathematics
-  tech: [Numeric, Symbolic, Graphic]
-- src: gallery/photos/20250401 Davidson Academy.jpeg
-  caption: Davidson Academy
-  science: Mathematics
-  tech: Graphic
-
-# ════════════════════════════════════════════════════════════════════
-# COMPUTING
-# ════════════════════════════════════════════════════════════════════
-
 - src: 20250225 Catfood/output/catfood_preference.png
   caption: He has a preference
-  note: p = 0.03
   science: Computing
-  toy: SciPy
 - src: 20250225 Catfood/photos/setup/setup5.jpeg
   caption: Two bowls, twenty trials
-  science: Computing
-  toy: SciPy
-- src: gallery/photos/20240210 Mi.jpeg
-  caption: Mi the chemist
   science: Computing
 - src: 20250225 Catfood/photos/setup/setup9.jpeg
   caption: Mi came back
   science: Computing
-- src: gallery/photos/20260601 The Plan On Poster Board.jpeg
-  caption: The plan, on poster board
-  science: Computing
-- src: gallery/photos/20260601 Floor Work.jpeg
-  caption: Floor work, cat supervising
-  science: Computing
 
-# ════════════════════════════════════════════════════════════════════
-# PROJECT CARDS — these link out to a write-up instead of opening a photo.
-# Dated by the project folder, so a card sits with the work it came from.
-# ════════════════════════════════════════════════════════════════════
+# ── project cards ───────────────────────────────────────────────────
 
 - folder: 20260420 UV-Vis Spectroscopy
   hero: photos/samples/samples6.jpeg
   science: Chemistry
-  toy: UV-Vis
 - folder: 20260419 IR Spectroscopy
   hero: photos/setup/setup11.jpeg
   science: Chemistry
 - folder: 20260411 Centrifuge
   hero: photos/samples/samples1.jpeg
   science: Chemistry
-  toy: pH
 - folder: 20260405 Melting Point
   hero: photos/setup/setup3.jpeg
   science: Chemistry
-  toy: Temperature
 - folder: 20260404 Four Point Probe
   hero: photos/samples/samples3.jpeg
   science: Physics
-  tech: Electromagnetism
 - folder: 20260401 Genes in Space
   hero: photos/photo.jpeg
   science: Biology
-  toy: PCR
 - folder: 20250225 Catfood
   hero: photos/setup/setup1.jpeg
   science: Computing
-  toy: SciPy

@@ -1,1663 +1,749 @@
 {
   "tiles": [
     {
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "The Sun, turning over",
       "kind": "photo",
-      "src": "/projects/gallery/photos/20260724%20The%20Sun.mp4",
-      "full": "/projects/gallery/photos/20260724%20The%20Sun.mp4",
-      "w": 540,
-      "h": 960,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "video": true,
-      "poster": "/projects/gallery/photos/20260724%20The%20Sun.poster.jpg",
-      "note": "Full-disc clip through the solar filter",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
-    },
-    {
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "M 31",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260730-m-31-87092b.jpg",
-      "full": "/projects/gallery/photos/20260730%20M%2031.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "25 × 20s — the dust lane and M110, without touching the stretch",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
-    },
-    {
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "NGC 7000",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260730-ngc-7000-field-766f60.jpg",
-      "full": "/projects/gallery/photos/20260730%20NGC%207000%20Field.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "20 × 20s",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
-    },
-    {
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "M 13",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260728-m-13-2a7f3c.jpg",
-      "full": "/projects/gallery/photos/20260728%20M%2013.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "5 × 60s",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
-    },
-    {
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "M 51",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260704-m-51-d61bf0.jpg",
-      "full": "/projects/gallery/photos/20260704%20M%2051.jpg",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260704-m-51-083c22.jpg",
+      "full": "/projects/gallery/astronomy/20260704%20M%2051.jpg",
       "w": 562,
       "h": 1000,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "30 × 10s",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
+      "date": "2026-07"
     },
     {
+      "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "NGC 5907",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260704-ngc-5907-b60858.jpg",
-      "full": "/projects/gallery/photos/20260704%20NGC%205907.jpg",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260704-ngc-5907-44825d.jpg",
+      "full": "/projects/gallery/astronomy/20260704%20NGC%205907.jpg",
       "w": 562,
       "h": 1000,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "9 × 10s",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
+      "date": "2026-07"
     },
     {
+      "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
-      "caption": "Albireo",
+      "caption": "The Sun",
+      "src": "/projects/gallery/astronomy/20260724%20The%20Sun.mp4",
+      "full": "/projects/gallery/astronomy/20260724%20The%20Sun.mp4",
+      "w": 540,
+      "h": 960,
+      "date": "2026-07",
+      "video": true,
+      "poster": "/projects/gallery/astronomy/20260724%20The%20Sun.poster.jpg"
+    },
+    {
       "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260729-albireo-field-of-spectra-73f413.jpg",
-      "full": "/projects/gallery/photos/20260729%20Albireo%20Field%20Of%20Spectra.jpg",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "M 13",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260728-m-13-3dcf3d.jpg",
+      "full": "/projects/gallery/astronomy/20260728%20M%2013.jpg",
       "w": 562,
       "h": 1000,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "Every star in the field smeared into its own spectrum — by accident",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
+      "date": "2026-07"
     },
     {
+      "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
-      "caption": "Vega, dispersed",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260729-vega-dispersed-e38f52.jpg",
-      "full": "/projects/gallery/photos/20260729%20Vega%20Dispersed.jpg",
+      "caption": "Vega Dispersed LP",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260728-vega-dispersed-lp-825510.jpg",
+      "full": "/projects/gallery/astronomy/20260728%20Vega%20Dispersed%20LP.jpg",
       "w": 562,
       "h": 1000,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "Grating mounted backwards",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
+      "date": "2026-07"
     },
     {
+      "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
-      "caption": "Vega, dispersed",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260728-vega-dispersed-lp-7b2499.jpg",
-      "full": "/projects/gallery/photos/20260728%20Vega%20Dispersed%20LP.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "1 × 10s, light-pollution filter",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
-    },
-    {
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "Juno",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260729-juno-before-d917b8.jpg",
-      "full": "/projects/gallery/photos/20260729%20Juno%20Before.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "Before",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
-    },
-    {
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "Juno",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260729-juno-after-a71d7f.jpg",
-      "full": "/projects/gallery/photos/20260729%20Juno%20After.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "Twenty-five minutes later — it moved",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
-    },
-    {
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "Vega's Balmer series",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260729-vega-balmer-series-3414bb.png",
-      "full": "/projects/gallery/photos/20260729%20Vega%20Balmer%20Series.png",
-      "w": 1000,
-      "h": 418,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "30 × 5s. All four hydrogen lines at 18–22 sigma",
-      "techs": [
-        "Measurements"
-      ],
-      "tech_slugs": [
-        "measurements"
-      ]
-    },
-    {
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "Wavelength solution",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260729-wavelength-solution-d69779.png",
-      "full": "/projects/gallery/photos/20260729%20Wavelength%20Solution.png",
-      "w": 1000,
-      "h": 500,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "0.185 nm rms across 246 nm — the out-of-sample number, not the flattering one",
-      "techs": [
-        "Measurements"
-      ],
-      "tech_slugs": [
-        "measurements"
-      ]
-    },
-    {
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "A0V against K3II",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260729-a0v-against-k3ii-2c87ad.png",
-      "full": "/projects/gallery/photos/20260729%20A0V%20Against%20K3II.png",
+      "caption": "A0V Against K3II",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-a0v-against-k3ii-961f07.png",
+      "full": "/projects/gallery/astronomy/20260729%20A0V%20Against%20K3II.png",
       "w": 1000,
       "h": 454,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "Four deep hydrogen lines against a forest of metal lines. Albireo rests on 3 subs — suggestive, not settled",
-      "techs": [
-        "Measurements"
-      ],
-      "tech_slugs": [
-        "measurements"
-      ]
+      "date": "2026-07"
     },
     {
-      "science": "Computing",
-      "science_slug": "comp",
-      "caption": "The plan, on poster board",
       "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260601-the-plan-on-poster-board-9eaaf3.jpeg",
-      "full": "/projects/gallery/photos/20260601%20The%20Plan%20On%20Poster%20Board.jpeg",
-      "w": 1000,
-      "h": 416,
-      "date": "2026-06",
-      "date_label": "June 2026"
-    },
-    {
-      "science": "Physics",
-      "science_slug": "phys",
-      "caption": "Force, motion, photogate",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260629-force-motion-photogate-538db9.jpeg",
-      "full": "/projects/gallery/photos/20260629%20Force%20Motion%20Photogate.jpeg",
-      "w": 1000,
-      "h": 750,
-      "date": "2026-06",
-      "date_label": "June 2026",
-      "toy": "Force",
-      "toy_slug": "force",
-      "techs": [
-        "Mechanics"
-      ],
-      "tech_slugs": [
-        "mechanics"
-      ]
-    },
-    {
-      "science": "Chemistry",
-      "science_slug": "chem",
-      "caption": "The spectrophotometer and its cuvette holder",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260629-the-spectrophotometer-604019.jpeg",
-      "full": "/projects/gallery/photos/20260629%20The%20Spectrophotometer.jpeg",
-      "w": 1000,
-      "h": 750,
-      "date": "2026-06",
-      "date_label": "June 2026",
-      "toy": "UV-Vis",
-      "toy_slug": "uv-vis",
-      "techs": [
-        "Spectroscopy"
-      ],
-      "tech_slugs": [
-        "spectroscopy"
-      ]
-    },
-    {
-      "science": "Biology",
-      "science_slug": "bio",
-      "caption": "The stereo scope on its boom",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260601-the-stereo-scope-1ea25b.jpeg",
-      "full": "/projects/gallery/photos/20260601%20The%20Stereo%20Scope.jpeg",
-      "w": 1000,
-      "h": 250,
-      "date": "2026-06",
-      "date_label": "June 2026",
-      "toy": "Stereo",
-      "toy_slug": "stereo",
-      "techs": [
-        "Microscopes"
-      ],
-      "tech_slugs": [
-        "microscopes"
-      ]
-    },
-    {
       "science": "Astronomy",
       "science_slug": "astro",
-      "caption": "The Seestar, folded",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260601-the-seestar-folded-80122c.jpeg",
-      "full": "/projects/gallery/photos/20260601%20The%20Seestar%20Folded.jpeg",
-      "w": 1000,
-      "h": 250,
-      "date": "2026-06",
-      "date_label": "June 2026",
-      "toy": "Optical",
-      "toy_slug": "optical",
-      "techs": [
-        "Telescopes"
-      ],
-      "tech_slugs": [
-        "telescopes"
-      ]
+      "caption": "Albireo Field Of Spectra",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-albireo-field-of-spec-dfcc1e.jpg",
+      "full": "/projects/gallery/astronomy/20260729%20Albireo%20Field%20Of%20Spectra.jpg",
+      "w": 562,
+      "h": 1000,
+      "date": "2026-07"
     },
     {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Juno After",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-juno-after-45a8e4.jpg",
+      "full": "/projects/gallery/astronomy/20260729%20Juno%20After.jpg",
+      "w": 562,
+      "h": 1000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Juno Before",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-juno-before-1f79a4.jpg",
+      "full": "/projects/gallery/astronomy/20260729%20Juno%20Before.jpg",
+      "w": 562,
+      "h": 1000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Vega Balmer Series",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-vega-balmer-series-722f74.png",
+      "full": "/projects/gallery/astronomy/20260729%20Vega%20Balmer%20Series.png",
+      "w": 1000,
+      "h": 418,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Vega Dispersed",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-vega-dispersed-4206f1.jpg",
+      "full": "/projects/gallery/astronomy/20260729%20Vega%20Dispersed.jpg",
+      "w": 562,
+      "h": 1000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Wavelength Solution",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-wavelength-solution-eb7cfe.png",
+      "full": "/projects/gallery/astronomy/20260729%20Wavelength%20Solution.png",
+      "w": 1000,
+      "h": 500,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "M 31",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260730-m-31-73639e.jpg",
+      "full": "/projects/gallery/astronomy/20260730%20M%2031.jpg",
+      "w": 562,
+      "h": 1000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "NGC 7000 Field",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260730-ngc-7000-field-fa0caf.jpg",
+      "full": "/projects/gallery/astronomy/20260730%20NGC%207000%20Field.jpg",
+      "w": 562,
+      "h": 1000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
       "science": "Computing",
       "science_slug": "comp",
-      "caption": "Floor work, cat supervising",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260601-floor-work-a527a1.jpeg",
-      "full": "/projects/gallery/photos/20260601%20Floor%20Work.jpeg",
+      "caption": "Floor Work",
+      "src": "/projects/gallery/thumbs/gallery-computing-20260601-floor-work-f10320.jpeg",
+      "full": "/projects/gallery/computing/20260601%20Floor%20Work.jpeg",
       "w": 1000,
       "h": 415,
-      "date": "2026-06",
-      "date_label": "June 2026"
+      "date": "2026-06"
     },
     {
+      "kind": "photo",
       "science": "Physics",
       "science_slug": "phys",
-      "caption": "Gas pressure and turbidity",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260629-gas-pressure-and-turbidi-da253b.jpeg",
-      "full": "/projects/gallery/photos/20260629%20Gas%20Pressure%20And%20Turbidity.jpeg",
-      "w": 1000,
-      "h": 750,
-      "date": "2026-06",
-      "date_label": "June 2026",
-      "toy": "Pressure",
-      "toy_slug": "pressure",
-      "techs": [
-        "Thermodynamics"
-      ],
-      "tech_slugs": [
-        "thermodynamics"
-      ]
-    },
-    {
-      "science": "Chemistry",
-      "science_slug": "chem",
-      "caption": "The probe that goes in everything",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260601-the-temperature-probe-db179c.jpeg",
-      "full": "/projects/gallery/photos/20260601%20The%20Temperature%20Probe.jpeg",
+      "caption": "A Vacuum Chamber",
+      "src": "/projects/gallery/thumbs/gallery-physics-20260601-a-vacuum-chamber-fcda86.jpeg",
+      "full": "/projects/gallery/physics/20260601%20A%20Vacuum%20Chamber.jpeg",
       "w": 1000,
       "h": 416,
-      "date": "2026-06",
-      "date_label": "June 2026",
-      "toy": "Temperature",
-      "toy_slug": "temperature",
-      "techs": [
-        "Thermal"
-      ],
-      "tech_slugs": [
-        "thermal"
-      ]
+      "date": "2026-06"
     },
     {
+      "kind": "photo",
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "The Temperature Probe",
+      "src": "/projects/gallery/thumbs/gallery-chemistry-20260601-the-temperature-probe-12bbea.jpeg",
+      "full": "/projects/gallery/chemistry/20260601%20The%20Temperature%20Probe.jpeg",
+      "w": 1000,
+      "h": 416,
+      "date": "2026-06"
+    },
+    {
+      "kind": "photo",
       "science": "Biology",
       "science_slug": "bio",
-      "caption": "GELATO, out of the box",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260601-gelato-f1d754.jpeg",
-      "full": "/projects/gallery/photos/20260601%20GELATO.jpeg",
+      "caption": "GELATO",
+      "src": "/projects/gallery/thumbs/gallery-biology-20260601-gelato-097120.jpeg",
+      "full": "/projects/gallery/biology/20260601%20GELATO.jpeg",
       "w": 1000,
       "h": 287,
-      "date": "2026-06",
-      "date_label": "June 2026",
-      "toy": "Electrophoresis",
-      "toy_slug": "electrophoresis",
-      "techs": [
-        "Genomics"
-      ],
-      "tech_slugs": [
-        "genomics"
-      ]
+      "date": "2026-06"
     },
     {
+      "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
-      "caption": "Dusk, from the balcony",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260601-dusk-from-the-balcony-4d5d95.jpeg",
-      "full": "/projects/gallery/photos/20260601%20Dusk%20From%20The%20Balcony.jpeg",
+      "caption": "Dusk From The Balcony",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260601-dusk-from-the-balcony-0efa63.jpeg",
+      "full": "/projects/gallery/astronomy/20260601%20Dusk%20From%20The%20Balcony.jpeg",
       "w": 1000,
       "h": 416,
-      "date": "2026-06",
-      "date_label": "June 2026",
-      "note": "The sky we actually get"
+      "date": "2026-06"
     },
     {
+      "kind": "photo",
+      "science": "Computing",
+      "science_slug": "comp",
+      "caption": "The Plan On Poster Board",
+      "src": "/projects/gallery/thumbs/gallery-computing-20260601-the-plan-on-poster-bo-3fa206.jpeg",
+      "full": "/projects/gallery/computing/20260601%20The%20Plan%20On%20Poster%20Board.jpeg",
+      "w": 1000,
+      "h": 416,
+      "date": "2026-06"
+    },
+    {
+      "kind": "photo",
       "science": "Physics",
       "science_slug": "phys",
-      "caption": "The 3-axis magnetic field sensor",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260629-the-magnetic-field-senso-280eaf.jpeg",
-      "full": "/projects/gallery/photos/20260629%20The%20Magnetic%20Field%20Sensor.jpeg",
+      "caption": "Force Motion Photogate",
+      "src": "/projects/gallery/thumbs/gallery-physics-20260629-force-motion-photogate-5e1d7e.jpeg",
+      "full": "/projects/gallery/physics/20260629%20Force%20Motion%20Photogate.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-06",
-      "date_label": "June 2026",
-      "toy": "Magnetism",
-      "toy_slug": "magnetism",
-      "techs": [
-        "Electromagnetism"
-      ],
-      "tech_slugs": [
-        "electromagnetism"
-      ]
+      "date": "2026-06"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
-      "caption": "pH and conductivity, side by side",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260628-ph-and-conductivity-5163e8.jpeg",
-      "full": "/projects/gallery/photos/20260628%20pH%20And%20Conductivity.jpeg",
+      "caption": "pH And Conductivity",
+      "src": "/projects/gallery/thumbs/gallery-chemistry-20260628-ph-and-conductivity-375d35.jpeg",
+      "full": "/projects/gallery/chemistry/20260628%20pH%20And%20Conductivity.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-06",
-      "date_label": "June 2026",
-      "toy": "pH",
-      "toy_slug": "ph",
-      "techs": [
-        "Electrochemistry"
-      ],
-      "tech_slugs": [
-        "electrochemistry"
-      ]
+      "date": "2026-06"
     },
     {
+      "kind": "photo",
       "science": "Biology",
       "science_slug": "bio",
-      "caption": "Spirometer, mouthpiece off",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260601-spirometer-c7f185.jpeg",
-      "full": "/projects/gallery/photos/20260601%20Spirometer.jpeg",
+      "caption": "Spirometer",
+      "src": "/projects/gallery/thumbs/gallery-biology-20260601-spirometer-a88b91.jpeg",
+      "full": "/projects/gallery/biology/20260601%20Spirometer.jpeg",
       "w": 1000,
       "h": 250,
-      "date": "2026-06",
-      "date_label": "June 2026",
-      "toy": "Spirometer",
-      "toy_slug": "spirometer",
-      "techs": [
-        "Physiology"
-      ],
-      "tech_slugs": [
-        "physiology"
-      ]
+      "date": "2026-06"
     },
     {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "The Seestar Folded",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20260601-the-seestar-folded-0048e0.jpeg",
+      "full": "/projects/gallery/astronomy/20260601%20The%20Seestar%20Folded.jpeg",
+      "w": 1000,
+      "h": 250,
+      "date": "2026-06"
+    },
+    {
+      "kind": "photo",
       "science": "Physics",
       "science_slug": "phys",
-      "caption": "A vacuum chamber, up close",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260601-a-vacuum-chamber-3b115c.jpeg",
-      "full": "/projects/gallery/photos/20260601%20A%20Vacuum%20Chamber.jpeg",
+      "caption": "Gas Pressure And Turbidity",
+      "src": "/projects/gallery/thumbs/gallery-physics-20260629-gas-pressure-and-turbid-ce7a0b.jpeg",
+      "full": "/projects/gallery/physics/20260629%20Gas%20Pressure%20And%20Turbidity.jpeg",
       "w": 1000,
-      "h": 416,
-      "date": "2026-06",
-      "date_label": "June 2026"
+      "h": 750,
+      "date": "2026-06"
     },
     {
+      "kind": "photo",
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "The Spectrophotometer",
+      "src": "/projects/gallery/thumbs/gallery-chemistry-20260629-the-spectrophotometer-821e64.jpeg",
+      "full": "/projects/gallery/chemistry/20260629%20The%20Spectrophotometer.jpeg",
+      "w": 1000,
+      "h": 750,
+      "date": "2026-06"
+    },
+    {
+      "kind": "photo",
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "The Stereo Scope",
+      "src": "/projects/gallery/thumbs/gallery-biology-20260601-the-stereo-scope-278fd7.jpeg",
+      "full": "/projects/gallery/biology/20260601%20The%20Stereo%20Scope.jpeg",
+      "w": 1000,
+      "h": 250,
+      "date": "2026-06"
+    },
+    {
+      "kind": "photo",
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "The Magnetic Field Sensor",
+      "src": "/projects/gallery/thumbs/gallery-physics-20260629-the-magnetic-field-sens-1ab4bb.jpeg",
+      "full": "/projects/gallery/physics/20260629%20The%20Magnetic%20Field%20Sensor.jpeg",
+      "w": 1000,
+      "h": 750,
+      "date": "2026-06"
+    },
+    {
+      "kind": "photo",
       "science": "Mathematics",
       "science_slug": "math",
       "caption": "Four traces, one axis",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-output-images-uvvis-3dcbdf.png",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/output/images/uvvis_overlay.png",
       "w": 1000,
       "h": 411,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "Matplotlib",
-      "toy_slug": "matplotlib",
-      "techs": [
-        "Graphic"
-      ],
-      "tech_slugs": [
-        "graphic"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Physics",
       "science_slug": "phys",
       "caption": "Foil, leaf, spoon, key",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-samples-samples-0a852f.jpeg",
       "full": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples2.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "note": "Anything in the house that conducts",
-      "techs": [
-        "Electromagnetism"
-      ],
-      "tech_slugs": [
-        "electromagnetism"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "The amber bottle shelf",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-5776c3.jpeg",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples3.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "UV-Vis",
-      "toy_slug": "uv-vis",
-      "techs": [
-        "Spectroscopy"
-      ],
-      "tech_slugs": [
-        "spectroscopy"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "project",
       "science": "Biology",
       "science_slug": "bio",
       "caption": "Meow to Mars — Will Space Help or Hurt Mi's Heart?",
-      "href": "/projects/20260401%20Genes%20in%20Space/",
-      "kind": "project",
       "src": "/projects/gallery/thumbs/20260401-genes-in-space-photos-photo-0e3200.jpeg",
       "full": "/projects/20260401%20Genes%20in%20Space/photos/photo.jpeg",
       "w": 1000,
       "h": 749,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "PCR",
-      "toy_slug": "pcr",
-      "techs": [
-        "Genomics"
-      ],
-      "tech_slugs": [
-        "genomics"
-      ]
+      "href": "/projects/20260401%20Genes%20in%20Space/",
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Mathematics",
       "science_slug": "math",
       "caption": "Quinine, emitting",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-output-images-fluor-22a121.png",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/output/images/fluoromax_quinine.png",
       "w": 1000,
       "h": 411,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "Matplotlib",
-      "toy_slug": "matplotlib",
-      "techs": [
-        "Graphic"
-      ],
-      "tech_slugs": [
-        "graphic"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Physics",
       "science_slug": "phys",
       "caption": "Four probes down",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-setup-setup13-e3cba5.jpeg",
       "full": "/projects/20260404%20Four%20Point%20Probe/photos/setup/setup13.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "techs": [
-        "Electromagnetism"
-      ],
-      "tech_slugs": [
-        "electromagnetism"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Everything coloured we could find",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-9753ba.jpeg",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples4.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "UV-Vis",
-      "toy_slug": "uv-vis",
-      "techs": [
-        "Spectroscopy"
-      ],
-      "tech_slugs": [
-        "spectroscopy"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Mathematics",
       "science_slug": "math",
       "caption": "That fat O–H band",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260419-ir-spectroscopy-output-images-chem-oh-s-a7cbd4.png",
       "full": "/projects/20260419%20IR%20Spectroscopy/output/images/chem_oh_spectrum.png",
       "w": 1000,
       "h": 407,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "Matplotlib",
-      "toy_slug": "matplotlib",
-      "techs": [
-        "Graphic"
-      ],
-      "tech_slugs": [
-        "graphic"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "project",
       "science": "Physics",
       "science_slug": "phys",
       "caption": "Four-Point Probe of Sheet Resistance",
-      "href": "/projects/20260404%20Four%20Point%20Probe/",
-      "kind": "project",
       "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-samples-samples-353fad.jpeg",
       "full": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples3.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "techs": [
-        "Electromagnetism"
-      ],
-      "tech_slugs": [
-        "electromagnetism"
-      ]
+      "href": "/projects/20260404%20Four%20Point%20Probe/",
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Cuvettes loaded",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-14bd0c.jpeg",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples5.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "UV-Vis",
-      "toy_slug": "uv-vis",
-      "techs": [
-        "Spectroscopy"
-      ],
-      "tech_slugs": [
-        "spectroscopy"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Mathematics",
       "science_slug": "math",
       "caption": "Sheet resistance, at last",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260404-four-point-probe-output-mean-sheet-resi-03f3fa.png",
       "full": "/projects/20260404%20Four%20Point%20Probe/output/mean_sheet_resistance.png",
       "w": 1000,
       "h": 494,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "Matplotlib",
-      "toy_slug": "matplotlib",
-      "techs": [
-        "Graphic"
-      ],
-      "tech_slugs": [
-        "graphic"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Yellow in the beam",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-8f53f0.jpeg",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples7.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "UV-Vis",
-      "toy_slug": "uv-vis",
-      "techs": [
-        "Spectroscopy"
-      ],
-      "tech_slugs": [
-        "spectroscopy"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Inside the sample compartment",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-setup-setup5-0c6959.jpeg",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/setup/setup5.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "UV-Vis",
-      "toy_slug": "uv-vis",
-      "techs": [
-        "Spectroscopy"
-      ],
-      "tech_slugs": [
-        "spectroscopy"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "The bench setup, laptop attached",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260419-ir-spectroscopy-photos-setup-setup3-1e7c1d.jpeg",
       "full": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup3.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026"
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Colour-coded by condition",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-samples-samples7-8d622c.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/samples/samples7.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "Conductivity",
-      "toy_slug": "conductivity",
-      "techs": [
-        "Electrochemistry"
-      ],
-      "tech_slugs": [
-        "electrochemistry"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Rack of everything",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-samples-samples9-d4a355.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/samples/samples9.jpeg",
       "w": 750,
       "h": 1000,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "pH",
-      "toy_slug": "ph",
-      "techs": [
-        "Electrochemistry"
-      ],
-      "tech_slugs": [
-        "electrochemistry"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Blue and orange",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-samples-samples12-3a33e6.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/samples/samples12.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "Conductivity",
-      "toy_slug": "conductivity",
-      "techs": [
-        "Electrochemistry"
-      ],
-      "tech_slugs": [
-        "electrochemistry"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "The centrifuge, spun down",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-setup-setup1-a4dbf4.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/setup/setup1.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "pH",
-      "toy_slug": "ph",
-      "techs": [
-        "Electrochemistry"
-      ],
-      "tech_slugs": [
-        "electrochemistry"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Weighing it out",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-setup-setup3-290920.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/setup/setup3.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "pH",
-      "toy_slug": "ph",
-      "techs": [
-        "Electrochemistry"
-      ],
-      "tech_slugs": [
-        "electrochemistry"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "The mixer, mid-bench",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-setup-setup5-76a806.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/setup/setup5.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "pH",
-      "toy_slug": "ph",
-      "techs": [
-        "Electrochemistry"
-      ],
-      "tech_slugs": [
-        "electrochemistry"
-      ]
+      "date": "2026-04"
     },
     {
+      "kind": "project",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "UV-Vis Spectroscopy",
-      "href": "/projects/20260420%20UV-Vis%20Spectroscopy/",
-      "kind": "project",
       "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-a96c07.jpeg",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples6.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "UV-Vis",
-      "toy_slug": "uv-vis",
-      "techs": [
-        "Spectroscopy"
-      ],
-      "tech_slugs": [
-        "spectroscopy"
-      ]
+      "href": "/projects/20260420%20UV-Vis%20Spectroscopy/",
+      "date": "2026-04"
     },
     {
+      "kind": "project",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "IR Spectroscopy",
-      "href": "/projects/20260419%20IR%20Spectroscopy/",
-      "kind": "project",
       "src": "/projects/gallery/thumbs/20260419-ir-spectroscopy-photos-setup-setup11-51ccc5.jpeg",
       "full": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup11.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026"
+      "href": "/projects/20260419%20IR%20Spectroscopy/",
+      "date": "2026-04"
     },
     {
+      "kind": "project",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Centrifugation and pH of Everyday Liquids",
-      "href": "/projects/20260411%20Centrifuge/",
-      "kind": "project",
       "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-samples-samples1-934cd3.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/samples/samples1.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "pH",
-      "toy_slug": "ph",
-      "techs": [
-        "Electrochemistry"
-      ],
-      "tech_slugs": [
-        "electrochemistry"
-      ]
+      "href": "/projects/20260411%20Centrifuge/",
+      "date": "2026-04"
     },
     {
+      "kind": "project",
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Melting Point",
-      "href": "/projects/20260405%20Melting%20Point/",
-      "kind": "project",
       "src": "/projects/gallery/thumbs/20260405-melting-point-photos-setup-setup3-a43b52.jpeg",
       "full": "/projects/20260405%20Melting%20Point/photos/setup/setup3.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "Temperature",
-      "toy_slug": "temperature",
-      "techs": [
-        "Thermal"
-      ],
-      "tech_slugs": [
-        "thermal"
-      ]
+      "href": "/projects/20260405%20Melting%20Point/",
+      "date": "2026-04"
     },
     {
+      "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "Horsehead",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20251217-horsehead-8d4628.jpeg",
-      "full": "/projects/gallery/photos/20251217%20Horsehead.jpeg",
+      "src": "/projects/gallery/thumbs/gallery-astronomy-20251217-horsehead-a64035.jpeg",
+      "full": "/projects/gallery/astronomy/20251217%20Horsehead.jpeg",
       "w": 1000,
       "h": 1000,
-      "date": "2025-12",
-      "date_label": "December 2025",
-      "toy": "Astrometry",
-      "toy_slug": "astrometry",
-      "techs": [
-        "Measurements"
-      ],
-      "tech_slugs": [
-        "measurements"
-      ]
+      "date": "2025-12"
     },
     {
+      "kind": "photo",
       "science": "Mathematics",
       "science_slug": "math",
       "caption": "Davidson Academy",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20250401-davidson-academy-c3097a.jpeg",
-      "full": "/projects/gallery/photos/20250401%20Davidson%20Academy.jpeg",
+      "src": "/projects/gallery/thumbs/gallery-mathematics-20250401-davidson-academy-10bca9.jpeg",
+      "full": "/projects/gallery/mathematics/20250401%20Davidson%20Academy.jpeg",
       "w": 1000,
       "h": 416,
-      "date": "2025-04",
-      "date_label": "April 2025",
-      "techs": [
-        "Graphic"
-      ],
-      "tech_slugs": [
-        "graphic"
-      ]
+      "date": "2025-04"
     },
     {
+      "kind": "photo",
       "science": "Biology",
       "science_slug": "bio",
-      "caption": "Tissue section",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20250305-tissue-section-daa63a.jpg",
-      "full": "/projects/gallery/photos/20250305%20Tissue%20Section.jpg",
-      "w": 1000,
-      "h": 750,
-      "date": "2025-03",
-      "date_label": "March 2025",
-      "note": "400×",
-      "toy": "Compound",
-      "toy_slug": "compound",
-      "techs": [
-        "Microscopes"
-      ],
-      "tech_slugs": [
-        "microscopes"
-      ]
-    },
-    {
-      "science": "Biology",
-      "science_slug": "bio",
-      "caption": "Leaf epidermis",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20250307-leaf-epidermis-1ad55a.jpg",
-      "full": "/projects/gallery/photos/20250307%20Leaf%20Epidermis.jpg",
-      "w": 1000,
-      "h": 750,
-      "date": "2025-03",
-      "date_label": "March 2025",
-      "note": "Stomata everywhere",
-      "toy": "Stereo",
-      "toy_slug": "stereo",
-      "techs": [
-        "Microscopes"
-      ],
-      "tech_slugs": [
-        "microscopes"
-      ]
-    },
-    {
-      "science": "Biology",
-      "science_slug": "bio",
-      "caption": "Reticulate specimen",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20250301-reticulate-specimen-28bea6.jpg",
-      "full": "/projects/gallery/photos/20250301%20Reticulate%20Specimen.jpg",
+      "caption": "Reticulate Specimen",
+      "src": "/projects/gallery/thumbs/gallery-biology-20250301-reticulate-specimen-4a9c84.jpg",
+      "full": "/projects/gallery/biology/20250301%20Reticulate%20Specimen.jpg",
       "w": 1000,
       "h": 684,
-      "date": "2025-03",
-      "date_label": "March 2025",
-      "note": "Handheld, no stage",
-      "toy": "Surface",
-      "toy_slug": "surface",
-      "techs": [
-        "Microscopes"
-      ],
-      "tech_slugs": [
-        "microscopes"
-      ]
+      "date": "2025-03"
     },
     {
+      "kind": "photo",
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Tissue Section",
+      "src": "/projects/gallery/thumbs/gallery-biology-20250305-tissue-section-c0861e.jpg",
+      "full": "/projects/gallery/biology/20250305%20Tissue%20Section.jpg",
+      "w": 1000,
+      "h": 750,
+      "date": "2025-03"
+    },
+    {
+      "kind": "photo",
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Leaf Epidermis",
+      "src": "/projects/gallery/thumbs/gallery-biology-20250307-leaf-epidermis-3c7083.jpg",
+      "full": "/projects/gallery/biology/20250307%20Leaf%20Epidermis.jpg",
+      "w": 1000,
+      "h": 750,
+      "date": "2025-03"
+    },
+    {
+      "kind": "photo",
       "science": "Computing",
       "science_slug": "comp",
       "caption": "He has a preference",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20250225-catfood-output-catfood-preference-64060f.png",
       "full": "/projects/20250225%20Catfood/output/catfood_preference.png",
       "w": 1000,
       "h": 1000,
-      "date": "2025-02",
-      "date_label": "February 2025",
-      "note": "p = 0.03",
-      "toy": "SciPy",
-      "toy_slug": "scipy",
-      "techs": [
-        "Statistics"
-      ],
-      "tech_slugs": [
-        "statistics"
-      ]
+      "date": "2025-02"
     },
     {
+      "kind": "photo",
       "science": "Physics",
       "science_slug": "phys",
-      "caption": "Soldering, scope on standby",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20250209-soldering-81ce14.jpeg",
-      "full": "/projects/gallery/photos/20250209%20Soldering.jpeg",
+      "caption": "Soldering",
+      "src": "/projects/gallery/thumbs/gallery-physics-20250209-soldering-99053a.jpeg",
+      "full": "/projects/gallery/physics/20250209%20Soldering.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2025-02",
-      "date_label": "February 2025",
-      "techs": [
-        "Electromagnetism"
-      ],
-      "tech_slugs": [
-        "electromagnetism"
-      ]
+      "date": "2025-02"
     },
     {
+      "kind": "photo",
       "science": "Computing",
       "science_slug": "comp",
       "caption": "Two bowls, twenty trials",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20250225-catfood-photos-setup-setup5-faaaee.jpeg",
       "full": "/projects/20250225%20Catfood/photos/setup/setup5.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2025-02",
-      "date_label": "February 2025",
-      "toy": "SciPy",
-      "toy_slug": "scipy",
-      "techs": [
-        "Statistics"
-      ],
-      "tech_slugs": [
-        "statistics"
-      ]
+      "date": "2025-02"
     },
     {
+      "kind": "photo",
       "science": "Computing",
       "science_slug": "comp",
       "caption": "Mi came back",
-      "kind": "photo",
       "src": "/projects/gallery/thumbs/20250225-catfood-photos-setup-setup9-9c51c9.jpeg",
       "full": "/projects/20250225%20Catfood/photos/setup/setup9.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2025-02",
-      "date_label": "February 2025"
+      "date": "2025-02"
     },
     {
+      "kind": "project",
       "science": "Computing",
       "science_slug": "comp",
       "caption": "Red or Green, What Colored Cat Food does Mi Prefer?",
-      "href": "/projects/20250225%20Catfood/",
-      "kind": "project",
       "src": "/projects/gallery/thumbs/20250225-catfood-photos-setup-setup1-71f293.jpeg",
       "full": "/projects/20250225%20Catfood/photos/setup/setup1.jpeg",
       "w": 1000,
       "h": 750,
-      "date": "2025-02",
-      "date_label": "February 2025",
-      "toy": "SciPy",
-      "toy_slug": "scipy",
-      "techs": [
-        "Statistics"
-      ],
-      "tech_slugs": [
-        "statistics"
-      ]
+      "href": "/projects/20250225%20Catfood/",
+      "date": "2025-02"
     },
     {
+      "kind": "photo",
       "science": "Mathematics",
       "science_slug": "math",
-      "caption": "The Art of Problem Solving",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20250101-the-art-of-problem-solvi-a4c8ac.jpeg",
-      "full": "/projects/gallery/photos/20250101%20The%20Art%20Of%20Problem%20Solving.jpeg",
+      "caption": "The Art Of Problem Solving",
+      "src": "/projects/gallery/thumbs/gallery-mathematics-20250101-the-art-of-problem--928b01.jpeg",
+      "full": "/projects/gallery/mathematics/20250101%20The%20Art%20Of%20Problem%20Solving.jpeg",
       "w": 1000,
       "h": 395,
-      "date": "2025-01",
-      "date_label": "January 2025",
-      "techs": [
-        "Numeric",
-        "Symbolic",
-        "Graphic"
-      ],
-      "tech_slugs": [
-        "numeric",
-        "symbolic",
-        "graphic"
-      ]
+      "date": "2025-01"
     },
     {
+      "kind": "photo",
       "science": "Computing",
       "science_slug": "comp",
-      "caption": "Mi the chemist",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20240210-mi-926d8f.jpeg",
-      "full": "/projects/gallery/photos/20240210%20Mi.jpeg",
+      "caption": "Mi",
+      "src": "/projects/gallery/thumbs/gallery-computing-20240210-mi-beeaff.jpeg",
+      "full": "/projects/gallery/computing/20240210%20Mi.jpeg",
       "w": 750,
       "h": 1000,
-      "date": "2024-02",
-      "date_label": "February 2024"
+      "date": "2024-02"
     }
   ],
   "sciences": [
     {
       "science": "Mathematics",
       "slug": "math",
-      "count": 6,
-      "techs": [
-        {
-          "label": "Numeric",
-          "slug": "numeric",
-          "count": 1,
-          "toys": [
-            {
-              "label": "NumPy",
-              "name": "NumPy",
-              "slug": "numpy",
-              "count": 0
-            },
-            {
-              "label": "SciPy",
-              "name": "SciPy",
-              "slug": "scipy",
-              "count": 0
-            }
-          ]
-        },
-        {
-          "label": "Symbolic",
-          "slug": "symbolic",
-          "count": 1,
-          "toys": [
-            {
-              "label": "Wolfram",
-              "name": "Wolfram",
-              "slug": "wolfram",
-              "count": 0
-            }
-          ]
-        },
-        {
-          "label": "Graphic",
-          "slug": "graphic",
-          "count": 6,
-          "toys": [
-            {
-              "label": "Matplotlib",
-              "name": "Matplotlib",
-              "slug": "matplotlib",
-              "count": 4
-            },
-            {
-              "label": "LaTeX",
-              "name": "LaTeX",
-              "slug": "latex",
-              "count": 0
-            }
-          ]
-        }
-      ]
+      "count": 6
     },
     {
       "science": "Computing",
       "slug": "comp",
-      "count": 7,
-      "techs": [
-        {
-          "label": "Statistics",
-          "slug": "statistics",
-          "count": 3,
-          "toys": [
-            {
-              "label": "SciPy",
-              "name": "SciPy",
-              "slug": "scipy",
-              "count": 3
-            }
-          ]
-        },
-        {
-          "label": "Machine Learning",
-          "slug": "machine-learning",
-          "count": 0,
-          "toys": [
-            {
-              "label": "scikit-learn",
-              "name": "scikit-learn",
-              "slug": "scikit-learn",
-              "count": 0
-            },
-            {
-              "label": "PyTorch",
-              "name": "PyTorch",
-              "slug": "pytorch",
-              "count": 0
-            }
-          ]
-        },
-        {
-          "label": "Publishing",
-          "slug": "publishing",
-          "count": 0,
-          "toys": [
-            {
-              "label": "GitHub",
-              "name": "GitHub",
-              "slug": "github",
-              "count": 0
-            },
-            {
-              "label": "Jupyter",
-              "name": "Jupyter",
-              "slug": "jupyter",
-              "count": 0
-            },
-            {
-              "label": "Docker",
-              "name": "Docker",
-              "slug": "docker",
-              "count": 0
-            },
-            {
-              "label": "Zenodo",
-              "name": "Zenodo",
-              "slug": "zenodo",
-              "count": 0
-            }
-          ]
-        }
-      ]
+      "count": 7
     },
     {
       "science": "Physics",
       "slug": "phys",
-      "count": 8,
-      "techs": [
-        {
-          "label": "Mechanics",
-          "slug": "mechanics",
-          "count": 1,
-          "toys": [
-            {
-              "label": "Force",
-              "name": "Vernier Go Direct Force and Acceleration Sensor",
-              "slug": "force",
-              "count": 1
-            },
-            {
-              "label": "Motion",
-              "name": "Vernier Go Direct Motion Detector",
-              "slug": "motion",
-              "count": 0
-            },
-            {
-              "label": "Time",
-              "name": "Vernier Go Direct Photogate",
-              "slug": "time",
-              "count": 0
-            }
-          ]
-        },
-        {
-          "label": "Thermodynamics",
-          "slug": "thermodynamics",
-          "count": 1,
-          "toys": [
-            {
-              "label": "Pressure",
-              "name": "Vernier Go Direct Gas Pressure Sensor",
-              "slug": "pressure",
-              "count": 1
-            },
-            {
-              "label": "Turbidity",
-              "name": "Vernier Go Direct Turbidity",
-              "slug": "turbidity",
-              "count": 0
-            }
-          ]
-        },
-        {
-          "label": "Electromagnetism",
-          "slug": "electromagnetism",
-          "count": 5,
-          "toys": [
-            {
-              "label": "Spectrophotometer",
-              "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
-              "slug": "spectrophotometer",
-              "count": 0
-            },
-            {
-              "label": "Optical Fiber",
-              "name": "Vernier Spectrophotometer Optical Fiber",
-              "slug": "optical-fiber",
-              "count": 0
-            },
-            {
-              "label": "Magnetism",
-              "name": "Vernier Go Direct 3-Axis Magnetic Field Sensor",
-              "slug": "magnetism",
-              "count": 1
-            }
-          ]
-        }
-      ]
+      "count": 8
     },
     {
       "science": "Chemistry",
       "slug": "chem",
-      "count": 19,
-      "techs": [
-        {
-          "label": "Thermal",
-          "slug": "thermal",
-          "count": 2,
-          "toys": [
-            {
-              "label": "Temperature",
-              "name": "Vernier Go Direct Temperature Probe",
-              "slug": "temperature",
-              "count": 2
-            }
-          ]
-        },
-        {
-          "label": "Electrochemistry",
-          "slug": "electrochemistry",
-          "count": 8,
-          "toys": [
-            {
-              "label": "pH",
-              "name": "Vernier Go Direct pH Sensor",
-              "slug": "ph",
-              "count": 6
-            },
-            {
-              "label": "Conductivity",
-              "name": "Vernier Go Direct Conductivity Probe",
-              "slug": "conductivity",
-              "count": 2
-            }
-          ]
-        },
-        {
-          "label": "Spectroscopy",
-          "slug": "spectroscopy",
-          "count": 7,
-          "toys": [
-            {
-              "label": "UV-Vis",
-              "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
-              "slug": "uv-vis",
-              "count": 7
-            },
-            {
-              "label": "Polarimeter",
-              "name": "Vernier Go Direct Polarimeter",
-              "slug": "polarimeter",
-              "count": 0
-            }
-          ]
-        }
-      ]
+      "count": 19
     },
     {
       "science": "Biology",
       "slug": "bio",
-      "count": 7,
-      "techs": [
-        {
-          "label": "Microscopes",
-          "slug": "microscopes",
-          "count": 4,
-          "toys": [
-            {
-              "label": "Surface",
-              "name": "Dino-Lite AF4515T-FUW Digital Microscope",
-              "slug": "surface",
-              "count": 1
-            },
-            {
-              "label": "Stereo",
-              "name": "AmScope SM-4TZ-144 Trinocular Stereo Microscope",
-              "slug": "stereo",
-              "count": 2
-            },
-            {
-              "label": "Compound",
-              "name": "Swift Optical SW380T Trinocular Compound Microscope",
-              "slug": "compound",
-              "count": 1
-            }
-          ]
-        },
-        {
-          "label": "Physiology",
-          "slug": "physiology",
-          "count": 1,
-          "toys": [
-            {
-              "label": "EKG",
-              "name": "Vernier Go Direct EKG Sensor",
-              "slug": "ekg",
-              "count": 0
-            },
-            {
-              "label": "Spirometer",
-              "name": "Vernier Go Direct Spirometer",
-              "slug": "spirometer",
-              "count": 1
-            },
-            {
-              "label": "Respiration",
-              "name": "Vernier Go Direct O2 + CO2 Gas Sensor Bundle",
-              "slug": "respiration",
-              "count": 0
-            }
-          ]
-        },
-        {
-          "label": "Genomics",
-          "slug": "genomics",
-          "count": 2,
-          "toys": [
-            {
-              "label": "PCR",
-              "name": "miniPCR mini16 Thermal Cycler",
-              "slug": "pcr",
-              "count": 1
-            },
-            {
-              "label": "Fluorescence",
-              "name": "P51 Molecular Fluorescence Viewer",
-              "slug": "fluorescence",
-              "count": 0
-            },
-            {
-              "label": "Electrophoresis",
-              "name": "GELATO Electrophoresis and Visualization System",
-              "slug": "electrophoresis",
-              "count": 1
-            }
-          ]
-        }
-      ]
+      "count": 7
     },
     {
       "science": "Astronomy",
       "slug": "astro",
-      "count": 17,
-      "techs": [
-        {
-          "label": "Telescopes",
-          "slug": "telescopes",
-          "count": 12,
-          "toys": [
-            {
-              "label": "Optical",
-              "name": "ZWO Seestar S30 Pro with Tilting Wedge",
-              "slug": "optical",
-              "count": 12
-            },
-            {
-              "label": "Earth",
-              "name": "UBC Thunderbird South Observatory",
-              "slug": "earth",
-              "count": 0
-            },
-            {
-              "label": "Space",
-              "name": "MAST Portal",
-              "slug": "space",
-              "count": 0
-            }
-          ]
-        },
-        {
-          "label": "Measurements",
-          "slug": "measurements",
-          "count": 4,
-          "toys": [
-            {
-              "label": "Photometry",
-              "name": "AAVSO Database",
-              "slug": "photometry",
-              "count": 0
-            },
-            {
-              "label": "Astrometry",
-              "name": "Gaia Archive",
-              "slug": "astrometry",
-              "count": 1
-            },
-            {
-              "label": "Spectroscopy",
-              "name": "Pickles Stellar Atlas",
-              "slug": "spectroscopy",
-              "count": 0
-            }
-          ]
-        },
-        {
-          "label": "Classification",
-          "slug": "classification",
-          "count": 0,
-          "toys": [
-            {
-              "label": "Stars",
-              "name": "SIMBAD",
-              "slug": "stars",
-              "count": 0
-            },
-            {
-              "label": "Transients",
-              "name": "Transient Name Server",
-              "slug": "transients",
-              "count": 0
-            },
-            {
-              "label": "Galaxies",
-              "name": "Galaxy Zoo",
-              "slug": "galaxies",
-              "count": 0
-            }
-          ]
-        }
-      ]
+      "count": 17
     }
   ]
 }
