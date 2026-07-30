@@ -369,7 +369,7 @@
             {
               "name": "Vernier Go Direct Temperature Probe",
               "description": "Temperature probe",
-              "url": "/research/projects/20260405%20Melting%20Point/",
+              "url": "/projects/20260405%20Melting%20Point/",
               "short": "Temperature"
             }
           ],
@@ -406,7 +406,7 @@
             {
               "name": "Vernier Go Direct pH Sensor",
               "description": "Zero current, read voltage — one ion",
-              "url": "/research/projects/20260411%20Centrifuge/",
+              "url": "/projects/20260411%20Centrifuge/",
               "short": "pH"
             },
             {
@@ -461,7 +461,7 @@
             {
               "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
               "description": "UV-Vis and fluorescence",
-              "url": "/research/projects/20260420%20UV-Vis%20Spectroscopy/",
+              "url": "/projects/20260420%20UV-Vis%20Spectroscopy/",
               "short": "UV-Vis"
             },
             {

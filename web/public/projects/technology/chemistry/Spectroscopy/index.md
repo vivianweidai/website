@@ -8,7 +8,7 @@ toys:
   - name: Vernier Go Direct Fluorescence UV-VIS Spectrophotometer
     description: UV-Vis and fluorescence
     short: UV-Vis
-    url: /research/projects/20260420%20UV-Vis%20Spectroscopy/
+    url: /projects/20260420%20UV-Vis%20Spectroscopy/
   - name: Vernier Go Direct Polarimeter
     description: Single angle rotation
     short: Polarimeter

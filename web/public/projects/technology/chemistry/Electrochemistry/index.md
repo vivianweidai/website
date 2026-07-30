@@ -8,7 +8,7 @@ toys:
   - name: Vernier Go Direct pH Sensor
     description: Zero current, read voltage — one ion
     short: pH
-    url: /research/projects/20260411%20Centrifuge/
+    url: /projects/20260411%20Centrifuge/
   - name: Vernier Go Direct Conductivity Probe
     description: Apply voltage, read current — all ions
     short: Conductivity
