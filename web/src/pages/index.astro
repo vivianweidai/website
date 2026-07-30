@@ -4,7 +4,6 @@ import PageHeader from '../layouts/PageHeader.astro';
 import PageFooter from '../layouts/PageFooter.astro';
 import scienceJpeg from '../layouts/science.jpeg?url';
 import curriculumData from '../../public/curriculum/curriculum.json';
-import gallery from '../../public/projects/gallery.json';
 
 // Top → bottom matches the science pyramid: astronomy at the apex,
 // mathematics as the foundation. Each row builds on the ones below.
@@ -70,21 +69,24 @@ const OLYMPIADS = {
     'USA Astronomy and Astrophysics Olympiad',
   ],
 };
-// The Projects tab lists each science's PROJECTS — the write-ups, the same
-// cards the /projects/ wall frames in colour. Same shape as the other two tabs:
-// a science's own items, dot-separated.
+// The Projects tab lists each science's TOPICS — the way that science asks
+// its questions. Hardcoded on purpose: these came out of technology.yml, and
+// that file was deleted along with the toy catalog because the wall tags a
+// picture with one science and nothing finer. The topics are worth naming
+// anyway — they say what a science is *for* in a way a list of write-ups does
+// not — but they no longer need a data layer to say it.
 //
-// It used to list categories out of technology.json. That file and the whole
-// toy catalog were deleted 2026-07-30 — a picture belongs to one science and
-// nothing finer — so the projects are what is left to name here. They come out
-// of gallery.json, where the wall's project cards already carry a science, a
-// title and a link.
-const PROJECTS_BY_SCIENCE = {};
-for (const t of gallery.tiles) {
-  if (t.kind !== 'project') continue;
-  const key = t.science.toLowerCase();
-  (PROJECTS_BY_SCIENCE[key] ??= []).push({ title: t.caption, href: t.href });
-}
+// Every topic links to that science's view of the wall; they are labels, not
+// filters. Engineering was dropped from Physics with the catalog: LEGO, the
+// scope and the printer are tools that cross every science.
+const TOPICS = {
+  mathematics: ['Numeric', 'Symbolic', 'Graphic'],
+  computing:   ['Statistics', 'Machine Learning', 'Publishing'],
+  physics:     ['Mechanics', 'Thermodynamics', 'Electromagnetism'],
+  chemistry:   ['Thermal', 'Electrochemistry', 'Spectroscopy'],
+  biology:     ['Microscopes', 'Physiology', 'Genomics'],
+  astronomy:   ['Telescopes', 'Measurements', 'Classification'],
+};
 
 const TABS = [
   { key: 'curriculum', label: 'Curriculum' },
@@ -134,15 +136,12 @@ const TABS = [
             ))}
           </div>
           <div class="curr-rows-secs" data-tab="projects">
-            {(PROJECTS_BY_SCIENCE[subjSlug] ?? []).map((proj, j) => (
+            {TOPICS[subjSlug].map((topic, j) => (
               <>
                 {j > 0 && <span class="sep">·</span>}
-                <a href={proj.href}>{proj.title}</a>
+                <a href={`/projects/#${SUBJ_ANCHOR[subjSlug]}`}>{topic}</a>
               </>
             ))}
-            {!(PROJECTS_BY_SCIENCE[subjSlug] ?? []).length && (
-              <a href={`/projects/#${SUBJ_ANCHOR[subjSlug]}`}>Gallery</a>
-            )}
           </div>
         </div>
       );
