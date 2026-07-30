@@ -1,16 +1,26 @@
 # /research/ was renamed to /projects/ (2026-07-30). These rules keep every
-# old URL alive, which matters for two reasons beyond bookmarks:
+# old URL alive, which matters for more than bookmarks: App Store builds
+# already in the wild fetch /research/technology.json and
+# /research/projects/<folder>/index.md. URLSession follows 301s, so those
+# installs keep working until the next release ships.
 #
-#   1. App Store builds already in the wild fetch /research/technology.json
-#      and /research/projects/<folder>/index.md. URLSession follows 301s, so
-#      those installs keep working until the next release ships.
-#   2. Project folders lost their extra /projects/ path segment in the move
-#      (/research/projects/X/ → /projects/X/), so the old deep links need the
-#      first rule to collapse that segment. Order matters — first match wins.
+# Project folders also lost a path segment in the move
+# (/research/projects/X/ → /projects/X/), so that prefix needs its own rule
+# that collapses the extra segment.
+#
+# ⚠️ Every source pattern here is DISJOINT on purpose. A catch-all
+# `/research/* → /projects/:splat` alongside the more specific
+# `/research/projects/*` rule looked correct and was not: Workers Static
+# Assets did not honour first-match-wins by file order, the catch-all won,
+# and /research/projects/X/ resolved to /projects/projects/X/ (404). Do not
+# reintroduce an overlapping catch-all — enumerate instead.
 #
 # Served by Cloudflare Workers Static Assets, which reads this file from the
-# assets directory. Nothing in the Worker itself handles redirects.
+# assets directory. The Worker itself is still a pure passthrough.
 
-/research/projects/*  /projects/:splat  301
-/research/*           /projects/:splat  301
-/research             /projects         301
+/research/projects/*     /projects/:splat             301
+/research/technology/*   /projects/technology/:splat  301
+/research/technology.json  /projects/technology.json  301
+/research/gallery.json   /projects/gallery.json       301
+/research/               /projects/                   301
+/research                 /projects                   301
