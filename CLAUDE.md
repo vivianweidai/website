@@ -143,6 +143,11 @@ to that instrument's category. `tech:` names the category directly — use it wh
 to a category but to no instrument we own. Either way the build fails on a name the catalog does
 not have, which is what keeps the filter row and the home page the same vocabulary.
 
+**A tile's hover overlay carries its categories as pills**, and the line under the caption
+carries the instrument and the month. Those are deliberately different facts — showing the
+category in both places said the same word twice, and the instrument would otherwise appear
+nowhere. The pills are display-only; the tile itself is the click target.
+
 **Filtering is two tiers, not three.** Science, then category. A third row of individual toys was
 built and removed the same day: picking a category already implies every toy under it, so the
 extra row bought a granularity nobody wanted at the cost of a busy header. The toy still shows in

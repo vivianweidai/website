@@ -60,10 +60,15 @@ const spanFor = (t) => {
            style={`--tint: var(--subj-${t.science_slug}); grid-column: span ${colsFor(t)}; grid-row-end: span ${spanFor(t)}`}>
           <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />
           <div class="tile-cap">
+            {(t.techs ?? []).length > 0 && (
+              <span class="tile-tags">
+                {t.techs.map((c) => <span class="tile-tag">{c}</span>)}
+              </span>
+            )}
             <b>{t.caption}</b>
             <span>
               {t.note && <i>{t.note}</i>}
-              <em>{t.techs?.length ? `${t.techs.join(' · ')} · ` : ''}{t.date_label}</em>
+              <em>{t.toy ? `${t.toy} · ` : ''}{t.date_label}</em>
             </span>
           </div>
           <span class="tile-badge">Project →</span>
@@ -77,10 +82,15 @@ const spanFor = (t) => {
             ? <video src={t.src} width={t.w} height={t.h} autoplay loop muted playsinline preload="metadata" />
             : <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />}
           <figcaption class="tile-cap">
+            {(t.techs ?? []).length > 0 && (
+              <span class="tile-tags">
+                {t.techs.map((c) => <span class="tile-tag">{c}</span>)}
+              </span>
+            )}
             <b>{t.caption}</b>
             <span>
               {t.note && <i>{t.note}</i>}
-              <em>{t.techs?.length ? `${t.techs.join(' · ')} · ` : ''}{t.date_label}</em>
+              <em>{t.toy ? `${t.toy} · ` : ''}{t.date_label}</em>
             </span>
           </figcaption>
         </figure>
@@ -447,9 +457,34 @@ const spanFor = (t) => {
       transition: opacity 0.2s ease;
     }
     .tile:hover .tile-cap { opacity: 1; }
+    /* Which categories the picture is filed under. Science-tinted, matching
+       the chip language the rest of the site uses. Display only — the tile
+       itself is the click target. */
+    /* Scoped under .tile-cap deliberately: the generic `.tile-cap span`
+       rule above sets display:block and outranks a bare `.tile-tags`, which
+       stacked the pills full-width instead of laying them out in a row. */
+    .tile-cap .tile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25em;
+      margin-bottom: 0.35em;
+    }
+    .tile-cap .tile-tag {
+      font-size: 0.64em;
+      font-weight: 600;
+      line-height: 1.5;
+      padding: 0 0.5em;
+      border-radius: 999px;
+      background: var(--tint);
+      color: #1f2328;
+      white-space: nowrap;
+    }
     .tile-cap b { display: block; font-size: 0.8em; line-height: 1.3; }
     .tile-cap span { display: block; margin-top: 0.15em; }
     .tile-cap i { display: block; font-style: normal; font-size: 0.7em; color: #dfe4e9; line-height: 1.3; }
+    /* Instrument and date. The categories are the pills above — showing them
+       here too said the same word twice, and the instrument is the thing that
+       would otherwise appear nowhere. */
     .tile-cap em { display: block; font-style: normal; font-size: 0.68em; color: #a8b2bb; margin-top: 0.1em; }
 
     /* ── project cards ────────────────────────────────────────────
@@ -525,6 +560,8 @@ const spanFor = (t) => {
       display: block;
     }
     .lb-cap { color: #fff; text-align: center; max-width: 42em; }
+    .lb-cap .tile-tags { justify-content: center; margin-bottom: 0.5em; }
+    .lb-cap .tile-tag { font-size: 0.72em; }
     .lb-cap b { display: block; font-size: 1em; }
     .lb-cap i { display: block; font-style: normal; font-size: 0.82em; color: #cfd6dd; margin-top: 0.2em; }
     .lb-cap em { display: block; font-style: normal; font-size: 0.78em; color: #9aa4ad; margin-top: 0.2em; }
