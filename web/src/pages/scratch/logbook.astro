@@ -35,7 +35,7 @@ import { SESSIONS, STREAM, SCI, BENCH, DESK } from './_data';
           <p class="entry-note">{s.note}</p>
           <div class={`entry-shots n${s.shots.length}`}>
             {s.shots.map((i) => (
-              <figure>
+              <figure class={STREAM[i].tall ? 'tall' : ''}>
                 <img src={STREAM[i].src} alt={STREAM[i].cap} loading="lazy" />
                 <figcaption>{STREAM[i].cap}</figcaption>
               </figure>
@@ -125,6 +125,12 @@ import { SESSIONS, STREAM, SCI, BENCH, DESK } from './_data';
       width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block;
       border-radius: 7px; background: #0b0d10;
     }
+    /* Seestar shoots 9:16. A 4:3 crop throws away most of the frame, so
+       portrait captures get a portrait tile. */
+    .entry-shots figure.tall img { aspect-ratio: 3 / 4; }
+    /* …but two portrait tiles at full width would eat a whole screen, so a
+       row containing any of them is narrowed rather than made taller. */
+    .entry-shots:has(figure.tall) { max-width: 27em; }
     .entry-shots figcaption { font-size: .72em; color: #8b949e; margin-top: .3em; line-height: 1.3; }
 
     .inv-head { margin-top: 1em; border-bottom: 1px solid #d1d9e0; padding-bottom: .3em; }

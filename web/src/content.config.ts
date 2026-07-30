@@ -4,9 +4,9 @@ import { glob } from 'astro/loaders';
 const projects = defineCollection({
   loader: glob({
     pattern: '*/index.md',
-    base: './public/research/projects',
+    base: './public/projects',
     // Preserve the original folder name as the id so URLs like
-    // /research/projects/20260420%20UV-Vis%20Spectroscopy/ keep working.
+    // /projects/20260420%20UV-Vis%20Spectroscopy/ keep working.
     generateId: ({ entry }) => entry.replace(/\/index\.md$/, ''),
   }),
   schema: z.object({
@@ -20,18 +20,18 @@ const projects = defineCollection({
     // projects use this.
     mi: z.boolean().optional(),
     // Techs this project uses. Drives the auto-populated Projects section
-    // on each /research/technology/<sci>/<Tech>/ page.
+    // on each /projects/technology/<sci>/<Tech>/ page.
     tech: z.array(z.string()).optional(),
   }),
 });
 
 // Per-tech template pages — one folder per tech under
-// web/public/research/technology/<science_slug>/<Tech Name>/index.md.
+// web/public/projects/technology/<science_slug>/<Tech Name>/index.md.
 // id is "<science_slug>/<tech>" so the dynamic route can split params.
 const tech = defineCollection({
   loader: glob({
     pattern: '*/*/index.md',
-    base: './public/research/technology',
+    base: './public/projects/technology',
     generateId: ({ entry }) => entry.replace(/\/index\.md$/, ''),
   }),
   schema: z.object({
@@ -51,11 +51,11 @@ const tech = defineCollection({
       description: z.string(),
       // Optional link target for the toy name (e.g. the project that used it).
       url: z.string().optional(),
-      // Optional short label for the /research/ listing chips (the full
+      // Optional short label for the /projects/ listing chips (the full
       // `name` still shows on the tech card). Keeps each tech's chip row to
       // a single line.
       short: z.string().optional(),
-      // Set false to omit this toy from the /research/ listing chips while
+      // Set false to omit this toy from the /projects/ listing chips while
       // keeping it on the tech card (e.g. a sample-prep tool that doesn't
       // fit the tech's chip vocabulary). Defaults to shown.
       chip: z.boolean().optional(),

@@ -1,23 +1,23 @@
 ---
-type Section = 'home' | 'curriculum' | 'olympiads' | 'research';
+type Section = 'home' | 'curriculum' | 'olympiads' | 'projects';
 
 interface Props {
   // Marks one nav link as active. Omit on sub-pages (like a project page)
   // where the section nav link should still navigate, not scroll-to-top.
   active?: Section;
   // Override per-section href. Same pattern as PageHeader — tech pages send
-  // Research to /research/#<science_slug> so the column lands highlighted.
+  // Projects to /projects/#<science_slug> so the column lands highlighted.
   curriculumHref?: string;
   olympiadsHref?: string;
-  researchHref?: string;
+  projectsHref?: string;
 }
 
-const { active, curriculumHref, olympiadsHref, researchHref } = Astro.props;
+const { active, curriculumHref, olympiadsHref, projectsHref } = Astro.props;
 
 const links: Array<{ id: Section; href: string; label: string }> = [
   { id: 'curriculum', href: curriculumHref ?? '/curriculum/', label: 'Curriculum' },
   { id: 'olympiads',  href: olympiadsHref  ?? '/olympiads/',  label: 'Olympiads' },
-  { id: 'research',   href: researchHref   ?? '/research/',   label: 'Research' },
+  { id: 'projects',   href: projectsHref   ?? '/projects/',   label: 'Projects' },
 ];
 ---
 <div class="footer">

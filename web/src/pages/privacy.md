@@ -40,4 +40,4 @@ If you have questions about this policy, contact us at [privacy@storycharts.com]
 
 <hr />
 
-<div class="footer"><a class="footer-github" href="/">Science</a><div class="footer-nav"><a href="/curriculum/">Curriculum</a><a href="/olympiads/">Olympiads</a><a href="/research/">Research</a></div></div>
+<div class="footer"><a class="footer-github" href="/">Science</a><div class="footer-nav"><a href="/curriculum/">Curriculum</a><a href="/olympiads/">Olympiads</a><a href="/projects/">Projects</a></div></div>

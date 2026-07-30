@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import DefaultLayout from '../../../../../layouts/Default.astro';
 import PageHeader from '../../../../../layouts/PageHeader.astro';
 import PageFooter from '../../../../../layouts/PageFooter.astro';
-import techData from '../../../../../../public/research/technology.json';
+import techData from '../../../../../../public/projects/technology.json';
 
 export async function getStaticPaths() {
   const techs = await getCollection('tech');
@@ -41,7 +41,7 @@ function ordinal(d: number): string {
 
 type ProjRow = {
   sortKey: string;        // YYYYMMDD for chronological sort, newest first
-  href: string;           // local /research/... or external https://...
+  href: string;           // local /projects/... or external https://...
   date: string;           // human-formatted ("April 27th 2026")
   title: string;
   chips: { slug: string; label: string }[];
@@ -72,7 +72,7 @@ for (const proj of matched) {
     .filter((c) => c.slug);
   projList.push({
     sortKey: m[1] + m[2] + m[3],
-    href: `/research/projects/${encodeURIComponent(folder)}/`,
+    href: `/projects/${encodeURIComponent(folder)}/`,
     date,
     title: proj.data.title,
     chips,
@@ -92,7 +92,7 @@ const scienceFolder = Astro.params.science!;
 function resolveHero(h: string | undefined, folder: string, name: string): string | null {
   if (!h) return null;
   if (h.startsWith('/') || h.startsWith('http://') || h.startsWith('https://')) return h;
-  return `/research/technology/${folder}/${encodeURIComponent(name)}/${h.split('/').map(encodeURIComponent).join('/')}`;
+  return `/projects/technology/${folder}/${encodeURIComponent(name)}/${h.split('/').map(encodeURIComponent).join('/')}`;
 }
 const heroUrl = resolveHero(hero, scienceFolder, tech);
 
@@ -113,14 +113,14 @@ const prevHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx - 1 + N) % 
 const nextHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx + 1) % N] : null;
 ---
 <DefaultLayout title={`${tech} — ${science}`}>
-  <PageHeader title="Research" researchHref={`/research/#${science_slug}`} />
+  <PageHeader title="Projects" projectsHref={`/projects/#${science_slug}`} />
 
-  <div class="tech-page-wrap" data-back-href={`/research/#${science_slug}`} data-prev-href={prevHref} data-next-href={nextHref}>
+  <div class="tech-page-wrap" data-back-href={`/projects/#${science_slug}`} data-prev-href={prevHref} data-next-href={nextHref}>
   <article class={`tech-page tech-accent-${science_slug} card-pop-in`}>
     <div class="tech-title">
       <h1>{tech}</h1>
       <span class="tech-context">
-        <a class={`chip ${science_slug}`} href={`/research/#${science_slug}`}>{science}</a>
+        <a class={`chip ${science_slug}`} href={`/projects/#${science_slug}`}>{science}</a>
       </span>
     </div>
     {heroUrl && (
@@ -159,7 +159,7 @@ const nextHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx + 1) % N] :
             <span class="update-body">
               <a href={p.href}>{p.title}</a>
               {p.chips.map((c) => (
-                <a class={`chip ${c.slug}`} href={`/research/#${c.slug}`}>{c.label}</a>
+                <a class={`chip ${c.slug}`} href={`/projects/#${c.slug}`}>{c.label}</a>
               ))}
             </span>
           </li>
@@ -171,7 +171,7 @@ const nextHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx + 1) % N] :
 
   <hr />
 
-  <PageFooter researchHref={`/research/#${science_slug}`} />
+  <PageFooter projectsHref={`/projects/#${science_slug}`} />
 
   <style is:global>
     /* Title row: H1 + science chip on the left, topic · category on the
@@ -180,7 +180,7 @@ const nextHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx + 1) % N] :
        at the title text. align-items: center keeps the chip vertically
        centered with the H1. */
     /* Tech page reads as a "spec sheet card" — distinct from the
-       project-page document layout. Mirrors the /research/ topic
+       project-page document layout. Mirrors the /projects/ topic
        cards: 1 px gray border + 4 px science-colored left accent +
        a very soft science-tinted wash so the page signals "you're
        on a reference card" at a glance. */
@@ -238,7 +238,7 @@ const nextHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx + 1) % N] :
     }
 
     /* Topic/category links in the title row — quiet styling, deep-link
-       into /research/ at the matching section. */
+       into /projects/ at the matching section. */
     .tech-page .tech-context-link {
       color: inherit;
       text-decoration: none;
@@ -357,7 +357,7 @@ const nextHref = currentIdx >= 0 && N > 1 ? flatTechUrls[(currentIdx + 1) % N] :
 
   <script is:inline>
     // Keyboard-only nav (no visible links): ← / → cycle through tech cards,
-    // Esc returns to the science's /research/ section. Hrefs are baked into
+    // Esc returns to the science's /projects/ section. Hrefs are baked into
     // the card wrapper's data attributes. Skipped when typing in a form field
     // or holding a modifier key.
     (function () {

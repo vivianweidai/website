@@ -1,0 +1,16 @@
+# /research/ was renamed to /projects/ (2026-07-30). These rules keep every
+# old URL alive, which matters for two reasons beyond bookmarks:
+#
+#   1. App Store builds already in the wild fetch /research/technology.json
+#      and /research/projects/<folder>/index.md. URLSession follows 301s, so
+#      those installs keep working until the next release ships.
+#   2. Project folders lost their extra /projects/ path segment in the move
+#      (/research/projects/X/ → /projects/X/), so the old deep links need the
+#      first rule to collapse that segment. Order matters — first match wins.
+#
+# Served by Cloudflare Workers Static Assets, which reads this file from the
+# assets directory. Nothing in the Worker itself handles redirects.
+
+/research/projects/*  /projects/:splat  301
+/research/*           /projects/:splat  301
+/research             /projects         301

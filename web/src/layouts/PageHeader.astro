@@ -1,5 +1,5 @@
 ---
-type Section = 'home' | 'curriculum' | 'olympiads' | 'research';
+type Section = 'home' | 'curriculum' | 'olympiads' | 'projects';
 
 interface Props {
   // Marks one nav link as active. Omit on sub-pages (like a project page)
@@ -8,14 +8,14 @@ interface Props {
   // Explicit H2 text. Defaults to the active section's label, or "Science".
   title?: string;
   // Override per-section href. Sub-pages use this to land back on the
-  // index with a hash — e.g. a tech page sends Research to
-  // /research/#math so the matching column is highlighted on arrival.
+  // index with a hash — e.g. a tech page sends Projects to
+  // /projects/#math so the matching column is highlighted on arrival.
   curriculumHref?: string;
   olympiadsHref?: string;
-  researchHref?: string;
+  projectsHref?: string;
 }
 
-const { active, title, curriculumHref, olympiadsHref, researchHref } = Astro.props;
+const { active, title, curriculumHref, olympiadsHref, projectsHref } = Astro.props;
 
 // On the home page itself, the H2 already says "Science" — skip the duplicate
 // nav entry. On every other page, the "Science" link is the way back home.
@@ -23,7 +23,7 @@ const allLinks: Array<{ id: Section; href: string; label: string }> = [
   { id: 'home',       href: '/',                              label: 'Science' },
   { id: 'curriculum', href: curriculumHref ?? '/curriculum/', label: 'Curriculum' },
   { id: 'olympiads',  href: olympiadsHref  ?? '/olympiads/',  label: 'Olympiads' },
-  { id: 'research',   href: researchHref   ?? '/research/',   label: 'Research' },
+  { id: 'projects',   href: projectsHref   ?? '/projects/',   label: 'Projects' },
 ];
 const links = active === 'home' ? allLinks.filter((l) => l.id !== 'home') : allLinks;
 
@@ -31,7 +31,7 @@ const titles: Record<Section, string> = {
   home: 'Science',
   curriculum: 'Curriculum',
   olympiads: 'Olympiads',
-  research: 'Research',
+  projects: 'Projects',
 };
 const heading = title ?? (active ? titles[active] : 'Science');
 ---

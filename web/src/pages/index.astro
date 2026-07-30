@@ -4,7 +4,7 @@ import PageHeader from '../layouts/PageHeader.astro';
 import PageFooter from '../layouts/PageFooter.astro';
 import scienceJpeg from '../layouts/science.jpeg?url';
 import curriculumData from '../../public/curriculum/curriculum.json';
-import techData from '../../public/research/technology.json';
+import techData from '../../public/projects/technology.json';
 
 // Top → bottom matches the science pyramid: astronomy at the apex,
 // mathematics as the foundation. Each row builds on the ones below.
@@ -25,46 +25,38 @@ const OLYMPIAD_LATEST = {
   biology:     { name: 'Canadian Biology Olympiad Competition Exam',                          icon: '🎯',  kind: 'competitive', date: 'April 2026'    },
   astronomy:   { name: 'International Olympiad on Astronomy and Astrophysics Junior',          icon: '🇨🇦', kind: 'team',        date: 'November 2026', badge: 'TEAM CANADA' },
 };
-const RESEARCH_LATEST = {
-  // No mathematics research project yet — the row renders blank (guarded below).
-  mathematics: null,
-  computing:   { name: 'Red or Green, What Colored Cat Food does Mi Prefer?', url: '/research/projects/20250225%20Catfood/',                            mi: true },
-  physics:     { name: 'Four-Point Probe of Sheet Resistance',                url: '/research/projects/20260404%20Four%20Point%20Probe/'                          },
-  chemistry:   { name: 'IR Spectroscopy',                                     url: '/research/projects/20260419%20IR%20Spectroscopy/'                             },
-  biology:     { name: 'Cellgazing',                                          url: '/research/projects/20260725%20Cellgazing/'                                     },
-  astronomy:   { name: 'Stargazing',                                          url: '/research/projects/20260725%20Stargazing/'                                     },
-};
-// Total research projects per science — the distinct projects that appear
-// under that science's technology cards (i.e. use a tech belonging to the
-// science), matching what its /research/#<anchor> tab shows. A project counts
-// only where its techs live, so e.g. a project using only biology techs does
-// not count toward astronomy even if it's astronomy-flavored.
-const RESEARCH_PROJECT_COUNT = {};
-{
-  const seen = {}; // science (full word) -> Set of distinct project urls
-  for (const s of techData.sciences) {
-    const slug = s.science.toLowerCase();
-    if (!seen[slug]) seen[slug] = new Set();
-    for (const tech of s.techs) {
-      for (const p of tech.projects ?? []) seen[slug].add(p.url);
+// The Projects tab lists the TOYS each science has — the instruments and
+// libraries we can actually reach for. This is the canonical toy list: the
+// /projects/ wall reuses exactly these labels as its per-science filter tags,
+// so a chip here and a tag there are always the same word.
+//
+// Toys live in each tech page's frontmatter and are baked into
+// technology.json by build_technology.py. A toy can appear under more than
+// one tech within a science (the UV-VIS unit is both Spectroscopy and
+// Electromagnetism), so dedupe by the label we display.
+const toySlug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const TOYS_BY_SCIENCE = {};
+for (const s of techData.sciences) {
+  const seen = new Set();
+  const toys = [];
+  for (const tech of s.techs) {
+    for (const toy of tech.toys ?? []) {
+      const label = toy.short ?? toy.name;
+      if (seen.has(label)) continue;
+      seen.add(label);
+      toys.push({ label, name: toy.name, slug: toySlug(label) });
     }
   }
-  for (const slug of Object.keys(seen)) RESEARCH_PROJECT_COUNT[slug] = seen[slug].size;
+  TOYS_BY_SCIENCE[s.science.toLowerCase()] = toys;
 }
 const TABS = [
   { key: 'curriculum', label: 'Curriculum' },
   { key: 'olympiads',  label: 'Olympiads'  },
-  { key: 'research',   label: 'Research'   },
+  { key: 'projects',   label: 'Projects'   },
 ];
 ---
 <DefaultLayout title="Science">
   <PageHeader active="home" />
-
-  <div class="greeting fade-in" aria-label="hi sophia !">
-    <span class="greeting-spark" aria-hidden="true">✨</span>
-    <span class="greeting-text">hi sophia !</span>
-    <span class="greeting-spark" aria-hidden="true">✨</span>
-  </div>
 
   <div class="hero-pool fade-in">
     <img class="hero-img" src={scienceJpeg} alt="Science" width="100%" />
@@ -90,7 +82,7 @@ const TABS = [
         <div class="curr-rows-row fade-in" data-olympiad-kind={olyKind} style={`animation-delay: ${0.1 + i * 0.08}s`}>
           <a class="curr-rows-subj" data-subj={subjSlug} data-tab="curriculum" href={`/curriculum/#${subjSlug}`}>{subj.name}</a>
           <a class="curr-rows-subj" data-subj={subjSlug} data-tab="olympiads"  href={`/olympiads/#${SUBJ_ANCHOR[subjSlug]}`}>{subj.name}</a>
-          <a class="curr-rows-subj" data-subj={subjSlug} data-tab="research"   href={`/research/#${SUBJ_ANCHOR[subjSlug]}`}>{subj.name}</a>
+          <a class="curr-rows-subj" data-subj={subjSlug} data-tab="projects"   href={`/projects/#${SUBJ_ANCHOR[subjSlug]}`}>{subj.name}</a>
 
           <div class="curr-rows-secs" data-tab="curriculum">
             {subj.sections.map((sec, j) => (
@@ -108,17 +100,11 @@ const TABS = [
               </span>
             )}
           </div>
-          <div class="curr-rows-secs" data-tab="research">
-            {RESEARCH_LATEST[subjSlug]?.name && (
-              <>
-                <a href={RESEARCH_LATEST[subjSlug].url}>{RESEARCH_LATEST[subjSlug].name}</a>
-                {RESEARCH_LATEST[subjSlug].mi && (
-                  <a class="photo-icon mi-icon" href="/mi.jpeg">
-                    <img src="/mi.svg" alt="Mi" />
-                  </a>
-                )}
-              </>
-            )}
+          <div class="curr-rows-secs curr-rows-toys" data-tab="projects">
+            {TOYS_BY_SCIENCE[subjSlug].map((toy) => (
+              <a class="home-toy" title={toy.name}
+                 href={`/projects/#${SUBJ_ANCHOR[subjSlug]}/${toy.slug}`}>{toy.label}</a>
+            ))}
           </div>
 
           <a class="curr-rows-pdf" data-tab="curriculum" href={`/curriculum/notes/${subjSlug}.pdf`}>pdf</a>
@@ -126,10 +112,10 @@ const TABS = [
           {(olyKind === 'competitive' || olyKind === 'invited' || olyKind === 'alternate' || olyKind === 'team') && (
             <span class="olympiad-badge" data-tab="olympiads">{OLYMPIAD_LATEST[subjSlug].badge || olyKind.toUpperCase()}</span>
           )}
-          <span class="curr-rows-topics" data-tab="research">
-            {(RESEARCH_PROJECT_COUNT[subjSlug] ?? 0) > 0 && (
-              <a class="home-proj-badge" href={`/research/#${SUBJ_ANCHOR[subjSlug]}`}>
-                <b>{RESEARCH_PROJECT_COUNT[subjSlug]}</b> {RESEARCH_PROJECT_COUNT[subjSlug] === 1 ? 'project' : 'projects'}
+          <span class="curr-rows-topics" data-tab="projects">
+            {TOYS_BY_SCIENCE[subjSlug].length > 0 && (
+              <a class="home-proj-badge" href={`/projects/#${SUBJ_ANCHOR[subjSlug]}`}>
+                <b>{TOYS_BY_SCIENCE[subjSlug].length}</b> {TOYS_BY_SCIENCE[subjSlug].length === 1 ? 'toy' : 'toys'}
               </a>
             )}
           </span>
@@ -140,53 +126,6 @@ const TABS = [
   </div>
 
   <style>
-    /* Centered, bold, sparkly greeting above the science-pyramid hero.
-       The text shimmers through the six subject pastels; flanking sparkles
-       twinkle out of phase. */
-    .greeting {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45em;
-      margin: 0.6em 0 0.1em;
-      font-size: 1.9em;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      text-align: center;
-      line-height: 1.2;
-    }
-    .greeting-text {
-      background: linear-gradient(90deg,
-        #c5d9f7, #d9ccee, #f9c4a8, #d4e8a0, #a8ddd4, #f4c2cb, #c5d9f7);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-      animation: greeting-shimmer 4s linear infinite,
-                 greeting-glow 2.6s ease-in-out infinite;
-    }
-    @keyframes greeting-shimmer {
-      to { background-position: 200% center; }
-    }
-    @keyframes greeting-glow {
-      0%, 100% { filter: drop-shadow(0 0 2px rgba(244,194,203,0.45)); }
-      50%      { filter: drop-shadow(0 0 11px rgba(217,204,238,0.85)); }
-    }
-    .greeting-spark {
-      display: inline-block;
-      font-size: 0.8em;
-      animation: greeting-twinkle 1.6s ease-in-out infinite;
-    }
-    .greeting-spark:last-child { animation-delay: 0.8s; }
-    @keyframes greeting-twinkle {
-      0%, 100% { transform: scale(0.9) rotate(0); opacity: 0.65; filter: none; }
-      50%      { transform: scale(1.35) rotate(18deg); opacity: 1;
-                 filter: drop-shadow(0 0 7px rgba(255,221,120,0.95)); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .greeting-text, .greeting-spark { animation: none; }
-    }
     .hero-pool {
       position: relative;
       display: block;
@@ -249,7 +188,7 @@ const TABS = [
     .curr-rows-tab:hover { color: #1f2328; }
     .curr-rows[data-active="curriculum"] .curr-rows-tab[data-target="curriculum"],
     .curr-rows[data-active="olympiads"]  .curr-rows-tab[data-target="olympiads"],
-    .curr-rows[data-active="research"]   .curr-rows-tab[data-target="research"] {
+    .curr-rows[data-active="projects"]   .curr-rows-tab[data-target="projects"] {
       color: #1f2328;
       background: #e8e8e8;
     }
@@ -276,14 +215,14 @@ const TABS = [
     }
     .curr-rows[data-active="curriculum"] .curr-rows-tab[data-target="curriculum"] .curr-rows-progress,
     .curr-rows[data-active="olympiads"]  .curr-rows-tab[data-target="olympiads"]  .curr-rows-progress,
-    .curr-rows[data-active="research"]   .curr-rows-tab[data-target="research"]   .curr-rows-progress {
+    .curr-rows[data-active="projects"]   .curr-rows-tab[data-target="projects"]   .curr-rows-progress {
       display: block;
     }
 
     /* Tab visibility: hide rows-content not matching active tab */
     .curr-rows[data-active="curriculum"] .curr-rows-row [data-tab]:not([data-tab="curriculum"]),
     .curr-rows[data-active="olympiads"]  .curr-rows-row [data-tab]:not([data-tab="olympiads"]),
-    .curr-rows[data-active="research"]   .curr-rows-row [data-tab]:not([data-tab="research"]) {
+    .curr-rows[data-active="projects"]   .curr-rows-row [data-tab]:not([data-tab="projects"]) {
       display: none;
     }
 
@@ -406,6 +345,32 @@ const TABS = [
     }
     .curr-rows-secs a:hover { color: #0969da; text-decoration: underline; }
     .curr-rows-secs .sep { color: #b1b7be; padding: 0 0.15em; }
+    /* Projects tab: the science's toys as chips. Each one links to the
+       /projects/ wall pre-filtered to that toy, so the chip you read here
+       and the tag you click there are the same word. */
+    .curr-rows-toys {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      align-items: center;
+      padding: 0.45em 1em;
+    }
+    .home-toy {
+      padding: 0.1em 0.55em;
+      border-radius: 5px;
+      background: #fff;
+      border: 1px solid #e2e6ea;
+      color: #475059;
+      font-size: 0.85em;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+    }
+    .curr-rows-toys .home-toy:hover {
+      border-color: #0969da;
+      color: #0969da;
+      text-decoration: none;
+    }
     .curr-rows-secs .mi-icon {
       margin-left: 0.35em;
       display: inline-flex;
@@ -550,14 +515,13 @@ const TABS = [
   </style>
 
   <script is:inline>
-    // Hero pool: cursor-trail particles + click ripples in the six subject colors.
+    // Hero pool: click ripples in the six subject colors.
     (function () {
       var pool = document.querySelector('.hero-pool');
       if (!pool) return;
       var canvas = pool.querySelector('.hero-canvas');
       var ctx = canvas.getContext('2d');
       var COLORS = ['#c5d9f7', '#d9ccee', '#f9c4a8', '#d4e8a0', '#a8ddd4', '#f4c2cb'];
-      var particles = [];
       var ripples = [];
       var dpr = Math.max(1, window.devicePixelRatio || 1);
 
@@ -576,31 +540,6 @@ const TABS = [
       var heroImg = pool.querySelector('img');
       if (heroImg && !heroImg.complete) heroImg.addEventListener('load', resize);
       if (typeof ResizeObserver !== 'undefined') new ResizeObserver(resize).observe(pool);
-
-      var lastBubble = 0;
-      var colorIdx = 0;
-      pool.addEventListener('mousemove', function (e) {
-        var rect = pool.getBoundingClientRect();
-        var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top;
-        var now = performance.now();
-        // Bubble trail — long-lived particles form a visible tail behind the cursor.
-        if (now - lastBubble >= 14 + Math.random() * 10) {
-          lastBubble = now;
-          colorIdx = (colorIdx + 1) % COLORS.length;
-          particles.push({
-            x: x + (Math.random() - 0.5) * 4,
-            y: y + (Math.random() - 0.5) * 4,
-            vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3 - 0.05,
-            r: 9 + Math.random() * 9,
-            color: COLORS[colorIdx],
-            life: 1,
-            decay: 0.0065 + Math.random() * 0.0075, // ~2-3s lifespan → real tail
-            glow: 16 + Math.random() * 12
-          });
-        }
-      });
 
       pool.addEventListener('click', function (e) {
         var rect = pool.getBoundingClientRect();
@@ -640,23 +579,6 @@ const TABS = [
         var rect = pool.getBoundingClientRect();
         ctx.clearRect(0, 0, rect.width, rect.height);
 
-        for (var i = particles.length - 1; i >= 0; i--) {
-          var p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          p.life -= p.decay;
-          if (p.life <= 0) { particles.splice(i, 1); continue; }
-          var ls = p.life * p.life; // quadratic falloff → strong fade with distance
-          ctx.globalAlpha = ls * 0.95;
-          ctx.shadowColor = p.color;
-          ctx.shadowBlur = p.glow * p.life;
-          ctx.fillStyle = p.color;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r * Math.sqrt(p.life), 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.shadowBlur = 0;
-
         for (var j = ripples.length - 1; j >= 0; j--) {
           var rp = ripples[j];
           rp.t += rp.growT;
@@ -681,7 +603,7 @@ const TABS = [
       var container = document.querySelector('.curr-rows[data-active]');
       if (!container) return;
       var fills = container.querySelectorAll('.curr-rows-tab .curr-rows-progress');
-      var tabs = ['curriculum', 'olympiads', 'research'];
+      var tabs = ['curriculum', 'olympiads', 'projects'];
       var tabMs = 5000;
       var cycleMs = tabs.length * tabMs;
       // Random starting tab on each page load; the timer ticks on from

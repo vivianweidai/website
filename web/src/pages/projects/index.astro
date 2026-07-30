@@ -3,8 +3,8 @@ import DefaultLayout from '../../layouts/Default.astro';
 import PageHeader from '../../layouts/PageHeader.astro';
 import PageFooter from '../../layouts/PageFooter.astro';
 ---
-<DefaultLayout title="Research">
-  <PageHeader active="research" />
+<DefaultLayout title="Projects">
+  <PageHeader active="projects" />
 
   <div class="tabs subject-tabs" id="tech-tabs">
     <input type="radio" name="tech-view" id="tech-all" />
@@ -122,7 +122,7 @@ import PageFooter from '../../layouts/PageFooter.astro';
       document.getElementById('tech-content').innerHTML = html;
     }
 
-    fetch('/research/technology.json', { cache: 'no-cache' })
+    fetch('/projects/technology.json', { cache: 'no-cache' })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (d) {
         var sciences = d.sciences;
@@ -375,5 +375,5 @@ import PageFooter from '../../layouts/PageFooter.astro';
 
   <hr />
 
-  <PageFooter active="research" />
+  <PageFooter active="projects" />
 </DefaultLayout>

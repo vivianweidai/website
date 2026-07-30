@@ -35,7 +35,7 @@ const SLUG: Record<string, string> = {
 // page). Fall back to plain science pills if a project declares no techs.
 const titlePills = techPills.length
   ? techPills
-  : sciences.map((s) => ({ label: s, url: `/research/#${SLUG[s]}`, slug: SLUG[s] }));
+  : sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`, slug: SLUG[s] }));
 ---
 <!DOCTYPE html>
 <html lang={htmlLang}>
@@ -146,7 +146,7 @@ const titlePills = techPills.length
   </style>
 </head>
 <body>
-  <PageHeader title="Research" />
+  <PageHeader title="Projects" />
 
   <div class="project-title">
     <h1>

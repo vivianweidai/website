@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build web/public/research/technology.json from the YAML source of truth.
+"""Build web/public/projects/technology.json from the YAML source of truth.
 
-Source of truth:  web/public/research/technology.yml
-Output:           web/public/research/technology.json
+Source of truth:  web/public/projects/technology.yml
+Output:           web/public/projects/technology.json
 
 Flat schema — one entry per science, each a plain list of techs:
   input:   [{science, techs: [{tech, specs}]}]
@@ -16,7 +16,7 @@ The old topic/category grouping tiers were dropped — every science now
 renders as a flat tech list, so the data carries no grouping metadata.
 
 The `projects[]` list is the one source for tech↔project links. It's
-assembled by reverse-scanning every research project's `index.md`
+assembled by reverse-scanning every project's `index.md`
 frontmatter `tech:` array (each project declares which techs it used).
 """
 
@@ -34,12 +34,12 @@ except ImportError:
     sys.exit("PyYAML is required: pip install pyyaml")
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-CONTENT = ROOT / "web" / "public" / "research"
-PROJECTS = CONTENT / "projects"
+CONTENT = ROOT / "web" / "public" / "projects"
+PROJECTS = CONTENT
 TECH_DIR = CONTENT / "technology"
 
 SCIENCES = {"Biology", "Chemistry", "Physics", "Computing", "Mathematics", "Astronomy"}
-# Short slug — used for chip styling and the /research/#<slug> column anchor.
+# Short slug — used for chip styling and the /projects/#<slug> column anchor.
 SCIENCE_SLUGS = {
     "Biology": "bio", "Chemistry": "chem", "Physics": "phys",
     "Computing": "comp", "Mathematics": "math", "Astronomy": "astro",
@@ -78,7 +78,7 @@ def hero_for_tech(science_folder: str, tech_name: str) -> str | None:
         return None
     if hero.startswith(("/", "http://", "https://")):
         return hero
-    base = f"/research/technology/{science_folder}/{urllib.parse.quote(tech_name)}/"
+    base = f"/projects/technology/{science_folder}/{urllib.parse.quote(tech_name)}/"
     return base + urllib.parse.quote(hero)
 
 
@@ -120,7 +120,7 @@ def photos_for_project(proj: Path) -> list[str]:
     """Return the project's shuffle-pool photos as folder-relative paths
     (e.g. `photos/setup/setup1.jpeg`).
 
-    Mirrors the build-time walk in `pages/research/projects/[slug]/index.astro`:
+    Mirrors the build-time walk in `pages/projects/[slug]/index.astro`:
     every image under `photos/`, recursively, except `photos/data/` — those
     are handwritten data sheets, surfaced by a hand-coded grid rather than
     the hero shuffle. Keep the two in step if either changes.
@@ -148,7 +148,7 @@ def photos_for_project(proj: Path) -> list[str]:
 
 
 def projects_per_tech() -> dict[str, list[dict]]:
-    """Scan every research project's index.md and return a reverse map
+    """Scan every project's index.md and return a reverse map
     from tech name to the list of projects that reference it via the
     project's `tech:` frontmatter array. Each entry is {date, title,
     url, sciences[]}, with `date` as YYYY-MM-DD parsed from the folder's
@@ -170,7 +170,7 @@ def projects_per_tech() -> dict[str, list[dict]]:
             continue
         title = fm.get("title", fm.get("project", ""))
         sciences = list(fm.get("sciences") or [])
-        url = f"/research/projects/{urllib.parse.quote(proj.name)}/"
+        url = f"/projects/{urllib.parse.quote(proj.name)}/"
         photos = photos_for_project(proj)
         for t in fm.get("tech") or []:
             entry = {
@@ -212,7 +212,7 @@ def build() -> list[dict]:
                 "tech": tech["tech"],
                 "specs": tech["specs"],
                 "tech_url": (
-                    f"/research/technology/{folder}/"
+                    f"/projects/technology/{folder}/"
                     f"{urllib.parse.quote(tech['tech'])}/"
                 ),
             }

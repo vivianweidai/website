@@ -1,0 +1,144 @@
+---
+import DefaultLayout from '../../layouts/Default.astro';
+import PageHeader from '../../layouts/PageHeader.astro';
+import PageFooter from '../../layouts/PageFooter.astro';
+import { OPTIONS, BENCH, DESK, STREAM } from './_data';
+
+const detail: Record<string, { axis: string; keeps: string; drops: string; cost: string; risk: string }> = {
+  shelf: {
+    axis: 'Toy',
+    keeps: 'Toys, galleries, science colour',
+    drops: 'Tech layer, tabs, write-up structure',
+    cost: 'Medium — new page, toys move out of tech frontmatter into their own list',
+    risk: 'Static. A shelf looks the same in November as it did in July.',
+  },
+  logbook: {
+    axis: 'Time',
+    keeps: 'Galleries, science colour, toys (as a footer inventory)',
+    drops: 'Tech layer, tabs, per-project pages',
+    cost: 'Low — one page, one list; adding an entry is a photo and a sentence',
+    risk: 'No shape. Hard to answer "what do you own" or "how far did chemistry get".',
+  },
+  benches: {
+    axis: 'Science',
+    keeps: 'Tabs, toys, galleries, existing project pages',
+    drops: 'Two tabs, the tech layer, report-first framing',
+    cost: 'Lowest — closest to what is already there',
+    risk: 'Still a taxonomy. Least distance travelled from the thing being replaced.',
+  },
+  wall: {
+    axis: 'None',
+    keeps: 'Galleries, science colour as a stripe',
+    drops: 'Tech, tabs, toys-as-structure, all prose',
+    cost: 'Low — one page, one photo manifest',
+    risk: 'Beautiful and unnavigable. Nothing tells you what a Seestar is.',
+  },
+  ladder: {
+    axis: 'Progress',
+    keeps: 'Toys, science colour',
+    drops: 'Tech, tabs, galleries as the front door',
+    cost: 'Medium — needs one new `status:` field per toy, kept honest by hand',
+    risk: 'Reads as a task board. And a toy that sits on rung 1 for a year says so, loudly.',
+  },
+};
+---
+<DefaultLayout title="Projects — redesign options">
+  <PageHeader active="research" title="Projects" />
+
+  <p class="idx-lede">
+    Five ways to rebuild <code>/research/</code> as <code>/projects/</code>.
+    Every one of them drops the write-up as the organising unit and keeps
+    <b>toys</b> and <b>galleries</b> as the two things that matter.
+  </p>
+
+  <div class="idx-facts">
+    <div><b>{BENCH.length}</b><span>instruments you can touch<i>the bench</i></span></div>
+    <div><b>{DESK.length}</b><span>archives, libraries, languages<i>the desk</i></span></div>
+    <div><b>256</b><span>photos already in the repo<i>the galleries</i></span></div>
+    <div><b>9</b><span>project folders today<i>2 of them galleries</i></span></div>
+  </div>
+
+  <p class="idx-note">
+    <b>The bifurcation is not four-versus-two.</b> Math and Computing have no physical toys —
+    but neither does most of Astronomy: 8 of its 9 entries are databases (SIMBAD, Gaia, AAVSO,
+    MAST…) and only the Seestar is an object. The honest split is
+    <b>things you put your hands on</b> versus <b>things you look up or run</b>.
+    Every option below is built on that split rather than on subject count.
+  </p>
+
+  <div class="idx-list">
+    {OPTIONS.map((o) => (
+      <a class="idx-card" href={`/scratch/${o.slug}/`}>
+        <div class="idx-n">{o.n}</div>
+        <div class="idx-main">
+          <h3>{o.name} <span class="idx-axis">organised by {detail[o.slug].axis.toLowerCase()}</span></h3>
+          <p class="idx-thesis">{o.thesis}</p>
+          <dl>
+            <dt>Keeps</dt><dd>{detail[o.slug].keeps}</dd>
+            <dt>Drops</dt><dd>{detail[o.slug].drops}</dd>
+            <dt>Build cost</dt><dd>{detail[o.slug].cost}</dd>
+            <dt>Where it hurts</dt><dd class="hurt">{detail[o.slug].risk}</dd>
+          </dl>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <style is:global>
+    .idx-lede { font-size: .95em; max-width: 46em; }
+    .idx-facts {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+      margin: 1.4em 0; padding: 0;
+    }
+    .idx-facts > div {
+      border: 1px solid #e2e6ea; border-radius: 9px; padding: .6em .7em;
+      background: #fbfcfd;
+    }
+    .idx-facts b { display: block; font-size: 1.5em; line-height: 1.1; }
+    .idx-facts span { display: block; font-size: .74em; color: #656d76; line-height: 1.3; margin-top: .2em; }
+    .idx-facts i { display: block; font-style: normal; font-size: .92em; color: #b0b8c0; margin-top: .15em; }
+
+    .idx-note {
+      font-size: .88em; color: #475059; background: #f6f8fa;
+      border-left: 3px solid #d1d9e0; border-radius: 0 8px 8px 0;
+      padding: .7em .9em; max-width: none;
+    }
+
+    .idx-list { display: flex; flex-direction: column; gap: 10px; margin-top: 1.6em; }
+    .idx-card {
+      display: flex; gap: .9em; align-items: flex-start;
+      border: 1px solid #e2e6ea; border-radius: 10px; padding: .85em 1em;
+      color: inherit; text-decoration: none; background: #fff;
+      transition: border-color .15s, box-shadow .15s, transform .15s;
+    }
+    .idx-card:hover {
+      text-decoration: none; border-color: #0969da;
+      box-shadow: 0 4px 14px rgba(9,105,218,.08); transform: translateY(-1px);
+    }
+    .idx-n {
+      flex: 0 0 auto; width: 1.9em; height: 1.9em; border-radius: 50%;
+      background: #1f2328; color: #fff; font-weight: 700; font-size: .9em;
+      display: grid; place-items: center;
+    }
+    .idx-main { flex: 1; min-width: 0; }
+    .idx-main h3 { margin: 0; font-size: 1.05em; border: none; padding: 0; }
+    .idx-axis { font-size: .72em; font-weight: 500; color: #8b949e; margin-left: .5em; }
+    .idx-thesis { margin: .25em 0 .6em; font-size: .88em; color: #475059; }
+    .idx-card dl {
+      display: grid; grid-template-columns: 7em 1fr; gap: .12em .8em;
+      margin: 0; font-size: .8em;
+    }
+    .idx-card dt { color: #8b949e; font-weight: 600; }
+    .idx-card dd { margin: 0; color: #475059; }
+    .idx-card dd.hurt { color: #9a6a2f; }
+
+    @media (max-width: 640px) {
+      .idx-facts { grid-template-columns: repeat(2, 1fr); }
+      .idx-card dl { grid-template-columns: 1fr; gap: 0; }
+      .idx-card dt { margin-top: .3em; }
+    }
+  </style>
+
+  <hr />
+  <PageFooter active="research" />
+</DefaultLayout>
