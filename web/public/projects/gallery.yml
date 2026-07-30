@@ -85,6 +85,43 @@
   toy: Optical
   date: 2026-07
 
+# Night of 2026-07-29 — first fully programmatic session: slew, plate solve,
+# focus, capture and retrieval all driven from the Mac with no phone app in the
+# loop. Staged with metadata in work/scratch/gallery/; the caveats there are
+# what these notes are drawn from. The two RAW frames are byte-for-byte Seestar
+# output (Telescopes); the three plots are our own reduction, which is why they
+# carry `tech:` directly instead of borrowing a reference atlas as their toy.
+- src: gallery/2026-07/vega-spectrum.jpg
+  caption: Vega, dispersed
+  note: Zero-order dot and the full spectrum on one frame — a 5s sub the on-board stacker threw away
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: gallery/2026-07/albireo-field-of-spectra.jpg
+  caption: Albireo — a field of spectra
+  note: An objective grating disperses every star in the field, so the extra rainbows are field stars
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: gallery/2026-07/vega-balmer-series.png
+  caption: Vega's Balmer series
+  note: 30 × 5s. All four hydrogen lines at 18–22 sigma
+  science: Astronomy
+  tech: Measurements
+  date: 2026-07
+- src: gallery/2026-07/wavelength-solution.png
+  caption: Wavelength solution
+  note: 0.185 nm rms across 246 nm — the out-of-sample number, not the flattering one
+  science: Astronomy
+  tech: Measurements
+  date: 2026-07
+- src: gallery/2026-07/vega-vs-albireo.png
+  caption: A0V against K3II
+  note: Four deep hydrogen lines against a forest of metal lines. Albireo rests on 3 subs — suggestive, not settled
+  science: Astronomy
+  tech: Measurements
+  date: 2026-07
+
 - src: technology/astronomy/Telescopes/telescopes.jpeg
   caption: The Seestar, folded
   science: Astronomy
@@ -104,17 +141,27 @@
 # BIOLOGY
 # ════════════════════════════════════════════════════════════════════
 
-- src: 20260725 Cellgazing/data/leaf-epidermis.jpg
+# Cellgazing was a project folder that only ever held three microscope frames
+# and a hand-laid-out grid — i.e. a gallery pretending to be a write-up. Folded
+# into the wall 2026-07-30; the frames now live in gallery/2025-03/, dated by
+# their own EXIF rather than by the folder they used to sit in.
+- src: gallery/2025-03/tissue-section.jpg
+  caption: Tissue section
+  note: 400×
+  science: Biology
+  toy: Compound
+- src: gallery/2025-03/leaf-epidermis.jpg
   caption: Leaf epidermis
   note: Stomata everywhere
   science: Biology
   toy: Stereo
-- src: 20260725 Cellgazing/data/reticulate-specimen.jpg
+- src: gallery/2025-03/reticulate-specimen.jpg
   caption: Reticulate specimen
   note: Handheld, no stage
   science: Biology
   toy: Surface
   date: 2025-03
+
 - src: technology/biology/Microscopes/microscopes.jpeg
   caption: The stereo scope on its boom
   science: Biology
@@ -285,6 +332,10 @@
   caption: Two bowls, twenty trials
   science: Computing
   toy: SciPy
+- src: gallery/2024-02/mi.jpeg
+  caption: Mi
+  note: The subject
+  science: Computing
 - src: 20250225 Catfood/photos/setup/setup5.jpeg
   caption: Bowls swapped, trial reset
   science: Computing
@@ -309,11 +360,6 @@
   hero: data/M_31__Stacked_25_M_31_20.0s_IRCUT_20260730-015655.jpg
   science: Astronomy
   toy: Optical
-  date: 2026-07
-- folder: 20260725 Cellgazing
-  hero: data/tissue-section.jpg
-  science: Biology
-  toy: Compound
   date: 2026-07
 - folder: 20260420 UV-Vis Spectroscopy
   hero: photos/samples/samples6.jpeg

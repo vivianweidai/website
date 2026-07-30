@@ -36,13 +36,19 @@ build error rather than a hole in the wall.
 
 TAGS
 ----
-`science:` is required and is one of the six. `toy:` is optional and must match
-a toy `short` (or full `name`) that the science actually owns in
-technology.json — the wall's second filter row is built from that same list, so
-a tag here and a chip on the home page are guaranteed to be the same word.
-Leave `toy:` off when no instrument we currently own is what the picture is
-about: the retired SIL instruments (the Nicolet FT-IR, the OptiMelt) are the
-reason that case exists.
+`science:` is required and is one of the six.
+
+`toy:` names the specific instrument. It must match a toy `short` (or full
+`name`) the science owns in technology.json, it shows in the tile's caption,
+and it determines the tile's category. Leave it off when no instrument we
+currently own is what the picture is about — the retired shared-lab
+instruments (Nicolet FT-IR, OptiMelt) are why that case exists.
+
+`tech:` is the CATEGORY the wall filters on (Mechanics, Genomics, Measurements).
+Normally derived from `toy:`; give it explicitly only for a picture that belongs
+to a category but to no instrument we own. The wall's second filter row and the
+home page's Projects tab are both this same category list, so a tag in one place
+and a link in the other are guaranteed to be the same word.
 """
 
 from __future__ import annotations
@@ -258,24 +264,44 @@ def _exif_month(path: Path) -> str | None:
 
 # ── toy vocabulary ───────────────────────────────────────────────────
 
-def toys_by_science() -> dict[str, list[dict]]:
-    """science name → the toys it owns, deduped by display label, in
-    technology.json order. This is the same list the home page's Projects tab
-    renders, and it becomes the wall's second filter row."""
+def catalog_by_science() -> tuple[dict[str, list[dict]], dict[str, dict[str, str]]]:
+    """Read technology.json into the two lookups the wall needs.
+
+    Returns (techs, toy_to_tech):
+      techs        science → its categories, each {label, slug, count, toys[]},
+                   with toys nested underneath. The wall filters in three
+                   tiers — science, then category, then a single toy — so the
+                   default view stays a short menu of four categories rather
+                   than eleven instruments, and the fine-grained tags are still
+                   one click away. Picking a category implies every toy in it.
+      toy_to_tech  science → {toy label → category label}, for rolling a
+                   gallery row's instrument up to its category. Within a
+                   science each toy sits under exactly one category, so the
+                   rollup is unambiguous.
+    """
     data = json.loads(TECH_JSON.read_text())
-    out: dict[str, list[dict]] = {}
+    techs: dict[str, list[dict]] = {}
+    toy_to_tech: dict[str, dict[str, str]] = {}
     for sci in data["sciences"]:
-        seen: set[str] = set()
-        toys = []
+        rows = []
+        mapping: dict[str, str] = {}
         for tech in sci["techs"]:
+            seen: set[str] = set()
+            toys = []
             for toy in tech.get("toys", []):
                 label = toy.get("short") or toy["name"]
+                mapping.setdefault(label, tech["tech"])
+                mapping.setdefault(toy["name"], tech["tech"])
                 if label in seen:
                     continue
                 seen.add(label)
-                toys.append({"label": label, "name": toy["name"], "slug": slug(label), "count": 0})
-        out[sci["science"]] = toys
-    return out
+                toys.append({"label": label, "name": toy["name"],
+                             "slug": slug(label), "count": 0})
+            rows.append({"label": tech["tech"], "slug": slug(tech["tech"]),
+                         "count": 0, "toys": toys})
+        techs[sci["science"]] = rows
+        toy_to_tech[sci["science"]] = mapping
+    return techs, toy_to_tech
 
 
 def read_title(folder: Path) -> str:
@@ -291,7 +317,7 @@ def build() -> dict:
     if not isinstance(entries, list):
         raise ValueError("gallery.yml must be a YAML list")
 
-    catalog = toys_by_science()
+    techs, toy_to_tech = catalog_by_science()
     tiles = []
     seen_src: dict[str, int] = {}
 
@@ -348,16 +374,32 @@ def build() -> dict:
         if e.get("note"):
             tile["note"] = e["note"]
 
+        # `toy:` names the specific instrument and shows in the caption.
+        # `tech:` is the category the wall filters on, and is normally derived
+        # from the toy — give it explicitly only when a picture belongs to a
+        # category but to no instrument we own (the retired FT-IR work).
         toy = e.get("toy")
+        tech_name = e.get("tech")
         if toy:
-            match = next((t for t in catalog.get(science, [])
-                          if toy in (t["label"], t["name"])), None)
-            if not match:
-                owned = ", ".join(t["label"] for t in catalog.get(science, []))
+            mapping = toy_to_tech.get(science, {})
+            if toy not in mapping:
+                owned = ", ".join(sorted({v for v in mapping}))
                 raise ValueError(f"{where}: {science} owns no toy {toy!r}. Owned: {owned}")
-            tile["toy"] = match["label"]
-            tile["toy_slug"] = match["slug"]
+            tile["toy"] = toy
+            tech_name = tech_name or mapping[toy]
+        if tech_name:
+            match = next((t for t in techs.get(science, []) if t["label"] == tech_name), None)
+            if not match:
+                have = ", ".join(t["label"] for t in techs.get(science, []))
+                raise ValueError(f"{where}: {science} has no category {tech_name!r}. Has: {have}")
+            tile["tech"] = match["label"]
+            tile["tech_slug"] = match["slug"]
             match["count"] += 1
+            if toy:
+                hit = next((x for x in match["toys"] if x["label"] == toy or x["name"] == toy), None)
+                if hit:
+                    tile["toy_slug"] = hit["slug"]
+                    hit["count"] += 1
 
         tiles.append(tile)
 
@@ -388,7 +430,7 @@ def build() -> dict:
             "science": name,
             "slug": SCIENCE_SLUGS[name],
             "count": sum(1 for t in tiles if t["science"] == name),
-            "toys": catalog.get(name, []),
+            "techs": techs.get(name, []),
         })
     if THUMBS.is_dir():
         for f in THUMBS.iterdir():
@@ -409,9 +451,9 @@ def main() -> int:
     print(f"  {len(payload['tiles'])} tiles "
           f"({sum(1 for t in payload['tiles'] if t['kind'] == 'project')} project cards)")
     for s in payload["sciences"]:
-        tagged = sum(t["count"] for t in s["toys"])
+        tagged = sum(t["count"] for t in s["techs"])
         print(f"    {s['science']:<12} {s['count']:>3} tiles, "
-              f"{len(s['toys'])} toys ({tagged} tagged)")
+              f"{len(s['techs'])} categories ({tagged} tagged)")
     return 0
 
 

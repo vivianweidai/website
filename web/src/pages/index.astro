@@ -18,8 +18,15 @@ const SUBJ_ANCHOR = {
 // not the individual sitting: the yearly rounds, levels and camps of one
 // olympiad (COMC, the CAAO junior/senior exams + camps, …) collapse to a single
 // entry. Spelled out in full — abbreviated only where the full name would push
-// the row onto a second line (CAP, NACLO, and JSOC, which repeats on three of
-// the six rows). The /olympiads/ timeline carries the dates.
+// the row onto a second line (CAP; JSOC on Chemistry and Physics). The
+// /olympiads/ timeline carries the dates.
+//
+// JSOC repeats on three rows, so it is spelled out on the FIRST one a reader
+// meets going top-to-bottom (Biology, which also has the most slack) and left
+// short on Chemistry and Physics, where the full name wraps. Same trick on
+// Computing: "North American" contracts to "NA" so NACLO can be spelled out at
+// all — the full form overruns the row by ~120px. Both expansions leave little
+// slack, so re-render the row before lengthening any name on them.
 //
 // Order within a science is fixed: Canadian first, US second, then whatever is
 // neither (JSOC — the cross-science camp). One line per science is the target.
@@ -36,7 +43,7 @@ const OLYMPIADS = {
   computing: [
     'Canadian Computing Competition',
     'USA Computing Olympiad',
-    'NACLO',
+    'NA Computational Linguistics Open Exam',
   ],
   physics: [
     'CAP High School Prize Exam',
@@ -51,36 +58,32 @@ const OLYMPIADS = {
   biology: [
     'Canadian Biology Olympiad',
     'USA Biology Olympiad',
-    'JSOC',
+    'Junior Science Olympiad of Canada',
   ],
   astronomy: [
     'Canadian Astronomy and Astrophysics Olympiad',
     'USA Astronomy and Astrophysics Olympiad',
   ],
 };
-// The Projects tab lists the TOYS each science has — the instruments and
-// libraries we can actually reach for. This is the canonical toy list: the
-// /projects/ wall reuses exactly these labels as its per-science filter tags,
-// so a chip here and a tag there are always the same word.
+// The Projects tab lists each science's CATEGORIES — Mechanics, Genomics,
+// Measurements — not the individual instruments under them. Eleven toys on the
+// Physics row read as clutter where four categories read as a menu, and the
+// /projects/ wall uses the same three-tier vocabulary: science, then category,
+// then (once a category is open) the toys inside it. A link here lands on the
+// wall with that category already selected, which shows every toy in it.
 //
-// Toys live in each tech page's frontmatter and are baked into
-// technology.json by build_technology.py. A toy can appear under more than
-// one tech within a science (the UV-VIS unit is both Spectroscopy and
-// Electromagnetism), so dedupe by the label we display.
-const toySlug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const TOYS_BY_SCIENCE = {};
+// Categories come from technology.json, built by build_technology.py from each
+// tech page's frontmatter.
+const catSlug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const CATEGORIES_BY_SCIENCE = {};
 for (const s of techData.sciences) {
-  const seen = new Set();
-  const toys = [];
-  for (const tech of s.techs) {
-    for (const toy of tech.toys ?? []) {
-      const label = toy.short ?? toy.name;
-      if (seen.has(label)) continue;
-      seen.add(label);
-      toys.push({ label, name: toy.name, slug: toySlug(label) });
-    }
-  }
-  TOYS_BY_SCIENCE[s.science.toLowerCase()] = toys;
+  CATEGORIES_BY_SCIENCE[s.science.toLowerCase()] = s.techs.map((t) => ({
+    label: t.tech,
+    slug: catSlug(t.tech),
+    // Hover shows what is actually in the category, so the consolidation
+    // hides the instrument names without losing them.
+    toys: (t.toys ?? []).map((x) => x.short ?? x.name).join(' · '),
+  }));
 }
 const TABS = [
   { key: 'curriculum', label: 'Curriculum' },
@@ -131,23 +134,16 @@ const TABS = [
             ))}
           </div>
           <div class="curr-rows-secs" data-tab="projects">
-            {TOYS_BY_SCIENCE[subjSlug].map((toy, j) => (
+            {CATEGORIES_BY_SCIENCE[subjSlug].map((cat, j) => (
               <>
                 {j > 0 && <span class="sep">·</span>}
-                <a title={toy.name}
-                   href={`/projects/#${SUBJ_ANCHOR[subjSlug]}/${toy.slug}`}>{toy.label}</a>
+                <a title={cat.toys}
+                   href={`/projects/#${SUBJ_ANCHOR[subjSlug]}/${cat.slug}`}>{cat.label}</a>
               </>
             ))}
           </div>
 
           <a class="curr-rows-pdf" data-tab="curriculum" href={`/curriculum/notes/${subjSlug}.pdf`}>pdf</a>
-          <span class="curr-rows-topics" data-tab="projects">
-            {TOYS_BY_SCIENCE[subjSlug].length > 0 && (
-              <a class="home-proj-badge" href={`/projects/#${SUBJ_ANCHOR[subjSlug]}`}>
-                <b>{TOYS_BY_SCIENCE[subjSlug].length}</b> {TOYS_BY_SCIENCE[subjSlug].length === 1 ? 'toy' : 'toys'}
-              </a>
-            )}
-          </span>
         </div>
       );
     })}

@@ -1,21 +1,6 @@
 {
   "tiles": [
     {
-      "science": "Biology",
-      "science_slug": "bio",
-      "caption": "Cellgazing",
-      "href": "/projects/20260725%20Cellgazing/",
-      "kind": "project",
-      "src": "/projects/gallery/thumbs/20260725-cellgazing-data-tissue-section-6c0526.jpg",
-      "full": "/projects/20260725%20Cellgazing/data/tissue-section.jpg",
-      "w": 700,
-      "h": 525,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "toy": "Compound",
-      "toy_slug": "compound"
-    },
-    {
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "NGC 7000",
@@ -28,6 +13,8 @@
       "date_label": "July 2026",
       "note": "20 × 20s",
       "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
       "toy_slug": "optical"
     },
     {
@@ -43,6 +30,8 @@
       "date_label": "July 2026",
       "note": "5 × 60s",
       "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
       "toy_slug": "optical"
     },
     {
@@ -58,6 +47,8 @@
       "date_label": "July 2026",
       "note": "30 × 10s",
       "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
       "toy_slug": "optical"
     },
     {
@@ -73,6 +64,8 @@
       "date_label": "July 2026",
       "note": "9 × 10s",
       "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
       "toy_slug": "optical"
     },
     {
@@ -88,6 +81,8 @@
       "date_label": "July 2026",
       "note": "Every star in the field smeared into its own spectrum — by accident",
       "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
       "toy_slug": "optical"
     },
     {
@@ -103,6 +98,8 @@
       "date_label": "July 2026",
       "note": "Grating mounted backwards",
       "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
       "toy_slug": "optical"
     },
     {
@@ -118,6 +115,8 @@
       "date_label": "July 2026",
       "note": "1 × 10s, light-pollution filter",
       "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
       "toy_slug": "optical"
     },
     {
@@ -133,6 +132,8 @@
       "date_label": "July 2026",
       "note": "Before",
       "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
       "toy_slug": "optical"
     },
     {
@@ -148,7 +149,88 @@
       "date_label": "July 2026",
       "note": "Twenty-five minutes later — it moved",
       "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
       "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Vega, dispersed",
+      "kind": "photo",
+      "src": "/projects/gallery/thumbs/gallery-2026-07-vega-spectrum-c30027.jpg",
+      "full": "/projects/gallery/2026-07/vega-spectrum.jpg",
+      "w": 393,
+      "h": 700,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "Zero-order dot and the full spectrum on one frame — a 5s sub the on-board stacker threw away",
+      "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Albireo — a field of spectra",
+      "kind": "photo",
+      "src": "/projects/gallery/thumbs/gallery-2026-07-albireo-field-of-spectra-b59a71.jpg",
+      "full": "/projects/gallery/2026-07/albireo-field-of-spectra.jpg",
+      "w": 393,
+      "h": 700,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "An objective grating disperses every star in the field, so the extra rainbows are field stars",
+      "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Vega's Balmer series",
+      "kind": "photo",
+      "src": "/projects/gallery/thumbs/gallery-2026-07-vega-balmer-series-56cc02.png",
+      "full": "/projects/gallery/2026-07/vega-balmer-series.png",
+      "w": 700,
+      "h": 292,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "30 × 5s. All four hydrogen lines at 18–22 sigma",
+      "tech": "Measurements",
+      "tech_slug": "measurements"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Wavelength solution",
+      "kind": "photo",
+      "src": "/projects/gallery/thumbs/gallery-2026-07-wavelength-solution-417e02.png",
+      "full": "/projects/gallery/2026-07/wavelength-solution.png",
+      "w": 700,
+      "h": 350,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "0.185 nm rms across 246 nm — the out-of-sample number, not the flattering one",
+      "tech": "Measurements",
+      "tech_slug": "measurements"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "A0V against K3II",
+      "kind": "photo",
+      "src": "/projects/gallery/thumbs/gallery-2026-07-vega-vs-albireo-121303.png",
+      "full": "/projects/gallery/2026-07/vega-vs-albireo.png",
+      "w": 700,
+      "h": 318,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "Four deep hydrogen lines against a forest of metal lines. Albireo rests on 3 subs — suggestive, not settled",
+      "tech": "Measurements",
+      "tech_slug": "measurements"
     },
     {
       "science": "Astronomy",
@@ -163,6 +245,8 @@
       "date": "2026-07",
       "date_label": "July 2026",
       "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
       "toy_slug": "optical"
     },
     {
@@ -201,6 +285,8 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Force",
+      "tech": "Mechanics",
+      "tech_slug": "mechanics",
       "toy_slug": "force"
     },
     {
@@ -215,6 +301,8 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "UV-Vis",
+      "tech": "Spectroscopy",
+      "tech_slug": "spectroscopy",
       "toy_slug": "uv-vis"
     },
     {
@@ -229,6 +317,8 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Stereo",
+      "tech": "Microscopes",
+      "tech_slug": "microscopes",
       "toy_slug": "stereo"
     },
     {
@@ -243,6 +333,8 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Optical",
+      "tech": "Telescopes",
+      "tech_slug": "telescopes",
       "toy_slug": "optical"
     },
     {
@@ -281,6 +373,8 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Pressure",
+      "tech": "Thermodynamics",
+      "tech_slug": "thermodynamics",
       "toy_slug": "pressure"
     },
     {
@@ -295,6 +389,8 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Temperature",
+      "tech": "Thermal",
+      "tech_slug": "thermal",
       "toy_slug": "temperature"
     },
     {
@@ -309,6 +405,8 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Electrophoresis",
+      "tech": "Genomics",
+      "tech_slug": "genomics",
       "toy_slug": "electrophoresis"
     },
     {
@@ -336,6 +434,8 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Magnetism",
+      "tech": "Electromagnetism",
+      "tech_slug": "electromagnetism",
       "toy_slug": "magnetism"
     },
     {
@@ -350,6 +450,8 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "pH",
+      "tech": "Electrochemistry",
+      "tech_slug": "electrochemistry",
       "toy_slug": "ph"
     },
     {
@@ -364,6 +466,8 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Spirometer",
+      "tech": "Physiology",
+      "tech_slug": "physiology",
       "toy_slug": "spirometer"
     },
     {
@@ -390,6 +494,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Matplotlib",
+      "tech": "Graphic",
+      "tech_slug": "graphic",
       "toy_slug": "matplotlib"
     },
     {
@@ -417,6 +523,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
+      "tech": "Spectroscopy",
+      "tech_slug": "spectroscopy",
       "toy_slug": "uv-vis"
     },
     {
@@ -432,6 +540,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "PCR",
+      "tech": "Genomics",
+      "tech_slug": "genomics",
       "toy_slug": "pcr"
     },
     {
@@ -446,6 +556,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Matplotlib",
+      "tech": "Graphic",
+      "tech_slug": "graphic",
       "toy_slug": "matplotlib"
     },
     {
@@ -472,6 +584,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
+      "tech": "Spectroscopy",
+      "tech_slug": "spectroscopy",
       "toy_slug": "uv-vis"
     },
     {
@@ -486,6 +600,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Matplotlib",
+      "tech": "Graphic",
+      "tech_slug": "graphic",
       "toy_slug": "matplotlib"
     },
     {
@@ -513,6 +629,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
+      "tech": "Spectroscopy",
+      "tech_slug": "spectroscopy",
       "toy_slug": "uv-vis"
     },
     {
@@ -527,6 +645,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Matplotlib",
+      "tech": "Graphic",
+      "tech_slug": "graphic",
       "toy_slug": "matplotlib"
     },
     {
@@ -541,6 +661,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
+      "tech": "Spectroscopy",
+      "tech_slug": "spectroscopy",
       "toy_slug": "uv-vis"
     },
     {
@@ -555,6 +677,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
+      "tech": "Spectroscopy",
+      "tech_slug": "spectroscopy",
       "toy_slug": "uv-vis"
     },
     {
@@ -581,6 +705,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Conductivity",
+      "tech": "Electrochemistry",
+      "tech_slug": "electrochemistry",
       "toy_slug": "conductivity"
     },
     {
@@ -595,6 +721,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "pH",
+      "tech": "Electrochemistry",
+      "tech_slug": "electrochemistry",
       "toy_slug": "ph"
     },
     {
@@ -609,6 +737,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Conductivity",
+      "tech": "Electrochemistry",
+      "tech_slug": "electrochemistry",
       "toy_slug": "conductivity"
     },
     {
@@ -623,6 +753,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "pH",
+      "tech": "Electrochemistry",
+      "tech_slug": "electrochemistry",
       "toy_slug": "ph"
     },
     {
@@ -637,6 +769,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "pH",
+      "tech": "Electrochemistry",
+      "tech_slug": "electrochemistry",
       "toy_slug": "ph"
     },
     {
@@ -651,6 +785,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "pH",
+      "tech": "Electrochemistry",
+      "tech_slug": "electrochemistry",
       "toy_slug": "ph"
     },
     {
@@ -666,6 +802,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
+      "tech": "Spectroscopy",
+      "tech_slug": "spectroscopy",
       "toy_slug": "uv-vis"
     },
     {
@@ -694,6 +832,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "pH",
+      "tech": "Electrochemistry",
+      "tech_slug": "electrochemistry",
       "toy_slug": "ph"
     },
     {
@@ -709,6 +849,8 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Temperature",
+      "tech": "Thermal",
+      "tech_slug": "thermal",
       "toy_slug": "temperature"
     },
     {
@@ -723,21 +865,42 @@
       "date": "2025-12",
       "date_label": "December 2025",
       "toy": "Astrometry",
+      "tech": "Measurements",
+      "tech_slug": "measurements",
       "toy_slug": "astrometry"
+    },
+    {
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Tissue section",
+      "kind": "photo",
+      "src": "/projects/gallery/thumbs/gallery-2025-03-tissue-section-146720.jpg",
+      "full": "/projects/gallery/2025-03/tissue-section.jpg",
+      "w": 700,
+      "h": 525,
+      "date": "2025-03",
+      "date_label": "March 2025",
+      "note": "400×",
+      "toy": "Compound",
+      "tech": "Microscopes",
+      "tech_slug": "microscopes",
+      "toy_slug": "compound"
     },
     {
       "science": "Biology",
       "science_slug": "bio",
       "caption": "Leaf epidermis",
       "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260725-cellgazing-data-leaf-epidermis-11a909.jpg",
-      "full": "/projects/20260725%20Cellgazing/data/leaf-epidermis.jpg",
+      "src": "/projects/gallery/thumbs/gallery-2025-03-leaf-epidermis-c9fc90.jpg",
+      "full": "/projects/gallery/2025-03/leaf-epidermis.jpg",
       "w": 700,
       "h": 525,
       "date": "2025-03",
       "date_label": "March 2025",
       "note": "Stomata everywhere",
       "toy": "Stereo",
+      "tech": "Microscopes",
+      "tech_slug": "microscopes",
       "toy_slug": "stereo"
     },
     {
@@ -745,14 +908,16 @@
       "science_slug": "bio",
       "caption": "Reticulate specimen",
       "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260725-cellgazing-data-reticulate-specimen-e0edfc.jpg",
-      "full": "/projects/20260725%20Cellgazing/data/reticulate-specimen.jpg",
+      "src": "/projects/gallery/thumbs/gallery-2025-03-reticulate-specimen-0007c1.jpg",
+      "full": "/projects/gallery/2025-03/reticulate-specimen.jpg",
       "w": 700,
       "h": 479,
       "date": "2025-03",
       "date_label": "March 2025",
       "note": "Handheld, no stage",
       "toy": "Surface",
+      "tech": "Microscopes",
+      "tech_slug": "microscopes",
       "toy_slug": "surface"
     },
     {
@@ -768,6 +933,8 @@
       "date_label": "February 2025",
       "note": "p = 0.03",
       "toy": "SciPy",
+      "tech": "Statistics",
+      "tech_slug": "statistics",
       "toy_slug": "scipy"
     },
     {
@@ -782,6 +949,8 @@
       "date": "2025-02",
       "date_label": "February 2025",
       "toy": "Oscilloscope",
+      "tech": "Engineering",
+      "tech_slug": "engineering",
       "toy_slug": "oscilloscope"
     },
     {
@@ -797,6 +966,8 @@
       "date": "2025-02",
       "date_label": "February 2025",
       "toy": "SciPy",
+      "tech": "Statistics",
+      "tech_slug": "statistics",
       "toy_slug": "scipy"
     },
     {
@@ -811,6 +982,8 @@
       "date": "2024-09",
       "date_label": "September 2024",
       "toy": "SciPy",
+      "tech": "Statistics",
+      "tech_slug": "statistics",
       "toy_slug": "scipy"
     },
     {
@@ -836,6 +1009,19 @@
       "h": 525,
       "date": "2024-09",
       "date_label": "September 2024"
+    },
+    {
+      "science": "Computing",
+      "science_slug": "comp",
+      "caption": "Mi",
+      "kind": "photo",
+      "src": "/projects/gallery/thumbs/gallery-2024-02-mi-d998b3.jpeg",
+      "full": "/projects/gallery/2024-02/mi.jpeg",
+      "w": 525,
+      "h": 700,
+      "date": "2024-02",
+      "date_label": "February 2024",
+      "note": "The subject"
     }
   ],
   "sciences": [
@@ -843,85 +1029,127 @@
       "science": "Mathematics",
       "slug": "math",
       "count": 6,
-      "toys": [
+      "techs": [
         {
-          "label": "NumPy",
-          "name": "NumPy",
-          "slug": "numpy",
-          "count": 0
+          "label": "Numeric",
+          "slug": "numeric",
+          "count": 0,
+          "toys": [
+            {
+              "label": "NumPy",
+              "name": "NumPy",
+              "slug": "numpy",
+              "count": 0
+            },
+            {
+              "label": "SciPy",
+              "name": "SciPy",
+              "slug": "scipy",
+              "count": 0
+            }
+          ]
         },
         {
-          "label": "SciPy",
-          "name": "SciPy",
-          "slug": "scipy",
-          "count": 0
+          "label": "Symbolic",
+          "slug": "symbolic",
+          "count": 0,
+          "toys": [
+            {
+              "label": "Wolfram",
+              "name": "Wolfram",
+              "slug": "wolfram",
+              "count": 0
+            }
+          ]
         },
         {
-          "label": "Wolfram",
-          "name": "Wolfram",
-          "slug": "wolfram",
-          "count": 0
-        },
-        {
-          "label": "Matplotlib",
-          "name": "Matplotlib",
-          "slug": "matplotlib",
-          "count": 4
-        },
-        {
-          "label": "LaTeX",
-          "name": "LaTeX",
-          "slug": "latex",
-          "count": 0
+          "label": "Graphic",
+          "slug": "graphic",
+          "count": 4,
+          "toys": [
+            {
+              "label": "Matplotlib",
+              "name": "Matplotlib",
+              "slug": "matplotlib",
+              "count": 4
+            },
+            {
+              "label": "LaTeX",
+              "name": "LaTeX",
+              "slug": "latex",
+              "count": 0
+            }
+          ]
         }
       ]
     },
     {
       "science": "Computing",
       "slug": "comp",
-      "count": 7,
-      "toys": [
+      "count": 8,
+      "techs": [
         {
-          "label": "SciPy",
-          "name": "SciPy",
-          "slug": "scipy",
-          "count": 3
+          "label": "Statistics",
+          "slug": "statistics",
+          "count": 3,
+          "toys": [
+            {
+              "label": "SciPy",
+              "name": "SciPy",
+              "slug": "scipy",
+              "count": 3
+            }
+          ]
         },
         {
-          "label": "scikit-learn",
-          "name": "scikit-learn",
-          "slug": "scikit-learn",
-          "count": 0
+          "label": "Machine Learning",
+          "slug": "machine-learning",
+          "count": 0,
+          "toys": [
+            {
+              "label": "scikit-learn",
+              "name": "scikit-learn",
+              "slug": "scikit-learn",
+              "count": 0
+            },
+            {
+              "label": "PyTorch",
+              "name": "PyTorch",
+              "slug": "pytorch",
+              "count": 0
+            }
+          ]
         },
         {
-          "label": "PyTorch",
-          "name": "PyTorch",
-          "slug": "pytorch",
-          "count": 0
-        },
-        {
-          "label": "GitHub",
-          "name": "GitHub",
-          "slug": "github",
-          "count": 0
-        },
-        {
-          "label": "Jupyter",
-          "name": "Jupyter",
-          "slug": "jupyter",
-          "count": 0
-        },
-        {
-          "label": "Docker",
-          "name": "Docker",
-          "slug": "docker",
-          "count": 0
-        },
-        {
-          "label": "Zenodo",
-          "name": "Zenodo",
-          "slug": "zenodo",
-          "count": 0
+          "label": "Publishing",
+          "slug": "publishing",
+          "count": 0,
+          "toys": [
+            {
+              "label": "GitHub",
+              "name": "GitHub",
+              "slug": "github",
+              "count": 0
+            },
+            {
+              "label": "Jupyter",
+              "name": "Jupyter",
+              "slug": "jupyter",
+              "count": 0
+            },
+            {
+              "label": "Docker",
+              "name": "Docker",
+              "slug": "docker",
+              "count": 0
+            },
+            {
+              "label": "Zenodo",
+              "name": "Zenodo",
+              "slug": "zenodo",
+              "count": 0
+            }
+          ]
         }
       ]
     },
@@ -929,72 +1157,100 @@
       "science": "Physics",
       "slug": "phys",
       "count": 8,
-      "toys": [
+      "techs": [
         {
-          "label": "Force",
-          "name": "Vernier Go Direct Force and Acceleration Sensor",
-          "slug": "force",
-          "count": 1
+          "label": "Mechanics",
+          "slug": "mechanics",
+          "count": 1,
+          "toys": [
+            {
+              "label": "Force",
+              "name": "Vernier Go Direct Force and Acceleration Sensor",
+              "slug": "force",
+              "count": 1
+            },
+            {
+              "label": "Motion",
+              "name": "Vernier Go Direct Motion Detector",
+              "slug": "motion",
+              "count": 0
+            },
+            {
+              "label": "Time",
+              "name": "Vernier Go Direct Photogate",
+              "slug": "time",
+              "count": 0
+            }
+          ]
         },
         {
-          "label": "Motion",
-          "name": "Vernier Go Direct Motion Detector",
-          "slug": "motion",
-          "count": 0
+          "label": "Thermodynamics",
+          "slug": "thermodynamics",
+          "count": 1,
+          "toys": [
+            {
+              "label": "Pressure",
+              "name": "Vernier Go Direct Gas Pressure Sensor",
+              "slug": "pressure",
+              "count": 1
+            },
+            {
+              "label": "Turbidity",
+              "name": "Vernier Go Direct Turbidity",
+              "slug": "turbidity",
+              "count": 0
+            }
+          ]
         },
         {
-          "label": "Time",
-          "name": "Vernier Go Direct Photogate",
-          "slug": "time",
-          "count": 0
+          "label": "Electromagnetism",
+          "slug": "electromagnetism",
+          "count": 1,
+          "toys": [
+            {
+              "label": "Spectrophotometer",
+              "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
+              "slug": "spectrophotometer",
+              "count": 0
+            },
+            {
+              "label": "Optical Fiber",
+              "name": "Vernier Spectrophotometer Optical Fiber",
+              "slug": "optical-fiber",
+              "count": 0
+            },
+            {
+              "label": "Magnetism",
+              "name": "Vernier Go Direct 3-Axis Magnetic Field Sensor",
+              "slug": "magnetism",
+              "count": 1
+            }
+          ]
         },
         {
-          "label": "Pressure",
-          "name": "Vernier Go Direct Gas Pressure Sensor",
-          "slug": "pressure",
-          "count": 1
-        },
-        {
-          "label": "Turbidity",
-          "name": "Vernier Go Direct Turbidity",
-          "slug": "turbidity",
-          "count": 0
-        },
-        {
-          "label": "Spectrophotometer",
-          "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
-          "slug": "spectrophotometer",
-          "count": 0
-        },
-        {
-          "label": "Optical Fiber",
-          "name": "Vernier Spectrophotometer Optical Fiber",
-          "slug": "optical-fiber",
-          "count": 0
-        },
-        {
-          "label": "Magnetism",
-          "name": "Vernier Go Direct 3-Axis Magnetic Field Sensor",
-          "slug": "magnetism",
-          "count": 1
-        },
-        {
-          "label": "LEGO",
-          "name": "LEGO Education SPIKE Prime Set",
-          "slug": "lego",
-          "count": 0
-        },
-        {
-          "label": "Oscilloscope",
-          "name": "Digilent Analog Discovery 3",
-          "slug": "oscilloscope",
-          "count": 1
-        },
-        {
-          "label": "3D Printer",
-          "name": "Prusa CORE One+",
-          "slug": "3d-printer",
-          "count": 0
+          "label": "Engineering",
+          "slug": "engineering",
+          "count": 1,
+          "toys": [
+            {
+              "label": "LEGO",
+              "name": "LEGO Education SPIKE Prime Set",
+              "slug": "lego",
+              "count": 0
+            },
+            {
+              "label": "Oscilloscope",
+              "name": "Digilent Analog Discovery 3",
+              "slug": "oscilloscope",
+              "count": 1
+            },
+            {
+              "label": "3D Printer",
+              "name": "Prusa CORE One+",
+              "slug": "3d-printer",
+              "count": 0
+            }
+          ]
         }
       ]
     },
@@ -1002,36 +1258,57 @@
       "science": "Chemistry",
       "slug": "chem",
       "count": 19,
-      "toys": [
+      "techs": [
         {
-          "label": "Temperature",
-          "name": "Vernier Go Direct Temperature Probe",
-          "slug": "temperature",
-          "count": 2
+          "label": "Thermal",
+          "slug": "thermal",
+          "count": 2,
+          "toys": [
+            {
+              "label": "Temperature",
+              "name": "Vernier Go Direct Temperature Probe",
+              "slug": "temperature",
+              "count": 2
+            }
+          ]
         },
         {
-          "label": "pH",
-          "name": "Vernier Go Direct pH Sensor",
-          "slug": "ph",
-          "count": 6
+          "label": "Electrochemistry",
+          "slug": "electrochemistry",
+          "count": 8,
+          "toys": [
+            {
+              "label": "pH",
+              "name": "Vernier Go Direct pH Sensor",
+              "slug": "ph",
+              "count": 6
+            },
+            {
+              "label": "Conductivity",
+              "name": "Vernier Go Direct Conductivity Probe",
+              "slug": "conductivity",
+              "count": 2
+            }
+          ]
         },
         {
-          "label": "Conductivity",
-          "name": "Vernier Go Direct Conductivity Probe",
-          "slug": "conductivity",
-          "count": 2
-        },
-        {
-          "label": "UV-Vis",
-          "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
-          "slug": "uv-vis",
-          "count": 7
-        },
-        {
-          "label": "Polarimeter",
-          "name": "Vernier Go Direct Polarimeter",
-          "slug": "polarimeter",
-          "count": 0
+          "label": "Spectroscopy",
+          "slug": "spectroscopy",
+          "count": 7,
+          "toys": [
+            {
+              "label": "UV-Vis",
+              "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
+              "slug": "uv-vis",
+              "count": 7
+            },
+            {
+              "label": "Polarimeter",
+              "name": "Vernier Go Direct Polarimeter",
+              "slug": "polarimeter",
+              "count": 0
+            }
+          ]
         }
       ]
     },
@@ -1039,121 +1316,163 @@
       "science": "Biology",
       "slug": "bio",
       "count": 7,
-      "toys": [
+      "techs": [
         {
-          "label": "Surface",
-          "name": "Dino-Lite AF4515T-FUW Digital Microscope",
-          "slug": "surface",
-          "count": 1
+          "label": "Microscopes",
+          "slug": "microscopes",
+          "count": 4,
+          "toys": [
+            {
+              "label": "Surface",
+              "name": "Dino-Lite AF4515T-FUW Digital Microscope",
+              "slug": "surface",
+              "count": 1
+            },
+            {
+              "label": "Stereo",
+              "name": "AmScope SM-4TZ-144 Trinocular Stereo Microscope",
+              "slug": "stereo",
+              "count": 2
+            },
+            {
+              "label": "Compound",
+              "name": "Swift Optical SW380T Trinocular Compound Microscope",
+              "slug": "compound",
+              "count": 1
+            }
+          ]
         },
         {
-          "label": "Stereo",
-          "name": "AmScope SM-4TZ-144 Trinocular Stereo Microscope",
-          "slug": "stereo",
-          "count": 2
+          "label": "Physiology",
+          "slug": "physiology",
+          "count": 1,
+          "toys": [
+            {
+              "label": "EKG",
+              "name": "Vernier Go Direct EKG Sensor",
+              "slug": "ekg",
+              "count": 0
+            },
+            {
+              "label": "Spirometer",
+              "name": "Vernier Go Direct Spirometer",
+              "slug": "spirometer",
+              "count": 1
+            },
+            {
+              "label": "Respiration",
+              "name": "Vernier Go Direct O2 + CO2 Gas Sensor Bundle",
+              "slug": "respiration",
+              "count": 0
+            }
+          ]
         },
         {
-          "label": "Compound",
-          "name": "Swift Optical SW380T Trinocular Compound Microscope",
-          "slug": "compound",
-          "count": 1
-        },
-        {
-          "label": "EKG",
-          "name": "Vernier Go Direct EKG Sensor",
-          "slug": "ekg",
-          "count": 0
-        },
-        {
-          "label": "Spirometer",
-          "name": "Vernier Go Direct Spirometer",
-          "slug": "spirometer",
-          "count": 1
-        },
-        {
-          "label": "Respiration",
-          "name": "Vernier Go Direct O2 + CO2 Gas Sensor Bundle",
-          "slug": "respiration",
-          "count": 0
-        },
-        {
-          "label": "PCR",
-          "name": "miniPCR mini16 Thermal Cycler",
-          "slug": "pcr",
-          "count": 1
-        },
-        {
-          "label": "Fluorescence",
-          "name": "P51 Molecular Fluorescence Viewer",
-          "slug": "fluorescence",
-          "count": 0
-        },
-        {
-          "label": "Electrophoresis",
-          "name": "GELATO Electrophoresis and Visualization System",
-          "slug": "electrophoresis",
-          "count": 1
+          "label": "Genomics",
+          "slug": "genomics",
+          "count": 2,
+          "toys": [
+            {
+              "label": "PCR",
+              "name": "miniPCR mini16 Thermal Cycler",
+              "slug": "pcr",
+              "count": 1
+            },
+            {
+              "label": "Fluorescence",
+              "name": "P51 Molecular Fluorescence Viewer",
+              "slug": "fluorescence",
+              "count": 0
+            },
+            {
+              "label": "Electrophoresis",
+              "name": "GELATO Electrophoresis and Visualization System",
+              "slug": "electrophoresis",
+              "count": 1
+            }
+          ]
         }
       ]
     },
     {
       "science": "Astronomy",
       "slug": "astro",
-      "count": 13,
-      "toys": [
+      "count": 18,
+      "techs": [
         {
-          "label": "Optical",
-          "name": "ZWO Seestar S30 Pro with Tilting Wedge",
-          "slug": "optical",
-          "count": 11
+          "label": "Telescopes",
+          "slug": "telescopes",
+          "count": 13,
+          "toys": [
+            {
+              "label": "Optical",
+              "name": "ZWO Seestar S30 Pro with Tilting Wedge",
+              "slug": "optical",
+              "count": 13
+            },
+            {
+              "label": "Earth",
+              "name": "UBC Thunderbird South Observatory",
+              "slug": "earth",
+              "count": 0
+            },
+            {
+              "label": "Space",
+              "name": "MAST Portal",
+              "slug": "space",
+              "count": 0
+            }
+          ]
         },
         {
-          "label": "Earth",
-          "name": "UBC Thunderbird South Observatory",
-          "slug": "earth",
-          "count": 0
+          "label": "Measurements",
+          "slug": "measurements",
+          "count": 4,
+          "toys": [
+            {
+              "label": "Photometry",
+              "name": "AAVSO Database",
+              "slug": "photometry",
+              "count": 0
+            },
+            {
+              "label": "Astrometry",
+              "name": "Gaia Archive",
+              "slug": "astrometry",
+              "count": 1
+            },
+            {
+              "label": "Spectroscopy",
+              "name": "Pickles Stellar Atlas",
+              "slug": "spectroscopy",
+              "count": 0
+            }
+          ]
         },
         {
-          "label": "Space",
-          "name": "MAST Portal",
-          "slug": "space",
-          "count": 0
-        },
-        {
-          "label": "Photometry",
-          "name": "AAVSO Database",
-          "slug": "photometry",
-          "count": 0
-        },
-        {
-          "label": "Astrometry",
-          "name": "Gaia Archive",
-          "slug": "astrometry",
-          "count": 1
-        },
-        {
-          "label": "Spectroscopy",
-          "name": "Pickles Stellar Atlas",
-          "slug": "spectroscopy",
-          "count": 0
-        },
-        {
-          "label": "Stars",
-          "name": "SIMBAD",
-          "slug": "stars",
-          "count": 0
-        },
-        {
-          "label": "Transients",
-          "name": "Transient Name Server",
-          "slug": "transients",
-          "count": 0
-        },
-        {
-          "label": "Galaxies",
-          "name": "Galaxy Zoo",
-          "slug": "galaxies",
-          "count": 0
+          "label": "Classification",
+          "slug": "classification",
+          "count": 0,
+          "toys": [
+            {
+              "label": "Stars",
+              "name": "SIMBAD",
+              "slug": "stars",
+              "count": 0
+            },
+            {
+              "label": "Transients",
+              "name": "Transient Name Server",
+              "slug": "transients",
+              "count": 0
+            },
+            {
+              "label": "Galaxies",
+              "name": "Galaxy Zoo",
+              "slug": "galaxies",
+              "count": 0
+            }
+          ]
         }
       ]
     }
