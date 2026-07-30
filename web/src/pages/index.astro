@@ -340,12 +340,11 @@ const TABS = [
     .home-proj-badge b { font-weight: 700; }
     .home-proj-badge:hover { border-color: #0969da; color: #0969da; }
 
-    /* Olympiad row content is inline text styled exactly like the Curriculum
-       tab — same link rule, same size, same weight. Only the line-height is
-       looser, because competition names are long enough to wrap. */
-    .curr-rows-secs[data-tab="olympiads"] {
-      line-height: 1.75;
-    }
+    /* The Olympiads tab carries NO styling of its own — competition names are
+       the same dot-separated links as Curriculum's sections, inheriting the
+       same font, size, weight and line-height, so the three tabs read as one
+       row that changes contents. (The achievement glyphs and their looser
+       line-height were dropped 2026-07-30; see the OLYMPIADS comment above.) */
     @media (max-width: 600px) {
       .curr-rows-row {
         flex-direction: column;
