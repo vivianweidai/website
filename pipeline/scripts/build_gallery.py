@@ -47,9 +47,11 @@ reason that case exists.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import struct
+import subprocess
 import sys
 import urllib.parse
 from pathlib import Path
@@ -76,8 +78,49 @@ MONTHS = ["January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]
 
 
+THUMBS = CONTENT / "gallery" / "thumbs"
+THUMB_EDGE = 700     # px on the long edge — ~3× the widest column on a big screen
+THUMB_BYTES = 200_000  # anything smaller than this is already web-sized
+made: set[str] = set()  # thumbs this run touched; the rest get pruned
+
+
 def slug(s: str) -> str:
     return re.sub(r"^-|-$", "", re.sub(r"[^a-z0-9]+", "-", s.lower()))
+
+
+def thumbnail(rel: str, path: Path) -> tuple[str, int, int]:
+    """Return (url, w, h) for the image the wall should actually load.
+
+    The originals are camera-resolution — 57 MB across the whole wall, and a
+    gallery is exactly the page where every one of them ends up requested.
+    So each oversized source gets a long-edge-700 copy under gallery/thumbs/,
+    generated with macOS `sips` (already on the box, no image dependency to
+    install) and committed alongside everything else. Files that are already
+    web-sized are served as they are.
+
+    Thumbs are regenerated only when missing or older than their source, so
+    a normal run does no work.
+    """
+    w, h = image_size(path)
+    if max(w, h) <= THUMB_EDGE and path.stat().st_size <= THUMB_BYTES:
+        return url_for(rel), w, h
+
+    stem = slug(rel.rsplit(".", 1)[0])[:48]
+    name = f"{stem}-{hashlib.sha1(rel.encode()).hexdigest()[:6]}{path.suffix.lower()}"
+    out = THUMBS / name
+    THUMBS.mkdir(parents=True, exist_ok=True)
+
+    if not out.is_file() or out.stat().st_mtime < path.stat().st_mtime:
+        r = subprocess.run(
+            ["sips", "-Z", str(THUMB_EDGE), str(path), "--out", str(out)],
+            capture_output=True, text=True,
+        )
+        if r.returncode != 0 or not out.is_file():
+            raise ValueError(f"sips failed on {rel}: {r.stderr.strip() or r.stdout.strip()}")
+
+    made.add(name)
+    tw, th = image_size(out)
+    return url_for(f"gallery/thumbs/{name}"), tw, th
 
 
 def url_for(rel: str) -> str:
@@ -250,6 +293,7 @@ def build() -> dict:
 
     catalog = toys_by_science()
     tiles = []
+    seen_src: dict[str, int] = {}
 
     for i, e in enumerate(entries):
         where = f"gallery.yml[{i}]"
@@ -278,8 +322,17 @@ def build() -> dict:
         path = CONTENT / rel
         if not path.is_file():
             raise ValueError(f"{where}: no such file {rel!r}")
-        w, h = image_size(path)
-        tile["src"] = url_for(rel)
+        # One picture, one place on the wall. This mostly catches a project
+        # card whose hero is also listed as a standalone tile — which reads as
+        # the grid stuttering rather than as two entries.
+        if rel in seen_src:
+            raise ValueError(
+                f"{where}: {rel!r} is already used by gallery.yml[{seen_src[rel]}]. "
+                "A project card's hero should not also be a photo tile.")
+        seen_src[rel] = i
+        src, w, h = thumbnail(rel, path)
+        tile["src"] = src            # what the wall loads
+        tile["full"] = url_for(rel)  # the original, for anything that wants it
         tile["w"], tile["h"] = w, h
 
         # Explicit `date:` wins; otherwise take the month off the camera.
@@ -308,9 +361,26 @@ def build() -> dict:
 
         tiles.append(tile)
 
-    # Newest first. Ties keep gallery.yml order, so a month's tiles can be
-    # hand-arranged for how they sit next to each other on the grid.
-    tiles.sort(key=lambda t: t["date"], reverse=True)
+    # Newest month first — but *within* a month, deal the tiles out round-robin
+    # across the sciences instead of keeping gallery.yml order. Without this a
+    # busy month in one science (a week of clear skies, say) lands as a slab of
+    # fifteen near-identical frames at the top of the wall. Dealing them out
+    # mixes the grid without touching the chronology, since the date only
+    # resolves to a month anyway. Order within one science is preserved, so
+    # a run of related shots still reads in sequence.
+    def interleave(group: list[dict]) -> list[dict]:
+        queues = [[t for t in group if t["science"] == name] for name in SCIENCE_ORDER]
+        out = []
+        while any(queues):
+            for q in queues:
+                if q:
+                    out.append(q.pop(0))
+        return out
+
+    by_month: dict[str, list[dict]] = {}
+    for t in tiles:
+        by_month.setdefault(t["date"], []).append(t)
+    tiles = [t for month in sorted(by_month, reverse=True) for t in interleave(by_month[month])]
 
     sciences = []
     for name in SCIENCE_ORDER:
@@ -320,6 +390,11 @@ def build() -> dict:
             "count": sum(1 for t in tiles if t["science"] == name),
             "toys": catalog.get(name, []),
         })
+    if THUMBS.is_dir():
+        for f in THUMBS.iterdir():
+            if f.name not in made:
+                f.unlink()
+
     return {"tiles": tiles, "sciences": sciences}
 
 

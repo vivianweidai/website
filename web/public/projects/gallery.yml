@@ -60,30 +60,6 @@
   science: Astronomy
   toy: Optical
   date: 2026-07
-- src: 20260725 Stargazing/data/Delta_Cygni__Stacked_54_Delta_Cygni_5.0s_IRCUT_20260728-223243.jpg
-  caption: Delta Cygni
-  note: 54 × 5s
-  science: Astronomy
-  toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/Deneb__Stacked_32_Deneb_10.0s_IRCUT_20260725-015351.jpg
-  caption: Deneb
-  note: 32 × 10s
-  science: Astronomy
-  toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/Vega__Stacked_8_Vega_10.0s_IRCUT_20260725-011926.jpg
-  caption: Vega
-  note: 8 × 10s
-  science: Astronomy
-  toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/RR_Lyrae__Stacked_21_RR_Lyrae_5.0s_IRCUT_20260725-020642.jpg
-  caption: RR Lyrae
-  note: 21 × 5s
-  science: Astronomy
-  toy: Optical
-  date: 2026-07
 - src: 20260725 Stargazing/data/Albireo__Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg
   caption: Albireo
   note: Every star in the field smeared into its own spectrum — by accident
@@ -99,12 +75,6 @@
 - src: 20260725 Stargazing/data/Vega__Light_Vega_10.0s_LP_20260728-233740.jpg
   caption: Vega, dispersed
   note: 1 × 10s, light-pollution filter
-  science: Astronomy
-  toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/V530_Lyrae__Light_V530_Lyrae_2.0s_IRCUT_20260728-232423.jpg
-  caption: V530 Lyrae
-  note: 1 × 2s
   science: Astronomy
   toy: Optical
   date: 2026-07

@@ -17,7 +17,11 @@ const SUBJ_ANCHOR = {
 // same shape as the Curriculum tab's section list. Names are the *competition*,
 // not the individual sitting: the yearly rounds, levels and camps of one
 // olympiad (COMC, the CAAO junior/senior exams + camps, …) collapse to a single
-// entry. Spelled out in full; the /olympiads/ timeline carries the dates.
+// entry. Spelled out in full — abbreviated only where the full name would push
+// the row onto a second line (NACLO, CAP). The /olympiads/ timeline has the dates.
+//
+// Order within a science is fixed: Canadian first, US second, then whatever is
+// neither (JSOC — the cross-science camp). One line per science is the target.
 //
 // `icon` is the competition's best standing across all its sittings in
 // olympiads.yml — 'invited'/'attended' (⭐ sparkle) | 'competitive' (🎯 wiggle) |
@@ -31,27 +35,26 @@ const OLYMPIADS = {
   ]},
   computing:   { kind: '', comps: [
     { name: 'Canadian Computing Competition' },
-    { name: 'North American Computational Linguistics Open' },
     { name: 'USA Computing Olympiad' },
+    { name: 'NACLO' },
   ]},
   physics:     { kind: 'invited', comps: [
+    { name: 'CAP High School Prize Exam' },
+    { name: 'USA Physics Olympiad F=ma' },
     { name: 'Junior Science Olympiad of Canada',                         icon: '⭐', kind: 'invited' },
-    { name: 'Canadian Association of Physicists High School Prize Exam' },
-    { name: 'USA Physics Olympiad F=ma Exam' },
   ]},
   chemistry:   { kind: 'competitive', comps: [
-    { name: 'Junior Science Olympiad of Canada',                         icon: '⭐', kind: 'invited' },
     { name: 'Canadian Chemistry Olympiad',                               icon: '🎯',  kind: 'competitive' },
-    { name: 'United States National Chemistry Olympiad',                 icon: '⭐', kind: 'invited' },
+    { name: 'USNCO',                                                     icon: '⭐', kind: 'invited' },
+    { name: 'Junior Science Olympiad of Canada',                         icon: '⭐', kind: 'invited' },
   ]},
   biology:     { kind: 'competitive', comps: [
-    { name: 'Junior Science Olympiad of Canada',                         icon: '⭐', kind: 'invited' },
     { name: 'Canadian Biology Olympiad',                                 icon: '🎯',  kind: 'competitive' },
     { name: 'USA Biology Olympiad',                                      icon: '🎯',  kind: 'competitive' },
+    { name: 'Junior Science Olympiad of Canada',                         icon: '⭐', kind: 'invited' },
   ]},
   astronomy:   { kind: 'team', badge: 'TEAM CANADA', comps: [
-    { name: 'International Olympiad on Astronomy and Astrophysics',      icon: '🇨🇦', kind: 'team' },
-    { name: 'Canadian Astronomy and Astrophysics Olympiad',              icon: '⭐', kind: 'invited' },
+    { name: 'Canadian Astronomy and Astrophysics Olympiad',              icon: '🇨🇦', kind: 'team' },
     { name: 'USA Astronomy and Astrophysics Olympiad',                   icon: '🎯',  kind: 'competitive' },
   ]},
 };

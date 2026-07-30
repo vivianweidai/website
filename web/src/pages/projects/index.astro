@@ -188,6 +188,8 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
        and Olympiads — the shape alone should say which vertical you're in. */
     .wall-filters { margin: 1.2em 0 1.4em; }
     .wf-row { display: flex; flex-wrap: wrap; gap: 0.4em; }
+    /* A class selector beats [hidden]'s UA `display: none`, so say it here. */
+    .wf-row[hidden] { display: none; }
     .wf-toys {
       margin-top: 0.6em;
       padding-top: 0.6em;
