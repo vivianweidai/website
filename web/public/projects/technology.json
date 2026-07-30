@@ -9,8 +9,6 @@
           "id": 1,
           "tech": "Numeric",
           "specs": "Approximate",
-          "tech_url": "/projects/technology/mathematics/Numeric/",
-          "hero": "/projects/technology/mathematics/Numeric/numeric.jpeg",
           "toys": [
             {
               "name": "NumPy",
@@ -26,8 +24,6 @@
           "id": 2,
           "tech": "Symbolic",
           "specs": "Exact",
-          "tech_url": "/projects/technology/mathematics/Symbolic/",
-          "hero": "/projects/technology/mathematics/Symbolic/symbolic.jpeg",
           "toys": [
             {
               "name": "Wolfram",
@@ -39,8 +35,6 @@
           "id": 3,
           "tech": "Graphic",
           "specs": "2D and 3D",
-          "tech_url": "/projects/technology/mathematics/Graphic/",
-          "hero": "/projects/technology/mathematics/Graphic/graphic.jpeg",
           "toys": [
             {
               "name": "Matplotlib",
@@ -63,8 +57,6 @@
           "id": 4,
           "tech": "Statistics",
           "specs": "Inference",
-          "tech_url": "/projects/technology/computing/Statistics/",
-          "hero": "/projects/technology/computing/Statistics/catfood.jpeg",
           "toys": [
             {
               "name": "SciPy",
@@ -98,8 +90,6 @@
           "id": 5,
           "tech": "Machine Learning",
           "specs": "Classic models",
-          "tech_url": "/projects/technology/computing/Machine%20Learning/",
-          "hero": "/projects/technology/computing/Machine%20Learning/ctybiology.jpeg",
           "toys": [
             {
               "name": "scikit-learn",
@@ -115,8 +105,6 @@
           "id": 6,
           "tech": "Publishing",
           "specs": "Data code notebooks",
-          "tech_url": "/projects/technology/computing/Publishing/",
-          "hero": "/projects/technology/computing/Publishing/prism.jpeg",
           "toys": [
             {
               "name": "GitHub",
@@ -147,8 +135,6 @@
           "id": 7,
           "tech": "Mechanics",
           "specs": "Force, motion and timing",
-          "tech_url": "/projects/technology/physics/Mechanics/",
-          "hero": "/projects/technology/physics/Mechanics/mechanics.jpeg",
           "toys": [
             {
               "name": "Vernier Go Direct Force and Acceleration Sensor",
@@ -171,8 +157,6 @@
           "id": 8,
           "tech": "Thermodynamics",
           "specs": "Pressure and turbidity",
-          "tech_url": "/projects/technology/physics/Thermodynamics/",
-          "hero": "/projects/technology/physics/Thermodynamics/thermodynamics.jpeg",
           "toys": [
             {
               "name": "Vernier Go Direct Gas Pressure Sensor",
@@ -190,8 +174,6 @@
           "id": 9,
           "tech": "Electromagnetism",
           "specs": "Magnetism and spectra",
-          "tech_url": "/projects/technology/physics/Electromagnetism/",
-          "hero": "/projects/technology/physics/Electromagnetism/electromagnetism.jpeg",
           "toys": [
             {
               "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
@@ -201,37 +183,12 @@
             {
               "name": "Vernier Spectrophotometer Optical Fiber",
               "description": "Spectra outside of cuvettes",
-              "short": "Optical Fiber",
-              "chip": false
+              "short": "Optical Fiber"
             },
             {
               "name": "Vernier Go Direct 3-Axis Magnetic Field Sensor",
               "description": "Hall sensor",
               "short": "Magnetism"
-            }
-          ]
-        },
-        {
-          "id": 10,
-          "tech": "Engineering",
-          "specs": "Circuits and fabrication",
-          "tech_url": "/projects/technology/physics/Engineering/",
-          "hero": "/projects/technology/physics/Engineering/circuits.jpeg",
-          "toys": [
-            {
-              "name": "LEGO Education SPIKE Prime Set",
-              "description": "Mechanical actuation",
-              "short": "LEGO"
-            },
-            {
-              "name": "Digilent Analog Discovery 3",
-              "description": "Electrical actuation",
-              "short": "Oscilloscope"
-            },
-            {
-              "name": "Prusa CORE One+",
-              "description": "Structure",
-              "short": "3D Printer"
             }
           ],
           "projects": [
@@ -360,16 +317,13 @@
       "science_slug": "chem",
       "techs": [
         {
-          "id": 11,
+          "id": 10,
           "tech": "Thermal",
           "specs": "Heat",
-          "tech_url": "/projects/technology/chemistry/Thermal/",
-          "hero": "/projects/technology/chemistry/Thermal/thermal.jpeg",
           "toys": [
             {
               "name": "Vernier Go Direct Temperature Probe",
               "description": "Temperature probe",
-              "url": "/projects/20260405%20Melting%20Point/",
               "short": "Temperature"
             }
           ],
@@ -397,16 +351,13 @@
           ]
         },
         {
-          "id": 12,
+          "id": 11,
           "tech": "Electrochemistry",
           "specs": "Ions",
-          "tech_url": "/projects/technology/chemistry/Electrochemistry/",
-          "hero": "/projects/technology/chemistry/Electrochemistry/electrochemistry.jpeg",
           "toys": [
             {
               "name": "Vernier Go Direct pH Sensor",
               "description": "Zero current, read voltage — one ion",
-              "url": "/projects/20260411%20Centrifuge/",
               "short": "pH"
             },
             {
@@ -452,16 +403,13 @@
           ]
         },
         {
-          "id": 13,
+          "id": 12,
           "tech": "Spectroscopy",
           "specs": "Absorbance, fluorescence, chirality",
-          "tech_url": "/projects/technology/chemistry/Spectroscopy/",
-          "hero": "/projects/technology/chemistry/Spectroscopy/spectroscopy.jpeg",
           "toys": [
             {
               "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
               "description": "UV-Vis and fluorescence",
-              "url": "/projects/20260420%20UV-Vis%20Spectroscopy/",
               "short": "UV-Vis"
             },
             {
@@ -544,11 +492,9 @@
       "science_slug": "bio",
       "techs": [
         {
-          "id": 14,
+          "id": 13,
           "tech": "Microscopes",
           "specs": "Surfaces to cells",
-          "tech_url": "/projects/technology/biology/Microscopes/",
-          "hero": "/projects/technology/biology/Microscopes/microscopes.jpeg",
           "toys": [
             {
               "name": "Dino-Lite AF4515T-FUW Digital Microscope",
@@ -568,11 +514,9 @@
           ]
         },
         {
-          "id": 15,
+          "id": 14,
           "tech": "Physiology",
           "specs": "Live body signals",
-          "tech_url": "/projects/technology/biology/Physiology/",
-          "hero": "/projects/technology/biology/Physiology/physiology.jpeg",
           "toys": [
             {
               "name": "Vernier Go Direct EKG Sensor",
@@ -592,11 +536,9 @@
           ]
         },
         {
-          "id": 16,
+          "id": 15,
           "tech": "Genomics",
           "specs": "Amplify, read, express",
-          "tech_url": "/projects/technology/biology/Genomics/",
-          "hero": "/projects/technology/biology/Genomics/genomics.jpeg",
           "toys": [
             {
               "name": "miniPCR mini16 Thermal Cycler",
@@ -636,11 +578,9 @@
       "science_slug": "astro",
       "techs": [
         {
-          "id": 17,
+          "id": 16,
           "tech": "Telescopes",
           "specs": "Light collectors",
-          "tech_url": "/projects/technology/astronomy/Telescopes/",
-          "hero": "/projects/technology/astronomy/Telescopes/telescopes.jpeg",
           "toys": [
             {
               "name": "ZWO Seestar S30 Pro with Tilting Wedge",
@@ -657,24 +597,12 @@
               "description": "Space telescope data",
               "short": "Space"
             }
-          ],
-          "projects": [
-            {
-              "date": "2026-07-25",
-              "title": "Stargazing",
-              "url": "/projects/20260725%20Stargazing/",
-              "sciences": [
-                "Astronomy"
-              ]
-            }
           ]
         },
         {
-          "id": 18,
+          "id": 17,
           "tech": "Measurements",
           "specs": "Position, brightness, spectra",
-          "tech_url": "/projects/technology/astronomy/Measurements/",
-          "hero": "/projects/technology/astronomy/Measurements/horsehead.jpeg",
           "toys": [
             {
               "name": "AAVSO Database",
@@ -694,11 +622,9 @@
           ]
         },
         {
-          "id": 19,
+          "id": 18,
           "tech": "Classification",
           "specs": "Types, events, morphology",
-          "tech_url": "/projects/technology/astronomy/Classification/",
-          "hero": "/projects/technology/astronomy/Classification/classification.jpeg",
           "toys": [
             {
               "name": "SIMBAD",

@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <style>
-    .cat-outline { fill: #fff; stroke: #1f2328; stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
-  </style>
-  <path class="cat-outline" d="M25 35 L20 18 L38 30 Q50 27 62 30 L80 18 L75 35 A28 26 0 1 1 25 35 Z"/>
-</svg>

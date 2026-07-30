@@ -1,7 +1,7 @@
 ---
 project: Four-Point Probe
 tech:
-  - Engineering
+  - Electromagnetism
 title: "Four-Point Probe of Sheet Resistance"
 sciences:
   - Physics

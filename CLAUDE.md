@@ -16,7 +16,7 @@ This CLAUDE.md is the repo's only doc — the README was folded in and deleted 2
 Top-level reads like every other repo: `apple/ web/ pipeline/ work/` + this doc. **The entire Astro app lives in `web/`** — its `astro.config.mjs`, `package.json`, `tsconfig.json`, `src/`, and `public/` (relocated from the repo root 2026-07-17 to keep the root clean; `src/`/`public/` stay at Astro's defaults *inside* `web/`). **All `pnpm` commands run from `web/`.**
 
 - **`web/src/`** — `content.config.ts` (Content Collections: **`projects`** + **`tech`**); `layouts/` holds the `.astro` components *and* their imported CSS/JS; `pages/` is file-based routing (`projects/` carries the dynamic `[slug]` project route + `technology/[science]/[tech]` tech route).
-- **`web/public/`** — source-of-truth served **verbatim at the site root**. Areas: `curriculum/` (`source/*.md` + `curriculum.json`), `olympiads/` (`olympiads.yml`), `projects/` (`<YYYYMMDD Name>/` project folders sitting **directly** under it, `technology/<science>/<Tech>/index.md` with a sibling `hero:` image + flat photos, `technology.yml`, `gallery.yml`, `gallery/`). `<science>` is the full word (mathematics, computing…) to mirror `curriculum/source/`.
+- **`web/public/`** — source-of-truth served **verbatim at the site root**. Areas: `curriculum/` (`source/*.md` + `curriculum.json`), `olympiads/` (`olympiads.yml`), `projects/` (`<YYYYMMDD Name>/` project folders sitting **directly** under it, plus `gallery.yml` + `gallery/photos/`, and `technology.yml` as a pure catalog). `<science>` is the full word (mathematics, computing…) to mirror `curriculum/source/`.
 - **`pipeline/`** — `worker/` (CF Worker: ASSETS passthrough → `dist/`) + `scripts/` (`build_olympiads.py` / `build_technology.py` / `build_gallery.py`, YAML→JSON; `build_curriculum.py`, .docx→markdown). Scripts resolve paths from their own location, so run them **from the repo root**; they write into `web/public/`.
 - **`work/`** — works-in-progress, git-tracked but **NOT web-served**. One dir per science (`physics/` `chemistry/` `biology/` `astronomy/`) + `IDEAS.md`. Named `work/` (not `projects/`) to stay distinct from the published `web/public/projects/`. **`work/scratch/`** is the rough scratchpad (tracked + pushed — backed up and distributed across machines; the relocated home of the old `~/GITHUB/scratch/`, 2026-07-16). Three-stage flow, all tracked — the difference is polish and web-visibility, not whether it's in git: `work/scratch/<topic>` (rough) → `work/<science>/` (organized WIP) → `web/public/projects/` (published).
 - **`work/IDEAS.md`** (moved from the repo root 2026-07-17) — the research program's living doc: **ideation** (idea backlog) + **progress tracking** (the "Active work & progress" dashboard and in-flight detail like the home molecular-biology lab). Promote an idea to a dated project folder when a pilot starts; keep the dashboard and idea statuses current.
@@ -27,7 +27,7 @@ Top-level reads like every other repo: `apple/ web/ pipeline/ work/` + this doc.
 
 The toy catalog behind the site is organized around two concepts:
 
-- **Technology (Tech)** — a research capability (e.g. *Spectroscopy*, *Photometry*, *Radio*). A way of asking nature a question.
+- **Technology (Tech)** — a research capability, and the **category** the site filters on (e.g. *Spectroscopy*, *Mechanics*, *Genomics*). A way of asking nature a question.
 - **Toy** — a specific physical instrument that *enables* a Technology (e.g. *Paton Hawksley Star Analyser 100 Grating* enables Spectroscopy; *ZWO Seestar S30 Pro* enables Amateur, Spectroscopy, Photometry, Astrometry). One Toy can enable multiple Techs. A Tech is "available" when we own ≥1 Toy that enables it.
 
 **Access tiers** (the collection is grounded in Toys we can regularly touch; prefer lower tiers — don't propose a Tier-4 path when a Tier-1/2/3 Toy does the job):
@@ -43,10 +43,12 @@ The toy catalog behind the site is organized around two concepts:
 | Layer | YAML/JSON field | Frontmatter | URL path | Astro collection |
 |---|---|---|---|---|
 | Science (card) | `science` | — | `/projects/#<slug>` | — |
-| Tech (row) | `techs[].tech` | `tech:` | `/projects/technology/<sci>/<Tech>/` | `tech` |
-| Toy (instrument) | `toys[].name` (under a tech) | `toys:` array | — | — |
+| Tech (category) | `techs[].tech` | `tech:` | `/projects/#<sci>/<tech>` | — |
+| Toy (instrument) | `techs[].toys[].name` | — | — | — |
 
-`technology.yml` is **one flat entry per science** (`science:` + `techs:`; the old topic/category grouping tiers were dropped). It is the **source of truth for instruments and which Techs they enable**; a tech's spec (`techs[].specs`) lives here and nowhere else.
+`technology.yml` is **one flat entry per science** (`science:` + `techs:`, with `toys:` inline under each tech). It is a **pure catalog — there are no tech pages.** `web/public/projects/technology/` was deleted 2026-07-30: a documentation layer nobody read, whose hero photos were better off as gallery tiles, and whose toys now live inline in the YAML where a reader would look for them. The catalog supplies the *vocabulary*: the home page's Projects tab lists each science's categories, the wall filters on them, and `gallery.yml` tags a photo with a `toy:` that rolls up to its category.
+
+**Engineering was removed as a category** (2026-07-30) with its toys — LEGO, the Analog Discovery, the Prusa. They are tools that cross every science rather than a way of asking nature a question, so they never sat right under one. A write-up still names the printer it used; the catalog just stops pretending that makes a category.
 
 **🔒 The public site stays high-level and concise — LOCKED.** Tech pages and toy `description`/`short` fields are a **one-or-two-word summary of what the instrument is for**, not a capability inventory. New capabilities, accessories, verified specs, safety notes and operating nuance go in **`work/IDEAS.md`**, never onto the public pages. This has now been decided twice (the Star Analyser 100, 2026-07-19: *"a grating is an accessory rather than a headline instrument, so ownership is recorded here only"*; the Dino-Lite's UV fluorescence, same day, reverted). **Don't propose enriching a toy description because a capability turns out to be more interesting than its label suggests** — that's exactly the impulse the lock exists to stop. The registry answers *what do we own*; IDEAS.md answers *what can it do*.
 
@@ -105,29 +107,41 @@ of looking belongs somewhere other than here. Two tile kinds, both from `gallery
 **Where pixels live.** `src:`/`hero:` are paths under `web/public/projects/` — exactly what
 follows `/projects/` in the URL.
 - A picture inside a project folder is referenced **in place**. Never copy it into `gallery/`,
-  or the same bytes land in git twice.
-- A picture belonging to no project lives in **`gallery/<YYYY-MM>/`**, one folder per month,
-  created on demand. Short kebab-case names — the name is in the URL.
-- **`gallery/thumbs/`** is generated, never hand-edited. `build_gallery.py` shrinks every
-  oversized source to a long-edge-700 copy with `sips` (the originals total ~58 MB, which is
-  exactly the wrong page to serve at full resolution) and prunes thumbs whose row is gone.
+  or the same bytes land in git twice. The build checks this by **content hash**, not just by
+  path — two names for the same capture is a build error. That is not hypothetical: the
+  Statistics hero turned out to be a byte-for-byte copy of a Catfood project photo, and two
+  staged spectroscopy RAWs were copies of Stargazing frames.
+- Everything else lives flat in **`gallery/photos/`**, named `YYYYMMDD Some Name.ext`. The date
+  prefix is the filing system — the same convention project folders use — so the folder sorts
+  itself and a file states its own date without a sidecar. No month subfolders.
+- **`gallery/thumbs/`** is generated, never hand-edited, and **not optional**. `build_gallery.py`
+  shrinks every oversized source to a long-edge-700 copy with `sips` and prunes thumbs whose row
+  is gone. CDN caching is not a substitute: the originals total ~58 MB and a gallery is precisely
+  the page that requests all of them; thumbs take that to ~5 MB. An edge cache changes who serves
+  the bytes, not how many a browser downloads to fill a 200 px tile.
 
-**Dates are read from EXIF.** Omit `date:` and the month comes off the camera; supply
-`date: YYYY-MM` only when the file has no EXIF (Seestar exports, generated plots, screenshots).
+**Video is a tile like any other.** An `.mp4` autoplays muted and loops, its dimensions come from
+the MP4 header (`tkhd`, rotation matrix honoured), and it is served without re-encoding.
+
+**Dating a tile** has three sources, in order: an explicit `date: YYYY-MM`; a `YYYYMMDD` prefix on
+the filename *or on any folder above it* (which dates both `gallery/photos/` and every generated
+plot by its project folder); then EXIF. Between them a row almost never needs a date by hand.
 Tiles sort newest-month-first, and within a month are dealt round-robin across the sciences so a
 busy week in one science doesn't land as a slab of near-identical frames.
 
-**Tags.** `science:` is required. `toy:` is optional and must name a toy that science actually
-owns in `technology.json` — the build fails otherwise, which is what keeps the wall's filter row
-and the home page's toy chips the same vocabulary. **Leave `toy:` off** when nothing we currently
-own is what the picture is about; the retired shared-lab instruments (Nicolet FT-IR, OptiMelt)
-are why that case exists. A toy with no pictures still gets a tag, shown dimmed — the gap is
-worth seeing.
+**Tags.** `science:` is required. `toy:` names the instrument, shows in the caption, and rolls up
+to that instrument's category. `tech:` names the category directly — use it when a picture belongs
+to a category but to no instrument we own. Either way the build fails on a name the catalog does
+not have, which is what keeps the filter row and the home page the same vocabulary.
 
-**The three surfaces are one loop.** The home page's Projects tab is the canonical toy list
-(read from `technology.json`); each chip links to `/projects/#<sci>/<toy-slug>`; the wall's
-second filter row is that same list. Change a toy's `short:` in a tech page's frontmatter and all
-three move together.
+**Filtering is two tiers, not three.** Science, then category. A third row of individual toys was
+built and removed the same day: picking a category already implies every toy under it, so the
+extra row bought a granularity nobody wanted at the cost of a busy header. The toy still shows in
+the tile's caption.
+
+**The two surfaces are one loop.** The home page's Projects tab lists each science's categories
+and links to `/projects/#<sci>/<category>`; the wall's second row is that same list. Both read
+`technology.json`, so renaming a category in `technology.yml` moves both.
 
 **Captions are load-bearing — verify them against the actual frame.** Several first-pass captions
 here described the wrong instrument entirely (a bench of samples called "the printed jig"). Render
@@ -151,7 +165,7 @@ YYYYMMDD Project Name/
 
 Create these subdirs as needed and follow the existing names rather than inventing new ones. **Never modify raw data** — read from `data/`, write everything generated to `output/`.
 
-**Gallery projects** (`20260725 Stargazing`, `20260725 Cellgazing`) are the one deviation: their curated JPEG/MP4 tiles live in **`data/`**, *not* `photos/`, precisely so the `[slug]` route's shuffle scan skips them (renamed from `media/` 2026-07-25 — the tiles are byte-for-byte instrument captures, so `data/` names them honestly) — a gallery page hand-lays out its own grid and would fight the auto hero. The originals stay in `work/<science>/data/` (gitignored when they're instrument-sized), and an `output/collect_media.py` regenerates `data/` from them, so the crops and stretches are reproducible rather than hand-edited. Raw Seestar FITS **may be published as-is** — its `SITELAT`/`SITELONG` headers no longer need scrubbing (decided 2026-07-29; see § VISIBILITY & SECURITY).
+**Gallery projects are gone.** `20260725 Stargazing` and `20260725 Cellgazing` were project folders holding only curated tiles and a hand-laid grid — galleries pretending to be write-ups. Both folded into the wall 2026-07-30, their frames moved to `gallery/photos/`. `work/astronomy/output/collect_media.py` still copies Seestar captures out byte-for-byte and now prints `gallery.yml` rows instead of page HTML. Raw Seestar FITS **may be published as-is** — the `SITELAT`/`SITELONG` headers no longer need scrubbing (decided 2026-07-29; see § VISIBILITY & SECURITY).
 
 **Photos.** The shuffle pool is **auto-populated** by `Project.astro`: its `getStaticPaths` scans every `.jpg`/`.jpeg`/`.png` under `photos/` (`setup/` + `samples/`, **never `data/`**) and injects them as `window._pagePhotos`. So:
 - **Don't** list photos in frontmatter or add a per-page inline `_pagePhotos` script — the layout's shuffle script runs on every project page.

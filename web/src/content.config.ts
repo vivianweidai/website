@@ -16,51 +16,11 @@ const projects = defineCollection({
     // Full science name(s) — drives chip rendering at the title row,
     // tech-page reverse-lookup, and project-page subject coloring.
     sciences: z.array(z.string()),
-    // Render the Mi cat icon next to the H1 — only the two cat-themed
-    // projects use this.
-    mi: z.boolean().optional(),
     // Techs this project uses. Drives the auto-populated Projects section
     // on each /projects/technology/<sci>/<Tech>/ page.
     tech: z.array(z.string()).optional(),
   }),
 });
 
-// Per-tech template pages — one folder per tech under
-// web/public/projects/technology/<science_slug>/<Tech Name>/index.md.
-// id is "<science_slug>/<tech>" so the dynamic route can split params.
-const tech = defineCollection({
-  loader: glob({
-    pattern: '*/*/index.md',
-    base: './public/projects/technology',
-    generateId: ({ entry }) => entry.replace(/\/index\.md$/, ''),
-  }),
-  schema: z.object({
-    tech: z.string(),
-    science: z.string(),
-    science_slug: z.string(),
-    hero: z.string().optional(),
-    // Optional CSS object-position override for cropping the hero (e.g.
-    // "top" or "center 30%"). Default is center; tweak when the
-    // important part of the image is off-center.
-    hero_position: z.string().optional(),
-    // Physical Toys this Tech maps to. Rendered as the Toys list on the
-    // tech page; if the tech is referenced by any project, each toy's
-    // name links to the most recent matching project.
-    toys: z.array(z.object({
-      name: z.string(),
-      description: z.string(),
-      // Optional link target for the toy name (e.g. the project that used it).
-      url: z.string().optional(),
-      // Optional short label for the /projects/ listing chips (the full
-      // `name` still shows on the tech card). Keeps each tech's chip row to
-      // a single line.
-      short: z.string().optional(),
-      // Set false to omit this toy from the /projects/ listing chips while
-      // keeping it on the tech card (e.g. a sample-prep tool that doesn't
-      // fit the tech's chip vocabulary). Defaults to shown.
-      chip: z.boolean().optional(),
-    })).optional(),
-  }),
-});
 
-export const collections = { projects, tech };
+export const collections = { projects };

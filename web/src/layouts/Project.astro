@@ -9,8 +9,6 @@ interface Props {
   project: string;
   title: string;
   sciences: string[];
-  techPills?: { label: string; url: string; slug: string }[];
-  mi?: boolean;
   htmlLang?: string;
   photos?: string[];
 }
@@ -19,8 +17,6 @@ const {
   project,
   title,
   sciences,
-  techPills = [],
-  mi = false,
   htmlLang = 'en',
   photos = [],
 } = Astro.props;
@@ -31,11 +27,10 @@ const SLUG: Record<string, string> = {
   Chemistry: 'chem', Biology: 'bio', Astronomy: 'astro',
 };
 
-// Title-row pills: one per tech used (science-colored, linking to the tech
-// page). Fall back to plain science pills if a project declares no techs.
-const titlePills = techPills.length
-  ? techPills
-  : sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`, slug: SLUG[s] }));
+// Title-row pills: one science-coloured pill per science, linking to the wall
+// filtered to it. These used to be per-tech pills pointing at tech pages;
+// those pages were deleted 2026-07-30, so the science is what is left to say.
+const titlePills = sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`, slug: SLUG[s] }));
 ---
 <!DOCTYPE html>
 <html lang={htmlLang}>
@@ -151,11 +146,6 @@ const titlePills = techPills.length
   <div class="project-title">
     <h1>
       {title}
-      {mi && (
-        <a class="photo-icon" href="/projects/gallery/2024-02/mi.jpeg">
-          <img src="/mi.svg" alt="Mi" style="height:0.85em;vertical-align:-0.12em;" />
-        </a>
-      )}
     </h1>
     <span class="project-chips">
       {titlePills.map((p, i) => (

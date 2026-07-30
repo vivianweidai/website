@@ -4,8 +4,8 @@ import PageHeader from '../../layouts/PageHeader.astro';
 import PageFooter from '../../layouts/PageFooter.astro';
 import gallery from '../../../public/projects/gallery.json';
 
-// The wall is one chronological grid of everything worth looking at — photo
-// tiles and project cards interleaved by date, newest first. There is
+// The wall is one chronological grid of everything worth looking at — photos,
+// clips and project cards interleaved by date, newest first. There is
 // deliberately nothing else on the page: no inventory, no links below the
 // fold, no second kind of content. What we own lives on the home page's
 // Projects tab, and it reaches this page through the same toy labels that
@@ -40,21 +40,13 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
         ))}
       </div>
     ))}
-    {sciences.map((s) => s.techs.map((t) => (
-      <div class="wf-row wf-toys" data-sci={s.slug} data-tech={t.slug} hidden>
-        {t.toys.map((toy) => (
-          <button class={`wf-tag wf-toy${toy.count ? '' : ' empty'}`} data-toy={toy.slug}
-                  title={toy.name} disabled={toy.count === 0} type="button">{toy.label}</button>
-        ))}
-      </div>
-    )))}
   </div>
 
   <div class="wall" id="wall">
     {tiles.map((t) => (
       t.kind === 'project' ? (
         <a class="tile tile-project" href={t.href}
-           data-sci={t.science_slug} data-tech={t.tech_slug ?? ''} data-toy={t.toy_slug ?? ''} data-w={t.w} data-h={t.h}
+           data-sci={t.science_slug} data-tech={t.tech_slug ?? ''} data-w={t.w} data-h={t.h}
            style={`--tint: var(--subj-${t.science_slug}); grid-row-end: span ${spanFor(t)}`}>
           <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />
           <div class="tile-cap">
@@ -68,9 +60,11 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
         </a>
       ) : (
         <figure class="tile tile-photo"
-           data-sci={t.science_slug} data-tech={t.tech_slug ?? ''} data-toy={t.toy_slug ?? ''} data-w={t.w} data-h={t.h}
+           data-sci={t.science_slug} data-tech={t.tech_slug ?? ''} data-w={t.w} data-h={t.h}
            style={`--tint: var(--subj-${t.science_slug}); grid-row-end: span ${spanFor(t)}`}>
-          <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />
+          {t.video
+            ? <video src={t.src} width={t.w} height={t.h} autoplay loop muted playsinline preload="metadata" />
+            : <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />}
           <figcaption class="tile-cap">
             <b>{t.caption}</b>
             <span>
@@ -91,7 +85,7 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
       var sciBar = document.getElementById('wf-sci');
       var empty = document.getElementById('wall-empty');
       var tiles = Array.prototype.slice.call(grid.children);
-      var state = { sci: 'all', tech: null, toy: null };
+      var state = { sci: 'all', tech: null };
 
       // ── masonry ──────────────────────────────────────────────────
       // Span each tile over however many ROW-pixel rows its own aspect ratio
@@ -117,11 +111,8 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
         var shown = 0;
         for (var i = 0; i < tiles.length; i++) {
           var t = tiles[i];
-          // A category implies every toy under it, so filtering on the
-          // category alone is enough — the toy tier only narrows further.
           var ok = (state.sci === 'all' || t.dataset.sci === state.sci)
-                && (!state.tech || t.dataset.tech === state.tech)
-                && (!state.toy || t.dataset.toy === state.toy);
+                && (!state.tech || t.dataset.tech === state.tech);
           t.style.display = ok ? '' : 'none';
           if (ok) shown++;
         }
@@ -136,15 +127,8 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
         document.querySelectorAll('.wf-techs').forEach(function (row) {
           row.hidden = row.dataset.sci !== state.sci;
         });
-        document.querySelectorAll('.wf-toys').forEach(function (row) {
-          row.hidden = !(state.tech && row.dataset.sci === state.sci
-                         && row.dataset.tech === state.tech);
-        });
         document.querySelectorAll('.wf-tag[data-tech]').forEach(function (b) {
           b.classList.toggle('on', b.dataset.tech === state.tech);
-        });
-        document.querySelectorAll('.wf-tag[data-toy]').forEach(function (b) {
-          b.classList.toggle('on', b.dataset.toy === state.toy);
         });
         layout();
       }
@@ -154,7 +138,6 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
         if (state.sci !== 'all') {
           h = '#' + state.sci;
           if (state.tech) h += '/' + state.tech;
-          if (state.tech && state.toy) h += '/' + state.toy;
         }
         history.replaceState(null, '', h || location.pathname);
       }
@@ -165,18 +148,12 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
         if (sci !== 'all' && !sciBar.querySelector('.wf-pill[data-sci="' + sci + '"]')) sci = 'all';
         state.sci = sci;
         state.tech = null;
-        state.toy = null;
         if (sci !== 'all' && parts[1]) {
           var trow = document.querySelector('.wf-techs[data-sci="' + sci + '"]');
           var ttag = trow && trow.querySelector('.wf-tag[data-tech="' + parts[1] + '"]');
           // A category with nothing in it yet is a dead tag — land on the
           // science rather than on an empty grid. Same for a toy.
           if (ttag && !ttag.disabled) state.tech = parts[1];
-        }
-        if (state.tech && parts[2]) {
-          var yrow = document.querySelector('.wf-toys[data-sci="' + sci + '"][data-tech="' + state.tech + '"]');
-          var ytag = yrow && yrow.querySelector('.wf-tag[data-toy="' + parts[2] + '"]');
-          if (ytag && !ytag.disabled) state.toy = parts[2];
         }
         apply();
       }
@@ -186,7 +163,6 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
         if (!b) return;
         state.sci = b.dataset.sci;
         state.tech = null;
-        state.toy = null;
         apply();
         writeHash();
       });
@@ -195,18 +171,8 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
         row.addEventListener('click', function (e) {
           var b = e.target.closest('.wf-tag');
           if (!b || b.disabled) return;
-          // Re-clicking the open category closes it, taking the toy with it.
+          // Re-clicking the open category closes it.
           state.tech = state.tech === b.dataset.tech ? null : b.dataset.tech;
-          state.toy = null;
-          apply();
-          writeHash();
-        });
-      });
-      document.querySelectorAll('.wf-toys').forEach(function (row) {
-        row.addEventListener('click', function (e) {
-          var b = e.target.closest('.wf-tag');
-          if (!b || b.disabled) return;
-          state.toy = state.toy === b.dataset.toy ? null : b.dataset.toy;
           apply();
           writeHash();
         });
@@ -238,14 +204,7 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
       border-top: 1px dashed #e2e6ea;
       animation: fadeUp 0.3s ease backwards;
     }
-    /* Tier 3 is indented and lighter so it reads as belonging to the open
-       category above it rather than as a third independent axis. */
-    .wf-toys {
-      margin-top: 0.45em;
-      padding-left: 1.2em;
-      animation: fadeUp 0.3s ease backwards;
-    }
-    .wf-toy { font-size: 0.72em; }
+
     .wf-pill {
       font: inherit;
       font-size: 0.85em;
@@ -306,7 +265,19 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       transition: transform 0.18s ease-out, box-shadow 0.18s ease;
     }
-    .tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tile img,
+    .tile video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* A clip is the one moving thing on the wall — say so, quietly, so the
+       motion reads as deliberate rather than as a broken image. */
+    .tile video + .tile-cap::before {
+      content: '▶';
+      position: absolute;
+      top: -1.6em;
+      left: 0.6em;
+      font-size: 0.7em;
+      color: rgba(255, 255, 255, 0.85);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
     @media (hover: hover) {
       .tile:hover {
         transform: translateY(-3px);
@@ -385,7 +356,7 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
     }
     @media (prefers-reduced-motion: reduce) {
       .tile, .tile-cap { transition: none; }
-      .wf-toys { animation: none; }
+      .wf-techs { animation: none; }
     }
   </style>
 

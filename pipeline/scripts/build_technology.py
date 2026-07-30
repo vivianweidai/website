@@ -4,13 +4,14 @@
 Source of truth:  web/public/projects/technology.yml
 Output:           web/public/projects/technology.json
 
-Flat schema — one entry per science, each a plain list of techs:
-  input:   [{science, techs: [{tech, specs}]}]
+Flat schema — one entry per science, each a plain list of techs (categories):
+  input:   [{science, techs: [{tech, specs, toys: [{name, description, short?}]}]}]
   output:  {"sciences": [{id, science, science_slug,
-              techs: [{id, tech, specs, tech_url, hero?,
-                      toys?: [{name, description, short?, chip?, url?}],
-                      projects?: [{date, title, url, sciences[], photos?[]}]}]
-          }]}
+              techs: [{id, tech, specs, toys?, projects?}]}]}
+
+There are no tech pages any more, so nothing here emits a `tech_url` or a
+`hero`. Both were optional in the Swift model, so a shipped app build decodes
+this file unchanged — it just stops drawing hero images and tech links.
 
 The old topic/category grouping tiers were dropped — every science now
 renders as a flat tech list, so the data carries no grouping metadata.
@@ -36,7 +37,6 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent.parent
 CONTENT = ROOT / "web" / "public" / "projects"
 PROJECTS = CONTENT
-TECH_DIR = CONTENT / "technology"
 
 SCIENCES = {"Biology", "Chemistry", "Physics", "Computing", "Mathematics", "Astronomy"}
 # Short slug — used for chip styling and the /projects/#<slug> column anchor.
@@ -64,53 +64,6 @@ def _read_frontmatter(md_path: Path) -> dict | None:
         return None
     return yaml.safe_load(text[4:end]) or {}
 
-
-def hero_for_tech(science_folder: str, tech_name: str) -> str | None:
-    """Return absolute hero-image URL for a tech by reading its index.md
-    frontmatter (`hero:` field). Returns None when no tech folder exists yet
-    or when the frontmatter has no hero. Relative paths in frontmatter are
-    resolved against the tech folder's URL."""
-    fm = _read_frontmatter(TECH_DIR / science_folder / tech_name / "index.md")
-    if not fm:
-        return None
-    hero = fm.get("hero")
-    if not hero:
-        return None
-    if hero.startswith(("/", "http://", "https://")):
-        return hero
-    base = f"/projects/technology/{science_folder}/{urllib.parse.quote(tech_name)}/"
-    return base + urllib.parse.quote(hero)
-
-
-def toys_for_tech(science_folder: str, tech_name: str) -> list[dict]:
-    """Return the Toys list for a tech by reading its index.md frontmatter
-    (`toys:` array of {name, description}). Returns [] when no tech folder
-    exists yet or the frontmatter has no toys. Baked into technology.json
-    so iOS/Android render the same Toys list the website shows from the
-    tech-page frontmatter."""
-    fm = _read_frontmatter(TECH_DIR / science_folder / tech_name / "index.md")
-    if not fm:
-        return []
-    toys = fm.get("toys")
-    if not isinstance(toys, list):
-        return []
-    out = []
-    for toy in toys:
-        if not isinstance(toy, dict) or "name" not in toy:
-            continue
-        entry = {
-            "name": toy["name"],
-            "description": toy.get("description", ""),
-        }
-        if toy.get("url"):
-            entry["url"] = toy["url"]
-        if toy.get("short"):
-            entry["short"] = toy["short"]
-        # Only emit when explicitly hidden; default (shown) stays implicit.
-        if toy.get("chip") is False:
-            entry["chip"] = False
-        out.append(entry)
-    return out
 
 
 PHOTO_EXTS = (".jpg", ".jpeg", ".png")
@@ -200,7 +153,6 @@ def build() -> list[dict]:
         if "techs" not in e:
             raise ValueError(f"science[{i}] ({e['science']}) missing 'techs'")
 
-        folder = SCIENCE_FOLDERS[e["science"]]
         techs_out = []
         for k, tech in enumerate(e["techs"]):
             for f in ("tech", "specs"):
@@ -211,15 +163,17 @@ def build() -> list[dict]:
                 "id": tech_id,
                 "tech": tech["tech"],
                 "specs": tech["specs"],
-                "tech_url": (
-                    f"/projects/technology/{folder}/"
-                    f"{urllib.parse.quote(tech['tech'])}/"
-                ),
             }
-            hero = hero_for_tech(folder, tech["tech"])
-            if hero:
-                t["hero"] = hero
-            toys = toys_for_tech(folder, tech["tech"])
+            # Toys are inline in the YAML now — there are no tech pages left to
+            # read frontmatter from, and no tech_url or hero to point at them.
+            toys = []
+            for toy in tech.get("toys") or []:
+                if not isinstance(toy, dict) or "name" not in toy:
+                    continue
+                entry = {"name": toy["name"], "description": toy.get("description", "")}
+                if toy.get("short"):
+                    entry["short"] = toy["short"]
+                toys.append(entry)
             if toys:
                 t["toys"] = toys
             # Reverse-scanned projects (whose frontmatter `tech:`

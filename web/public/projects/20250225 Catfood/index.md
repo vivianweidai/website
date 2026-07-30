@@ -5,7 +5,6 @@ tech:
 title: "Red or Green, What Colored Cat Food does Mi Prefer?"
 sciences:
   - Computing
-mi: true
 ---
 
 <div class="photo-grid" id="photo-grid">
@@ -24,7 +23,7 @@ Does a cat prefer red or green colored food? This experiment tested whether a Br
 
 | Toolkit | Details |
 |----------|---------|
-| Subject | British Shorthair cat (Mi) <a class="photo-icon" href="/projects/gallery/2024-02/mi.jpeg"><img src="/mi.svg" alt="Mi" style="height:1em;vertical-align:-0.18em;"></a> |
+| Subject | British Shorthair cat (Mi) |
 | Food | Regular dry cat food |
 | Dye | Red and green food coloring |
 | Serving | 10 pieces per bowl per trial |

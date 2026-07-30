@@ -5,7 +5,6 @@ tech:
 title: "Meow to Mars — Will Space Help or Hurt Mi's Heart?"
 sciences:
   - Biology
-mi: true
 ---
 
 <div class="hero-single"><img src="photos/photo.jpeg" alt="Mi the astronaut cat" style="object-position: center 70%;"></div>

@@ -29,61 +29,70 @@
 # ASTRONOMY
 # ════════════════════════════════════════════════════════════════════
 
-# Seestar exports carry no EXIF — the capture date is in the filename instead.
-- src: 20260725 Stargazing/data/NGC_7000__Stacked_20_NGC_7000_20.0s_IRCUT_20260730-014616.jpg
+# The Stargazing project folder was retired 2026-07-30 — like Cellgazing it was
+# a gallery page pretending to be a write-up, so its frames became plain tiles.
+# work/astronomy/output/collect_media.py still copies them out of the raw
+# captures byte-for-byte and prints these rows.
+#
+# Seestar exports carry no EXIF, so every one of these needs an explicit date.
+
+# The one moving thing on the wall. Autoplays muted and loops.
+- src: gallery/photos/20260724 The Sun.mp4
+  caption: The Sun, turning over
+  note: Full-disc clip through the solar filter
+  science: Astronomy
+  toy: Optical
+
+- src: gallery/photos/20260730 M 31.jpg
+  caption: M 31
+  note: 25 × 20s — the dust lane and M110, without touching the stretch
+  science: Astronomy
+  toy: Optical
+- src: gallery/photos/20260730 NGC 7000 Field.jpg
   caption: NGC 7000
   note: 20 × 20s
   science: Astronomy
   toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/M_13__Stacked_5_M_13_60.0s_IRCUT_20260728-225801.jpg
+- src: gallery/photos/20260728 M 13.jpg
   caption: M 13
   note: 5 × 60s
   science: Astronomy
   toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/M_51__Stacked_30_M_51_10.0s_IRCUT_20260704-222846.jpg
+- src: gallery/photos/20260704 M 51.jpg
   caption: M 51
   note: 30 × 10s
   science: Astronomy
   toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/NGC_5907__Stacked_9_NGC_5907_10.0s_IRCUT_20260704-223446.jpg
+- src: gallery/photos/20260704 NGC 5907.jpg
   caption: NGC 5907
   note: 9 × 10s
   science: Astronomy
   toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/Albireo__Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg
+- src: gallery/photos/20260729 Albireo Field Of Spectra.jpg
   caption: Albireo
   note: Every star in the field smeared into its own spectrum — by accident
   science: Astronomy
   toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/Vega__Light_Vega_5.0s_IRCUT_failed_20260729-222828.jpg
+- src: gallery/photos/20260729 Vega Dispersed.jpg
   caption: Vega, dispersed
   note: Grating mounted backwards
   science: Astronomy
   toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/Vega__Light_Vega_10.0s_LP_20260728-233740.jpg
+- src: gallery/photos/20260728 Vega Dispersed LP.jpg
   caption: Vega, dispersed
   note: 1 × 10s, light-pollution filter
   science: Astronomy
   toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/Juno__Light_Juno_20.0s_IRCUT_20260729-000521.jpg
+- src: gallery/photos/20260729 Juno Before.jpg
   caption: Juno
   note: Before
   science: Astronomy
   toy: Optical
-  date: 2026-07
-- src: 20260725 Stargazing/data/Juno__Light_Juno_20.0s_IRCUT_20260729-003012.jpg
+- src: gallery/photos/20260729 Juno After.jpg
   caption: Juno
   note: Twenty-five minutes later — it moved
   science: Astronomy
   toy: Optical
-  date: 2026-07
 
 # Night of 2026-07-29 — first fully programmatic session: slew, plate solve,
 # focus, capture and retrieval all driven from the Mac with no phone app in the
@@ -91,51 +100,34 @@
 # what these notes are drawn from. The two RAW frames are byte-for-byte Seestar
 # output (Telescopes); the three plots are our own reduction, which is why they
 # carry `tech:` directly instead of borrowing a reference atlas as their toy.
-- src: gallery/2026-07/vega-spectrum.jpg
-  caption: Vega, dispersed
-  note: Zero-order dot and the full spectrum on one frame — a 5s sub the on-board stacker threw away
-  science: Astronomy
-  toy: Optical
-  date: 2026-07
-- src: gallery/2026-07/albireo-field-of-spectra.jpg
-  caption: Albireo — a field of spectra
-  note: An objective grating disperses every star in the field, so the extra rainbows are field stars
-  science: Astronomy
-  toy: Optical
-  date: 2026-07
-- src: gallery/2026-07/vega-balmer-series.png
+- src: gallery/photos/20260729 Vega Balmer Series.png
   caption: Vega's Balmer series
   note: 30 × 5s. All four hydrogen lines at 18–22 sigma
   science: Astronomy
   tech: Measurements
-  date: 2026-07
-- src: gallery/2026-07/wavelength-solution.png
+- src: gallery/photos/20260729 Wavelength Solution.png
   caption: Wavelength solution
   note: 0.185 nm rms across 246 nm — the out-of-sample number, not the flattering one
   science: Astronomy
   tech: Measurements
-  date: 2026-07
-- src: gallery/2026-07/vega-vs-albireo.png
+- src: gallery/photos/20260729 A0V Against K3II.png
   caption: A0V against K3II
   note: Four deep hydrogen lines against a forest of metal lines. Albireo rests on 3 subs — suggestive, not settled
   science: Astronomy
   tech: Measurements
-  date: 2026-07
 
-- src: technology/astronomy/Telescopes/telescopes.jpeg
+- src: gallery/photos/20260601 The Seestar Folded.jpeg
   caption: The Seestar, folded
   science: Astronomy
   toy: Optical
-  date: 2026-06
-- src: technology/astronomy/Measurements/horsehead.jpeg
+- src: gallery/photos/20251217 Horsehead.jpeg
   caption: Horsehead
   science: Astronomy
   toy: Astrometry
-- src: technology/astronomy/Classification/classification.jpeg
+- src: gallery/photos/20260601 Dusk From The Balcony.jpeg
   caption: Dusk, from the balcony
   note: The sky we actually get
   science: Astronomy
-  date: 2026-06
 
 # ════════════════════════════════════════════════════════════════════
 # BIOLOGY
@@ -145,38 +137,34 @@
 # and a hand-laid-out grid — i.e. a gallery pretending to be a write-up. Folded
 # into the wall 2026-07-30; the frames now live in gallery/2025-03/, dated by
 # their own EXIF rather than by the folder they used to sit in.
-- src: gallery/2025-03/tissue-section.jpg
+- src: gallery/photos/20250305 Tissue Section.jpg
   caption: Tissue section
   note: 400×
   science: Biology
   toy: Compound
-- src: gallery/2025-03/leaf-epidermis.jpg
+- src: gallery/photos/20250307 Leaf Epidermis.jpg
   caption: Leaf epidermis
   note: Stomata everywhere
   science: Biology
   toy: Stereo
-- src: gallery/2025-03/reticulate-specimen.jpg
+- src: gallery/photos/20250301 Reticulate Specimen.jpg
   caption: Reticulate specimen
   note: Handheld, no stage
   science: Biology
   toy: Surface
-  date: 2025-03
 
-- src: technology/biology/Microscopes/microscopes.jpeg
+- src: gallery/photos/20260601 The Stereo Scope.jpeg
   caption: The stereo scope on its boom
   science: Biology
   toy: Stereo
-  date: 2026-06
-- src: technology/biology/Genomics/genomics.jpeg
+- src: gallery/photos/20260601 GELATO.jpeg
   caption: GELATO, out of the box
   science: Biology
   toy: Electrophoresis
-  date: 2026-06
-- src: technology/biology/Physiology/physiology.jpeg
+- src: gallery/photos/20260601 Spirometer.jpeg
   caption: Spirometer, mouthpiece off
   science: Biology
   toy: Spirometer
-  date: 2026-06
 
 # ════════════════════════════════════════════════════════════════════
 # CHEMISTRY
@@ -202,7 +190,7 @@
   caption: Inside the sample compartment
   science: Chemistry
   toy: UV-Vis
-- src: technology/chemistry/Spectroscopy/spectroscopy.jpeg
+- src: gallery/photos/20260629 The Spectrophotometer.jpeg
   caption: The spectrophotometer and its cuvette holder
   science: Chemistry
   toy: UV-Vis
@@ -213,11 +201,10 @@
   caption: The bench setup, laptop attached
   science: Chemistry
 
-- src: technology/chemistry/Thermal/thermal.jpeg
+- src: gallery/photos/20260601 The Temperature Probe.jpeg
   caption: The probe that goes in everything
   science: Chemistry
   toy: Temperature
-  date: 2026-06
 
 - src: 20260411 Centrifuge/photos/samples/samples7.jpeg
   caption: Colour-coded by condition
@@ -243,7 +230,7 @@
   caption: The mixer, mid-bench
   science: Chemistry
   toy: pH
-- src: technology/chemistry/Electrochemistry/electrochemistry.jpeg
+- src: gallery/photos/20260628 pH And Conductivity.jpeg
   caption: pH and conductivity, side by side
   science: Chemistry
   toy: pH
@@ -252,19 +239,19 @@
 # PHYSICS
 # ════════════════════════════════════════════════════════════════════
 
-- src: technology/physics/Engineering/circuits.jpeg
+- src: gallery/photos/20250209 Soldering.jpeg
   caption: Soldering, scope on standby
   science: Physics
-  toy: Oscilloscope
-- src: technology/physics/Mechanics/mechanics.jpeg
+  tech: Electromagnetism
+- src: gallery/photos/20260629 Force Motion Photogate.jpeg
   caption: Force, motion, photogate
   science: Physics
   toy: Force
-- src: technology/physics/Thermodynamics/thermodynamics.jpeg
+- src: gallery/photos/20260629 Gas Pressure And Turbidity.jpeg
   caption: Gas pressure and turbidity
   science: Physics
   toy: Pressure
-- src: technology/physics/Electromagnetism/electromagnetism.jpeg
+- src: gallery/photos/20260629 The Magnetic Field Sensor.jpeg
   caption: The 3-axis magnetic field sensor
   science: Physics
   toy: Magnetism
@@ -275,13 +262,14 @@
   caption: Foil, leaf, spoon, key
   note: Anything in the house that conducts
   science: Physics
+  tech: Electromagnetism
 - src: 20260404 Four Point Probe/photos/setup/setup13.jpeg
   caption: Four probes down
   science: Physics
-- src: technology/mathematics/Symbolic/symbolic.jpeg
+  tech: Electromagnetism
+- src: gallery/photos/20260601 A Vacuum Chamber.jpeg
   caption: A vacuum chamber, up close
   science: Physics
-  date: 2026-06
 
 # ════════════════════════════════════════════════════════════════════
 # MATHEMATICS — the analysis, not the apparatus. Every plot on the site
@@ -293,30 +281,24 @@
   caption: Four traces, one axis
   science: Mathematics
   toy: Matplotlib
-  date: 2026-04
 - src: 20260420 UV-Vis Spectroscopy/output/images/fluoromax_quinine.png
   caption: Quinine, emitting
   science: Mathematics
   toy: Matplotlib
-  date: 2026-04
 - src: 20260419 IR Spectroscopy/output/images/chem_oh_spectrum.png
   caption: That fat O–H band
   science: Mathematics
   toy: Matplotlib
-  date: 2026-04
 - src: 20260404 Four Point Probe/output/mean_sheet_resistance.png
   caption: Sheet resistance, at last
   science: Mathematics
   toy: Matplotlib
-  date: 2026-04
-- src: technology/mathematics/Numeric/numeric.jpeg
+- src: gallery/photos/20260601 The Problem Solving Shelf.jpeg
   caption: The problem-solving shelf
   science: Mathematics
-  date: 2026-06
-- src: technology/mathematics/Graphic/graphic.jpeg
+- src: gallery/photos/20260601 Map Pinned.jpeg
   caption: Map, pinned
   science: Mathematics
-  date: 2026-06
 
 # ════════════════════════════════════════════════════════════════════
 # COMPUTING
@@ -327,70 +309,53 @@
   note: p = 0.03
   science: Computing
   toy: SciPy
-  date: 2025-02
-- src: technology/computing/Statistics/catfood.jpeg
+- src: 20250225 Catfood/photos/setup/setup5.jpeg
   caption: Two bowls, twenty trials
   science: Computing
   toy: SciPy
-- src: gallery/2024-02/mi.jpeg
+- src: gallery/photos/20240210 Mi.jpeg
   caption: Mi
   note: The subject
-  science: Computing
-- src: 20250225 Catfood/photos/setup/setup5.jpeg
-  caption: Bowls swapped, trial reset
   science: Computing
 - src: 20250225 Catfood/photos/setup/setup9.jpeg
   caption: She came back
   science: Computing
-- src: technology/computing/Publishing/prism.jpeg
+- src: gallery/photos/20260601 The Plan On Poster Board.jpeg
   caption: The plan, on poster board
   science: Computing
-  date: 2026-06
-- src: technology/computing/Machine Learning/ctybiology.jpeg
+- src: gallery/photos/20260601 Floor Work.jpeg
   caption: Floor work, cat supervising
   science: Computing
-  date: 2026-06
 
 # ════════════════════════════════════════════════════════════════════
 # PROJECT CARDS — these link out to a write-up instead of opening a photo.
 # Dated by the project folder, so a card sits with the work it came from.
 # ════════════════════════════════════════════════════════════════════
 
-- folder: 20260725 Stargazing
-  hero: data/M_31__Stacked_25_M_31_20.0s_IRCUT_20260730-015655.jpg
-  science: Astronomy
-  toy: Optical
-  date: 2026-07
 - folder: 20260420 UV-Vis Spectroscopy
   hero: photos/samples/samples6.jpeg
   science: Chemistry
   toy: UV-Vis
-  date: 2026-04
 - folder: 20260419 IR Spectroscopy
   hero: photos/setup/setup11.jpeg
   science: Chemistry
-  date: 2026-04
 - folder: 20260411 Centrifuge
   hero: photos/samples/samples1.jpeg
   science: Chemistry
   toy: pH
-  date: 2026-04
 - folder: 20260405 Melting Point
   hero: photos/setup/setup3.jpeg
   science: Chemistry
   toy: Temperature
-  date: 2026-04
 - folder: 20260404 Four Point Probe
   hero: photos/samples/samples3.jpeg
   science: Physics
-  date: 2026-04
+  tech: Electromagnetism
 - folder: 20260401 Genes in Space
   hero: photos/photo.jpeg
   science: Biology
   toy: PCR
-  date: 2026-04
 - folder: 20250225 Catfood
   hero: photos/setup/setup1.jpeg
   science: Computing
   toy: SciPy
-  date: 2025-02

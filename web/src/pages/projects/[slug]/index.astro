@@ -3,21 +3,6 @@ import { getCollection, render } from 'astro:content';
 import { readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import ProjectLayout from '../../../layouts/Project.astro';
-import techData from '../../../../public/projects/technology.json';
-
-// tech name → candidate {url, science, slug}. A name can exist in more than
-// one science (Chemistry and Astronomy both have "Spectroscopy"), so each
-// project disambiguates by its own sciences below.
-// `id` is globally monotonic in research-page order (science order, then tech
-// order within a science), so sorting pills by it matches the /projects/ page.
-const TECH_INDEX: Record<string, { url: string; science: string; slug: string; id: number }[]> = {};
-for (const s of techData.sciences) {
-  for (const tech of s.techs) {
-    (TECH_INDEX[tech.tech] ??= []).push({
-      url: tech.tech_url, science: s.science, slug: s.science_slug, id: tech.id,
-    });
-  }
-}
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -58,26 +43,11 @@ export async function getStaticPaths() {
 const { entry, photos } = Astro.props;
 const { Content } = await render(entry);
 
-// Title-row pills: one per tech the project used, science-colored, linking to
-// the tech page. Replaces the old hand-coded Technology table at the page foot.
-const projSciences = entry.data.sciences ?? [];
-const techPills = (entry.data.tech ?? [])
-  .map((name) => {
-    const cands = TECH_INDEX[name] ?? [];
-    const pick = cands.find((c) => projSciences.includes(c.science)) ?? cands[0];
-    return pick ? { label: name, url: pick.url, slug: pick.slug, id: pick.id } : null;
-  })
-  .filter((p): p is { label: string; url: string; slug: string; id: number } => p !== null)
-  // Order pills to match the /projects/ page (science order, then within-science).
-  .sort((a, b) => a.id - b.id)
-  .map(({ id, ...pill }) => pill);
 ---
 <ProjectLayout
   project={entry.data.project}
   title={entry.data.title}
   sciences={entry.data.sciences}
-  techPills={techPills}
-  mi={entry.data.mi}
   photos={photos}
 >
   <Content />

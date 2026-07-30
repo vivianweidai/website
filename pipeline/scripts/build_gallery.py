@@ -23,16 +23,21 @@ whole filing system:
   <YYYYMMDD Project Name>/...   a picture that belongs to a project. Reference
                                 it in place; never copy it into gallery/, or
                                 the same bytes land in git twice.
-  gallery/<YYYY-MM>/...         a picture that belongs to no project — a good
-                                shot from an afternoon of messing about. One
-                                folder per month, created on demand.
+  gallery/photos/...            everything else, in one flat folder, named
+                                "YYYYMMDD Some Name.jpg". The date prefix is
+                                the filing system — same convention the project
+                                folders use — so the folder sorts itself and a
+                                file states its own date without a sidecar.
 
 ADDING PICTURES
 ---------------
-Drop files into gallery/<YYYY-MM>/ (make the folder if it's a new month), give
-them short kebab-case names, add a row each to gallery.yml, and run this. The
-script fails loudly on a missing file or an unknown science, so a typo is a
-build error rather than a hole in the wall.
+Drop files into gallery/photos/ named "YYYYMMDD Some Name.ext", add a row each
+to gallery.yml for the caption and tags, and run this. The script fails loudly
+on a missing file, an unknown science, an unowned toy, or the same bytes used
+twice, so a mistake is a build error rather than a hole in the wall.
+
+Video works the same way. An .mp4 tile autoplays muted and loops; its
+dimensions come from the MP4 header and it is served without re-encoding.
 
 TAGS
 ----
@@ -108,6 +113,10 @@ def thumbnail(rel: str, path: Path) -> tuple[str, int, int]:
     a normal run does no work.
     """
     w, h = image_size(path)
+    # A clip is served as it is — `sips` cannot resize video, and re-encoding
+    # would break the byte-for-byte rule the capture galleries run on.
+    if path.suffix.lower() in VIDEO_EXTS:
+        return url_for(rel), w, h
     if max(w, h) <= THUMB_EDGE and path.stat().st_size <= THUMB_BYTES:
         return url_for(rel), w, h
 
@@ -179,19 +188,89 @@ def _jpeg_size(fh) -> tuple[int, int] | None:
         fh.seek(length - 2, 1)
 
 
+def _mp4_size(path: Path) -> tuple[int, int] | None:
+    """(w, h) from the first video track's tkhd box, honouring a rotation matrix.
+
+    Videos are tiles too — the Seestar's solar clip is the one moving thing on
+    the wall — and the masonry needs their aspect ratio at build time exactly
+    like a photo's. Walking the box tree costs thirty lines and saves adding
+    ffmpeg as a build dependency."""
+    data = path.read_bytes()
+
+    def walk(start: int, end: int) -> tuple[int, int] | None:
+        i = start
+        while i + 8 <= end:
+            size = struct.unpack(">I", data[i:i + 4])[0]
+            typ = data[i + 4:i + 8]
+            body = i + 8
+            if size == 1:  # 64-bit extended size
+                size = struct.unpack(">Q", data[i + 8:i + 16])[0]
+                body = i + 16
+            elif size == 0:
+                size = end - i
+            if size < 8:
+                return None
+            if typ in (b"moov", b"trak"):
+                got = walk(body, i + size)
+                if got:
+                    return got
+            elif typ == b"tkhd":
+                ver = data[body]
+                p = body + 4 + (32 if ver == 1 else 20)  # times, track id, duration
+                p += 8 + 2 + 2 + 2 + 2                   # reserved, layer, group, volume, reserved
+                mat = struct.unpack(">9i", data[p:p + 36])
+                p += 36
+                w, h = (v / 65536.0 for v in struct.unpack(">II", data[p:p + 8]))
+                if w and h:
+                    # a and d zero with b or c set is a 90/270 degree rotation.
+                    if mat[0] == 0 and mat[4] == 0 and (mat[1] or mat[3]):
+                        w, h = h, w
+                    return int(round(w)), int(round(h))
+            i += size
+        return None
+
+    return walk(0, len(data))
+
+
+VIDEO_EXTS = (".mp4", ".m4v", ".mov")
+
+
 def image_size(path: Path) -> tuple[int, int]:
-    with path.open("rb") as fh:
-        size = _png_size(fh) or _jpeg_size(fh)
+    if path.suffix.lower() in VIDEO_EXTS:
+        size = _mp4_size(path)
+    else:
+        with path.open("rb") as fh:
+            size = _png_size(fh) or _jpeg_size(fh)
     if not size:
-        raise ValueError(f"could not read image dimensions from {path}")
+        raise ValueError(f"could not read dimensions from {path}")
     return size
 
 
 # ── capture date ─────────────────────────────────────────────────────
-# The wall is chronological, so every tile needs a month. Rather than hand-type
-# one per row, read the camera's own EXIF DateTimeOriginal — a photo dropped
-# into gallery/ dates itself. `date:` in the YAML overrides it, and is required
-# for images that have no EXIF at all (generated plots, screenshots).
+# The wall is chronological, so every tile needs a month, and there are three
+# ways to get one — in this order:
+#
+#   1. an explicit `date: YYYY-MM` in the row, which always wins
+#   2. a YYYYMMDD prefix on the filename, or failing that on any folder above
+#      it — which covers gallery/photos/ by its naming convention and every
+#      generated plot by the project folder it sits in
+#   3. the camera's own EXIF DateTimeOriginal, for project photos still under
+#      their original camera names
+#
+# Between them, a row almost never needs to state a date by hand.
+
+def _filename_month(path: Path) -> str | None:
+    """'YYYY-MM' from a 'YYYYMMDD Some Name.ext' name.
+
+    Checks the file itself, then walks up its directories — which is what dates
+    a generated plot sitting in `20260420 UV-Vis Spectroscopy/output/images/`.
+    Same YYYYMMDD prefix, whether it is on a file or on a project folder."""
+    for part in [path.name] + [p.name for p in path.parents]:
+        m = re.match(r"(\d{4})(\d{2})\d{2}(?:[ _-]|$)", part)
+        if m:
+            return f"{m.group(1)}-{m.group(2)}"
+    return None
+
 
 _EXIF_FMTSIZE = {1: 1, 2: 1, 3: 2, 4: 4, 5: 8, 7: 1, 9: 4, 10: 8}
 
@@ -200,7 +279,7 @@ def _exif_month(path: Path) -> str | None:
     """Return 'YYYY-MM' from EXIF DateTimeOriginal (falling back to the IFD0
     DateTime), or None when the file carries no EXIF."""
     if path.suffix.lower() not in (".jpg", ".jpeg"):
-        return None
+        return None  # PNGs and video carry no EXIF; those rows need an explicit date
     with path.open("rb") as fh:
         if fh.read(2) != b"\xff\xd8":
             return None
@@ -320,6 +399,7 @@ def build() -> dict:
     techs, toy_to_tech = catalog_by_science()
     tiles = []
     seen_src: dict[str, int] = {}
+    seen_bytes: dict[str, int] = {}
 
     for i, e in enumerate(entries):
         where = f"gallery.yml[{i}]"
@@ -356,20 +436,31 @@ def build() -> dict:
                 f"{where}: {rel!r} is already used by gallery.yml[{seen_src[rel]}]. "
                 "A project card's hero should not also be a photo tile.")
         seen_src[rel] = i
+        # …and again by content, because the same capture reaching the wall
+        # under two names is the failure that actually happened: a staged copy
+        # was ingested next to the original it had been copied from.
+        digest = hashlib.sha1(path.read_bytes()).hexdigest()
+        if digest in seen_bytes:
+            raise ValueError(
+                f"{where}: {rel!r} is byte-identical to gallery.yml[{seen_bytes[digest]}]. "
+                "Same picture, two names — keep one.")
+        seen_bytes[digest] = i
         src, w, h = thumbnail(rel, path)
         tile["src"] = src            # what the wall loads
         tile["full"] = url_for(rel)  # the original, for anything that wants it
         tile["w"], tile["h"] = w, h
 
-        # Explicit `date:` wins; otherwise take the month off the camera.
-        date = str(e["date"]) if e.get("date") else _exif_month(path)
+        date = str(e["date"]) if e.get("date") else (_filename_month(path) or _exif_month(path))
         if not date:
             raise ValueError(
-                f"{where}: {rel!r} has no EXIF date — add an explicit `date: YYYY-MM`")
+                f"{where}: cannot date {rel!r} — name it 'YYYYMMDD …' or add `date: YYYY-MM`")
         if not re.fullmatch(r"\d{4}-\d{2}", date):
             raise ValueError(f"{where}: date must be YYYY-MM, got {date!r}")
         tile["date"] = date
         tile["date_label"] = f"{MONTHS[int(date[5:7]) - 1]} {date[:4]}"
+
+        if path.suffix.lower() in VIDEO_EXTS:
+            tile["video"] = True
 
         if e.get("note"):
             tile["note"] = e["note"]
