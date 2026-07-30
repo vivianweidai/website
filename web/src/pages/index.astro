@@ -14,60 +14,45 @@ const SUBJ_ANCHOR = {
   chemistry: 'chem', biology: 'bio', astronomy: 'astro',
 };
 // The competitions Vivian sits in each science — the Olympiads tab is a list,
-// same shape as the Curriculum tab's section list. Names are the *competition*,
-// not the individual sitting: the yearly rounds, levels and camps of one
-// olympiad (COMC, the CAAO junior/senior exams + camps, …) collapse to a single
-// entry. Spelled out in full — abbreviated only where the full name would push
-// the row onto a second line (CAP; JSOC on Chemistry and Physics). The
-// /olympiads/ timeline carries the dates.
+// same shape as the Curriculum tab's section list. One entry per *competition*,
+// not per sitting: the yearly rounds, levels and camps of one olympiad collapse
+// to a single row.
 //
-// JSOC repeats on three rows, so it is spelled out on the FIRST one a reader
-// meets going top-to-bottom (Biology, which also has the most slack) and left
-// short on Chemistry and Physics, where the full name wraps.
-//
-// Computing is the tightest row on the tab. NACLO's own name — North American
-// Computational Linguistics Open — does not fit in any form: with "North
-// American" it overruns by ~120px, and even contracted to "NA" it sat within a
-// few px of the edge. What ships drops the geography and takes the Olympiad
-// suffix the other five sciences use. It is ~3px off the wrap point, so treat
-// this row as full: re-render before lengthening ANY of its three names, and
-// if it ever wraps, "NA Computational Linguistics" buys ~43px back.
+// Acronyms, not full names (2026-07-30). Spelled out, three competitions per
+// science ran to two lines on a laptop and wrapped badly on a phone; the full
+// name rides along as the link's title so hovering still explains it, and the
+// /olympiads/ timeline carries the long form and the dates.
 //
 // Order within a science is fixed: Canadian first, US second, then whatever is
-// neither (JSOC — the cross-science camp). One line per science is the target.
-//
-// Names only — no achievement icons. Per-competition standing glyphs (⭐/🎯/🇨🇦)
-// used to hang off each name here; they were dropped 2026-07-30 because they
-// collided visually with the "·" separators and made the row busy. The
-// /olympiads/ timeline is where standings live.
+// neither (JSOC, the cross-science camp).
 const OLYMPIADS = {
   mathematics: [
-    'Canadian Open Mathematics Challenge',
-    'American Mathematics Competition',
+    ['COMC',   'Canadian Open Mathematics Challenge'],
+    ['AMC',    'American Mathematics Competition'],
   ],
   computing: [
-    'Canadian Computing Competition',
-    'USA Computing Olympiad',
-    'Computational Linguistics Olympiad',
+    ['CCC',    'Canadian Computing Competition'],
+    ['USACO',  'USA Computing Olympiad'],
+    ['NACLO',  'North American Computational Linguistics Open'],
   ],
   physics: [
-    'CAP High School Prize Exam',
-    'USA Physics Olympiad F=ma Exam',
-    'JSOC',
+    ['CAP',    'Canadian Association of Physicists High School Prize Exam'],
+    ['F=ma',   'USA Physics Olympiad F=ma Exam'],
+    ['JSOC',   'Junior Science Olympiad of Canada'],
   ],
   chemistry: [
-    'Canadian Chemistry Olympiad',
-    'United States National Chemistry Olympiad',
-    'JSOC',
+    ['CCO',    'Canadian Chemistry Olympiad'],
+    ['USNCO',  'United States National Chemistry Olympiad'],
+    ['JSOC',   'Junior Science Olympiad of Canada'],
   ],
   biology: [
-    'Canadian Biology Olympiad',
-    'USA Biology Olympiad',
-    'Junior Science Olympiad of Canada',
+    ['CBO',    'Canadian Biology Olympiad'],
+    ['USABO',  'USA Biology Olympiad'],
+    ['JSOC',   'Junior Science Olympiad of Canada'],
   ],
   astronomy: [
-    'Canadian Astronomy and Astrophysics Olympiad',
-    'USA Astronomy and Astrophysics Olympiad',
+    ['CAAO',   'Canadian Astronomy and Astrophysics Olympiad'],
+    ['USAAAO', 'USA Astronomy and Astrophysics Olympiad'],
   ],
 };
 // The Projects tab lists each science's CATEGORIES — Mechanics, Genomics,
@@ -130,10 +115,10 @@ const TABS = [
             ))}
           </div>
           <div class="curr-rows-secs" data-tab="olympiads">
-            {oly.map((name, j) => (
+            {oly.map(([abbr, full], j) => (
               <>
                 {j > 0 && <span class="sep">·</span>}
-                <a href={`/olympiads/#${SUBJ_ANCHOR[subjSlug]}`}>{name}</a>
+                <a title={full} href={`/olympiads/#${SUBJ_ANCHOR[subjSlug]}`}>{abbr}</a>
               </>
             ))}
           </div>
@@ -280,37 +265,6 @@ const TABS = [
        competitions, and the three tabs should read as one row that changes
        its contents rather than three different components. Each toy links to
        the /projects/ wall pre-filtered to it. */
-    .curr-rows-secs .mi-icon {
-      margin-left: 0.35em;
-      display: inline-flex;
-      align-items: center;
-      vertical-align: middle;
-      cursor: default;
-    }
-    .curr-rows-secs .mi-icon img { height: 0.95em; }
-    .curr-rows-secs .mi-icon:hover { text-decoration: none; }
-    .curr-rows-topics {
-      flex: 0 0 auto;
-      margin-right: 0.9em;
-      white-space: nowrap;
-    }
-    /* Project-count badge — mirrors the research page's .proj-badge: a white
-       bordered count pill. Links to the science's filtered research view. */
-    .home-proj-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.32em;
-      font-size: 0.8em;
-      color: #475059;
-      text-decoration: none;
-      padding: 0.12em 0.55em;
-      border: 1px solid #d8dee4;
-      border-radius: 6px;
-      background: #fff;
-      transition: border-color 0.15s ease, color 0.15s ease;
-    }
-    .home-proj-badge b { font-weight: 700; }
-    .home-proj-badge:hover { border-color: #0969da; color: #0969da; }
 
     /* The Olympiads tab carries NO styling of its own — competition names are
        the same dot-separated links as Curriculum's sections, inheriting the
@@ -324,8 +278,9 @@ const TABS = [
         min-height: 0;
       }
       .curr-rows-subj { flex: none; text-align: center; }
-      .curr-rows-topics,
-      .curr-rows-secs[data-tab="curriculum"] { display: none; }
+      /* The Curriculum sections used to be hidden here, which left the tab
+         as six coloured bars and no content on a phone. The row is a column
+         at this width, so the list has somewhere to go. */
       .curr-rows-secs { padding: 0.65em 1em; }
     }
     .footer-store-links { display: flex; gap: 0.5em; }
