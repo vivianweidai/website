@@ -14,9 +14,13 @@
       "video": true,
       "note": "Full-disc clip through the solar filter",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -31,9 +35,13 @@
       "date_label": "July 2026",
       "note": "25 × 20s — the dust lane and M110, without touching the stretch",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -48,9 +56,13 @@
       "date_label": "July 2026",
       "note": "20 × 20s",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -65,9 +77,13 @@
       "date_label": "July 2026",
       "note": "5 × 60s",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -82,9 +98,13 @@
       "date_label": "July 2026",
       "note": "30 × 10s",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -99,9 +119,13 @@
       "date_label": "July 2026",
       "note": "9 × 10s",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -116,9 +140,13 @@
       "date_label": "July 2026",
       "note": "Every star in the field smeared into its own spectrum — by accident",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -133,9 +161,13 @@
       "date_label": "July 2026",
       "note": "Grating mounted backwards",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -150,9 +182,13 @@
       "date_label": "July 2026",
       "note": "1 × 10s, light-pollution filter",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -167,9 +203,13 @@
       "date_label": "July 2026",
       "note": "Before",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -184,9 +224,13 @@
       "date_label": "July 2026",
       "note": "Twenty-five minutes later — it moved",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -200,8 +244,12 @@
       "date": "2026-07",
       "date_label": "July 2026",
       "note": "30 × 5s. All four hydrogen lines at 18–22 sigma",
-      "tech": "Measurements",
-      "tech_slug": "measurements"
+      "techs": [
+        "Measurements"
+      ],
+      "tech_slugs": [
+        "measurements"
+      ]
     },
     {
       "science": "Astronomy",
@@ -215,8 +263,12 @@
       "date": "2026-07",
       "date_label": "July 2026",
       "note": "0.185 nm rms across 246 nm — the out-of-sample number, not the flattering one",
-      "tech": "Measurements",
-      "tech_slug": "measurements"
+      "techs": [
+        "Measurements"
+      ],
+      "tech_slugs": [
+        "measurements"
+      ]
     },
     {
       "science": "Astronomy",
@@ -230,8 +282,12 @@
       "date": "2026-07",
       "date_label": "July 2026",
       "note": "Four deep hydrogen lines against a forest of metal lines. Albireo rests on 3 subs — suggestive, not settled",
-      "tech": "Measurements",
-      "tech_slug": "measurements"
+      "techs": [
+        "Measurements"
+      ],
+      "tech_slugs": [
+        "measurements"
+      ]
     },
     {
       "science": "Computing",
@@ -257,9 +313,13 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Force",
-      "tech": "Mechanics",
-      "tech_slug": "mechanics",
-      "toy_slug": "force"
+      "toy_slug": "force",
+      "techs": [
+        "Mechanics"
+      ],
+      "tech_slugs": [
+        "mechanics"
+      ]
     },
     {
       "science": "Chemistry",
@@ -273,9 +333,13 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "UV-Vis",
-      "tech": "Spectroscopy",
-      "tech_slug": "spectroscopy",
-      "toy_slug": "uv-vis"
+      "toy_slug": "uv-vis",
+      "techs": [
+        "Spectroscopy"
+      ],
+      "tech_slugs": [
+        "spectroscopy"
+      ]
     },
     {
       "science": "Biology",
@@ -289,9 +353,13 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Stereo",
-      "tech": "Microscopes",
-      "tech_slug": "microscopes",
-      "toy_slug": "stereo"
+      "toy_slug": "stereo",
+      "techs": [
+        "Microscopes"
+      ],
+      "tech_slugs": [
+        "microscopes"
+      ]
     },
     {
       "science": "Astronomy",
@@ -305,9 +373,13 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Optical",
-      "tech": "Telescopes",
-      "tech_slug": "telescopes",
-      "toy_slug": "optical"
+      "toy_slug": "optical",
+      "techs": [
+        "Telescopes"
+      ],
+      "tech_slugs": [
+        "telescopes"
+      ]
     },
     {
       "science": "Computing",
@@ -333,9 +405,13 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Pressure",
-      "tech": "Thermodynamics",
-      "tech_slug": "thermodynamics",
-      "toy_slug": "pressure"
+      "toy_slug": "pressure",
+      "techs": [
+        "Thermodynamics"
+      ],
+      "tech_slugs": [
+        "thermodynamics"
+      ]
     },
     {
       "science": "Chemistry",
@@ -349,9 +425,13 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Temperature",
-      "tech": "Thermal",
-      "tech_slug": "thermal",
-      "toy_slug": "temperature"
+      "toy_slug": "temperature",
+      "techs": [
+        "Thermal"
+      ],
+      "tech_slugs": [
+        "thermal"
+      ]
     },
     {
       "science": "Biology",
@@ -365,9 +445,13 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Electrophoresis",
-      "tech": "Genomics",
-      "tech_slug": "genomics",
-      "toy_slug": "electrophoresis"
+      "toy_slug": "electrophoresis",
+      "techs": [
+        "Genomics"
+      ],
+      "tech_slugs": [
+        "genomics"
+      ]
     },
     {
       "science": "Astronomy",
@@ -394,9 +478,13 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Magnetism",
-      "tech": "Electromagnetism",
-      "tech_slug": "electromagnetism",
-      "toy_slug": "magnetism"
+      "toy_slug": "magnetism",
+      "techs": [
+        "Electromagnetism"
+      ],
+      "tech_slugs": [
+        "electromagnetism"
+      ]
     },
     {
       "science": "Chemistry",
@@ -410,9 +498,13 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "pH",
-      "tech": "Electrochemistry",
-      "tech_slug": "electrochemistry",
-      "toy_slug": "ph"
+      "toy_slug": "ph",
+      "techs": [
+        "Electrochemistry"
+      ],
+      "tech_slugs": [
+        "electrochemistry"
+      ]
     },
     {
       "science": "Biology",
@@ -426,9 +518,13 @@
       "date": "2026-06",
       "date_label": "June 2026",
       "toy": "Spirometer",
-      "tech": "Physiology",
-      "tech_slug": "physiology",
-      "toy_slug": "spirometer"
+      "toy_slug": "spirometer",
+      "techs": [
+        "Physiology"
+      ],
+      "tech_slugs": [
+        "physiology"
+      ]
     },
     {
       "science": "Physics",
@@ -454,9 +550,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Matplotlib",
-      "tech": "Graphic",
-      "tech_slug": "graphic",
-      "toy_slug": "matplotlib"
+      "toy_slug": "matplotlib",
+      "techs": [
+        "Graphic"
+      ],
+      "tech_slugs": [
+        "graphic"
+      ]
     },
     {
       "science": "Physics",
@@ -470,8 +570,12 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "note": "Anything in the house that conducts",
-      "tech": "Electromagnetism",
-      "tech_slug": "electromagnetism"
+      "techs": [
+        "Electromagnetism"
+      ],
+      "tech_slugs": [
+        "electromagnetism"
+      ]
     },
     {
       "science": "Chemistry",
@@ -485,9 +589,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
-      "tech": "Spectroscopy",
-      "tech_slug": "spectroscopy",
-      "toy_slug": "uv-vis"
+      "toy_slug": "uv-vis",
+      "techs": [
+        "Spectroscopy"
+      ],
+      "tech_slugs": [
+        "spectroscopy"
+      ]
     },
     {
       "science": "Biology",
@@ -502,9 +610,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "PCR",
-      "tech": "Genomics",
-      "tech_slug": "genomics",
-      "toy_slug": "pcr"
+      "toy_slug": "pcr",
+      "techs": [
+        "Genomics"
+      ],
+      "tech_slugs": [
+        "genomics"
+      ]
     },
     {
       "science": "Mathematics",
@@ -518,9 +630,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Matplotlib",
-      "tech": "Graphic",
-      "tech_slug": "graphic",
-      "toy_slug": "matplotlib"
+      "toy_slug": "matplotlib",
+      "techs": [
+        "Graphic"
+      ],
+      "tech_slugs": [
+        "graphic"
+      ]
     },
     {
       "science": "Physics",
@@ -533,8 +649,12 @@
       "h": 750,
       "date": "2026-04",
       "date_label": "April 2026",
-      "tech": "Electromagnetism",
-      "tech_slug": "electromagnetism"
+      "techs": [
+        "Electromagnetism"
+      ],
+      "tech_slugs": [
+        "electromagnetism"
+      ]
     },
     {
       "science": "Chemistry",
@@ -548,9 +668,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
-      "tech": "Spectroscopy",
-      "tech_slug": "spectroscopy",
-      "toy_slug": "uv-vis"
+      "toy_slug": "uv-vis",
+      "techs": [
+        "Spectroscopy"
+      ],
+      "tech_slugs": [
+        "spectroscopy"
+      ]
     },
     {
       "science": "Mathematics",
@@ -564,9 +688,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Matplotlib",
-      "tech": "Graphic",
-      "tech_slug": "graphic",
-      "toy_slug": "matplotlib"
+      "toy_slug": "matplotlib",
+      "techs": [
+        "Graphic"
+      ],
+      "tech_slugs": [
+        "graphic"
+      ]
     },
     {
       "science": "Physics",
@@ -580,8 +708,12 @@
       "h": 750,
       "date": "2026-04",
       "date_label": "April 2026",
-      "tech": "Electromagnetism",
-      "tech_slug": "electromagnetism"
+      "techs": [
+        "Electromagnetism"
+      ],
+      "tech_slugs": [
+        "electromagnetism"
+      ]
     },
     {
       "science": "Chemistry",
@@ -595,9 +727,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
-      "tech": "Spectroscopy",
-      "tech_slug": "spectroscopy",
-      "toy_slug": "uv-vis"
+      "toy_slug": "uv-vis",
+      "techs": [
+        "Spectroscopy"
+      ],
+      "tech_slugs": [
+        "spectroscopy"
+      ]
     },
     {
       "science": "Mathematics",
@@ -611,9 +747,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Matplotlib",
-      "tech": "Graphic",
-      "tech_slug": "graphic",
-      "toy_slug": "matplotlib"
+      "toy_slug": "matplotlib",
+      "techs": [
+        "Graphic"
+      ],
+      "tech_slugs": [
+        "graphic"
+      ]
     },
     {
       "science": "Chemistry",
@@ -627,9 +767,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
-      "tech": "Spectroscopy",
-      "tech_slug": "spectroscopy",
-      "toy_slug": "uv-vis"
+      "toy_slug": "uv-vis",
+      "techs": [
+        "Spectroscopy"
+      ],
+      "tech_slugs": [
+        "spectroscopy"
+      ]
     },
     {
       "science": "Chemistry",
@@ -643,9 +787,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
-      "tech": "Spectroscopy",
-      "tech_slug": "spectroscopy",
-      "toy_slug": "uv-vis"
+      "toy_slug": "uv-vis",
+      "techs": [
+        "Spectroscopy"
+      ],
+      "tech_slugs": [
+        "spectroscopy"
+      ]
     },
     {
       "science": "Chemistry",
@@ -671,9 +819,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Conductivity",
-      "tech": "Electrochemistry",
-      "tech_slug": "electrochemistry",
-      "toy_slug": "conductivity"
+      "toy_slug": "conductivity",
+      "techs": [
+        "Electrochemistry"
+      ],
+      "tech_slugs": [
+        "electrochemistry"
+      ]
     },
     {
       "science": "Chemistry",
@@ -687,9 +839,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "pH",
-      "tech": "Electrochemistry",
-      "tech_slug": "electrochemistry",
-      "toy_slug": "ph"
+      "toy_slug": "ph",
+      "techs": [
+        "Electrochemistry"
+      ],
+      "tech_slugs": [
+        "electrochemistry"
+      ]
     },
     {
       "science": "Chemistry",
@@ -703,9 +859,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Conductivity",
-      "tech": "Electrochemistry",
-      "tech_slug": "electrochemistry",
-      "toy_slug": "conductivity"
+      "toy_slug": "conductivity",
+      "techs": [
+        "Electrochemistry"
+      ],
+      "tech_slugs": [
+        "electrochemistry"
+      ]
     },
     {
       "science": "Chemistry",
@@ -719,9 +879,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "pH",
-      "tech": "Electrochemistry",
-      "tech_slug": "electrochemistry",
-      "toy_slug": "ph"
+      "toy_slug": "ph",
+      "techs": [
+        "Electrochemistry"
+      ],
+      "tech_slugs": [
+        "electrochemistry"
+      ]
     },
     {
       "science": "Chemistry",
@@ -735,9 +899,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "pH",
-      "tech": "Electrochemistry",
-      "tech_slug": "electrochemistry",
-      "toy_slug": "ph"
+      "toy_slug": "ph",
+      "techs": [
+        "Electrochemistry"
+      ],
+      "tech_slugs": [
+        "electrochemistry"
+      ]
     },
     {
       "science": "Chemistry",
@@ -751,9 +919,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "pH",
-      "tech": "Electrochemistry",
-      "tech_slug": "electrochemistry",
-      "toy_slug": "ph"
+      "toy_slug": "ph",
+      "techs": [
+        "Electrochemistry"
+      ],
+      "tech_slugs": [
+        "electrochemistry"
+      ]
     },
     {
       "science": "Chemistry",
@@ -768,9 +940,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "UV-Vis",
-      "tech": "Spectroscopy",
-      "tech_slug": "spectroscopy",
-      "toy_slug": "uv-vis"
+      "toy_slug": "uv-vis",
+      "techs": [
+        "Spectroscopy"
+      ],
+      "tech_slugs": [
+        "spectroscopy"
+      ]
     },
     {
       "science": "Chemistry",
@@ -798,9 +974,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "pH",
-      "tech": "Electrochemistry",
-      "tech_slug": "electrochemistry",
-      "toy_slug": "ph"
+      "toy_slug": "ph",
+      "techs": [
+        "Electrochemistry"
+      ],
+      "tech_slugs": [
+        "electrochemistry"
+      ]
     },
     {
       "science": "Chemistry",
@@ -815,9 +995,13 @@
       "date": "2026-04",
       "date_label": "April 2026",
       "toy": "Temperature",
-      "tech": "Thermal",
-      "tech_slug": "thermal",
-      "toy_slug": "temperature"
+      "toy_slug": "temperature",
+      "techs": [
+        "Thermal"
+      ],
+      "tech_slugs": [
+        "thermal"
+      ]
     },
     {
       "science": "Astronomy",
@@ -831,9 +1015,13 @@
       "date": "2025-12",
       "date_label": "December 2025",
       "toy": "Astrometry",
-      "tech": "Measurements",
-      "tech_slug": "measurements",
-      "toy_slug": "astrometry"
+      "toy_slug": "astrometry",
+      "techs": [
+        "Measurements"
+      ],
+      "tech_slugs": [
+        "measurements"
+      ]
     },
     {
       "science": "Mathematics",
@@ -846,8 +1034,12 @@
       "h": 416,
       "date": "2025-04",
       "date_label": "April 2025",
-      "tech": "Graphic",
-      "tech_slug": "graphic"
+      "techs": [
+        "Graphic"
+      ],
+      "tech_slugs": [
+        "graphic"
+      ]
     },
     {
       "science": "Biology",
@@ -862,9 +1054,13 @@
       "date_label": "March 2025",
       "note": "400×",
       "toy": "Compound",
-      "tech": "Microscopes",
-      "tech_slug": "microscopes",
-      "toy_slug": "compound"
+      "toy_slug": "compound",
+      "techs": [
+        "Microscopes"
+      ],
+      "tech_slugs": [
+        "microscopes"
+      ]
     },
     {
       "science": "Biology",
@@ -879,9 +1075,13 @@
       "date_label": "March 2025",
       "note": "Stomata everywhere",
       "toy": "Stereo",
-      "tech": "Microscopes",
-      "tech_slug": "microscopes",
-      "toy_slug": "stereo"
+      "toy_slug": "stereo",
+      "techs": [
+        "Microscopes"
+      ],
+      "tech_slugs": [
+        "microscopes"
+      ]
     },
     {
       "science": "Biology",
@@ -896,14 +1096,18 @@
       "date_label": "March 2025",
       "note": "Handheld, no stage",
       "toy": "Surface",
-      "tech": "Microscopes",
-      "tech_slug": "microscopes",
-      "toy_slug": "surface"
+      "toy_slug": "surface",
+      "techs": [
+        "Microscopes"
+      ],
+      "tech_slugs": [
+        "microscopes"
+      ]
     },
     {
       "science": "Computing",
       "science_slug": "comp",
-      "caption": "She has a preference",
+      "caption": "He has a preference",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/20250225-catfood-output-catfood-preference-64060f.png",
       "full": "/projects/20250225%20Catfood/output/catfood_preference.png",
@@ -913,9 +1117,13 @@
       "date_label": "February 2025",
       "note": "p = 0.03",
       "toy": "SciPy",
-      "tech": "Statistics",
-      "tech_slug": "statistics",
-      "toy_slug": "scipy"
+      "toy_slug": "scipy",
+      "techs": [
+        "Statistics"
+      ],
+      "tech_slugs": [
+        "statistics"
+      ]
     },
     {
       "science": "Physics",
@@ -928,8 +1136,12 @@
       "h": 750,
       "date": "2025-02",
       "date_label": "February 2025",
-      "tech": "Electromagnetism",
-      "tech_slug": "electromagnetism"
+      "techs": [
+        "Electromagnetism"
+      ],
+      "tech_slugs": [
+        "electromagnetism"
+      ]
     },
     {
       "science": "Computing",
@@ -943,14 +1155,18 @@
       "date": "2025-02",
       "date_label": "February 2025",
       "toy": "SciPy",
-      "tech": "Statistics",
-      "tech_slug": "statistics",
-      "toy_slug": "scipy"
+      "toy_slug": "scipy",
+      "techs": [
+        "Statistics"
+      ],
+      "tech_slugs": [
+        "statistics"
+      ]
     },
     {
       "science": "Computing",
       "science_slug": "comp",
-      "caption": "She came back",
+      "caption": "Mi came back",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/20250225-catfood-photos-setup-setup9-9c51c9.jpeg",
       "full": "/projects/20250225%20Catfood/photos/setup/setup9.jpeg",
@@ -972,9 +1188,13 @@
       "date": "2025-02",
       "date_label": "February 2025",
       "toy": "SciPy",
-      "tech": "Statistics",
-      "tech_slug": "statistics",
-      "toy_slug": "scipy"
+      "toy_slug": "scipy",
+      "techs": [
+        "Statistics"
+      ],
+      "tech_slugs": [
+        "statistics"
+      ]
     },
     {
       "science": "Mathematics",
@@ -987,8 +1207,16 @@
       "h": 395,
       "date": "2025-01",
       "date_label": "January 2025",
-      "tech": "Symbolic",
-      "tech_slug": "symbolic"
+      "techs": [
+        "Numeric",
+        "Symbolic",
+        "Graphic"
+      ],
+      "tech_slugs": [
+        "numeric",
+        "symbolic",
+        "graphic"
+      ]
     },
     {
       "science": "Computing",
@@ -1012,7 +1240,7 @@
         {
           "label": "Numeric",
           "slug": "numeric",
-          "count": 0,
+          "count": 1,
           "toys": [
             {
               "label": "NumPy",
@@ -1044,7 +1272,7 @@
         {
           "label": "Graphic",
           "slug": "graphic",
-          "count": 5,
+          "count": 6,
           "toys": [
             {
               "label": "Matplotlib",

@@ -12,18 +12,14 @@
 #     science:  one of the six. Required.
 #     toy:      optional. Must be a toy that science owns (see technology.yml).
 #
-#     ┌─ REQUEST for whoever owns build_gallery.py ─────────────────────┐
-#     │ `tech:` currently takes ONE category, so a picture that honestly│
-#     │ belongs to several has to pick one and lose the rest. The Art of│
-#     │ Problem Solving is Numeric AND Symbolic AND Graphic; it is filed│
-#     │ under Symbolic and the other two are simply dropped.            │
-#     │                                                                 │
-#     │ Asked for 2026-07-30: let `tech:` accept a list as well as a    │
-#     │ scalar, so a tile appears under every category it belongs to —  │
-#     │     tech: [Numeric, Symbolic, Graphic]                          │
-#     │ Each listed category should count the tile and filter to it.    │
-#     │ Scalar form must keep working; most rows will stay scalar.      │
-#     └─────────────────────────────────────────────────────────────────┘
+#     tech:     optional. The CATEGORY the wall filters on, and it takes
+#               either one name or a list:
+#                   tech: Symbolic
+#                   tech: [Numeric, Symbolic, Graphic]
+#               A tile shows under every category it lists and each one counts
+#               it. Normally you do not write this at all — it is derived from
+#               `toy:`. Give it when a picture belongs to a category but to no
+#               instrument we own, or when it honestly belongs to several.
 #     date:     optional YYYY-MM. Omit it and the month is read from the
 #               photo's own EXIF; only supply it when the file has none
 #               (Seestar exports, generated plots, screenshots).
@@ -309,7 +305,7 @@
 - src: gallery/photos/20250101 The Art Of Problem Solving.jpeg
   caption: The Art of Problem Solving
   science: Mathematics
-  tech: Symbolic
+  tech: [Numeric, Symbolic, Graphic]
 - src: gallery/photos/20250401 Davidson Academy.jpeg
   caption: Davidson Academy
   science: Mathematics
@@ -320,7 +316,7 @@
 # ════════════════════════════════════════════════════════════════════
 
 - src: 20250225 Catfood/output/catfood_preference.png
-  caption: She has a preference
+  caption: He has a preference
   note: p = 0.03
   science: Computing
   toy: SciPy
@@ -332,7 +328,7 @@
   caption: Mi the chemist
   science: Computing
 - src: 20250225 Catfood/photos/setup/setup9.jpeg
-  caption: She came back
+  caption: Mi came back
   science: Computing
 - src: gallery/photos/20260601 The Plan On Poster Board.jpeg
   caption: The plan, on poster board

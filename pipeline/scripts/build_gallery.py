@@ -49,11 +49,18 @@ and it determines the tile's category. Leave it off when no instrument we
 currently own is what the picture is about — the retired shared-lab
 instruments (Nicolet FT-IR, OptiMelt) are why that case exists.
 
-`tech:` is the CATEGORY the wall filters on (Mechanics, Genomics, Measurements).
-Normally derived from `toy:`; give it explicitly only for a picture that belongs
-to a category but to no instrument we own. The wall's second filter row and the
-home page's Projects tab are both this same category list, so a tag in one place
-and a link in the other are guaranteed to be the same word.
+`tech:` is the CATEGORY the wall filters on (Mechanics, Genomics, Measurements),
+and it takes either one name or a list:
+
+    tech: Symbolic
+    tech: [Numeric, Symbolic, Graphic]
+
+A tile shows under every category it lists, and each counts it. Normally you do
+not write it at all — it is derived from `toy:`. Give it explicitly for a picture
+that belongs to a category but to no instrument we own, or one that honestly
+belongs to several. The wall's second filter row and the home page's Projects tab
+are both this same category list, so a tag in one place and a link in the other
+are guaranteed to be the same word.
 """
 
 from __future__ import annotations
@@ -467,31 +474,49 @@ def build() -> dict:
             tile["note"] = e["note"]
 
         # `toy:` names the specific instrument and shows in the caption.
-        # `tech:` is the category the wall filters on, and is normally derived
-        # from the toy — give it explicitly only when a picture belongs to a
-        # category but to no instrument we own (the retired FT-IR work).
+        # `tech:` is the category (or categories) the wall filters on, and is
+        # normally derived from the toy. Give it explicitly when a picture
+        # belongs to a category but to no instrument we own (the retired FT-IR
+        # work), or when it honestly belongs to several — a book of contest
+        # problems is Numeric and Symbolic and Graphic at once, and picking one
+        # threw the other two away.
+        #
+        #     tech: Symbolic                      one category
+        #     tech: [Numeric, Symbolic, Graphic]  several
+        #
+        # A tile appears under every category it lists, and each one counts it.
         toy = e.get("toy")
-        tech_name = e.get("tech")
+        raw = e.get("tech")
+        wanted = [] if raw is None else ([raw] if isinstance(raw, str) else list(raw))
         if toy:
             mapping = toy_to_tech.get(science, {})
             if toy not in mapping:
-                owned = ", ".join(sorted({v for v in mapping}))
+                owned = ", ".join(sorted(set(mapping)))
                 raise ValueError(f"{where}: {science} owns no toy {toy!r}. Owned: {owned}")
             tile["toy"] = toy
-            tech_name = tech_name or mapping[toy]
-        if tech_name:
-            match = next((t for t in techs.get(science, []) if t["label"] == tech_name), None)
+            if mapping[toy] not in wanted:
+                wanted.append(mapping[toy])
+
+        labels, slugs = [], []
+        for name in wanted:
+            match = next((t for t in techs.get(science, []) if t["label"] == name), None)
             if not match:
                 have = ", ".join(t["label"] for t in techs.get(science, []))
-                raise ValueError(f"{where}: {science} has no category {tech_name!r}. Has: {have}")
-            tile["tech"] = match["label"]
-            tile["tech_slug"] = match["slug"]
+                raise ValueError(f"{where}: {science} has no category {name!r}. Has: {have}")
+            if match["slug"] in slugs:
+                raise ValueError(f"{where}: category {name!r} listed twice")
+            labels.append(match["label"])
+            slugs.append(match["slug"])
             match["count"] += 1
             if toy:
-                hit = next((x for x in match["toys"] if x["label"] == toy or x["name"] == toy), None)
+                hit = next((x for x in match["toys"]
+                            if x["label"] == toy or x["name"] == toy), None)
                 if hit:
                     tile["toy_slug"] = hit["slug"]
                     hit["count"] += 1
+        if labels:
+            tile["techs"] = labels
+            tile["tech_slugs"] = slugs
 
         tiles.append(tile)
 

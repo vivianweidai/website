@@ -56,7 +56,7 @@ const spanFor = (t) => {
     {tiles.map((t) => (
       t.kind === 'project' ? (
         <a class="tile tile-project" href={t.href}
-           data-sci={t.science_slug} data-tech={t.tech_slug ?? ''} data-w={t.w} data-h={t.h} data-cols={colsFor(t)}
+           data-sci={t.science_slug} data-techs={(t.tech_slugs ?? []).join(' ')} data-w={t.w} data-h={t.h} data-cols={colsFor(t)}
            style={`--tint: var(--subj-${t.science_slug}); grid-column: span ${colsFor(t)}; grid-row-end: span ${spanFor(t)}`}>
           <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />
           <div class="tile-cap">
@@ -70,7 +70,7 @@ const spanFor = (t) => {
         </a>
       ) : (
         <figure class="tile tile-photo" tabindex="0" role="button" aria-label={`Open ${t.caption}`}
-           data-sci={t.science_slug} data-tech={t.tech_slug ?? ''} data-w={t.w} data-h={t.h} data-cols={colsFor(t)}
+           data-sci={t.science_slug} data-techs={(t.tech_slugs ?? []).join(' ')} data-w={t.w} data-h={t.h} data-cols={colsFor(t)}
            data-full={t.full} data-video={t.video ? '1' : ''}
            style={`--tint: var(--subj-${t.science_slug}); grid-column: span ${colsFor(t)}; grid-row-end: span ${spanFor(t)}`}>
           {t.video
@@ -138,8 +138,11 @@ const spanFor = (t) => {
         var shown = 0;
         for (var i = 0; i < tiles.length; i++) {
           var t = tiles[i];
+          // A tile can sit in several categories, so this is a membership
+          // test over a space-separated list, not an equality check.
           var ok = (state.sci === 'all' || t.dataset.sci === state.sci)
-                && (!state.tech || t.dataset.tech === state.tech);
+                && (!state.tech
+                    || (' ' + t.dataset.techs + ' ').indexOf(' ' + state.tech + ' ') >= 0);
           t.style.display = ok ? '' : 'none';
           if (ok) shown++;
         }
