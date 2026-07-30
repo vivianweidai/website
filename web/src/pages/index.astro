@@ -23,10 +23,15 @@ const SUBJ_ANCHOR = {
 //
 // JSOC repeats on three rows, so it is spelled out on the FIRST one a reader
 // meets going top-to-bottom (Biology, which also has the most slack) and left
-// short on Chemistry and Physics, where the full name wraps. Same trick on
-// Computing: "North American" contracts to "NA" so NACLO can be spelled out at
-// all — the full form overruns the row by ~120px. Both expansions leave little
-// slack, so re-render the row before lengthening any name on them.
+// short on Chemistry and Physics, where the full name wraps.
+//
+// Computing is the tightest row on the tab. NACLO's own name — North American
+// Computational Linguistics Open — does not fit in any form: with "North
+// American" it overruns by ~120px, and even contracted to "NA" it sat within a
+// few px of the edge. What ships drops the geography and takes the Olympiad
+// suffix the other five sciences use. It is ~3px off the wrap point, so treat
+// this row as full: re-render before lengthening ANY of its three names, and
+// if it ever wraps, "NA Computational Linguistics" buys ~43px back.
 //
 // Order within a science is fixed: Canadian first, US second, then whatever is
 // neither (JSOC — the cross-science camp). One line per science is the target.
@@ -43,7 +48,7 @@ const OLYMPIADS = {
   computing: [
     'Canadian Computing Competition',
     'USA Computing Olympiad',
-    'NA Computational Linguistics Open',
+    'Computational Linguistics Olympiad',
   ],
   physics: [
     'CAP High School Prize Exam',
