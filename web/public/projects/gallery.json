@@ -986,7 +986,9 @@
       "w": 1000,
       "h": 395,
       "date": "2025-01",
-      "date_label": "January 2025"
+      "date_label": "January 2025",
+      "tech": "Symbolic",
+      "tech_slug": "symbolic"
     },
     {
       "science": "Computing",
@@ -1029,7 +1031,7 @@
         {
           "label": "Symbolic",
           "slug": "symbolic",
-          "count": 0,
+          "count": 1,
           "toys": [
             {
               "label": "Wolfram",

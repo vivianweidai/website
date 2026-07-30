@@ -11,6 +11,19 @@
 #     note:     optional second line — exposure, condition, what went wrong.
 #     science:  one of the six. Required.
 #     toy:      optional. Must be a toy that science owns (see technology.yml).
+#
+#     ┌─ REQUEST for whoever owns build_gallery.py ─────────────────────┐
+#     │ `tech:` currently takes ONE category, so a picture that honestly│
+#     │ belongs to several has to pick one and lose the rest. The Art of│
+#     │ Problem Solving is Numeric AND Symbolic AND Graphic; it is filed│
+#     │ under Symbolic and the other two are simply dropped.            │
+#     │                                                                 │
+#     │ Asked for 2026-07-30: let `tech:` accept a list as well as a    │
+#     │ scalar, so a tile appears under every category it belongs to —  │
+#     │     tech: [Numeric, Symbolic, Graphic]                          │
+#     │ Each listed category should count the tile and filter to it.    │
+#     │ Scalar form must keep working; most rows will stay scalar.      │
+#     └─────────────────────────────────────────────────────────────────┘
 #     date:     optional YYYY-MM. Omit it and the month is read from the
 #               photo's own EXIF; only supply it when the file has none
 #               (Seestar exports, generated plots, screenshots).
@@ -296,6 +309,7 @@
 - src: gallery/photos/20250101 The Art Of Problem Solving.jpeg
   caption: The Art of Problem Solving
   science: Mathematics
+  tech: Symbolic
 - src: gallery/photos/20250401 Davidson Academy.jpeg
   caption: Davidson Academy
   science: Mathematics
