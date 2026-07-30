@@ -63,7 +63,7 @@ const spanFor = (t) => {
             <b>{t.caption}</b>
             <span>
               {t.note && <i>{t.note}</i>}
-              <em>{t.toy ? `${t.toy} · ` : ''}{t.date_label}</em>
+              <em>{t.techs?.length ? `${t.techs.join(' · ')} · ` : ''}{t.date_label}</em>
             </span>
           </div>
           <span class="tile-badge">Project →</span>
@@ -80,7 +80,7 @@ const spanFor = (t) => {
             <b>{t.caption}</b>
             <span>
               {t.note && <i>{t.note}</i>}
-              <em>{t.toy ? `${t.toy} · ` : ''}{t.date_label}</em>
+              <em>{t.techs?.length ? `${t.techs.join(' · ')} · ` : ''}{t.date_label}</em>
             </span>
           </figcaption>
         </figure>
