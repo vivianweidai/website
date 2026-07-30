@@ -191,7 +191,12 @@ import PageFooter from '../../layouts/PageFooter.astro';
       80%  { transform: scale(1.12) rotate(-4deg); filter: drop-shadow(0 0 4px rgba(255,200,40,0.6)); }
       100% { transform: scale(1) rotate(0); filter: none; }
     }
-    .timeline .entry.hl { position: relative; isolation: isolate; }
+    /* `overflow: hidden` confines the sweep to the row's own box — the sweep
+       pseudo-element is inset:0 but translates from -120% to 220%, so without
+       clipping the yellow band runs the full width of the window. (Invisible
+       on .hl, where the sweep is white over an already-yellow row; obvious on
+       .hl-hover, where the sweep *is* the yellow.) */
+    .timeline .entry.hl { position: relative; isolation: isolate; overflow: hidden; }
     .timeline .entry.hl::before {
       content: '';
       position: absolute;
@@ -222,7 +227,7 @@ import PageFooter from '../../layouts/PageFooter.astro';
 
     /* Hover-only ripple — same yellow sweep + badge flash as .hl, but no
        permanent yellow background. Used for COMPETITIVE / INVITED rows. */
-    .timeline .entry.hl-hover { position: relative; isolation: isolate; }
+    .timeline .entry.hl-hover { position: relative; isolation: isolate; overflow: hidden; }
     .timeline .entry.hl-hover::before {
       content: '';
       position: absolute;
