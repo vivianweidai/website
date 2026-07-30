@@ -1,6 +1,6 @@
 # SCIENCE — Claude Code Instructions
 
-Personal science portfolio + lab notebook — live on [vivianweidai.com](https://vivianweidai.com) and the [App Store](https://apps.apple.com/app/id6762091743) (iPhone + iPad, with an embedded Apple Watch companion). Curriculum reference tables, an Olympiad timeline, and hands-on research projects (raw data, photos, notebooks, reproducible pipelines). Your role: process experimental data and build reproducible analysis pipelines — parse raw instrument outputs, clean and validate, analyze, visualize.
+Personal science portfolio + lab notebook — live on [vivianweidai.com](https://vivianweidai.com) and the [App Store](https://apps.apple.com/app/id6762091743) (iPhone + iPad, with an embedded Apple Watch companion). Curriculum reference tables, an Olympiad timeline, and hands-on projects (raw data, photos, notebooks, reproducible pipelines). Your role: process experimental data and build reproducible analysis pipelines — parse raw instrument outputs, clean and validate, analyze, visualize.
 
 This CLAUDE.md is the repo's only doc — the README was folded in and deleted 2026-07-17 (Claude-maintained; even though the repo is public, James opted out of README upkeep).
 
@@ -9,25 +9,25 @@ This CLAUDE.md is the repo's only doc — the README was folded in and deleted 2
 - **Astro 5** — static site generator. Builds to `pipeline/worker/dist/` (co-located with the Worker that serves it) via `outDir: '../pipeline/worker/dist'`.
 - **Cloudflare Workers + Static Assets** — serves the build output at `vivianweidai.com`. The Worker is a true passthrough to the `ASSETS` binding (no edge logic).
 - **GitHub** — source control only. Push triggers nothing.
-- **Apple** — native app in `apple/` consumes `vivianweidai.com/{olympiads,research,curriculum}/*.json` (and per-discipline markdown under `curriculum/source/`). See § APPLE APP.
+- **Apple** — native app in `apple/` consumes `vivianweidai.com/{olympiads,projects,curriculum}/*.json` (and per-discipline markdown under `curriculum/source/`). See § APPLE APP.
 
 ## REPO STRUCTURE
 
 Top-level reads like every other repo: `apple/ web/ pipeline/ work/` + this doc. **The entire Astro app lives in `web/`** — its `astro.config.mjs`, `package.json`, `tsconfig.json`, `src/`, and `public/` (relocated from the repo root 2026-07-17 to keep the root clean; `src/`/`public/` stay at Astro's defaults *inside* `web/`). **All `pnpm` commands run from `web/`.**
 
-- **`web/src/`** — `content.config.ts` (Content Collections: **`projects`** + **`tech`**); `layouts/` holds the `.astro` components *and* their imported CSS/JS; `pages/` is file-based routing (`research/` carries the dynamic `[slug]` project route + `[science]/[tech]` tech route).
-- **`web/public/`** — source-of-truth served **verbatim at the site root**. Areas: `curriculum/` (`source/*.md` + `curriculum.json`), `olympiads/` (`olympiads.yml`), `research/` (`projects/<YYYYMMDD Name>/`, `technology/<science>/<Tech>/index.md` with a sibling `hero:` image + flat photos, `technology.yml`). `<science>` is the full word (mathematics, computing…) to mirror `curriculum/source/`.
-- **`pipeline/`** — `worker/` (CF Worker: ASSETS passthrough → `dist/`) + `scripts/` (`build_olympiads.py` / `build_technology.py`, YAML→JSON; `build_curriculum.py`, .docx→markdown). Scripts resolve paths from their own location, so run them **from the repo root**; they write into `web/public/`.
-- **`work/`** — research works-in-progress, git-tracked but **NOT web-served**. One dir per science (`physics/` `chemistry/` `biology/` `astronomy/`) + `IDEAS.md`. Named `work/` (not `projects/`) to stay distinct from the public `web/public/research/projects/`. **`work/scratch/`** is the rough scratchpad (tracked + pushed — backed up and distributed across machines; the relocated home of the old `~/GITHUB/scratch/`, 2026-07-16). Three-stage flow, all tracked — the difference is polish and web-visibility, not whether it's in git: `work/scratch/<topic>` (rough) → `work/<science>/` (organized WIP) → `web/public/research/projects/` (published).
+- **`web/src/`** — `content.config.ts` (Content Collections: **`projects`** + **`tech`**); `layouts/` holds the `.astro` components *and* their imported CSS/JS; `pages/` is file-based routing (`projects/` carries the dynamic `[slug]` project route + `technology/[science]/[tech]` tech route).
+- **`web/public/`** — source-of-truth served **verbatim at the site root**. Areas: `curriculum/` (`source/*.md` + `curriculum.json`), `olympiads/` (`olympiads.yml`), `projects/` (`<YYYYMMDD Name>/` project folders sitting **directly** under it, `technology/<science>/<Tech>/index.md` with a sibling `hero:` image + flat photos, `technology.yml`, `gallery.yml`, `gallery/`). `<science>` is the full word (mathematics, computing…) to mirror `curriculum/source/`.
+- **`pipeline/`** — `worker/` (CF Worker: ASSETS passthrough → `dist/`) + `scripts/` (`build_olympiads.py` / `build_technology.py` / `build_gallery.py`, YAML→JSON; `build_curriculum.py`, .docx→markdown). Scripts resolve paths from their own location, so run them **from the repo root**; they write into `web/public/`.
+- **`work/`** — works-in-progress, git-tracked but **NOT web-served**. One dir per science (`physics/` `chemistry/` `biology/` `astronomy/`) + `IDEAS.md`. Named `work/` (not `projects/`) to stay distinct from the published `web/public/projects/`. **`work/scratch/`** is the rough scratchpad (tracked + pushed — backed up and distributed across machines; the relocated home of the old `~/GITHUB/scratch/`, 2026-07-16). Three-stage flow, all tracked — the difference is polish and web-visibility, not whether it's in git: `work/scratch/<topic>` (rough) → `work/<science>/` (organized WIP) → `web/public/projects/` (published).
 - **`work/IDEAS.md`** (moved from the repo root 2026-07-17) — the research program's living doc: **ideation** (idea backlog) + **progress tracking** (the "Active work & progress" dashboard and in-flight detail like the home molecular-biology lab). Promote an idea to a dated project folder when a pilot starts; keep the dashboard and idea statuses current.
 
-**Convention deviation: no top-level `content/`; source-of-truth lives under `web/public/`.** The cross-repo convention puts source-of-truth in a top-level `content/`. We deviate because Astro's `public/` is served verbatim at the site root — so `web/public/` **is** the content dir: a file at `web/public/X/Y` serves at `/X/Y`, 1:1, no rewrites, no sync step. Page URLs and asset URLs coexist under the same prefix (`/research/projects/<folder>/` is the rendered HTML; `/research/projects/<folder>/index.md` is the raw markdown the apps fetch; `/research/projects/<folder>/photos/…` are the photos). The Content Collection loader points at `./public/research/projects/` (relative to the `web/` Astro root); the dynamic route's photo discovery walks the same path.
+**Convention deviation: no top-level `content/`; source-of-truth lives under `web/public/`.** The cross-repo convention puts source-of-truth in a top-level `content/`. We deviate because Astro's `public/` is served verbatim at the site root — so `web/public/` **is** the content dir: a file at `web/public/X/Y` serves at `/X/Y`, 1:1, no rewrites, no sync step. Page URLs and asset URLs coexist under the same prefix (`/projects/<folder>/` is the rendered HTML; `/projects/<folder>/index.md` is the raw markdown the apps fetch; `/projects/<folder>/photos/…` are the photos). The Content Collection loader points at `./public/projects/` (relative to the `web/` Astro root); the dynamic route's photo discovery walks the same path.
 
 ## DATA MODEL — TECHNOLOGIES & TOYS
 
-The Research pages (`vivianweidai.com/research/`) are organized around two concepts:
+The toy catalog behind the site is organized around two concepts:
 
-- **Technology (Tech)** — a research capability, a row on the Research page (e.g. *Spectroscopy*, *Photometry*, *Radio*). A way of asking nature a question.
+- **Technology (Tech)** — a research capability (e.g. *Spectroscopy*, *Photometry*, *Radio*). A way of asking nature a question.
 - **Toy** — a specific physical instrument that *enables* a Technology (e.g. *Paton Hawksley Star Analyser 100 Grating* enables Spectroscopy; *ZWO Seestar S30 Pro* enables Amateur, Spectroscopy, Photometry, Astrometry). One Toy can enable multiple Techs. A Tech is "available" when we own ≥1 Toy that enables it.
 
 **Access tiers** (the collection is grounded in Toys we can regularly touch; prefer lower tiers — don't propose a Tier-4 path when a Tier-1/2/3 Toy does the job):
@@ -42,8 +42,8 @@ The Research pages (`vivianweidai.com/research/`) are organized around two conce
 
 | Layer | YAML/JSON field | Frontmatter | URL path | Astro collection |
 |---|---|---|---|---|
-| Science (card) | `science` | — | `/research/#<slug>` | — |
-| Tech (row) | `techs[].tech` | `tech:` | `/research/technology/<sci>/<Tech>/` | `tech` |
+| Science (card) | `science` | — | `/projects/#<slug>` | — |
+| Tech (row) | `techs[].tech` | `tech:` | `/projects/technology/<sci>/<Tech>/` | `tech` |
 | Toy (instrument) | `toys[].name` (under a tech) | `toys:` array | — | — |
 
 `technology.yml` is **one flat entry per science** (`science:` + `techs:`; the old topic/category grouping tiers were dropped). It is the **source of truth for instruments and which Techs they enable**; a tech's spec (`techs[].specs`) lives here and nowhere else.
@@ -87,9 +87,55 @@ page, where analysis is the point. Cropping a capture turns it into a figure.
 Record confidence honestly at staging time. A caption written months later from a filename will
 overstate a 3-sigma result as readily as a 20-sigma one.
 
+Staging is the front half of one pipeline: `work/scratch/gallery/` → a row in
+`web/public/projects/gallery.yml` → a tile on the wall. See § THE WALL.
+
+## THE WALL (`/projects/`)
+
+`/projects/` is **one chronological grid of pictures and nothing else** — no inventory, no links
+below the fold, no second kind of content. That emptiness is the design, not an omission: the
+page answers "what have they been doing" at a glance, and anything that invites reading instead
+of looking belongs somewhere other than here. Two tile kinds, both from `gallery.yml`:
+
+- **photo tile** — `src:` a picture. Caption + note + toy + month appear on hover.
+- **project card** — `folder:` + `hero:`. Framed in its science colour, permanently captioned,
+  links to the project page. Its caption is read from that project's `index.md` title, never
+  retyped. A card's hero must not also be a photo tile; the build rejects the duplicate.
+
+**Where pixels live.** `src:`/`hero:` are paths under `web/public/projects/` — exactly what
+follows `/projects/` in the URL.
+- A picture inside a project folder is referenced **in place**. Never copy it into `gallery/`,
+  or the same bytes land in git twice.
+- A picture belonging to no project lives in **`gallery/<YYYY-MM>/`**, one folder per month,
+  created on demand. Short kebab-case names — the name is in the URL.
+- **`gallery/thumbs/`** is generated, never hand-edited. `build_gallery.py` shrinks every
+  oversized source to a long-edge-700 copy with `sips` (the originals total ~58 MB, which is
+  exactly the wrong page to serve at full resolution) and prunes thumbs whose row is gone.
+
+**Dates are read from EXIF.** Omit `date:` and the month comes off the camera; supply
+`date: YYYY-MM` only when the file has no EXIF (Seestar exports, generated plots, screenshots).
+Tiles sort newest-month-first, and within a month are dealt round-robin across the sciences so a
+busy week in one science doesn't land as a slab of near-identical frames.
+
+**Tags.** `science:` is required. `toy:` is optional and must name a toy that science actually
+owns in `technology.json` — the build fails otherwise, which is what keeps the wall's filter row
+and the home page's toy chips the same vocabulary. **Leave `toy:` off** when nothing we currently
+own is what the picture is about; the retired shared-lab instruments (Nicolet FT-IR, OptiMelt)
+are why that case exists. A toy with no pictures still gets a tag, shown dimmed — the gap is
+worth seeing.
+
+**The three surfaces are one loop.** The home page's Projects tab is the canonical toy list
+(read from `technology.json`); each chip links to `/projects/#<sci>/<toy-slug>`; the wall's
+second filter row is that same list. Change a toy's `short:` in a tech page's frontmatter and all
+three move together.
+
+**Captions are load-bearing — verify them against the actual frame.** Several first-pass captions
+here described the wrong instrument entirely (a bench of samples called "the printed jig"). Render
+the tiles and look before shipping copy.
+
 ## AUTHORING A RESEARCH PROJECT
 
-Each project is a date-prefixed folder under `web/public/research/projects/`. The public-facing overview is **`index.md`** (not `README.md`) — Astro's loader globs `*/index.md`, so the filename matters. Model new pages on `20260420 UV-Vis Spectroscopy/index.md` or `20260419 IR Spectroscopy/index.md`.
+Each project is a date-prefixed folder under `web/public/projects/`. The public-facing overview is **`index.md`** (not `README.md`) — Astro's loader globs `*/index.md`, so the filename matters. Model new pages on `20260420 UV-Vis Spectroscopy/index.md` or `20260419 IR Spectroscopy/index.md`.
 
 ```
 YYYYMMDD Project Name/
@@ -123,8 +169,8 @@ Create these subdirs as needed and follow the existing names rather than inventi
 
 Body sections **in order**: `## Overview` (1–2 para) · `## Setup` (Category/Details table + procedure prose) · `## Samples` (**top-level `##`**, not under Setup) · `## Data` (format; if `photos/data/` has sheets, add the hand-coded `#data-grid` — `three-col` for 3, shuffle button only if >4) · `## Results` (link **written report → static notebook → Colab**, in that order). `## Results` is the **last thing in the file** — no footer or nav div: `Project.astro` injects `<PageFooter />` and the science-colored tech pills automatically. **Never add a `#`/row-number column to any table** (repo-wide rule) — row order conveys sequence.
 
-**Registering a project = one frontmatter edit.** The project's `tech:` array is the only registration step; `build_technology.py` reverse-scans it and bakes the project list into each tech's `technology.json` entry (consumed by the research page, tech-detail pages, and the Apple app). Add any new instrument as a Toy under the appropriate tech in `technology.yml`. Cross-links are fully automatic:
-- **Project → tech:** `Project.astro` renders one science-colored **pill** per `tech:` entry, linking to `/research/technology/<science>/<Tech>/`. (This replaced the old hand-coded `<div id="technology">` table in `ce2a710` — don't re-add such a table.)
+**Registering a project = one frontmatter edit** (plus a `folder:` row in `gallery.yml` if it should have a card on the wall). The project's `tech:` array is the only registration step; `build_technology.py` reverse-scans it and bakes the project list into each tech's `technology.json` entry (consumed by the research page, tech-detail pages, and the Apple app). Add any new instrument as a Toy under the appropriate tech in `technology.yml`. Cross-links are fully automatic:
+- **Project → tech:** `Project.astro` renders one science-colored **pill** per `tech:` entry, linking to `/projects/technology/<science>/<Tech>/`. (This replaced the old hand-coded `<div id="technology">` table in `ce2a710` — don't re-add such a table.)
 - **Tech → project:** the `build_technology.py` reverse-scan above.
 
 **Writing style — toolkit notes, not publications.** A fast future-you glance at what the tech does and what makes it different from its neighbors; the scaffold for research, not the research. Model density: the two Spectroscopy pages above.
@@ -134,12 +180,30 @@ Body sections **in order**: `## Overview` (1–2 para) · `## Setup` (Category/D
 - **Font styling judicious** — one or two bolds per section (the instrument's proper noun or the differentiator). Sub/superscripts only when the notation carries information (`λ<sub>max</sub>` yes; italicizing every verb no).
 - **Push specs to Setup tables** — ranges, software names, filename patterns, cuvette sizes live in the Setup/Data table, not prose. Let tabs and section-heads carry the structure.
 
+## THE `/research/` → `/projects/` RENAME (2026-07-30)
+
+The whole vertical was renamed: nav label, URL, page directory, public directory, Astro
+collection base, and the Swift API client. Two things about it are easy to trip over later:
+
+- **Project folders lost a path segment.** They were `web/public/research/projects/<Name>/`,
+  serving at `/research/projects/<Name>/`. They are now `web/public/projects/<Name>/`, serving at
+  `/projects/<Name>/` — one level, not two, sitting as siblings of `technology/` and `gallery/`.
+  `build_technology.py` selects them by their `YYYYMMDD` prefix rather than by directory.
+- **`web/public/_redirects` keeps every old URL alive**, and is not optional. App Store builds in
+  the wild fetch `/research/technology.json` and `/research/projects/<folder>/index.md`;
+  `URLSession` follows the 301s, so those installs keep working until the next release. Cloudflare
+  Workers Static Assets reads that file — the Worker itself is still a pure passthrough.
+
+The Apple source now points at `/projects/technology.json` but **a release has not shipped**, and
+`ResearchScience.projectIndexURL` still accepts the old prefix so a stale cached manifest resolves.
+
 ## CONTENT BUILDS & DEPLOY
 
 **Every `*.json` under `web/public/` is generated — never edit it by hand; edit the `.yml`/source and rebuild.** The website (client-side JS) and the Apple app fetch the same JSON, so a stale manifest silently ships bad data to the app (the `.githooks/pre-commit` guard exists for exactly this).
 
 - **Olympiads + textbooks** — edit `olympiads/olympiads.yml`, then `python pipeline/scripts/build_olympiads.py` (from repo root) → `olympiads.json`.
-- **Research** — edit `technology.yml` (+ project `tech:` frontmatter), then `python pipeline/scripts/build_technology.py` → `technology.json`. The script also bakes each project's **shuffle photo list** (`projects[].photos`, every image under `photos/` except `photos/data/`, mirroring the `[slug]` route's build-time walk) — so **adding or renaming a project photo means rebuilding this JSON**, or the native apps show an empty photo grid. That list is how the apps get the pool; they used to walk the GitHub contents API, which is unauthenticated and rate-limited.
+- **Technology / toys** — edit `technology.yml` (+ project `tech:` frontmatter), then `python pipeline/scripts/build_technology.py` → `technology.json`.
+- **The wall** — edit `projects/gallery.yml`, then `python pipeline/scripts/build_gallery.py` → `gallery.json` (+ thumbnails). See § THE WALL. The script also bakes each project's **shuffle photo list** (`projects[].photos`, every image under `photos/` except `photos/data/`, mirroring the `[slug]` route's build-time walk) — so **adding or renaming a project photo means rebuilding this JSON**, or the native apps show an empty photo grid. That list is how the apps get the pool; they used to walk the GitHub contents API, which is unauthenticated and rate-limited.
 - **Curriculum** — a **one-time build**: the `.docx` sources were dropped (`f8e7ad3`), so `curriculum.json` and `source/*.md` are now committed artifacts. Re-add a subject's `.docx` to `web/public/curriculum/notes/` only to regenerate it. No database, no API, no admin endpoint.
 - **`work/overview.pdf`** (the shareable three-pager; not web-served) — **its source is the print template embedded in `work/IDEAS.md`'s final appendix**, not a separate file (`work/scratch/overview.html` was retired 2026-07-25 after the two drifted). Never edit the PDF, and don't recreate a standalone `.html`: extract the template with the `awk` sentinel command in that appendix and render it with **Chrome headless `--print-to-pdf`** — both commands are written out there, verified to reproduce the committed PDF. **Page 2 restates §2's instrument runs and page 3 the per-science project lists**, so a section edit and the appendix edit are one pass, not two.
 
@@ -198,7 +262,7 @@ Three tabs (`shared/UI/Views/RootTabView.swift`), each reading a generated JSON 
 
 - **Curriculum** — cascading subject → section → topic → table browser from `curriculum/curriculum.json`; tables fetched from GitHub raw URLs, rendered with KaTeX in a `WKWebView`.
 - **Olympiads** — contests + unified textbooks from `olympiads/olympiads.json`. The watch companion renders this tab only (offline-first cache at `Caches/olympiads_cache.json`).
-- **Research** — tech browser from `research/technology.json` (one card per science → flat techs); project links open an in-app markdown render of the project's `index.md`, external links hand off to Safari.
+- **Research** — tech browser from `projects/technology.json` (one card per science → flat techs); project links open an in-app markdown render of the project's `index.md`, external links hand off to Safari. The tab is still called Research in the app while the web nav says Projects; renaming it is a native change for whenever `apple/` is next touched.
 
 **Markdown shell contract** (`shared/UI/Rendering/katex-shell.html`, kept byte-identical with the Android copy). Three things a project page can rely on in-app:
 - **Page `<style>` blocks are honored** (they used to be stripped). The gallery pages — Stargazing, Cellgazing — carry their whole layout inline, so stripping it broke the hero band and ran the tile captions together. CommonMark treats `<style>` as a type-1 HTML block, so marked passes it through blank lines and all. A page `<script>` still never runs (innerHTML doesn't execute scripts) — anything interactive has to be native.

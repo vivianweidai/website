@@ -18,45 +18,44 @@ const SUBJ_ANCHOR = {
 // not the individual sitting: the yearly rounds, levels and camps of one
 // olympiad (COMC, the CAAO junior/senior exams + camps, …) collapse to a single
 // entry. Spelled out in full — abbreviated only where the full name would push
-// the row onto a second line (NACLO, CAP). The /olympiads/ timeline has the dates.
+// the row onto a second line (CAP, NACLO, and JSOC, which repeats on three of
+// the six rows). The /olympiads/ timeline carries the dates.
 //
 // Order within a science is fixed: Canadian first, US second, then whatever is
 // neither (JSOC — the cross-science camp). One line per science is the target.
 //
 // `icon` is the competition's best standing across all its sittings in
 // olympiads.yml — 'invited'/'attended' (⭐ sparkle) | 'competitive' (🎯 wiggle) |
-// 'team'/'alternate' (🇨🇦 wave). `kind` on the science is the row's headline
-// standing: it drives the yellow hover sweep + the flashing badge.
-// Optional `badge` overrides the badge label (defaults to kind.toUpperCase()).
+// 'team'/'alternate' (🇨🇦 wave); `kind` picks that glyph's hover animation.
 const OLYMPIADS = {
-  mathematics: { kind: 'competitive', comps: [
+  mathematics: [
     { name: 'Canadian Open Mathematics Challenge' },
     { name: 'American Mathematics Competition 12',                       icon: '🎯',  kind: 'competitive' },
-  ]},
-  computing:   { kind: '', comps: [
+  ],
+  computing: [
     { name: 'Canadian Computing Competition' },
     { name: 'USA Computing Olympiad' },
     { name: 'NACLO' },
-  ]},
-  physics:     { kind: 'invited', comps: [
+  ],
+  physics: [
     { name: 'CAP High School Prize Exam' },
-    { name: 'USA Physics Olympiad F=ma' },
-    { name: 'Junior Science Olympiad of Canada',                         icon: '⭐', kind: 'invited' },
-  ]},
-  chemistry:   { kind: 'competitive', comps: [
+    { name: 'USA Physics Olympiad F=ma Exam' },
+    { name: 'JSOC',                                                      icon: '⭐', kind: 'invited' },
+  ],
+  chemistry: [
     { name: 'Canadian Chemistry Olympiad',                               icon: '🎯',  kind: 'competitive' },
-    { name: 'USNCO',                                                     icon: '⭐', kind: 'invited' },
-    { name: 'Junior Science Olympiad of Canada',                         icon: '⭐', kind: 'invited' },
-  ]},
-  biology:     { kind: 'competitive', comps: [
+    { name: 'United States National Chemistry Olympiad',                 icon: '⭐', kind: 'invited' },
+    { name: 'JSOC',                                                      icon: '⭐', kind: 'invited' },
+  ],
+  biology: [
     { name: 'Canadian Biology Olympiad',                                 icon: '🎯',  kind: 'competitive' },
     { name: 'USA Biology Olympiad',                                      icon: '🎯',  kind: 'competitive' },
-    { name: 'Junior Science Olympiad of Canada',                         icon: '⭐', kind: 'invited' },
-  ]},
-  astronomy:   { kind: 'team', badge: 'TEAM CANADA', comps: [
+    { name: 'JSOC',                                                      icon: '⭐', kind: 'invited' },
+  ],
+  astronomy: [
     { name: 'Canadian Astronomy and Astrophysics Olympiad',              icon: '🇨🇦', kind: 'team' },
     { name: 'USA Astronomy and Astrophysics Olympiad',                   icon: '🎯',  kind: 'competitive' },
-  ]},
+  ],
 };
 // The Projects tab lists the TOYS each science has — the instruments and
 // libraries we can actually reach for. This is the canonical toy list: the
@@ -108,9 +107,8 @@ const TABS = [
     {SUBJECTS.map((subjSlug, i) => {
       const subj = curriculumData[subjSlug];
       const oly = OLYMPIADS[subjSlug];
-      const olyKind = oly.kind;
       return (
-        <div class="curr-rows-row fade-in" data-olympiad-kind={olyKind} style={`animation-delay: ${0.1 + i * 0.08}s`}>
+        <div class="curr-rows-row fade-in" style={`animation-delay: ${0.1 + i * 0.08}s`}>
           <a class="curr-rows-subj" data-subj={subjSlug} data-tab="curriculum" href={`/curriculum/#${subjSlug}`}>{subj.name}</a>
           <a class="curr-rows-subj" data-subj={subjSlug} data-tab="olympiads"  href={`/olympiads/#${SUBJ_ANCHOR[subjSlug]}`}>{subj.name}</a>
           <a class="curr-rows-subj" data-subj={subjSlug} data-tab="projects"   href={`/projects/#${SUBJ_ANCHOR[subjSlug]}`}>{subj.name}</a>
@@ -124,7 +122,7 @@ const TABS = [
             ))}
           </div>
           <div class="curr-rows-secs" data-tab="olympiads">
-            {oly.comps.map((comp, j) => (
+            {oly.map((comp, j) => (
               <>
                 {j > 0 && <span class="sep">·</span>}
                 <span class="oly-comp">
@@ -146,9 +144,6 @@ const TABS = [
           </div>
 
           <a class="curr-rows-pdf" data-tab="curriculum" href={`/curriculum/notes/${subjSlug}.pdf`}>pdf</a>
-          {(olyKind === 'competitive' || olyKind === 'invited' || olyKind === 'alternate' || olyKind === 'team') && (
-            <span class="olympiad-badge" data-tab="olympiads">{oly.badge || olyKind.toUpperCase()}</span>
-          )}
           <span class="curr-rows-topics" data-tab="projects">
             {TOYS_BY_SCIENCE[subjSlug].length > 0 && (
               <a class="home-proj-badge" href={`/projects/#${SUBJ_ANCHOR[subjSlug]}`}>
@@ -245,63 +240,11 @@ const TABS = [
       position: relative;
     }
 
-    /* Yellow ripple sweep + flashing badge on hover for competitive/invited
-       olympiad rows. Mirrors the .hl-hover treatment on /olympiads/. Only
-       active when the Olympiads tab is showing. */
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="competitive"],
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="invited"],
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="alternate"],
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="team"] {
-      isolation: isolate;
-    }
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="competitive"]::before,
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="invited"]::before,
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="alternate"]::before,
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="team"]::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(100deg, transparent 0%, #fff44f 50%, transparent 100%);
-      background-size: 50% 100%;
-      background-repeat: no-repeat;
-      background-position: -100% 0;
-      z-index: -1;
-      pointer-events: none;
-    }
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="competitive"]:hover::before,
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="invited"]:hover::before,
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="alternate"]:hover::before,
-    .curr-rows[data-active="olympiads"] .curr-rows-row[data-olympiad-kind="team"]:hover::before {
-      animation: oly-row-ripple 1.0s ease-out;
-    }
-    @keyframes oly-row-ripple {
-      from { background-position: -60% 0; }
-      to   { background-position: 200% 0; }
-    }
-    .olympiad-badge {
-      position: absolute;
-      right: 0.6em;
-      top: 50%;
-      font-size: 0.6em;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      background: #1f2328;
-      color: #fff44f;
-      padding: 0.25em 0.55em;
-      border-radius: 3px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translate(-0.5em, -50%);
-    }
-    .curr-rows[data-active="olympiads"] .curr-rows-row:hover .olympiad-badge {
-      animation: oly-badge-flash 1.0s ease-out;
-    }
-    @keyframes oly-badge-flash {
-      0%   { opacity: 0; transform: translate(-0.5em, -50%); }
-      20%  { opacity: 1; transform: translate(0, -50%); }
-      70%  { opacity: 1; transform: translate(0, -50%); }
-      100% { opacity: 0; transform: translate(0.5em, -50%); }
-    }
+    /* Olympiad rows used to fire a yellow sweep across the row plus a flashing
+       COMPETITIVE / TEAM CANADA badge on hover. Removed 2026-07-30 — the
+       whole-table lift on .curr-rows:hover is the hover treatment now; the
+       per-glyph wiggle/sparkle/wave below is what's left of the achievement
+       styling. */
     .curr-rows-row:nth-child(odd) { background: #f6f8fa; }
     .curr-rows-row:hover { background: #eef1f4; }
     .curr-rows-row:last-child { border-bottom: none; }
