@@ -226,6 +226,14 @@ collection base, and the Swift API client. Two things about it are easy to trip 
 The Apple source now points at `/projects/technology.json` but **a release has not shipped**, and
 `ResearchScience.projectIndexURL` still accepts the old prefix so a stale cached manifest resolves.
 
+**The app's tech browser was replaced by the gallery (2026-07-30).** `ResearchView.swift` is gone —
+it rendered per-tech pages from `hero` and `tech_url`, and once the website deleted its tech pages
+the build stopped emitting both, so the tab had quietly degraded to a list of names. In its place
+`GalleryView.swift` renders the wall from `gallery.json`; `ProjectDetailView` moved to its own file
+and is unchanged. `technology.json` is still fetched — it is what `ProjectDetailView` uses to
+resolve a project's tech pills and its photo pool. **Still not released**; installed copies keep
+showing the old tech browser until a build ships.
+
 ## CONTENT BUILDS & DEPLOY
 
 **Every `*.json` under `web/public/` is generated — never edit it by hand; edit the `.yml`/source and rebuild.** The website (client-side JS) and the Apple app fetch the same JSON, so a stale manifest silently ships bad data to the app (the `.githooks/pre-commit` guard exists for exactly this).
@@ -291,7 +299,7 @@ Three tabs (`shared/UI/Views/RootTabView.swift`), each reading a generated JSON 
 
 - **Curriculum** — cascading subject → section → topic → table browser from `curriculum/curriculum.json`; tables fetched from GitHub raw URLs, rendered with KaTeX in a `WKWebView`.
 - **Olympiads** — contests + unified textbooks from `olympiads/olympiads.json`. The watch companion renders this tab only (offline-first cache at `Caches/olympiads_cache.json`).
-- **Research** — tech browser from `projects/technology.json` (one card per science → flat techs); project links open an in-app markdown render of the project's `index.md`, external links hand off to Safari. The tab is still called Research in the app while the web nav says Projects; renaming it is a native change for whenever `apple/` is next touched.
+- **Projects** — the same wall the website shows, from `projects/gallery.json`. A science filter, a two-column grid of tiles (caption bottom-left, science bottom-right), tapping a photo opens the full-resolution pager, tapping a project card opens that project's `index.md` in the markdown reader, and a clip hands off to the system player. Because it reads the same manifest the site builds, **a row added to `gallery.yml` appears in the app with no release** — only layout changes need one.
 
 **Markdown shell contract** (`shared/UI/Rendering/katex-shell.html`, kept byte-identical with the Android copy). Three things a project page can rely on in-app:
 - **Page `<style>` blocks are honored** (they used to be stripped). The gallery pages — Stargazing, Cellgazing — carry their whole layout inline, so stripping it broke the hero band and ran the tile captions together. CommonMark treats `<style>` as a type-1 HTML block, so marked passes it through blank lines and all. A page `<script>` still never runs (innerHTML doesn't execute scripts) — anything interactive has to be native.

@@ -48,7 +48,7 @@ const spanFor = (t) => {
     {tiles.map((t) => (
       t.kind === 'project' ? (
         <a class="tile tile-project" href={t.href}
-           data-sci={t.science_slug} data-techs={(t.tech_slugs ?? []).join(' ')} data-w={t.w} data-h={t.h} data-cols={colsFor(t)}
+           data-sci={t.science_slug} data-w={t.w} data-h={t.h} data-cols={colsFor(t)}
            style={`--tint: var(--subj-${t.science_slug}); grid-column: span ${colsFor(t)}; grid-row-end: span ${spanFor(t)}`}>
           <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />
           <div class="tile-cap">
@@ -59,11 +59,11 @@ const spanFor = (t) => {
         </a>
       ) : (
         <figure class="tile tile-photo" tabindex="0" role="button" aria-label={`Open ${t.caption}`}
-           data-sci={t.science_slug} data-techs={(t.tech_slugs ?? []).join(' ')} data-w={t.w} data-h={t.h} data-cols={colsFor(t)}
+           data-sci={t.science_slug} data-w={t.w} data-h={t.h} data-cols={colsFor(t)}
            data-full={t.full} data-video={t.video ? '1' : ''}
            style={`--tint: var(--subj-${t.science_slug}); grid-column: span ${colsFor(t)}; grid-row-end: span ${spanFor(t)}`}>
           {t.video
-            ? <video src={t.src} width={t.w} height={t.h} autoplay loop muted playsinline preload="metadata" />
+            ? <video src={t.src} poster={t.poster} width={t.w} height={t.h} autoplay loop muted playsinline preload="metadata" />
             : <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />}
           <figcaption class="tile-cap">
             <span class="cap-text">{t.caption}</span>

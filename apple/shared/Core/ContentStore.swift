@@ -20,16 +20,18 @@ public final class ContentStore {
     public var activities: [Activity]?
     public var sciences: [ResearchScience]?
     public var manifest: CurriculumManifest?
+    public var gallery: GalleryResponse?
 
     public var activitiesError: String?
     public var sciencesError: String?
     public var manifestError: String?
+    public var galleryError: String?
 
     private var preloadTask: Task<Void, Never>?
 
     public init() {}
 
-    /// Kick off all three fetches in parallel. Idempotent — calling
+    /// Kick off all four fetches in parallel. Idempotent — calling
     /// twice during launch is fine; the second call joins the existing
     /// task instead of starting new fetches (the underlying loaders
     /// also cache).
@@ -42,7 +44,8 @@ public final class ContentStore {
             async let a: Void = self.loadActivities()
             async let t: Void = self.loadSciences()
             async let m: Void = self.loadManifest()
-            _ = await (a, t, m)
+            async let g: Void = self.loadGallery()
+            _ = await (a, t, m, g)
         }
         preloadTask = task
         await task.value
@@ -58,9 +61,11 @@ public final class ContentStore {
         activities = nil
         sciences = nil
         manifest = nil
+        gallery = nil
         activitiesError = nil
         sciencesError = nil
         manifestError = nil
+        galleryError = nil
         await preloadAll()
     }
 
@@ -79,6 +84,15 @@ public final class ContentStore {
             sciencesError = nil
         } catch {
             sciencesError = error.localizedDescription
+        }
+    }
+
+    private func loadGallery() async {
+        do {
+            gallery = try await APIClient.shared.loadGallery()
+            galleryError = nil
+        } catch {
+            galleryError = error.localizedDescription
         }
     }
 

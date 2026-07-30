@@ -9,7 +9,10 @@ THE WALL
 /projects/ is one chronological grid of every picture worth looking at. Two
 kinds of tile live in it, and both come from the same YAML list:
 
-  photo tile    a picture. `src:` points at a file.
+  photo tile    a picture, or a clip. `src:` points at a file. An .mp4
+                autoplays muted and loops on the web; give it a still frame
+                beside it named "<name>.poster.jpg" and that is what the tile
+                shows before it plays, and what the iOS app shows instead.
   project card  a link to a project page. `folder:` names the project folder;
                 `hero:` picks which of its images fronts the card. The title
                 is read from that project's index.md, never retyped here.
@@ -122,7 +125,17 @@ def thumbnail(rel: str, path: Path) -> tuple[str, int, int]:
     """
     w, h = image_size(path)
     # A clip is served as it is — `sips` cannot resize video, and re-encoding
-    # would break the byte-for-byte rule the capture galleries run on.
+    # would break the byte-for-byte rule the capture galleries run on. What a
+    # clip DOES get is a poster: a still frame sitting beside it as
+    # "<name>.poster.jpg". The web page uses it as the video's poster
+    # attribute; the iOS app shows it as the tile, because AsyncImage cannot
+    # decode an mp4 and rendered a broken-image glyph without one.
+    #
+    # Posters are made by hand, not generated here, because nothing on this
+    # box could decode the Seestar's H.264: AVFoundation returns "Cannot
+    # Decode" and qlmanage hangs headless. Chrome decodes it fine, so the
+    # recipe is a headless screenshot of the clip seeked a couple of seconds
+    # in. A clip with no poster still works — it just has no still frame.
     if path.suffix.lower() in VIDEO_EXTS:
         return url_for(rel), w, h
     if max(w, h) <= THUMB_EDGE and path.stat().st_size <= THUMB_BYTES:
@@ -469,6 +482,16 @@ def build() -> dict:
 
         if path.suffix.lower() in VIDEO_EXTS:
             tile["video"] = True
+            poster = path.with_suffix("").with_suffix(".poster.jpg")
+            if not poster.is_file():
+                poster = path.parent / (path.stem + ".poster.jpg")
+            if poster.is_file():
+                prel = str(poster.relative_to(CONTENT))
+                purl, pw, ph = thumbnail(prel, poster)
+                tile["poster"] = purl
+                # The still is the honest shape of the frame; the container's
+                # own dimensions can disagree with a rotation matrix.
+                tile["w"], tile["h"] = pw, ph
 
         if e.get("note"):
             tile["note"] = e["note"]

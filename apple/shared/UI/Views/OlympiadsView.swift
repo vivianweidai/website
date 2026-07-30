@@ -130,7 +130,7 @@ private struct SubjectFilterMenu: View {
     }
 }
 
-/// Menu row for Olympiads subject filter. ResearchView carries its own
+/// Menu row for Olympiads subject filter. GalleryView carries its own
 /// near-identical copy because `SubjectFilter` is file-private to each
 /// view.
 @ViewBuilder

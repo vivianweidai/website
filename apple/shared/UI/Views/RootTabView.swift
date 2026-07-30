@@ -9,7 +9,7 @@ import ScienceCore
 /// the wider canvas.
 ///
 /// Default tab is Olympiads. At launch, kicks off a parallel preload
-/// via the shared ContentStore so Curriculum and Research populate in
+/// via the shared ContentStore so Curriculum and Projects populate in
 /// the background — when the user taps them the data is already
 /// there, no per-tab spinner. See `ContentStore` for why we use a
 /// store rather than each view's own `.task`.
@@ -27,12 +27,12 @@ public struct RootTabView: View {
             OlympiadsView()
                 .tabItem { Image(systemName: "trophy") }
                 .tag(Tab.olympiads)
-            ResearchView()
-                .tabItem { Image(systemName: "flask") }
-                .tag(Tab.research)
+            GalleryView()
+                .tabItem { Image(systemName: "photo.on.rectangle") }
+                .tag(Tab.projects)
         }
         .task { await store.preloadAll() }
     }
 
-    enum Tab: Hashable { case curriculum, olympiads, research }
+    enum Tab: Hashable { case curriculum, olympiads, projects }
 }
