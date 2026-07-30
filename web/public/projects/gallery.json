@@ -991,15 +991,14 @@
     {
       "science": "Computing",
       "science_slug": "comp",
-      "caption": "Mi",
+      "caption": "Mi the chemist",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/gallery-photos-20240210-mi-926d8f.jpeg",
       "full": "/projects/gallery/photos/20240210%20Mi.jpeg",
       "w": 750,
       "h": 1000,
       "date": "2024-02",
-      "date_label": "February 2024",
-      "note": "The subject"
+      "date_label": "February 2024"
     }
   ],
   "sciences": [
