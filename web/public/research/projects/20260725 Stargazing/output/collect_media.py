@@ -70,10 +70,12 @@ KEEP = [
     # not a star field, so it throws every frame away. They exist only because
     # ``save_discrete_frame`` keeps the rejects.
     ("Vega",     "Light_Vega_5.0s_IRCUT_failed_20260729-222828.jpg", "Vega spectrum"),
-    # Albireo is a colour-contrast double: K3II + B8V. Both components disperse
-    # in the same exposure, so the comparison is within-frame -- same optics,
-    # same air, same calibration.
-    ("Albireo",  "Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg", "Albireo — two spectra"),
+    # Albireo, and a lesson about objective gratings: EVERY star in the field
+    # disperses, so the frame carries several spectra. The extra rainbows are
+    # field stars, not Albireo's companion -- the A-B pair is 35" apart, which is
+    # 4.8 px here, far too close to separate. Corrected 2026-07-30 after the
+    # measured dot separation came out at 12000" (3.3 deg, wider than the FOV).
+    ("Albireo",  "Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg", "Albireo — field of spectra"),
     # Honest caption: through IRCUT this is a Cygnus star field, not the nebula.
     # NGC 7000 is an H-alpha emission object and barely registers without a
     # narrowband filter.

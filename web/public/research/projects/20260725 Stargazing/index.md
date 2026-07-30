@@ -65,8 +65,8 @@ sciences:
     <figcaption><b>Vega spectrum</b><span>1 × 5s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="data/Albireo__Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg"><img src="data/Albireo__Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg" alt="Albireo — two spectra" loading="lazy"></a>
-    <figcaption><b>Albireo — two spectra</b><span>1 × 20s</span></figcaption>
+    <a href="data/Albireo__Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg"><img src="data/Albireo__Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg" alt="Albireo — field of spectra" loading="lazy"></a>
+    <figcaption><b>Albireo — field of spectra</b><span>1 × 20s</span></figcaption>
   </figure>
   <figure class="sky-tile">
     <a href="data/NGC_7000__Stacked_20_NGC_7000_20.0s_IRCUT_20260730-014616.jpg"><img src="data/NGC_7000__Stacked_20_NGC_7000_20.0s_IRCUT_20260730-014616.jpg" alt="NGC 7000 field" loading="lazy"></a>
