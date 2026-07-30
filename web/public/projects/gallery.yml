@@ -293,12 +293,13 @@
   caption: Sheet resistance, at last
   science: Mathematics
   toy: Matplotlib
-- src: gallery/photos/20260601 The Problem Solving Shelf.jpeg
-  caption: The problem-solving shelf
+- src: gallery/photos/20250101 The Art Of Problem Solving.jpeg
+  caption: The Art of Problem Solving
   science: Mathematics
-- src: gallery/photos/20260601 Map Pinned.jpeg
-  caption: Map, pinned
+- src: gallery/photos/20250401 Davidson Academy.jpeg
+  caption: Davidson Academy
   science: Mathematics
+  tech: Graphic
 
 # ════════════════════════════════════════════════════════════════════
 # COMPUTING

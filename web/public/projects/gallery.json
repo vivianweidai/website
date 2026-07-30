@@ -234,18 +234,6 @@
       "tech_slug": "measurements"
     },
     {
-      "science": "Mathematics",
-      "science_slug": "math",
-      "caption": "The problem-solving shelf",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260601-the-problem-solving-shel-5fe054.jpeg",
-      "full": "/projects/gallery/photos/20260601%20The%20Problem%20Solving%20Shelf.jpeg",
-      "w": 1000,
-      "h": 395,
-      "date": "2026-06",
-      "date_label": "June 2026"
-    },
-    {
       "science": "Computing",
       "science_slug": "comp",
       "caption": "The plan, on poster board",
@@ -320,18 +308,6 @@
       "tech": "Telescopes",
       "tech_slug": "telescopes",
       "toy_slug": "optical"
-    },
-    {
-      "science": "Mathematics",
-      "science_slug": "math",
-      "caption": "Map, pinned",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/gallery-photos-20260601-map-pinned-67e7d5.jpeg",
-      "full": "/projects/gallery/photos/20260601%20Map%20Pinned.jpeg",
-      "w": 1000,
-      "h": 416,
-      "date": "2026-06",
-      "date_label": "June 2026"
     },
     {
       "science": "Computing",
@@ -860,6 +836,20 @@
       "toy_slug": "astrometry"
     },
     {
+      "science": "Mathematics",
+      "science_slug": "math",
+      "caption": "Davidson Academy",
+      "kind": "photo",
+      "src": "/projects/gallery/thumbs/gallery-photos-20250401-davidson-academy-c3097a.jpeg",
+      "full": "/projects/gallery/photos/20250401%20Davidson%20Academy.jpeg",
+      "w": 1000,
+      "h": 416,
+      "date": "2025-04",
+      "date_label": "April 2025",
+      "tech": "Graphic",
+      "tech_slug": "graphic"
+    },
+    {
       "science": "Biology",
       "science_slug": "bio",
       "caption": "Tissue section",
@@ -987,6 +977,18 @@
       "toy_slug": "scipy"
     },
     {
+      "science": "Mathematics",
+      "science_slug": "math",
+      "caption": "The Art of Problem Solving",
+      "kind": "photo",
+      "src": "/projects/gallery/thumbs/gallery-photos-20250101-the-art-of-problem-solvi-a4c8ac.jpeg",
+      "full": "/projects/gallery/photos/20250101%20The%20Art%20Of%20Problem%20Solving.jpeg",
+      "w": 1000,
+      "h": 395,
+      "date": "2025-01",
+      "date_label": "January 2025"
+    },
+    {
       "science": "Computing",
       "science_slug": "comp",
       "caption": "Mi",
@@ -1041,7 +1043,7 @@
         {
           "label": "Graphic",
           "slug": "graphic",
-          "count": 4,
+          "count": 5,
           "toys": [
             {
               "label": "Matplotlib",
