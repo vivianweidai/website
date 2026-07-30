@@ -549,7 +549,9 @@ const spanFor = (t) => {
     .lb-next { right: 1em; top: 50%; transform: translateY(-50%); }
 
     /* The whole tile is a button now, so say so on hover and on focus. */
-    .tile-photo { cursor: zoom-in; }
+    /* `pointer`, not `zoom-in` — every other clickable thing on the site is a
+       link showing the hand, and a tile opening a viewer is no different. */
+    .tile-photo { cursor: pointer; }
     .tile-photo:focus-visible { outline: 2px solid #0969da; outline-offset: 2px; }
 
     @media (max-width: 600px) {
