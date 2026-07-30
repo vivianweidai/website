@@ -30,12 +30,6 @@
 # ════════════════════════════════════════════════════════════════════
 
 # Seestar exports carry no EXIF — the capture date is in the filename instead.
-- src: 20260725 Stargazing/data/M_31__Stacked_25_M_31_20.0s_IRCUT_20260730-015655.jpg
-  caption: M 31
-  note: 25 × 20s
-  science: Astronomy
-  toy: Optical
-  date: 2026-07
 - src: 20260725 Stargazing/data/NGC_7000__Stacked_20_NGC_7000_20.0s_IRCUT_20260730-014616.jpg
   caption: NGC 7000
   note: 20 × 20s
@@ -110,11 +104,6 @@
 # BIOLOGY
 # ════════════════════════════════════════════════════════════════════
 
-- src: 20260725 Cellgazing/data/tissue-section.jpg
-  caption: Tissue section
-  note: 400×
-  science: Biology
-  toy: Compound
 - src: 20260725 Cellgazing/data/leaf-epidermis.jpg
   caption: Leaf epidermis
   note: Stomata everywhere
@@ -126,11 +115,6 @@
   science: Biology
   toy: Surface
   date: 2025-03
-- src: 20260401 Genes in Space/photos/photo.jpeg
-  caption: Our PCR run, in orbit
-  science: Biology
-  toy: PCR
-  date: 2026-04
 - src: technology/biology/Microscopes/microscopes.jpeg
   caption: The stereo scope on its boom
   science: Biology
@@ -163,10 +147,6 @@
   caption: Cuvettes loaded
   science: Chemistry
   toy: UV-Vis
-- src: 20260420 UV-Vis Spectroscopy/photos/samples/samples6.jpeg
-  caption: Quinine under the lamp
-  science: Chemistry
-  toy: UV-Vis
 - src: 20260420 UV-Vis Spectroscopy/photos/samples/samples7.jpeg
   caption: Left to settle
   science: Chemistry
@@ -182,17 +162,10 @@
 
 # The IR work used the Nicolet 380 at the shared lab — retired with the move,
 # so these carry no toy tag. Nothing we own does IR.
-- src: 20260419 IR Spectroscopy/photos/setup/setup11.jpeg
-  caption: Beam path, lid up
-  science: Chemistry
 - src: 20260419 IR Spectroscopy/photos/setup/setup3.jpeg
   caption: Plate down, lid closed
   science: Chemistry
 
-- src: 20260405 Melting Point/photos/setup/setup3.jpeg
-  caption: Watching the capillary go clear
-  science: Chemistry
-  toy: Temperature
 - src: 20260405 Melting Point/photos/setup/setup6.jpeg
   caption: The stage, mid-transition
   science: Chemistry
@@ -203,10 +176,6 @@
   toy: Temperature
   date: 2026-06
 
-- src: 20260411 Centrifuge/photos/samples/samples1.jpeg
-  caption: Red caps, ready to spin
-  science: Chemistry
-  toy: pH
 - src: 20260411 Centrifuge/photos/samples/samples7.jpeg
   caption: Colour-coded by condition
   science: Chemistry
@@ -266,9 +235,6 @@
 - src: 20260404 Four Point Probe/photos/samples/samples1.jpeg
   caption: Coupons cut and laid out
   science: Physics
-- src: 20260404 Four Point Probe/photos/samples/samples3.jpeg
-  caption: Gold on glass
-  science: Physics
 - src: 20260404 Four Point Probe/photos/setup/setup13.jpeg
   caption: Four probes down
   science: Physics
@@ -326,9 +292,6 @@
   caption: Two bowls, twenty trials
   science: Computing
   toy: SciPy
-- src: 20250225 Catfood/photos/setup/setup1.jpeg
-  caption: The subject declines to participate
-  science: Computing
 - src: 20250225 Catfood/photos/setup/setup5.jpeg
   caption: Bowls swapped, trial reset
   science: Computing

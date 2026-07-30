@@ -18,21 +18,6 @@
     {
       "science": "Astronomy",
       "science_slug": "astro",
-      "caption": "M 31",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260725-stargazing-data-m-31-stacked-25-m-31-20-cb2308.jpg",
-      "full": "/projects/20260725%20Stargazing/data/M_31__Stacked_25_M_31_20.0s_IRCUT_20260730-015655.jpg",
-      "w": 393,
-      "h": 700,
-      "date": "2026-07",
-      "date_label": "July 2026",
-      "note": "25 × 20s",
-      "toy": "Optical",
-      "toy_slug": "optical"
-    },
-    {
-      "science": "Astronomy",
-      "science_slug": "astro",
       "caption": "NGC 7000",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/20260725-stargazing-data-ngc-7000-stacked-20-ngc-b85931.jpg",
@@ -438,8 +423,9 @@
     {
       "science": "Biology",
       "science_slug": "bio",
-      "caption": "Our PCR run, in orbit",
-      "kind": "photo",
+      "caption": "Meow to Mars — Will Space Help or Hurt Mi's Heart?",
+      "href": "/projects/20260401%20Genes%20in%20Space/",
+      "kind": "project",
       "src": "/projects/gallery/thumbs/20260401-genes-in-space-photos-photo-0e3200.jpeg",
       "full": "/projects/20260401%20Genes%20in%20Space/photos/photo.jpeg",
       "w": 700,
@@ -490,21 +476,6 @@
       "toy_slug": "uv-vis"
     },
     {
-      "science": "Biology",
-      "science_slug": "bio",
-      "caption": "Meow to Mars — Will Space Help or Hurt Mi's Heart?",
-      "href": "/projects/20260401%20Genes%20in%20Space/",
-      "kind": "project",
-      "src": "/projects/gallery/thumbs/20260401-genes-in-space-photos-photo-0e3200.jpeg",
-      "full": "/projects/20260401%20Genes%20in%20Space/photos/photo.jpeg",
-      "w": 700,
-      "h": 525,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "PCR",
-      "toy_slug": "pcr"
-    },
-    {
       "science": "Mathematics",
       "science_slug": "math",
       "caption": "That fat O–H band",
@@ -521,10 +492,10 @@
     {
       "science": "Physics",
       "science_slug": "phys",
-      "caption": "Gold on glass",
+      "caption": "Four probes down",
       "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-samples-samples-353fad.jpeg",
-      "full": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples3.jpeg",
+      "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-setup-setup13-e3cba5.jpeg",
+      "full": "/projects/20260404%20Four%20Point%20Probe/photos/setup/setup13.jpeg",
       "w": 700,
       "h": 525,
       "date": "2026-04",
@@ -557,32 +528,6 @@
       "date_label": "April 2026",
       "toy": "Matplotlib",
       "toy_slug": "matplotlib"
-    },
-    {
-      "science": "Physics",
-      "science_slug": "phys",
-      "caption": "Four probes down",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-setup-setup13-e3cba5.jpeg",
-      "full": "/projects/20260404%20Four%20Point%20Probe/photos/setup/setup13.jpeg",
-      "w": 700,
-      "h": 525,
-      "date": "2026-04",
-      "date_label": "April 2026"
-    },
-    {
-      "science": "Chemistry",
-      "science_slug": "chem",
-      "caption": "Quinine under the lamp",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-a96c07.jpeg",
-      "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples6.jpeg",
-      "w": 700,
-      "h": 525,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "UV-Vis",
-      "toy_slug": "uv-vis"
     },
     {
       "science": "Physics",
@@ -628,18 +573,6 @@
     {
       "science": "Chemistry",
       "science_slug": "chem",
-      "caption": "Beam path, lid up",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260419-ir-spectroscopy-photos-setup-setup11-51ccc5.jpeg",
-      "full": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup11.jpeg",
-      "w": 700,
-      "h": 525,
-      "date": "2026-04",
-      "date_label": "April 2026"
-    },
-    {
-      "science": "Chemistry",
-      "science_slug": "chem",
       "caption": "Plate down, lid closed",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/20260419-ir-spectroscopy-photos-setup-setup3-1e7c1d.jpeg",
@@ -648,20 +581,6 @@
       "h": 525,
       "date": "2026-04",
       "date_label": "April 2026"
-    },
-    {
-      "science": "Chemistry",
-      "science_slug": "chem",
-      "caption": "Watching the capillary go clear",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260405-melting-point-photos-setup-setup3-a43b52.jpeg",
-      "full": "/projects/20260405%20Melting%20Point/photos/setup/setup3.jpeg",
-      "w": 700,
-      "h": 525,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "Temperature",
-      "toy_slug": "temperature"
     },
     {
       "science": "Chemistry",
@@ -676,20 +595,6 @@
       "date_label": "April 2026",
       "toy": "Temperature",
       "toy_slug": "temperature"
-    },
-    {
-      "science": "Chemistry",
-      "science_slug": "chem",
-      "caption": "Red caps, ready to spin",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-samples-samples1-934cd3.jpeg",
-      "full": "/projects/20260411%20Centrifuge/photos/samples/samples1.jpeg",
-      "w": 700,
-      "h": 525,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "pH",
-      "toy_slug": "ph"
     },
     {
       "science": "Chemistry",
@@ -850,21 +755,6 @@
     {
       "science": "Biology",
       "science_slug": "bio",
-      "caption": "Tissue section",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260725-cellgazing-data-tissue-section-6c0526.jpg",
-      "full": "/projects/20260725%20Cellgazing/data/tissue-section.jpg",
-      "w": 700,
-      "h": 525,
-      "date": "2025-03",
-      "date_label": "March 2025",
-      "note": "400×",
-      "toy": "Compound",
-      "toy_slug": "compound"
-    },
-    {
-      "science": "Biology",
-      "science_slug": "bio",
       "caption": "Leaf epidermis",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/20260725-cellgazing-data-leaf-epidermis-11a909.jpg",
@@ -953,18 +843,6 @@
     {
       "science": "Computing",
       "science_slug": "comp",
-      "caption": "The subject declines to participate",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/20250225-catfood-photos-setup-setup1-71f293.jpeg",
-      "full": "/projects/20250225%20Catfood/photos/setup/setup1.jpeg",
-      "w": 700,
-      "h": 525,
-      "date": "2024-09",
-      "date_label": "September 2024"
-    },
-    {
-      "science": "Computing",
-      "science_slug": "comp",
       "caption": "Bowls swapped, trial reset",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/20250225-catfood-photos-setup-setup5-faaaee.jpeg",
@@ -1028,7 +906,7 @@
     {
       "science": "Computing",
       "slug": "comp",
-      "count": 8,
+      "count": 7,
       "toys": [
         {
           "label": "SciPy",
@@ -1077,7 +955,7 @@
     {
       "science": "Physics",
       "slug": "phys",
-      "count": 10,
+      "count": 9,
       "toys": [
         {
           "label": "Force",
@@ -1150,19 +1028,19 @@
     {
       "science": "Chemistry",
       "slug": "chem",
-      "count": 24,
+      "count": 20,
       "toys": [
         {
           "label": "Temperature",
           "name": "Vernier Go Direct Temperature Probe",
           "slug": "temperature",
-          "count": 4
+          "count": 3
         },
         {
           "label": "pH",
           "name": "Vernier Go Direct pH Sensor",
           "slug": "ph",
-          "count": 7
+          "count": 6
         },
         {
           "label": "Conductivity",
@@ -1174,7 +1052,7 @@
           "label": "UV-Vis",
           "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
           "slug": "uv-vis",
-          "count": 8
+          "count": 7
         },
         {
           "label": "Polarimeter",
@@ -1187,7 +1065,7 @@
     {
       "science": "Biology",
       "slug": "bio",
-      "count": 9,
+      "count": 7,
       "toys": [
         {
           "label": "Surface",
@@ -1205,7 +1083,7 @@
           "label": "Compound",
           "name": "Swift Optical SW380T Trinocular Compound Microscope",
           "slug": "compound",
-          "count": 2
+          "count": 1
         },
         {
           "label": "EKG",
@@ -1229,7 +1107,7 @@
           "label": "PCR",
           "name": "miniPCR mini16 Thermal Cycler",
           "slug": "pcr",
-          "count": 2
+          "count": 1
         },
         {
           "label": "Fluorescence",
@@ -1248,13 +1126,13 @@
     {
       "science": "Astronomy",
       "slug": "astro",
-      "count": 14,
+      "count": 13,
       "toys": [
         {
           "label": "Optical",
           "name": "ZWO Seestar S30 Pro with Tilting Wedge",
           "slug": "optical",
-          "count": 12
+          "count": 11
         },
         {
           "label": "Earth",
