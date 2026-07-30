@@ -100,10 +100,7 @@ const TABS = [
     <div class="curr-rows-tabs">
       <div class="curr-rows-tabs-inner">
         {TABS.map(t => (
-          <button class="curr-rows-tab" data-target={t.key} type="button">
-            <span class="curr-rows-tab-text">{t.label}</span>
-            <span class="curr-rows-progress"></span>
-          </button>
+          <button class="curr-rows-tab" data-target={t.key} type="button">{t.label}</button>
         ))}
       </div>
     </div>
@@ -212,8 +209,6 @@ const TABS = [
     }
     .curr-rows-tab {
       display: block;
-      position: relative;
-      overflow: hidden;
       padding: 0.6em 1.2em;
       background: transparent;
       border: none;
@@ -231,32 +226,6 @@ const TABS = [
     .curr-rows[data-active="projects"]   .curr-rows-tab[data-target="projects"] {
       color: #1f2328;
       background: #e8e8e8;
-    }
-
-    .curr-rows-tab-text {
-      position: relative;
-      z-index: 1;
-    }
-    /* Timer wave — only rendered on the active tab. Hidden on non-active
-       tabs so they stay crisp on hover. */
-    .curr-rows-progress {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: -60%;
-      width: 60%;
-      background: linear-gradient(to right,
-        transparent 0%,
-        rgba(31,35,40,0.008) 50%,
-        rgba(31,35,40,0.025) 90%,
-        rgba(31,35,40,0.07) 100%);
-      pointer-events: none;
-      display: none;
-    }
-    .curr-rows[data-active="curriculum"] .curr-rows-tab[data-target="curriculum"] .curr-rows-progress,
-    .curr-rows[data-active="olympiads"]  .curr-rows-tab[data-target="olympiads"]  .curr-rows-progress,
-    .curr-rows[data-active="projects"]   .curr-rows-tab[data-target="projects"]   .curr-rows-progress {
-      display: block;
     }
 
     /* Tab visibility: hide rows-content not matching active tab */
@@ -616,51 +585,14 @@ const TABS = [
       requestAnimationFrame(tick);
     })();
 
+    // Tabs are click-only: the table opens on Curriculum and stays put until
+    // you pick another. (It used to auto-rotate every 5s behind a progress
+    // wave; removed 2026-07-30 — a static page reads cleaner.)
     (function () {
       var container = document.querySelector('.curr-rows[data-active]');
       if (!container) return;
-      var fills = container.querySelectorAll('.curr-rows-tab .curr-rows-progress');
-      var tabs = ['curriculum', 'olympiads', 'projects'];
-      var tabMs = 5000;
-      var cycleMs = tabs.length * tabMs;
-      // Random starting tab on each page load; the timer ticks on from
-      // there (offset cycleStart so elapsed lands inside that tab).
-      var startIdx = Math.floor(Math.random() * tabs.length);
-      container.dataset.active = tabs[startIdx];
-      var cycleStart = performance.now() - startIdx * tabMs;
-      var rafId = 0;
-      var stopped = false;
-
-      function clearFills() {
-        for (var i = 0; i < fills.length; i++) fills[i].style.left = '-60%';
-      }
-
-      function tick(now) {
-        if (stopped) return;
-        var elapsed = (now - cycleStart) % cycleMs;
-        var idx = Math.floor(elapsed / tabMs);
-        var withinTab = (elapsed % tabMs) / tabMs;
-        clearFills();
-        if (fills[idx]) fills[idx].style.left = (withinTab * 100 - 60) + '%';
-        var target = tabs[idx];
-        if (container.dataset.active !== target) {
-          container.dataset.active = target;
-        }
-        rafId = requestAnimationFrame(tick);
-      }
-      rafId = requestAnimationFrame(tick);
-
-      function stop() {
-        if (stopped) return;
-        stopped = true;
-        cancelAnimationFrame(rafId);
-        clearFills();
-      }
-      container.addEventListener('mouseenter', stop);
-
       container.querySelectorAll('.curr-rows-tab').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          stop();
           container.dataset.active = btn.dataset.target;
         });
       });

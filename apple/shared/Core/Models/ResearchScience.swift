@@ -1,6 +1,6 @@
 import Foundation
 
-/// Strongly-typed mirror of `web/public/research/technology.json`, the source of
+/// Strongly-typed mirror of `web/public/projects/technology.json`, the source of
 /// truth for the Research page's tech browser. One entry per science, each a
 /// flat list of techs (the old topic/category grouping tiers were dropped).
 public struct ResearchScience: Codable, Identifiable, Hashable, Sendable {
@@ -31,7 +31,7 @@ public struct ResearchTech: Codable, Identifiable, Hashable, Sendable {
 
     /// Absolute URL for the tech's hero image. Resolves relative paths
     /// (the common case — frontmatter `hero: numpy.jpeg` is rewritten by
-    /// `build_technology.py` to `/research/tech/<sci>/<tech>/numpy.jpeg`)
+    /// `build_technology.py` to `/projects/technology/<sci>/<tech>/numpy.jpeg`)
     /// against the site origin.
     public var heroURL: URL? {
         guard let hero else { return nil }
@@ -57,9 +57,13 @@ public struct ResearchToy: Codable, Hashable, Sendable, Identifiable {
 
     public var id: String { name }
 
-    /// In-app project `index.md` URL when the toy links to a research project.
+    /// In-app project `index.md` URL when the toy links to a project page.
+    /// Project URLs lost their extra path segment in the 2026-07 rename
+    /// (`/research/projects/X/` → `/projects/X/`); the old prefix is still
+    /// accepted so a stale cached manifest keeps resolving.
     public var projectIndexURL: URL? {
-        guard let url, url.hasPrefix("/research/projects/") else { return nil }
+        guard let url, url.hasPrefix("/projects/") || url.hasPrefix("/research/projects/")
+        else { return nil }
         let trimmed = String(url.dropFirst())
         let withIndex = trimmed.hasSuffix("/") ? trimmed + "index.md" : trimmed + "/index.md"
         return URL(string: "https://vivianweidai.com/" + withIndex)

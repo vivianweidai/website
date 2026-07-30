@@ -148,11 +148,11 @@
   science: Chemistry
   toy: UV-Vis
 - src: 20260420 UV-Vis Spectroscopy/photos/samples/samples7.jpeg
-  caption: Left to settle
+  caption: Yellow in the beam
   science: Chemistry
   toy: UV-Vis
 - src: 20260420 UV-Vis Spectroscopy/photos/setup/setup5.jpeg
-  caption: The software, fighting us
+  caption: Inside the sample compartment
   science: Chemistry
   toy: UV-Vis
 - src: technology/chemistry/Spectroscopy/spectroscopy.jpeg
@@ -163,13 +163,9 @@
 # The IR work used the Nicolet 380 at the shared lab — retired with the move,
 # so these carry no toy tag. Nothing we own does IR.
 - src: 20260419 IR Spectroscopy/photos/setup/setup3.jpeg
-  caption: Plate down, lid closed
+  caption: The bench setup, laptop attached
   science: Chemistry
 
-- src: 20260405 Melting Point/photos/setup/setup6.jpeg
-  caption: The stage, mid-transition
-  science: Chemistry
-  toy: Temperature
 - src: technology/chemistry/Thermal/thermal.jpeg
   caption: The probe that goes in everything
   science: Chemistry
@@ -197,7 +193,7 @@
   science: Chemistry
   toy: pH
 - src: 20260411 Centrifuge/photos/setup/setup5.jpeg
-  caption: Rotor balanced
+  caption: The mixer, mid-bench
   science: Chemistry
   toy: pH
 - src: technology/chemistry/Electrochemistry/electrochemistry.jpeg
@@ -229,11 +225,8 @@
 # The four-point probe itself was a shared-lab instrument; the jig that held
 # the coupons was ours, printed downstairs.
 - src: 20260404 Four Point Probe/photos/samples/samples2.jpeg
-  caption: The printed jig
-  science: Physics
-  toy: 3D Printer
-- src: 20260404 Four Point Probe/photos/samples/samples1.jpeg
-  caption: Coupons cut and laid out
+  caption: Foil, leaf, spoon, key
+  note: Anything in the house that conducts
   science: Physics
 - src: 20260404 Four Point Probe/photos/setup/setup13.jpeg
   caption: Four probes down

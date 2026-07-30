@@ -395,7 +395,7 @@
     {
       "science": "Physics",
       "science_slug": "phys",
-      "caption": "The printed jig",
+      "caption": "Foil, leaf, spoon, key",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-samples-samples-0a852f.jpeg",
       "full": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples2.jpeg",
@@ -403,8 +403,7 @@
       "h": 525,
       "date": "2026-04",
       "date_label": "April 2026",
-      "toy": "3D Printer",
-      "toy_slug": "3d-printer"
+      "note": "Anything in the house that conducts"
     },
     {
       "science": "Chemistry",
@@ -452,10 +451,10 @@
     {
       "science": "Physics",
       "science_slug": "phys",
-      "caption": "Coupons cut and laid out",
+      "caption": "Four probes down",
       "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-samples-samples-452d8b.jpeg",
-      "full": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples1.jpeg",
+      "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-setup-setup13-e3cba5.jpeg",
+      "full": "/projects/20260404%20Four%20Point%20Probe/photos/setup/setup13.jpeg",
       "w": 700,
       "h": 525,
       "date": "2026-04",
@@ -492,10 +491,11 @@
     {
       "science": "Physics",
       "science_slug": "phys",
-      "caption": "Four probes down",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-setup-setup13-e3cba5.jpeg",
-      "full": "/projects/20260404%20Four%20Point%20Probe/photos/setup/setup13.jpeg",
+      "caption": "Four-Point Probe of Sheet Resistance",
+      "href": "/projects/20260404%20Four%20Point%20Probe/",
+      "kind": "project",
+      "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-samples-samples-353fad.jpeg",
+      "full": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples3.jpeg",
       "w": 700,
       "h": 525,
       "date": "2026-04",
@@ -530,22 +530,9 @@
       "toy_slug": "matplotlib"
     },
     {
-      "science": "Physics",
-      "science_slug": "phys",
-      "caption": "Four-Point Probe of Sheet Resistance",
-      "href": "/projects/20260404%20Four%20Point%20Probe/",
-      "kind": "project",
-      "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-samples-samples-353fad.jpeg",
-      "full": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples3.jpeg",
-      "w": 700,
-      "h": 525,
-      "date": "2026-04",
-      "date_label": "April 2026"
-    },
-    {
       "science": "Chemistry",
       "science_slug": "chem",
-      "caption": "Left to settle",
+      "caption": "Yellow in the beam",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-8f53f0.jpeg",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples7.jpeg",
@@ -559,7 +546,7 @@
     {
       "science": "Chemistry",
       "science_slug": "chem",
-      "caption": "The software, fighting us",
+      "caption": "Inside the sample compartment",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-setup-setup5-0c6959.jpeg",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/setup/setup5.jpeg",
@@ -573,7 +560,7 @@
     {
       "science": "Chemistry",
       "science_slug": "chem",
-      "caption": "Plate down, lid closed",
+      "caption": "The bench setup, laptop attached",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/20260419-ir-spectroscopy-photos-setup-setup3-1e7c1d.jpeg",
       "full": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup3.jpeg",
@@ -581,20 +568,6 @@
       "h": 525,
       "date": "2026-04",
       "date_label": "April 2026"
-    },
-    {
-      "science": "Chemistry",
-      "science_slug": "chem",
-      "caption": "The stage, mid-transition",
-      "kind": "photo",
-      "src": "/projects/gallery/thumbs/20260405-melting-point-photos-setup-setup6-41f9c5.jpeg",
-      "full": "/projects/20260405%20Melting%20Point/photos/setup/setup6.jpeg",
-      "w": 700,
-      "h": 525,
-      "date": "2026-04",
-      "date_label": "April 2026",
-      "toy": "Temperature",
-      "toy_slug": "temperature"
     },
     {
       "science": "Chemistry",
@@ -669,7 +642,7 @@
     {
       "science": "Chemistry",
       "science_slug": "chem",
-      "caption": "Rotor balanced",
+      "caption": "The mixer, mid-bench",
       "kind": "photo",
       "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-setup-setup5-76a806.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/setup/setup5.jpeg",
@@ -955,7 +928,7 @@
     {
       "science": "Physics",
       "slug": "phys",
-      "count": 9,
+      "count": 8,
       "toys": [
         {
           "label": "Force",
@@ -1021,20 +994,20 @@
           "label": "3D Printer",
           "name": "Prusa CORE One+",
           "slug": "3d-printer",
-          "count": 1
+          "count": 0
         }
       ]
     },
     {
       "science": "Chemistry",
       "slug": "chem",
-      "count": 20,
+      "count": 19,
       "toys": [
         {
           "label": "Temperature",
           "name": "Vernier Go Direct Temperature Probe",
           "slug": "temperature",
-          "count": 3
+          "count": 2
         },
         {
           "label": "pH",
