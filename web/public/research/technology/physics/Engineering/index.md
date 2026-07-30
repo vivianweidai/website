@@ -4,13 +4,13 @@ science: Physics
 science_slug: phys
 hero: circuits.jpeg
 toys:
-  - name: TOAUTO DS90 Soldering Station
-    description: Soldering iron
-    short: Soldering
+  - name: LEGO Education SPIKE Prime Set
+    description: Mechanical actuation
+    short: LEGO
   - name: Digilent Analog Discovery 3
-    description: Oscilloscope, generator and analyzer
+    description: Electrical actuation
     short: Oscilloscope
   - name: Prusa CORE One+
-    description: Enclosed 3D printer
+    description: Structure
     short: 3D Printer
 ---
