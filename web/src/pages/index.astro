@@ -38,12 +38,12 @@ const SUBJ_ANCHOR = {
 const OLYMPIADS = {
   mathematics: [
     'Canadian Open Mathematics Challenge',
-    'American Mathematics Competition 12',
+    'American Mathematics Competition',
   ],
   computing: [
     'Canadian Computing Competition',
     'USA Computing Olympiad',
-    'NA Computational Linguistics Open Exam',
+    'NA Computational Linguistics Open',
   ],
   physics: [
     'CAP High School Prize Exam',
@@ -142,8 +142,6 @@ const TABS = [
               </>
             ))}
           </div>
-
-          <a class="curr-rows-pdf" data-tab="curriculum" href={`/curriculum/notes/${subjSlug}.pdf`}>pdf</a>
         </div>
       );
     })}
@@ -290,29 +288,6 @@ const TABS = [
     }
     .curr-rows-secs .mi-icon img { height: 0.95em; }
     .curr-rows-secs .mi-icon:hover { text-decoration: none; }
-    /* Same white bordered pill as the research tab's project badge
-       (.home-proj-badge). */
-    .curr-rows-pdf {
-      flex: 0 0 auto;
-      margin-right: 0.9em;
-      display: inline-flex;
-      align-items: center;
-      padding: 0.12em 0.55em;
-      border: 1px solid #d8dee4;
-      border-radius: 6px;
-      background: #fff;
-      color: #475059;
-      font-size: 0.8em;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: border-color 0.15s ease, color 0.15s ease;
-    }
-    .curr-rows-pdf:hover {
-      border-color: #0969da;
-      color: #0969da;
-      text-decoration: none;
-    }
-
     .curr-rows-topics {
       flex: 0 0 auto;
       margin-right: 0.9em;
@@ -348,7 +323,6 @@ const TABS = [
         min-height: 0;
       }
       .curr-rows-subj { flex: none; text-align: center; }
-      .curr-rows-pdf,
       .curr-rows-topics,
       .curr-rows-secs[data-tab="curriculum"] { display: none; }
       .curr-rows-secs { padding: 0.65em 1em; }

@@ -2,6 +2,12 @@
 """Regenerate curriculum markdown files and web/public/curriculum/curriculum.json
 from the Word (.docx) source documents in web/public/curriculum/notes/.
 
+That notes/ directory no longer exists in the repo: the .docx sources were
+dropped in f8e7ad3 and the six rendered .pdf handouts on 2026-07-30, when the
+home page's per-subject "pdf" links came off and the site went web-only. To
+regenerate a subject, recreate notes/ and drop its .docx back in — a missing
+directory just makes every subject skip, it is not an error.
+
 Single source of truth: each subject's .docx file contains the complete
 curriculum with tables, LaTeX formulas (as Office Math), and yellow
 highlighted rows (cell shading #fff056). This script extracts everything
