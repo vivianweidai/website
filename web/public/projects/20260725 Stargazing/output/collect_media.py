@@ -26,7 +26,7 @@ SRC = os.path.expanduser("~/GITHUB/science/work/astronomy/data")
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
 
 # Clip that plays large at the top of the page, above the grid.
-HERO = ("Solar_video", "2026-07-24-164602-Solar.mp4")
+HERO = ("Solar", "2026-07-24-164602-Solar.mp4")
 
 # (folder, filename) or (folder, filename, display_name) — gallery order is
 # this order. The third field is needed where the folder name is not the subject.

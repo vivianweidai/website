@@ -2,378 +2,340 @@
 import DefaultLayout from '../../layouts/Default.astro';
 import PageHeader from '../../layouts/PageHeader.astro';
 import PageFooter from '../../layouts/PageFooter.astro';
+import gallery from '../../../public/projects/gallery.json';
+
+// The wall is one chronological grid of everything worth looking at — photo
+// tiles and project cards interleaved by date, newest first. There is
+// deliberately nothing else on the page: no inventory, no links below the
+// fold, no second kind of content. What we own lives on the home page's
+// Projects tab, and it reaches this page through the same toy labels that
+// serve as filter tags here.
+const { tiles, sciences } = gallery;
+
+// Masonry via grid row spans. Each tile's span is baked here from its real
+// pixel dimensions against a nominal column width, so the grid is already
+// close to right in the HTML; the inline script re-measures against the
+// actual column width on load and resize. Doing it this way means the layout
+// never waits on images to decode.
+const ROW = 8;      // grid-auto-rows, px
+const GUTTER = 10;  // vertical space between tiles, carried as tile margin
+const NOMINAL = 200;
+const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / ROW));
 ---
 <DefaultLayout title="Projects">
   <PageHeader active="projects" />
 
-  <div class="tabs subject-tabs" id="tech-tabs">
-    <input type="radio" name="tech-view" id="tech-all" />
-    <input type="radio" name="tech-view" id="tech-math" />
-    <input type="radio" name="tech-view" id="tech-comp" />
-    <input type="radio" name="tech-view" id="tech-phys" />
-    <input type="radio" name="tech-view" id="tech-chem" />
-    <input type="radio" name="tech-view" id="tech-bio" />
-    <input type="radio" name="tech-view" id="tech-astro" />
-    <script is:inline>
-      (function(){
-        // Hash takes precedence: #math filters to a science. Then session
-        // storage, then a random science. "all" / "home" hashes fall
-        // through to random.
-        var picks = ['tech-chem','tech-bio','tech-phys','tech-comp'];
-        var hashScience = (location.hash || '').replace(/^#/, '');
-        var fromHash = hashScience && document.getElementById('tech-' + hashScience) ? 'tech-' + hashScience : null;
-        var saved = sessionStorage.getItem('subj-tab');
-        var pick = fromHash
-          || (saved && document.getElementById('tech-' + saved) ? 'tech-' + saved : null)
-          || picks[Math.floor(Math.random() * picks.length)];
-        document.getElementById(pick).checked = true;
-        sessionStorage.setItem('subj-tab', pick.replace('tech-', ''));
-      })();
-    </script>
-    <div class="tab-labels">
-      <label for="tech-all"><span class="label-full">All</span><span class="label-abbr">All</span></label>
-      <label for="tech-math"><span class="label-full">Mathematics</span><span class="label-abbr">Math</span></label>
-      <label for="tech-comp"><span class="label-full">Computing</span><span class="label-abbr">Comp</span></label>
-      <label for="tech-phys"><span class="label-full">Physics</span><span class="label-abbr">Phys</span></label>
-      <label for="tech-chem"><span class="label-full">Chemistry</span><span class="label-abbr">Chem</span></label>
-      <label for="tech-bio"><span class="label-full">Biology</span><span class="label-abbr">Bio</span></label>
-      <label for="tech-astro"><span class="label-full">Astronomy</span><span class="label-abbr">Astro</span></label>
+  <div class="wall-filters">
+    <div class="wf-row wf-sci" id="wf-sci">
+      <button class="wf-pill on" data-sci="all" type="button">All</button>
+      {sciences.map((s) => (
+        <button class="wf-pill" data-sci={s.slug} data-tint={s.slug} type="button">{s.science}</button>
+      ))}
     </div>
+    {sciences.map((s) => (
+      <div class="wf-row wf-toys" data-sci={s.slug} hidden>
+        {s.toys.map((t) => (
+          <button class={`wf-tag${t.count ? '' : ' empty'}`} data-toy={t.slug}
+                  title={t.name} disabled={t.count === 0} type="button">{t.label}</button>
+        ))}
+      </div>
+    ))}
   </div>
 
-  <div id="tech-content"></div>
+  <div class="wall" id="wall">
+    {tiles.map((t) => (
+      t.kind === 'project' ? (
+        <a class="tile tile-project" href={t.href}
+           data-sci={t.science_slug} data-toy={t.toy_slug ?? ''} data-w={t.w} data-h={t.h}
+           style={`--tint: var(--subj-${t.science_slug}); grid-row-end: span ${spanFor(t)}`}>
+          <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />
+          <div class="tile-cap">
+            <b>{t.caption}</b>
+            <span>
+              {t.note && <i>{t.note}</i>}
+              <em>{t.toy ? `${t.toy} · ` : ''}{t.date_label}</em>
+            </span>
+          </div>
+          <span class="tile-badge">Project →</span>
+        </a>
+      ) : (
+        <figure class="tile tile-photo"
+           data-sci={t.science_slug} data-toy={t.toy_slug ?? ''} data-w={t.w} data-h={t.h}
+           style={`--tint: var(--subj-${t.science_slug}); grid-row-end: span ${spanFor(t)}`}>
+          <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />
+          <figcaption class="tile-cap">
+            <b>{t.caption}</b>
+            <span>
+              {t.note && <i>{t.note}</i>}
+              <em>{t.toy ? `${t.toy} · ` : ''}{t.date_label}</em>
+            </span>
+          </figcaption>
+        </figure>
+      )
+    ))}
+  </div>
 
-  <script is:inline>
-  (function () {
-    function esc(s) {
-      return String(s).replace(/[&<>"']/g, function (c) {
-        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-      });
-    }
+  <p class="wall-empty" id="wall-empty" hidden>Nothing here yet.</p>
 
-    function renderTech(sciences, filter) {
-      var filtered = filter === 'all'
-        ? sciences
-        : sciences.filter(function (s) { return s.science_slug === filter; });
-
-      if (!filtered.length) {
-        document.getElementById('tech-content').innerHTML =
-          '<p style="color:#656d76;font-style:italic;margin:1em 0;">No tech yet.</p>';
-        return;
-      }
-
-      var html = '';
-      filtered.forEach(function (sci, i) {
-        var delay = (i * 0.06).toFixed(2);
-        // Outer wrapper holds the hover hit-region; inner card is what translates.
-        // Wrapper's bottom/right padding catches the cursor when the card lifts up-and-left,
-        // so the :hover state doesn't drop and re-fire (the bug we hit before).
-        html += '<div class="tech-card-wrap fade-in" id="card-' + sci.science_slug + '" style="animation-delay:' + delay + 's">';
-        html += '<div class="tech-card tech-accent-' + sci.science_slug + '">';
-        html += '<div class="tech-card-header">'
-          + '<span class="tech-topic-title">' + esc(sci.science) + '</span>'
-          + '</div>';
-        html += '<table class="tech-table"><colgroup><col style="width:24%"><col><col class="tech-proj-col"></colgroup><tbody>';
-
-        sci.techs.forEach(function (tech) {
-          var url = tech.tech_url;
-          var name = url ? '<a href="' + url + '">' + esc(tech.tech) + '</a>' : esc(tech.tech);
-          // Toy chips use each toy's short label (falling back to the full
-          // name) so a tech's chips fit one line here; the full name still
-          // shows on the tech card. The project-count badge lives in its own
-          // right-hand column so it stays vertically centered (whitespace
-          // above/below) regardless of how the chips wrap.
-          // Dedupe identical chip labels so two toys sharing a short label
-          // (e.g. the two LC-MS instruments) collapse to one chip here; the
-          // tech card still lists every toy in full.
-          var seenChip = {};
-          var toys = (tech.toys || []).filter(function (toy) {
-            return toy.chip !== false;
-          }).map(function (toy) {
-            return esc(toy.short || toy.name);
-          }).filter(function (label) {
-            if (seenChip[label]) return false;
-            seenChip[label] = 1;
-            return true;
-          }).map(function (label) {
-            return url
-              ? '<a class="toy-chip" href="' + url + '">' + label + '</a>'
-              : '<span class="toy-chip">' + label + '</span>';
-          }).join('');
-          var toyCell = toys ? '<span class="toy-wrap">' + toys + '</span>' : '';
-          var np = (tech.projects || []).length;
-          var projInner = '<b>' + np + '</b> project' + (np > 1 ? 's' : '');
-          var proj = np
-            ? (url
-                ? '<a class="proj-badge" href="' + url + '">' + projInner + '</a>'
-                : '<span class="proj-badge">' + projInner + '</span>')
-            : '';
-
-          html += '<tr class="tech-row">'
-            + '<td class="tech-name">' + name + '</td>'
-            + '<td class="tech-meta">' + toyCell + '</td>'
-            + '<td class="tech-proj">' + proj + '</td>'
-            + '</tr>';
-        });
-
-        html += '</tbody></table></div></div>';
-      });
-
-      document.getElementById('tech-content').innerHTML = html;
-    }
-
-    fetch('/projects/technology.json', { cache: 'no-cache' })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (d) {
-        var sciences = d.sciences;
-        var checked = document.querySelector('input[name="tech-view"]:checked');
-        var initialFilter = checked ? checked.id.replace('tech-', '') : 'all';
-        renderTech(sciences, initialFilter);
-        document.querySelectorAll('input[name="tech-view"]').forEach(function (r) {
-          r.addEventListener('change', function () {
-            var filter = this.id.replace('tech-', '');
-            sessionStorage.setItem('subj-tab', filter);
-            // Reflect the active tab in the URL hash so a back-navigation
-            // from a tech page lands on the right tab instead of re-randomizing.
-            // replaceState keeps history clean (one entry per page visit).
-            history.replaceState(null, '', '#' + filter);
-            renderTech(sciences, filter);
-          });
-        });
-        // Same-page chip clicks change only the URL hash; the radio doesn't
-        // re-init on hashchange, so wire that up explicitly.
-        window.addEventListener('hashchange', function () {
-          var slug = (location.hash || '').replace(/^#/, '');
-          var radio = document.getElementById('tech-' + slug);
-          if (radio && !radio.checked) {
-            radio.checked = true;
-            radio.dispatchEvent(new Event('change', { bubbles: true }));
-          }
-        });
-      });
-  })();
-  </script>
-
-  <script is:inline>
-    // Enter opens the first tech link in the currently-rendered filter —
-    // i.e. the first tech of the first science card — so the keyboard user
-    // can dive in to start browsing. Skipped when
-    // typing in a form field, when a link/button/label already has focus
-    // (let the browser handle Enter naturally), or with any modifier held.
-    //
-    // ← / → cycle through the science tabs (wrapping at the ends), Esc
-    // jumps to All. Both fire `change` on the radio so the existing
-    // listener re-renders and updates the URL hash.
+  <script is:inline define:vars={{ ROW, GUTTER }}>
     (function () {
-      var tabs = ['tech-all','tech-math','tech-comp','tech-phys','tech-chem','tech-bio','tech-astro'];
-      function selectTab(id) {
-        var el = document.getElementById(id);
-        if (!el) return;
-        el.checked = true;
-        el.dispatchEvent(new Event('change', { bubbles: true }));
+      var grid = document.getElementById('wall');
+      var sciBar = document.getElementById('wf-sci');
+      var empty = document.getElementById('wall-empty');
+      var tiles = Array.prototype.slice.call(grid.children);
+      var state = { sci: 'all', toy: null };
+
+      // ── masonry ──────────────────────────────────────────────────
+      // Span each tile over however many ROW-pixel rows its own aspect ratio
+      // needs at the current column width. Dimensions come from data
+      // attributes, so this is one pass of arithmetic and no image reflow.
+      function layout() {
+        var first = null;
+        for (var i = 0; i < tiles.length; i++) {
+          if (tiles[i].style.display !== 'none') { first = tiles[i]; break; }
+        }
+        if (!first) return;
+        var colW = first.getBoundingClientRect().width;
+        if (!colW) return;
+        for (var j = 0; j < tiles.length; j++) {
+          var t = tiles[j];
+          var h = colW * (+t.dataset.h / +t.dataset.w);
+          t.style.gridRowEnd = 'span ' + Math.max(4, Math.ceil((h + GUTTER) / ROW));
+        }
       }
-      document.addEventListener('keydown', function (e) {
-        if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
-        var t = e.target;
-        if (!t) return;
-        if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable) return;
-        if (e.key === 'Enter') {
-          if (t.tagName === 'A' || t.tagName === 'BUTTON' || t.tagName === 'LABEL') return;
-          var first = document.querySelector('#tech-content .tech-row a[href]');
-          if (!first) return;
-          e.preventDefault();
-          window.location.href = first.href;
-          return;
+
+      // ── filtering ────────────────────────────────────────────────
+      function apply() {
+        var shown = 0;
+        for (var i = 0; i < tiles.length; i++) {
+          var t = tiles[i];
+          var ok = (state.sci === 'all' || t.dataset.sci === state.sci)
+                && (!state.toy || t.dataset.toy === state.toy);
+          t.style.display = ok ? '' : 'none';
+          if (ok) shown++;
         }
-        if (e.key === 'Escape') {
-          e.preventDefault();
-          selectTab('tech-all');
-          return;
+        empty.hidden = shown > 0;
+
+        sciBar.querySelectorAll('.wf-pill').forEach(function (b) {
+          b.classList.toggle('on', b.dataset.sci === state.sci);
+        });
+        // The toy row only exists for a single selected science — with "All"
+        // showing there is no one vocabulary to offer.
+        document.querySelectorAll('.wf-toys').forEach(function (row) {
+          row.hidden = row.dataset.sci !== state.sci;
+        });
+        document.querySelectorAll('.wf-tag').forEach(function (b) {
+          b.classList.toggle('on', b.dataset.toy === state.toy);
+        });
+        layout();
+      }
+
+      function writeHash() {
+        var h = state.sci === 'all' ? '' : '#' + state.sci + (state.toy ? '/' + state.toy : '');
+        history.replaceState(null, '', h || location.pathname);
+      }
+
+      function readHash() {
+        var parts = (location.hash || '').replace(/^#/, '').split('/');
+        var sci = parts[0] || 'all';
+        if (sci !== 'all' && !sciBar.querySelector('.wf-pill[data-sci="' + sci + '"]')) sci = 'all';
+        state.sci = sci;
+        state.toy = null;
+        if (sci !== 'all' && parts[1]) {
+          var row = document.querySelector('.wf-toys[data-sci="' + sci + '"]');
+          var tag = row && row.querySelector('.wf-tag[data-toy="' + parts[1] + '"]');
+          // A toy we own but have never photographed is a dead tag — land on
+          // the science rather than on an empty grid.
+          if (tag && !tag.disabled) state.toy = parts[1];
         }
-        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-        var checked = document.querySelector('input[name="tech-view"]:checked');
-        var idx = checked ? tabs.indexOf(checked.id) : -1;
-        if (idx < 0) return;
-        var step = e.key === 'ArrowLeft' ? -1 : 1;
-        var next = tabs[(idx + step + tabs.length) % tabs.length];
-        e.preventDefault();
-        selectTab(next);
+        apply();
+      }
+
+      sciBar.addEventListener('click', function (e) {
+        var b = e.target.closest('.wf-pill');
+        if (!b) return;
+        state.sci = b.dataset.sci;
+        state.toy = null;
+        apply();
+        writeHash();
       });
+
+      document.querySelectorAll('.wf-toys').forEach(function (row) {
+        row.addEventListener('click', function (e) {
+          var b = e.target.closest('.wf-tag');
+          if (!b || b.disabled) return;
+          state.toy = state.toy === b.dataset.toy ? null : b.dataset.toy;
+          apply();
+          writeHash();
+        });
+      });
+
+      window.addEventListener('hashchange', readHash);
+      window.addEventListener('resize', function () {
+        clearTimeout(window.__wallT);
+        window.__wallT = setTimeout(layout, 120);
+      });
+      // Fonts and scrollbars can shift the column width after first paint.
+      window.addEventListener('load', layout);
+
+      readHash();
     })();
   </script>
 
-  <style is:global>
-    /* Hover hit-region wrapper. Adds 2px of padding on the bottom and right
-       so when the card translates up-and-left on hover, the cursor stays
-       inside the wrapper's :hover region. */
-    .tech-card-wrap {
-      margin: 1em 0;
-      padding: 0 2px 2px 0;
-      scroll-margin-top: 1em;
+  <style is:global define:vars={{ ROWPX: ROW + 'px', GUTTERPX: GUTTER + 'px' }}>
+    /* ── filters ──────────────────────────────────────────────────
+       Bubble pills, deliberately unlike the underlined tabs on Curriculum
+       and Olympiads — the shape alone should say which vertical you're in. */
+    .wall-filters { margin: 1.2em 0 1.4em; }
+    .wf-row { display: flex; flex-wrap: wrap; gap: 0.4em; }
+    .wf-toys {
+      margin-top: 0.6em;
+      padding-top: 0.6em;
+      border-top: 1px dashed #e2e6ea;
+      animation: fadeUp 0.3s ease backwards;
     }
-    .tech-cat-row { scroll-margin-top: 1em; }
-    .tech-card {
-      border: 1px solid #d1d9e0;
-      border-left: 4px solid #d1d9e0;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #fff;
-      transition: transform 0.2s ease-out, box-shadow 0.18s ease;
-    }
-    @media (hover: hover) {
-      .tech-card-wrap:hover .tech-card {
-        transform: translate(-2px, -2px);
-        box-shadow: 0 6px 18px rgba(0,0,0,.08);
-      }
-    }
-    .tech-card { --card-tint: #d1d9e0; }
-    .tech-accent-math  { border-left-color: #6ba3e8; --card-tint: var(--subj-math); }
-    .tech-accent-comp  { border-left-color: #9b7ed8; --card-tint: var(--subj-comp); }
-    .tech-accent-phys  { border-left-color: #e8915a; --card-tint: var(--subj-phys); }
-    .tech-accent-chem  { border-left-color: #8db849; --card-tint: var(--subj-chem); }
-    .tech-accent-bio   { border-left-color: #5bbfb0; --card-tint: var(--subj-bio); }
-    .tech-accent-astro { border-left-color: #e86088; --card-tint: var(--subj-astro); }
-
-
-    .tech-card-header {
-      font-weight: 700;
-      font-size: 1.08em;
-      padding: .55em 0;
-      border-bottom: 1px solid #eaecef;
-      color: #1f2328;
-    }
-    .tech-topic-title { padding-left: 1.4em; }
-    .tech-card-header {
-      background: color-mix(in srgb, var(--card-tint, #d1d9e0) 45%, white);
-      transition: background 0.18s ease;
-    }
-    @media (hover: hover) {
-      .tech-card:hover .tech-card-header {
-        background: color-mix(in srgb, var(--card-tint) 60%, white);
-      }
-      .tech-card .tech-card-header:hover {
-        background: color-mix(in srgb, var(--card-tint) 70%, white);
-      }
-    }
-
-    .tech-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: .95em;
-      table-layout: fixed;
-    }
-    .tech-table td {
-      padding: .4em .7em;
-      vertical-align: middle;
-      border: none;
-      color: #1f2328;
-    }
-
-    .tech-cat-row td {
-      background: #f6f8fa;
-      border-bottom: 1px solid #eaecef;
-      padding-top: .4em;
-      padding-bottom: .4em;
-    }
-
-    .tech-row td.tech-name { padding-left: 2.8em; }
-    /* Project badge sits in its own fixed-width right column, vertically
-       centered (default td middle-align) so it floats with whitespace above
-       and below when the toy chips wrap to multiple lines. */
-    .tech-proj-col { width: 6.5em; }
-    .tech-proj {
-      text-align: right;
-      white-space: nowrap;
-    }
-    .toy-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: .35em;
-      min-width: 0;
-    }
-    /* Science-colored toy chips (mirrors the olympiad subject chips) — more
-       saturated than the light hover tint, so they stay crisp on hover. */
-    .toy-chip {
-      font-size: .8em;
-      background: var(--card-tint, #eef1f4);
-      color: #1f2328;
-      padding: .1em .55em;
-      border-radius: 5px;
-      white-space: nowrap;
-      text-decoration: none;
-      transition: filter 0.15s ease;
-    }
-    a.toy-chip:hover { filter: brightness(0.93); text-decoration: none; }
-    /* Project badge stays a distinct white count pill (different role from a
-       toy chip); solid white keeps it crisp against the tinted hover row. */
-    .proj-badge {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: .32em;
-      font-size: .8em;
-      color: #475059;
-      padding: .12em .55em;
+    .wf-pill {
+      font: inherit;
+      font-size: 0.85em;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.3em 0.9em;
+      border-radius: 999px;
       border: 1px solid #d8dee4;
-      border-radius: 6px;
       background: #fff;
-      white-space: nowrap;
-      text-decoration: none;
-      transition: border-color 0.15s ease, color 0.15s ease;
+      color: #475059;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
     }
-    .proj-badge b { font-weight: 700; }
-    a.proj-badge:hover { border-color: #0969da; color: #0969da; text-decoration: none; }
+    .wf-pill[data-tint="math"]  { --tint: var(--subj-math); }
+    .wf-pill[data-tint="comp"]  { --tint: var(--subj-comp); }
+    .wf-pill[data-tint="phys"]  { --tint: var(--subj-phys); }
+    .wf-pill[data-tint="chem"]  { --tint: var(--subj-chem); }
+    .wf-pill[data-tint="bio"]   { --tint: var(--subj-bio); }
+    .wf-pill[data-tint="astro"] { --tint: var(--subj-astro); }
+    .wf-pill:hover { background: var(--tint, #f1f3f5); border-color: #b6c0ca; }
+    .wf-pill.on { background: var(--tint, #1f2328); border-color: transparent; color: #1f2328; }
+    .wf-pill[data-sci="all"].on { background: #1f2328; color: #fff; }
+
+    .wf-tag {
+      font: inherit;
+      font-size: 0.76em;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0.18em 0.68em;
+      border-radius: 999px;
+      border: 1px solid #e2e6ea;
+      background: #fff;
+      color: #656d76;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .wf-tag:hover { border-color: #0969da; color: #0969da; }
+    .wf-tag.on { background: #1f2328; border-color: #1f2328; color: #fff; }
+    /* A toy we own but have never photographed still gets a tag — the gap is
+       worth seeing, and it keeps this row identical to the home page's. */
+    .wf-tag.empty { color: #c3cad1; border-style: dashed; cursor: default; }
+    .wf-tag.empty:hover { border-color: #e2e6ea; color: #c3cad1; }
+
+    /* ── the grid ─────────────────────────────────────────────────
+       Masonry by row span. Column gap is a real gap; vertical spacing is
+       tile margin, so a span of N maps to exactly N × ROW pixels. */
+    .wall {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(178px, 1fr));
+      grid-auto-rows: var(--ROWPX);
+      column-gap: var(--GUTTERPX);
+      row-gap: 0;
+    }
+    .tile {
+      position: relative;
+      margin: 0 0 var(--GUTTERPX);
+      border-radius: 9px;
+      overflow: hidden;
+      background: #0b0d10;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.18s ease-out, box-shadow 0.18s ease;
+    }
+    .tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @media (hover: hover) {
-      .tech-row:hover td { background: color-mix(in srgb, var(--card-tint, #d1d9e0) 35%, white); }
+      .tile:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+        z-index: 2;
+      }
     }
 
-    .chip {
-      display: inline-block; padding: 1px 7px; border-radius: 999px;
-      font-size: .72em; font-weight: 600; color: #1f2328;
-      text-align: center; white-space: nowrap; line-height: 1.6;
+    /* Science stripe down the left edge — the only always-on marker of which
+       tab a picture belongs to. */
+    .tile-photo::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--tint);
     }
-    .chip.math  { background: var(--subj-math); }
-    .chip.comp  { background: var(--subj-comp); }
-    .chip.phys  { background: var(--subj-phys); }
-    .chip.chem  { background: var(--subj-chem); }
-    .chip.bio   { background: var(--subj-bio); }
-    .chip.astro { background: var(--subj-astro); }
+
+    .tile-cap {
+      position: absolute;
+      inset: auto 0 0 0;
+      margin: 0;
+      padding: 2.2em 0.6em 0.55em;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.42) 55%, transparent);
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .tile:hover .tile-cap { opacity: 1; }
+    .tile-cap b { display: block; font-size: 0.8em; line-height: 1.3; }
+    .tile-cap span { display: block; margin-top: 0.15em; }
+    .tile-cap i { display: block; font-style: normal; font-size: 0.7em; color: #dfe4e9; line-height: 1.3; }
+    .tile-cap em { display: block; font-style: normal; font-size: 0.68em; color: #a8b2bb; margin-top: 0.1em; }
+
+    /* ── project cards ────────────────────────────────────────────
+       A picture you can click through to a write-up. Framed in its science
+       colour and captioned permanently, so it never reads as one more photo
+       you have to hover to identify. */
+    .tile-project {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      box-shadow: 0 0 0 3px var(--tint), 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .tile-project:hover { text-decoration: none; }
+    @media (hover: hover) {
+      .tile-project:hover { box-shadow: 0 0 0 3px var(--tint), 0 10px 24px rgba(0, 0, 0, 0.2); }
+    }
+    .tile-project .tile-cap {
+      opacity: 1;
+      padding-top: 2.6em;
+      background: linear-gradient(to top, rgba(0,0,0,0.94), rgba(0,0,0,0.55) 60%, transparent);
+    }
+    .tile-project .tile-cap b { font-size: 0.85em; font-weight: 700; }
+    .tile-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 0.62em;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #1f2328;
+      background: var(--tint);
+      padding: 0.25em 0.6em;
+      border-bottom-right-radius: 7px;
+    }
+
+    .wall-empty { color: #8b949e; font-style: italic; }
 
     @media (max-width: 600px) {
-      .tabs .tab-labels label { padding: 0.45em 0.7em; font-size: 0.8em; }
-
-      .tech-card-header { padding: .55em 0; }
-      .tech-card-header .tech-topic-title { padding-left: .8rem; }
-
-      .tech-table { table-layout: auto; }
-      .tech-table colgroup { display: none; }
-      .tech-table td { display: block; padding: 0; }
-
-      /* Category row: category text flex-grows on the left. Background goes
-         on the flex row itself. */
-      tr.tech-cat-row { display: flex; align-items: center; padding: .7em 0 .7em .8rem; background: #f6f8fa; border-bottom: 1px solid #eaecef; }
-      tr.tech-cat-row td { display: block !important; padding: 0 !important; font-size: 1em; border-bottom: none !important; }
-      tr.tech-cat-row td:first-child { flex: 1; }
-
-      /* Tech row: name on its own row (flex-basis 100%), toys/projects below. */
-      tr.tech-row { display: flex; flex-wrap: wrap; align-items: center; padding: .4em 0 .4em .8rem; border-bottom: 1px solid #f0f0f0; }
-      tr.tech-row:last-child { border-bottom: none; }
-      tr.tech-row td { display: block !important; padding: 0 !important; }
-      tr.tech-row td.tech-name { flex-basis: 100%; padding-left: 0 !important; }
-      tr.tech-row td.tech-meta { flex: 1 1 auto; padding-top: .25em !important; }
+      .wall { grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); }
+      .tile-cap { opacity: 1; }
     }
-
-    #tech-all:checked ~ .tab-labels label[for="tech-all"] { color: #656d76; border-bottom-color: #656d76; background: #e8e8e8; }
-    #tech-math:checked ~ .tab-labels label[for="tech-math"] { color: #2563eb; border-bottom-color: #2563eb; background: var(--subj-math); }
-    #tech-comp:checked ~ .tab-labels label[for="tech-comp"] { color: #7c3aed; border-bottom-color: #7c3aed; background: var(--subj-comp); }
-    #tech-phys:checked ~ .tab-labels label[for="tech-phys"] { color: #ea580c; border-bottom-color: #ea580c; background: var(--subj-phys); }
-    #tech-chem:checked ~ .tab-labels label[for="tech-chem"] { color: #5c7a10; border-bottom-color: #5c7a10; background: var(--subj-chem); }
-    #tech-bio:checked ~ .tab-labels label[for="tech-bio"] { color: #0e8577; border-bottom-color: #0e8577; background: var(--subj-bio); }
-    #tech-astro:checked ~ .tab-labels label[for="tech-astro"] { color: #e11d48; border-bottom-color: #e11d48; background: var(--subj-astro); }
+    @media (prefers-reduced-motion: reduce) {
+      .tile, .tile-cap { transition: none; }
+      .wf-toys { animation: none; }
+    }
   </style>
-
-  <hr />
 
   <PageFooter active="projects" />
 </DefaultLayout>

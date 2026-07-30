@@ -8,7 +8,7 @@ sciences:
 ---
 
 <div class="sky-hero">
-  <video src="data/Solar_video__2026-07-24-164602-Solar.mp4" autoplay loop muted playsinline preload="auto"></video>
+  <video src="data/Solar__2026-07-24-164602-Solar.mp4" autoplay loop muted playsinline preload="auto"></video>
 </div>
 
 <div class="sky-grid">
