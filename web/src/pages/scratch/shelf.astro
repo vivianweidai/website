@@ -1,0 +1,150 @@
+---
+import DefaultLayout from '../../layouts/Default.astro';
+import PageHeader from '../../layouts/PageHeader.astro';
+import PageFooter from '../../layouts/PageFooter.astro';
+import OptionBar from './_OptionBar.astro';
+import { BENCH, DESK, SCI, type Sci } from './_data';
+
+const order: Sci[] = ['phys', 'chem', 'bio', 'astro'];
+const bench = [...BENCH].sort(
+  (a, b) => order.indexOf(a.sci) - order.indexOf(b.sci) || (b.shots ?? 0) - (a.shots ?? 0),
+);
+const deskBySci: Sci[] = ['astro', 'math', 'comp'];
+---
+<DefaultLayout title="Projects — The Shelf">
+  <PageHeader active="research" title="Projects" />
+  <OptionBar active="shelf" />
+
+  <div class="shelf-filter" id="shelf-filter">
+    <button class="sf on" data-f="all">Everything</button>
+    {order.map((s) => (
+      <button class="sf" data-f={s} style={`--f: ${SCI[s].tint}`}>{SCI[s].name}</button>
+    ))}
+  </div>
+
+  <div class="shelf-head">
+    <h3>The bench</h3>
+    <span>{BENCH.length} things we can put our hands on</span>
+  </div>
+
+  <div class="shelf-grid" id="shelf-grid">
+    {bench.map((t) => (
+      <a class="toy" href="#" data-sci={t.sci} style={`--tint: ${SCI[t.sci].tint}`}>
+        <div class="toy-img">
+          {t.img ? <img src={t.img} alt={t.name} loading="lazy" /> : <div class="toy-noimg" />}
+          {t.shots ? <span class="toy-count">{t.shots}</span> : <span class="toy-count new">new</span>}
+        </div>
+        <div class="toy-body">
+          <div class="toy-name">{t.short}</div>
+          <div class="toy-note">{t.note}</div>
+          <div class="toy-full">{t.name}</div>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <div class="shelf-head desk">
+    <h3>The desk</h3>
+    <span>{DESK.length} things we look up or run — no gallery, they just have to be listed</span>
+  </div>
+
+  {deskBySci.map((s) => (
+    <div class="desk-row" data-sci={s}>
+      <div class="desk-label" style={`--tint: ${SCI[s].tint}`}>{SCI[s].name}</div>
+      <div class="desk-items">
+        {DESK.filter((t) => t.sci === s).map((t) => (
+          <span class="desk-item" style={`--tint: ${SCI[s].tint}`}>
+            <b>{t.short}</b><i>{t.note}</i>
+          </span>
+        ))}
+      </div>
+    </div>
+  ))}
+
+  <script is:inline>
+    (function () {
+      var bar = document.getElementById('shelf-filter');
+      bar.addEventListener('click', function (e) {
+        var b = e.target.closest('.sf');
+        if (!b) return;
+        var f = b.dataset.f;
+        bar.querySelectorAll('.sf').forEach(function (x) { x.classList.toggle('on', x === b); });
+        document.querySelectorAll('#shelf-grid .toy').forEach(function (c) {
+          c.style.display = (f === 'all' || c.dataset.sci === f) ? '' : 'none';
+        });
+        document.querySelectorAll('.desk-row').forEach(function (r) {
+          r.style.display = (f === 'all' || r.dataset.sci === f) ? '' : 'none';
+        });
+      });
+    })();
+  </script>
+
+  <style is:global>
+    .shelf-filter { display: flex; flex-wrap: wrap; gap: .4em; margin: 0 0 1.6em; }
+    .sf {
+      font: inherit; font-size: .85em; font-weight: 600; cursor: pointer;
+      padding: .3em .85em; border-radius: 999px;
+      border: 1px solid #d8dee4; background: #fff; color: #475059;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .sf:hover { border-color: #b6c0ca; background: var(--f, #f6f8fa); }
+    .sf.on { background: var(--f, #1f2328); border-color: transparent; color: #1f2328; }
+    .sf[data-f="all"].on { background: #1f2328; color: #fff; }
+
+    .shelf-head {
+      display: flex; align-items: baseline; gap: .7em;
+      border-bottom: 1px solid #d1d9e0; padding-bottom: .3em; margin: 2.2em 0 1.1em;
+    }
+    .shelf-head:first-of-type { margin-top: 0; }
+    .shelf-head h3 { margin: 0; font-size: 1.15em; }
+    .shelf-head span { font-size: .82em; color: #8b949e; }
+
+    .shelf-grid {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
+    }
+    .toy {
+      display: flex; flex-direction: column;
+      border: 1px solid #e2e6ea; border-radius: 10px; overflow: hidden;
+      background: #fff; color: inherit; text-decoration: none;
+      transition: transform .18s ease-out, box-shadow .18s ease, border-color .18s;
+    }
+    .toy:hover {
+      text-decoration: none; transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.09); border-color: var(--tint);
+    }
+    .toy-img { position: relative; aspect-ratio: 4 / 3; background: #eef1f4; }
+    .toy-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .toy-noimg { width: 100%; height: 100%; background: var(--tint); opacity: .5; }
+    .toy-count {
+      position: absolute; right: 6px; bottom: 6px;
+      background: rgba(255,255,255,.93); color: #1f2328;
+      font-size: .68em; font-weight: 700; padding: .1em .45em; border-radius: 5px;
+    }
+    .toy-count.new { background: rgba(31,35,40,.85); color: #fff; font-weight: 600; }
+    .toy-body { padding: .55em .7em .7em; border-top: 3px solid var(--tint); flex: 1; }
+    .toy-name { font-weight: 700; font-size: .95em; line-height: 1.25; }
+    .toy-note { font-size: .78em; color: #656d76; margin-top: .15em; line-height: 1.35; }
+    .toy-full { font-size: .66em; color: #b0b8c0; margin-top: .5em; line-height: 1.3; }
+
+    .desk-row { display: flex; gap: .8em; align-items: baseline; margin: .7em 0; }
+    .desk-label {
+      flex: 0 0 6.5em; font-size: .8em; font-weight: 700; color: #1f2328;
+      background: var(--tint); border-radius: 5px; padding: .1em .5em; text-align: center;
+    }
+    .desk-items { display: flex; flex-wrap: wrap; gap: .35em; }
+    .desk-item {
+      font-size: .8em; border: 1px solid #e2e6ea; border-left: 3px solid var(--tint);
+      border-radius: 5px; padding: .1em .5em;
+    }
+    .desk-item b { font-weight: 600; }
+    .desk-item i { color: #8b949e; font-style: normal; margin-left: .4em; font-size: .9em; }
+    @media (max-width: 600px) {
+      .desk-row { flex-direction: column; gap: .3em; }
+      .desk-label { flex: none; align-self: flex-start; }
+    }
+  </style>
+
+  <hr />
+  <PageFooter active="research" />
+</DefaultLayout>
