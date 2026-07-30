@@ -362,8 +362,15 @@
   /* Section-level highlight scrolls the yellow block into view so a
      mid-page section isn't off-screen. Column-level highlight does NOT
      auto-scroll — the column already starts at the page top, and
-     centering a tall column would push the viewport halfway down. */
+     centering a tall column would push the viewport halfway down.
+
+     Only for in-page clicks. Arriving from an external link (the home
+     page's curriculum row) lands on the first render, where hasRendered is
+     still false: there we stay at the top of the page so the header and
+     the six column titles are visible and the highlight has context. The
+     yellow block is easy to spot on the way down. */
   function maybeScrollToHighlight() {
+    if (!hasRendered) return;
     if (state.highlightSubject == null || state.highlightSectionIdx == null) return;
     var target = widget.querySelector('.curr-section-highlighted');
     if (!target) return;
