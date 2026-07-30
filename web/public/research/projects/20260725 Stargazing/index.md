@@ -13,8 +13,8 @@ sciences:
 
 <div class="sky-grid">
   <figure class="sky-tile">
-    <a href="data/M_31__Stacked_17_M_31_10.0s_IRCUT_20260725-014442.jpg"><img src="data/M_31__Stacked_17_M_31_10.0s_IRCUT_20260725-014442.jpg" alt="M 31" loading="lazy"></a>
-    <figcaption><b>M 31</b><span>17 × 10s</span></figcaption>
+    <a href="data/M_31__Stacked_25_M_31_20.0s_IRCUT_20260730-015655.jpg"><img src="data/M_31__Stacked_25_M_31_20.0s_IRCUT_20260730-015655.jpg" alt="M 31" loading="lazy"></a>
+    <figcaption><b>M 31</b><span>25 × 20s</span></figcaption>
   </figure>
   <figure class="sky-tile">
     <a href="data/M_13__Stacked_5_M_13_60.0s_IRCUT_20260728-225801.jpg"><img src="data/M_13__Stacked_5_M_13_60.0s_IRCUT_20260728-225801.jpg" alt="M 13" loading="lazy"></a>
@@ -45,20 +45,32 @@ sciences:
     <figcaption><b>Delta Cygni</b><span>54 × 5s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="data/V530_Lyrae_sub__Light_V530_Lyrae_2.0s_IRCUT_20260728-232423.jpg"><img src="data/V530_Lyrae_sub__Light_V530_Lyrae_2.0s_IRCUT_20260728-232423.jpg" alt="Vega spectrum" loading="lazy"></a>
+    <a href="data/V530_Lyrae__Light_V530_Lyrae_2.0s_IRCUT_20260728-232423.jpg"><img src="data/V530_Lyrae__Light_V530_Lyrae_2.0s_IRCUT_20260728-232423.jpg" alt="Vega spectrum" loading="lazy"></a>
     <figcaption><b>Vega spectrum</b><span>1 × 2s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="data/Vega_sub__Light_Vega_10.0s_LP_20260728-233740.jpg"><img src="data/Vega_sub__Light_Vega_10.0s_LP_20260728-233740.jpg" alt="Vega spectrum" loading="lazy"></a>
+    <a href="data/Vega__Light_Vega_10.0s_LP_20260728-233740.jpg"><img src="data/Vega__Light_Vega_10.0s_LP_20260728-233740.jpg" alt="Vega spectrum" loading="lazy"></a>
     <figcaption><b>Vega spectrum</b><span>1 × 10s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="data/Juno_sub__Light_Juno_20.0s_IRCUT_20260729-000521.jpg"><img src="data/Juno_sub__Light_Juno_20.0s_IRCUT_20260729-000521.jpg" alt="Juno — before" loading="lazy"></a>
+    <a href="data/Juno__Light_Juno_20.0s_IRCUT_20260729-000521.jpg"><img src="data/Juno__Light_Juno_20.0s_IRCUT_20260729-000521.jpg" alt="Juno — before" loading="lazy"></a>
     <figcaption><b>Juno — before</b><span>1 × 20s</span></figcaption>
   </figure>
   <figure class="sky-tile">
-    <a href="data/Juno_sub__Light_Juno_20.0s_IRCUT_20260729-003012.jpg"><img src="data/Juno_sub__Light_Juno_20.0s_IRCUT_20260729-003012.jpg" alt="Juno — after" loading="lazy"></a>
+    <a href="data/Juno__Light_Juno_20.0s_IRCUT_20260729-003012.jpg"><img src="data/Juno__Light_Juno_20.0s_IRCUT_20260729-003012.jpg" alt="Juno — after" loading="lazy"></a>
     <figcaption><b>Juno — after</b><span>1 × 20s</span></figcaption>
+  </figure>
+  <figure class="sky-tile">
+    <a href="data/Vega__Light_Vega_5.0s_IRCUT_failed_20260729-222828.jpg"><img src="data/Vega__Light_Vega_5.0s_IRCUT_failed_20260729-222828.jpg" alt="Vega spectrum" loading="lazy"></a>
+    <figcaption><b>Vega spectrum</b><span>1 × 5s</span></figcaption>
+  </figure>
+  <figure class="sky-tile">
+    <a href="data/Albireo__Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg"><img src="data/Albireo__Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg" alt="Albireo — two spectra" loading="lazy"></a>
+    <figcaption><b>Albireo — two spectra</b><span>1 × 20s</span></figcaption>
+  </figure>
+  <figure class="sky-tile">
+    <a href="data/NGC_7000__Stacked_20_NGC_7000_20.0s_IRCUT_20260730-014616.jpg"><img src="data/NGC_7000__Stacked_20_NGC_7000_20.0s_IRCUT_20260730-014616.jpg" alt="NGC 7000 field" loading="lazy"></a>
+    <figcaption><b>NGC 7000 field</b><span>20 × 20s</span></figcaption>
   </figure>
 </div>
 

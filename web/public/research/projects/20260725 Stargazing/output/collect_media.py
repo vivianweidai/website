@@ -35,7 +35,9 @@ HERO = ("Solar_video", "2026-07-24-164602-Solar.mp4")
 # the night the polar alignment was fixed (10.4 deg -> 0.5 deg), which is why
 # 60 s subs became possible at all.
 KEEP = [
-    ("M 31",     "Stacked_17_M 31_10.0s_IRCUT_20260725-014442.jpg"),
+    # M 31 upgraded 2026-07-30: 25 x 20s reaches the dust lane and M110,
+    # where the 17 x 10s it replaces showed little beyond the core.
+    ("M 31",     "Stacked_25_M 31_20.0s_IRCUT_20260730-015655.jpg"),
     # M 13 upgraded 2026-07-29: the 5 x 60s stack goes visibly deeper than the
     # 30 x 10s it replaces, because fixing the polar alignment made 60 s subs
     # possible. Same target, better night.
@@ -55,13 +57,27 @@ KEEP = [
     # edge -- the spectrum starts 2209 px from the zero-order dot, so a centred
     # star throws it off the sensor entirely. The folder records the pointing,
     # not the subject; V530 Lyrae itself is far too faint to show a spectrum.
-    ("V530 Lyrae_sub", "Light_V530 Lyrae_2.0s_IRCUT_20260728-232423.jpg", "Vega spectrum"),
-    ("Vega_sub",   "Light_Vega_10.0s_LP_20260728-233740.jpg", "Vega spectrum"),
+    ("V530 Lyrae", "Light_V530 Lyrae_2.0s_IRCUT_20260728-232423.jpg", "Vega spectrum"),
+    ("Vega",       "Light_Vega_10.0s_LP_20260728-233740.jpg", "Vega spectrum"),
     # 3 Juno: the first and last CLEAN subs of the run, 37.5 min apart, which is
 # the widest baseline the night allows. Juno shifts 6.2 px against fixed stars;
 # a narrower pair was tried first and showed only 4.1 px.
-    ("Juno_sub",   "Light_Juno_20.0s_IRCUT_20260729-000521.jpg", "Juno — before"),
-    ("Juno_sub",   "Light_Juno_20.0s_IRCUT_20260729-003012.jpg", "Juno — after"),
+    ("Juno",       "Light_Juno_20.0s_IRCUT_20260729-000521.jpg", "Juno — before"),
+    ("Juno",       "Light_Juno_20.0s_IRCUT_20260729-003012.jpg", "Juno — after"),
+    # 2026-07-29/30, the first fully programmatic night -- no phone app in the
+    # loop at any point. Both spectra are single subs the on-board stacker
+    # REJECTED (``_failed_`` in the name): a deliberately off-centre streak is
+    # not a star field, so it throws every frame away. They exist only because
+    # ``save_discrete_frame`` keeps the rejects.
+    ("Vega",     "Light_Vega_5.0s_IRCUT_failed_20260729-222828.jpg", "Vega spectrum"),
+    # Albireo is a colour-contrast double: K3II + B8V. Both components disperse
+    # in the same exposure, so the comparison is within-frame -- same optics,
+    # same air, same calibration.
+    ("Albireo",  "Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg", "Albireo — two spectra"),
+    # Honest caption: through IRCUT this is a Cygnus star field, not the nebula.
+    # NGC 7000 is an H-alpha emission object and barely registers without a
+    # narrowband filter.
+    ("NGC 7000", "Stacked_20_NGC 7000_20.0s_IRCUT_20260730-014616.jpg", "NGC 7000 field"),
 ]
 
 
