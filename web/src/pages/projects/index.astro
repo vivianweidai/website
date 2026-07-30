@@ -42,14 +42,6 @@ const spanFor = (t) => {
         <button class="wf-pill" data-sci={s.slug} data-tint={s.slug} type="button">{s.science}</button>
       ))}
     </div>
-    {sciences.map((s) => (
-      <div class="wf-row wf-techs" data-sci={s.slug} hidden>
-        {s.techs.map((t) => (
-          <button class={`wf-tag${t.count ? '' : ' empty'}`} data-tech={t.slug}
-                  disabled={t.count === 0} type="button">{t.label}</button>
-        ))}
-      </div>
-    ))}
   </div>
 
   <div class="wall" id="wall">
@@ -60,16 +52,8 @@ const spanFor = (t) => {
            style={`--tint: var(--subj-${t.science_slug}); grid-column: span ${colsFor(t)}; grid-row-end: span ${spanFor(t)}`}>
           <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />
           <div class="tile-cap">
-            {(t.techs ?? []).length > 0 && (
-              <span class="tile-tags">
-                {t.techs.map((c) => <span class="tile-tag">{c}</span>)}
-              </span>
-            )}
-            <b>{t.caption}</b>
-            <span>
-              {t.note && <i>{t.note}</i>}
-              <em>{t.toy ? `${t.toy} · ` : ''}{t.date_label}</em>
-            </span>
+            <span class="cap-text">{t.caption}</span>
+            <span class="cap-pill">{t.science}</span>
           </div>
           <span class="tile-badge">Project →</span>
         </a>
@@ -82,16 +66,8 @@ const spanFor = (t) => {
             ? <video src={t.src} width={t.w} height={t.h} autoplay loop muted playsinline preload="metadata" />
             : <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />}
           <figcaption class="tile-cap">
-            {(t.techs ?? []).length > 0 && (
-              <span class="tile-tags">
-                {t.techs.map((c) => <span class="tile-tag">{c}</span>)}
-              </span>
-            )}
-            <b>{t.caption}</b>
-            <span>
-              {t.note && <i>{t.note}</i>}
-              <em>{t.toy ? `${t.toy} · ` : ''}{t.date_label}</em>
-            </span>
+            <span class="cap-text">{t.caption}</span>
+            <span class="cap-pill">{t.science}</span>
           </figcaption>
         </figure>
       )
@@ -116,7 +92,7 @@ const spanFor = (t) => {
       var sciBar = document.getElementById('wf-sci');
       var empty = document.getElementById('wall-empty');
       var tiles = Array.prototype.slice.call(grid.children);
-      var state = { sci: 'all', tech: null };
+      var state = { sci: 'all' };
 
       // ── masonry ──────────────────────────────────────────────────
       // Span each tile over however many ROW-pixel rows its own aspect ratio
@@ -148,11 +124,7 @@ const spanFor = (t) => {
         var shown = 0;
         for (var i = 0; i < tiles.length; i++) {
           var t = tiles[i];
-          // A tile can sit in several categories, so this is a membership
-          // test over a space-separated list, not an equality check.
-          var ok = (state.sci === 'all' || t.dataset.sci === state.sci)
-                && (!state.tech
-                    || (' ' + t.dataset.techs + ' ').indexOf(' ' + state.tech + ' ') >= 0);
+          var ok = state.sci === 'all' || t.dataset.sci === state.sci;
           t.style.display = ok ? '' : 'none';
           if (ok) shown++;
         }
@@ -161,40 +133,17 @@ const spanFor = (t) => {
         sciBar.querySelectorAll('.wf-pill').forEach(function (b) {
           b.classList.toggle('on', b.dataset.sci === state.sci);
         });
-        // Tier 2 appears once a science is chosen; tier 3 once a category is.
-        // With "All" showing there is no single vocabulary to offer, and with
-        // no category chosen there is no short toy list worth showing.
-        document.querySelectorAll('.wf-techs').forEach(function (row) {
-          row.hidden = row.dataset.sci !== state.sci;
-        });
-        document.querySelectorAll('.wf-tag[data-tech]').forEach(function (b) {
-          b.classList.toggle('on', b.dataset.tech === state.tech);
-        });
         layout();
       }
 
       function writeHash() {
-        var h = '';
-        if (state.sci !== 'all') {
-          h = '#' + state.sci;
-          if (state.tech) h += '/' + state.tech;
-        }
-        history.replaceState(null, '', h || location.pathname);
+        history.replaceState(null, '', state.sci === 'all' ? location.pathname : '#' + state.sci);
       }
 
       function readHash() {
-        var parts = (location.hash || '').replace(/^#/, '').split('/');
-        var sci = parts[0] || 'all';
+        var sci = (location.hash || '').replace(/^#/, '').split('/')[0] || 'all';
         if (sci !== 'all' && !sciBar.querySelector('.wf-pill[data-sci="' + sci + '"]')) sci = 'all';
         state.sci = sci;
-        state.tech = null;
-        if (sci !== 'all' && parts[1]) {
-          var trow = document.querySelector('.wf-techs[data-sci="' + sci + '"]');
-          var ttag = trow && trow.querySelector('.wf-tag[data-tech="' + parts[1] + '"]');
-          // A category with nothing in it yet is a dead tag — land on the
-          // science rather than on an empty grid. Same for a toy.
-          if (ttag && !ttag.disabled) state.tech = parts[1];
-        }
         apply();
       }
 
@@ -202,21 +151,10 @@ const spanFor = (t) => {
         var b = e.target.closest('.wf-pill');
         if (!b) return;
         state.sci = b.dataset.sci;
-        state.tech = null;
         apply();
         writeHash();
       });
 
-      document.querySelectorAll('.wf-techs').forEach(function (row) {
-        row.addEventListener('click', function (e) {
-          var b = e.target.closest('.wf-tag');
-          if (!b || b.disabled) return;
-          // Re-clicking the open category closes it.
-          state.tech = state.tech === b.dataset.tech ? null : b.dataset.tech;
-          apply();
-          writeHash();
-        });
-      });
 
       // ── lightbox ─────────────────────────────────────────────────
       // Navigates the tiles currently visible, so paging through a filtered
@@ -342,12 +280,6 @@ const spanFor = (t) => {
     .wf-row { display: flex; flex-wrap: wrap; gap: 0.4em; }
     /* A class selector beats [hidden]'s UA `display: none`, so say it here. */
     .wf-row[hidden] { display: none; }
-    .wf-techs {
-      margin-top: 0.6em;
-      padding-top: 0.6em;
-      border-top: 1px dashed #e2e6ea;
-      animation: fadeUp 0.3s ease backwards;
-    }
 
     .wf-pill {
       font: inherit;
@@ -457,35 +389,35 @@ const spanFor = (t) => {
       transition: opacity 0.2s ease;
     }
     .tile:hover .tile-cap { opacity: 1; }
-    /* Which categories the picture is filed under. Science-tinted, matching
-       the chip language the rest of the site uses. Display only — the tile
-       itself is the click target. */
-    /* Scoped under .tile-cap deliberately: the generic `.tile-cap span`
-       rule above sets display:block and outranks a bare `.tile-tags`, which
-       stacked the pills full-width instead of laying them out in a row. */
-    .tile-cap .tile-tags {
+    /* One line of text on the left, the science on the right. Nothing else —
+       no note line, no instrument, no date. The picture is the content; this
+       is the label. */
+    .tile-cap {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.25em;
-      margin-bottom: 0.35em;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.6em;
     }
-    .tile-cap .tile-tag {
+    .cap-text {
+      font-size: 0.78em;
+      font-weight: 600;
+      line-height: 1.35;
+      min-width: 0;
+    }
+    .cap-pill {
+      flex: 0 0 auto;
       font-size: 0.64em;
       font-weight: 600;
-      line-height: 1.5;
-      padding: 0 0.5em;
+      line-height: 1.6;
+      padding: 0 0.55em;
       border-radius: 999px;
       background: var(--tint);
       color: #1f2328;
       white-space: nowrap;
     }
-    .tile-cap b { display: block; font-size: 0.8em; line-height: 1.3; }
-    .tile-cap span { display: block; margin-top: 0.15em; }
-    .tile-cap i { display: block; font-style: normal; font-size: 0.7em; color: #dfe4e9; line-height: 1.3; }
-    /* Instrument and date. The categories are the pills above — showing them
-       here too said the same word twice, and the instrument is the thing that
-       would otherwise appear nowhere. */
-    .tile-cap em { display: block; font-style: normal; font-size: 0.68em; color: #a8b2bb; margin-top: 0.1em; }
+    /* Which categories the picture is filed under. Science-tinted, matching
+       the chip language the rest of the site uses. Display only — the tile
+       itself is the click target. */
 
     /* ── project cards ────────────────────────────────────────────
        A picture you can click through to a write-up. Framed in its science
@@ -542,29 +474,37 @@ const spanFor = (t) => {
 
     .lb-frame {
       margin: 0;
+      position: relative;
       max-width: 100%;
       max-height: 100%;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.7em;
+      min-height: 0;
     }
     .lb-media { display: flex; min-height: 0; }
     .lb-media img,
     .lb-media video {
       max-width: 100%;
       /* Leave room for the caption under the picture. */
-      max-height: calc(100vh - 9em);
+      max-height: calc(100vh - 6.4em);
       object-fit: contain;
       border-radius: 6px;
       display: block;
     }
-    .lb-cap { color: #fff; text-align: center; max-width: 42em; }
-    .lb-cap .tile-tags { justify-content: center; margin-bottom: 0.5em; }
-    .lb-cap .tile-tag { font-size: 0.72em; }
-    .lb-cap b { display: block; font-size: 1em; }
-    .lb-cap i { display: block; font-style: normal; font-size: 0.82em; color: #cfd6dd; margin-top: 0.2em; }
-    .lb-cap em { display: block; font-style: normal; font-size: 0.78em; color: #9aa4ad; margin-top: 0.2em; }
+    .lb-cap {
+      position: absolute;
+      inset: auto 0 0 0;
+      margin: 0;
+      padding: 3em 0.9em 0.7em;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+      border-radius: 0 0 6px 6px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 0.8em;
+      color: #fff;
+    }
+    .lb-cap .cap-text { font-size: 0.95em; }
+    .lb-cap .cap-pill { font-size: 0.72em; }
 
     .lb-btn {
       position: absolute;
@@ -598,7 +538,7 @@ const spanFor = (t) => {
       .lb { padding: 3.4em 0.6em; }
       .lb-prev { left: 0.4em; }
       .lb-next { right: 0.4em; }
-      .lb-media img, .lb-media video { max-height: calc(100vh - 11em); }
+      .lb-media img, .lb-media video { max-height: calc(100vh - 7em); }
     }
     @media (prefers-reduced-motion: reduce) { .lb { animation: none; } }
 
@@ -608,7 +548,6 @@ const spanFor = (t) => {
     }
     @media (prefers-reduced-motion: reduce) {
       .tile, .tile-cap { transition: none; }
-      .wf-techs { animation: none; }
     }
   </style>
 

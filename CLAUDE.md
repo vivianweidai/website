@@ -143,19 +143,20 @@ to that instrument's category. `tech:` names the category directly — use it wh
 to a category but to no instrument we own. Either way the build fails on a name the catalog does
 not have, which is what keeps the filter row and the home page the same vocabulary.
 
-**A tile's hover overlay carries its categories as pills**, and the line under the caption
-carries the instrument and the month. Those are deliberately different facts — showing the
-category in both places said the same word twice, and the instrument would otherwise appear
-nowhere. The pills are display-only; the tile itself is the click target.
+**A tile shows one line and one pill.** The caption on the bottom left, the *science* on the
+bottom right — not the category, not the instrument, not the date. The lightbox shows exactly the
+same two things over the picture. `note:` is still carried in `gallery.yml` and in the JSON but is
+**no longer rendered anywhere**; fold anything load-bearing into the `caption:`.
 
-**Filtering is two tiers, not three.** Science, then category. A third row of individual toys was
-built and removed the same day: picking a category already implies every toy under it, so the
-extra row bought a granularity nobody wanted at the cost of a busy header. The toy still shows in
-the tile's caption.
+**Filtering is one tier.** Just the six sciences. A category row was built, then a third row of
+individual toys under it, and both were removed within the day — the wall is a gallery, and every
+extra axis of selection made the header busier without making the pictures easier to find.
+Categories still live in `technology.yml` and still show on the home page's Projects tab as an
+organising principle; they simply do not filter here. Home-page links land on `/projects/#<sci>`.
 
-**The two surfaces are one loop.** The home page's Projects tab lists each science's categories
-and links to `/projects/#<sci>/<category>`; the wall's second row is that same list. Both read
-`technology.json`, so renaming a category in `technology.yml` moves both.
+**`tech:`/`toy:` are still validated** even though nothing on the wall filters on them, because
+the validation is what keeps the vocabulary honest and the data is still the record of what a
+picture is about.
 
 **Captions are load-bearing — verify them against the actual frame.** Several first-pass captions
 here described the wrong instrument entirely (a bench of samples called "the printed jig"). Render
