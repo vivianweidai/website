@@ -24,37 +24,38 @@ const SUBJ_ANCHOR = {
 // Order within a science is fixed: Canadian first, US second, then whatever is
 // neither (JSOC — the cross-science camp). One line per science is the target.
 //
-// `icon` is the competition's best standing across all its sittings in
-// olympiads.yml — 'invited'/'attended' (⭐ sparkle) | 'competitive' (🎯 wiggle) |
-// 'team'/'alternate' (🇨🇦 wave); `kind` picks that glyph's hover animation.
+// Names only — no achievement icons. Per-competition standing glyphs (⭐/🎯/🇨🇦)
+// used to hang off each name here; they were dropped 2026-07-30 because they
+// collided visually with the "·" separators and made the row busy. The
+// /olympiads/ timeline is where standings live.
 const OLYMPIADS = {
   mathematics: [
-    { name: 'Canadian Open Mathematics Challenge' },
-    { name: 'American Mathematics Competition 12',                       icon: '🎯',  kind: 'competitive' },
+    'Canadian Open Mathematics Challenge',
+    'American Mathematics Competition 12',
   ],
   computing: [
-    { name: 'Canadian Computing Competition' },
-    { name: 'USA Computing Olympiad' },
-    { name: 'NACLO' },
+    'Canadian Computing Competition',
+    'USA Computing Olympiad',
+    'NACLO',
   ],
   physics: [
-    { name: 'CAP High School Prize Exam' },
-    { name: 'USA Physics Olympiad F=ma Exam' },
-    { name: 'JSOC',                                                      icon: '⭐', kind: 'invited' },
+    'CAP High School Prize Exam',
+    'USA Physics Olympiad F=ma Exam',
+    'JSOC',
   ],
   chemistry: [
-    { name: 'Canadian Chemistry Olympiad',                               icon: '🎯',  kind: 'competitive' },
-    { name: 'United States National Chemistry Olympiad',                 icon: '⭐', kind: 'invited' },
-    { name: 'JSOC',                                                      icon: '⭐', kind: 'invited' },
+    'Canadian Chemistry Olympiad',
+    'United States National Chemistry Olympiad',
+    'JSOC',
   ],
   biology: [
-    { name: 'Canadian Biology Olympiad',                                 icon: '🎯',  kind: 'competitive' },
-    { name: 'USA Biology Olympiad',                                      icon: '🎯',  kind: 'competitive' },
-    { name: 'JSOC',                                                      icon: '⭐', kind: 'invited' },
+    'Canadian Biology Olympiad',
+    'USA Biology Olympiad',
+    'JSOC',
   ],
   astronomy: [
-    { name: 'Canadian Astronomy and Astrophysics Olympiad',              icon: '🇨🇦', kind: 'team' },
-    { name: 'USA Astronomy and Astrophysics Olympiad',                   icon: '🎯',  kind: 'competitive' },
+    'Canadian Astronomy and Astrophysics Olympiad',
+    'USA Astronomy and Astrophysics Olympiad',
   ],
 };
 // The Projects tab lists the TOYS each science has — the instruments and
@@ -122,24 +123,20 @@ const TABS = [
             ))}
           </div>
           <div class="curr-rows-secs" data-tab="olympiads">
-            {oly.map((comp, j) => (
+            {oly.map((name, j) => (
               <>
                 {j > 0 && <span class="sep">·</span>}
-                <span class="oly-comp">
-                  <a href={`/olympiads/#${SUBJ_ANCHOR[subjSlug]}`}>{comp.name}</a>
-                  {comp.icon && (
-                    <span class={`status-emoji status-emoji-${comp.kind}`}>
-                      <span class="glyph">{comp.icon}</span>
-                    </span>
-                  )}
-                </span>
+                <a href={`/olympiads/#${SUBJ_ANCHOR[subjSlug]}`}>{name}</a>
               </>
             ))}
           </div>
-          <div class="curr-rows-secs curr-rows-toys" data-tab="projects">
-            {TOYS_BY_SCIENCE[subjSlug].map((toy) => (
-              <a class="home-toy" title={toy.name}
-                 href={`/projects/#${SUBJ_ANCHOR[subjSlug]}/${toy.slug}`}>{toy.label}</a>
+          <div class="curr-rows-secs" data-tab="projects">
+            {TOYS_BY_SCIENCE[subjSlug].map((toy, j) => (
+              <>
+                {j > 0 && <span class="sep">·</span>}
+                <a title={toy.name}
+                   href={`/projects/#${SUBJ_ANCHOR[subjSlug]}/${toy.slug}`}>{toy.label}</a>
+              </>
             ))}
           </div>
 
@@ -283,32 +280,11 @@ const TABS = [
     }
     .curr-rows-secs a:hover { color: #0969da; text-decoration: underline; }
     .curr-rows-secs .sep { color: #b1b7be; padding: 0 0.15em; }
-    /* Projects tab: the science's toys as chips. Each one links to the
-       /projects/ wall pre-filtered to that toy, so the chip you read here
-       and the tag you click there are the same word. */
-    .curr-rows-toys {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3em;
-      align-items: center;
-      padding: 0.45em 1em;
-    }
-    .home-toy {
-      padding: 0.1em 0.55em;
-      border-radius: 5px;
-      background: #fff;
-      border: 1px solid #e2e6ea;
-      color: #475059;
-      font-size: 0.85em;
-      white-space: nowrap;
-      text-decoration: none;
-      transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-    }
-    .curr-rows-toys .home-toy:hover {
-      border-color: #0969da;
-      color: #0969da;
-      text-decoration: none;
-    }
+    /* The Projects tab's toys carry no styling of their own — they are the
+       same dot-separated links as Curriculum's sections and Olympiads'
+       competitions, and the three tabs should read as one row that changes
+       its contents rather than three different components. Each toy links to
+       the /projects/ wall pre-filtered to it. */
     .curr-rows-secs .mi-icon {
       margin-left: 0.35em;
       display: inline-flex;
@@ -364,73 +340,11 @@ const TABS = [
     .home-proj-badge b { font-weight: 700; }
     .home-proj-badge:hover { border-color: #0969da; color: #0969da; }
 
-    /* Olympiad row content is inline text like the Curriculum tab, so a long
-       list of competitions wraps. Each competition + its achievement icon is
-       one nowrap unit, so the glyph never orphans onto the next line. */
+    /* Olympiad row content is inline text styled exactly like the Curriculum
+       tab — same link rule, same size, same weight. Only the line-height is
+       looser, because competition names are long enough to wrap. */
     .curr-rows-secs[data-tab="olympiads"] {
       line-height: 1.75;
-    }
-    .oly-comp { white-space: nowrap; }
-
-    /* Olympiad achievement icons — same wiggle/shimmer treatment as
-       /olympiads/ timeline. The icon sits OUTSIDE the link so the
-       underline doesn't extend over the glyph.
-
-       Animations fire on .oly-comp:hover, i.e. the one competition under the
-       cursor — not the whole row. Hovering the CAAO waves only its flag and
-       leaves USAAAO's target still. */
-    .status-emoji {
-      font-size: 1em;
-      margin-left: 0.4em;
-      display: inline-flex;
-      align-items: center;
-      cursor: default;
-      transform: translateY(-0.08em); /* nudge to optical center; emojis sit below the text baseline by default */
-    }
-    .status-emoji .glyph {
-      display: inline-flex;
-      align-items: center;
-      position: relative;
-    }
-    .status-emoji-competitive { transform-origin: center 80%; }
-    .status-emoji-competitive:hover,
-    .oly-comp:hover .status-emoji-competitive {
-      animation: status-wiggle 0.55s ease;
-    }
-    @keyframes status-wiggle {
-      0%   { transform: rotate(0); }
-      20%  { transform: rotate(-15deg); }
-      40%  { transform: rotate(12deg); }
-      60%  { transform: rotate(-8deg); }
-      80%  { transform: rotate(5deg); }
-      100% { transform: rotate(0); }
-    }
-    .status-emoji-invited .glyph { transform-origin: center; display: inline-block; }
-    .status-emoji-invited:hover .glyph,
-    .oly-comp:hover .status-emoji-invited .glyph {
-      animation: status-sparkle 0.75s ease;
-    }
-    @keyframes status-sparkle {
-      0%   { transform: scale(1) rotate(0); filter: none; }
-      25%  { transform: scale(1.4) rotate(-15deg); filter: drop-shadow(0 0 6px rgba(255,200,40,0.9)); }
-      55%  { transform: scale(0.92) rotate(10deg); filter: drop-shadow(0 0 2px rgba(255,200,40,0.4)); }
-      80%  { transform: scale(1.12) rotate(-4deg); filter: drop-shadow(0 0 4px rgba(255,200,40,0.6)); }
-      100% { transform: scale(1) rotate(0); filter: none; }
-    }
-    .status-emoji-alternate .glyph,
-    .status-emoji-team .glyph { transform-origin: left center; display: inline-block; }
-    .status-emoji-alternate:hover .glyph,
-    .status-emoji-team:hover .glyph,
-    .oly-comp:hover .status-emoji-alternate .glyph,
-    .oly-comp:hover .status-emoji-team .glyph {
-      animation: status-wave 0.7s ease;
-    }
-    @keyframes status-wave {
-      0%   { transform: rotate(0) skewX(0); }
-      25%  { transform: rotate(-6deg) skewX(-8deg); }
-      50%  { transform: rotate(4deg) skewX(6deg); }
-      75%  { transform: rotate(-3deg) skewX(-4deg); }
-      100% { transform: rotate(0) skewX(0); }
     }
     @media (max-width: 600px) {
       .curr-rows-row {
