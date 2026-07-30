@@ -138,6 +138,81 @@ def image_size(path: Path) -> tuple[int, int]:
     return size
 
 
+# ── capture date ─────────────────────────────────────────────────────
+# The wall is chronological, so every tile needs a month. Rather than hand-type
+# one per row, read the camera's own EXIF DateTimeOriginal — a photo dropped
+# into gallery/ dates itself. `date:` in the YAML overrides it, and is required
+# for images that have no EXIF at all (generated plots, screenshots).
+
+_EXIF_FMTSIZE = {1: 1, 2: 1, 3: 2, 4: 4, 5: 8, 7: 1, 9: 4, 10: 8}
+
+
+def _exif_month(path: Path) -> str | None:
+    """Return 'YYYY-MM' from EXIF DateTimeOriginal (falling back to the IFD0
+    DateTime), or None when the file carries no EXIF."""
+    if path.suffix.lower() not in (".jpg", ".jpeg"):
+        return None
+    with path.open("rb") as fh:
+        if fh.read(2) != b"\xff\xd8":
+            return None
+        # Walk JPEG segments looking for APP1/Exif.
+        blob = None
+        while True:
+            head = fh.read(2)
+            if len(head) < 2 or head[0] != 0xFF:
+                return None
+            marker = head[1]
+            if marker == 0xDA:  # start of scan — no EXIF before the image data
+                return None
+            length = struct.unpack(">H", fh.read(2))[0]
+            payload = fh.read(length - 2)
+            if marker == 0xE1 and payload[:6] == b"Exif\x00\x00":
+                blob = payload[6:]
+                break
+
+    if not blob or len(blob) < 8:
+        return None
+    endian = "<" if blob[:2] == b"II" else ">" if blob[:2] == b"MM" else None
+    if endian is None:
+        return None
+
+    def u16(off): return struct.unpack(endian + "H", blob[off:off + 2])[0]
+    def u32(off): return struct.unpack(endian + "I", blob[off:off + 4])[0]
+
+    def read_ifd(offset: int) -> dict[int, int]:
+        """tag → value-or-offset, for the tags we care about."""
+        tags: dict[int, int] = {}
+        if offset + 2 > len(blob):
+            return tags
+        for i in range(u16(offset)):
+            e = offset + 2 + i * 12
+            if e + 12 > len(blob):
+                break
+            tag, fmt, count = u16(e), u16(e + 2), u32(e + 4)
+            size = _EXIF_FMTSIZE.get(fmt, 0) * count
+            tags[tag] = u32(e + 8) if size > 4 else e + 8
+        return tags
+
+    def ascii_at(off: int) -> str:
+        end = blob.find(b"\x00", off)
+        return blob[off:end if end >= 0 else off + 19].decode("ascii", "replace")
+
+    try:
+        ifd0 = read_ifd(u32(4))
+        stamp = None
+        if 0x8769 in ifd0:  # Exif sub-IFD → DateTimeOriginal
+            sub = read_ifd(ifd0[0x8769])
+            if 0x9003 in sub:
+                stamp = ascii_at(sub[0x9003])
+        if not stamp and 0x0132 in ifd0:  # plain DateTime
+            stamp = ascii_at(ifd0[0x0132])
+    except (struct.error, IndexError):
+        return None
+
+    m = re.match(r"(\d{4}):(\d{2}):", stamp or "")
+    return f"{m.group(1)}-{m.group(2)}" if m else None
+
+
 # ── toy vocabulary ───────────────────────────────────────────────────
 
 def toys_by_science() -> dict[str, list[dict]]:
@@ -182,17 +257,9 @@ def build() -> dict:
         if science not in SCIENCE_SLUGS:
             raise ValueError(f"{where}: science must be one of {sorted(SCIENCE_SLUGS)}, got {science!r}")
 
-        date = str(e.get("date", ""))
-        if not re.fullmatch(r"\d{4}-\d{2}", date):
-            raise ValueError(f"{where}: date must be YYYY-MM, got {date!r}")
-        year, month = date.split("-")
-        date_label = f"{MONTHS[int(month) - 1]} {year}"
-
         tile: dict = {
             "science": science,
             "science_slug": SCIENCE_SLUGS[science],
-            "date": date,
-            "date_label": date_label,
         }
 
         if "folder" in e:
@@ -214,6 +281,16 @@ def build() -> dict:
         w, h = image_size(path)
         tile["src"] = url_for(rel)
         tile["w"], tile["h"] = w, h
+
+        # Explicit `date:` wins; otherwise take the month off the camera.
+        date = str(e["date"]) if e.get("date") else _exif_month(path)
+        if not date:
+            raise ValueError(
+                f"{where}: {rel!r} has no EXIF date — add an explicit `date: YYYY-MM`")
+        if not re.fullmatch(r"\d{4}-\d{2}", date):
+            raise ValueError(f"{where}: date must be YYYY-MM, got {date!r}")
+        tile["date"] = date
+        tile["date_label"] = f"{MONTHS[int(date[5:7]) - 1]} {date[:4]}"
 
         if e.get("note"):
             tile["note"] = e["note"]
