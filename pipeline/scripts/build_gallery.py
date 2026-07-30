@@ -90,7 +90,8 @@ MONTHS = ["January", "February", "March", "April", "May", "June",
 
 
 THUMBS = CONTENT / "gallery" / "thumbs"
-THUMB_EDGE = 700     # px on the long edge — ~3× the widest column on a big screen
+THUMB_EDGE = 1000    # px on the long edge — a landscape tile spans two
+                     # columns (~450 CSS px), so this keeps it retina-sharp
 THUMB_BYTES = 200_000  # anything smaller than this is already web-sized
 made: set[str] = set()  # thumbs this run touched; the rest get pruned
 
@@ -104,7 +105,7 @@ def thumbnail(rel: str, path: Path) -> tuple[str, int, int]:
 
     The originals are camera-resolution — 57 MB across the whole wall, and a
     gallery is exactly the page where every one of them ends up requested.
-    So each oversized source gets a long-edge-700 copy under gallery/thumbs/,
+    So each oversized source gets a long-edge-1000 copy under gallery/thumbs/,
     generated with macOS `sips` (already on the box, no image dependency to
     install) and committed alongside everything else. Files that are already
     web-sized are served as they are.

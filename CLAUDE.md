@@ -115,10 +115,19 @@ follows `/projects/` in the URL.
   prefix is the filing system — the same convention project folders use — so the folder sorts
   itself and a file states its own date without a sidecar. No month subfolders.
 - **`gallery/thumbs/`** is generated, never hand-edited, and **not optional**. `build_gallery.py`
-  shrinks every oversized source to a long-edge-700 copy with `sips` and prunes thumbs whose row
+  shrinks every oversized source to a long-edge-1000 copy with `sips` and prunes thumbs whose row
   is gone. CDN caching is not a substitute: the originals total ~58 MB and a gallery is precisely
-  the page that requests all of them; thumbs take that to ~5 MB. An edge cache changes who serves
+  the page that requests all of them; thumbs take that to ~9 MB. An edge cache changes who serves
   the bytes, not how many a browser downloads to fill a 200 px tile.
+
+**Landscape tiles span two columns.** A portrait frame gets its presence from its own aspect
+ratio; a 4:3 photo at one column is a stamp. `grid-auto-flow: row dense` back-fills the hole a
+wide tile leaves at the end of a row — local order shifts, which on a wall reads as packing.
+
+**Clicking a tile opens a lightbox** — full resolution, ‹ › buttons, ← → keys, Esc to close, click
+the backdrop to dismiss. It pages through *currently visible* tiles, so a filtered wall stays
+inside its filter, and it skips project cards because those are links to a write-up. The tile's
+thumbnail shows instantly and the original swaps in when it arrives; neighbours preload.
 
 **Video is a tile like any other.** An `.mp4` autoplays muted and loops, its dimensions come from
 the MP4 header (`tkhd`, rotation matrix honoured), and it is served without re-encoding.

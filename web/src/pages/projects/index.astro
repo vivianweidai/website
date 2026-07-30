@@ -18,9 +18,19 @@ const { tiles, sciences } = gallery;
 // actual column width on load and resize. Doing it this way means the layout
 // never waits on images to decode.
 const ROW = 8;      // grid-auto-rows, px
-const GUTTER = 10;  // vertical space between tiles, carried as tile margin
+const GUTTER = 10;  // gap between tiles — column-gap, and tile margin vertically
 const NOMINAL = 200;
-const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / ROW));
+
+// Landscape and square tiles span two columns. A portrait frame gets its
+// presence from its own aspect ratio — a 9:16 Seestar capture is already tall
+// at one column — but a 4:3 photo at one column is a stamp. Two columns give
+// it roughly the same area as its portrait neighbours instead of a third of it.
+const colsFor = (t) => (t.w >= t.h ? 2 : 1);
+const spanFor = (t) => {
+  const cols = colsFor(t);
+  const width = cols === 2 ? NOMINAL * 2 + GUTTER : NOMINAL;
+  return Math.max(4, Math.ceil((width * (t.h / t.w) + GUTTER) / ROW));
+};
 ---
 <DefaultLayout title="Projects">
   <PageHeader active="projects" />
@@ -46,8 +56,8 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
     {tiles.map((t) => (
       t.kind === 'project' ? (
         <a class="tile tile-project" href={t.href}
-           data-sci={t.science_slug} data-tech={t.tech_slug ?? ''} data-w={t.w} data-h={t.h}
-           style={`--tint: var(--subj-${t.science_slug}); grid-row-end: span ${spanFor(t)}`}>
+           data-sci={t.science_slug} data-tech={t.tech_slug ?? ''} data-w={t.w} data-h={t.h} data-cols={colsFor(t)}
+           style={`--tint: var(--subj-${t.science_slug}); grid-column: span ${colsFor(t)}; grid-row-end: span ${spanFor(t)}`}>
           <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />
           <div class="tile-cap">
             <b>{t.caption}</b>
@@ -59,9 +69,10 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
           <span class="tile-badge">Project →</span>
         </a>
       ) : (
-        <figure class="tile tile-photo"
-           data-sci={t.science_slug} data-tech={t.tech_slug ?? ''} data-w={t.w} data-h={t.h}
-           style={`--tint: var(--subj-${t.science_slug}); grid-row-end: span ${spanFor(t)}`}>
+        <figure class="tile tile-photo" tabindex="0" role="button" aria-label={`Open ${t.caption}`}
+           data-sci={t.science_slug} data-tech={t.tech_slug ?? ''} data-w={t.w} data-h={t.h} data-cols={colsFor(t)}
+           data-full={t.full} data-video={t.video ? '1' : ''}
+           style={`--tint: var(--subj-${t.science_slug}); grid-column: span ${colsFor(t)}; grid-row-end: span ${spanFor(t)}`}>
           {t.video
             ? <video src={t.src} width={t.w} height={t.h} autoplay loop muted playsinline preload="metadata" />
             : <img src={t.src} alt={t.caption} loading="lazy" width={t.w} height={t.h} />}
@@ -79,6 +90,16 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
 
   <p class="wall-empty" id="wall-empty" hidden>Nothing here yet.</p>
 
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <button class="lb-btn lb-close" id="lb-close" type="button" aria-label="Close">✕</button>
+    <button class="lb-btn lb-prev" id="lb-prev" type="button" aria-label="Previous">‹</button>
+    <button class="lb-btn lb-next" id="lb-next" type="button" aria-label="Next">›</button>
+    <figure class="lb-frame" id="lb-frame">
+      <div class="lb-media" id="lb-media"></div>
+      <figcaption class="lb-cap" id="lb-cap"></figcaption>
+    </figure>
+  </div>
+
   <script is:inline define:vars={{ ROW, GUTTER }}>
     (function () {
       var grid = document.getElementById('wall');
@@ -92,16 +113,22 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
       // needs at the current column width. Dimensions come from data
       // attributes, so this is one pass of arithmetic and no image reflow.
       function layout() {
-        var first = null;
+        // Measure a single-column tile — a two-column one would report double
+        // the width and halve every span on the page.
+        var first = null, wide = null;
         for (var i = 0; i < tiles.length; i++) {
-          if (tiles[i].style.display !== 'none') { first = tiles[i]; break; }
+          if (tiles[i].style.display === 'none') continue;
+          if (tiles[i].dataset.cols !== '2') { first = tiles[i]; break; }
+          if (!wide) wide = tiles[i];
         }
-        if (!first) return;
-        var colW = first.getBoundingClientRect().width;
+        var colW = first ? first.getBoundingClientRect().width
+                 : wide ? (wide.getBoundingClientRect().width - GUTTER) / 2 : 0;
         if (!colW) return;
         for (var j = 0; j < tiles.length; j++) {
           var t = tiles[j];
-          var h = colW * (+t.dataset.h / +t.dataset.w);
+          // A two-column tile is two columns plus the gap between them.
+          var w = t.dataset.cols === '2' ? colW * 2 + GUTTER : colW;
+          var h = w * (+t.dataset.h / +t.dataset.w);
           t.style.gridRowEnd = 'span ' + Math.max(4, Math.ceil((h + GUTTER) / ROW));
         }
       }
@@ -176,6 +203,110 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
           apply();
           writeHash();
         });
+      });
+
+      // ── lightbox ─────────────────────────────────────────────────
+      // Navigates the tiles currently visible, so paging through a filtered
+      // wall stays inside that filter. Project cards are links to a write-up
+      // and are skipped — clicking one should go there, not open a viewer.
+      var lb = document.getElementById('lb');
+      var lbMedia = document.getElementById('lb-media');
+      var lbCap = document.getElementById('lb-cap');
+      var openable = [];
+      var at = -1;
+
+      function shown() {
+        return tiles.filter(function (t) {
+          return t.style.display !== 'none' && t.classList.contains('tile-photo');
+        });
+      }
+
+      function preload(i) {
+        var t = openable[i];
+        if (t && !t.dataset.video) { var im = new Image(); im.src = t.dataset.full; }
+      }
+
+      function render() {
+        var t = openable[at];
+        if (!t) return;
+        lbMedia.innerHTML = '';
+        if (t.dataset.video) {
+          var v = document.createElement('video');
+          v.src = t.dataset.full;
+          v.autoplay = v.loop = v.muted = v.playsInline = true;
+          v.controls = true;
+          lbMedia.appendChild(v);
+        } else {
+          // Show the thumbnail immediately, then swap in the original once it
+          // arrives — a 3 MB frame would otherwise open on an empty box.
+          var img = document.createElement('img');
+          img.src = t.querySelector('img').src;
+          img.alt = t.querySelector('img').alt;
+          lbMedia.appendChild(img);
+          var full = new Image();
+          full.onload = function () { img.src = full.src; };
+          full.src = t.dataset.full;
+        }
+        lbCap.innerHTML = t.querySelector('.tile-cap').innerHTML;
+        document.getElementById('lb-prev').disabled = at === 0;
+        document.getElementById('lb-next').disabled = at === openable.length - 1;
+        preload(at + 1);
+        preload(at - 1);
+      }
+
+      function openAt(i) {
+        openable = shown();
+        at = i;
+        lb.hidden = false;
+        document.body.style.overflow = 'hidden';
+        render();
+        document.getElementById('lb-close').focus();
+      }
+
+      function close() {
+        lb.hidden = true;
+        lbMedia.innerHTML = '';   // stop any playing clip
+        document.body.style.overflow = '';
+        if (openable[at]) openable[at].focus();
+        at = -1;
+      }
+
+      function step(d) {
+        var next = at + d;
+        if (next < 0 || next >= openable.length) return;
+        at = next;
+        render();
+      }
+
+      grid.addEventListener('click', function (e) {
+        var t = e.target.closest('.tile-photo');
+        if (!t) return;
+        var list = shown();
+        var i = list.indexOf(t);
+        if (i >= 0) openAt(i);
+      });
+      grid.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        var t = e.target.closest('.tile-photo');
+        if (!t) return;
+        e.preventDefault();
+        var i = shown().indexOf(t);
+        if (i >= 0) openAt(i);
+      });
+
+      document.getElementById('lb-close').addEventListener('click', close);
+      document.getElementById('lb-prev').addEventListener('click', function () { step(-1); });
+      document.getElementById('lb-next').addEventListener('click', function () { step(1); });
+      // Clicking the backdrop closes; clicking the picture itself does not.
+      lb.addEventListener('click', function (e) {
+        if (e.target === lb || e.target.id === 'lb-frame') close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (lb.hidden) return;
+        if (e.key === 'Escape') { e.preventDefault(); close(); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
       });
 
       window.addEventListener('hashchange', readHash);
@@ -255,6 +386,10 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
       grid-auto-rows: var(--ROWPX);
       column-gap: var(--GUTTERPX);
       row-gap: 0;
+      /* `dense` back-fills the hole a two-column tile leaves when it will not
+         fit at the end of a row. Order shifts locally; on a wall that reads as
+         packing rather than as a mistake, and a gap would not. */
+      grid-auto-flow: row dense;
     }
     .tile {
       position: relative;
@@ -349,6 +484,81 @@ const spanFor = (t) => Math.max(4, Math.ceil((NOMINAL * (t.h / t.w) + GUTTER) / 
     }
 
     .wall-empty { color: #8b949e; font-style: italic; }
+
+    /* ── lightbox ─────────────────────────────────────────────────
+       Deliberately plain: a dark field, the picture as large as it will go,
+       and the same caption the tile carries. */
+    .lb {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(8, 10, 12, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3.2em 4.2em;
+      animation: lbIn 0.16s ease;
+    }
+    .lb[hidden] { display: none; }
+    @keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .lb-frame {
+      margin: 0;
+      max-width: 100%;
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.7em;
+    }
+    .lb-media { display: flex; min-height: 0; }
+    .lb-media img,
+    .lb-media video {
+      max-width: 100%;
+      /* Leave room for the caption under the picture. */
+      max-height: calc(100vh - 9em);
+      object-fit: contain;
+      border-radius: 6px;
+      display: block;
+    }
+    .lb-cap { color: #fff; text-align: center; max-width: 42em; }
+    .lb-cap b { display: block; font-size: 1em; }
+    .lb-cap i { display: block; font-style: normal; font-size: 0.82em; color: #cfd6dd; margin-top: 0.2em; }
+    .lb-cap em { display: block; font-style: normal; font-size: 0.78em; color: #9aa4ad; margin-top: 0.2em; }
+
+    .lb-btn {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #fff;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 2.2em;
+      height: 2.2em;
+      font-size: 1.2em;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+      transition: background 0.15s, opacity 0.15s;
+    }
+    .lb-btn:hover { background: rgba(255, 255, 255, 0.2); }
+    .lb-btn:disabled { opacity: 0.22; cursor: default; }
+    .lb-btn:disabled:hover { background: rgba(255, 255, 255, 0.08); }
+    .lb-close { top: 1em; right: 1em; }
+    .lb-prev { left: 1em; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 1em; top: 50%; transform: translateY(-50%); }
+
+    /* The whole tile is a button now, so say so on hover and on focus. */
+    .tile-photo { cursor: zoom-in; }
+    .tile-photo:focus-visible { outline: 2px solid #0969da; outline-offset: 2px; }
+
+    @media (max-width: 600px) {
+      .lb { padding: 3.4em 0.6em; }
+      .lb-prev { left: 0.4em; }
+      .lb-next { right: 0.4em; }
+      .lb-media img, .lb-media video { max-height: calc(100vh - 11em); }
+    }
+    @media (prefers-reduced-motion: reduce) { .lb { animation: none; } }
 
     @media (max-width: 600px) {
       .wall { grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); }
