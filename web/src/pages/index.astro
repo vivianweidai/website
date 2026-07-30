@@ -374,7 +374,11 @@ const TABS = [
 
     /* Olympiad achievement icons — same wiggle/shimmer treatment as
        /olympiads/ timeline. The icon sits OUTSIDE the link so the
-       underline doesn't extend over the glyph. */
+       underline doesn't extend over the glyph.
+
+       Animations fire on .oly-comp:hover, i.e. the one competition under the
+       cursor — not the whole row. Hovering the CAAO waves only its flag and
+       leaves USAAAO's target still. */
     .status-emoji {
       font-size: 1em;
       margin-left: 0.4em;
@@ -390,7 +394,7 @@ const TABS = [
     }
     .status-emoji-competitive { transform-origin: center 80%; }
     .status-emoji-competitive:hover,
-    .curr-rows-row:hover .status-emoji-competitive {
+    .oly-comp:hover .status-emoji-competitive {
       animation: status-wiggle 0.55s ease;
     }
     @keyframes status-wiggle {
@@ -403,7 +407,7 @@ const TABS = [
     }
     .status-emoji-invited .glyph { transform-origin: center; display: inline-block; }
     .status-emoji-invited:hover .glyph,
-    .curr-rows-row:hover .status-emoji-invited .glyph {
+    .oly-comp:hover .status-emoji-invited .glyph {
       animation: status-sparkle 0.75s ease;
     }
     @keyframes status-sparkle {
@@ -417,8 +421,8 @@ const TABS = [
     .status-emoji-team .glyph { transform-origin: left center; display: inline-block; }
     .status-emoji-alternate:hover .glyph,
     .status-emoji-team:hover .glyph,
-    .curr-rows-row:hover .status-emoji-alternate .glyph,
-    .curr-rows-row:hover .status-emoji-team .glyph {
+    .oly-comp:hover .status-emoji-alternate .glyph,
+    .oly-comp:hover .status-emoji-team .glyph {
       animation: status-wave 0.7s ease;
     }
     @keyframes status-wave {
