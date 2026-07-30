@@ -1,0 +1,424 @@
+# THE WALL — every picture on /projects/, in one list.
+#
+# Run `python3 pipeline/scripts/build_gallery.py` after editing. The script
+# validates every path and tag and fails loudly, so a mistake here is a build
+# error rather than a hole in the grid.
+#
+# ── a photo tile ────────────────────────────────────────────────────
+#   - src:      path under web/public/projects/ — i.e. what follows
+#               /projects/ in the URL. Required.
+#     caption:  the subject, a few words. Required in practice.
+#     note:     optional second line — exposure, condition, what went wrong.
+#     science:  one of the six. Required.
+#     toy:      optional. Must be a toy that science owns (see technology.yml).
+#     date:     optional YYYY-MM. Omit it and the month is read from the
+#               photo's own EXIF; only supply it when the file has none
+#               (Seestar exports, generated plots, screenshots).
+#
+# ── a project card ──────────────────────────────────────────────────
+#   - folder:   project folder name. hero: picks the image that fronts it.
+#     The caption is read from that project's index.md title — never retyped.
+#
+# ── where the pixels live ───────────────────────────────────────────
+#   <YYYYMMDD Project Name>/…   pictures that belong to a project. Point at
+#                               them in place; never copy into gallery/.
+#   gallery/<YYYY-MM>/…         pictures that belong to no project. One folder
+#                               per month, created when that month needs one.
+#
+# ════════════════════════════════════════════════════════════════════
+# ASTRONOMY
+# ════════════════════════════════════════════════════════════════════
+
+# Seestar exports carry no EXIF — the capture date is in the filename instead.
+- src: 20260725 Stargazing/data/M_31__Stacked_25_M_31_20.0s_IRCUT_20260730-015655.jpg
+  caption: M 31
+  note: 25 × 20s
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/NGC_7000__Stacked_20_NGC_7000_20.0s_IRCUT_20260730-014616.jpg
+  caption: NGC 7000
+  note: 20 × 20s
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/M_13__Stacked_5_M_13_60.0s_IRCUT_20260728-225801.jpg
+  caption: M 13
+  note: 5 × 60s
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/M_51__Stacked_30_M_51_10.0s_IRCUT_20260704-222846.jpg
+  caption: M 51
+  note: 30 × 10s
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/NGC_5907__Stacked_9_NGC_5907_10.0s_IRCUT_20260704-223446.jpg
+  caption: NGC 5907
+  note: 9 × 10s
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/Delta_Cygni__Stacked_54_Delta_Cygni_5.0s_IRCUT_20260728-223243.jpg
+  caption: Delta Cygni
+  note: 54 × 5s
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/Deneb__Stacked_32_Deneb_10.0s_IRCUT_20260725-015351.jpg
+  caption: Deneb
+  note: 32 × 10s
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/Vega__Stacked_8_Vega_10.0s_IRCUT_20260725-011926.jpg
+  caption: Vega
+  note: 8 × 10s
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/RR_Lyrae__Stacked_21_RR_Lyrae_5.0s_IRCUT_20260725-020642.jpg
+  caption: RR Lyrae
+  note: 21 × 5s
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/Albireo__Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg
+  caption: Albireo
+  note: Every star in the field smeared into its own spectrum — by accident
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/Vega__Light_Vega_5.0s_IRCUT_failed_20260729-222828.jpg
+  caption: Vega, dispersed
+  note: Grating mounted backwards
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/Vega__Light_Vega_10.0s_LP_20260728-233740.jpg
+  caption: Vega, dispersed
+  note: 1 × 10s, light-pollution filter
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/V530_Lyrae__Light_V530_Lyrae_2.0s_IRCUT_20260728-232423.jpg
+  caption: V530 Lyrae
+  note: 1 × 2s
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/Juno__Light_Juno_20.0s_IRCUT_20260729-000521.jpg
+  caption: Juno
+  note: Before
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- src: 20260725 Stargazing/data/Juno__Light_Juno_20.0s_IRCUT_20260729-003012.jpg
+  caption: Juno
+  note: Twenty-five minutes later — it moved
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+
+- src: technology/astronomy/Telescopes/telescopes.jpeg
+  caption: The Seestar, folded
+  science: Astronomy
+  toy: Optical
+  date: 2026-06
+- src: technology/astronomy/Measurements/horsehead.jpeg
+  caption: Horsehead
+  science: Astronomy
+  toy: Astrometry
+- src: technology/astronomy/Classification/classification.jpeg
+  caption: Dusk, from the balcony
+  note: The sky we actually get
+  science: Astronomy
+  date: 2026-06
+
+# ════════════════════════════════════════════════════════════════════
+# BIOLOGY
+# ════════════════════════════════════════════════════════════════════
+
+- src: 20260725 Cellgazing/data/tissue-section.jpg
+  caption: Tissue section
+  note: 400×
+  science: Biology
+  toy: Compound
+- src: 20260725 Cellgazing/data/leaf-epidermis.jpg
+  caption: Leaf epidermis
+  note: Stomata everywhere
+  science: Biology
+  toy: Stereo
+- src: 20260725 Cellgazing/data/reticulate-specimen.jpg
+  caption: Reticulate specimen
+  note: Handheld, no stage
+  science: Biology
+  toy: Surface
+  date: 2025-03
+- src: 20260401 Genes in Space/photos/photo.jpeg
+  caption: Our PCR run, in orbit
+  science: Biology
+  toy: PCR
+  date: 2026-04
+- src: technology/biology/Microscopes/microscopes.jpeg
+  caption: The stereo scope on its boom
+  science: Biology
+  toy: Stereo
+  date: 2026-06
+- src: technology/biology/Genomics/genomics.jpeg
+  caption: GELATO, out of the box
+  science: Biology
+  toy: Electrophoresis
+  date: 2026-06
+- src: technology/biology/Physiology/physiology.jpeg
+  caption: Spirometer, mouthpiece off
+  science: Biology
+  toy: Spirometer
+  date: 2026-06
+
+# ════════════════════════════════════════════════════════════════════
+# CHEMISTRY
+# ════════════════════════════════════════════════════════════════════
+
+- src: 20260420 UV-Vis Spectroscopy/photos/samples/samples3.jpeg
+  caption: The amber bottle shelf
+  science: Chemistry
+  toy: UV-Vis
+- src: 20260420 UV-Vis Spectroscopy/photos/samples/samples4.jpeg
+  caption: Everything coloured we could find
+  science: Chemistry
+  toy: UV-Vis
+- src: 20260420 UV-Vis Spectroscopy/photos/samples/samples5.jpeg
+  caption: Cuvettes loaded
+  science: Chemistry
+  toy: UV-Vis
+- src: 20260420 UV-Vis Spectroscopy/photos/samples/samples6.jpeg
+  caption: Quinine under the lamp
+  science: Chemistry
+  toy: UV-Vis
+- src: 20260420 UV-Vis Spectroscopy/photos/samples/samples7.jpeg
+  caption: Left to settle
+  science: Chemistry
+  toy: UV-Vis
+- src: 20260420 UV-Vis Spectroscopy/photos/setup/setup5.jpeg
+  caption: The software, fighting us
+  science: Chemistry
+  toy: UV-Vis
+- src: technology/chemistry/Spectroscopy/spectroscopy.jpeg
+  caption: The spectrophotometer and its cuvette holder
+  science: Chemistry
+  toy: UV-Vis
+
+# The IR work used the Nicolet 380 at the shared lab — retired with the move,
+# so these carry no toy tag. Nothing we own does IR.
+- src: 20260419 IR Spectroscopy/photos/setup/setup11.jpeg
+  caption: Beam path, lid up
+  science: Chemistry
+- src: 20260419 IR Spectroscopy/photos/setup/setup3.jpeg
+  caption: Plate down, lid closed
+  science: Chemistry
+
+- src: 20260405 Melting Point/photos/setup/setup3.jpeg
+  caption: Watching the capillary go clear
+  science: Chemistry
+  toy: Temperature
+- src: 20260405 Melting Point/photos/setup/setup6.jpeg
+  caption: The stage, mid-transition
+  science: Chemistry
+  toy: Temperature
+- src: technology/chemistry/Thermal/thermal.jpeg
+  caption: The probe that goes in everything
+  science: Chemistry
+  toy: Temperature
+  date: 2026-06
+
+- src: 20260411 Centrifuge/photos/samples/samples1.jpeg
+  caption: Red caps, ready to spin
+  science: Chemistry
+  toy: pH
+- src: 20260411 Centrifuge/photos/samples/samples7.jpeg
+  caption: Colour-coded by condition
+  science: Chemistry
+  toy: Conductivity
+- src: 20260411 Centrifuge/photos/samples/samples9.jpeg
+  caption: Rack of everything
+  science: Chemistry
+  toy: pH
+- src: 20260411 Centrifuge/photos/samples/samples12.jpeg
+  caption: Blue and orange
+  science: Chemistry
+  toy: Conductivity
+- src: 20260411 Centrifuge/photos/setup/setup1.jpeg
+  caption: The centrifuge, spun down
+  science: Chemistry
+  toy: pH
+- src: 20260411 Centrifuge/photos/setup/setup3.jpeg
+  caption: Weighing it out
+  science: Chemistry
+  toy: pH
+- src: 20260411 Centrifuge/photos/setup/setup5.jpeg
+  caption: Rotor balanced
+  science: Chemistry
+  toy: pH
+- src: technology/chemistry/Electrochemistry/electrochemistry.jpeg
+  caption: pH and conductivity, side by side
+  science: Chemistry
+  toy: pH
+
+# ════════════════════════════════════════════════════════════════════
+# PHYSICS
+# ════════════════════════════════════════════════════════════════════
+
+- src: technology/physics/Engineering/circuits.jpeg
+  caption: Soldering, scope on standby
+  science: Physics
+  toy: Oscilloscope
+- src: technology/physics/Mechanics/mechanics.jpeg
+  caption: Force, motion, photogate
+  science: Physics
+  toy: Force
+- src: technology/physics/Thermodynamics/thermodynamics.jpeg
+  caption: Gas pressure and turbidity
+  science: Physics
+  toy: Pressure
+- src: technology/physics/Electromagnetism/electromagnetism.jpeg
+  caption: The 3-axis magnetic field sensor
+  science: Physics
+  toy: Magnetism
+
+# The four-point probe itself was a shared-lab instrument; the jig that held
+# the coupons was ours, printed downstairs.
+- src: 20260404 Four Point Probe/photos/samples/samples2.jpeg
+  caption: The printed jig
+  science: Physics
+  toy: 3D Printer
+- src: 20260404 Four Point Probe/photos/samples/samples1.jpeg
+  caption: Coupons cut and laid out
+  science: Physics
+- src: 20260404 Four Point Probe/photos/samples/samples3.jpeg
+  caption: Gold on glass
+  science: Physics
+- src: 20260404 Four Point Probe/photos/setup/setup13.jpeg
+  caption: Four probes down
+  science: Physics
+- src: technology/mathematics/Symbolic/symbolic.jpeg
+  caption: A vacuum chamber, up close
+  science: Physics
+  date: 2026-06
+
+# ════════════════════════════════════════════════════════════════════
+# MATHEMATICS — the analysis, not the apparatus. Every plot on the site
+# was drawn by matplotlib, which is what makes this a real tab and not a
+# placeholder.
+# ════════════════════════════════════════════════════════════════════
+
+- src: 20260420 UV-Vis Spectroscopy/output/images/uvvis_overlay.png
+  caption: Four traces, one axis
+  science: Mathematics
+  toy: Matplotlib
+  date: 2026-04
+- src: 20260420 UV-Vis Spectroscopy/output/images/fluoromax_quinine.png
+  caption: Quinine, emitting
+  science: Mathematics
+  toy: Matplotlib
+  date: 2026-04
+- src: 20260419 IR Spectroscopy/output/images/chem_oh_spectrum.png
+  caption: That fat O–H band
+  science: Mathematics
+  toy: Matplotlib
+  date: 2026-04
+- src: 20260404 Four Point Probe/output/mean_sheet_resistance.png
+  caption: Sheet resistance, at last
+  science: Mathematics
+  toy: Matplotlib
+  date: 2026-04
+- src: technology/mathematics/Numeric/numeric.jpeg
+  caption: The problem-solving shelf
+  science: Mathematics
+  date: 2026-06
+- src: technology/mathematics/Graphic/graphic.jpeg
+  caption: Map, pinned
+  science: Mathematics
+  date: 2026-06
+
+# ════════════════════════════════════════════════════════════════════
+# COMPUTING
+# ════════════════════════════════════════════════════════════════════
+
+- src: 20250225 Catfood/output/catfood_preference.png
+  caption: She has a preference
+  note: p = 0.03
+  science: Computing
+  toy: SciPy
+  date: 2025-02
+- src: technology/computing/Statistics/catfood.jpeg
+  caption: Two bowls, twenty trials
+  science: Computing
+  toy: SciPy
+- src: 20250225 Catfood/photos/setup/setup1.jpeg
+  caption: The subject declines to participate
+  science: Computing
+- src: 20250225 Catfood/photos/setup/setup5.jpeg
+  caption: Bowls swapped, trial reset
+  science: Computing
+- src: 20250225 Catfood/photos/setup/setup9.jpeg
+  caption: She came back
+  science: Computing
+- src: technology/computing/Publishing/prism.jpeg
+  caption: The plan, on poster board
+  science: Computing
+  date: 2026-06
+- src: technology/computing/Machine Learning/ctybiology.jpeg
+  caption: Floor work, cat supervising
+  science: Computing
+  date: 2026-06
+
+# ════════════════════════════════════════════════════════════════════
+# PROJECT CARDS — these link out to a write-up instead of opening a photo.
+# Dated by the project folder, so a card sits with the work it came from.
+# ════════════════════════════════════════════════════════════════════
+
+- folder: 20260725 Stargazing
+  hero: data/M_31__Stacked_25_M_31_20.0s_IRCUT_20260730-015655.jpg
+  science: Astronomy
+  toy: Optical
+  date: 2026-07
+- folder: 20260725 Cellgazing
+  hero: data/tissue-section.jpg
+  science: Biology
+  toy: Compound
+  date: 2026-07
+- folder: 20260420 UV-Vis Spectroscopy
+  hero: photos/samples/samples6.jpeg
+  science: Chemistry
+  toy: UV-Vis
+  date: 2026-04
+- folder: 20260419 IR Spectroscopy
+  hero: photos/setup/setup11.jpeg
+  science: Chemistry
+  date: 2026-04
+- folder: 20260411 Centrifuge
+  hero: photos/samples/samples1.jpeg
+  science: Chemistry
+  toy: pH
+  date: 2026-04
+- folder: 20260405 Melting Point
+  hero: photos/setup/setup3.jpeg
+  science: Chemistry
+  toy: Temperature
+  date: 2026-04
+- folder: 20260404 Four Point Probe
+  hero: photos/samples/samples3.jpeg
+  science: Physics
+  date: 2026-04
+- folder: 20260401 Genes in Space
+  hero: photos/photo.jpeg
+  science: Biology
+  toy: PCR
+  date: 2026-04
+- folder: 20250225 Catfood
+  hero: photos/setup/setup1.jpeg
+  science: Computing
+  toy: SciPy
+  date: 2025-02

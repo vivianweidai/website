@@ -1,0 +1,1309 @@
+{
+  "tiles": [
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "M 31",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/M_31__Stacked_25_M_31_20.0s_IRCUT_20260730-015655.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "25 × 20s",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "NGC 7000",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/NGC_7000__Stacked_20_NGC_7000_20.0s_IRCUT_20260730-014616.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "20 × 20s",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "M 13",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/M_13__Stacked_5_M_13_60.0s_IRCUT_20260728-225801.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "5 × 60s",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "M 51",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/M_51__Stacked_30_M_51_10.0s_IRCUT_20260704-222846.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "30 × 10s",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "NGC 5907",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/NGC_5907__Stacked_9_NGC_5907_10.0s_IRCUT_20260704-223446.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "9 × 10s",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Delta Cygni",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/Delta_Cygni__Stacked_54_Delta_Cygni_5.0s_IRCUT_20260728-223243.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "54 × 5s",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Deneb",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/Deneb__Stacked_32_Deneb_10.0s_IRCUT_20260725-015351.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "32 × 10s",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Vega",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/Vega__Stacked_8_Vega_10.0s_IRCUT_20260725-011926.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "8 × 10s",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "RR Lyrae",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/RR_Lyrae__Stacked_21_RR_Lyrae_5.0s_IRCUT_20260725-020642.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "21 × 5s",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Albireo",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/Albireo__Light_Albireo_20.0s_IRCUT_failed_20260729-225851.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "Every star in the field smeared into its own spectrum — by accident",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Vega, dispersed",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/Vega__Light_Vega_5.0s_IRCUT_failed_20260729-222828.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "Grating mounted backwards",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Vega, dispersed",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/Vega__Light_Vega_10.0s_LP_20260728-233740.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "1 × 10s, light-pollution filter",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "V530 Lyrae",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/V530_Lyrae__Light_V530_Lyrae_2.0s_IRCUT_20260728-232423.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "1 × 2s",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Juno",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/Juno__Light_Juno_20.0s_IRCUT_20260729-000521.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "Before",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Juno",
+      "kind": "photo",
+      "src": "/projects/20260725%20Stargazing/data/Juno__Light_Juno_20.0s_IRCUT_20260729-003012.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "note": "Twenty-five minutes later — it moved",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Stargazing",
+      "href": "/projects/20260725%20Stargazing/",
+      "kind": "project",
+      "src": "/projects/20260725%20Stargazing/data/M_31__Stacked_25_M_31_20.0s_IRCUT_20260730-015655.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Cellgazing",
+      "href": "/projects/20260725%20Cellgazing/",
+      "kind": "project",
+      "src": "/projects/20260725%20Cellgazing/data/tissue-section.jpg",
+      "w": 2560,
+      "h": 1920,
+      "date": "2026-07",
+      "date_label": "July 2026",
+      "toy": "Compound",
+      "toy_slug": "compound"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "The Seestar, folded",
+      "kind": "photo",
+      "src": "/projects/technology/astronomy/Telescopes/telescopes.jpeg",
+      "w": 1600,
+      "h": 400,
+      "date": "2026-06",
+      "date_label": "June 2026",
+      "toy": "Optical",
+      "toy_slug": "optical"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Dusk, from the balcony",
+      "kind": "photo",
+      "src": "/projects/technology/astronomy/Classification/classification.jpeg",
+      "w": 4032,
+      "h": 1680,
+      "date": "2026-06",
+      "date_label": "June 2026",
+      "note": "The sky we actually get"
+    },
+    {
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "The stereo scope on its boom",
+      "kind": "photo",
+      "src": "/projects/technology/biology/Microscopes/microscopes.jpeg",
+      "w": 1600,
+      "h": 400,
+      "date": "2026-06",
+      "date_label": "June 2026",
+      "toy": "Stereo",
+      "toy_slug": "stereo"
+    },
+    {
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "GELATO, out of the box",
+      "kind": "photo",
+      "src": "/projects/technology/biology/Genomics/genomics.jpeg",
+      "w": 1600,
+      "h": 460,
+      "date": "2026-06",
+      "date_label": "June 2026",
+      "toy": "Electrophoresis",
+      "toy_slug": "electrophoresis"
+    },
+    {
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Spirometer, mouthpiece off",
+      "kind": "photo",
+      "src": "/projects/technology/biology/Physiology/physiology.jpeg",
+      "w": 1600,
+      "h": 400,
+      "date": "2026-06",
+      "date_label": "June 2026",
+      "toy": "Spirometer",
+      "toy_slug": "spirometer"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "The spectrophotometer and its cuvette holder",
+      "kind": "photo",
+      "src": "/projects/technology/chemistry/Spectroscopy/spectroscopy.jpeg",
+      "w": 2400,
+      "h": 1800,
+      "date": "2026-06",
+      "date_label": "June 2026",
+      "toy": "UV-Vis",
+      "toy_slug": "uv-vis"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "The probe that goes in everything",
+      "kind": "photo",
+      "src": "/projects/technology/chemistry/Thermal/thermal.jpeg",
+      "w": 5712,
+      "h": 2380,
+      "date": "2026-06",
+      "date_label": "June 2026",
+      "toy": "Temperature",
+      "toy_slug": "temperature"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "pH and conductivity, side by side",
+      "kind": "photo",
+      "src": "/projects/technology/chemistry/Electrochemistry/electrochemistry.jpeg",
+      "w": 2400,
+      "h": 1800,
+      "date": "2026-06",
+      "date_label": "June 2026",
+      "toy": "pH",
+      "toy_slug": "ph"
+    },
+    {
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "Force, motion, photogate",
+      "kind": "photo",
+      "src": "/projects/technology/physics/Mechanics/mechanics.jpeg",
+      "w": 2400,
+      "h": 1800,
+      "date": "2026-06",
+      "date_label": "June 2026",
+      "toy": "Force",
+      "toy_slug": "force"
+    },
+    {
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "Gas pressure and turbidity",
+      "kind": "photo",
+      "src": "/projects/technology/physics/Thermodynamics/thermodynamics.jpeg",
+      "w": 2400,
+      "h": 1800,
+      "date": "2026-06",
+      "date_label": "June 2026",
+      "toy": "Pressure",
+      "toy_slug": "pressure"
+    },
+    {
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "The 3-axis magnetic field sensor",
+      "kind": "photo",
+      "src": "/projects/technology/physics/Electromagnetism/electromagnetism.jpeg",
+      "w": 2400,
+      "h": 1800,
+      "date": "2026-06",
+      "date_label": "June 2026",
+      "toy": "Magnetism",
+      "toy_slug": "magnetism"
+    },
+    {
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "A vacuum chamber, up close",
+      "kind": "photo",
+      "src": "/projects/technology/mathematics/Symbolic/symbolic.jpeg",
+      "w": 2800,
+      "h": 1166,
+      "date": "2026-06",
+      "date_label": "June 2026"
+    },
+    {
+      "science": "Mathematics",
+      "science_slug": "math",
+      "caption": "The problem-solving shelf",
+      "kind": "photo",
+      "src": "/projects/technology/mathematics/Numeric/numeric.jpeg",
+      "w": 2800,
+      "h": 1106,
+      "date": "2026-06",
+      "date_label": "June 2026"
+    },
+    {
+      "science": "Mathematics",
+      "science_slug": "math",
+      "caption": "Map, pinned",
+      "kind": "photo",
+      "src": "/projects/technology/mathematics/Graphic/graphic.jpeg",
+      "w": 3461,
+      "h": 1442,
+      "date": "2026-06",
+      "date_label": "June 2026"
+    },
+    {
+      "science": "Computing",
+      "science_slug": "comp",
+      "caption": "The plan, on poster board",
+      "kind": "photo",
+      "src": "/projects/technology/computing/Publishing/prism.jpeg",
+      "w": 4032,
+      "h": 1680,
+      "date": "2026-06",
+      "date_label": "June 2026"
+    },
+    {
+      "science": "Computing",
+      "science_slug": "comp",
+      "caption": "Floor work, cat supervising",
+      "kind": "photo",
+      "src": "/projects/technology/computing/Machine%20Learning/ctybiology.jpeg",
+      "w": 1920,
+      "h": 798,
+      "date": "2026-06",
+      "date_label": "June 2026"
+    },
+    {
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Our PCR run, in orbit",
+      "kind": "photo",
+      "src": "/projects/20260401%20Genes%20in%20Space/photos/photo.jpeg",
+      "w": 1195,
+      "h": 896,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "PCR",
+      "toy_slug": "pcr"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "The amber bottle shelf",
+      "kind": "photo",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples3.jpeg",
+      "w": 1600,
+      "h": 1200,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "UV-Vis",
+      "toy_slug": "uv-vis"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Everything coloured we could find",
+      "kind": "photo",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples4.jpeg",
+      "w": 1600,
+      "h": 1200,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "UV-Vis",
+      "toy_slug": "uv-vis"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Cuvettes loaded",
+      "kind": "photo",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples5.jpeg",
+      "w": 1600,
+      "h": 1200,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "UV-Vis",
+      "toy_slug": "uv-vis"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Quinine under the lamp",
+      "kind": "photo",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples6.jpeg",
+      "w": 1600,
+      "h": 1200,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "UV-Vis",
+      "toy_slug": "uv-vis"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Left to settle",
+      "kind": "photo",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples7.jpeg",
+      "w": 1600,
+      "h": 1200,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "UV-Vis",
+      "toy_slug": "uv-vis"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "The software, fighting us",
+      "kind": "photo",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/setup/setup5.jpeg",
+      "w": 1600,
+      "h": 1200,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "UV-Vis",
+      "toy_slug": "uv-vis"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Beam path, lid up",
+      "kind": "photo",
+      "src": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup11.jpeg",
+      "w": 1600,
+      "h": 1200,
+      "date": "2026-04",
+      "date_label": "April 2026"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Plate down, lid closed",
+      "kind": "photo",
+      "src": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup3.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Watching the capillary go clear",
+      "kind": "photo",
+      "src": "/projects/20260405%20Melting%20Point/photos/setup/setup3.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "Temperature",
+      "toy_slug": "temperature"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "The stage, mid-transition",
+      "kind": "photo",
+      "src": "/projects/20260405%20Melting%20Point/photos/setup/setup6.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "Temperature",
+      "toy_slug": "temperature"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Red caps, ready to spin",
+      "kind": "photo",
+      "src": "/projects/20260411%20Centrifuge/photos/samples/samples1.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "pH",
+      "toy_slug": "ph"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Colour-coded by condition",
+      "kind": "photo",
+      "src": "/projects/20260411%20Centrifuge/photos/samples/samples7.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "Conductivity",
+      "toy_slug": "conductivity"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Rack of everything",
+      "kind": "photo",
+      "src": "/projects/20260411%20Centrifuge/photos/samples/samples9.jpeg",
+      "w": 900,
+      "h": 1200,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "pH",
+      "toy_slug": "ph"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Blue and orange",
+      "kind": "photo",
+      "src": "/projects/20260411%20Centrifuge/photos/samples/samples12.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "Conductivity",
+      "toy_slug": "conductivity"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "The centrifuge, spun down",
+      "kind": "photo",
+      "src": "/projects/20260411%20Centrifuge/photos/setup/setup1.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "pH",
+      "toy_slug": "ph"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Weighing it out",
+      "kind": "photo",
+      "src": "/projects/20260411%20Centrifuge/photos/setup/setup3.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "pH",
+      "toy_slug": "ph"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Rotor balanced",
+      "kind": "photo",
+      "src": "/projects/20260411%20Centrifuge/photos/setup/setup5.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "pH",
+      "toy_slug": "ph"
+    },
+    {
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "The printed jig",
+      "kind": "photo",
+      "src": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples2.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "3D Printer",
+      "toy_slug": "3d-printer"
+    },
+    {
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "Coupons cut and laid out",
+      "kind": "photo",
+      "src": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples1.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026"
+    },
+    {
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "Gold on glass",
+      "kind": "photo",
+      "src": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples3.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026"
+    },
+    {
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "Four probes down",
+      "kind": "photo",
+      "src": "/projects/20260404%20Four%20Point%20Probe/photos/setup/setup13.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026"
+    },
+    {
+      "science": "Mathematics",
+      "science_slug": "math",
+      "caption": "Four traces, one axis",
+      "kind": "photo",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/output/images/uvvis_overlay.png",
+      "w": 3569,
+      "h": 1469,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "Matplotlib",
+      "toy_slug": "matplotlib"
+    },
+    {
+      "science": "Mathematics",
+      "science_slug": "math",
+      "caption": "Quinine, emitting",
+      "kind": "photo",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/output/images/fluoromax_quinine.png",
+      "w": 3569,
+      "h": 1469,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "Matplotlib",
+      "toy_slug": "matplotlib"
+    },
+    {
+      "science": "Mathematics",
+      "science_slug": "math",
+      "caption": "That fat O–H band",
+      "kind": "photo",
+      "src": "/projects/20260419%20IR%20Spectroscopy/output/images/chem_oh_spectrum.png",
+      "w": 3570,
+      "h": 1453,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "Matplotlib",
+      "toy_slug": "matplotlib"
+    },
+    {
+      "science": "Mathematics",
+      "science_slug": "math",
+      "caption": "Sheet resistance, at last",
+      "kind": "photo",
+      "src": "/projects/20260404%20Four%20Point%20Probe/output/mean_sheet_resistance.png",
+      "w": 2968,
+      "h": 1466,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "Matplotlib",
+      "toy_slug": "matplotlib"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "UV-Vis Spectroscopy",
+      "href": "/projects/20260420%20UV-Vis%20Spectroscopy/",
+      "kind": "project",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples6.jpeg",
+      "w": 1600,
+      "h": 1200,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "UV-Vis",
+      "toy_slug": "uv-vis"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "IR Spectroscopy",
+      "href": "/projects/20260419%20IR%20Spectroscopy/",
+      "kind": "project",
+      "src": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup11.jpeg",
+      "w": 1600,
+      "h": 1200,
+      "date": "2026-04",
+      "date_label": "April 2026"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Centrifugation and pH of Everyday Liquids",
+      "href": "/projects/20260411%20Centrifuge/",
+      "kind": "project",
+      "src": "/projects/20260411%20Centrifuge/photos/samples/samples1.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "pH",
+      "toy_slug": "ph"
+    },
+    {
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Melting Point",
+      "href": "/projects/20260405%20Melting%20Point/",
+      "kind": "project",
+      "src": "/projects/20260405%20Melting%20Point/photos/setup/setup3.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "Temperature",
+      "toy_slug": "temperature"
+    },
+    {
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "Four-Point Probe of Sheet Resistance",
+      "href": "/projects/20260404%20Four%20Point%20Probe/",
+      "kind": "project",
+      "src": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples3.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2026-04",
+      "date_label": "April 2026"
+    },
+    {
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Meow to Mars — Will Space Help or Hurt Mi's Heart?",
+      "href": "/projects/20260401%20Genes%20in%20Space/",
+      "kind": "project",
+      "src": "/projects/20260401%20Genes%20in%20Space/photos/photo.jpeg",
+      "w": 1195,
+      "h": 896,
+      "date": "2026-04",
+      "date_label": "April 2026",
+      "toy": "PCR",
+      "toy_slug": "pcr"
+    },
+    {
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Horsehead",
+      "kind": "photo",
+      "src": "/projects/technology/astronomy/Measurements/horsehead.jpeg",
+      "w": 1600,
+      "h": 1600,
+      "date": "2025-12",
+      "date_label": "December 2025",
+      "toy": "Astrometry",
+      "toy_slug": "astrometry"
+    },
+    {
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Tissue section",
+      "kind": "photo",
+      "src": "/projects/20260725%20Cellgazing/data/tissue-section.jpg",
+      "w": 2560,
+      "h": 1920,
+      "date": "2025-03",
+      "date_label": "March 2025",
+      "note": "400×",
+      "toy": "Compound",
+      "toy_slug": "compound"
+    },
+    {
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Leaf epidermis",
+      "kind": "photo",
+      "src": "/projects/20260725%20Cellgazing/data/leaf-epidermis.jpg",
+      "w": 2560,
+      "h": 1920,
+      "date": "2025-03",
+      "date_label": "March 2025",
+      "note": "Stomata everywhere",
+      "toy": "Stereo",
+      "toy_slug": "stereo"
+    },
+    {
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Reticulate specimen",
+      "kind": "photo",
+      "src": "/projects/20260725%20Cellgazing/data/reticulate-specimen.jpg",
+      "w": 2133,
+      "h": 1459,
+      "date": "2025-03",
+      "date_label": "March 2025",
+      "note": "Handheld, no stage",
+      "toy": "Surface",
+      "toy_slug": "surface"
+    },
+    {
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "Soldering, scope on standby",
+      "kind": "photo",
+      "src": "/projects/technology/physics/Engineering/circuits.jpeg",
+      "w": 4032,
+      "h": 3024,
+      "date": "2025-02",
+      "date_label": "February 2025",
+      "toy": "Oscilloscope",
+      "toy_slug": "oscilloscope"
+    },
+    {
+      "science": "Computing",
+      "science_slug": "comp",
+      "caption": "She has a preference",
+      "kind": "photo",
+      "src": "/projects/20250225%20Catfood/output/catfood_preference.png",
+      "w": 1168,
+      "h": 1168,
+      "date": "2025-02",
+      "date_label": "February 2025",
+      "note": "p = 0.03",
+      "toy": "SciPy",
+      "toy_slug": "scipy"
+    },
+    {
+      "science": "Computing",
+      "science_slug": "comp",
+      "caption": "Red or Green, What Colored Cat Food does Mi Prefer?",
+      "href": "/projects/20250225%20Catfood/",
+      "kind": "project",
+      "src": "/projects/20250225%20Catfood/photos/setup/setup1.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2025-02",
+      "date_label": "February 2025",
+      "toy": "SciPy",
+      "toy_slug": "scipy"
+    },
+    {
+      "science": "Computing",
+      "science_slug": "comp",
+      "caption": "Two bowls, twenty trials",
+      "kind": "photo",
+      "src": "/projects/technology/computing/Statistics/catfood.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2024-09",
+      "date_label": "September 2024",
+      "toy": "SciPy",
+      "toy_slug": "scipy"
+    },
+    {
+      "science": "Computing",
+      "science_slug": "comp",
+      "caption": "The subject declines to participate",
+      "kind": "photo",
+      "src": "/projects/20250225%20Catfood/photos/setup/setup1.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2024-09",
+      "date_label": "September 2024"
+    },
+    {
+      "science": "Computing",
+      "science_slug": "comp",
+      "caption": "Bowls swapped, trial reset",
+      "kind": "photo",
+      "src": "/projects/20250225%20Catfood/photos/setup/setup5.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2024-09",
+      "date_label": "September 2024"
+    },
+    {
+      "science": "Computing",
+      "science_slug": "comp",
+      "caption": "She came back",
+      "kind": "photo",
+      "src": "/projects/20250225%20Catfood/photos/setup/setup9.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2024-09",
+      "date_label": "September 2024"
+    }
+  ],
+  "sciences": [
+    {
+      "science": "Mathematics",
+      "slug": "math",
+      "count": 6,
+      "toys": [
+        {
+          "label": "NumPy",
+          "name": "NumPy",
+          "slug": "numpy",
+          "count": 0
+        },
+        {
+          "label": "SciPy",
+          "name": "SciPy",
+          "slug": "scipy",
+          "count": 0
+        },
+        {
+          "label": "Wolfram",
+          "name": "Wolfram",
+          "slug": "wolfram",
+          "count": 0
+        },
+        {
+          "label": "Matplotlib",
+          "name": "Matplotlib",
+          "slug": "matplotlib",
+          "count": 4
+        },
+        {
+          "label": "LaTeX",
+          "name": "LaTeX",
+          "slug": "latex",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "science": "Computing",
+      "slug": "comp",
+      "count": 8,
+      "toys": [
+        {
+          "label": "SciPy",
+          "name": "SciPy",
+          "slug": "scipy",
+          "count": 3
+        },
+        {
+          "label": "scikit-learn",
+          "name": "scikit-learn",
+          "slug": "scikit-learn",
+          "count": 0
+        },
+        {
+          "label": "PyTorch",
+          "name": "PyTorch",
+          "slug": "pytorch",
+          "count": 0
+        },
+        {
+          "label": "GitHub",
+          "name": "GitHub",
+          "slug": "github",
+          "count": 0
+        },
+        {
+          "label": "Jupyter",
+          "name": "Jupyter",
+          "slug": "jupyter",
+          "count": 0
+        },
+        {
+          "label": "Docker",
+          "name": "Docker",
+          "slug": "docker",
+          "count": 0
+        },
+        {
+          "label": "Zenodo",
+          "name": "Zenodo",
+          "slug": "zenodo",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "science": "Physics",
+      "slug": "phys",
+      "count": 10,
+      "toys": [
+        {
+          "label": "Force",
+          "name": "Vernier Go Direct Force and Acceleration Sensor",
+          "slug": "force",
+          "count": 1
+        },
+        {
+          "label": "Motion",
+          "name": "Vernier Go Direct Motion Detector",
+          "slug": "motion",
+          "count": 0
+        },
+        {
+          "label": "Time",
+          "name": "Vernier Go Direct Photogate",
+          "slug": "time",
+          "count": 0
+        },
+        {
+          "label": "Pressure",
+          "name": "Vernier Go Direct Gas Pressure Sensor",
+          "slug": "pressure",
+          "count": 1
+        },
+        {
+          "label": "Turbidity",
+          "name": "Vernier Go Direct Turbidity",
+          "slug": "turbidity",
+          "count": 0
+        },
+        {
+          "label": "Spectrophotometer",
+          "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
+          "slug": "spectrophotometer",
+          "count": 0
+        },
+        {
+          "label": "Optical Fiber",
+          "name": "Vernier Spectrophotometer Optical Fiber",
+          "slug": "optical-fiber",
+          "count": 0
+        },
+        {
+          "label": "Magnetism",
+          "name": "Vernier Go Direct 3-Axis Magnetic Field Sensor",
+          "slug": "magnetism",
+          "count": 1
+        },
+        {
+          "label": "LEGO",
+          "name": "LEGO Education SPIKE Prime Set",
+          "slug": "lego",
+          "count": 0
+        },
+        {
+          "label": "Oscilloscope",
+          "name": "Digilent Analog Discovery 3",
+          "slug": "oscilloscope",
+          "count": 1
+        },
+        {
+          "label": "3D Printer",
+          "name": "Prusa CORE One+",
+          "slug": "3d-printer",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "science": "Chemistry",
+      "slug": "chem",
+      "count": 24,
+      "toys": [
+        {
+          "label": "Temperature",
+          "name": "Vernier Go Direct Temperature Probe",
+          "slug": "temperature",
+          "count": 4
+        },
+        {
+          "label": "pH",
+          "name": "Vernier Go Direct pH Sensor",
+          "slug": "ph",
+          "count": 7
+        },
+        {
+          "label": "Conductivity",
+          "name": "Vernier Go Direct Conductivity Probe",
+          "slug": "conductivity",
+          "count": 2
+        },
+        {
+          "label": "UV-Vis",
+          "name": "Vernier Go Direct Fluorescence UV-VIS Spectrophotometer",
+          "slug": "uv-vis",
+          "count": 8
+        },
+        {
+          "label": "Polarimeter",
+          "name": "Vernier Go Direct Polarimeter",
+          "slug": "polarimeter",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "science": "Biology",
+      "slug": "bio",
+      "count": 9,
+      "toys": [
+        {
+          "label": "Surface",
+          "name": "Dino-Lite AF4515T-FUW Digital Microscope",
+          "slug": "surface",
+          "count": 1
+        },
+        {
+          "label": "Stereo",
+          "name": "AmScope SM-4TZ-144 Trinocular Stereo Microscope",
+          "slug": "stereo",
+          "count": 2
+        },
+        {
+          "label": "Compound",
+          "name": "Swift Optical SW380T Trinocular Compound Microscope",
+          "slug": "compound",
+          "count": 2
+        },
+        {
+          "label": "EKG",
+          "name": "Vernier Go Direct EKG Sensor",
+          "slug": "ekg",
+          "count": 0
+        },
+        {
+          "label": "Spirometer",
+          "name": "Vernier Go Direct Spirometer",
+          "slug": "spirometer",
+          "count": 1
+        },
+        {
+          "label": "Respiration",
+          "name": "Vernier Go Direct O2 + CO2 Gas Sensor Bundle",
+          "slug": "respiration",
+          "count": 0
+        },
+        {
+          "label": "PCR",
+          "name": "miniPCR mini16 Thermal Cycler",
+          "slug": "pcr",
+          "count": 2
+        },
+        {
+          "label": "Fluorescence",
+          "name": "P51 Molecular Fluorescence Viewer",
+          "slug": "fluorescence",
+          "count": 0
+        },
+        {
+          "label": "Electrophoresis",
+          "name": "GELATO Electrophoresis and Visualization System",
+          "slug": "electrophoresis",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "science": "Astronomy",
+      "slug": "astro",
+      "count": 19,
+      "toys": [
+        {
+          "label": "Optical",
+          "name": "ZWO Seestar S30 Pro with Tilting Wedge",
+          "slug": "optical",
+          "count": 17
+        },
+        {
+          "label": "Earth",
+          "name": "UBC Thunderbird South Observatory",
+          "slug": "earth",
+          "count": 0
+        },
+        {
+          "label": "Space",
+          "name": "MAST Portal",
+          "slug": "space",
+          "count": 0
+        },
+        {
+          "label": "Photometry",
+          "name": "AAVSO Database",
+          "slug": "photometry",
+          "count": 0
+        },
+        {
+          "label": "Astrometry",
+          "name": "Gaia Archive",
+          "slug": "astrometry",
+          "count": 1
+        },
+        {
+          "label": "Spectroscopy",
+          "name": "Pickles Stellar Atlas",
+          "slug": "spectroscopy",
+          "count": 0
+        },
+        {
+          "label": "Stars",
+          "name": "SIMBAD",
+          "slug": "stars",
+          "count": 0
+        },
+        {
+          "label": "Transients",
+          "name": "Transient Name Server",
+          "slug": "transients",
+          "count": 0
+        },
+        {
+          "label": "Galaxies",
+          "name": "Galaxy Zoo",
+          "slug": "galaxies",
+          "count": 0
+        }
+      ]
+    }
+  ]
+}
