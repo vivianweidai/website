@@ -66,6 +66,27 @@ Findings from a deep dive get folded back into that project's entry in `work/IDE
 
 **Update `IDEAS.md` continuously while brainstorming — don't wait to be asked, and don't batch it to the end of a session.** A brainstorm that revises what a project needs (or corrects a wrong read of one) is exactly the durable content the doc exists to hold; leaving it in chat loses it. **Record corrections as corrections** — say what the earlier read was and that it was wrong, so a future session doesn't re-derive the same mistake from the stale sketch that's still sitting in a table nearby.
 
+## STAGING GALLERY CANDIDATES
+
+Images destined for the site land first in **`work/scratch/gallery/`**. **Never stage bare
+images** — always ship the context with them, because whoever builds the page needs hover text,
+captions and filter tags, and cannot recover any of it from the pixels.
+
+Each staging batch carries two sidecars:
+- **`metadata.yml`** — the machine-readable one, and the one to parse. Per asset: `title`,
+  `alt` (hover), `caption`, `tags`, `exposure`, `confidence`, and `caveat` where the result is
+  weaker than it looks.
+- **`README.md`** — the prose: what the batch is, how it was produced, and what would be wrong
+  to claim from it.
+
+⚠️ **Tag every asset `kind: capture` or `kind: figure`.** A *capture* is byte-for-byte instrument
+output and may go in the Stargazing/Cellgazing capture galleries, which forbid any pixel edit. A
+*figure* is derived from our own reduction and must **not** go there — it belongs on a project
+page, where analysis is the point. Cropping a capture turns it into a figure.
+
+Record confidence honestly at staging time. A caption written months later from a filename will
+overstate a 3-sigma result as readily as a 20-sigma one.
+
 ## AUTHORING A RESEARCH PROJECT
 
 Each project is a date-prefixed folder under `web/public/research/projects/`. The public-facing overview is **`index.md`** (not `README.md`) — Astro's loader globs `*/index.md`, so the filename matters. Model new pages on `20260420 UV-Vis Spectroscopy/index.md` or `20260419 IR Spectroscopy/index.md`.
