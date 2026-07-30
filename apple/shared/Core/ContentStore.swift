@@ -18,12 +18,10 @@ public final class ContentStore {
     public static let shared = ContentStore()
 
     public var activities: [Activity]?
-    public var sciences: [ResearchScience]?
     public var manifest: CurriculumManifest?
     public var gallery: GalleryResponse?
 
     public var activitiesError: String?
-    public var sciencesError: String?
     public var manifestError: String?
     public var galleryError: String?
 
@@ -31,7 +29,7 @@ public final class ContentStore {
 
     public init() {}
 
-    /// Kick off all four fetches in parallel. Idempotent — calling
+    /// Kick off all three fetches in parallel. Idempotent — calling
     /// twice during launch is fine; the second call joins the existing
     /// task instead of starting new fetches (the underlying loaders
     /// also cache).
@@ -42,10 +40,9 @@ public final class ContentStore {
         }
         let task = Task {
             async let a: Void = self.loadActivities()
-            async let t: Void = self.loadSciences()
             async let m: Void = self.loadManifest()
             async let g: Void = self.loadGallery()
-            _ = await (a, t, m, g)
+            _ = await (a, m, g)
         }
         preloadTask = task
         await task.value
@@ -59,11 +56,9 @@ public final class ContentStore {
         await APIClient.shared.invalidate()
         await CurriculumLoader.shared.invalidate()
         activities = nil
-        sciences = nil
         manifest = nil
         gallery = nil
         activitiesError = nil
-        sciencesError = nil
         manifestError = nil
         galleryError = nil
         await preloadAll()
@@ -75,15 +70,6 @@ public final class ContentStore {
             activitiesError = nil
         } catch {
             activitiesError = error.localizedDescription
-        }
-    }
-
-    private func loadSciences() async {
-        do {
-            sciences = try await APIClient.shared.listResearchSciences()
-            sciencesError = nil
-        } catch {
-            sciencesError = error.localizedDescription
         }
     }
 

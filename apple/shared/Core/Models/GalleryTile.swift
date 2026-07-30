@@ -46,9 +46,12 @@ public struct GalleryTile: Codable, Sendable, Identifiable {
     /// A still frame for a clip. `AsyncImage` cannot decode an mp4, so this is
     /// what a video tile actually shows.
     public let poster: String?
+    /// A project card's shuffle-pool photos, folder-relative. Baked by
+    /// build_gallery.py; used to live in technology.json, which is gone.
+    public let photos: [String]?
 
     enum CodingKeys: String, CodingKey {
-        case src, full, caption, science, kind, date, w, h, href, video, poster
+        case src, full, caption, science, kind, date, w, h, href, video, poster, photos
         case scienceSlug = "science_slug"
     }
 
@@ -70,6 +73,19 @@ public struct GalleryTile: Codable, Sendable, Identifiable {
         guard isProject, let href else { return nil }
         let path = href.hasSuffix("/") ? href + "index.md" : href + "/index.md"
         return Self.absolute(path)
+    }
+
+    /// Absolute URLs for a project card's photos, resolved against its folder.
+    public var photoURLs: [URL] {
+        guard let photos, let href else { return [] }
+        let base = href.hasSuffix("/") ? href : href + "/"
+        return photos.compactMap { Self.absolute(base + Self.encode($0)) }
+    }
+
+    private static func encode(_ path: String) -> String {
+        path.split(separator: "/")
+            .map { $0.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? String($0) }
+            .joined(separator: "/")
     }
 
     /// Paths in the manifest are site-absolute and already percent-encoded by

@@ -9,7 +9,7 @@ THE WALL
 /projects/ is one chronological grid of every picture worth looking at. Two
 kinds of tile live in it, and both come from the same YAML list:
 
-  photo tile    a picture, or a clip. `src:` points at a file. An .mp4
+  photo tile    a picture, or a clip. An .mp4
                 autoplays muted and loops on the web; give it a still frame
                 beside it named "<name>.poster.jpg" and that is what the tile
                 shows before it plays, and what the iOS app shows instead.
@@ -42,28 +42,12 @@ twice, so a mistake is a build error rather than a hole in the wall.
 Video works the same way. An .mp4 tile autoplays muted and loops; its
 dimensions come from the MP4 header and it is served without re-encoding.
 
-TAGS
-----
-`science:` is required and is one of the six.
-
-`toy:` names the specific instrument. It must match a toy `short` (or full
-`name`) the science owns in technology.json, it shows in the tile's caption,
-and it determines the tile's category. Leave it off when no instrument we
-currently own is what the picture is about — the retired shared-lab
-instruments (Nicolet FT-IR, OptiMelt) are why that case exists.
-
-`tech:` is the CATEGORY the wall filters on (Mechanics, Genomics, Measurements),
-and it takes either one name or a list:
-
-    tech: Symbolic
-    tech: [Numeric, Symbolic, Graphic]
-
-A tile shows under every category it lists, and each counts it. Normally you do
-not write it at all — it is derived from `toy:`. Give it explicitly for a picture
-that belongs to a category but to no instrument we own, or one that honestly
-belongs to several. The wall's second filter row and the home page's Projects tab
-are both this same category list, so a tag in one place and a link in the other
-are guaranteed to be the same word.
+ONE SCIENCE PER PICTURE
+-----------------------
+A picture belongs to exactly one science and that science is the folder it sits
+in. There is no tagging layer above it — no categories, no toys, nothing to
+declare. Only two things still need a row in gallery.yml: a project card, and a
+picture that lives inside a project folder and should also appear on the wall.
 """
 
 from __future__ import annotations
@@ -108,6 +92,39 @@ THUMB_EDGE = 1000    # px on the long edge — a landscape tile spans two
                      # columns (~450 CSS px), so this keeps it retina-sharp
 THUMB_BYTES = 200_000  # anything smaller than this is already web-sized
 made: set[str] = set()  # thumbs this run touched; the rest get pruned
+
+
+PHOTO_EXTS = (".jpg", ".jpeg", ".png")
+
+
+def project_photos(proj: Path) -> list[str]:
+    """A project's shuffle-pool photos, folder-relative (`photos/setup/1.jpeg`).
+
+    Every image under `photos/`, recursively, except `photos/data/` — those are
+    handwritten data sheets, surfaced by a hand-coded grid rather than the hero
+    shuffle. Mirrors the build-time walk in `pages/projects/[slug]/index.astro`;
+    keep the two in step.
+
+    Baked into gallery.json so the native app can render a project page's photo
+    grid from a manifest it already loads. This used to live in technology.json,
+    which was deleted 2026-07-30 along with the toy catalog.
+    """
+    root = proj / "photos"
+    if not root.is_dir():
+        return []
+    out: list[str] = []
+
+    def walk(d: Path) -> None:
+        for f in sorted(d.iterdir()):
+            if f.is_dir():
+                if f.parent == root and f.name == "data":
+                    continue
+                walk(f)
+            elif f.suffix.lower() in PHOTO_EXTS:
+                out.append(f"photos/{f.relative_to(root).as_posix()}")
+
+    walk(root)
+    return out
 
 
 def caption_from(name: str) -> str:
@@ -391,7 +408,8 @@ def build() -> dict:
     seen_bytes: dict[str, str] = {}
 
     def add(rel: str, science: str, caption: str, where: str,
-            kind: str = "photo", href: str | None = None) -> None:
+            kind: str = "photo", href: str | None = None,
+            photos: list[str] | None = None) -> None:
         path = CONTENT / rel
         if not path.is_file():
             raise ValueError(f"{where}: no such file {rel!r}")
@@ -421,6 +439,8 @@ def build() -> dict:
         }
         if href:
             tile["href"] = href
+        if photos:
+            tile["photos"] = photos
 
         # Sorting only — the wall never shows a date.
         date = _filename_month(path) or _exif_month(path)
@@ -479,7 +499,8 @@ def build() -> dict:
                 raise ValueError(f"{where}: no such project folder {e['folder']!r}")
             add(f"{e['folder']}/{e['hero']}", science,
                 e.get("caption") or read_title(proj), where,
-                kind="project", href=url_for(e["folder"] + "/"))
+                kind="project", href=url_for(e["folder"] + "/"),
+                photos=project_photos(proj))
         else:
             rel = e["src"]
             add(rel, science, e.get("caption") or caption_from(rel.split("/")[-1]), where)

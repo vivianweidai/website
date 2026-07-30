@@ -66,6 +66,20 @@ public enum SubjectPaletteRGB {
         "Mathematics", "Computing", "Physics", "Chemistry", "Biology", "Astronomy",
     ]
 
+    /// Short slug for a science — "Mathematics" -> "math". Mirrors the slugs
+    /// the website uses in its URLs and chip class names.
+    public static func slug(for subject: String) -> String {
+        switch subject {
+        case "Mathematics": return "math"
+        case "Computing":   return "comp"
+        case "Physics":     return "phys"
+        case "Chemistry":   return "chem"
+        case "Biology":     return "bio"
+        case "Astronomy":   return "astro"
+        default:            return subject.lowercased()
+        }
+    }
+
     /// (red, green, blue) in [0, 1]. Returns a neutral gray for anything
     /// outside the canonical six subjects.
     public static func rgb(for subject: String) -> (red: Double, green: Double, blue: Double) {

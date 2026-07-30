@@ -1,8 +1,12 @@
 # /research/ was renamed to /projects/ (2026-07-30). These rules keep every
 # old URL alive, which matters for more than bookmarks: App Store builds
-# already in the wild fetch /research/technology.json and
-# /research/projects/<folder>/index.md. URLSession follows 301s, so those
-# installs keep working until the next release ships.
+# already in the wild fetch /research/projects/<folder>/index.md. URLSession
+# follows 301s, so those installs keep working until the next release ships.
+#
+# The technology.json and technology/ rules were dropped 2026-07-30 with the toy catalog itself.
+# The shipped App Store build's Research tab fetches that file and will show an
+# error until a new build ships — the replacement gallery tab needs no such
+# file.
 #
 # Project folders also lost a path segment in the move
 # (/research/projects/X/ → /projects/X/), so that prefix needs its own rule
@@ -19,8 +23,6 @@
 # assets directory. The Worker itself is still a pure passthrough.
 
 /research/projects/*     /projects/:splat             301
-/research/technology/*   /projects/technology/:splat  301
-/research/technology.json  /projects/technology.json  301
 /research/gallery.json   /projects/gallery.json       301
 /research/               /projects/                   301
 /research                 /projects                   301

@@ -4,7 +4,7 @@ import PageHeader from '../layouts/PageHeader.astro';
 import PageFooter from '../layouts/PageFooter.astro';
 import scienceJpeg from '../layouts/science.jpeg?url';
 import curriculumData from '../../public/curriculum/curriculum.json';
-import techData from '../../public/projects/technology.json';
+import gallery from '../../public/projects/gallery.json';
 
 // Top → bottom matches the science pyramid: astronomy at the apex,
 // mathematics as the foundation. Each row builds on the ones below.
@@ -70,26 +70,22 @@ const OLYMPIADS = {
     'USA Astronomy and Astrophysics Olympiad',
   ],
 };
-// The Projects tab lists each science's CATEGORIES — Mechanics, Genomics,
-// Measurements — not the individual instruments under them. Eleven toys on the
-// Physics row read as clutter where four categories read as a menu, and the
-// /projects/ wall uses the same three-tier vocabulary: science, then category,
-// then (once a category is open) the toys inside it. A link here lands on the
-// wall with that category already selected, which shows every toy in it.
+// The Projects tab lists each science's PROJECTS — the write-ups, the same
+// cards the /projects/ wall frames in colour. Same shape as the other two tabs:
+// a science's own items, dot-separated.
 //
-// Categories come from technology.json, built by build_technology.py from each
-// tech page's frontmatter.
-const catSlug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const CATEGORIES_BY_SCIENCE = {};
-for (const s of techData.sciences) {
-  CATEGORIES_BY_SCIENCE[s.science.toLowerCase()] = s.techs.map((t) => ({
-    label: t.tech,
-    slug: catSlug(t.tech),
-    // Hover shows what is actually in the category, so the consolidation
-    // hides the instrument names without losing them.
-    toys: (t.toys ?? []).map((x) => x.short ?? x.name).join(' · '),
-  }));
+// It used to list categories out of technology.json. That file and the whole
+// toy catalog were deleted 2026-07-30 — a picture belongs to one science and
+// nothing finer — so the projects are what is left to name here. They come out
+// of gallery.json, where the wall's project cards already carry a science, a
+// title and a link.
+const PROJECTS_BY_SCIENCE = {};
+for (const t of gallery.tiles) {
+  if (t.kind !== 'project') continue;
+  const key = t.science.toLowerCase();
+  (PROJECTS_BY_SCIENCE[key] ??= []).push({ title: t.caption, href: t.href });
 }
+
 const TABS = [
   { key: 'curriculum', label: 'Curriculum' },
   { key: 'olympiads',  label: 'Olympiads'  },
@@ -138,13 +134,15 @@ const TABS = [
             ))}
           </div>
           <div class="curr-rows-secs" data-tab="projects">
-            {CATEGORIES_BY_SCIENCE[subjSlug].map((cat, j) => (
+            {(PROJECTS_BY_SCIENCE[subjSlug] ?? []).map((proj, j) => (
               <>
                 {j > 0 && <span class="sep">·</span>}
-                <a title={cat.toys}
-                   href={`/projects/#${SUBJ_ANCHOR[subjSlug]}`}>{cat.label}</a>
+                <a href={proj.href}>{proj.title}</a>
               </>
             ))}
+            {!(PROJECTS_BY_SCIENCE[subjSlug] ?? []).length && (
+              <a href={`/projects/#${SUBJ_ANCHOR[subjSlug]}`}>Gallery</a>
+            )}
           </div>
         </div>
       );

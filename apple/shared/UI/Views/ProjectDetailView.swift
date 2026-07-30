@@ -18,6 +18,8 @@ private struct ViewerImages: Identifiable {
 struct ProjectDetailView: View {
     let title: String
     let indexURL: URL
+    /// The wall's card for this project, which carries its photo pool.
+    var tile: GalleryTile? = nil
     @State private var store = ContentStore.shared
     @State private var markdown: String = ""
     @State private var loading = true
@@ -45,10 +47,6 @@ struct ProjectDetailView: View {
         #endif
         .task {
             do {
-                // Sciences power the title-row tech pills; idempotent +
-                // cached, so this returns immediately when already loaded.
-                await store.preloadAll()
-
                 let (data, _) = try await URLSession.shared.data(from: indexURL)
                 var md = String(data: data, encoding: .utf8) ?? ""
 
@@ -58,21 +56,19 @@ struct ProjectDetailView: View {
 
                 // Modern projects don't list photos in front matter — the
                 // Astro layout scans photos/ at build time and
-                // build_technology.py bakes the same list into
-                // technology.json, which the store already holds.
-                if photos.isEmpty {
-                    photos = (store.sciences ?? [])
-                        .projectPhotos(forIndexURL: indexURL)
-                        .shuffled()
+                // build_gallery.py bakes the same list into the project's
+                // gallery card, which the wall handed us.
+                if photos.isEmpty, let tile {
+                    photos = tile.photos ?? []
+                    photos.shuffle()
                 }
 
-                // Title-row pills mirror the webapp project page: one
-                // science-colored pill per tech the project used, resolved
-                // against technology.json. Replaces both the old plain
-                // science-name title pills and the bottom Technology table.
-                let techNames = MarkdownHelper.extractPhotos(from: md, key: "tech")
-                let projSciences = MarkdownHelper.extractPhotos(from: md, key: "sciences")
-                let pills = titlePills(techNames: techNames, projectSciences: projSciences)
+                // Title-row pills: one science-coloured pill per science the
+                // project declares. These used to resolve each `tech:` name
+                // against technology.json; with the toy catalog gone the
+                // science is the whole of it.
+                let pills = MarkdownHelper.extractPhotos(from: md, key: "sciences")
+                    .map { (label: $0, slug: SubjectPaletteRGB.slug(for: $0)) }
 
                 let titleBlock = MarkdownHelper.synthesizeProjectTitle(from: md, techPills: pills)
                 md = MarkdownHelper.stripFrontMatter(md)
@@ -88,36 +84,6 @@ struct ProjectDetailView: View {
             }
             loading = false
         }
-    }
-
-    /// Resolve a project's `tech:` front-matter names into title-row pills,
-    /// matching the webapp (Project.astro): one science-colored pill per
-    /// tech, ordered by the tech's global id (science order, then within a
-    /// science) so the sequence matches the /research/ listing. A tech name
-    /// can live in more than one science (Chemistry and Astronomy both have
-    /// "Spectroscopy"), so disambiguate by the project's own `sciences:`.
-    /// Returns [] when sciences haven't loaded — the caller then falls back
-    /// to plain science-name pills, same as the webapp's no-tech fallback.
-    private func titlePills(
-        techNames: [String], projectSciences: [String]
-    ) -> [(label: String, slug: String)] {
-        guard let sciences = store.sciences else { return [] }
-        var ranked: [(label: String, slug: String, id: Int)] = []
-        for name in techNames {
-            var candidates: [(science: ResearchScience, tech: ResearchTech)] = []
-            for science in sciences {
-                if let tech = science.techs.first(where: { $0.tech == name }) {
-                    candidates.append((science, tech))
-                }
-            }
-            guard !candidates.isEmpty else { continue }
-            let pick = candidates.first { projectSciences.contains($0.science.science) }
-                ?? candidates[0]
-            ranked.append((label: name, slug: pick.science.scienceSlug, id: pick.tech.id))
-        }
-        return ranked
-            .sorted { $0.id < $1.id }
-            .map { (label: $0.label, slug: $0.slug) }
     }
 
 }

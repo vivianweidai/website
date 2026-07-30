@@ -1,7 +1,7 @@
 import Foundation
 
-/// Read-only client for activity listings (olympiads + textbooks), the toy
-/// catalog, and the projects gallery.
+/// Read-only client for activity listings (olympiads + textbooks) and the
+/// projects gallery.
 ///
 /// Source of truth: YAML files under public/content/{olympiads,research}/.
 /// A Python build script generates the corresponding .json files in the
@@ -13,9 +13,6 @@ public actor APIClient {
     public static let olympiadsURL = URL(
         string: "https://vivianweidai.com/olympiads/olympiads.json"
     )!
-    public static let techURL = URL(
-        string: "https://vivianweidai.com/projects/technology.json"
-    )!
     public static let galleryURL = URL(
         string: "https://vivianweidai.com/projects/gallery.json"
     )!
@@ -23,7 +20,6 @@ public actor APIClient {
     private let session: URLSession
     private let decoder: JSONDecoder
     private var cachedActivities: [Activity]?
-    private var cachedSciences: [ResearchScience]?
     private var cachedGallery: GalleryResponse?
 
     public init(session: URLSession = .shared) {
@@ -43,13 +39,6 @@ public actor APIClient {
         return items
     }
 
-    public func listResearchSciences() async throws -> [ResearchScience] {
-        if let cachedSciences { return cachedSciences }
-        let sciences = try await get(url: Self.techURL, as: ResearchTechResponse.self).sciences
-        cachedSciences = sciences
-        return sciences
-    }
-
     public func loadGallery() async throws -> GalleryResponse {
         if let cachedGallery { return cachedGallery }
         let gallery = try await get(url: Self.galleryURL, as: GalleryResponse.self)
@@ -61,7 +50,6 @@ public actor APIClient {
     /// a round trip when they've just pushed new YAML.
     public func invalidate() {
         cachedActivities = nil
-        cachedSciences = nil
         cachedGallery = nil
     }
 

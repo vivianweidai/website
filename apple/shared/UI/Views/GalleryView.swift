@@ -10,8 +10,8 @@ import ScienceCore
 /// Deliberately the same shape as the web page and no more: a science filter,
 /// the grid, and nothing below the fold. Replaced the old tech browser
 /// 2026-07-30 when the website dropped its per-tech pages; that view had been
-/// reading `hero` and `tech_url` out of technology.json, and the build stopped
-/// emitting both, so it had quietly become a list of names.
+/// reading `hero` and `tech_url` out of technology.json — a file since deleted
+/// along with the whole toy catalog.
 struct GalleryView: View {
     @State private var store = ContentStore.shared
     @State private var subject: GallerySubject = .all
@@ -81,7 +81,7 @@ struct GalleryView: View {
                                 .buttonStyle(.plain)
                         } else if tile.isProject, let indexURL = tile.projectIndexURL {
                             NavigationLink {
-                                ProjectDetailView(title: tile.caption, indexURL: indexURL)
+                                ProjectDetailView(title: tile.caption, indexURL: indexURL, tile: tile)
                             } label: {
                                 GalleryTileView(tile: tile)
                             }
