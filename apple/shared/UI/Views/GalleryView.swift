@@ -1,8 +1,5 @@
 import SwiftUI
 import ScienceCore
-#if canImport(UIKit)
-import UIKit
-#endif
 
 /// The projects wall, matching the website's /projects/ page: one
 /// chronological grid of every picture worth looking at, newest first, with
@@ -22,6 +19,10 @@ import UIKit
 ///   • **A photo tile carries no text.** Caption and science pill belong to
 ///     project cards; the picture is the whole content of a photo.
 ///   • **A clip plays in place**, muted and looping, and opens with controls.
+///
+/// One thing it deliberately does *not* copy: the web's filter pill row. The
+/// filter is the toolbar menu the Olympiads tab already uses — the phone has
+/// its own idiom for this and the wall would rather have the screen.
 struct GalleryView: View {
     @State private var store = ContentStore.shared
     /// Science slug, or nil for "All" — the same one-tier filter the web wall
@@ -45,6 +46,14 @@ struct GalleryView: View {
                 }
             }
             .navigationTitle("Projects")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    ScienceFilterMenu(
+                        selected: $scienceSlug,
+                        sciences: store.gallery?.sciences ?? []
+                    )
+                }
+            }
             .refreshable { await store.refreshAll() }
         }
         #if os(iOS)
@@ -74,44 +83,35 @@ struct GalleryView: View {
         GeometryReader { geo in
             let metrics = WallMetrics(availableWidth: geo.size.width)
             ScrollView {
-                // The filter is a pinned section header — it scrolls with the
-                // page like the web's pill row, but sticks once it reaches the
-                // top, because this wall is sixty tiles deep on a phone and
-                // scrolling all the way back to change science is not a thing
-                // a phone should ask for.
-                LazyVStack(spacing: WallMetrics.gutter, pinnedViews: [.sectionHeaders]) {
-                    Section {
-                        if tiles.isEmpty {
-                            Text("Nothing here yet.")
-                                .font(.system(size: 14))
-                                .foregroundStyle(.secondary)
-                                .italic()
-                                .padding(.top, 40)
-                                .frame(maxWidth: .infinity)
-                        } else {
-                            ForEach(WallMetrics.rows(tiles, columns: metrics.columns)) { row in
-                                HStack(alignment: .top, spacing: WallMetrics.gutter) {
-                                    ForEach(row.tiles) { tile in
-                                        let width = metrics.width(
-                                            spanning: WallMetrics.span(tile, columns: metrics.columns)
-                                        )
-                                        tileLink(tile, photos: photos, width: width)
-                                    }
-                                    // Holds a half-filled row left-aligned,
-                                    // which is exactly the gap the web grid
-                                    // leaves when a two-column tile will not
-                                    // fit beside a portrait.
-                                    Spacer(minLength: 0)
+                LazyVStack(spacing: WallMetrics.gutter) {
+                    if tiles.isEmpty {
+                        Text("Nothing here yet.")
+                            .font(.system(size: 14))
+                            .foregroundStyle(.secondary)
+                            .italic()
+                            .padding(.top, 40)
+                            .frame(maxWidth: .infinity)
+                    } else {
+                        ForEach(WallMetrics.rows(tiles, columns: metrics.columns)) { row in
+                            HStack(alignment: .top, spacing: WallMetrics.gutter) {
+                                ForEach(row.tiles) { tile in
+                                    let width = metrics.width(
+                                        spanning: WallMetrics.span(tile, columns: metrics.columns)
+                                    )
+                                    tileLink(tile, photos: photos, width: width)
                                 }
-                                .frame(width: metrics.contentWidth)
+                                // Holds a half-filled row left-aligned, which
+                                // is exactly the gap the web grid leaves when
+                                // a two-column tile will not fit beside a
+                                // portrait.
+                                Spacer(minLength: 0)
                             }
+                            .frame(width: metrics.contentWidth)
                         }
-                    } header: {
-                        ScienceFilterRow(sciences: gallery.sciences, selected: $scienceSlug)
                     }
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.bottom, WallMetrics.gutter)
+                .padding(.vertical, WallMetrics.gutter)
             }
         }
     }
@@ -358,81 +358,69 @@ private struct GalleryTileView: View {
 
 // MARK: - Science filter
 
-/// The web wall's bubble pills, deliberately unlike the underlined tabs on
-/// Curriculum and Olympiads — the shape alone says which vertical you are in.
+/// The same toolbar bubble the Olympiads tab uses: a label showing the current
+/// selection, tapping it drops a system menu of the six sciences with a
+/// checkmark on the active one and its palette dot alongside. Native, and it
+/// leaves the wall the whole screen.
+///
+/// This replaced a port of the website's pill row (2026-07-31). The pill row
+/// was faithful to the web page and wrong for the app — the phone already has
+/// a filter idiom, one tab over.
+///
 /// Slugs and counts come from the manifest, so a science with no pictures
 /// never offers a dead-end filter.
-private struct ScienceFilterRow: View {
-    let sciences: [GalleryScience]
+private struct ScienceFilterMenu: View {
     @Binding var selected: String?
+    let sciences: [GalleryScience]
 
     var body: some View {
-        VStack(spacing: 0) {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 6) {
-                    pill(label: "All", slug: nil, tint: nil)
-                    ForEach(sciences.filter { $0.count > 0 }) { science in
-                        pill(
-                            label: science.science,
-                            slug: science.slug,
-                            tint: SubjectPalette.color(for: science.science)
-                        )
-                    }
-                }
-                .padding(.horizontal, WallMetrics.horizontalPadding)
-                .padding(.vertical, 9)
+        Menu {
+            // Plain Buttons rather than a Picker, so each science can carry
+            // its own palette dot — a Picker inside a Menu renders
+            // system-tinted symbols only. Same shape as SubjectFilterMenu.
+            Button { selected = nil } label: {
+                row(label: "All", color: nil, isSelected: selected == nil)
             }
-            // A horizontal ScrollView is greedy vertically as well — left to
-            // size itself it swallows whatever space it is offered.
-            .frame(height: 44)
-
-            Divider()
-        }
-        // Opaque, because tiles slide underneath it when it pins.
-        .background(.bar)
-    }
-
-    private func pill(label: String, slug: String?, tint: Color?) -> some View {
-        let isOn = selected == slug
-        return Button {
-            selected = slug
+            ForEach(sciences.filter { $0.count > 0 }) { science in
+                Button { selected = science.slug } label: {
+                    row(
+                        label: science.science,
+                        color: SubjectPalette.color(for: science.science),
+                        isSelected: selected == science.slug
+                    )
+                }
+            }
         } label: {
-            Text(label)
-                .font(.system(size: 13, weight: .semibold))
-                .padding(.horizontal, 12)
-                .padding(.vertical, 5)
-                .background(Capsule().fill(background(isOn: isOn, tint: tint)))
-                .foregroundStyle(ink(isOn: isOn, tint: tint))
+            HStack(spacing: 4) {
+                if let name = selectedName {
+                    Circle()
+                        .fill(SubjectPalette.color(for: name))
+                        .frame(width: 10, height: 10)
+                }
+                Text(selectedName ?? "All")
+                    .font(.system(size: 15, weight: .medium))
+            }
         }
-        .buttonStyle(.plain)
     }
 
-    // Concrete colours, not `.primary` / `.secondary`: the row sits on a
-    // material, and a material renders hierarchical styles *vibrantly* — the
-    // selected "All" chip came out a washed grey instead of the web's near-
-    // black, and its white label came out dark.
-
-    private func background(isOn: Bool, tint: Color?) -> Color {
-        guard isOn else { return Self.unselectedFill }
-        return tint ?? Self.selectedAllFill
+    /// Display name for the active slug. The manifest's slug is the full
+    /// lowercase word, so the science's own `science` field is the label.
+    private var selectedName: String? {
+        guard let selected else { return nil }
+        return sciences.first { $0.slug == selected }?.science
     }
 
-    /// Dark ink on a science tint (the pastels are light in both appearances);
-    /// the "All" pill inverts instead, the way the web's dark chip does.
-    private func ink(isOn: Bool, tint: Color?) -> Color {
-        guard isOn else { return Self.unselectedInk }
-        return tint == nil ? Self.selectedAllInk : Color.black.opacity(0.82)
+    @ViewBuilder
+    private func row(label: String, color: Color?, isSelected: Bool) -> some View {
+        HStack {
+            Text(label)
+            Spacer()
+            if isSelected { Image(systemName: "checkmark") }
+            if let color {
+                Circle().fill(color).frame(width: 12, height: 12)
+            } else {
+                Image(systemName: "square.grid.2x2")
+            }
+        }
     }
-
-    #if canImport(UIKit)
-    private static let unselectedFill = Color(uiColor: .tertiarySystemFill)
-    private static let unselectedInk = Color(uiColor: .secondaryLabel)
-    private static let selectedAllFill = Color(uiColor: .label)
-    private static let selectedAllInk = Color(uiColor: .systemBackground)
-    #else
-    private static let unselectedFill = Color.gray.opacity(0.2)
-    private static let unselectedInk = Color.gray
-    private static let selectedAllFill = Color.black
-    private static let selectedAllInk = Color.white
-    #endif
 }
