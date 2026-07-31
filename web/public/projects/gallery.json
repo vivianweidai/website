@@ -5,10 +5,10 @@
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "M 51",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260704-m-51-083c22.jpg",
+      "src": "/projects/gallery/astronomy/20260704%20M%2051.jpg",
       "full": "/projects/gallery/astronomy/20260704%20M%2051.jpg",
-      "w": 562,
-      "h": 1000,
+      "w": 1125,
+      "h": 2000,
       "date": "2026-07"
     },
     {
@@ -16,10 +16,10 @@
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "NGC 5907",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260704-ngc-5907-44825d.jpg",
+      "src": "/projects/gallery/astronomy/20260704%20NGC%205907.jpg",
       "full": "/projects/gallery/astronomy/20260704%20NGC%205907.jpg",
-      "w": 562,
-      "h": 1000,
+      "w": 1125,
+      "h": 2000,
       "date": "2026-07"
     },
     {
@@ -40,32 +40,10 @@
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "M 13",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260728-m-13-3dcf3d.jpg",
+      "src": "/projects/gallery/astronomy/20260728%20M%2013.jpg",
       "full": "/projects/gallery/astronomy/20260728%20M%2013.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "Vega Dispersed LP",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260728-vega-dispersed-lp-825510.jpg",
-      "full": "/projects/gallery/astronomy/20260728%20Vega%20Dispersed%20LP.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "A0V Against K3II",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-a0v-against-k3ii-961f07.png",
-      "full": "/projects/gallery/astronomy/20260729%20A0V%20Against%20K3II.png",
-      "w": 1000,
-      "h": 454,
+      "w": 1125,
+      "h": 2000,
       "date": "2026-07"
     },
     {
@@ -73,43 +51,10 @@
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "Albireo Field Of Spectra",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-albireo-field-of-spec-dfcc1e.jpg",
+      "src": "/projects/gallery/astronomy/20260729%20Albireo%20Field%20Of%20Spectra.jpg",
       "full": "/projects/gallery/astronomy/20260729%20Albireo%20Field%20Of%20Spectra.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "Juno After",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-juno-after-45a8e4.jpg",
-      "full": "/projects/gallery/astronomy/20260729%20Juno%20After.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "Juno Before",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-juno-before-1f79a4.jpg",
-      "full": "/projects/gallery/astronomy/20260729%20Juno%20Before.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "Vega Balmer Series",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-vega-balmer-series-722f74.png",
-      "full": "/projects/gallery/astronomy/20260729%20Vega%20Balmer%20Series.png",
-      "w": 1000,
-      "h": 418,
+      "w": 1125,
+      "h": 2000,
       "date": "2026-07"
     },
     {
@@ -117,21 +62,10 @@
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "Vega Dispersed",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-vega-dispersed-4206f1.jpg",
+      "src": "/projects/gallery/astronomy/20260729%20Vega%20Dispersed.jpg",
       "full": "/projects/gallery/astronomy/20260729%20Vega%20Dispersed.jpg",
-      "w": 562,
-      "h": 1000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "Wavelength Solution",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260729-wavelength-solution-eb7cfe.png",
-      "full": "/projects/gallery/astronomy/20260729%20Wavelength%20Solution.png",
-      "w": 1000,
-      "h": 500,
+      "w": 1125,
+      "h": 2000,
       "date": "2026-07"
     },
     {
@@ -139,21 +73,21 @@
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "M 31",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260730-m-31-73639e.jpg",
+      "src": "/projects/gallery/astronomy/20260730%20M%2031.jpg",
       "full": "/projects/gallery/astronomy/20260730%20M%2031.jpg",
-      "w": 562,
-      "h": 1000,
+      "w": 1125,
+      "h": 2000,
       "date": "2026-07"
     },
     {
       "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
-      "caption": "NGC 7000 Field",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260730-ngc-7000-field-fa0caf.jpg",
-      "full": "/projects/gallery/astronomy/20260730%20NGC%207000%20Field.jpg",
-      "w": 562,
-      "h": 1000,
+      "caption": "A0V Against K3II",
+      "src": "/projects/gallery/astronomy/20260731%20A0V%20Against%20K3II.png",
+      "full": "/projects/gallery/astronomy/20260731%20A0V%20Against%20K3II.png",
+      "w": 1650,
+      "h": 750,
       "date": "2026-07"
     },
     {
@@ -161,10 +95,10 @@
       "science": "Computing",
       "science_slug": "comp",
       "caption": "Floor Work",
-      "src": "/projects/gallery/thumbs/gallery-computing-20260601-floor-work-f10320.jpeg",
+      "src": "/projects/gallery/computing/20260601%20Floor%20Work.jpeg",
       "full": "/projects/gallery/computing/20260601%20Floor%20Work.jpeg",
-      "w": 1000,
-      "h": 415,
+      "w": 1920,
+      "h": 798,
       "date": "2026-06"
     },
     {
@@ -172,10 +106,10 @@
       "science": "Physics",
       "science_slug": "phys",
       "caption": "Force Motion Photogate",
-      "src": "/projects/gallery/thumbs/gallery-physics-20260629-force-motion-photogate-5e1d7e.jpeg",
+      "src": "/projects/gallery/physics/20260629%20Force%20Motion%20Photogate.jpeg",
       "full": "/projects/gallery/physics/20260629%20Force%20Motion%20Photogate.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 2000,
+      "h": 1500,
       "date": "2026-06"
     },
     {
@@ -183,10 +117,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "The Temperature Probe",
-      "src": "/projects/gallery/thumbs/gallery-chemistry-20260601-the-temperature-probe-12bbea.jpeg",
+      "src": "/projects/gallery/chemistry/20260601%20The%20Temperature%20Probe.jpeg",
       "full": "/projects/gallery/chemistry/20260601%20The%20Temperature%20Probe.jpeg",
-      "w": 1000,
-      "h": 416,
+      "w": 2000,
+      "h": 833,
       "date": "2026-06"
     },
     {
@@ -194,10 +128,10 @@
       "science": "Biology",
       "science_slug": "bio",
       "caption": "GELATO",
-      "src": "/projects/gallery/thumbs/gallery-biology-20260601-gelato-097120.jpeg",
+      "src": "/projects/gallery/biology/20260601%20GELATO.jpeg",
       "full": "/projects/gallery/biology/20260601%20GELATO.jpeg",
-      "w": 1000,
-      "h": 287,
+      "w": 1600,
+      "h": 460,
       "date": "2026-06"
     },
     {
@@ -205,10 +139,10 @@
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "The Seestar Folded",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20260601-the-seestar-folded-0048e0.jpeg",
+      "src": "/projects/gallery/astronomy/20260601%20The%20Seestar%20Folded.jpeg",
       "full": "/projects/gallery/astronomy/20260601%20The%20Seestar%20Folded.jpeg",
-      "w": 1000,
-      "h": 250,
+      "w": 1600,
+      "h": 400,
       "date": "2026-06"
     },
     {
@@ -216,10 +150,10 @@
       "science": "Physics",
       "science_slug": "phys",
       "caption": "Gas Pressure And Turbidity",
-      "src": "/projects/gallery/thumbs/gallery-physics-20260629-gas-pressure-and-turbid-ce7a0b.jpeg",
+      "src": "/projects/gallery/physics/20260629%20Gas%20Pressure%20And%20Turbidity.jpeg",
       "full": "/projects/gallery/physics/20260629%20Gas%20Pressure%20And%20Turbidity.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 2000,
+      "h": 1500,
       "date": "2026-06"
     },
     {
@@ -227,10 +161,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "pH And Conductivity",
-      "src": "/projects/gallery/thumbs/gallery-chemistry-20260628-ph-and-conductivity-375d35.jpeg",
+      "src": "/projects/gallery/chemistry/20260628%20pH%20And%20Conductivity.jpeg",
       "full": "/projects/gallery/chemistry/20260628%20pH%20And%20Conductivity.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 2000,
+      "h": 1500,
       "date": "2026-06"
     },
     {
@@ -238,10 +172,10 @@
       "science": "Biology",
       "science_slug": "bio",
       "caption": "Spirometer",
-      "src": "/projects/gallery/thumbs/gallery-biology-20260601-spirometer-a88b91.jpeg",
+      "src": "/projects/gallery/biology/20260601%20Spirometer.jpeg",
       "full": "/projects/gallery/biology/20260601%20Spirometer.jpeg",
-      "w": 1000,
-      "h": 250,
+      "w": 1600,
+      "h": 400,
       "date": "2026-06"
     },
     {
@@ -249,10 +183,10 @@
       "science": "Physics",
       "science_slug": "phys",
       "caption": "The Magnetic Field Sensor",
-      "src": "/projects/gallery/thumbs/gallery-physics-20260629-the-magnetic-field-sens-1ab4bb.jpeg",
+      "src": "/projects/gallery/physics/20260629%20The%20Magnetic%20Field%20Sensor.jpeg",
       "full": "/projects/gallery/physics/20260629%20The%20Magnetic%20Field%20Sensor.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 2000,
+      "h": 1500,
       "date": "2026-06"
     },
     {
@@ -260,10 +194,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "The Spectrophotometer",
-      "src": "/projects/gallery/thumbs/gallery-chemistry-20260629-the-spectrophotometer-821e64.jpeg",
+      "src": "/projects/gallery/chemistry/20260629%20The%20Spectrophotometer.jpeg",
       "full": "/projects/gallery/chemistry/20260629%20The%20Spectrophotometer.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 2000,
+      "h": 1500,
       "date": "2026-06"
     },
     {
@@ -271,10 +205,10 @@
       "science": "Biology",
       "science_slug": "bio",
       "caption": "The Stereo Scope",
-      "src": "/projects/gallery/thumbs/gallery-biology-20260601-the-stereo-scope-278fd7.jpeg",
+      "src": "/projects/gallery/biology/20260601%20The%20Stereo%20Scope.jpeg",
       "full": "/projects/gallery/biology/20260601%20The%20Stereo%20Scope.jpeg",
-      "w": 1000,
-      "h": 250,
+      "w": 1600,
+      "h": 400,
       "date": "2026-06"
     },
     {
@@ -282,91 +216,10 @@
       "science": "Mathematics",
       "science_slug": "math",
       "caption": "Four traces, one axis",
-      "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-output-images-uvvis-3dcbdf.png",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/output/images/uvvis_overlay.png",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/output/images/uvvis_overlay.png",
-      "w": 1000,
-      "h": 411,
-      "date": "2026-04"
-    },
-    {
-      "kind": "photo",
-      "science": "Physics",
-      "science_slug": "phys",
-      "caption": "Foil, leaf, spoon, key",
-      "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-samples-samples-0a852f.jpeg",
-      "full": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples2.jpeg",
-      "w": 1000,
-      "h": 750,
-      "date": "2026-04"
-    },
-    {
-      "kind": "photo",
-      "science": "Chemistry",
-      "science_slug": "chem",
-      "caption": "The amber bottle shelf",
-      "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-5776c3.jpeg",
-      "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples3.jpeg",
-      "w": 1000,
-      "h": 750,
-      "date": "2026-04"
-    },
-    {
-      "kind": "project",
-      "science": "Biology",
-      "science_slug": "bio",
-      "caption": "Meow to Mars — Will Space Help or Hurt Mi's Heart?",
-      "src": "/projects/gallery/thumbs/20260401-genes-in-space-photos-photo-0e3200.jpeg",
-      "full": "/projects/20260401%20Genes%20in%20Space/photos/photo.jpeg",
-      "w": 1000,
-      "h": 749,
-      "href": "/projects/20260401%20Genes%20in%20Space/",
-      "photos": [
-        "photos/photo.jpeg"
-      ],
-      "date": "2026-04"
-    },
-    {
-      "kind": "photo",
-      "science": "Mathematics",
-      "science_slug": "math",
-      "caption": "Quinine, emitting",
-      "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-output-images-fluor-22a121.png",
-      "full": "/projects/20260420%20UV-Vis%20Spectroscopy/output/images/fluoromax_quinine.png",
-      "w": 1000,
-      "h": 411,
-      "date": "2026-04"
-    },
-    {
-      "kind": "photo",
-      "science": "Physics",
-      "science_slug": "phys",
-      "caption": "Four probes down",
-      "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-setup-setup13-e3cba5.jpeg",
-      "full": "/projects/20260404%20Four%20Point%20Probe/photos/setup/setup13.jpeg",
-      "w": 1000,
-      "h": 750,
-      "date": "2026-04"
-    },
-    {
-      "kind": "photo",
-      "science": "Chemistry",
-      "science_slug": "chem",
-      "caption": "Everything coloured we could find",
-      "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-9753ba.jpeg",
-      "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples4.jpeg",
-      "w": 1000,
-      "h": 750,
-      "date": "2026-04"
-    },
-    {
-      "kind": "photo",
-      "science": "Mathematics",
-      "science_slug": "math",
-      "caption": "That fat O–H band",
-      "src": "/projects/gallery/thumbs/20260419-ir-spectroscopy-output-images-chem-oh-s-a7cbd4.png",
-      "full": "/projects/20260419%20IR%20Spectroscopy/output/images/chem_oh_spectrum.png",
-      "w": 1000,
-      "h": 407,
+      "w": 3569,
+      "h": 1469,
       "date": "2026-04"
     },
     {
@@ -374,10 +227,10 @@
       "science": "Physics",
       "science_slug": "phys",
       "caption": "Four-Point Probe of Sheet Resistance",
-      "src": "/projects/gallery/thumbs/20260404-four-point-probe-photos-samples-samples-353fad.jpeg",
-      "full": "/projects/20260404%20Four%20Point%20Probe/photos/samples/samples3.jpeg",
-      "w": 1000,
-      "h": 750,
+      "src": "/projects/20260404%20Four%20Point%20Probe/photos/setup/setup13.jpeg",
+      "full": "/projects/20260404%20Four%20Point%20Probe/photos/setup/setup13.jpeg",
+      "w": 1200,
+      "h": 900,
       "href": "/projects/20260404%20Four%20Point%20Probe/",
       "photos": [
         "photos/samples/samples1.jpeg",
@@ -492,22 +345,70 @@
       "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chem",
-      "caption": "Cuvettes loaded",
-      "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-14bd0c.jpeg",
-      "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples5.jpeg",
-      "w": 1000,
-      "h": 750,
+      "caption": "The amber bottle shelf",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples3.jpeg",
+      "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples3.jpeg",
+      "w": 1600,
+      "h": 1200,
+      "date": "2026-04"
+    },
+    {
+      "kind": "project",
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Meow to Mars — Will Space Help or Hurt Mi's Heart?",
+      "src": "/projects/20260401%20Genes%20in%20Space/photos/photo.jpeg",
+      "full": "/projects/20260401%20Genes%20in%20Space/photos/photo.jpeg",
+      "w": 1195,
+      "h": 896,
+      "href": "/projects/20260401%20Genes%20in%20Space/",
+      "photos": [
+        "photos/photo.jpeg"
+      ],
       "date": "2026-04"
     },
     {
       "kind": "photo",
       "science": "Mathematics",
       "science_slug": "math",
-      "caption": "Sheet resistance, at last",
-      "src": "/projects/gallery/thumbs/20260404-four-point-probe-output-mean-sheet-resi-03f3fa.png",
-      "full": "/projects/20260404%20Four%20Point%20Probe/output/mean_sheet_resistance.png",
-      "w": 1000,
-      "h": 494,
+      "caption": "Quinine, emitting",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/output/images/fluoromax_quinine.png",
+      "full": "/projects/20260420%20UV-Vis%20Spectroscopy/output/images/fluoromax_quinine.png",
+      "w": 3569,
+      "h": 1469,
+      "date": "2026-04"
+    },
+    {
+      "kind": "photo",
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Everything coloured we could find",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples4.jpeg",
+      "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples4.jpeg",
+      "w": 1600,
+      "h": 1200,
+      "date": "2026-04"
+    },
+    {
+      "kind": "photo",
+      "science": "Mathematics",
+      "science_slug": "math",
+      "caption": "That fat O–H band",
+      "src": "/projects/20260419%20IR%20Spectroscopy/output/images/chem_oh_spectrum.png",
+      "full": "/projects/20260419%20IR%20Spectroscopy/output/images/chem_oh_spectrum.png",
+      "w": 3570,
+      "h": 1453,
+      "date": "2026-04"
+    },
+    {
+      "kind": "photo",
+      "science": "Chemistry",
+      "science_slug": "chem",
+      "caption": "Cuvettes loaded",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples5.jpeg",
+      "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples5.jpeg",
+      "w": 1600,
+      "h": 1200,
       "date": "2026-04"
     },
     {
@@ -515,10 +416,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Yellow in the beam",
-      "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-8f53f0.jpeg",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples7.jpeg",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples7.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1600,
+      "h": 1200,
       "date": "2026-04"
     },
     {
@@ -526,10 +427,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Inside the sample compartment",
-      "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-setup-setup5-0c6959.jpeg",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/setup/setup5.jpeg",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/setup/setup5.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1600,
+      "h": 1200,
       "date": "2026-04"
     },
     {
@@ -537,10 +438,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "The bench setup, laptop attached",
-      "src": "/projects/gallery/thumbs/20260419-ir-spectroscopy-photos-setup-setup3-1e7c1d.jpeg",
+      "src": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup3.jpeg",
       "full": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup3.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1200,
+      "h": 900,
       "date": "2026-04"
     },
     {
@@ -548,10 +449,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Colour-coded by condition",
-      "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-samples-samples7-8d622c.jpeg",
+      "src": "/projects/20260411%20Centrifuge/photos/samples/samples7.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/samples/samples7.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1200,
+      "h": 900,
       "date": "2026-04"
     },
     {
@@ -559,10 +460,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Rack of everything",
-      "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-samples-samples9-d4a355.jpeg",
+      "src": "/projects/20260411%20Centrifuge/photos/samples/samples9.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/samples/samples9.jpeg",
-      "w": 750,
-      "h": 1000,
+      "w": 900,
+      "h": 1200,
       "date": "2026-04"
     },
     {
@@ -570,10 +471,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Blue and orange",
-      "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-samples-samples12-3a33e6.jpeg",
+      "src": "/projects/20260411%20Centrifuge/photos/samples/samples12.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/samples/samples12.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1200,
+      "h": 900,
       "date": "2026-04"
     },
     {
@@ -581,10 +482,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "The centrifuge, spun down",
-      "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-setup-setup1-a4dbf4.jpeg",
+      "src": "/projects/20260411%20Centrifuge/photos/setup/setup1.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/setup/setup1.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1200,
+      "h": 900,
       "date": "2026-04"
     },
     {
@@ -592,10 +493,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Weighing it out",
-      "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-setup-setup3-290920.jpeg",
+      "src": "/projects/20260411%20Centrifuge/photos/setup/setup3.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/setup/setup3.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1200,
+      "h": 900,
       "date": "2026-04"
     },
     {
@@ -603,10 +504,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "The mixer, mid-bench",
-      "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-setup-setup5-76a806.jpeg",
+      "src": "/projects/20260411%20Centrifuge/photos/setup/setup5.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/setup/setup5.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1200,
+      "h": 900,
       "date": "2026-04"
     },
     {
@@ -614,10 +515,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "UV-Vis Spectroscopy",
-      "src": "/projects/gallery/thumbs/20260420-uv-vis-spectroscopy-photos-samples-samp-a96c07.jpeg",
+      "src": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples6.jpeg",
       "full": "/projects/20260420%20UV-Vis%20Spectroscopy/photos/samples/samples6.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1600,
+      "h": 1200,
       "href": "/projects/20260420%20UV-Vis%20Spectroscopy/",
       "photos": [
         "photos/samples/samples1.jpeg",
@@ -655,10 +556,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "IR Spectroscopy",
-      "src": "/projects/gallery/thumbs/20260419-ir-spectroscopy-photos-setup-setup11-51ccc5.jpeg",
+      "src": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup11.jpeg",
       "full": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup11.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1600,
+      "h": 1200,
       "href": "/projects/20260419%20IR%20Spectroscopy/",
       "photos": [
         "photos/samples/samples1.jpeg",
@@ -685,10 +586,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Centrifugation and pH of Everyday Liquids",
-      "src": "/projects/gallery/thumbs/20260411-centrifuge-photos-samples-samples1-934cd3.jpeg",
+      "src": "/projects/20260411%20Centrifuge/photos/samples/samples1.jpeg",
       "full": "/projects/20260411%20Centrifuge/photos/samples/samples1.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1200,
+      "h": 900,
       "href": "/projects/20260411%20Centrifuge/",
       "photos": [
         "photos/samples/samples1.jpeg",
@@ -722,10 +623,10 @@
       "science": "Chemistry",
       "science_slug": "chem",
       "caption": "Melting Point",
-      "src": "/projects/gallery/thumbs/20260405-melting-point-photos-setup-setup3-a43b52.jpeg",
+      "src": "/projects/20260405%20Melting%20Point/photos/setup/setup3.jpeg",
       "full": "/projects/20260405%20Melting%20Point/photos/setup/setup3.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1200,
+      "h": 900,
       "href": "/projects/20260405%20Melting%20Point/",
       "photos": [
         "photos/samples/samples1.jpeg",
@@ -746,10 +647,10 @@
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "Horsehead",
-      "src": "/projects/gallery/thumbs/gallery-astronomy-20251217-horsehead-a64035.jpeg",
+      "src": "/projects/gallery/astronomy/20251217%20Horsehead.jpeg",
       "full": "/projects/gallery/astronomy/20251217%20Horsehead.jpeg",
-      "w": 1000,
-      "h": 1000,
+      "w": 1600,
+      "h": 1600,
       "date": "2025-12"
     },
     {
@@ -757,10 +658,10 @@
       "science": "Biology",
       "science_slug": "bio",
       "caption": "Reticulate Specimen",
-      "src": "/projects/gallery/thumbs/gallery-biology-20250301-reticulate-specimen-4a9c84.jpg",
+      "src": "/projects/gallery/biology/20250301%20Reticulate%20Specimen.jpg",
       "full": "/projects/gallery/biology/20250301%20Reticulate%20Specimen.jpg",
-      "w": 1000,
-      "h": 684,
+      "w": 2000,
+      "h": 1368,
       "date": "2025-03"
     },
     {
@@ -768,10 +669,10 @@
       "science": "Biology",
       "science_slug": "bio",
       "caption": "Tissue Section",
-      "src": "/projects/gallery/thumbs/gallery-biology-20250305-tissue-section-c0861e.jpg",
+      "src": "/projects/gallery/biology/20250305%20Tissue%20Section.jpg",
       "full": "/projects/gallery/biology/20250305%20Tissue%20Section.jpg",
-      "w": 1000,
-      "h": 750,
+      "w": 2000,
+      "h": 1500,
       "date": "2025-03"
     },
     {
@@ -779,10 +680,10 @@
       "science": "Biology",
       "science_slug": "bio",
       "caption": "Leaf Epidermis",
-      "src": "/projects/gallery/thumbs/gallery-biology-20250307-leaf-epidermis-3c7083.jpg",
+      "src": "/projects/gallery/biology/20250307%20Leaf%20Epidermis.jpg",
       "full": "/projects/gallery/biology/20250307%20Leaf%20Epidermis.jpg",
-      "w": 1000,
-      "h": 750,
+      "w": 2000,
+      "h": 1500,
       "date": "2025-03"
     },
     {
@@ -790,10 +691,10 @@
       "science": "Computing",
       "science_slug": "comp",
       "caption": "Red or Green, What Colored Cat Food does Mi Prefer?",
-      "src": "/projects/gallery/thumbs/20250225-catfood-photos-setup-setup1-71f293.jpeg",
+      "src": "/projects/20250225%20Catfood/photos/setup/setup1.jpeg",
       "full": "/projects/20250225%20Catfood/photos/setup/setup1.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 1200,
+      "h": 900,
       "href": "/projects/20250225%20Catfood/",
       "photos": [
         "photos/setup/setup1.jpeg",
@@ -814,10 +715,10 @@
       "science": "Physics",
       "science_slug": "phys",
       "caption": "Soldering",
-      "src": "/projects/gallery/thumbs/gallery-physics-20250209-soldering-99053a.jpeg",
+      "src": "/projects/gallery/physics/20250209%20Soldering.jpeg",
       "full": "/projects/gallery/physics/20250209%20Soldering.jpeg",
-      "w": 1000,
-      "h": 750,
+      "w": 2000,
+      "h": 1500,
       "date": "2025-02"
     },
     {
@@ -825,10 +726,10 @@
       "science": "Computing",
       "science_slug": "comp",
       "caption": "Mi",
-      "src": "/projects/gallery/thumbs/gallery-computing-20240210-mi-beeaff.jpeg",
+      "src": "/projects/gallery/computing/20240210%20Mi.jpeg",
       "full": "/projects/gallery/computing/20240210%20Mi.jpeg",
-      "w": 750,
-      "h": 1000,
+      "w": 900,
+      "h": 1200,
       "date": "2024-02"
     }
   ],
@@ -836,7 +737,7 @@
     {
       "science": "Mathematics",
       "slug": "math",
-      "count": 4
+      "count": 3
     },
     {
       "science": "Computing",
@@ -846,7 +747,7 @@
     {
       "science": "Physics",
       "slug": "phys",
-      "count": 7
+      "count": 5
     },
     {
       "science": "Chemistry",
@@ -861,7 +762,7 @@
     {
       "science": "Astronomy",
       "slug": "astro",
-      "count": 16
+      "count": 10
     }
   ]
 }

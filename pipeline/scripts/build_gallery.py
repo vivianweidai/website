@@ -26,7 +26,7 @@ whole filing system:
   <YYYYMMDD Project Name>/...   a picture that belongs to a project. Reference
                                 it in place; never copy it into gallery/, or
                                 the same bytes land in git twice.
-  gallery/photos/...            everything else, in one flat folder, named
+  gallery/<science>/...         everything else, named
                                 "YYYYMMDD Some Name.jpg". The date prefix is
                                 the filing system — same convention the project
                                 folders use — so the folder sorts itself and a
@@ -87,11 +87,6 @@ MONTHS = ["January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"]
 
 
-THUMBS = CONTENT / "gallery" / "thumbs"
-THUMB_EDGE = 1000    # px on the long edge — a landscape tile spans two
-                     # columns (~450 CSS px), so this keeps it retina-sharp
-THUMB_BYTES = 200_000  # anything smaller than this is already web-sized
-made: set[str] = set()  # thumbs this run touched; the rest get pruned
 
 
 PHOTO_EXTS = (".jpg", ".jpeg", ".png")
@@ -138,53 +133,19 @@ def slug(s: str) -> str:
     return re.sub(r"^-|-$", "", re.sub(r"[^a-z0-9]+", "-", s.lower()))
 
 
-def thumbnail(rel: str, path: Path) -> tuple[str, int, int]:
-    """Return (url, w, h) for the image the wall should actually load.
+def measured(rel: str, path: Path) -> tuple[str, int, int]:
+    """(url, w, h) for a file. One copy, served as it is.
 
-    The originals are camera-resolution — 57 MB across the whole wall, and a
-    gallery is exactly the page where every one of them ends up requested.
-    So each oversized source gets a long-edge-1000 copy under gallery/thumbs/,
-    generated with macOS `sips` (already on the box, no image dependency to
-    install) and committed alongside everything else. Files that are already
-    web-sized are served as they are.
-
-    Thumbs are regenerated only when missing or older than their source, so
-    a normal run does no work.
+    There used to be a gallery/thumbs/ folder holding a long-edge-1000 copy of
+    everything oversized. It was deleted 2026-07-30: the wall is around fifty
+    pictures, not five hundred, and a second generated copy of each one was a
+    folder to explain and keep pruned. Instead the pictures under
+    gallery/<science>/ are themselves web-sized — a long edge of 2000, which is
+    ample for the lightbox on any display and about a third of camera output.
+    Resize on the way in, not on the way out.
     """
     w, h = image_size(path)
-    # A clip is served as it is — `sips` cannot resize video, and re-encoding
-    # would break the byte-for-byte rule the capture galleries run on. What a
-    # clip DOES get is a poster: a still frame sitting beside it as
-    # "<name>.poster.jpg". The web page uses it as the video's poster
-    # attribute; the iOS app shows it as the tile, because AsyncImage cannot
-    # decode an mp4 and rendered a broken-image glyph without one.
-    #
-    # Posters are made by hand, not generated here, because nothing on this
-    # box could decode the Seestar's H.264: AVFoundation returns "Cannot
-    # Decode" and qlmanage hangs headless. Chrome decodes it fine, so the
-    # recipe is a headless screenshot of the clip seeked a couple of seconds
-    # in. A clip with no poster still works — it just has no still frame.
-    if path.suffix.lower() in VIDEO_EXTS:
-        return url_for(rel), w, h
-    if max(w, h) <= THUMB_EDGE and path.stat().st_size <= THUMB_BYTES:
-        return url_for(rel), w, h
-
-    stem = slug(rel.rsplit(".", 1)[0])[:48]
-    name = f"{stem}-{hashlib.sha1(rel.encode()).hexdigest()[:6]}{path.suffix.lower()}"
-    out = THUMBS / name
-    THUMBS.mkdir(parents=True, exist_ok=True)
-
-    if not out.is_file() or out.stat().st_mtime < path.stat().st_mtime:
-        r = subprocess.run(
-            ["sips", "-Z", str(THUMB_EDGE), str(path), "--out", str(out)],
-            capture_output=True, text=True,
-        )
-        if r.returncode != 0 or not out.is_file():
-            raise ValueError(f"sips failed on {rel}: {r.stderr.strip() or r.stdout.strip()}")
-
-    made.add(name)
-    tw, th = image_size(out)
-    return url_for(f"gallery/thumbs/{name}"), tw, th
+    return url_for(rel), w, h
 
 
 def url_for(rel: str) -> str:
@@ -426,7 +387,7 @@ def build() -> dict:
                 "Same picture, two names — keep one.")
         seen_bytes[digest] = where
 
-        src, w, h = thumbnail(rel, path)
+        src, w, h = measured(rel, path)
         tile = {
             "kind": kind,
             "science": science,
@@ -453,7 +414,7 @@ def build() -> dict:
             tile["video"] = True
             poster = path.parent / (path.stem + ".poster.jpg")
             if poster.is_file():
-                purl, pw, ph = thumbnail(str(poster.relative_to(CONTENT)), poster)
+                purl, pw, ph = measured(str(poster.relative_to(CONTENT)), poster)
                 tile["poster"] = purl
                 # The still is the honest shape of the frame; a container's own
                 # dimensions can disagree with its rotation matrix.
@@ -534,11 +495,6 @@ def build() -> dict:
         }
         for name in SCIENCE_ORDER
     ]
-    if THUMBS.is_dir():
-        for f in THUMBS.iterdir():
-            if f.name not in made:
-                f.unlink()
-
     return {"tiles": tiles, "sciences": sciences}
 
 

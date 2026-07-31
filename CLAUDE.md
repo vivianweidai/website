@@ -114,11 +114,12 @@ follows `/projects/` in the URL.
 - Everything else lives flat in **`gallery/photos/`**, named `YYYYMMDD Some Name.ext`. The date
   prefix is the filing system — the same convention project folders use — so the folder sorts
   itself and a file states its own date without a sidecar. No month subfolders.
-- **`gallery/thumbs/`** is generated, never hand-edited, and **not optional**. `build_gallery.py`
-  shrinks every oversized source to a long-edge-1000 copy with `sips` and prunes thumbs whose row
-  is gone. CDN caching is not a substitute: the originals total ~58 MB and a gallery is precisely
-  the page that requests all of them; thumbs take that to ~9 MB. An edge cache changes who serves
-  the bytes, not how many a browser downloads to fill a 200 px tile.
+- **There is no thumbnail folder.** It was deleted 2026-07-30 — the wall is about fifty pictures,
+  not five hundred, and a second generated copy of each was a folder to explain and keep pruned.
+  Instead the files under `gallery/<science>/` are themselves web-sized: **a long edge of 2000**,
+  ample for the lightbox on any display and about a third of camera output. Resize on the way in
+  (`sips -Z 2000`), not on the way out; `collect_media.py` already does. The wall loads ~22 MB
+  across 47 tiles, against 41 MB of untouched originals.
 
 **Landscape tiles span two columns.** A portrait frame gets its presence from its own aspect
 ratio; a 4:3 photo at one column is a stamp. `grid-auto-flow: row dense` back-fills the hole a

@@ -1,25 +1,28 @@
 # gallery/
 
-`photos/` holds every picture and clip on the wall that does not belong to a
-project — a good frame from an afternoon of messing about, an instrument that
-just arrived, a failure worth keeping.
+One folder per science. A picture belongs to exactly one, and the folder it
+sits in is the whole of the tagging:
 
-One flat folder. The filename carries the date:
+    astronomy/20260730 M 31.jpg
+    ^ science  ^ sorts    ^ caption
 
-    20260730 M 31.jpg
-    20260724 The Sun.mp4
+The `YYYYMMDD` prefix orders the wall and is never displayed — it is the date
+the picture joined the gallery, and changing it just moves the tile. The rest
+of the filename is the caption.
 
-That `YYYYMMDD` prefix is the filing system — the same convention the project
-folders use — so the folder sorts itself and a file states its own date without
-a sidecar. `build_gallery.py` reads the month straight off the name.
+Drop a file in, run `python3 pipeline/scripts/build_gallery.py`, done. No YAML.
 
-A picture that lives inside a project folder stays there and is referenced in
-place from `../gallery.yml`; copying it here would put the same bytes in git
-twice, and the build rejects that by content hash.
+**Keep them web-sized: a long edge of 2000.** There is no thumbnail folder —
+the wall and the lightbox both load these files directly, so camera-resolution
+originals would be three times the page weight for no visible gain at any
+display size. `sips -Z 2000 in.jpg --out in.jpg` is the whole recipe, and
+`work/astronomy/output/collect_media.py` already does it when it copies Seestar
+captures in. Full-resolution originals live outside the published site.
 
-`thumbs/` is generated — never edit it, never add to it. `build_gallery.py`
-writes a long-edge-1000 copy of anything oversized and deletes thumbs whose row
-has gone. The originals total ~58 MB and a gallery is exactly the page that
-requests all of them; the thumbs are ~9 MB.
+An `.mp4` works as a tile — it autoplays muted and loops. Give it a still frame
+beside it named `<name>.poster.jpg`; that is what the tile shows before the
+clip plays, and what the iOS app shows instead of the video.
 
-Captions and tags live in `../gallery.yml`, not here.
+A picture that lives inside a project folder stays there and is referenced from
+`../gallery.yml`. Copying it here would put the same bytes in git twice, and
+the build rejects that by content hash.
