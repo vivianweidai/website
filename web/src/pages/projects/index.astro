@@ -439,8 +439,9 @@ const spanFor = (t) => {
     .wall-empty { color: #8b949e; font-style: italic; }
 
     /* ── lightbox ─────────────────────────────────────────────────
-       Deliberately plain: a dark field, the picture as large as it will go,
-       and the same caption the tile carries. */
+       Deliberately plain: a dark field and the picture as large as it will
+       go. No caption — the wall doesn't caption a photo, so neither does the
+       viewer you reach by tapping one. */
     .lb {
       position: fixed;
       inset: 0;
@@ -467,7 +468,8 @@ const spanFor = (t) => {
     .lb-media img,
     .lb-media video {
       max-width: 100%;
-      /* Leave room for the caption under the picture. */
+      /* Matches .lb's 3.2em top+bottom padding, so the picture fills the
+         field exactly. There is no caption to leave room for. */
       max-height: calc(100vh - 6.4em);
       object-fit: contain;
       border-radius: 6px;

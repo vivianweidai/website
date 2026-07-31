@@ -76,39 +76,43 @@ Findings from a deep dive get folded back into that project's entry in `work/IDE
 
 ## STAGING GALLERY CANDIDATES
 
-Images destined for the site land first in **`work/scratch/gallery/`**. **Never stage bare
-images** — always ship the context with them, because whoever builds the page needs hover text,
-captions and filter tags, and cannot recover any of it from the pixels.
+**Simplified 2026-07-31 with the captions.** A picture used to be staged in `work/scratch/gallery/`
+with two sidecars — a `metadata.yml` carrying `title`/`alt`/`caption`/`tags`/`note`, and a prose
+`README.md` — because the wall rendered hover text and a caption line and none of it could be
+recovered from the pixels. **The wall renders none of that now, so there is nothing to stage.**
 
-Each staging batch carries two sidecars:
-- **`metadata.yml`** — the machine-readable one, and the one to parse. Per asset: `title`,
-  `alt` (hover), `caption`, `tags`, `exposure`, `confidence`, and `caveat` where the result is
-  weaker than it looks.
-- **`README.md`** — the prose: what the batch is, how it was produced, and what would be wrong
-  to claim from it.
+**Publishing a picture is one move:** put the file in `web/public/projects/gallery/<science>/`
+named `YYYYMMDD Name.ext`, run `python pipeline/scripts/build_gallery.py`, build, deploy. The folder
+is the science, the date prefix is the ordering, the rest of the name is the file's name. **No
+sidecar, no YAML row, no staging step.** (A project *card* still needs a `gallery.yml` row — it is
+a link, and a link needs a name and a destination.)
 
-⚠️ **Tag every asset `kind: capture` or `kind: figure`.** A *capture* is byte-for-byte instrument
-output and may go in the Stargazing/Cellgazing capture galleries, which forbid any pixel edit. A
-*figure* is derived from our own reduction and must **not** go there — it belongs on a project
-page, where analysis is the point. Cropping a capture turns it into a figure.
+Two things the old ceremony was protecting that are still worth keeping in your head, because the
+sidecars are no longer there to prompt for them:
 
-Record confidence honestly at staging time. A caption written months later from a filename will
-overstate a 3-sigma result as readily as a 20-sigma one.
-
-Staging is the front half of one pipeline: `work/scratch/gallery/` → a row in
-`web/public/projects/gallery.yml` → a tile on the wall. See § THE WALL.
+- ⚠️ **A capture and a figure are different things.** A *capture* is byte-for-byte instrument
+  output; a *figure* is derived from our own reduction. **Cropping a capture turns it into a
+  figure.** Both are welcome on the wall — the dedicated capture galleries (Stargazing, Cellgazing)
+  were folded into it 2026-07-30 — but never present a figure as though the instrument produced it.
+- ⚠️ **Judge the result honestly at the moment you publish it, because the page will never qualify
+  it.** A weak result and a strong one look identical on a wall of untitled pictures. If a frame
+  needs a caveat to be read correctly, it does not belong on the wall — it belongs in a project
+  page, where there is room to say so.
 
 ## THE WALL (`/projects/`)
 
 `/projects/` is **one chronological grid of pictures and nothing else** — no inventory, no links
 below the fold, no second kind of content. That emptiness is the design, not an omission: the
 page answers "what have they been doing" at a glance, and anything that invites reading instead
-of looking belongs somewhere other than here. Two tile kinds, both from `gallery.yml`:
+of looking belongs somewhere other than here. Two tile kinds:
 
-- **photo tile** — `src:` a picture. Caption + note + toy + month appear on hover.
-- **project card** — `folder:` + `hero:`. Framed in its science colour, permanently captioned,
-  links to the project page. Its caption is read from that project's `index.md` title, never
-  retyped. A card's hero must not also be a photo tile; the build rejects the duplicate.
+- **photo tile** — a picture or a clip, and **nothing else**: no caption, no pill, no hover text.
+  It needs no `gallery.yml` row at all — dropping the file into `gallery/<science>/` is the whole
+  of its declaration.
+- **project card** — `folder:` + `hero:` in `gallery.yml`. Framed in its science colour,
+  permanently captioned, links to the project page. Its caption is read from that project's
+  `index.md` title, never retyped. A card's hero must not also be a photo tile; the build rejects
+  the duplicate.
 
 **Where pixels live.** `src:`/`hero:` are paths under `web/public/projects/` — exactly what
 follows `/projects/` in the URL.
@@ -153,15 +157,31 @@ lever for placement, and renaming a file moves its tile. A round-robin across th
 sit in here, to stop a busy week in one science landing as a slab; it was removed once the gallery
 became hand-curated, because it pushed apart two pictures deliberately named to sit together.
 
-**Tags.** `science:` is required. `toy:` names the instrument, shows in the caption, and rolls up
-to that instrument's category. `tech:` names the category directly — use it when a picture belongs
-to a category but to no instrument we own. Either way the build fails on a name the catalog does
-not have, which is what keeps the filter row and the home page the same vocabulary.
+**Tags** apply to `gallery.yml` entries only — a photo tile in `gallery/<science>/` has no row and
+therefore no tags. Where a row does exist: `science:` is required; `toy:` names the instrument and
+rolls up to that instrument's category; `tech:` names the category directly, for a picture that
+belongs to a category but to no instrument we own. **`toy:` no longer shows anywhere** — it used to
+appear in the caption — but the build still fails on a name the catalog does not have, which is what
+keeps the vocabulary honest.
 
-**A tile shows one line and one pill.** The caption on the bottom left, the *science* on the
-bottom right — not the category, not the instrument, not the date. The lightbox shows exactly the
-same two things over the picture. `note:` is still carried in `gallery.yml` and in the JSON but is
-**no longer rendered anywhere**; fold anything load-bearing into the `caption:`.
+**🔒 A photo tile shows nothing but the photo — no caption, no pill, no date, no hover text.**
+Captions were removed from the wall (2026-07-31). **The picture is the whole content**, on the tile
+and in the lightbox alike, and the same holds in the iOS app. This supersedes the earlier "one line
+and one pill" rule, and it is the *third* time a second axis of information has been added to this
+page and then taken back off — first a category filter row, then a toy row, now the captions.
+**Don't re-add text to a photo tile**, and don't reach for a caption to explain a picture that
+isn't carrying itself: **replace the picture.**
+
+- **Only a project card is captioned**, permanently, because it is a link and a link needs a name.
+  Caption plus science pill plus a `Project →` badge, framed in its science colour — the whole
+  point being that a card must *not* read as one more photo.
+- **The caption string still exists; it is just never displayed.** `build_gallery.py` derives it
+  from the filename and bakes it into `gallery.json`, and the wall spends it on the `alt` attribute
+  and the tile's `aria-label`. So **the filename is still doing real work** — it orders the wall, it
+  names the file, and it is what a screen reader announces. Write it as if someone will read it,
+  because someone will; just don't expect to see it.
+- **`note:` in `gallery.yml` renders nowhere either.** Between the two, a photo tile has no surface
+  for prose at all. Anything that genuinely needs explaining belongs on a project page.
 
 **Filtering is one tier.** Just the six sciences. A category row was built, then a third row of
 individual toys under it, and both were removed within the day — the wall is a gallery, and every
@@ -173,9 +193,16 @@ organising principle; they simply do not filter here. Home-page links land on `/
 the validation is what keeps the vocabulary honest and the data is still the record of what a
 picture is about.
 
-**Captions are load-bearing — verify them against the actual frame.** Several first-pass captions
-here described the wrong instrument entirely (a bench of samples called "the printed jig"). Render
-the tiles and look before shipping copy.
+**A wrong picture is now the only way to be wrong, so look at the frames.** Captions used to be the
+hazard — several first-pass ones described the wrong instrument entirely (a bench of samples called
+"the printed jig"). With captions gone that particular trap is closed, and a subtler one is open:
+**nothing on the page will ever correct a misleading image**, and a filename that misidentifies its
+subject still reaches screen readers and the JSON. Render the tiles and look before shipping.
+
+⚠️ **A retracted claim can only be retracted by replacing the file.** There is no caption to edit —
+the filename *is* the name — so a figure whose own title or filename asserts something we no longer
+believe has to be regenerated and re-uploaded under a new name. This is not hypothetical: the
+`A0V Against K3II` tile outlived its retraction by a day (see `work/IDEAS.md` §6, Albireo).
 
 ## AUTHORING A RESEARCH PROJECT
 
