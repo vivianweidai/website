@@ -4,11 +4,18 @@ One folder per science. A picture belongs to exactly one, and the folder it
 sits in is the whole of the tagging:
 
     astronomy/20260730 M 31.jpg
-    ^ science  ^ sorts    ^ caption
+    ^ science  ^ sorts    ^ name
 
-The `YYYYMMDD` prefix orders the wall and is never displayed — it is the date
-the picture joined the gallery, and changing it just moves the tile. The rest
-of the filename is the caption.
+**Nothing here is displayed.** A photo tile is the picture and nothing else —
+no caption, no science pill, no date, no hover text (locked; see the repo
+`CLAUDE.md` § THE WALL). So the filename is not copy, it is plumbing, and it
+does three jobs:
+
+- the **`YYYYMMDD` prefix orders the wall** — it is the date the picture joined
+  the gallery, not necessarily when it was shot, and renaming it moves the tile
+- the **rest of the name** becomes the `alt` text and the tile's `aria-label`,
+  so a screen reader still reads it even though no one sees it
+- the **folder** is the science, and the only tag there is
 
 Drop a file in, run `python3 pipeline/scripts/build_gallery.py`, done. No YAML.
 
