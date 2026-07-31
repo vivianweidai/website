@@ -18,11 +18,11 @@
   var RAW_BASE = 'https://vivianweidai.com/curriculum/source/';
   var MANIFEST_URL = '/curriculum/curriculum.json';
 
-  // Short slug for chip styling (.chip.bio, .chip.math, …). Folder names
+  // Short slug for chip styling (.chip.biology, .chip.mathematics, …). Folder names
   // and hash slugs use the full word; chips need the abbreviated tone.
   var SHORT_SLUGS = {
-    mathematics: 'math', computing: 'comp', physics: 'phys',
-    chemistry: 'chem', biology: 'bio', astronomy: 'astro',
+    mathematics: 'mathematics', computing: 'computing', physics: 'physics',
+    chemistry: 'chemistry', biology: 'biology', astronomy: 'astronomy',
   };
   // Canonical subject order for cross-topic navigation. Matches the
   // research and curriculum chip palette order; lets prev/next on the last

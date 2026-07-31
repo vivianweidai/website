@@ -66,18 +66,11 @@ public enum SubjectPaletteRGB {
         "Mathematics", "Computing", "Physics", "Chemistry", "Biology", "Astronomy",
     ]
 
-    /// Short slug for a science — "Mathematics" -> "math". Mirrors the slugs
-    /// the website uses in its URLs and chip class names.
+    /// Slug for a science — "Mathematics" -> "mathematics". Mirrors the slugs
+    /// the website uses in its URLs and chip class names, which became the
+    /// full lowercase word 2026-07-30.
     public static func slug(for subject: String) -> String {
-        switch subject {
-        case "Mathematics": return "math"
-        case "Computing":   return "comp"
-        case "Physics":     return "phys"
-        case "Chemistry":   return "chem"
-        case "Biology":     return "bio"
-        case "Astronomy":   return "astro"
-        default:            return subject.lowercased()
-        }
+        subject.lowercased()
     }
 
     /// (red, green, blue) in [0, 1]. Returns a neutral gray for anything

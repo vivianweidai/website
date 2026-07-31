@@ -72,10 +72,12 @@ SRC = CONTENT / "gallery.yml"
 GALLERY = CONTENT / "gallery"
 OUT = CONTENT / "gallery.json"
 
-SCIENCE_SLUGS = {
-    "Mathematics": "math", "Computing": "comp", "Physics": "phys",
-    "Chemistry": "chem", "Biology": "bio", "Astronomy": "astro",
-}
+# The slug is the full lowercase word — it is what appears in a URL
+# (/projects/#astronomy) and in CSS variable names (--subj-astronomy). Short
+# forms were dropped 2026-07-30: "#astro" in the address bar read as an
+# abbreviation nobody asked for.
+SCIENCE_SLUGS = {name: name.lower() for name in
+                 ["Mathematics", "Computing", "Physics", "Chemistry", "Biology", "Astronomy"]}
 # Wall order, top of the filter row to the bottom — mirrors the Olympiads page.
 SCIENCE_ORDER = ["Mathematics", "Computing", "Physics", "Chemistry", "Biology", "Astronomy"]
 # Folder under gallery/ per science — the full word, matching the convention

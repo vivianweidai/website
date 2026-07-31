@@ -23,8 +23,8 @@ const {
 
 // Full → short slug for chip class names. Same map used by technology.json.
 const SLUG: Record<string, string> = {
-  Mathematics: 'math', Computing: 'comp', Physics: 'phys',
-  Chemistry: 'chem', Biology: 'bio', Astronomy: 'astro',
+  Mathematics: 'mathematics', Computing: 'computing', Physics: 'physics',
+  Chemistry: 'chemistry', Biology: 'biology', Astronomy: 'astronomy',
 };
 
 // Title-row pills: one science-coloured pill per science, linking to the wall
@@ -91,12 +91,12 @@ const titlePills = sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`
       font-size: .72em; font-weight: 600; color: #1f2328;
       text-align: center; white-space: nowrap; line-height: 1.6;
     }
-    .chip.math  { background: var(--subj-math); }
-    .chip.comp  { background: var(--subj-comp); }
-    .chip.phys  { background: var(--subj-phys); }
-    .chip.chem  { background: var(--subj-chem); }
-    .chip.bio   { background: var(--subj-bio); }
-    .chip.astro { background: var(--subj-astro); }
+    .chip.mathematics  { background: var(--subj-mathematics); }
+    .chip.computing  { background: var(--subj-computing); }
+    .chip.physics  { background: var(--subj-physics); }
+    .chip.chemistry  { background: var(--subj-chemistry); }
+    .chip.biology   { background: var(--subj-biology); }
+    .chip.astronomy { background: var(--subj-astronomy); }
     /* Project title sits below the Research header — tone it down */
     body > h1:first-of-type { font-size: 1.6em; margin-top: 0.8em; }
     .project-title {

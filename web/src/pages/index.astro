@@ -9,8 +9,8 @@ import curriculumData from '../../public/curriculum/curriculum.json';
 // mathematics as the foundation. Each row builds on the ones below.
 const SUBJECTS = ['astronomy', 'biology', 'chemistry', 'physics', 'computing', 'mathematics'];
 const SUBJ_ANCHOR = {
-  mathematics: 'math', computing: 'comp', physics: 'phys',
-  chemistry: 'chem', biology: 'bio', astronomy: 'astro',
+  mathematics: 'mathematics', computing: 'computing', physics: 'physics',
+  chemistry: 'chemistry', biology: 'biology', astronomy: 'astronomy',
 };
 // The competitions Vivian sits in each science — the Olympiads tab is a list,
 // same shape as the Curriculum tab's section list. Names are the *competition*,
@@ -255,12 +255,12 @@ const TABS = [
     .curr-rows-row:hover .curr-rows-subj {
       filter: brightness(0.94) saturate(1.2);
     }
-    .curr-rows-subj[data-subj="mathematics"] { background: var(--subj-math); }
-    .curr-rows-subj[data-subj="computing"]   { background: var(--subj-comp); }
-    .curr-rows-subj[data-subj="physics"]     { background: var(--subj-phys); }
-    .curr-rows-subj[data-subj="chemistry"]   { background: var(--subj-chem); }
-    .curr-rows-subj[data-subj="biology"]     { background: var(--subj-bio); }
-    .curr-rows-subj[data-subj="astronomy"]   { background: var(--subj-astro); }
+    .curr-rows-subj[data-subj="mathematics"] { background: var(--subj-mathematics); }
+    .curr-rows-subj[data-subj="computing"]   { background: var(--subj-computing); }
+    .curr-rows-subj[data-subj="physics"]     { background: var(--subj-physics); }
+    .curr-rows-subj[data-subj="chemistry"]   { background: var(--subj-chemistry); }
+    .curr-rows-subj[data-subj="biology"]     { background: var(--subj-biology); }
+    .curr-rows-subj[data-subj="astronomy"]   { background: var(--subj-astronomy); }
     .curr-rows-secs {
       flex: 1;
       padding: 0.55em 1em;

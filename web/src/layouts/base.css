@@ -8,15 +8,15 @@
  * SubjectPaletteRGB (different language — unavoidable duplication).
  */
 :root {
-  --subj-math:  #c5d9f7;
-  --subj-comp:  #d9ccee;
-  --subj-phys:  #f9c4a8;
-  --subj-chem:  #d4e8a0;
-  --subj-bio:   #a8ddd4;
-  --subj-astro: #f4c2cb;
+  --subj-mathematics:  #c5d9f7;
+  --subj-computing:  #d9ccee;
+  --subj-physics:  #f9c4a8;
+  --subj-chemistry:  #d4e8a0;
+  --subj-biology:   #a8ddd4;
+  --subj-astronomy: #f4c2cb;
   --gradient-pastel: linear-gradient(to right,
-    var(--subj-math), var(--subj-comp), var(--subj-phys),
-    var(--subj-chem), var(--subj-bio), var(--subj-astro));
+    var(--subj-mathematics), var(--subj-computing), var(--subj-physics),
+    var(--subj-chemistry), var(--subj-biology), var(--subj-astronomy));
 }
 
 /* Shared base styles */
@@ -101,12 +101,12 @@ hr { border: none; border-top: 1px solid #d1d9e0; margin: 2em 0 0.5em 0; }
 a.chip, a.chip:hover { text-decoration: none; color: #1f2328; }
 a.chip { transition: filter 0.15s ease; }
 a.chip:hover { filter: brightness(0.94) saturate(1.2); }
-.chip.math  { background: var(--subj-math); }
-.chip.comp  { background: var(--subj-comp); }
-.chip.phys  { background: var(--subj-phys); }
-.chip.chem  { background: var(--subj-chem); }
-.chip.bio   { background: var(--subj-bio); }
-.chip.astro { background: var(--subj-astro); }
+.chip.mathematics  { background: var(--subj-mathematics); }
+.chip.computing  { background: var(--subj-computing); }
+.chip.physics  { background: var(--subj-physics); }
+.chip.chemistry  { background: var(--subj-chemistry); }
+.chip.biology   { background: var(--subj-biology); }
+.chip.astronomy { background: var(--subj-astronomy); }
 .page-header .header-nav {
   display: flex;
   gap: 0.8em;

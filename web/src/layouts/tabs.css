@@ -7,35 +7,35 @@
   border-bottom-color: #656d76;
   background: #e8e8e8;
 }
-#view-math:checked ~ .tab-labels label[for="view-math"] {
+#view-mathematics:checked ~ .tab-labels label[for="view-mathematics"] {
   color: #2563eb;
   border-bottom-color: #2563eb;
-  background: var(--subj-math);
+  background: var(--subj-mathematics);
 }
-#view-comp:checked ~ .tab-labels label[for="view-comp"] {
+#view-computing:checked ~ .tab-labels label[for="view-computing"] {
   color: #7c3aed;
   border-bottom-color: #7c3aed;
-  background: var(--subj-comp);
+  background: var(--subj-computing);
 }
-#view-phys:checked ~ .tab-labels label[for="view-phys"] {
+#view-physics:checked ~ .tab-labels label[for="view-physics"] {
   color: #ea580c;
   border-bottom-color: #ea580c;
-  background: var(--subj-phys);
+  background: var(--subj-physics);
 }
-#view-chem:checked ~ .tab-labels label[for="view-chem"] {
+#view-chemistry:checked ~ .tab-labels label[for="view-chemistry"] {
   color: #5c7a10;
   border-bottom-color: #5c7a10;
-  background: var(--subj-chem);
+  background: var(--subj-chemistry);
 }
-#view-bio:checked ~ .tab-labels label[for="view-bio"] {
+#view-biology:checked ~ .tab-labels label[for="view-biology"] {
   color: #0e8577;
   border-bottom-color: #0e8577;
-  background: var(--subj-bio);
+  background: var(--subj-biology);
 }
-#view-astro:checked ~ .tab-labels label[for="view-astro"] {
+#view-astronomy:checked ~ .tab-labels label[for="view-astronomy"] {
   color: #e11d48;
   border-bottom-color: #e11d48;
-  background: var(--subj-astro);
+  background: var(--subj-astronomy);
 }
 
 /* IR Spectroscopy: representative samples */

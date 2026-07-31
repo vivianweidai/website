@@ -8,15 +8,15 @@ import PageFooter from '../../layouts/PageFooter.astro';
 
   <div class="tabs subject-tabs">
     <input type="radio" name="view" id="view-all" />
-    <input type="radio" name="view" id="view-math" />
-    <input type="radio" name="view" id="view-comp" />
-    <input type="radio" name="view" id="view-phys" />
-    <input type="radio" name="view" id="view-chem" />
-    <input type="radio" name="view" id="view-bio" />
-    <input type="radio" name="view" id="view-astro" />
+    <input type="radio" name="view" id="view-mathematics" />
+    <input type="radio" name="view" id="view-computing" />
+    <input type="radio" name="view" id="view-physics" />
+    <input type="radio" name="view" id="view-chemistry" />
+    <input type="radio" name="view" id="view-biology" />
+    <input type="radio" name="view" id="view-astronomy" />
     <script is:inline>
       (function(){
-        var tabs = ['view-math','view-comp','view-phys','view-chem','view-bio','view-astro'];
+        var tabs = ['view-mathematics','view-computing','view-physics','view-chemistry','view-biology','view-astronomy'];
         var allTabs = ['view-all'].concat(tabs);
         // Hash takes precedence so a chip click on another page can deep-link
         // straight to the right tab. Fall through to the saved tab, then
@@ -71,12 +71,12 @@ import PageFooter from '../../layouts/PageFooter.astro';
 
     <div class="tab-labels">
       <label for="view-all"><span class="label-full">All</span><span class="label-abbr">All</span></label>
-      <label for="view-math"><span class="label-full">Mathematics</span><span class="label-abbr">Math</span></label>
-      <label for="view-comp"><span class="label-full">Computing</span><span class="label-abbr">Comp</span></label>
-      <label for="view-phys"><span class="label-full">Physics</span><span class="label-abbr">Phys</span></label>
-      <label for="view-chem"><span class="label-full">Chemistry</span><span class="label-abbr">Chem</span></label>
-      <label for="view-bio"><span class="label-full">Biology</span><span class="label-abbr">Bio</span></label>
-      <label for="view-astro"><span class="label-full">Astronomy</span><span class="label-abbr">Astro</span></label>
+      <label for="view-mathematics"><span class="label-full">Mathematics</span><span class="label-abbr">Math</span></label>
+      <label for="view-computing"><span class="label-full">Computing</span><span class="label-abbr">Comp</span></label>
+      <label for="view-physics"><span class="label-full">Physics</span><span class="label-abbr">Phys</span></label>
+      <label for="view-chemistry"><span class="label-full">Chemistry</span><span class="label-abbr">Chem</span></label>
+      <label for="view-biology"><span class="label-full">Biology</span><span class="label-abbr">Bio</span></label>
+      <label for="view-astronomy"><span class="label-full">Astronomy</span><span class="label-abbr">Astro</span></label>
     </div>
   </div>
 
@@ -108,12 +108,12 @@ import PageFooter from '../../layouts/PageFooter.astro';
       transform: translate(-2px, -2px);
       box-shadow: 0 6px 18px rgba(0,0,0,.08);
     }
-    body:has(#view-math:checked)  #timeline { border-left-color: #6ba3e8; --card-tint: var(--subj-math); }
-    body:has(#view-comp:checked)  #timeline { border-left-color: #9b7ed8; --card-tint: var(--subj-comp); }
-    body:has(#view-phys:checked)  #timeline { border-left-color: #e8915a; --card-tint: var(--subj-phys); }
-    body:has(#view-chem:checked)  #timeline { border-left-color: #8db849; --card-tint: var(--subj-chem); }
-    body:has(#view-bio:checked)   #timeline { border-left-color: #5bbfb0; --card-tint: var(--subj-bio); }
-    body:has(#view-astro:checked) #timeline { border-left-color: #e86088; --card-tint: var(--subj-astro); }
+    body:has(#view-mathematics:checked)  #timeline { border-left-color: #6ba3e8; --card-tint: var(--subj-mathematics); }
+    body:has(#view-computing:checked)  #timeline { border-left-color: #9b7ed8; --card-tint: var(--subj-computing); }
+    body:has(#view-physics:checked)  #timeline { border-left-color: #e8915a; --card-tint: var(--subj-physics); }
+    body:has(#view-chemistry:checked)  #timeline { border-left-color: #8db849; --card-tint: var(--subj-chemistry); }
+    body:has(#view-biology:checked)   #timeline { border-left-color: #5bbfb0; --card-tint: var(--subj-biology); }
+    body:has(#view-astronomy:checked) #timeline { border-left-color: #e86088; --card-tint: var(--subj-astronomy); }
 
     .timeline { padding-left: 0; margin-left: 0; }
     .timeline .year-marker {
@@ -285,12 +285,12 @@ import PageFooter from '../../layouts/PageFooter.astro';
       white-space: nowrap;
       line-height: 1.6;
     }
-    .chip.math  { background: var(--subj-math); }
-    .chip.comp  { background: var(--subj-comp); }
-    .chip.phys  { background: var(--subj-phys); }
-    .chip.chem  { background: var(--subj-chem); }
-    .chip.bio   { background: var(--subj-bio); }
-    .chip.astro { background: var(--subj-astro); }
+    .chip.mathematics  { background: var(--subj-mathematics); }
+    .chip.computing  { background: var(--subj-computing); }
+    .chip.physics  { background: var(--subj-physics); }
+    .chip.chemistry  { background: var(--subj-chemistry); }
+    .chip.biology   { background: var(--subj-biology); }
+    .chip.astronomy { background: var(--subj-astronomy); }
 
     .type-icon { font-size: .85em; }
     .rings-icon { vertical-align: middle; }
@@ -327,8 +327,8 @@ import PageFooter from '../../layouts/PageFooter.astro';
   // chronological timeline grouped by year.
   (function () {
     var SUBJECT_SLUGS = {
-      Mathematics: 'math', Computing: 'comp', Physics: 'phys',
-      Chemistry: 'chem', Biology: 'bio', Astronomy: 'astro'
+      Mathematics: 'mathematics', Computing: 'computing', Physics: 'physics',
+      Chemistry: 'chemistry', Biology: 'biology', Astronomy: 'astronomy'
     };
     function esc(s) {
       return String(s).replace(/[&<>"']/g, function (c) {

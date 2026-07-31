@@ -209,16 +209,10 @@ private enum GallerySubject: Hashable {
         }
     }
 
+    /// The manifest's slug is the full lowercase word, so the display name is
+    /// just it capitalised.
     static func name(for slug: String) -> String {
-        switch slug {
-        case "math": return "Mathematics"
-        case "comp": return "Computing"
-        case "phys": return "Physics"
-        case "chem": return "Chemistry"
-        case "bio": return "Biology"
-        case "astro": return "Astronomy"
-        default: return slug
-        }
+        slug.prefix(1).uppercased() + slug.dropFirst()
     }
 
     var color: Color? {

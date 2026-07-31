@@ -38,12 +38,18 @@ The toy catalog behind the site is organized around two concepts:
 3. **Remote terminals into partner observatories** — UBC Thunderbird South. Real instrument time, operated over a network.
 4. **Pay-per-use / mail-in services** (future) — for Techs we can't reasonably own. Add only after Tiers 1–3 cover the foundational science.
 
+**Science slugs are the full lowercase word** — `astronomy`, not `astro` (2026-07-30). That is what
+appears in a URL (`/projects/#astronomy`), in the CSS variables (`--subj-astronomy`), in chip class
+names, in the Olympiads radio ids, and in `gallery.json`'s `science_slug`. There is no short form
+left anywhere; a rename that leaves one behind silently breaks a filter, which is exactly what
+happened to the Olympiads timeline mid-sweep.
+
 **Schema** — the data layer matches this vocabulary end-to-end:
 
 | Layer | YAML/JSON field | Frontmatter | URL path | Astro collection |
 |---|---|---|---|---|
-| Science (card) | `science` | — | `/projects/#<slug>` | — |
-| Tech (category) | `techs[].tech` | `tech:` | `/projects/#<sci>/<tech>` | — |
+| Science (card) | `science` | — | `/projects/#<science>` | — |
+| Tech (category) | `techs[].tech` | `tech:` | — | — |
 | Toy (instrument) | `techs[].toys[].name` | — | — | — |
 
 `technology.yml` is **one flat entry per science** (`science:` + `techs:`, with `toys:` inline under each tech). It is a **pure catalog — there are no tech pages.** `web/public/projects/technology/` was deleted 2026-07-30: a documentation layer nobody read, whose hero photos were better off as gallery tiles, and whose toys now live inline in the YAML where a reader would look for them. The catalog supplies the *vocabulary*: the home page's Projects tab lists each science's categories, the wall filters on them, and `gallery.yml` tags a photo with a `toy:` that rolls up to its category.

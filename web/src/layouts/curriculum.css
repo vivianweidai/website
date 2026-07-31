@@ -44,12 +44,12 @@
   text-decoration: underline;
 }
 
-.curr-col-head[data-subj="mathematics"] { background: var(--subj-math); }
-.curr-col-head[data-subj="computing"]   { background: var(--subj-comp); }
-.curr-col-head[data-subj="physics"]     { background: var(--subj-phys); }
-.curr-col-head[data-subj="chemistry"]   { background: var(--subj-chem); }
-.curr-col-head[data-subj="biology"]     { background: var(--subj-bio); }
-.curr-col-head[data-subj="astronomy"]   { background: var(--subj-astro); }
+.curr-col-head[data-subj="mathematics"] { background: var(--subj-mathematics); }
+.curr-col-head[data-subj="computing"]   { background: var(--subj-computing); }
+.curr-col-head[data-subj="physics"]     { background: var(--subj-physics); }
+.curr-col-head[data-subj="chemistry"]   { background: var(--subj-chemistry); }
+.curr-col-head[data-subj="biology"]     { background: var(--subj-biology); }
+.curr-col-head[data-subj="astronomy"]   { background: var(--subj-astronomy); }
 
 .curr-section { margin-bottom: 1em; }
 .curr-section:last-child { margin-bottom: 0; }
@@ -160,12 +160,12 @@ a.curr-col-head:hover {
   transform: translate(-2px, -2px);
   box-shadow: 0 6px 18px rgba(0,0,0,.08);
 }
-.curr-topic[data-subj="mathematics"] { border-left-color: #6ba3e8; --card-tint: var(--subj-math); }
-.curr-topic[data-subj="computing"]   { border-left-color: #9b7ed8; --card-tint: var(--subj-comp); }
-.curr-topic[data-subj="physics"]     { border-left-color: #e8915a; --card-tint: var(--subj-phys); }
-.curr-topic[data-subj="chemistry"]   { border-left-color: #8db849; --card-tint: var(--subj-chem); }
-.curr-topic[data-subj="biology"]     { border-left-color: #5bbfb0; --card-tint: var(--subj-bio); }
-.curr-topic[data-subj="astronomy"]   { border-left-color: #e86088; --card-tint: var(--subj-astro); }
+.curr-topic[data-subj="mathematics"] { border-left-color: #6ba3e8; --card-tint: var(--subj-mathematics); }
+.curr-topic[data-subj="computing"]   { border-left-color: #9b7ed8; --card-tint: var(--subj-computing); }
+.curr-topic[data-subj="physics"]     { border-left-color: #e8915a; --card-tint: var(--subj-physics); }
+.curr-topic[data-subj="chemistry"]   { border-left-color: #8db849; --card-tint: var(--subj-chemistry); }
+.curr-topic[data-subj="biology"]     { border-left-color: #5bbfb0; --card-tint: var(--subj-biology); }
+.curr-topic[data-subj="astronomy"]   { border-left-color: #e86088; --card-tint: var(--subj-astronomy); }
 
 /* Header band: topic name on the left, science chip + section breadcrumb
    on the right. Mirrors the research tech header (SciPy · Computing ·
