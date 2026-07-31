@@ -35,6 +35,17 @@
     },
     {
       "kind": "photo",
+      "science": "Computing",
+      "science_slug": "computing",
+      "caption": "The Shelves",
+      "src": "/projects/gallery/computing/20260716%20The%20Shelves.jpeg",
+      "full": "/projects/gallery/computing/20260716%20The%20Shelves.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astronomy",
       "caption": "The Sun",
@@ -45,6 +56,17 @@
       "date": "2026-07",
       "video": true,
       "poster": "/projects/gallery/astronomy/20260724%20The%20Sun.poster.jpg"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "First Light Through The Window",
+      "src": "/projects/gallery/astronomy/20260728%20First%20Light%20Through%20The%20Window.jpeg",
+      "full": "/projects/gallery/astronomy/20260728%20First%20Light%20Through%20The%20Window.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2026-07"
     },
     {
       "kind": "photo",
@@ -66,6 +88,17 @@
       "full": "/projects/gallery/astronomy/20260728%20M%2031.jpg",
       "w": 1125,
       "h": 2000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "Processing At Night",
+      "src": "/projects/gallery/astronomy/20260728%20Processing%20At%20Night.jpeg",
+      "full": "/projects/gallery/astronomy/20260728%20Processing%20At%20Night.jpeg",
+      "w": 2000,
+      "h": 1500,
       "date": "2026-07"
     },
     {
@@ -270,13 +303,57 @@
     },
     {
       "kind": "photo",
+      "science": "Physics",
+      "science_slug": "physics",
+      "caption": "The Lattice",
+      "src": "/projects/gallery/physics/20260517%20The%20Lattice.jpeg",
+      "full": "/projects/gallery/physics/20260517%20The%20Lattice.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2026-05"
+    },
+    {
+      "kind": "photo",
+      "science": "Physics",
+      "science_slug": "physics",
+      "caption": "Watching The Print",
+      "src": "/projects/gallery/physics/20260527%20Watching%20The%20Print.jpeg",
+      "full": "/projects/gallery/physics/20260527%20Watching%20The%20Print.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2026-05"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "Astronomy",
+      "src": "/projects/gallery/astronomy/20260528%20Astronomy.jpeg",
+      "full": "/projects/gallery/astronomy/20260528%20Astronomy.jpeg",
+      "w": 1090,
+      "h": 608,
+      "date": "2026-05"
+    },
+    {
+      "kind": "photo",
+      "science": "Chemistry",
+      "science_slug": "chemistry",
+      "caption": "In The Lab",
+      "src": "/projects/gallery/chemistry/20260404%20In%20The%20Lab.jpeg",
+      "full": "/projects/gallery/chemistry/20260404%20In%20The%20Lab.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2026-04"
+    },
+    {
+      "kind": "photo",
       "science": "Mathematics",
       "science_slug": "mathematics",
       "caption": "O-H Dominant",
       "src": "/projects/gallery/mathematics/20260419%20O-H%20Dominant.png",
       "full": "/projects/gallery/mathematics/20260419%20O-H%20Dominant.png",
-      "w": 3570,
-      "h": 1453,
+      "w": 2000,
+      "h": 814,
       "date": "2026-04"
     },
     {
@@ -286,8 +363,8 @@
       "caption": "Quinine Excitation And Emission",
       "src": "/projects/gallery/mathematics/20260420%20Quinine%20Excitation%20And%20Emission.png",
       "full": "/projects/gallery/mathematics/20260420%20Quinine%20Excitation%20And%20Emission.png",
-      "w": 3569,
-      "h": 1469,
+      "w": 2000,
+      "h": 823,
       "date": "2026-04"
     },
     {
@@ -297,8 +374,8 @@
       "caption": "UV-Vis Absorption",
       "src": "/projects/gallery/mathematics/20260420%20UV-Vis%20Absorption.png",
       "full": "/projects/gallery/mathematics/20260420%20UV-Vis%20Absorption.png",
-      "w": 3569,
-      "h": 1469,
+      "w": 2000,
+      "h": 823,
       "date": "2026-04"
     },
     {
@@ -580,6 +657,39 @@
     },
     {
       "kind": "photo",
+      "science": "Computing",
+      "science_slug": "computing",
+      "caption": "NACLO B",
+      "src": "/projects/gallery/computing/20251223%20NACLO%20B.jpeg",
+      "full": "/projects/gallery/computing/20251223%20NACLO%20B.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2025-12"
+    },
+    {
+      "kind": "photo",
+      "science": "Mathematics",
+      "science_slug": "mathematics",
+      "caption": "Signed Math Prism",
+      "src": "/projects/gallery/mathematics/20251014%20Signed%20Math%20Prism.jpeg",
+      "full": "/projects/gallery/mathematics/20251014%20Signed%20Math%20Prism.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2025-10"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "Orion Nebula",
+      "src": "/projects/gallery/astronomy/20250521%20Orion%20Nebula.jpeg",
+      "full": "/projects/gallery/astronomy/20250521%20Orion%20Nebula.jpeg",
+      "w": 1948,
+      "h": 1948,
+      "date": "2025-05"
+    },
+    {
+      "kind": "photo",
       "science": "Biology",
       "science_slug": "biology",
       "caption": "Tissue Section",
@@ -602,11 +712,88 @@
     },
     {
       "kind": "photo",
+      "science": "Chemistry",
+      "science_slug": "chemistry",
+      "caption": "Berkeley B",
+      "src": "/projects/gallery/chemistry/20250315%20Berkeley%20B.jpeg",
+      "full": "/projects/gallery/chemistry/20250315%20Berkeley%20B.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2025-03"
+    },
+    {
+      "kind": "photo",
+      "science": "Biology",
+      "science_slug": "biology",
+      "caption": "At The Dissection Table",
+      "src": "/projects/gallery/biology/20250320%20At%20The%20Dissection%20Table.jpeg",
+      "full": "/projects/gallery/biology/20250320%20At%20The%20Dissection%20Table.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2025-03"
+    },
+    {
+      "kind": "photo",
+      "science": "Computing",
+      "science_slug": "computing",
+      "caption": "Catfood B",
+      "src": "/projects/gallery/computing/20250330%20Catfood%20B.jpeg",
+      "full": "/projects/gallery/computing/20250330%20Catfood%20B.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2025-03"
+    },
+    {
+      "kind": "photo",
+      "science": "Physics",
+      "science_slug": "physics",
+      "caption": "Circuit B",
+      "src": "/projects/gallery/physics/20250206%20Circuit%20B.jpeg",
+      "full": "/projects/gallery/physics/20250206%20Circuit%20B.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2025-02"
+    },
+    {
+      "kind": "photo",
       "science": "Physics",
       "science_slug": "physics",
       "caption": "Soldering",
       "src": "/projects/gallery/physics/20250209%20Soldering.jpeg",
       "full": "/projects/gallery/physics/20250209%20Soldering.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2025-02"
+    },
+    {
+      "kind": "photo",
+      "science": "Mathematics",
+      "science_slug": "mathematics",
+      "caption": "Jane Street",
+      "src": "/projects/gallery/mathematics/20250227%20Jane%20Street.jpeg",
+      "full": "/projects/gallery/mathematics/20250227%20Jane%20Street.jpeg",
+      "w": 1500,
+      "h": 2000,
+      "date": "2025-02"
+    },
+    {
+      "kind": "photo",
+      "science": "Physics",
+      "science_slug": "physics",
+      "caption": "Lightbox A",
+      "src": "/projects/gallery/physics/20250227%20Lightbox%20A.jpeg",
+      "full": "/projects/gallery/physics/20250227%20Lightbox%20A.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2025-02"
+    },
+    {
+      "kind": "photo",
+      "science": "Chemistry",
+      "science_slug": "chemistry",
+      "caption": "Chemistry B",
+      "src": "/projects/gallery/chemistry/20250228%20Chemistry%20B.jpeg",
+      "full": "/projects/gallery/chemistry/20250228%20Chemistry%20B.jpeg",
       "w": 2000,
       "h": 1500,
       "date": "2025-02"
@@ -637,6 +824,61 @@
     },
     {
       "kind": "photo",
+      "science": "Physics",
+      "science_slug": "physics",
+      "caption": "Toy A",
+      "src": "/projects/gallery/physics/20250109%20Toy%20A.jpeg",
+      "full": "/projects/gallery/physics/20250109%20Toy%20A.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2025-01"
+    },
+    {
+      "kind": "photo",
+      "science": "Mathematics",
+      "science_slug": "mathematics",
+      "caption": "Caltech C",
+      "src": "/projects/gallery/mathematics/20250125%20Caltech%20C.jpeg",
+      "full": "/projects/gallery/mathematics/20250125%20Caltech%20C.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2025-01"
+    },
+    {
+      "kind": "photo",
+      "science": "Mathematics",
+      "science_slug": "mathematics",
+      "caption": "Caltech E",
+      "src": "/projects/gallery/mathematics/20250125%20Caltech%20E.jpeg",
+      "full": "/projects/gallery/mathematics/20250125%20Caltech%20E.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2025-01"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "In The Dome",
+      "src": "/projects/gallery/astronomy/20241211%20In%20The%20Dome.jpeg",
+      "full": "/projects/gallery/astronomy/20241211%20In%20The%20Dome.jpeg",
+      "w": 1500,
+      "h": 2000,
+      "date": "2024-12"
+    },
+    {
+      "kind": "photo",
+      "science": "Biology",
+      "science_slug": "biology",
+      "caption": "Plants B",
+      "src": "/projects/gallery/biology/20240909%20Plants%20B.jpeg",
+      "full": "/projects/gallery/biology/20240909%20Plants%20B.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2024-09"
+    },
+    {
+      "kind": "photo",
       "science": "Computing",
       "science_slug": "computing",
       "caption": "Mi",
@@ -645,38 +887,60 @@
       "w": 900,
       "h": 1200,
       "date": "2024-02"
+    },
+    {
+      "kind": "photo",
+      "science": "Computing",
+      "science_slug": "computing",
+      "caption": "USACO",
+      "src": "/projects/gallery/computing/20240219%20USACO.jpeg",
+      "full": "/projects/gallery/computing/20240219%20USACO.jpeg",
+      "w": 1200,
+      "h": 900,
+      "date": "2024-02"
+    },
+    {
+      "kind": "photo",
+      "science": "Chemistry",
+      "science_slug": "chemistry",
+      "caption": "The Periodic Table On The Window",
+      "src": "/projects/gallery/chemistry/20240126%20The%20Periodic%20Table%20On%20The%20Window.jpeg",
+      "full": "/projects/gallery/chemistry/20240126%20The%20Periodic%20Table%20On%20The%20Window.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2024-01"
     }
   ],
   "sciences": [
     {
       "science": "Mathematics",
       "slug": "mathematics",
-      "count": 3
+      "count": 7
     },
     {
       "science": "Computing",
       "slug": "computing",
-      "count": 3
+      "count": 7
     },
     {
       "science": "Physics",
       "slug": "physics",
-      "count": 6
+      "count": 11
     },
     {
       "science": "Chemistry",
       "slug": "chemistry",
-      "count": 7
+      "count": 11
     },
     {
       "science": "Biology",
       "slug": "biology",
-      "count": 8
+      "count": 10
     },
     {
       "science": "Astronomy",
       "slug": "astronomy",
-      "count": 12
+      "count": 17
     }
   ]
 }
