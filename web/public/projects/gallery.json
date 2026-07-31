@@ -4,28 +4,6 @@
       "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
-      "caption": "M 51",
-      "src": "/projects/gallery/astronomy/20260704%20M%2051.jpg",
-      "full": "/projects/gallery/astronomy/20260704%20M%2051.jpg",
-      "w": 1125,
-      "h": 2000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "NGC 5907",
-      "src": "/projects/gallery/astronomy/20260704%20NGC%205907.jpg",
-      "full": "/projects/gallery/astronomy/20260704%20NGC%205907.jpg",
-      "w": 1125,
-      "h": 2000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astro",
       "caption": "The Sun",
       "src": "/projects/gallery/astronomy/20260724%20The%20Sun.mp4",
       "full": "/projects/gallery/astronomy/20260724%20The%20Sun.mp4",
@@ -53,6 +31,28 @@
       "caption": "Albireo Field Of Spectra",
       "src": "/projects/gallery/astronomy/20260729%20Albireo%20Field%20Of%20Spectra.jpg",
       "full": "/projects/gallery/astronomy/20260729%20Albireo%20Field%20Of%20Spectra.jpg",
+      "w": 1125,
+      "h": 2000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Juno After",
+      "src": "/projects/gallery/astronomy/20260729%20Juno%20After.jpg",
+      "full": "/projects/gallery/astronomy/20260729%20Juno%20After.jpg",
+      "w": 1125,
+      "h": 2000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Juno Before",
+      "src": "/projects/gallery/astronomy/20260729%20Juno%20Before.jpg",
+      "full": "/projects/gallery/astronomy/20260729%20Juno%20Before.jpg",
       "w": 1125,
       "h": 2000,
       "date": "2026-07"
@@ -720,17 +720,6 @@
       "w": 2000,
       "h": 1500,
       "date": "2025-02"
-    },
-    {
-      "kind": "photo",
-      "science": "Computing",
-      "science_slug": "comp",
-      "caption": "Mi",
-      "src": "/projects/gallery/computing/20240210%20Mi.jpeg",
-      "full": "/projects/gallery/computing/20240210%20Mi.jpeg",
-      "w": 900,
-      "h": 1200,
-      "date": "2024-02"
     }
   ],
   "sciences": [
@@ -742,7 +731,7 @@
     {
       "science": "Computing",
       "slug": "comp",
-      "count": 3
+      "count": 2
     },
     {
       "science": "Physics",
