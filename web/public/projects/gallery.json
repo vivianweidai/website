@@ -720,6 +720,17 @@
       "w": 2000,
       "h": 1500,
       "date": "2025-02"
+    },
+    {
+      "kind": "photo",
+      "science": "Computing",
+      "science_slug": "comp",
+      "caption": "Mi",
+      "src": "/projects/gallery/computing/20240210%20Mi.jpeg",
+      "full": "/projects/gallery/computing/20240210%20Mi.jpeg",
+      "w": 900,
+      "h": 1200,
+      "date": "2024-02"
     }
   ],
   "sciences": [
@@ -731,7 +742,7 @@
     {
       "science": "Computing",
       "slug": "comp",
-      "count": 2
+      "count": 3
     },
     {
       "science": "Physics",
