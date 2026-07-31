@@ -268,7 +268,7 @@ showing the old tech browser until a build ships.
 ## ANALYSIS & NOTEBOOKS
 
 - **Tools** — flexible; default to the Python scientific stack (pandas, numpy, scipy, matplotlib, seaborn) absent a strong reason otherwise.
-- ⚠️ **Astronomy reduction needs the repo venv at `work/astronomy/.venv`** — `astropy` / `astroquery` / `scipy` are **not installed system-wide on any interpreter**, so `python3 script.py` fails with `ModuleNotFoundError` no matter which python you reach for. Run these as `work/astronomy/.venv/bin/python output/<project>/<script>.py` — **`output/` is one folder per project** (`rig/ photometry/ astrometry/ spectroscopy/`; layout and rules in `work/IDEAS.md` § Where things live). Every script resolves its own paths from `__file__` and writes beside itself, so it runs from any working directory and on any machine. The venv is gitignored (`.venv/`), so **a fresh clone must rebuild it**:
+- ⚠️ **Astronomy reduction needs the repo venv at `work/astronomy/.venv`** — `astropy` / `astroquery` / `scipy` are **not installed system-wide on any interpreter**, so `python3 script.py` fails with `ModuleNotFoundError` no matter which python you reach for. Run these as `work/astronomy/.venv/bin/python output/<project>/<script>.py` — **`output/` is one folder per project** (`setup/ photometry/ astrometry/ spectroscopy/`; layout and rules in `work/IDEAS.md` § Where things live). Every script resolves its own paths from `__file__` and writes beside itself, so it runs from any working directory and on any machine. The venv is gitignored (`.venv/`), so **a fresh clone must rebuild it**:
 
   ```sh
   cd work/astronomy && /opt/homebrew/bin/python3.14 -m venv .venv
