@@ -28,6 +28,28 @@
       "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
+      "caption": "M 31",
+      "src": "/projects/gallery/astronomy/20260728%20M%2031.jpg",
+      "full": "/projects/gallery/astronomy/20260728%20M%2031.jpg",
+      "w": 1125,
+      "h": 2000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
+      "caption": "Vega Dispersed",
+      "src": "/projects/gallery/astronomy/20260728%20Vega%20Dispersed.jpg",
+      "full": "/projects/gallery/astronomy/20260728%20Vega%20Dispersed.jpg",
+      "w": 1125,
+      "h": 2000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astro",
       "caption": "Albireo Field Of Spectra",
       "src": "/projects/gallery/astronomy/20260729%20Albireo%20Field%20Of%20Spectra.jpg",
       "full": "/projects/gallery/astronomy/20260729%20Albireo%20Field%20Of%20Spectra.jpg",
@@ -53,28 +75,6 @@
       "caption": "Juno Before",
       "src": "/projects/gallery/astronomy/20260729%20Juno%20Before.jpg",
       "full": "/projects/gallery/astronomy/20260729%20Juno%20Before.jpg",
-      "w": 1125,
-      "h": 2000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "Vega Dispersed",
-      "src": "/projects/gallery/astronomy/20260729%20Vega%20Dispersed.jpg",
-      "full": "/projects/gallery/astronomy/20260729%20Vega%20Dispersed.jpg",
-      "w": 1125,
-      "h": 2000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astro",
-      "caption": "M 31",
-      "src": "/projects/gallery/astronomy/20260730%20M%2031.jpg",
-      "full": "/projects/gallery/astronomy/20260730%20M%2031.jpg",
       "w": 1125,
       "h": 2000,
       "date": "2026-07"
