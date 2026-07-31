@@ -2,6 +2,30 @@
   "tiles": [
     {
       "kind": "photo",
+      "science": "Physics",
+      "science_slug": "phys",
+      "caption": "Pulling The Force Sensor",
+      "src": "/projects/gallery/physics/20260730%20Pulling%20The%20Force%20Sensor.mov",
+      "full": "/projects/gallery/physics/20260730%20Pulling%20The%20Force%20Sensor.mov",
+      "w": 720,
+      "h": 1280,
+      "date": "2026-07",
+      "video": true,
+      "poster": "/projects/gallery/physics/20260730%20Pulling%20The%20Force%20Sensor.poster.jpg"
+    },
+    {
+      "kind": "photo",
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "GELATO",
+      "src": "/projects/gallery/biology/20260701%20GELATO.jpeg",
+      "full": "/projects/gallery/biology/20260701%20GELATO.jpeg",
+      "w": 2000,
+      "h": 935,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "The Sun",
@@ -15,6 +39,17 @@
     },
     {
       "kind": "photo",
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "Handheld Scope At The Desk",
+      "src": "/projects/gallery/biology/20260701%20Handheld%20Scope%20At%20The%20Desk.jpeg",
+      "full": "/projects/gallery/biology/20260701%20Handheld%20Scope%20At%20The%20Desk.jpeg",
+      "w": 2000,
+      "h": 1500,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "M 13",
@@ -22,6 +57,17 @@
       "full": "/projects/gallery/astronomy/20260728%20M%2013.jpg",
       "w": 1125,
       "h": 2000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Biology",
+      "science_slug": "bio",
+      "caption": "The Compound Scope",
+      "src": "/projects/gallery/biology/20260701%20The%20Compound%20Scope.jpeg",
+      "full": "/projects/gallery/biology/20260701%20The%20Compound%20Scope.jpeg",
+      "w": 2000,
+      "h": 1500,
       "date": "2026-07"
     },
     {
@@ -127,11 +173,11 @@
       "kind": "photo",
       "science": "Biology",
       "science_slug": "bio",
-      "caption": "GELATO",
-      "src": "/projects/gallery/biology/20260601%20GELATO.jpeg",
-      "full": "/projects/gallery/biology/20260601%20GELATO.jpeg",
-      "w": 1600,
-      "h": 460,
+      "caption": "Spirometer",
+      "src": "/projects/gallery/biology/20260630%20Spirometer.jpeg",
+      "full": "/projects/gallery/biology/20260630%20Spirometer.jpeg",
+      "w": 2000,
+      "h": 1500,
       "date": "2026-06"
     },
     {
@@ -139,10 +185,10 @@
       "science": "Astronomy",
       "science_slug": "astro",
       "caption": "The Seestar Folded",
-      "src": "/projects/gallery/astronomy/20260601%20The%20Seestar%20Folded.jpeg",
-      "full": "/projects/gallery/astronomy/20260601%20The%20Seestar%20Folded.jpeg",
-      "w": 1600,
-      "h": 400,
+      "src": "/projects/gallery/astronomy/20260630%20The%20Seestar%20Folded.jpeg",
+      "full": "/projects/gallery/astronomy/20260630%20The%20Seestar%20Folded.jpeg",
+      "w": 2000,
+      "h": 1500,
       "date": "2026-06"
     },
     {
@@ -171,11 +217,11 @@
       "kind": "photo",
       "science": "Biology",
       "science_slug": "bio",
-      "caption": "Spirometer",
-      "src": "/projects/gallery/biology/20260601%20Spirometer.jpeg",
-      "full": "/projects/gallery/biology/20260601%20Spirometer.jpeg",
-      "w": 1600,
-      "h": 400,
+      "caption": "The Microscope Bench",
+      "src": "/projects/gallery/biology/20260630%20The%20Microscope%20Bench.jpeg",
+      "full": "/projects/gallery/biology/20260630%20The%20Microscope%20Bench.jpeg",
+      "w": 2000,
+      "h": 1500,
       "date": "2026-06"
     },
     {
@@ -198,17 +244,6 @@
       "full": "/projects/gallery/chemistry/20260629%20The%20Spectrophotometer.jpeg",
       "w": 2000,
       "h": 1500,
-      "date": "2026-06"
-    },
-    {
-      "kind": "photo",
-      "science": "Biology",
-      "science_slug": "bio",
-      "caption": "The Stereo Scope",
-      "src": "/projects/gallery/biology/20260601%20The%20Stereo%20Scope.jpeg",
-      "full": "/projects/gallery/biology/20260601%20The%20Stereo%20Scope.jpeg",
-      "w": 1600,
-      "h": 400,
       "date": "2026-06"
     },
     {
@@ -747,7 +782,7 @@
     {
       "science": "Physics",
       "slug": "phys",
-      "count": 5
+      "count": 6
     },
     {
       "science": "Chemistry",
@@ -757,7 +792,7 @@
     {
       "science": "Biology",
       "slug": "bio",
-      "count": 7
+      "count": 9
     },
     {
       "science": "Astronomy",
