@@ -367,3 +367,7 @@ The native app is built + submitted from the main dev box. Run from `apple/`. **
 6. Build processes a few min. Then in ASC web: iOS App **+** → new version → **What's New** → **Add Build** → release option → **Add for Review** → **Submit for Review**.
 
 `ITSAppUsesNonExemptEncryption: NO` is set in `project.yml`, so export-compliance never prompts. Direct-to-device dev install (for review) is separate: `xcodebuild … build`, then `xcrun devicectl device install app --device <coredevice-id> <Science.app>` (phone must be unlocked to launch).
+
+**The flow above is verified end-to-end, 1.5.6 (build 4), 2026-07-30** — archive → export without auth args → `altool` → the six ASC web steps, the last of them driven through Claude-in-Chrome on an already-signed-in session. Build 4 had finished processing by the time the version metadata was filled in, so **Add Build** never had to be waited on. The **Included Assets** row under the chosen build lists *App Icon* + *Apple Watch*, which is the one place the embedded watch app visibly rides along — check it before submitting.
+
+⚠️ **The App Store screenshots are stale and were left that way.** They still show a **Research** tab, which 1.5.6 renames to Projects and rebuilds as the wall. Nothing in the *description* names a tab, so the listing is not wrong, just dated — but the fifth iPhone screenshot depicts a screen that no longer exists. Refreshing them is its own pass (Media Manager, one set per display size); do it before the next release rather than as an afterthought inside one.
