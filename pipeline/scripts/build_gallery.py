@@ -420,6 +420,7 @@ def build() -> dict:
                 # dimensions can disagree with its rotation matrix.
                 tile["w"], tile["h"] = pw, ph
 
+        tile["_name"] = rel.split("/")[-1]
         tiles.append(tile)
 
     # ── 1. everything filed under gallery/<science>/ ─────────────────
@@ -466,26 +467,28 @@ def build() -> dict:
             rel = e["src"]
             add(rel, science, e.get("caption") or caption_from(rel.split("/")[-1]), where)
 
-    # Newest month first — but *within* a month, deal the tiles out round-robin
-    # across the sciences instead of keeping gallery.yml order. Without this a
-    # busy month in one science (a week of clear skies, say) lands as a slab of
-    # fifteen near-identical frames at the top of the wall. Dealing them out
-    # mixes the grid without touching the chronology, since the date only
-    # resolves to a month anyway. Order within one science is preserved, so
-    # a run of related shots still reads in sequence.
-    def interleave(group: list[dict]) -> list[dict]:
-        queues = [[t for t in group if t["science"] == name] for name in SCIENCE_ORDER]
-        out = []
-        while any(queues):
-            for q in queues:
-                if q:
-                    out.append(q.pop(0))
-        return out
-
+    # Newest month first; within a month, filename order.
+    #
+    # There used to be a round-robin here that dealt tiles out across the
+    # sciences so a busy week in one of them could not land as a slab of
+    # near-identical frames. That mattered when the wall was auto-populated.
+    # It stopped making sense once the gallery became hand-curated: it meant
+    # two pictures deliberately named to sit together were pushed apart by
+    # whatever else happened that month, and the filename — the one lever
+    # there is — did not control placement. Ordering is now exactly what the
+    # filenames say, so renaming a file moves its tile.
+    tiles.sort(key=lambda t: (t["date"], t["_name"]))
+    tiles.reverse()
     by_month: dict[str, list[dict]] = {}
     for t in tiles:
         by_month.setdefault(t["date"], []).append(t)
-    tiles = [t for month in sorted(by_month, reverse=True) for t in interleave(by_month[month])]
+    tiles = []
+    for month in sorted(by_month, reverse=True):
+        group = by_month[month]
+        group.sort(key=lambda t: t["_name"])
+        tiles.extend(group)
+    for t in tiles:
+        t.pop("_name", None)
 
     sciences = [
         {

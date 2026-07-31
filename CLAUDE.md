@@ -136,8 +136,10 @@ the MP4 header (`tkhd`, rotation matrix honoured), and it is served without re-e
 **Dating a tile** has three sources, in order: an explicit `date: YYYY-MM`; a `YYYYMMDD` prefix on
 the filename *or on any folder above it* (which dates both `gallery/photos/` and every generated
 plot by its project folder); then EXIF. Between them a row almost never needs a date by hand.
-Tiles sort newest-month-first, and within a month are dealt round-robin across the sciences so a
-busy week in one science doesn't land as a slab of near-identical frames.
+Tiles sort **newest month first, then by filename within the month** — so the filename is the one
+lever for placement, and renaming a file moves its tile. A round-robin across the sciences used to
+sit in here, to stop a busy week in one science landing as a slab; it was removed once the gallery
+became hand-curated, because it pushed apart two pictures deliberately named to sit together.
 
 **Tags.** `science:` is required. `toy:` names the instrument, shows in the caption, and rolls up
 to that instrument's category. `tech:` names the category directly — use it when a picture belongs
