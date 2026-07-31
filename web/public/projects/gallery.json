@@ -26,6 +26,28 @@
       "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astronomy",
+      "caption": "SW Lac Eclipse Minimum",
+      "src": "/projects/gallery/astronomy/20260731%20SW%20Lac%20Eclipse%20Minimum.jpg",
+      "full": "/projects/gallery/astronomy/20260731%20SW%20Lac%20Eclipse%20Minimum.jpg",
+      "w": 1125,
+      "h": 2000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "SW Lac Eclipse Maximum",
+      "src": "/projects/gallery/astronomy/20260731%20SW%20Lac%20Eclipse%20Maximum.jpg",
+      "full": "/projects/gallery/astronomy/20260731%20SW%20Lac%20Eclipse%20Maximum.jpg",
+      "w": 1125,
+      "h": 2000,
+      "date": "2026-07"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
       "caption": "M 57 Ring Nebula",
       "src": "/projects/gallery/astronomy/20260731%20M%2057%20Ring%20Nebula.jpg",
       "full": "/projects/gallery/astronomy/20260731%20M%2057%20Ring%20Nebula.jpg",
@@ -929,7 +951,7 @@
     {
       "science": "Astronomy",
       "slug": "astronomy",
-      "count": 18
+      "count": 20
     }
   ]
 }
