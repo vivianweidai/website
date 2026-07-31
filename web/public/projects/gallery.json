@@ -357,28 +357,6 @@
       "date": "2026-04"
     },
     {
-      "kind": "photo",
-      "science": "Mathematics",
-      "science_slug": "mathematics",
-      "caption": "Quinine Excitation And Emission",
-      "src": "/projects/gallery/mathematics/20260420%20Quinine%20Excitation%20And%20Emission.png",
-      "full": "/projects/gallery/mathematics/20260420%20Quinine%20Excitation%20And%20Emission.png",
-      "w": 2000,
-      "h": 823,
-      "date": "2026-04"
-    },
-    {
-      "kind": "photo",
-      "science": "Mathematics",
-      "science_slug": "mathematics",
-      "caption": "UV-Vis Absorption",
-      "src": "/projects/gallery/mathematics/20260420%20UV-Vis%20Absorption.png",
-      "full": "/projects/gallery/mathematics/20260420%20UV-Vis%20Absorption.png",
-      "w": 2000,
-      "h": 823,
-      "date": "2026-04"
-    },
-    {
       "kind": "project",
       "science": "Biology",
       "science_slug": "biology",
@@ -915,7 +893,7 @@
     {
       "science": "Mathematics",
       "slug": "mathematics",
-      "count": 7
+      "count": 5
     },
     {
       "science": "Computing",
