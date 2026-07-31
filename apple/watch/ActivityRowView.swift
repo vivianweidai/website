@@ -36,9 +36,7 @@ struct ActivityRowView: View {
                         .font(.system(size: 10, weight: .medium, design: .monospaced))
                         .foregroundStyle(.secondary)
                     SubjectPill(subject: primarySubject)
-                    if activity.invited == 1 {
-                        InvitedDot()
-                    }
+                    StatusGlyphs(activity: activity)
                     Spacer(minLength: 0)
                 }
                 Text(activity.name)
@@ -73,12 +71,31 @@ private struct SubjectPill: View {
     }
 }
 
-private struct InvitedDot: View {
+/// The standing markers the timeline carries, in the website's own
+/// vocabulary: ⭐ invited or attended, 🎯 competitive, 🇨🇦 Team Canada or
+/// alternate. The watch used to show a single ★ for `invited` alone, which
+/// silently dropped three of the four states the data records.
+private struct StatusGlyphs: View {
+    let activity: Activity
+
     var body: some View {
-        Text("★")
-            .font(.system(size: 9, weight: .bold))
-            .foregroundStyle(Color(red: 1.0, green: 0.75, blue: 0.0))
-            .accessibilityLabel("Invited")
+        HStack(spacing: 1) {
+            if activity.invited == 1 || activity.attended == 1 {
+                glyph("⭐", label: activity.attended == 1 ? "Attended" : "Invited")
+            }
+            if activity.competitive == 1 {
+                glyph("🎯", label: "Competitive")
+            }
+            if activity.team == 1 || activity.alternate == 1 {
+                glyph("🇨🇦", label: activity.team == 1 ? "Team Canada" : "Alternate")
+            }
+        }
+    }
+
+    private func glyph(_ emoji: String, label: String) -> some View {
+        Text(emoji)
+            .font(.system(size: 9))
+            .accessibilityLabel(label)
     }
 }
 

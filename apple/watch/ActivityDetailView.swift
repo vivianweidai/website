@@ -32,7 +32,7 @@ struct ActivityDetailView: View {
                     .foregroundStyle(.secondary)
 
                 if !badges.isEmpty {
-                    HStack(spacing: 6) {
+                    VStack(alignment: .leading, spacing: 4) {
                         ForEach(badges, id: \.self) { badge in
                             BadgeView(text: badge)
                         }
@@ -82,12 +82,18 @@ struct ActivityDetailView: View {
         }
     }
 
-    /// One chip per badge state. Kept as short strings so the flow
-    /// layout can pack them onto a watch screen without overflowing.
+    /// One chip per badge state, in the website timeline's own vocabulary —
+    /// the labels its hover badge shows, in its own precedence order
+    /// (FOUNDATION first, then how far the contest got). Stacked rather than
+    /// packed in a row: "TEAM CANADA" alone fills a watch line.
     private var badges: [String] {
         var out: [String] = []
+        if activity.highlighted == 1 { out.append("FOUNDATION") }
+        if activity.attended == 1 { out.append("ATTENDED") }
         if activity.invited == 1 { out.append("INVITED") }
-        if activity.highlighted == 1 { out.append("HIGHLIGHTED") }
+        if activity.competitive == 1 { out.append("COMPETITIVE") }
+        if activity.team == 1 { out.append("TEAM CANADA") }
+        if activity.alternate == 1 { out.append("ALTERNATE") }
         return out
     }
 }

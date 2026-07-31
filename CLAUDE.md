@@ -238,16 +238,16 @@ collection base, and the Swift API client. Two things about it are easy to trip 
   `URLSession` follows the 301s, so those installs keep working until the next release. Cloudflare
   Workers Static Assets reads that file — the Worker itself is still a pure passthrough.
 
-The Apple source now points at `/projects/technology.json` but **a release has not shipped**, and
-`ResearchScience.projectIndexURL` still accepts the old prefix so a stale cached manifest resolves.
-
 **The app's tech browser was replaced by the gallery (2026-07-30).** `ResearchView.swift` is gone —
 it rendered per-tech pages from `hero` and `tech_url`, and once the website deleted its tech pages
 the build stopped emitting both, so the tab had quietly degraded to a list of names. In its place
-`GalleryView.swift` renders the wall from `gallery.json`; `ProjectDetailView` moved to its own file
-and is unchanged. `technology.json` is still fetched — it is what `ProjectDetailView` uses to
-resolve a project's tech pills and its photo pool. **Still not released**; installed copies keep
-showing the old tech browser until a build ships.
+`GalleryView.swift` renders the wall from `gallery.json`; `ProjectDetailView` moved to its own file.
+**`technology.json` is no longer fetched at all** — the toy catalog went with the tech pages, so a
+project's pills come from its own `sciences:` front matter and its shuffle pool from the `photos`
+array `build_gallery.py` bakes into that project's gallery card. `APIClient` fetches exactly two
+manifests now (`olympiads.json`, `gallery.json`), plus `curriculum.json` via `CurriculumLoader`.
+
+Shipping in **1.5.6**; every installed copy before it still shows the old tech browser.
 
 ## CONTENT BUILDS & DEPLOY
 
@@ -308,13 +308,15 @@ The SwiftPM package (`Package.swift`, iOS 17 + watchOS 10) is split in two so th
 - **`ScienceCore`** — platform-neutral `Models/`, `API/` clients, and the `ActivityGrouping` / `SubjectPaletteRGB` helpers (`shared/Core/`). Builds on iOS, watchOS, macOS.
 - **`ScienceCoreUI`** — iOS-only SwiftUI views + the KaTeX `MarkdownWebView` (`shared/UI/`). Depends on `ScienceCore`.
 
-The iPhone/iPad target (`ios/`) imports `ScienceCoreUI`; the watch target (`watch/`) imports only `ScienceCore` and owns its own views. The watch app is **embedded in the iOS bundle** — installing on iPhone auto-installs the companion on a paired watch. Bundle IDs `com.vivianweidai.science` / `.science.watchkitapp`.
+The iPhone/iPad target (`ios/`) imports `ScienceCoreUI`; the watch target (`watch/`) imports only `ScienceCore` and owns its own views. The watch app is **embedded in the iOS bundle** — installing on iPhone auto-installs the companion on a paired watch. Bundle IDs `com.vivianweidai.science` / `.science.watchkitapp`. **There is no separate watch submission**: the embedded app rides inside the one iOS IPA, shares its `MARKETING_VERSION`/`CURRENT_PROJECT_VERSION`, and goes through review with it — so watch changes never wait on a release of their own.
 
 Three tabs (`shared/UI/Views/RootTabView.swift`), each reading a generated JSON manifest — the same ones the webapp uses:
 
 - **Curriculum** — cascading subject → section → topic → table browser from `curriculum/curriculum.json`; tables fetched from GitHub raw URLs, rendered with KaTeX in a `WKWebView`.
-- **Olympiads** — contests + unified textbooks from `olympiads/olympiads.json`. The watch companion renders this tab only (offline-first cache at `Caches/olympiads_cache.json`).
-- **Projects** — the same wall the website shows, from `projects/gallery.json`. A science filter, a two-column grid of tiles (caption bottom-left, science bottom-right), tapping a photo opens the full-resolution pager, tapping a project card opens that project's `index.md` in the markdown reader, and a clip hands off to the system player. Because it reads the same manifest the site builds, **a row added to `gallery.yml` appears in the app with no release** — only layout changes need one.
+- **Olympiads** — contests + unified textbooks from `olympiads/olympiads.json`. The watch companion renders this tab only (offline-first cache at `Caches/olympiads_cache.json`). Both surfaces carry the timeline's four standing markers in the website's own vocabulary — ⭐ invited/attended, 🎯 competitive, 🇨🇦 Team Canada/alternate — and the watch's detail badges use its label set (FOUNDATION / ATTENDED / INVITED / COMPETITIVE / TEAM CANADA / ALTERNATE). The watch showed only `invited` until 1.5.6, silently dropping three of the four.
+- **Projects** — the same wall the website shows, from `projects/gallery.json`, and laid out by the same rules (`WallMetrics` ports the CSS grid): **landscape and square tiles span two columns**, portraits take one, tiles stay in manifest order and a half-filled row keeps its gap rather than back-filling. **A photo tile carries no text** — caption and science pill belong to project cards, which are also framed in their science colour and badged `PROJECT →`. The science filter is the web's pill row, pinned as a section header. Tapping a photo opens the full-resolution pager; a project card opens that project's `index.md` in the markdown reader; **a clip autoplays muted in place and opens with controls in-app** (`ClipView.swift`). Because it reads the same manifest the site builds, **a row added to `gallery.yml` appears in the app with no release** — only layout changes need one.
+  - ⚠️ **Tiles load through `RemoteImage`, never `AsyncImage`.** The wall stopped shipping thumbnails 2026-07-30, so `src` *is* the 2000px original; `AsyncImage` would decode ~12 MB per tile to fill a 190 pt box. `RemoteImage` downsamples at decode time and caches the result.
+  - Two SwiftUI traps this layout hit, both worth remembering: a horizontal `ScrollView` is greedy *vertically* too (give the pill row an explicit height), and the navigation bar adopts the **first** scroll view it finds — a filter row above the wall's `ScrollView` stole that role and drew its pills up behind the large title, which is why it is a pinned header inside the wall instead. On a material background, `Color.primary`/`.secondary` render *vibrantly*; the pills use concrete `UIColor`-derived colours so the selected chip stays near-black.
 
 **Markdown shell contract** (`shared/UI/Rendering/katex-shell.html`, kept byte-identical with the Android copy). Three things a project page can rely on in-app:
 - **Page `<style>` blocks are honored** (they used to be stripped). The gallery pages — Stargazing, Cellgazing — carry their whole layout inline, so stripping it broke the hero band and ran the tile captions together. CommonMark treats `<style>` as a type-1 HTML block, so marked passes it through blank lines and all. A page `<script>` still never runs (innerHTML doesn't execute scripts) — anything interactive has to be native.

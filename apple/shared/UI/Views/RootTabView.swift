@@ -8,13 +8,15 @@ import ScienceCore
 /// the individual screens already use `NavigationStack` which adapts to
 /// the wider canvas.
 ///
-/// Default tab is Olympiads. At launch, kicks off a parallel preload
-/// via the shared ContentStore so Curriculum and Projects populate in
-/// the background — when the user taps them the data is already
-/// there, no per-tab spinner. See `ContentStore` for why we use a
-/// store rather than each view's own `.task`.
+/// Default tab is Curriculum, matching the website's home page, which
+/// always opens on its Curriculum tab (the auto-rotating tabs were
+/// dropped 2026-07-30). At launch, kicks off a parallel preload via the
+/// shared ContentStore so Olympiads and Projects populate in the
+/// background — when the user taps them the data is already there, no
+/// per-tab spinner. See `ContentStore` for why we use a store rather
+/// than each view's own `.task`.
 public struct RootTabView: View {
-    @State private var selection: Tab = .olympiads
+    @State private var selection: Tab = .curriculum
     @State private var store = ContentStore.shared
 
     public init() {}
