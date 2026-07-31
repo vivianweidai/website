@@ -112,11 +112,17 @@ of looking belongs somewhere other than here. Two tile kinds, both from `gallery
 
 **Where pixels live.** `src:`/`hero:` are paths under `web/public/projects/` — exactly what
 follows `/projects/` in the URL.
-- A picture inside a project folder is referenced **in place**. Never copy it into `gallery/`,
-  or the same bytes land in git twice. The build checks this by **content hash**, not just by
-  path — two names for the same capture is a build error. That is not hypothetical: the
-  Statistics hero turned out to be a byte-for-byte copy of a Catfood project photo, and two
-  staged spectroscopy RAWs were copies of Stargazing frames.
+- **Every photo tile lives in `gallery/<science>/`.** Nothing on the wall points inside a project
+  folder except a project card's hero, which is the way into that folder. Photo tiles that
+  deep-linked into projects were removed 2026-07-30: one project scattering six near-identical
+  photos across the wall was redundancy, and "gallery photos live in the gallery" is a rule that
+  holds without exceptions. A chart worth showing gets **copied** into `gallery/<science>/` under
+  its own name — that duplicates the bytes with the project's `output/`, and that is the accepted
+  cost of the simpler rule.
+- The build still checks for duplicates by **content hash**, not just path, which catches the same
+  capture reaching the wall twice under two names. It has fired for real: the Statistics hero was
+  a byte-for-byte copy of a Catfood photo, and two staged spectroscopy RAWs were copies of
+  Stargazing frames.
 - Everything else lives flat in **`gallery/photos/`**, named `YYYYMMDD Some Name.ext`. The date
   prefix is the filing system — the same convention project folders use — so the folder sorts
   itself and a file states its own date without a sidecar. No month subfolders.

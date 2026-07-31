@@ -1,85 +1,37 @@
-# THE WALL — the rows that still need a manifest.
+# THE WALL — project cards only.
 #
-# Most pictures do not appear here at all. Anything under
-# gallery/<science>/ is picked up automatically:
+# Every picture on the wall lives in gallery/<science>/ and needs no row here:
 #
 #   gallery/astronomy/20260730 M 31.jpg
-#            ^ the science      ^ sorts the wall   ^ the caption
+#            ^ the science      ^ sorts    ^ the caption
 #
 # The folder is the science, the YYYYMMDD prefix is the sort key (never shown),
 # and the rest of the filename is the caption. Drop a file in and run
-# `python3 pipeline/scripts/build_gallery.py`. Nothing to write here.
+# `python3 pipeline/scripts/build_gallery.py`.
 #
-# Two things still need a row:
+# This file holds the one exception: a PROJECT CARD, which links to a write-up
+# instead of opening the picture. A project gets exactly one tile — the card —
+# and every other photo from it lives on the project page, not on the wall.
+# The card's hero is the only thing that still points inside a project folder,
+# because the card IS the way into that folder.
 #
-#   a project card — links to a write-up instead of opening the picture.
-#     - folder:   the project folder
-#       hero:     which of its images fronts the card
-#       science:  required, exactly one
-#       (the caption is read from that project's index.md title)
+#   - folder:   the project folder
+#     hero:     which of its images fronts the card
+#     science:  required, exactly one
+#     (the caption is read from that project's index.md title)
 #
-#   a picture that lives inside a project folder and should also be on the
-#   wall. Referenced in place — never copied into gallery/, or the same bytes
-#   land in git twice, which the build rejects by content hash.
-#     - src:      path under web/public/projects/
-#       science:  required, exactly one
-#       caption:  optional; defaults to the filename
-#
-# One science per picture. Not two, not none.
+# Photo tiles pointing into project folders were removed 2026-07-30: a project
+# scattering six near-identical photos across the wall was redundancy, and the
+# rule "gallery photos live in the gallery" is easier to hold than a rule with
+# exceptions. A chart that belongs on the wall gets copied into
+# gallery/<science>/ under its own name.
 
 
-# ── pictures inside project folders ─────────────────────────────────
-
-- src: 20260420 UV-Vis Spectroscopy/photos/samples/samples3.jpeg
-  caption: The amber bottle shelf
-  science: Chemistry
-- src: 20260420 UV-Vis Spectroscopy/photos/samples/samples4.jpeg
-  caption: Everything coloured we could find
-  science: Chemistry
-- src: 20260420 UV-Vis Spectroscopy/photos/samples/samples5.jpeg
-  caption: Cuvettes loaded
-  science: Chemistry
-- src: 20260420 UV-Vis Spectroscopy/photos/samples/samples7.jpeg
-  caption: Yellow in the beam
-  science: Chemistry
-- src: 20260420 UV-Vis Spectroscopy/photos/setup/setup5.jpeg
-  caption: Inside the sample compartment
-  science: Chemistry
-- src: 20260419 IR Spectroscopy/photos/setup/setup3.jpeg
-  caption: The bench setup, laptop attached
-  science: Chemistry
-- src: 20260411 Centrifuge/photos/samples/samples7.jpeg
-  caption: Colour-coded by condition
-  science: Chemistry
-- src: 20260411 Centrifuge/photos/samples/samples9.jpeg
-  caption: Rack of everything
-  science: Chemistry
-- src: 20260411 Centrifuge/photos/samples/samples12.jpeg
-  caption: Blue and orange
-  science: Chemistry
-- src: 20260411 Centrifuge/photos/setup/setup1.jpeg
-  caption: The centrifuge, spun down
-  science: Chemistry
-- src: 20260411 Centrifuge/photos/setup/setup3.jpeg
-  caption: Weighing it out
-  science: Chemistry
-- src: 20260411 Centrifuge/photos/setup/setup5.jpeg
-  caption: The mixer, mid-bench
-  science: Chemistry
-- src: 20260420 UV-Vis Spectroscopy/output/images/uvvis_overlay.png
-  caption: Four traces, one axis
-  science: Mathematics
-- src: 20260420 UV-Vis Spectroscopy/output/images/fluoromax_quinine.png
-  caption: Quinine, emitting
-  science: Mathematics
-- src: 20260419 IR Spectroscopy/output/images/chem_oh_spectrum.png
-  caption: That fat O–H band
-  science: Mathematics
 - folder: 20260420 UV-Vis Spectroscopy
   hero: photos/samples/samples6.jpeg
   science: Chemistry
 - folder: 20260419 IR Spectroscopy
-  hero: photos/setup/setup11.jpeg
+  hero: photos/setup/setup2.jpeg
   science: Chemistry
 - folder: 20260411 Centrifuge
   hero: photos/samples/samples1.jpeg
