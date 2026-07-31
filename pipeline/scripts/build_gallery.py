@@ -469,26 +469,28 @@ def build() -> dict:
             rel = e["src"]
             add(rel, science, e.get("caption") or caption_from(rel.split("/")[-1]), where)
 
-    # Newest month first; within a month, filename order.
+    # NEWEST FIRST, EVERYWHERE. One descending sort on (month, filename), so
+    # the top of the wall is always the most recent thing added and the page
+    # reads backwards in time all the way down.
     #
-    # There used to be a round-robin here that dealt tiles out across the
+    # This used to sort months descending but filenames ASCENDING inside each
+    # month -- a `.reverse()` whose within-month half was then undone by a
+    # regroup below it. The wall came out a sawtooth: Jul 1 -> Jul 31, jump
+    # back to Jun 1 -> Jun 30, and so on. In practice that buried the newest
+    # work for a whole month at a time; on 2026-07-31 the front of the wall was
+    # a July 1 photo and that week's spectra sat at #15 of 61.
+    #
+    # There used to be a round-robin here as well, dealing tiles out across the
     # sciences so a busy week in one of them could not land as a slab of
     # near-identical frames. That mattered when the wall was auto-populated.
     # It stopped making sense once the gallery became hand-curated: it meant
     # two pictures deliberately named to sit together were pushed apart by
-    # whatever else happened that month, and the filename — the one lever
-    # there is — did not control placement. Ordering is now exactly what the
-    # filenames say, so renaming a file moves its tile.
-    tiles.sort(key=lambda t: (t["date"], t["_name"]))
-    tiles.reverse()
-    by_month: dict[str, list[dict]] = {}
-    for t in tiles:
-        by_month.setdefault(t["date"], []).append(t)
-    tiles = []
-    for month in sorted(by_month, reverse=True):
-        group = by_month[month]
-        group.sort(key=lambda t: t["_name"])
-        tiles.extend(group)
+    # whatever else happened that month, and the filename -- the one lever
+    # there is -- did not control placement.
+    #
+    # So ordering is exactly what the filenames say, read newest-first:
+    # renaming a file moves its tile, and a later name sorts higher.
+    tiles.sort(key=lambda t: (t["date"], t["_name"]), reverse=True)
     for t in tiles:
         t.pop("_name", None)
 
