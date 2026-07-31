@@ -30,7 +30,7 @@ public struct RootTabView: View {
                 .tabItem { Image(systemName: "trophy") }
                 .tag(Tab.olympiads)
             GalleryView()
-                .tabItem { Image(systemName: "photo.on.rectangle") }
+                .tabItem { Image(systemName: "flask") }
                 .tag(Tab.projects)
         }
         .task { await store.preloadAll() }
