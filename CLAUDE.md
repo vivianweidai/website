@@ -299,7 +299,7 @@ Shipping in **1.5.6**; every installed copy before it still shows the old tech b
 
   ```sh
   cd work/astronomy && /opt/homebrew/bin/python3.14 -m venv .venv
-  .venv/bin/pip install astropy astroquery numpy scipy matplotlib
+  .venv/bin/pip install astropy astroquery numpy scipy matplotlib cryptography
   ```
 
   Created 2026-07-29, after the working copy was found to be living in an **ephemeral session scratchpad** that would have vanished before the next observing night. Plate solving is separate and system-wide: `/opt/homebrew/bin/solve-field` (astrometry.net) with the Gaia index files 4212–4216.
