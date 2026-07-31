@@ -325,10 +325,12 @@ const spanFor = (t) => {
       grid-auto-rows: var(--ROWPX);
       column-gap: var(--GUTTERPX);
       row-gap: 0;
-      /* `dense` back-fills the hole a two-column tile leaves when it will not
-         fit at the end of a row. Order shifts locally; on a wall that reads as
-         packing rather than as a mistake, and a gap would not. */
-      grid-auto-flow: row dense;
+      /* NOT `dense`. Back-filling packs the grid tighter, but it hoists a
+         later tile into an earlier gap — the oldest picture in a science was
+         landing three rows from the top, which makes the filename ordering a
+         lie. A gap where a two-column tile would not fit is the honest cost of
+         tiles appearing in the order they are named. */
+      grid-auto-flow: row;
     }
     .tile {
       position: relative;
