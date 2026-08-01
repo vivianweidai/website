@@ -30,6 +30,10 @@ struct TheWallView: View {
     @State private var scienceSlug: String?
     @State private var viewer: TheWallViewerImages?
     @State private var clip: TheWallClip?
+    /// Width of the scroll container, read from a background GeometryReader so
+    /// the ScrollView can stay a direct child of the NavigationStack — see the
+    /// note in `content(wall:)`.
+    @State private var containerWidth: CGFloat = 0
 
     var body: some View {
         NavigationStack {
@@ -80,38 +84,51 @@ struct TheWallView: View {
         // way they are on the web.
         let photos = tiles.filter { !$0.isProject && !$0.isVideo }
 
-        GeometryReader { geo in
-            let metrics = WallMetrics(availableWidth: geo.size.width)
-            ScrollView {
-                LazyVStack(spacing: WallMetrics.gutter) {
-                    if tiles.isEmpty {
-                        Text("Nothing here yet.")
-                            .font(.system(size: 14))
-                            .foregroundStyle(.secondary)
-                            .italic()
-                            .padding(.top, 40)
-                            .frame(maxWidth: .infinity)
-                    } else {
-                        ForEach(WallMetrics.rows(tiles, columns: metrics.columns)) { row in
-                            HStack(alignment: .top, spacing: WallMetrics.gutter) {
-                                ForEach(row.tiles) { tile in
-                                    let width = metrics.width(
-                                        spanning: WallMetrics.span(tile, columns: metrics.columns)
-                                    )
-                                    tileLink(tile, photos: photos, width: width)
-                                }
-                                // Holds a half-filled row left-aligned, which
-                                // is exactly the gap the web grid leaves when
-                                // a two-column tile will not fit beside a
-                                // portrait.
-                                Spacer(minLength: 0)
+        // ⚠️ The ScrollView must be a DIRECT child here, exactly as OlympiadsView
+        // has it. Wrapping it in a GeometryReader (which is how this measured its
+        // width until 2026-08-01) stops the navigation bar from tracking the
+        // scroll properly: the large title collapsed to the small CENTRED inline
+        // style the moment you scrolled, while Olympiads kept its left-aligned
+        // large title. Width is measured from a zero-cost background instead,
+        // which does not participate in layout.
+        let metrics = WallMetrics(availableWidth: containerWidth)
+
+        ScrollView {
+            LazyVStack(spacing: WallMetrics.gutter) {
+                if tiles.isEmpty {
+                    Text("Nothing here yet.")
+                        .font(.system(size: 14))
+                        .foregroundStyle(.secondary)
+                        .italic()
+                        .padding(.top, 40)
+                        .frame(maxWidth: .infinity)
+                } else if containerWidth > 0 {
+                    ForEach(WallMetrics.rows(tiles, columns: metrics.columns)) { row in
+                        HStack(alignment: .top, spacing: WallMetrics.gutter) {
+                            ForEach(row.tiles) { tile in
+                                let width = metrics.width(
+                                    spanning: WallMetrics.span(tile, columns: metrics.columns)
+                                )
+                                tileLink(tile, photos: photos, width: width)
                             }
-                            .frame(width: metrics.contentWidth)
+                            // Holds a half-filled row left-aligned, which
+                            // is exactly the gap the web grid leaves when
+                            // a two-column tile will not fit beside a
+                            // portrait.
+                            Spacer(minLength: 0)
                         }
+                        .frame(width: metrics.contentWidth)
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, WallMetrics.gutter)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, WallMetrics.gutter)
+        }
+        .background {
+            GeometryReader { geo in
+                Color.clear
+                    .onAppear { containerWidth = geo.size.width }
+                    .onChange(of: geo.size.width) { _, w in containerWidth = w }
             }
         }
     }
