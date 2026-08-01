@@ -13,11 +13,12 @@ const projects = defineCollection({
     project: z.string(),
     // H1 prose title. Rendered by Project.astro at the top of the page.
     title: z.string(),
-    // Full science name(s) — drives chip rendering at the title row,
-    // tech-page reverse-lookup, and project-page subject coloring.
+    // Full science name(s) — drives chip rendering at the title row and
+    // project-page subject coloring.
     sciences: z.array(z.string()),
-    // Techs this project uses. Drives the auto-populated Projects section
-    // on each /projects/technology/<sci>/<Tech>/ page.
+    // Vestigial. Every project still declares this and the schema still
+    // accepts it, but the tech pages it fed were deleted 2026-07-30 and
+    // nothing reads it now. Kept optional so the 7 existing files validate.
     tech: z.array(z.string()).optional(),
   }),
 });

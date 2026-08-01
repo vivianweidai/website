@@ -5,7 +5,8 @@
 
 # Claude Code
 .claude/
-# (work/scratch/ is intentionally TRACKED — research scratch is backed up on GitHub)
+# (research scratch used to live here under work/ and was intentionally tracked;
+#  work/ moved to the private sandbox repo 2026-08-01 — nothing to except now)
 
 # Python
 __pycache__/
