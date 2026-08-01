@@ -6,7 +6,8 @@
 # Claude Code
 .claude/
 # (research scratch used to live here under work/ and was intentionally tracked;
-#  work/ moved to the private sandbox repo 2026-08-01 — nothing to except now)
+#  work/ moved 2026-08-01 to the private working repo — called `sandbox` that
+#  morning, renamed `science` that afternoon — nothing to except now)
 
 # Python
 __pycache__/
