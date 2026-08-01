@@ -65,27 +65,19 @@ Top-level reads like every other repo: `apple/ web/ pipeline/` + this doc (`work
 
 ## URL RENAMES — the compatibility contract
 
-**`web/public/_redirects` keeps every old URL alive**, and is not optional. App Store builds in the
-wild fetch `/research/technology.json` and `/research/projects/<folder>/index.md`; `URLSession`
-follows the 301s, so those installs keep working until the next release. Cloudflare Workers Static
-Assets reads that file — the Worker itself is still a pure passthrough.
+⚠️ **`web/public/_redirects` is not optional.** App Store builds already in the wild hardcode old
+URLs — `/research/projects/<folder>/index.md`, `/projects/gallery.json` — and `URLSession` follows
+the 301s, so those installs keep working until the next release ships. Cloudflare Workers Static
+Assets serves the file; the Worker itself is still a pure passthrough.
 
-Two renames are covered: **`/research/` → `/projects/`** (2026-07-30) and **`gallery` → `thewall`**
-(2026-08-01, the wall's manifest and picture folder). The second needs *two* rules, not one —
-`/projects/gallery.json` for the URL shipped builds hardcode, and `/projects/gallery/*` for anything
-still holding an older copy of the manifest, whose tiles point at the old picture folder.
+**The rules and the reasoning behind each one live in `_redirects` itself**, which is the only place
+they cannot drift from what is actually served. It covers both renames (`/research/` → `/projects/`,
+2026-07-30; `gallery` → `thewall`, 2026-08-01), why the second needs *two* rules rather than one,
+and the ⚠️ that cost a debugging cycle: **every source pattern must stay disjoint** — an overlapping
+catch-all silently beat the more specific rule and 404'd. **Read that file before editing it.**
 
 *(The path-shape half of the `/research/` rename — project folders losing a directory level — is in
 `sandbox/PROJECTS.md`.)*
-
-**The app's tech browser was replaced by the wall (2026-07-30).** `ResearchView.swift` is gone —
-it rendered per-tech pages from `hero` and `tech_url`, and once the website deleted its tech pages
-the build stopped emitting both, so the tab had quietly degraded to a list of names. In its place
-`TheWallView.swift` renders the wall from `thewall.json`; `ProjectDetailView` moved to its own file.
-**`technology.json` is no longer fetched at all** — a project's pills come from its own `sciences:`
-front matter and its shuffle pool from the `photos` array `build_thewall.py` bakes into that
-project's card on the wall. `APIClient` fetches exactly two manifests now (`olympiads.json`,
-`thewall.json`), plus `curriculum.json` via `CurriculumLoader`. Shipping in **1.5.6**.
 
 ## CONTENT BUILDS & DEPLOY
 
@@ -135,6 +127,10 @@ Three tabs (`shared/UI/Views/RootTabView.swift`), each reading a generated JSON 
 - **Projects** — the same wall the website shows, from `projects/thewall.json`, and laid out by the same rules (`WallMetrics` ports the CSS grid): **landscape and square tiles span two columns**, portraits take one, tiles stay in manifest order and a half-filled row keeps its gap rather than back-filling. **A photo tile carries no text** — caption and science pill belong to project cards, which are also framed in their science colour and badged `PROJECT →`. **The science filter is the toolbar bubble menu, the same one Olympiads uses** — a port of the web's pill row was built and removed the same day (2026-07-31): the web page needs a filter row because it has no toolbar, the app has one, and matching the website is not a reason to pass up the native idiom. Tapping a photo opens the full-resolution pager; a project card opens that project's `index.md` in the markdown reader; **a clip autoplays muted in place and opens with controls in-app** (`ClipView.swift`). Because it reads the same manifest the site builds, **a row added to `thewall.yml` appears in the app with no release** — only layout changes need one.
   - ⚠️ **Tiles load through `RemoteImage`, never `AsyncImage`.** The wall stopped shipping thumbnails 2026-07-30, so `src` *is* the 2000px original; `AsyncImage` would decode ~12 MB per tile to fill a 190 pt box. `RemoteImage` downsamples at decode time and caches the result.
   - 🎬 **Clips must play from a downloaded copy, never from their https URL.** `vivianweidai.com` answers a `Range:` request with a plain `200` and the whole body — no `Accept-Ranges`, no `206` — and **AVFoundation will not start a remote asset it cannot seek**, so both wall clips sat on their poster frame forever, silently, with no error anywhere. `ClipCache` (in `ClipView.swift`) fetches the bytes with `URLSession`, which does not care, parks them in `Caches/clips/`, and hands AVPlayer a file URL. Browsers tolerate the same response, which is why the website's `<video>` tags never showed the problem. **If the range behaviour is ever fixed at the edge, this stays correct — it just stops being load-bearing.** Verify a clip by screenshotting the wall twice a few seconds apart and diffing: a poster is byte-identical, playback is not.
+
+**`APIClient` fetches exactly two manifests** — `olympiads.json` and `thewall.json` — plus
+`curriculum.json` via `CurriculumLoader`. **`technology.json` is not fetched at all**; the tech
+browser was replaced by `TheWallView.swift` in **1.5.6** when the toy catalog was retired.
 
 **Markdown shell contract** (`shared/UI/Rendering/katex-shell.html`, kept byte-identical with the Android copy). Three things a project page can rely on in-app:
 - **Page `<style>` blocks are honored** (they used to be stripped). CommonMark treats `<style>` as a type-1 HTML block, so marked passes it through blank lines and all. *(The bug that forced this was the Stargazing and Cellgazing pages, which carried their whole layout inline — stripping it broke their hero band and ran the tile captions together. **Both pages were retired 2026-07-30** when they folded into the wall, so the original reproduction is gone; the behaviour stays because any project page may style itself inline.)* A page `<script>` still never runs (innerHTML doesn't execute scripts) — anything interactive has to be native.
