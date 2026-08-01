@@ -1,3 +1,10 @@
+# 🔴 DO NOT RENAME THIS WORKER. The repo was renamed science -> website on
+# 2026-08-01; this stayed "science" deliberately. The vivianweidai.com custom
+# domain is bound to the worker of THIS name. Changing it deploys a SECOND,
+# empty worker and leaves the domain on the old one -- the site would keep
+# serving the previous deployment while every new deploy went nowhere visible.
+# It is a Cloudflare resource name, not a repo name, and nothing requires them
+# to match.
 name = "science"
 main = "src/index.js"
 compatibility_date = "2025-04-01"

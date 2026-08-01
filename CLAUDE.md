@@ -1,6 +1,6 @@
 # SCIENCE
 
-The publication repository of Vivian's journey into science live on vivianweidai.com and the App Store. The repo has three verticals of Curriculum, Olympiads and Projects served on the two surfaces of the webapp and the iOS app. A couple of relevant links in this repo are:
+**`website`** — the publication repository of Vivian's journey into science, live on vivianweidai.com and the App Store. *(Renamed from `science` on 2026-08-01 to match its purpose; GitHub redirects the old URLs.)* The repo has three verticals of Curriculum, Olympiads and Projects served on the two surfaces of the webapp and the iOS app. A couple of relevant links in this repo are:
 
 - for publishing the iOS app, refer to `apple/APPSTORE.md`
 - for publishing to the Projects vertical, refer to `web/public/projects/PROJECTS.md`
