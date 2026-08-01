@@ -5,7 +5,7 @@ The publication repository of Vivian's journey into science live on vivianweidai
 - for publishing the iOS app, refer to `apple/APPSTORE.md`
 - for publishing to the Projects vertical, refer to `web/public/projects/PROJECTS.md`
 - naming convention for `.md` files: lowercase for content (`report.md`), uppercase for instructions (`CLAUDE.md`, `PROJECTS.md`)
-- ⚠️ **this repo is PUBLIC** — anything committed is world-readable, so read what you are publishing rather than trusting its filename. **Never put researcher names on the site**; a project page carries Date + Instrument.
+- this repo is **public** — flag anything personal before it goes in, then it is James's call
 
 ## THE THREE VERTICALS
 
