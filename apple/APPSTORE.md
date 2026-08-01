@@ -51,14 +51,25 @@ account holder can create the dist cert and profiles silently. Then upload separ
 
 ### Resubmitting a version already *Waiting for Review*
 
-ASC will not accept a new build while the version sits in review.
+ASC will not accept a new build while the version sits in review. **Removing it costs your place in
+the review queue** — that is the whole price, so decide before clicking.
 
-1. Click **remove this version from review** → it flips to *Developer Rejected* and becomes editable
-2. Attach the build → it flips to *Prepare for Submission*
-3. **Add for Review** → **Submit for Review**
+1. Click **remove this version from review** → confirm → it flips to *Developer Rejected*
+2. **Swap the build.** The attached build has no visible controls: **hover its row** to reveal a red
+   remove button at the far right. Remove it, and the **Add Build** button reappears. Pick the new
+   build → **Done**. *(Only builds that have finished processing are listed; a fresh upload usually
+   takes a few minutes.)*
+3. **Save.** The version flips to *Prepare for Submission*.
+4. ⚠️ **Reload the page.** `Add for Review` stays **greyed out** until you do — it reads exactly like
+   a validation failure, but it is stale UI. Reload and it is enabled.
+5. **Add for Review** → the draft panel opens; confirm it lists the version and build you expect,
+   e.g. `1.5.6 (6)` → **Submit for Review**
+6. Confirmation reads *"1 Item Submitted"*, up to 48 hours, email on completion.
 
 ⚠️ **Keep `MARKETING_VERSION` unchanged; bump only `CURRENT_PROJECT_VERSION`.** The ASC version
 record is pinned to the marketing string, so a build carrying a different one is not selectable.
+
+*Whole flow re-verified 2026-08-01 on 1.5.6 build 6, driven through Claude-in-Chrome.*
 
 ### Dev install (for review, not release)
 
