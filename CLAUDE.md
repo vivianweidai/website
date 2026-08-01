@@ -4,14 +4,15 @@ Personal science portfolio + lab notebook — live on [vivianweidai.com](https:/
 
 This CLAUDE.md is the repo's **orientation doc**: the three verticals, the two surfaces that serve them, and the plumbing they share. The README was folded in and deleted 2026-07-17 (Claude-maintained; even though the repo is public, James opted out of README upkeep).
 
-> 📁 **Working on the Projects vertical? Read `work/PROJECTS.md` first.** The technology/toy
-> vocabulary, the wall, authoring a project page, prepping and running an experiment, and the
-> analysis conventions all live there, not here. That includes edits to **`web/public/projects/`,
-> `gallery.yml` and `technology.yml`** — which sit outside `work/` and so would never bring you
-> there on their own. This doc will not tell you the rules for any of it.
+> 📁 **Working on the Projects vertical? Read `../sandbox/PROJECTS.md` first.** The
+> technology/toy vocabulary, the wall, authoring a project page, prepping and running an
+> experiment, and the analysis conventions all live there, not here — in the **`sandbox` repo**,
+> which is where that vertical is actually worked on. That includes edits to
+> **`web/public/projects/`, `gallery.yml` and `technology.yml`**, which live in *this* repo and so
+> would never route you there on their own. This doc will not tell you the rules for any of it.
 >
-> 🔭 **Running an observing night? Read `work/astronomy/NIGHT.md` first** — and note that the
-> night's plan usually already exists in `work/astronomy/output/setup/night_run.py`.
+> 🔭 **Running an observing night? Read `../sandbox/astronomy/NIGHT.md` first** — and note that
+> the night's plan usually already exists in `../sandbox/astronomy/output/setup/night_run.py`.
 
 ## THE THREE VERTICALS
 
@@ -21,9 +22,19 @@ The site, the app, and this repo are organized around exactly three content vert
 |---|---|---|---|
 | **Curriculum** | `web/public/curriculum/source/*.md` | `curriculum.json` | Reference tables across the six Olympiad disciplines. **Largely done** — a stable body of reference material, not an active front. |
 | **Olympiads** | `web/public/olympiads/olympiads.yml` | `olympiads.json` | Contests + unified textbooks on a timeline. **A journal** — it gets a row when something happens. |
-| **Projects** | `web/public/projects/` (folders + `gallery.yml` + `technology.yml`); WIP under `work/` | `gallery.json`, `technology.json` | Hands-on research: raw data, photos, notebooks, reproducible pipelines. **The frontier** — where the work happens. |
+| **Projects** | `web/public/projects/` (folders + `gallery.yml` + `technology.yml`); WIP in the **`sandbox` repo** | `gallery.json`, `technology.json` | Hands-on research: raw data, photos, notebooks, reproducible pipelines. **The frontier** — where the work happens. |
 
-**Projects is where we live, but it is still one vertical of three.** Its rules are extensive enough to crowd out everything else, which is why they moved to `work/PROJECTS.md` (2026-07-31) — `work/` is where that vertical is actually worked on, so that is where its manual belongs.
+**Projects is where we live, but it is still one vertical of three.** Its rules are extensive enough to crowd out everything else, which is why they moved to `PROJECTS.md` (2026-07-31) — and then out of this repo entirely with `work/` (2026-08-01). The manual lives where the vertical is worked on.
+
+### ⚠️ `work/` left this repo — the gate
+
+**`work/` moved to the private [`sandbox`](https://github.com/vivianweidai/sandbox) repo on 2026-08-01**, with its history (subtree split, 225 commits). This repo is now purely a **publishing entity**; the work happens next door.
+
+**The boundary is one-way: `sandbox` → `science`, never the reverse.** Two things cross:
+- **Images** → `web/public/projects/gallery/`, written by `sandbox/astronomy/output/setup/collect_media.py`, which finds this repo via `$SCIENCE_REPO` or the sibling `~/GITHUB/science` path.
+- **Finished write-ups** → `web/public/projects/`.
+
+⚠️ **Crossing the gate is a private-to-public act.** `sandbox` is private and this repo is PUBLIC, so anything promoted becomes world-readable — read what's crossing, not just its filename. Nothing in this repo is ever a source for `sandbox`.
 
 ## THE TWO SURFACES
 
@@ -43,15 +54,12 @@ All three verticals are served by **both** surfaces, from **the same generated J
 
 ## REPO STRUCTURE
 
-Top-level reads like every other repo: `apple/ web/ pipeline/ work/` + this doc. **The entire Astro app lives in `web/`** — its `astro.config.mjs`, `package.json`, `tsconfig.json`, `src/`, and `public/` (relocated from the repo root 2026-07-17 to keep the root clean; `src/`/`public/` stay at Astro's defaults *inside* `web/`). **All `pnpm` commands run from `web/`.**
+Top-level reads like every other repo: `apple/ web/ pipeline/` + this doc (`work/` left for `sandbox` 2026-08-01). **The entire Astro app lives in `web/`** — its `astro.config.mjs`, `package.json`, `tsconfig.json`, `src/`, and `public/` (relocated from the repo root 2026-07-17 to keep the root clean; `src/`/`public/` stay at Astro's defaults *inside* `web/`). **All `pnpm` commands run from `web/`.**
 
 - **`web/src/`** — `content.config.ts` (Content Collections: **`projects`** + **`tech`**); `layouts/` holds the `.astro` components *and* their imported CSS/JS; `pages/` is file-based routing (`projects/` carries the dynamic `[slug]` project route + `technology/[science]/[tech]` tech route).
 - **`web/public/`** — source-of-truth served **verbatim at the site root**. Areas: `curriculum/` (`source/*.md` + `curriculum.json`), `olympiads/` (`olympiads.yml`), `projects/` (`<YYYYMMDD Name>/` project folders sitting **directly** under it, plus `gallery.yml` + `gallery/<science>/`). `<science>` is the full word (mathematics, computing…) to mirror `curriculum/source/`.
 - **`pipeline/`** — `worker/` (CF Worker: ASSETS passthrough → `dist/`) + `scripts/` (`build_olympiads.py` / `build_gallery.py`, YAML→JSON; `build_curriculum.py`, .docx→markdown). Scripts resolve paths from their own location, so run them **from the repo root**; they write into `web/public/`.
-- **`work/`** — works-in-progress, git-tracked but **NOT web-served**. One dir per science (`physics/` `chemistry/` `biology/` `astronomy/`) + `IDEAS.md`. Named `work/` (not `projects/`) to stay distinct from the published `web/public/projects/`. **`work/scratch/`** is the rough scratchpad (tracked + pushed — backed up and distributed across machines; the relocated home of the old `~/GITHUB/scratch/`, 2026-07-16). Three-stage flow, all tracked — the difference is polish and web-visibility, not whether it's in git: `work/scratch/<topic>` (rough) → `work/<science>/` (organized WIP) → `web/public/projects/` (published).
-- **`work/PROJECTS.md`** — **the Projects vertical's manual.** Read it before touching anything in that vertical (see the pointer block above). It does not auto-load; this doc is what routes you there.
-- **`work/IDEAS.md`** (moved from the repo root 2026-07-17) — the research program's living doc: **ideation** (idea backlog) + **progress tracking** (the "Active work & progress" dashboard and in-flight detail like the home molecular-biology lab). Promote an idea to a dated project folder when a pilot starts; keep the dashboard and idea statuses current.
-- **`work/astronomy/NIGHT.md`** — the observing-night front door: find the existing plan, the pre-flight order, the six traps that fail while logging success, the measured horizon.
+- **The work itself is in [`sandbox`](https://github.com/vivianweidai/sandbox)**, a sibling checkout at `~/GITHUB/sandbox` — one dir per science plus `scratch/`, `IDEAS.md` (the research program's living doc), `PROJECTS.md` (the Projects vertical's manual) and `astronomy/NIGHT.md` (the observing-night front door). The three-stage flow now spans two repos: `sandbox/scratch/<topic>` (rough) → `sandbox/<science>/` (organized WIP) → **the gate** → `web/public/projects/` (published). See `sandbox/CLAUDE.md`.
 
 **Convention deviation: no top-level `content/`; source-of-truth lives under `web/public/`.** The cross-repo convention puts source-of-truth in a top-level `content/`. We deviate because Astro's `public/` is served verbatim at the site root — so `web/public/` **is** the content dir: a file at `web/public/X/Y` serves at `/X/Y`, 1:1, no rewrites, no sync step. Page URLs and asset URLs coexist under the same prefix (`/projects/<folder>/` is the rendered HTML; `/projects/<folder>/index.md` is the raw markdown the apps fetch; `/projects/<folder>/photos/…` are the photos). The Content Collection loader points at `./public/projects/` (relative to the `web/` Astro root); the dynamic route's photo discovery walks the same path.
 
@@ -63,7 +71,7 @@ follows the 301s, so those installs keep working until the next release. Cloudfl
 Assets reads that file — the Worker itself is still a pure passthrough.
 
 *(The path-shape half of this rename — project folders losing a directory level — is in
-`work/PROJECTS.md`.)*
+`sandbox/PROJECTS.md`.)*
 
 **The app's tech browser was replaced by the gallery (2026-07-30).** `ResearchView.swift` is gone —
 it rendered per-tech pages from `hero` and `tech_url`, and once the website deleted its tech pages
@@ -82,12 +90,12 @@ project's gallery card. `APIClient` fetches exactly two manifests now (`olympiad
 - **Technology / toys** — edit `technology.yml` (+ project `tech:` frontmatter), then `python pipeline/scripts/build_technology.py` → `technology.json`.
 - **The wall** — edit `projects/gallery.yml`, then `python pipeline/scripts/build_gallery.py` → `gallery.json` (+ thumbnails). See § THE WALL. The script also bakes each project's **shuffle photo list** (`projects[].photos`, every image under `photos/` except `photos/data/`, mirroring the `[slug]` route's build-time walk) — so **adding or renaming a project photo means rebuilding this JSON**, or the native apps show an empty photo grid. That list is how the apps get the pool; they used to walk the GitHub contents API, which is unauthenticated and rate-limited.
 - **Curriculum** — a **one-time build**: the `.docx` sources were dropped (`f8e7ad3`), so `curriculum.json` and `source/*.md` are now committed artifacts. `web/public/curriculum/notes/` is **gone too** — its six rendered `.pdf` handouts went with the home page's per-subject "pdf" links on 2026-07-30 (**the site is web-only now: don't re-add a downloadable handout to any page**). To regenerate a subject, recreate `notes/` and drop its `.docx` back in; a missing directory just makes `build_curriculum.py` skip every subject. No database, no API, no admin endpoint.
-- **`work/overview.pdf`** (the shareable three-pager; not web-served) — **its source is the print template embedded in `work/IDEAS.md`'s final appendix**, not a separate file (`work/scratch/overview.html` was retired 2026-07-25 after the two drifted). Never edit the PDF, and don't recreate a standalone `.html`: extract the template with the `awk` sentinel command in that appendix and render it with **Chrome headless `--print-to-pdf`** — both commands are written out there, verified to reproduce the committed PDF. **Page 2 restates §2's instrument runs and page 3 the per-science project lists**, so a section edit and the appendix edit are one pass, not two.
+- **`sandbox/overview.pdf`** (the shareable three-pager; not web-served, and now in the other repo) — **its source is the print template embedded in `sandbox/IDEAS.md`'s final appendix**, not a separate file (`scratch/overview.html` was retired 2026-07-25 after the two drifted). Never edit the PDF, and don't recreate a standalone `.html`: extract the template with the `awk` sentinel command in that appendix and render it with **Chrome headless `--print-to-pdf`** — both commands are written out there, verified to reproduce the committed PDF. **Page 2 restates §2's instrument runs and page 3 the per-science project lists**, so a section edit and the appendix edit are one pass, not two.
 
 **Build & deploy** — `cd web && pnpm build` (writes to `../pipeline/worker/dist/`), then `cd pipeline/worker && pnpm run deploy` (wrangler ships `dist/` via Static Assets). GitHub push is backup only. Follow the global commit/push/deploy default for self-contained one-off changes; pause it while iterating on a multi-turn redesign.
 
 - **Local preview** — `cd web && pnpm dev` (port 4321, hot reload). After a change, `open -a Safari 'http://127.0.0.1:4321/<path>'` so the user sees the real native rendering (`qlmanage -t -s 1200 -o /tmp <file>.html` is only an inline-in-chat fallback).
-- **One-off mockups** — non-Astro HTML in `work/scratch/<topic>.html` (tracked; serve with `live-server`); layout-aware Astro in `web/src/pages/scratch-<topic>.astro`, view via `pnpm dev`, then `git restore`. Promote a chosen asset by moving it into the appropriate tracked path (a tech folder or a project's `output/`).
+- **One-off mockups** — non-Astro HTML in `sandbox/scratch/<topic>.html` (tracked; serve with `live-server`); layout-aware Astro in `web/src/pages/scratch-<topic>.astro`, view via `pnpm dev`, then `git restore`. Promote a chosen asset by moving it into the appropriate tracked path (a tech folder or a project's `output/`).
 - **Pre-commit hook** — `.githooks/pre-commit` is committed but **activated per-clone**: `git config core.hooksPath .githooks` once on a fresh machine. Warn-only (never blocks): flags staged PDFs over the 5 MB soft cap, and flags a staged source (`.yml` / tech-page `index.md`) whose generated JSON isn't also staged.
 
 ## VISIBILITY & SECURITY
