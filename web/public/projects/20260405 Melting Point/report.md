@@ -1,7 +1,5 @@
 ---
 project: Melting Point
-tech:
-  - Thermal
 title: "Melting Point"
 sciences:
   - Chemistry

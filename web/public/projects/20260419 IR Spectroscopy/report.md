@@ -1,7 +1,5 @@
 ---
 project: IR Spectroscopy
-tech:
-  - Spectroscopy
 title: "IR Spectroscopy"
 sciences:
   - Chemistry

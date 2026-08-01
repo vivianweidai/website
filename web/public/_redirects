@@ -28,13 +28,47 @@
 # The /research/gallery.json rule below points straight at the new name rather
 # than chaining through the old one — one hop, not two.
 #
+# THE THIRD RENAME (2026-08-01): curriculum/source → curriculum/content. The
+# folder holds the per-discipline markdown tables, and "source" read as though it
+# were build input when it is in fact the published artifact (the .docx sources
+# were dropped in f8e7ad3 — this IS the content now).
+#
+# ⚠️ Shipped App Store builds hardcode https://vivianweidai.com/curriculum/source/
+# in CurriculumLoader.swift, so that prefix has to keep answering or the
+# Curriculum tab breaks in every installed copy until a new release ships. The
+# website's own web/src/layouts/curriculum.js was updated in place and does not
+# rely on this rule.
+
+# THE FOURTH RENAME (2026-08-01): a project's index.md → report.md. "index" only
+# ever described the file's position in a folder; the thing is a report.
+#
+# ⚠️ TheWallTile.swift builds this URL AT RUNTIME (href + "/index.md") in every
+# shipped build, so tapping a project card in an installed copy fetches the old
+# name. This rule is what keeps the in-app markdown reader working until the next
+# release. Builds older than 1.5.6 use /research/projects/<folder>/index.md and
+# are NOT covered — chaining through the /research/ rule would need two hops, and
+# an overlapping specific rule loses to the catch-all (see the warning above).
+# Those builds already have a broken tech browser; this is not a new regression.
+
+# THE FIFTH RENAME (2026-08-01): the wall's manifest moved INTO its own folder,
+# /projects/thewall.json → /projects/thewall/thewall.json, so the yml, the json
+# and the pictures all sit together the way every other area is arranged.
+#
+# ⚠️ APIClient.swift hardcodes the old URL in every shipped build, so that path
+# must keep answering. The two gallery.json rules above were re-pointed at the
+# NEW location rather than chaining through the old one — one hop, not two.
+
 # Served by Cloudflare Workers Static Assets, which reads this file from the
 # assets directory. The Worker itself is still a pure passthrough.
 
 /research/projects/*     /projects/:splat             301
-/research/gallery.json   /projects/thewall.json       301
+/research/gallery.json   /projects/thewall/thewall.json   301
 /research/               /projects/                   301
 /research                 /projects                   301
 
-/projects/gallery.json   /projects/thewall.json       301
+/projects/gallery.json   /projects/thewall/thewall.json   301
 /projects/gallery/*      /projects/thewall/:splat     301
+
+/curriculum/source/*     /curriculum/content/:splat    301
+/projects/:folder/index.md   /projects/:folder/report.md   301
+/projects/thewall.json   /projects/thewall/thewall.json   301

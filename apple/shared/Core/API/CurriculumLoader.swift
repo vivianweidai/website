@@ -16,7 +16,7 @@ public actor CurriculumLoader {
         string: "https://vivianweidai.com/curriculum/curriculum.json"
     )!
     private static let rawBaseURL = URL(
-        string: "https://vivianweidai.com/curriculum/source/"
+        string: "https://vivianweidai.com/curriculum/content/"
     )!
 
     private let session: URLSession

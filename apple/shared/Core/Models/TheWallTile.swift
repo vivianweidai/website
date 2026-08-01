@@ -1,6 +1,6 @@
 import Foundation
 
-/// Strongly-typed mirror of `web/public/projects/thewall.json`, the manifest
+/// Strongly-typed mirror of `web/public/projects/thewall/thewall.json`, the manifest
 /// behind the website's /projects/ wall.
 ///
 /// Built by `pipeline/scripts/build_thewall.py` from `thewall.yml`. The app
@@ -13,7 +13,7 @@ import Foundation
 /// Two kinds of tile share the list:
 ///   photo    a picture (or a clip). Tapping opens the full-resolution viewer.
 ///   project  a link to a write-up. `href` is the project page's path; tapping
-///            opens that project's index.md in the in-app markdown reader.
+///            opens that project's report.md in the in-app markdown reader.
 public struct TheWallResponse: Codable, Sendable {
     public let tiles: [TheWallTile]
     public let sciences: [TheWallScience]
@@ -67,11 +67,11 @@ public struct TheWallTile: Codable, Sendable, Identifiable {
     public var thumbURL: URL? { Self.absolute(poster ?? src) }
     public var fullURL: URL? { Self.absolute(full) }
 
-    /// A project card's `index.md`, for the in-app markdown reader — the same
+    /// A project card's `report.md`, for the in-app markdown reader — the same
     /// resolution the website's project cards use.
     public var projectIndexURL: URL? {
         guard isProject, let href else { return nil }
-        let path = href.hasSuffix("/") ? href + "index.md" : href + "/index.md"
+        let path = href.hasSuffix("/") ? href + "report.md" : href + "/report.md"
         return Self.absolute(path)
     }
 

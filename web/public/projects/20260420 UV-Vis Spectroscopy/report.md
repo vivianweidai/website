@@ -1,7 +1,5 @@
 ---
 project: UV-Vis Spectroscopy
-tech:
-  - Spectroscopy
 title: "UV-Vis Spectroscopy"
 sciences:
   - Chemistry

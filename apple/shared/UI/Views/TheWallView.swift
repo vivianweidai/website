@@ -4,7 +4,7 @@ import ScienceCore
 /// The projects wall, matching the website's /projects/ page: one
 /// chronological grid of every picture worth looking at, newest first, with
 /// photos, clips and project cards interleaved. Source of truth is
-/// `web/public/projects/thewall.json`, the same manifest the website builds
+/// `web/public/projects/thewall/thewall.json`, the same manifest the website builds
 /// from — so a row added to `thewall.yml` appears here without an app release.
 ///
 /// Deliberately the same shape as the web page and no more: a filter row, the

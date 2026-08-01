@@ -12,7 +12,7 @@ private struct ViewerImages: Identifiable {
     var id: String { "\(index)|\(sources.first?.absoluteString ?? "")" }
 }
 
-/// Loads a research project's index.md from GitHub raw and renders it
+/// Loads a research project's report.md from GitHub raw and renders it
 /// inside the app with the shared KaTeX markdown webview. Avoids the
 /// Safari bounce the user was seeing when tapping a project tech.
 struct ProjectDetailView: View {

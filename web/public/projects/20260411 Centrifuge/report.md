@@ -1,7 +1,5 @@
 ---
 project: Centrifuge
-tech:
-  - Electrochemistry
 title: "Centrifugation and pH of Everyday Liquids"
 sciences:
   - Chemistry

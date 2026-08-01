@@ -373,7 +373,7 @@ def write_table_md(path: Path, table_name: str, rows: list[dict]) -> None:
 
 def build_all(root: Path) -> dict:
     notes_dir = root / "web" / "public" / "curriculum" / "notes"
-    source_dir = root / "web" / "public" / "curriculum" / "source"
+    content_dir = root / "web" / "public" / "curriculum" / "content"
     manifest: dict = {}
 
     for subj_slug, subj_name in SUBJECT_NAMES.items():
@@ -403,7 +403,7 @@ def build_all(root: Path) -> dict:
             order += 1
 
             # Write markdown file
-            md_path = source_dir / subj_slug / section_slug / f"{topic_table_slug}.md"
+            md_path = content_dir / subj_slug / section_slug / f"{topic_table_slug}.md"
             write_table_md(md_path, td["table_name"], td["rows"])
 
             # Build manifest entry. `order` stays as a local sort key so

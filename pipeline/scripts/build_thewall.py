@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build web/public/projects/thewall.json — the manifest behind the /projects/ wall.
+"""Build web/public/projects/thewall/thewall.json — the manifest behind the /projects/ wall.
 
-Source of truth:  web/public/projects/thewall.yml
-Output:           web/public/projects/thewall.json
+Source of truth:  web/public/projects/thewall/thewall.yml
+Output:           web/public/projects/thewall/thewall.json
 
 THE WALL
 --------
@@ -15,7 +15,7 @@ kinds of tile live in it, and both come from the same YAML list:
                 shows before it plays, and what the iOS app shows instead.
   project card  a link to a project page. `folder:` names the project folder;
                 `hero:` picks which of its images fronts the card. The title
-                is read from that project's index.md, never retyped here.
+                is read from that project's report.md, never retyped here.
 
 WHERE THE PIXELS LIVE
 ---------------------
@@ -68,9 +68,9 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 CONTENT = ROOT / "web" / "public" / "projects"
-SRC = CONTENT / "thewall.yml"
 WALL = CONTENT / "thewall"
-OUT = CONTENT / "thewall.json"
+SRC = WALL / "thewall.yml"
+OUT = WALL / "thewall.json"
 
 # The slug is the full lowercase word — it is what appears in a URL
 # (/projects/#astronomy) and in CSS variable names (--subj-astronomy). Short
@@ -81,7 +81,7 @@ SCIENCE_SLUGS = {name: name.lower() for name in
 # Wall order, top of the filter row to the bottom — mirrors the Olympiads page.
 SCIENCE_ORDER = ["Mathematics", "Computing", "Physics", "Chemistry", "Biology", "Astronomy"]
 # Folder under thewall/ per science — the full word, matching the convention
-# curriculum/source/ already uses. The folder IS the tag: a picture's science
+# curriculum/content/ already uses. The folder IS the tag: a picture's science
 # is where it sits, not something declared about it.
 SCIENCE_FOLDERS = {name: name.lower() for name in SCIENCE_ORDER}
 
@@ -359,8 +359,8 @@ def _exif_month(path: Path) -> str | None:
 
 def read_title(folder: Path) -> str:
     """A project card's caption is the project's own title — read from its
-    index.md so the wall can never drift from the page it links to."""
-    text = (folder / "index.md").read_text()
+    report.md so the wall can never drift from the page it links to."""
+    text = (folder / "report.md").read_text()
     m = re.search(r"^title:\s*[\"']?(.+?)[\"']?\s*$", text, re.M)
     return m.group(1) if m else folder.name
 

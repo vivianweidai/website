@@ -14,7 +14,7 @@ public actor APIClient {
         string: "https://vivianweidai.com/olympiads/olympiads.json"
     )!
     public static let wallURL = URL(
-        string: "https://vivianweidai.com/projects/thewall.json"
+        string: "https://vivianweidai.com/projects/thewall/thewall.json"
     )!
 
     private let session: URLSession

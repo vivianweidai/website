@@ -3,11 +3,11 @@ import { glob } from 'astro/loaders';
 
 const projects = defineCollection({
   loader: glob({
-    pattern: '*/index.md',
+    pattern: '*/report.md',
     base: './public/projects',
     // Preserve the original folder name as the id so URLs like
     // /projects/20260420%20UV-Vis%20Spectroscopy/ keep working.
-    generateId: ({ entry }) => entry.replace(/\/index\.md$/, ''),
+    generateId: ({ entry }) => entry.replace(/\/report\.md$/, ''),
   }),
   schema: z.object({
     project: z.string(),
@@ -16,10 +16,6 @@ const projects = defineCollection({
     // Full science name(s) — drives chip rendering at the title row and
     // project-page subject coloring.
     sciences: z.array(z.string()),
-    // Vestigial. Every project still declares this and the schema still
-    // accepts it, but the tech pages it fed were deleted 2026-07-30 and
-    // nothing reads it now. Kept optional so the 7 existing files validate.
-    tech: z.array(z.string()).optional(),
   }),
 });
 

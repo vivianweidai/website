@@ -1,7 +1,5 @@
 ---
 project: Cat Food Color Preference
-tech:
-  - Statistics
 title: "Red or Green, What Colored Cat Food does Mi Prefer?"
 sciences:
   - Computing

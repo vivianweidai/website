@@ -15,7 +15,7 @@
   var widget = document.getElementById('curriculum-widget');
   if (!widget) return;
 
-  var RAW_BASE = 'https://vivianweidai.com/curriculum/source/';
+  var RAW_BASE = 'https://vivianweidai.com/curriculum/content/';
   var MANIFEST_URL = '/curriculum/curriculum.json';
 
   // Short slug for chip styling (.chip.biology, .chip.mathematics, …). Folder names

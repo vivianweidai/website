@@ -39,13 +39,15 @@ gen_warns=""
 # into its card, so adding or renaming one and not rebuilding leaves the native
 # apps with an empty photo grid).
 #
+# Paths updated 2026-08-01 when the manifest moved INTO thewall/ — the old
+# patterns fired a false positive on the very commit that moved it.
 # This replaced a technology.json rule on 2026-08-01 that had been dead since
 # 2026-07-30: it watched web/public/research/technology.yml, and by then
 # /research/ had been renamed to /projects/, technology.yml and technology/
 # were deleted, and build_technology.py was gone. Three ways unreachable, and
 # no rule covered the wall — the one manifest the app actually still fetches.
-if printf '%s\n' "$staged_all" | grep -Eq '^web/public/projects/thewall\.yml$|^web/public/projects/thewall/|^web/public/projects/[^/]+/photos/'; then
-  printf '%s\n' "$staged_all" | grep -q '^web/public/projects/thewall\.json$' \
+if printf '%s\n' "$staged_all" | grep -Eq '^web/public/projects/thewall/thewall\.yml$|^web/public/projects/thewall/[a-z]+/|^web/public/projects/[^/]+/photos/'; then
+  printf '%s\n' "$staged_all" | grep -q '^web/public/projects/thewall/thewall\.json$' \
     || gen_warns="${gen_warns}  thewall.json not staged — run: python pipeline/scripts/build_thewall.py\n"
 fi
 
