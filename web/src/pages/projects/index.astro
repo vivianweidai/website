@@ -2,7 +2,7 @@
 import DefaultLayout from '../../layouts/Default.astro';
 import PageHeader from '../../layouts/PageHeader.astro';
 import PageFooter from '../../layouts/PageFooter.astro';
-import gallery from '../../../public/projects/gallery.json';
+import thewall from '../../../public/projects/thewall.json';
 
 // The wall is one chronological grid of everything worth looking at — photos,
 // clips and project cards interleaved by date, newest first. There is
@@ -10,7 +10,7 @@ import gallery from '../../../public/projects/gallery.json';
 // fold, no second kind of content. What we own lives on the home page's
 // Projects tab, and it reaches this page through the same toy labels that
 // serve as filter tags here.
-const { tiles, sciences } = gallery;
+const { tiles, sciences } = thewall;
 
 // Masonry via grid row spans. Each tile's span is baked here from its real
 // pixel dimensions against a nominal column width, so the grid is already

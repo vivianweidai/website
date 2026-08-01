@@ -1,7 +1,7 @@
 import Foundation
 
 /// Read-only client for activity listings (olympiads + textbooks) and the
-/// projects gallery.
+/// projects wall.
 ///
 /// Source of truth: YAML files under public/content/{olympiads,research}/.
 /// A Python build script generates the corresponding .json files in the
@@ -13,14 +13,14 @@ public actor APIClient {
     public static let olympiadsURL = URL(
         string: "https://vivianweidai.com/olympiads/olympiads.json"
     )!
-    public static let galleryURL = URL(
-        string: "https://vivianweidai.com/projects/gallery.json"
+    public static let wallURL = URL(
+        string: "https://vivianweidai.com/projects/thewall.json"
     )!
 
     private let session: URLSession
     private let decoder: JSONDecoder
     private var cachedActivities: [Activity]?
-    private var cachedGallery: GalleryResponse?
+    private var cachedWall: TheWallResponse?
 
     public init(session: URLSession = .shared) {
         self.session = session
@@ -39,18 +39,18 @@ public actor APIClient {
         return items
     }
 
-    public func loadGallery() async throws -> GalleryResponse {
-        if let cachedGallery { return cachedGallery }
-        let gallery = try await get(url: Self.galleryURL, as: GalleryResponse.self)
-        cachedGallery = gallery
-        return gallery
+    public func loadWall() async throws -> TheWallResponse {
+        if let cachedWall { return cachedWall }
+        let wall = try await get(url: Self.wallURL, as: TheWallResponse.self)
+        cachedWall = wall
+        return wall
     }
 
     /// Invalidate caches — wired to pull-to-refresh so users can force
     /// a round trip when they've just pushed new YAML.
     public func invalidate() {
         cachedActivities = nil
-        cachedGallery = nil
+        cachedWall = nil
     }
 
     // MARK: - Private

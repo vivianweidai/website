@@ -1,13 +1,13 @@
 # THE WALL — project cards only.
 #
-# Every picture on the wall lives in gallery/<science>/ and needs no row here:
+# Every picture on the wall lives in thewall/<science>/ and needs no row here:
 #
-#   gallery/astronomy/20260730 M 31.jpg
+#   thewall/astronomy/20260730 M 31.jpg
 #            ^ the science      ^ sorts    ^ the caption
 #
 # The folder is the science, the YYYYMMDD prefix is the sort key (never shown),
 # and the rest of the filename is the caption. Drop a file in and run
-# `python3 pipeline/scripts/build_gallery.py`.
+# `python3 pipeline/scripts/build_thewall.py`.
 #
 # This file holds the one exception: a PROJECT CARD, which links to a write-up
 # instead of opening the picture. A project gets exactly one tile — the card —
@@ -22,9 +22,9 @@
 #
 # Photo tiles pointing into project folders were removed 2026-07-30: a project
 # scattering six near-identical photos across the wall was redundancy, and the
-# rule "gallery photos live in the gallery" is easier to hold than a rule with
+# rule "wall photos live on the wall" is easier to hold than a rule with
 # exceptions. A chart that belongs on the wall gets copied into
-# gallery/<science>/ under its own name.
+# thewall/<science>/ under its own name.
 
 
 - folder: 20260420 UV-Vis Spectroscopy

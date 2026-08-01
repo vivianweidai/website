@@ -19,7 +19,7 @@ struct ProjectDetailView: View {
     let title: String
     let indexURL: URL
     /// The wall's card for this project, which carries its photo pool.
-    var tile: GalleryTile? = nil
+    var tile: TheWallTile? = nil
     @State private var store = ContentStore.shared
     @State private var markdown: String = ""
     @State private var loading = true
@@ -56,8 +56,8 @@ struct ProjectDetailView: View {
 
                 // Modern projects don't list photos in front matter — the
                 // Astro layout scans photos/ at build time and
-                // build_gallery.py bakes the same list into the project's
-                // gallery card, which the wall handed us.
+                // build_thewall.py bakes the same list into the project's
+                // card, which the wall handed us.
                 if photos.isEmpty, let tile {
                     photos = tile.photos ?? []
                     photos.shuffle()

@@ -1,4 +1,4 @@
-# gallery/
+# thewall/
 
 One folder per science. A picture belongs to exactly one, and the folder it
 sits in is the whole of the tagging:
@@ -12,12 +12,12 @@ no caption, no science pill, no date, no hover text (locked; see the repo
 does three jobs:
 
 - the **`YYYYMMDD` prefix orders the wall** — it is the date the picture joined
-  the gallery, not necessarily when it was shot, and renaming it moves the tile
+  the wall, not necessarily when it was shot, and renaming it moves the tile
 - the **rest of the name** becomes the `alt` text and the tile's `aria-label`,
   so a screen reader still reads it even though no one sees it
 - the **folder** is the science, and the only tag there is
 
-Drop a file in, run `python3 pipeline/scripts/build_gallery.py`, done. No YAML.
+Drop a file in, run `python3 pipeline/scripts/build_thewall.py`, done. No YAML.
 
 **Keep them web-sized: a long edge of 2000.** There is no thumbnail folder —
 the wall and the lightbox both load these files directly, so camera-resolution
@@ -31,5 +31,5 @@ beside it named `<name>.poster.jpg`; that is what the tile shows before the
 clip plays, and what the iOS app shows instead of the video.
 
 A picture that lives inside a project folder stays there and is referenced from
-`../gallery.yml`. Copying it here would put the same bytes in git twice, and
+`../thewall.yml`. Copying it here would put the same bytes in git twice, and
 the build rejects that by content hash.

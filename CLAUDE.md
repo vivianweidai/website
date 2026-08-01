@@ -8,7 +8,7 @@ This CLAUDE.md is the repo's **orientation doc**: the three verticals, the two s
 > technology/toy vocabulary, the wall, authoring a project page, prepping and running an
 > experiment, and the analysis conventions all live there, not here — in the **`sandbox` repo**,
 > which is where that vertical is actually worked on. That includes edits to
-> **`web/public/projects/`, `gallery.yml` and `technology.yml`**, which live in *this* repo and so
+> **`web/public/projects/`, `thewall.yml` and `technology.yml`**, which live in *this* repo and so
 > would never route you there on their own. This doc will not tell you the rules for any of it.
 >
 > 🔭 **Running an observing night? Read `../sandbox/astronomy/NIGHT.md` first** — and note that
@@ -22,7 +22,7 @@ The site, the app, and this repo are organized around exactly three content vert
 |---|---|---|---|
 | **Curriculum** | `web/public/curriculum/source/*.md` | `curriculum.json` | Reference tables across the six Olympiad disciplines. **Largely done** — a stable body of reference material, not an active front. |
 | **Olympiads** | `web/public/olympiads/olympiads.yml` | `olympiads.json` | Contests + unified textbooks on a timeline. **A journal** — it gets a row when something happens. |
-| **Projects** | `web/public/projects/` (folders + `gallery.yml` + `technology.yml`); WIP in the **`sandbox` repo** | `gallery.json`, `technology.json` | Hands-on research: raw data, photos, notebooks, reproducible pipelines. **The frontier** — where the work happens. |
+| **Projects** | `web/public/projects/` (folders + `thewall.yml` + `technology.yml`); WIP in the **`sandbox` repo** | `thewall.json`, `technology.json` | Hands-on research: raw data, photos, notebooks, reproducible pipelines. **The frontier** — where the work happens. |
 
 **Projects is where we live, but it is still one vertical of three.** Its rules are extensive enough to crowd out everything else, which is why they moved to `PROJECTS.md` (2026-07-31) — and then out of this repo entirely with `work/` (2026-08-01). The manual lives where the vertical is worked on.
 
@@ -31,7 +31,7 @@ The site, the app, and this repo are organized around exactly three content vert
 **`work/` moved to the private [`sandbox`](https://github.com/vivianweidai/sandbox) repo on 2026-08-01**, with its history (subtree split, 225 commits). This repo is now purely a **publishing entity**; the work happens next door.
 
 **The boundary is one-way: `sandbox` → `science`, never the reverse.** Two things cross:
-- **Images** → `web/public/projects/gallery/`, written by `sandbox/astronomy/output/setup/collect_media.py`, which finds this repo via `$SCIENCE_REPO` or the sibling `~/GITHUB/science` path.
+- **Images** → `web/public/projects/thewall/`, written by `sandbox/astronomy/output/setup/collect_media.py`, which finds this repo via `$SCIENCE_REPO` or the sibling `~/GITHUB/science` path.
 - **Finished write-ups** → `web/public/projects/`.
 
 ⚠️ **Crossing the gate is a private-to-public act.** `sandbox` is private and this repo is PUBLIC, so anything promoted becomes world-readable — read what's crossing, not just its filename. Nothing in this repo is ever a source for `sandbox`.
@@ -57,30 +57,35 @@ All three verticals are served by **both** surfaces, from **the same generated J
 Top-level reads like every other repo: `apple/ web/ pipeline/` + this doc (`work/` left for `sandbox` 2026-08-01). **The entire Astro app lives in `web/`** — its `astro.config.mjs`, `package.json`, `tsconfig.json`, `src/`, and `public/` (relocated from the repo root 2026-07-17 to keep the root clean; `src/`/`public/` stay at Astro's defaults *inside* `web/`). **All `pnpm` commands run from `web/`.**
 
 - **`web/src/`** — `content.config.ts` (Content Collections: **`projects`** + **`tech`**); `layouts/` holds the `.astro` components *and* their imported CSS/JS; `pages/` is file-based routing (`projects/` carries the dynamic `[slug]` project route + `technology/[science]/[tech]` tech route).
-- **`web/public/`** — source-of-truth served **verbatim at the site root**. Areas: `curriculum/` (`source/*.md` + `curriculum.json`), `olympiads/` (`olympiads.yml`), `projects/` (`<YYYYMMDD Name>/` project folders sitting **directly** under it, plus `gallery.yml` + `gallery/<science>/`). `<science>` is the full word (mathematics, computing…) to mirror `curriculum/source/`.
-- **`pipeline/`** — `worker/` (CF Worker: ASSETS passthrough → `dist/`) + `scripts/` (`build_olympiads.py` / `build_gallery.py`, YAML→JSON; `build_curriculum.py`, .docx→markdown). Scripts resolve paths from their own location, so run them **from the repo root**; they write into `web/public/`.
+- **`web/public/`** — source-of-truth served **verbatim at the site root**. Areas: `curriculum/` (`source/*.md` + `curriculum.json`), `olympiads/` (`olympiads.yml`), `projects/` (`<YYYYMMDD Name>/` project folders sitting **directly** under it, plus `thewall.yml` + `thewall/<science>/`). `<science>` is the full word (mathematics, computing…) to mirror `curriculum/source/`.
+- **`pipeline/`** — `worker/` (CF Worker: ASSETS passthrough → `dist/`) + `scripts/` (`build_olympiads.py` / `build_thewall.py`, YAML→JSON; `build_curriculum.py`, .docx→markdown). Scripts resolve paths from their own location, so run them **from the repo root**; they write into `web/public/`.
 - **The work itself is in [`sandbox`](https://github.com/vivianweidai/sandbox)**, a sibling checkout at `~/GITHUB/sandbox` — one dir per science plus `scratch/`, `IDEAS.md` (the research program's living doc), `PROJECTS.md` (the Projects vertical's manual) and `astronomy/NIGHT.md` (the observing-night front door). The three-stage flow now spans two repos: `sandbox/scratch/<topic>` (rough) → `sandbox/<science>/` (organized WIP) → **the gate** → `web/public/projects/` (published). See `sandbox/CLAUDE.md`.
 
 **Convention deviation: no top-level `content/`; source-of-truth lives under `web/public/`.** The cross-repo convention puts source-of-truth in a top-level `content/`. We deviate because Astro's `public/` is served verbatim at the site root — so `web/public/` **is** the content dir: a file at `web/public/X/Y` serves at `/X/Y`, 1:1, no rewrites, no sync step. Page URLs and asset URLs coexist under the same prefix (`/projects/<folder>/` is the rendered HTML; `/projects/<folder>/index.md` is the raw markdown the apps fetch; `/projects/<folder>/photos/…` are the photos). The Content Collection loader points at `./public/projects/` (relative to the `web/` Astro root); the dynamic route's photo discovery walks the same path.
 
-## THE `/research/` → `/projects/` RENAME — the compatibility contract
+## URL RENAMES — the compatibility contract
 
 **`web/public/_redirects` keeps every old URL alive**, and is not optional. App Store builds in the
 wild fetch `/research/technology.json` and `/research/projects/<folder>/index.md`; `URLSession`
 follows the 301s, so those installs keep working until the next release. Cloudflare Workers Static
 Assets reads that file — the Worker itself is still a pure passthrough.
 
-*(The path-shape half of this rename — project folders losing a directory level — is in
+Two renames are covered: **`/research/` → `/projects/`** (2026-07-30) and **`gallery` → `thewall`**
+(2026-08-01, the wall's manifest and picture folder). The second needs *two* rules, not one —
+`/projects/gallery.json` for the URL shipped builds hardcode, and `/projects/gallery/*` for anything
+still holding an older copy of the manifest, whose tiles point at the old picture folder.
+
+*(The path-shape half of the `/research/` rename — project folders losing a directory level — is in
 `sandbox/PROJECTS.md`.)*
 
-**The app's tech browser was replaced by the gallery (2026-07-30).** `ResearchView.swift` is gone —
+**The app's tech browser was replaced by the wall (2026-07-30).** `ResearchView.swift` is gone —
 it rendered per-tech pages from `hero` and `tech_url`, and once the website deleted its tech pages
 the build stopped emitting both, so the tab had quietly degraded to a list of names. In its place
-`GalleryView.swift` renders the wall from `gallery.json`; `ProjectDetailView` moved to its own file.
+`TheWallView.swift` renders the wall from `thewall.json`; `ProjectDetailView` moved to its own file.
 **`technology.json` is no longer fetched at all** — a project's pills come from its own `sciences:`
-front matter and its shuffle pool from the `photos` array `build_gallery.py` bakes into that
-project's gallery card. `APIClient` fetches exactly two manifests now (`olympiads.json`,
-`gallery.json`), plus `curriculum.json` via `CurriculumLoader`. Shipping in **1.5.6**.
+front matter and its shuffle pool from the `photos` array `build_thewall.py` bakes into that
+project's card on the wall. `APIClient` fetches exactly two manifests now (`olympiads.json`,
+`thewall.json`), plus `curriculum.json` via `CurriculumLoader`. Shipping in **1.5.6**.
 
 ## CONTENT BUILDS & DEPLOY
 
@@ -88,7 +93,7 @@ project's gallery card. `APIClient` fetches exactly two manifests now (`olympiad
 
 - **Olympiads + textbooks** — edit `olympiads/olympiads.yml`, then `python pipeline/scripts/build_olympiads.py` (from repo root) → `olympiads.json`.
 - **Technology / toys** — edit `technology.yml` (+ project `tech:` frontmatter), then `python pipeline/scripts/build_technology.py` → `technology.json`.
-- **The wall** — edit `projects/gallery.yml`, then `python pipeline/scripts/build_gallery.py` → `gallery.json` (+ thumbnails). See § THE WALL. The script also bakes each project's **shuffle photo list** (`projects[].photos`, every image under `photos/` except `photos/data/`, mirroring the `[slug]` route's build-time walk) — so **adding or renaming a project photo means rebuilding this JSON**, or the native apps show an empty photo grid. That list is how the apps get the pool; they used to walk the GitHub contents API, which is unauthenticated and rate-limited.
+- **The wall** — edit `projects/thewall.yml`, then `python pipeline/scripts/build_thewall.py` → `thewall.json` (+ thumbnails). See § THE WALL. The script also bakes each project's **shuffle photo list** (`projects[].photos`, every image under `photos/` except `photos/data/`, mirroring the `[slug]` route's build-time walk) — so **adding or renaming a project photo means rebuilding this JSON**, or the native apps show an empty photo grid. That list is how the apps get the pool; they used to walk the GitHub contents API, which is unauthenticated and rate-limited.
 - **Curriculum** — a **one-time build**: the `.docx` sources were dropped (`f8e7ad3`), so `curriculum.json` and `source/*.md` are now committed artifacts. `web/public/curriculum/notes/` is **gone too** — its six rendered `.pdf` handouts went with the home page's per-subject "pdf" links on 2026-07-30 (**the site is web-only now: don't re-add a downloadable handout to any page**). To regenerate a subject, recreate `notes/` and drop its `.docx` back in; a missing directory just makes `build_curriculum.py` skip every subject. No database, no API, no admin endpoint.
 - **`sandbox/overview.pdf`** (the shareable three-pager; not web-served, and now in the other repo) — **its source is the print template embedded in `sandbox/IDEAS.md`'s final appendix**, not a separate file (`scratch/overview.html` was retired 2026-07-25 after the two drifted). Never edit the PDF, and don't recreate a standalone `.html`: extract the template with the `awk` sentinel command in that appendix and render it with **Chrome headless `--print-to-pdf`** — both commands are written out there, verified to reproduce the committed PDF. **Page 2 restates §2's instrument runs and page 3 the per-science project lists**, so a section edit and the appendix edit are one pass, not two.
 
@@ -127,7 +132,7 @@ Three tabs (`shared/UI/Views/RootTabView.swift`), each reading a generated JSON 
 
 - **Curriculum** — cascading subject → section → topic → table browser from `curriculum/curriculum.json`; tables fetched from GitHub raw URLs, rendered with KaTeX in a `WKWebView`.
 - **Olympiads** — contests + unified textbooks from `olympiads/olympiads.json`. The watch companion renders this tab only (offline-first cache at `Caches/olympiads_cache.json`). Both surfaces carry the timeline's four standing markers in the website's own vocabulary — ⭐ invited/attended, 🎯 competitive, 🇨🇦 Team Canada/alternate — and the watch's detail badges use its label set (FOUNDATION / ATTENDED / INVITED / COMPETITIVE / TEAM CANADA / ALTERNATE). The watch showed only `invited` until 1.5.6, silently dropping three of the four.
-- **Projects** — the same wall the website shows, from `projects/gallery.json`, and laid out by the same rules (`WallMetrics` ports the CSS grid): **landscape and square tiles span two columns**, portraits take one, tiles stay in manifest order and a half-filled row keeps its gap rather than back-filling. **A photo tile carries no text** — caption and science pill belong to project cards, which are also framed in their science colour and badged `PROJECT →`. **The science filter is the toolbar bubble menu, the same one Olympiads uses** — a port of the web's pill row was built and removed the same day (2026-07-31): the web page needs a filter row because it has no toolbar, the app has one, and matching the website is not a reason to pass up the native idiom. Tapping a photo opens the full-resolution pager; a project card opens that project's `index.md` in the markdown reader; **a clip autoplays muted in place and opens with controls in-app** (`ClipView.swift`). Because it reads the same manifest the site builds, **a row added to `gallery.yml` appears in the app with no release** — only layout changes need one.
+- **Projects** — the same wall the website shows, from `projects/thewall.json`, and laid out by the same rules (`WallMetrics` ports the CSS grid): **landscape and square tiles span two columns**, portraits take one, tiles stay in manifest order and a half-filled row keeps its gap rather than back-filling. **A photo tile carries no text** — caption and science pill belong to project cards, which are also framed in their science colour and badged `PROJECT →`. **The science filter is the toolbar bubble menu, the same one Olympiads uses** — a port of the web's pill row was built and removed the same day (2026-07-31): the web page needs a filter row because it has no toolbar, the app has one, and matching the website is not a reason to pass up the native idiom. Tapping a photo opens the full-resolution pager; a project card opens that project's `index.md` in the markdown reader; **a clip autoplays muted in place and opens with controls in-app** (`ClipView.swift`). Because it reads the same manifest the site builds, **a row added to `thewall.yml` appears in the app with no release** — only layout changes need one.
   - ⚠️ **Tiles load through `RemoteImage`, never `AsyncImage`.** The wall stopped shipping thumbnails 2026-07-30, so `src` *is* the 2000px original; `AsyncImage` would decode ~12 MB per tile to fill a 190 pt box. `RemoteImage` downsamples at decode time and caches the result.
   - 🎬 **Clips must play from a downloaded copy, never from their https URL.** `vivianweidai.com` answers a `Range:` request with a plain `200` and the whole body — no `Accept-Ranges`, no `206` — and **AVFoundation will not start a remote asset it cannot seek**, so both wall clips sat on their poster frame forever, silently, with no error anywhere. `ClipCache` (in `ClipView.swift`) fetches the bytes with `URLSession`, which does not care, parks them in `Caches/clips/`, and hands AVPlayer a file URL. Browsers tolerate the same response, which is why the website's `<video>` tags never showed the problem. **If the range behaviour is ever fixed at the edge, this stays correct — it just stops being load-bearing.** Verify a clip by screenshotting the wall twice a few seconds apart and diffing: a poster is byte-identical, playback is not.
 

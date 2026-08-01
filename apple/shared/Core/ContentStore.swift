@@ -19,11 +19,11 @@ public final class ContentStore {
 
     public var activities: [Activity]?
     public var manifest: CurriculumManifest?
-    public var gallery: GalleryResponse?
+    public var wall: TheWallResponse?
 
     public var activitiesError: String?
     public var manifestError: String?
-    public var galleryError: String?
+    public var wallError: String?
 
     private var preloadTask: Task<Void, Never>?
 
@@ -41,7 +41,7 @@ public final class ContentStore {
         let task = Task {
             async let a: Void = self.loadActivities()
             async let m: Void = self.loadManifest()
-            async let g: Void = self.loadGallery()
+            async let g: Void = self.loadWall()
             _ = await (a, m, g)
         }
         preloadTask = task
@@ -57,10 +57,10 @@ public final class ContentStore {
         await CurriculumLoader.shared.invalidate()
         activities = nil
         manifest = nil
-        gallery = nil
+        wall = nil
         activitiesError = nil
         manifestError = nil
-        galleryError = nil
+        wallError = nil
         await preloadAll()
     }
 
@@ -73,12 +73,12 @@ public final class ContentStore {
         }
     }
 
-    private func loadGallery() async {
+    private func loadWall() async {
         do {
-            gallery = try await APIClient.shared.loadGallery()
-            galleryError = nil
+            wall = try await APIClient.shared.loadWall()
+            wallError = nil
         } catch {
-            galleryError = error.localizedDescription
+            wallError = error.localizedDescription
         }
     }
 

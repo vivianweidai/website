@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build web/public/projects/gallery.json — the manifest behind the /projects/ wall.
+"""Build web/public/projects/thewall.json — the manifest behind the /projects/ wall.
 
-Source of truth:  web/public/projects/gallery.yml
-Output:           web/public/projects/gallery.json
+Source of truth:  web/public/projects/thewall.yml
+Output:           web/public/projects/thewall.json
 
 THE WALL
 --------
@@ -24,9 +24,9 @@ what follows /projects/ in the URL. Two homes, and the distinction is the
 whole filing system:
 
   <YYYYMMDD Project Name>/...   a picture that belongs to a project. Reference
-                                it in place; never copy it into gallery/, or
+                                it in place; never copy it into thewall/, or
                                 the same bytes land in git twice.
-  gallery/<science>/...         everything else, named
+  thewall/<science>/...         everything else, named
                                 "YYYYMMDD Some Name.jpg". The date prefix is
                                 the filing system — same convention the project
                                 folders use — so the folder sorts itself and a
@@ -34,8 +34,8 @@ whole filing system:
 
 ADDING PICTURES
 ---------------
-Drop files into gallery/photos/ named "YYYYMMDD Some Name.ext", add a row each
-to gallery.yml for the caption and tags, and run this. The script fails loudly
+Drop files into thewall/photos/ named "YYYYMMDD Some Name.ext", add a row each
+to thewall.yml for the caption and tags, and run this. The script fails loudly
 on a missing file, an unknown science, an unowned toy, or the same bytes used
 twice, so a mistake is a build error rather than a hole in the wall.
 
@@ -46,7 +46,7 @@ ONE SCIENCE PER PICTURE
 -----------------------
 A picture belongs to exactly one science and that science is the folder it sits
 in. There is no tagging layer above it — no categories, no toys, nothing to
-declare. Only two things still need a row in gallery.yml: a project card, and a
+declare. Only two things still need a row in thewall.yml: a project card, and a
 picture that lives inside a project folder and should also appear on the wall.
 """
 
@@ -68,9 +68,9 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 CONTENT = ROOT / "web" / "public" / "projects"
-SRC = CONTENT / "gallery.yml"
-GALLERY = CONTENT / "gallery"
-OUT = CONTENT / "gallery.json"
+SRC = CONTENT / "thewall.yml"
+WALL = CONTENT / "thewall"
+OUT = CONTENT / "thewall.json"
 
 # The slug is the full lowercase word — it is what appears in a URL
 # (/projects/#astronomy) and in CSS variable names (--subj-astronomy). Short
@@ -80,7 +80,7 @@ SCIENCE_SLUGS = {name: name.lower() for name in
                  ["Mathematics", "Computing", "Physics", "Chemistry", "Biology", "Astronomy"]}
 # Wall order, top of the filter row to the bottom — mirrors the Olympiads page.
 SCIENCE_ORDER = ["Mathematics", "Computing", "Physics", "Chemistry", "Biology", "Astronomy"]
-# Folder under gallery/ per science — the full word, matching the convention
+# Folder under thewall/ per science — the full word, matching the convention
 # curriculum/source/ already uses. The folder IS the tag: a picture's science
 # is where it sits, not something declared about it.
 SCIENCE_FOLDERS = {name: name.lower() for name in SCIENCE_ORDER}
@@ -102,7 +102,7 @@ def project_photos(proj: Path) -> list[str]:
     shuffle. Mirrors the build-time walk in `pages/projects/[slug]/index.astro`;
     keep the two in step.
 
-    Baked into gallery.json so the native app can render a project page's photo
+    Baked into thewall.json so the native app can render a project page's photo
     grid from a manifest it already loads. This used to live in technology.json,
     which was deleted 2026-07-30 along with the toy catalog.
     """
@@ -138,11 +138,11 @@ def slug(s: str) -> str:
 def measured(rel: str, path: Path) -> tuple[str, int, int]:
     """(url, w, h) for a file. One copy, served as it is.
 
-    There used to be a gallery/thumbs/ folder holding a long-edge-1000 copy of
+    There used to be a thewall/thumbs/ folder holding a long-edge-1000 copy of
     everything oversized. It was deleted 2026-07-30: the wall is around fifty
     pictures, not five hundred, and a second generated copy of each one was a
     folder to explain and keep pruned. Instead the pictures under
-    gallery/<science>/ are themselves web-sized — a long edge of 2000, which is
+    thewall/<science>/ are themselves web-sized — a long edge of 2000, which is
     ample for the lightbox on any display and about a third of camera output.
     Resize on the way in, not on the way out.
     """
@@ -264,7 +264,7 @@ def image_size(path: Path) -> tuple[int, int]:
 #
 #   1. an explicit `date: YYYY-MM` in the row, which always wins
 #   2. a YYYYMMDD prefix on the filename, or failing that on any folder above
-#      it — which covers gallery/photos/ by its naming convention and every
+#      it — which covers thewall/photos/ by its naming convention and every
 #      generated plot by the project folder it sits in
 #   3. the camera's own EXIF DateTimeOriginal, for project photos still under
 #      their original camera names
@@ -425,12 +425,12 @@ def build() -> dict:
         tile["_name"] = rel.split("/")[-1]
         tiles.append(tile)
 
-    # ── 1. everything filed under gallery/<science>/ ─────────────────
+    # ── 1. everything filed under thewall/<science>/ ─────────────────
     # No YAML at all for these: the folder is the science, the YYYYMMDD prefix
     # is the sort key, and the rest of the filename is the caption. Dropping a
-    # file into gallery/astronomy/ puts it on the wall.
+    # file into thewall/astronomy/ puts it on the wall.
     for science, folder in SCIENCE_FOLDERS.items():
-        d = GALLERY / folder
+        d = WALL / folder
         if not d.is_dir():
             continue
         for f in sorted(d.iterdir()):
@@ -441,18 +441,18 @@ def build() -> dict:
             if f.name.endswith(".poster.jpg"):
                 continue          # a clip's still, not a tile of its own
             rel = str(f.relative_to(CONTENT))
-            add(rel, science, caption_from(f.name), f"gallery/{folder}/{f.name}")
+            add(rel, science, caption_from(f.name), f"thewall/{folder}/{f.name}")
 
-    # ── 2. gallery.yml ──────────────────────────────────────────────
+    # ── 2. thewall.yml ──────────────────────────────────────────────
     # Only two things still need it: project cards, and pictures that live
     # inside a project folder and should also appear on the wall (referenced
     # in place, never copied, so the bytes stay in git once).
     entries = yaml.safe_load(SRC.read_text()) or []
     if not isinstance(entries, list):
-        raise ValueError("gallery.yml must be a YAML list")
+        raise ValueError("thewall.yml must be a YAML list")
 
     for i, e in enumerate(entries):
-        where = f"gallery.yml[{i}]"
+        where = f"thewall.yml[{i}]"
         science = e.get("science")
         if science not in SCIENCE_SLUGS:
             raise ValueError(
@@ -483,7 +483,7 @@ def build() -> dict:
     # There used to be a round-robin here as well, dealing tiles out across the
     # sciences so a busy week in one of them could not land as a slab of
     # near-identical frames. That mattered when the wall was auto-populated.
-    # It stopped making sense once the gallery became hand-curated: it meant
+    # It stopped making sense once the wall became hand-curated: it meant
     # two pictures deliberately named to sit together were pushed apart by
     # whatever else happened that month, and the filename -- the one lever
     # there is -- did not control placement.

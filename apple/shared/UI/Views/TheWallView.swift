@@ -4,8 +4,8 @@ import ScienceCore
 /// The projects wall, matching the website's /projects/ page: one
 /// chronological grid of every picture worth looking at, newest first, with
 /// photos, clips and project cards interleaved. Source of truth is
-/// `web/public/projects/gallery.json`, the same manifest the website builds
-/// from — so a row added to `gallery.yml` appears here without an app release.
+/// `web/public/projects/thewall.json`, the same manifest the website builds
+/// from — so a row added to `thewall.yml` appears here without an app release.
 ///
 /// Deliberately the same shape as the web page and no more: a filter row, the
 /// grid, and nothing below the fold. Replaced the old tech browser 2026-07-30
@@ -23,25 +23,25 @@ import ScienceCore
 /// One thing it deliberately does *not* copy: the web's filter pill row. The
 /// filter is the toolbar menu the Olympiads tab already uses — the phone has
 /// its own idiom for this and the wall would rather have the screen.
-struct GalleryView: View {
+struct TheWallView: View {
     @State private var store = ContentStore.shared
     /// Science slug, or nil for "All" — the same one-tier filter the web wall
     /// settled on after a category row and a toy row were both removed.
     @State private var scienceSlug: String?
-    @State private var viewer: GalleryViewerImages?
-    @State private var clip: GalleryClip?
+    @State private var viewer: TheWallViewerImages?
+    @State private var clip: TheWallClip?
 
     var body: some View {
         NavigationStack {
             Group {
-                if let gallery = store.gallery {
-                    content(gallery: gallery)
-                } else if let errorMessage = store.galleryError {
+                if let wall = store.wall {
+                    content(wall: wall)
+                } else if let errorMessage = store.wallError {
                     ErrorState(message: errorMessage)
                 } else {
                     LoadingState(
                         title: "Loading projects",
-                        subtitle: "Fetching the gallery from vivianweidai.com."
+                        subtitle: "Fetching the wall from vivianweidai.com."
                     )
                 }
             }
@@ -50,7 +50,7 @@ struct GalleryView: View {
                 ToolbarItem(placement: .primaryAction) {
                     ScienceFilterMenu(
                         selected: $scienceSlug,
-                        sciences: store.gallery?.sciences ?? []
+                        sciences: store.wall?.sciences ?? []
                     )
                 }
             }
@@ -66,14 +66,14 @@ struct GalleryView: View {
         #endif
     }
 
-    private func visibleTiles(_ gallery: GalleryResponse) -> [GalleryTile] {
-        guard let scienceSlug else { return gallery.tiles }
-        return gallery.tiles.filter { $0.scienceSlug == scienceSlug }
+    private func visibleTiles(_ wall: TheWallResponse) -> [TheWallTile] {
+        guard let scienceSlug else { return wall.tiles }
+        return wall.tiles.filter { $0.scienceSlug == scienceSlug }
     }
 
     @ViewBuilder
-    private func content(gallery: GalleryResponse) -> some View {
-        let tiles = visibleTiles(gallery)
+    private func content(wall: TheWallResponse) -> some View {
+        let tiles = visibleTiles(wall)
         // Photo tiles only, in display order — the viewer pages through what
         // is currently on screen, so a filtered wall stays inside its filter,
         // and project cards (links to a write-up) and clips are skipped the
@@ -118,7 +118,7 @@ struct GalleryView: View {
 
     @ViewBuilder
     private func tileLink(
-        _ tile: GalleryTile, photos: [GalleryTile], width: CGFloat
+        _ tile: TheWallTile, photos: [TheWallTile], width: CGFloat
     ) -> some View {
         let height = width / max(tile.aspectRatio, 0.05)
 
@@ -126,24 +126,24 @@ struct GalleryView: View {
             NavigationLink {
                 ProjectDetailView(title: tile.caption, indexURL: indexURL, tile: tile)
             } label: {
-                GalleryTileView(tile: tile, width: width, height: height)
+                TheWallTileView(tile: tile, width: width, height: height)
             }
             .buttonStyle(.plain)
         } else if tile.isVideo, let url = tile.fullURL {
             Button {
-                clip = GalleryClip(url: url)
+                clip = TheWallClip(url: url)
             } label: {
-                GalleryTileView(tile: tile, width: width, height: height)
+                TheWallTileView(tile: tile, width: width, height: height)
             }
             .buttonStyle(.plain)
         } else {
             Button {
                 guard let i = photos.firstIndex(where: { $0.id == tile.id }) else { return }
-                viewer = GalleryViewerImages(
+                viewer = TheWallViewerImages(
                     sources: photos.compactMap(\.fullURL), index: i
                 )
             } label: {
-                GalleryTileView(tile: tile, width: width, height: height)
+                TheWallTileView(tile: tile, width: width, height: height)
             }
             .buttonStyle(.plain)
         }
@@ -154,13 +154,13 @@ struct GalleryView: View {
 
 /// A tapped image plus the rest of the visible wall, handed to the full-screen
 /// viewer. Identifiable so `.fullScreenCover(item:)` re-presents on a new tap.
-private struct GalleryViewerImages: Identifiable {
+private struct TheWallViewerImages: Identifiable {
     let sources: [URL]
     let index: Int
     var id: String { "\(index)|\(sources.first?.absoluteString ?? "")" }
 }
 
-private struct GalleryClip: Identifiable {
+private struct TheWallClip: Identifiable {
     let url: URL
     var id: String { url.absoluteString }
 }
@@ -204,15 +204,15 @@ struct WallMetrics {
     }
 
     /// Landscape and square tiles span two columns; portrait tiles one.
-    static func span(_ tile: GalleryTile, columns: Int) -> Int {
+    static func span(_ tile: TheWallTile, columns: Int) -> Int {
         min(tile.w >= tile.h ? 2 : 1, columns)
     }
 
     /// Pack tiles into rows in manifest order, never reordering to close a
     /// gap — the same trade the web grid makes.
-    static func rows(_ tiles: [GalleryTile], columns: Int) -> [WallRow] {
+    static func rows(_ tiles: [TheWallTile], columns: Int) -> [WallRow] {
         var rows: [WallRow] = []
-        var current: [GalleryTile] = []
+        var current: [TheWallTile] = []
         var used = 0
 
         for tile in tiles {
@@ -236,7 +236,7 @@ struct WallMetrics {
 }
 
 struct WallRow: Identifiable {
-    let tiles: [GalleryTile]
+    let tiles: [TheWallTile]
     /// The first tile's id — unique per row because `full` is unique per tile
     /// (the build rejects the same bytes reaching the wall twice).
     var id: String { tiles.first?.id ?? "empty" }
@@ -248,8 +248,8 @@ struct WallRow: Identifiable {
 /// top of it, matching the web wall where "the picture is the whole content".
 /// A project card is framed in its science colour, badged, and permanently
 /// captioned, so it never reads as one more photo.
-private struct GalleryTileView: View {
-    let tile: GalleryTile
+private struct TheWallTileView: View {
+    let tile: TheWallTile
     let width: CGFloat
     let height: CGFloat
 
@@ -296,7 +296,7 @@ private struct GalleryTileView: View {
 
     /// `thumbURL` already prefers the poster for a clip; this is the same
     /// resolution, named for what it is at the call site.
-    private static func posterURL(_ tile: GalleryTile) -> URL? { tile.thumbURL }
+    private static func posterURL(_ tile: TheWallTile) -> URL? { tile.thumbURL }
 
     /// A clip is the one moving thing on the wall — say so quietly, so the
     /// motion reads as deliberate rather than as a broken image.
@@ -371,7 +371,7 @@ private struct GalleryTileView: View {
 /// never offers a dead-end filter.
 private struct ScienceFilterMenu: View {
     @Binding var selected: String?
-    let sciences: [GalleryScience]
+    let sciences: [TheWallScience]
 
     var body: some View {
         Menu {

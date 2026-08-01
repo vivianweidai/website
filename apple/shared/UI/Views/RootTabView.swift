@@ -29,7 +29,7 @@ public struct RootTabView: View {
             OlympiadsView()
                 .tabItem { Image(systemName: "trophy") }
                 .tag(Tab.olympiads)
-            GalleryView()
+            TheWallView()
                 .tabItem { Image(systemName: "flask") }
                 .tag(Tab.projects)
         }

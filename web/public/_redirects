@@ -19,10 +19,22 @@
 # and /research/projects/X/ resolved to /projects/projects/X/ (404). Do not
 # reintroduce an overlapping catch-all — enumerate instead.
 #
+# THE SECOND RENAME (2026-08-01): gallery → thewall. The wall's manifest and
+# its picture folder were renamed to match the name the thing has always had in
+# prose. Shipped App Store builds hardcode /projects/gallery.json in
+# APIClient.swift, so that URL has to keep answering — and because the manifest
+# it now redirects to points its tiles at /projects/thewall/..., the picture
+# folder needs its own rule for anything holding an older copy of the JSON.
+# The /research/gallery.json rule below points straight at the new name rather
+# than chaining through the old one — one hop, not two.
+#
 # Served by Cloudflare Workers Static Assets, which reads this file from the
 # assets directory. The Worker itself is still a pure passthrough.
 
 /research/projects/*     /projects/:splat             301
-/research/gallery.json   /projects/gallery.json       301
+/research/gallery.json   /projects/thewall.json       301
 /research/               /projects/                   301
 /research                 /projects                   301
+
+/projects/gallery.json   /projects/thewall.json       301
+/projects/gallery/*      /projects/thewall/:splat     301

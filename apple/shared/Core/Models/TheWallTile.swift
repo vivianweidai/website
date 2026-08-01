@@ -1,25 +1,25 @@
 import Foundation
 
-/// Strongly-typed mirror of `web/public/projects/gallery.json`, the manifest
+/// Strongly-typed mirror of `web/public/projects/thewall.json`, the manifest
 /// behind the website's /projects/ wall.
 ///
-/// Built by `pipeline/scripts/build_gallery.py` from `gallery.yml`. The app
+/// Built by `pipeline/scripts/build_thewall.py` from `thewall.yml`. The app
 /// renders the same wall from the same file, so a row added on the Mac shows
 /// up here the next time the app fetches — no app release needed.
 ///
 /// A picture belongs to exactly one science, and that science is the folder it
-/// sits in under gallery/ — there is no tagging layer above it.
+/// sits in under thewall/ — there is no tagging layer above it.
 ///
 /// Two kinds of tile share the list:
 ///   photo    a picture (or a clip). Tapping opens the full-resolution viewer.
 ///   project  a link to a write-up. `href` is the project page's path; tapping
 ///            opens that project's index.md in the in-app markdown reader.
-public struct GalleryResponse: Codable, Sendable {
-    public let tiles: [GalleryTile]
-    public let sciences: [GalleryScience]
+public struct TheWallResponse: Codable, Sendable {
+    public let tiles: [TheWallTile]
+    public let sciences: [TheWallScience]
 }
 
-public struct GalleryScience: Codable, Sendable, Identifiable {
+public struct TheWallScience: Codable, Sendable, Identifiable {
     public let science: String
     public let slug: String
     public let count: Int
@@ -27,7 +27,7 @@ public struct GalleryScience: Codable, Sendable, Identifiable {
     public var id: String { slug }
 }
 
-public struct GalleryTile: Codable, Sendable, Identifiable {
+public struct TheWallTile: Codable, Sendable, Identifiable {
     /// What the wall loads — a long-edge-1000 thumbnail for anything oversized.
     public let src: String
     /// The original, full resolution. What the viewer opens.
@@ -47,7 +47,7 @@ public struct GalleryTile: Codable, Sendable, Identifiable {
     /// what a video tile actually shows.
     public let poster: String?
     /// A project card's shuffle-pool photos, folder-relative. Baked by
-    /// build_gallery.py; used to live in technology.json, which is gone.
+    /// build_thewall.py; used to live in technology.json, which is gone.
     public let photos: [String]?
 
     enum CodingKeys: String, CodingKey {
