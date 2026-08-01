@@ -70,7 +70,7 @@ When James asks to go deeper on a project from `work/IDEAS.md`, two things are w
 
 Findings from a deep dive get folded back into that project's entry in `work/IDEAS.md` — the doc carries decisions, numbers, hazards and gotchas, not the walkthrough prose, which is cheap to regenerate.
 
-**Physics problem leads are generated.** Each `work/physics/problems/<n> <name>/PAPER Leads.pdf` (paywalled papers worth retrieving by hand) is built from **`work/physics/archives/leads.yml`** by `python3 work/physics/archives/build_leads.py` (optionally with problem numbers: `… build_leads.py 8 13`). Both live in `archives/` to keep `work/physics/` to just `archives/ problems/` — but the script is **live tooling, not dead reference material**; it writes into `../problems/`. Edit the YAML and rebuild; never hand-edit the PDFs. Rendering is Chrome headless `--print-to-pdf`, same as `work/overview.pdf`.
+**Physics problem leads are generated.** Each `work/physics/problems/<n> <name>/PAPER Leads.pdf` (paywalled papers worth retrieving by hand) is built from **`work/physics/archives/leads.yml`** by `python3 work/physics/archives/build_leads.py` (optionally with problem numbers: `… build_leads.py 8 13`). Both live in `archives/` to keep `work/physics/` to `archives/ problems/ spike/` — but the script is **live tooling, not dead reference material**; it writes into `../problems/`. Edit the YAML and rebuild; never hand-edit the PDFs. Rendering is Chrome headless `--print-to-pdf`, same as `work/overview.pdf`.
 
 **Update `IDEAS.md` continuously while brainstorming — don't wait to be asked, and don't batch it to the end of a session.** A brainstorm that revises what a project needs (or corrects a wrong read of one) is exactly the durable content the doc exists to hold; leaving it in chat loses it. **Record corrections as corrections** — say what the earlier read was and that it was wrong, so a future session doesn't re-derive the same mistake from the stale sketch that's still sitting in a table nearby.
 
@@ -303,6 +303,13 @@ Shipping in **1.5.6**; every installed copy before it still shows the old tech b
   ```
 
   Created 2026-07-29, after the working copy was found to be living in an **ephemeral session scratchpad** that would have vanished before the next observing night. Plate solving is separate and system-wide: `/opt/homebrew/bin/solve-field` (astrometry.net) with the Gaia index files 4212–4216.
+- ⚠️ **Physics bench control needs its own venv at `work/physics/.venv`** — `bleak` (Bluetooth) is not installed system-wide. Run the SPIKE Prime client as `work/physics/.venv/bin/python work/physics/spike/spike.py <cmd>`; it resolves its own paths and writes CSV into `work/physics/spike/output/`. Gitignored like astronomy's, so a fresh clone rebuilds it:
+
+  ```sh
+  cd work/physics && /opt/homebrew/bin/python3.14 -m venv .venv && .venv/bin/pip install bleak
+  ```
+
+  The hub is driven on **stock LEGO firmware** over LEGO's published BLE protocol — not Pybricks. Rationale, the rung ladder, and the bench checklist are in `work/IDEAS.md` § *SPIKE Prime* and `work/physics/spike/spike_VERIFY.md`.
 - **Reproducibility** — every script runnable end-to-end from the project folder, with comments explaining each step. Pin versions in `requirements.txt` if the pipeline uses non-standard packages. Always inspect/summarize raw data (shape, missing values, outliers, units) before analysis and flag anything unexpected.
 - **Visualizations** — matplotlib/seaborn with clear axis labels, units, titles, legends; save PNG at 300 dpi (into an `output/images/` subfolder if a project produces many, else directly into `output/`).
 - **Jupyter conventions:**
