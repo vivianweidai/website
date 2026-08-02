@@ -103,10 +103,11 @@ PHOTO_EXTS = (".jpg", ".jpeg", ".png")
 def project_photos(proj: Path) -> list[str]:
     """A project's shuffle-pool photos, folder-relative (`photos/setup/1.jpeg`).
 
-    Every image under `photos/`, recursively, except `photos/data/` — those are
-    handwritten data sheets, surfaced by a hand-coded grid rather than the hero
-    shuffle. Mirrors the build-time walk in `pages/projects/[slug]/index.astro`;
-    keep the two in step.
+    Every image under `photos/`, recursively, except `photos/data/` and
+    `photos/figures/`. Those two are not photographs of the work: `data/` is
+    what came off the instrument and `figures/` is generated plots, and both are
+    placed deliberately in the report rather than shuffled. Mirrors the
+    build-time walk in `pages/projects/[slug]/index.astro`; keep the two in step.
 
     Baked into thewall.json so the native app can render a project page's photo
     grid from a manifest it already loads. This used to live in technology.json,
@@ -120,7 +121,7 @@ def project_photos(proj: Path) -> list[str]:
     def walk(d: Path) -> None:
         for f in sorted(d.iterdir()):
             if f.is_dir():
-                if f.parent == root and f.name == "data":
+                if f.parent == root and f.name in ("data", "figures"):
                     continue
                 walk(f)
             elif f.suffix.lower() in PHOTO_EXTS:

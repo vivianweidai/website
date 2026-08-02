@@ -7,6 +7,69 @@ sciences:
 
 <p class="lede">A diffraction grating threaded onto the front of the Seestar spreads each star's light into a small rainbow. Thirty short infrared-filtered exposures of Vega, stacked, give a spectrum clean enough to read the dark gaps where hydrogen has absorbed — deep enough here to classify the star as <strong>A0V</strong>, which is what SIMBAD independently lists for Vega — checked only after the classification was made. Albireo through the identical chain comes out shallower at every hydrogen line — 9.7 % against Vega's 31.9 % at Hα — because neither of its two stars sits near the ~10,000 K at which hydrogen absorbs most strongly. That contrast is what makes the classification mean anything.</p>
 
+## The journey of light
+
+<div class="step">
+
+### The star makes a continuum
+
+Vega's photosphere is hot dense gas. A photon cannot cross it without being absorbed and re-emitted an enormous number of times, and every one of those interactions scrambles its energy and direction. What finally escapes bears no relation to the photon that went in: the light has come into equilibrium with the gas — thermalized — and its spectrum is now set by one thing only, the temperature. That equilibrium spectrum is the smooth blackbody curve, carrying every wavelength at once. There is no structure in it yet. This is only the baseline everything else gets measured against.
+
+</div>
+
+<div class="step">
+
+### Cooler gas above it removes specific wavelengths
+
+Above the photosphere sits a thinner, cooler layer. Hydrogen atoms sitting in the n = 2 level absorb exactly the photons whose energy lifts them to n = 3, 4, 5 or 6 — the Balmer series, at 656.3, 486.1, 434.0 and 410.2 nm. Those wavelengths leave the star depleted, and the dark gaps they leave behind are the entire measurement.
+
+<figure>
+<svg viewBox="0 0 620 300" style="width:100%;height:auto" role="img" aria-label="Hydrogen energy levels: a photon lifting an atom from n=2 up to n=3, 4, 5 or 6 gives each of the four Balmer lines">
+  <defs><marker id="balmer-up" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6 z" fill="context-stroke"/></marker></defs>
+  <g stroke="#1f2328" stroke-width="2">
+    <line x1="95" y1="232" x2="470" y2="232"/>
+    <line x1="95" y1="130" x2="470" y2="130"/>
+    <line x1="95" y1="86"  x2="470" y2="86"/>
+    <line x1="95" y1="64"  x2="470" y2="64"/>
+    <line x1="95" y1="50"  x2="470" y2="50"/>
+  </g>
+  <g font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#656d76" text-anchor="end">
+    <text x="86" y="237">n = 2</text><text x="86" y="135">n = 3</text>
+    <text x="86" y="91">n = 4</text><text x="86" y="69">n = 5</text><text x="86" y="55">n = 6</text>
+  </g>
+  <g stroke-width="2.6" marker-end="url(#balmer-up)">
+    <line x1="150" y1="228" x2="150" y2="140" stroke="#c0392b"/>
+    <line x1="230" y1="228" x2="230" y2="96"  stroke="#2e86c1"/>
+    <line x1="310" y1="228" x2="310" y2="74"  stroke="#5b4bc4"/>
+    <line x1="390" y1="228" x2="390" y2="60"  stroke="#7d3c98"/>
+  </g>
+  <g font-family="-apple-system, sans-serif" font-size="12.5" text-anchor="middle">
+    <text x="150" y="256" fill="#c0392b">Hα</text><text x="150" y="273" fill="#656d76">656.3</text>
+    <text x="230" y="256" fill="#2e86c1">Hβ</text><text x="230" y="273" fill="#656d76">486.1</text>
+    <text x="310" y="256" fill="#5b4bc4">Hγ</text><text x="310" y="273" fill="#656d76">434.0</text>
+    <text x="390" y="256" fill="#7d3c98">Hδ</text><text x="390" y="273" fill="#656d76">410.2</text>
+    <text x="270" y="292" fill="#656d76" font-size="11.5">wavelength in nm — set by the size of the gap, nothing else</text>
+  </g>
+  <g font-family="-apple-system, sans-serif" font-size="12" fill="#656d76">
+    <text x="486" y="229">where every</text>
+    <text x="486" y="245">Balmer line starts</text>
+    <text x="486" y="72">levels crowd together</text>
+    <text x="486" y="89">as n climbs…</text>
+  </g>
+</svg>
+</figure>
+
+All four Balmer lines start on the same rung, n = 2. The jump to n = 3 is the smallest gap, so it takes the least energy and absorbs the longest wavelength — red Hα. Higher rungs mean bigger gaps and bluer light, and they bunch up towards the top because the energy levels themselves bunch up.
+
+<div class="term">
+
+**Why Vega's lines are so deep** is the physics that makes a spectral type mean a temperature. Populating n = 2 takes heat, but much more heat ionizes the hydrogen away entirely, so the number of atoms able to absorb at all peaks near 10,000 K — which is Vega's temperature. Hotter stars and cooler ones both show weaker Balmer lines. Line strength therefore reads temperature, and that is what makes a classification possible from nothing but the depth of a few gaps.
+
+</div>
+
+</div>
+
 ## Setting up
 
 <div class="step">
@@ -37,9 +100,7 @@ We held it up to a laptop screen before dark. Every white pixel split into three
 
 ### Choosing the filter
 
-A star's photosphere is dense. Photons cannot escape it without being absorbed and re-emitted many times over, and all that scattering thermalizes the light into a smooth continuum carrying every wavelength at once — a blackbody. Above the photosphere sits a thinner, cooler layer, and the hydrogen in it absorbs its own particular wavelengths out of that light on the way past, cutting dark bands into the continuum.
-
-Those bands are the measurement. They exist only as gaps in the continuum around them, so reading them means capturing the continuum too, across the whole visible range. Any filter that keeps a selection of wavelengths rather than a band of them destroys the thing being measured.
+Those dark bands are the measurement, and they exist only as gaps in the continuum around them, so reading them means capturing the continuum too, across the whole visible range. Any filter that keeps a selection of wavelengths rather than a band of them destroys the thing being measured.
 
 The scope carries two, and only one leaves that intact.
 
@@ -60,7 +121,7 @@ The second is colour. The Bayer filters are dyes, and a dye absorbs because its 
 <div class="row">
 <figure><img src="photos/data/data3.jpg" alt="Vega through the LP filter, reduced to a cyan stub"></figure>
 <figure><img src="photos/data/data2.jpg" alt="Vega through IRCUT, a full violet-to-red streak"></figure>
-<figure><img src="output/images/filter_passbands.png" alt="What each filter passes, against a wavelength scale"></figure>
+<figure><img src="photos/figures/filter_passbands.png" alt="What each filter passes, against a wavelength scale"></figure>
 </div>
 
 </div>
@@ -146,7 +207,7 @@ best_corner(angle_deg, margin)     # star goes in the corner the streak runs AWA
 
 We pointed the scope at Vega and put it in the corner worked out above, so the star and as much of its spectrum as the sensor would hold landed on the same frame. Thirty subs of five seconds each, stacked afterwards.
 
-<figure><img src="output/images/orders_marked.jpg" alt="Raw frame with the zero-order dot ringed and the first-order rainbow bracketed"></figure>
+<figure><img src="photos/figures/orders_marked.jpg" alt="Raw frame with the zero-order dot ringed and the first-order rainbow bracketed"></figure>
 
 The dot on the left is the **zero order** — light the grating did not bend, every colour together. Its position does not depend on wavelength, so it is the origin everything else is measured from. The streak running away from it is the **first order**, blue bent least and so nearest the star, red bent most and furthest. The frame is turned a quarter turn here; on the sensor the spectrum runs down the long axis.
 
@@ -176,7 +237,7 @@ With no slit anywhere in the setup, the star's own image profile is the finest d
 
 It had to be measured on a plain frame taken without the grating, because with the grating fitted every star is a streak and no point sources are left. All 400 unsaturated stars shared the same profile, so the blur is optics, focus and tracking rather than any individual star — and it is why the type came out solid while the subtype stayed marginal.
 
-<figure><img src="output/images/seeing_profile.png" alt="Averaged profile of 400 field stars, its FWHM, and the spread"></figure>
+<figure><img src="photos/figures/seeing_profile.png" alt="Averaged profile of 400 field stars, its FWHM, and the spread"></figure>
 
 </div>
 
@@ -199,7 +260,7 @@ def planes(path):
 
 Measured across a line-free window, that halved the ripple, **0.05 → 0.026**.
 
-<figure><img src="output/images/bayer_ripple.png" alt="Raw Bayer mosaic magnified, and the ripple it leaves in an un-debayered trace"></figure>
+<figure><img src="photos/figures/bayer_ripple.png" alt="Raw Bayer mosaic magnified, and the ripple it leaves in an un-debayered trace"></figure>
 
 </div>
 
@@ -218,7 +279,7 @@ rectify(rgb, y0h, x0h, ux, uy, rs_h, half_width=22)
 
 On the 2026-07-29 frame the dot centroided at (816.4, 143.9) and the streak ran at −4.1°.
 
-<figure><img src="output/images/streak_rectified.png" alt="Vega's streak resampled horizontal with the four Balmer lines marked"></figure>
+<figure><img src="photos/figures/streak_rectified.png" alt="Vega's streak resampled horizontal with the four Balmer lines marked"></figure>
 
 </div>
 
@@ -236,7 +297,7 @@ prof  = strip.sum(axis=0)      # sum DOWN each column
 
 How wide to sum was the only judgement call. Past the edge of the star each extra row adds sky noise and no signal, so noise grows as √rows while signal has stopped. Three pixels either side was best; forty captures every photon but keeps **56 %** of the achievable signal-to-noise. `extract_demo.py` swept the width.
 
-<figure><img src="output/images/extraction_demo.png" alt="Four panels: extraction and the aperture-width trade-off"></figure>
+<figure><img src="photos/figures/extraction_demo.png" alt="Four panels: extraction and the aperture-width trade-off"></figure>
 
 </div>
 
@@ -254,7 +315,7 @@ lam = [410.174, 434.047, 486.135, 656.281]         # nm, atomic physics
 A_FIT = 56016.0                                    # least squares over all four
 ```
 
-<figure><img src="output/images/fitting_A.png" alt="Measured distance to each Balmer line, the one-parameter fit, and residuals"></figure>
+<figure><img src="photos/figures/fitting_A.png" alt="Measured distance to each Balmer line, the one-parameter fit, and residuals"></figure>
 
 <div class="result">
 <strong>A = 56,016 px</strong>, out-of-sample residuals <strong>0.185 nm rms</strong>. <code>A × 2.9 µm = 162.9 mm</code> against a 163 mm plate-scale focal length. The residuals scatter around zero rather than sloping with wavelength, so the tan-of-asin shape is right and not merely fitted.
@@ -288,29 +349,15 @@ Depth is the obvious measurement and the wrong one: seeing makes a line shallowe
 
 We swept the integration width outward to confirm the number had settled rather than still climbing.
 
-<figure><img src="output/images/continuum_and_EW.png" alt="Normalised spectrum, EW as a shaded area, and the convergence test"></figure>
+<figure><img src="photos/figures/continuum_and_EW.png" alt="Normalised spectrum, EW as a shaded area, and the convergence test"></figure>
 
 <div class="result">
 <strong>Hγ ≈ 13.1 Å · Hα ≈ 11.7 Å</strong>, both converged.
 </div>
 
-<figure><img src="output/images/vega_spectrum.png" alt="Reduced Vega spectrum, 30 subs combined, four Balmer lines marked"></figure>
+<figure><img src="photos/figures/vega_spectrum.png" alt="Reduced Vega spectrum, 30 subs combined, four Balmer lines marked"></figure>
 
 The bump near 480 nm and the dip between 560 and 590 nm are instrument, not star.
-
-</div>
-
-<div class="step">
-
-### Why the lines are a thermometer
-
-<div class="term">
-
-**The Balmer series** is what hydrogen absorbs when an atom already in n = 2 is lifted to n = 3, 4, 5 or 6 — the photons at 656.3, 486.1, 434.0 and 410.2 nm.
-
-</div>
-
-Filling n = 2 takes heat, but too much heat ionizes the hydrogen away, so the population able to absorb peaks near 10,000 K and falls off either side. Hotter and cooler stars both show weaker Balmer lines than an A star. Line strength reads temperature, and temperature is what a spectral type encodes.
 
 </div>
 
@@ -322,7 +369,7 @@ The Pickles atlas publishes Balmer equivalent widths for 131 templates — the s
 
 <div class="eq">χ² = Σ ( EW<sub>ours</sub> − EW<sub>template</sub> )² / σ²</div>
 
-<figure><img src="output/images/pickles_chi2.png" alt="Chi-squared of our two EWs against all 131 Pickles templates"></figure>
+<figure><img src="photos/figures/pickles_chi2.png" alt="Chi-squared of our two EWs against all 131 Pickles templates"></figure>
 
 The minimum sits among the A stars and is deep — its neighbours are an order of magnitude worse.
 
@@ -347,7 +394,7 @@ The minimum sits among the A stars and is deep — its neighbours are an order o
 
 Albireo is a pair we cannot resolve — 35″ of separation is 4.8 px here, so what reached the sensor was one blended streak carrying a K3II giant and a B8V dwarf together. The other rainbows in that frame are unrelated field stars. `spectra_results.py` ran both targets and reported depth and significance line by line.
 
-<figure><img src="output/images/vega_vs_albireo.png" alt="Vega and the Albireo blend through the same reduction pipeline"></figure>
+<figure><img src="photos/figures/vega_vs_albireo.png" alt="Vega and the Albireo blend through the same reduction pipeline"></figure>
 
 It came out shallower at all four lines, not one. There was also far less of it — 3 × 20 s against Vega's 30 × 5 s — so its continuum noise is 0.043 against 0.017, and every significance falls with it.
 

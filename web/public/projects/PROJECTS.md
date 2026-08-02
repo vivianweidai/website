@@ -31,17 +31,28 @@ Each project is a date-prefixed folder under `web/public/projects/`. The page is
 
 ```
 YYYYMMDD Project Name/
-├── data/      # Raw instrument data. NEVER modify — read-only.
 ├── photos/
-│   ├── setup/    # setup shots — feed the top-page shuffle
-│   ├── samples/  # (optional) sample close-ups — also shuffled
-│   └── data/     # for example handwritten sheets
-├── papers/    # background papers (optional)
-├── output/    # ALL generated output: *.py/*.ipynb, *.png, *.csv/*.json
+│   ├── setup/     # the rig — instrument, mounting, bench checks
+│   ├── data/      # what came off the instrument, as pictures
+│   └── figures/   # finished plots, copied over from science
 └── report.md
 ```
 
-Follow these names rather than inventing new ones. Read from `data/`, write everything generated to `output/`. The historical project report pages had their own format with shuffled photos at the top and tables of instruments. Lets park those as legacy. Moving forward, while the folder structure remains similar, let's structure report.md more as instructional step-by-step guides that take us from data to analysis. We will start this experiment with the Stellar Spectroscopy project. Any generally applicable lessons learned for generalizing the presentation will be saved as notes below.
+**The two repos are split by job, and the split is strict.**
+
+`science` is where the work happens: raw data, scripts, notebooks, the Python environment, and all the iterating. A reduction gets rewritten, a defect gets fixed, the numbers move — that all belongs there, and it keeps rolling.
+
+`website` is publication only. A project folder holds `report.md` and pictures. **No data, no scripts, no notebooks, no logic of any kind.** When a figure is finished in `science`, its PNG is copied into `photos/figures/` as a finished product. Nothing here is ever run, so nothing here can drift out of step with anything.
+
+That is the whole point of the split: maintaining two copies of the same scripts and the same frames is upkeep that buys nothing, because the published page is a *snapshot* either way — this data, reduced this way, on this date. Reproducibility lives in `science`, where the data and the interpreter already are. If a later re-reduction moves the numbers, that is new science on the same data and earns a dated revision on the page, not a quiet overwrite.
+
+A report may still name a script and quote a few lines of it. That is prose describing what was done, it is what makes the page teachable, and it creates no upkeep because nothing here runs. It just does not ship the file.
+
+The reason that is enough: these are teaching pages, not publications. A real publication carries its data and its code so a stranger can check the result, and if one of these ever becomes that, shipping both becomes a deliberate decision made at the time. Until then a page and the `science` repo do not have to stay coherent with each other — the page is a snapshot of what was understood on a date, and `science` keeps moving. If you ever need to verify a number or re-run a figure, the script and the frames are still there.
+
+Two hard constraints behind the rule. `web/public/` is served verbatim, so anything under a project folder is published, publicly downloadable, and re-uploaded to Cloudflare on every deploy. And this repo is public with effectively permanent history, so a 16 MB FITS committed once cannot be taken back. `.gitignore` carries `projects/*/data/` and `projects/*/output/` as a guard against both.
+
+The historical project report pages had their own format with shuffled photos at the top and tables of instruments. Lets park those as legacy. Moving forward, while the folder structure remains similar, let's structure report.md more as instructional step-by-step guides that take us from data to analysis. We will start this experiment with the Stellar Spectroscopy project. Any generally applicable lessons learned for generalizing the presentation will be saved as notes below.
 
 
 ### The Walkthrough Format

@@ -40,3 +40,11 @@ dist/
 *.xapk
 *.pem
 *.key
+
+# Project folders are publication only — report.md and pictures. Raw frames,
+# scripts and notebooks live in the science repo and are never copied here.
+# These patterns are a guard against that happening by accident: web/public/ is
+# served verbatim, so anything tracked here is also uploaded to Cloudflare and
+# published, and a 16 MB FITS committed once cannot really be taken back.
+web/public/projects/*/data/
+web/public/projects/*/output/
