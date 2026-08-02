@@ -138,6 +138,146 @@ const titlePills = sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`
     .setup-highlight-all tbody tr td { background: #fff44f; }
     .instrument-table tbody tr td { background: #fff44f; }
     .instrument-table.no-highlight tbody tr td { background: transparent; }
+
+    /* ── WALKTHROUGH FORMAT ──────────────────────────────────────────
+       The step-by-step data-to-analysis report. One numbered step per
+       thing that happened, a `term` pull-out wherever a word needs
+       defining, and a figure under whichever step it belongs to.
+       Legacy reports use the shuffle grid + instrument tables above;
+       these classes are what replaced them. See PROJECTS.md. */
+
+    .lede {
+      font-size: 1.08em;
+      color: #3d444d;
+      margin: 0.2em 0 1.4em;
+      padding-bottom: 1.2em;
+      border-bottom: 1px solid #d1d9e0;
+    }
+
+    .step { margin: 2.2em 0; }
+    .step > h3 {
+      display: flex;
+      gap: 0.7em;
+      align-items: baseline;
+      font-size: 1.15em;
+      margin: 0 0 0.6em;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .step > h3::before {
+      counter-increment: step;
+      content: counter(step);
+      flex: none;
+      width: 1.6em;
+      height: 1.6em;
+      border-radius: 50%;
+      background: #b3576b;
+      color: #fff;
+      font-size: 0.68em;
+      font-weight: 700;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-0.15em);
+    }
+    /* Reset on body, so numbering runs unbroken across the whole page and
+       an `## ` section head can group steps without restarting the count. */
+    body { counter-reset: step; }
+    .step > *:not(h3):not(.tall):not(.small) { margin-left: 3em; }
+    .step .term, .step .result, .step .eq { margin-left: 3em; }
+
+    /* Pull-out: a key technical term, defined where it first bites. */
+    .term {
+      border-left: 3px solid #b3576b;
+      background: #fbf7f8;
+      padding: 0.8em 1em;
+      margin: 1em 0;
+      border-radius: 0 5px 5px 0;
+      font-size: 0.95em;
+      color: #3d444d;
+    }
+    .term > *:first-child { margin-top: 0; }
+    .term > *:last-child { margin-bottom: 0; }
+    /* Markdown `**term**` inside a pull-out — the word being defined. */
+    .term strong { color: #1f2328; font-weight: 700; }
+
+    /* The answer, or any number the step exists to produce. */
+    .result {
+      background: #f6f8fa;
+      border: 1px solid #d1d9e0;
+      border-left: 4px solid #b3576b;
+      padding: 0.9em 1.1em;
+      margin: 1.2em 0;
+      border-radius: 0 5px 5px 0;
+    }
+    .result > *:first-child { margin-top: 0; }
+    .result > *:last-child { margin-bottom: 0; }
+    .result .big { font-size: 1.2em; font-weight: 600; }
+
+    .eq {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 0.92em;
+      text-align: center;
+      background: #f6f8fa;
+      border: 1px solid #d1d9e0;
+      border-radius: 5px;
+      padding: 0.8em 1em;
+      margin: 1em 0;
+      overflow-x: auto;
+      position: relative;
+    }
+    /* A numbered equation lays out as a grid: the numeral in its own column at
+       the far left, the maths centred in the rest. Grid rather than absolute
+       positioning so the number can never overlap a long equation. The number
+       is the only thing in the box — an equation is explained in the prose
+       above it, never in a caption inside it. */
+    .eq:has(.eq-n) {
+      display: grid;
+      grid-template-columns: 2.4em 1fr;
+      align-items: center;
+      text-align: center;
+    }
+    .eq .eq-n {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 1.6em;
+      font-weight: 600;
+      color: #c9d1d9;
+      line-height: 1;
+      text-align: left;
+    }
+    .eq small {
+      display: block;
+      font-size: 0.78em;
+      color: #656d76;
+      margin-top: 0.4em;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    figure { margin: 1.2em 0; }
+    figure img { width: 100%; display: block; border-radius: 6px; }
+    figcaption {
+      font-size: 0.85em;
+      color: #656d76;
+      margin-top: 0.5em;
+      line-height: 1.5;
+    }
+    .row { display: grid; gap: 0.6em; grid-template-columns: repeat(3, 1fr); }
+    .row.two { grid-template-columns: repeat(2, 1fr); }
+    .row figure { margin: 0; }
+    .row figcaption { text-align: center; }
+    /* A single photo making a single point does not need the full column.
+       Both are centred — a narrow figure flush left reads as a mistake. */
+    .tall  { max-width: 17em; margin-left: auto; margin-right: auto; }
+    .small { max-width: 26em; margin-left: auto; margin-right: auto; }
+    /* Centred figures are excluded from the step indent above, so their auto
+       margins are free to centre them across the full column. */
+
+    @media (max-width: 640px) {
+      .step > *:not(h3):not(.tall):not(.small) { margin-left: 0; }
+      .step .term, .step .result, .step .eq { margin-left: 0; }
+      .row { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
 <body>

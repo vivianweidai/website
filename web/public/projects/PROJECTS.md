@@ -3,7 +3,7 @@
 How the published Projects vertical is structured: the picture wall at `/projects/`, and the project report pages under it. These rules live beside the files they govern — `thewall.yml`, `thewall/<science>/` and the `<YYYYMMDD Name>/` folders are all in this directory.
 
 
-## The wall
+## The Wall
 
 One folder per science; a picture belongs to exactly one.
 
@@ -25,7 +25,7 @@ Dating and sorting. One source: a `YYYYMMDD` prefix on the filename or any folde
 A wrong picture is the only way left to be wrong, so look at the frames before shipping. Nothing on the page will ever correct a misleading image, and a filename that misidentifies its subject still reaches screen readers and the JSON.
 
 
-## Project reports
+## Project Reports
 
 Each project is a date-prefixed folder under `web/public/projects/`. The page is `report.md` — not `README.md`, because Astro's loader globs `*/report.md`.
 
@@ -44,7 +44,7 @@ YYYYMMDD Project Name/
 Follow these names rather than inventing new ones. Read from `data/`, write everything generated to `output/`. The historical project report pages had their own format with shuffled photos at the top and tables of instruments. Lets park those as legacy. Moving forward, while the folder structure remains similar, let's structure report.md more as instructional step-by-step guides that take us from data to analysis. We will start this experiment with the Stellar Spectroscopy project. Any generally applicable lessons learned for generalizing the presentation will be saved as notes below.
 
 
-### The walkthrough format
+### The Walkthrough Format
 
 First built for `20260729 Spectroscopy`. The classes live in `layouts/Project.astro`, not in the page, so a second report inherits the format instead of re-inventing it. Nothing here is per-project styling — if a page needs a `<style>` block, that is a signal the format is missing something and the layout should grow it.
 
@@ -65,12 +65,20 @@ Writing rules that came out of the first one:
 - Cut the meta. No "this report describes", no standalone Data or Method section describing where files live and what format they are in. Where that matters it belongs in the step that touches it.
 - Write it as a recipe, not an essay. The target is reproducing the work, so no scene-setting, no motivation, no adjectives doing emotional work. The lede is instrument, data, result — three clauses.
 - Define the word where it bites, in a `.term`, not in a glossary and not on first mention in the lede. A reader meets "seeing" at the step where seeing is the problem.
+- Say what the thing is *for* before saying how it works — and name the use case, not the abstract function. This one took three passes. "LP is dual-band: two narrow windows at Hα and Hβ/OIII" is mechanism with no purpose. "LP is there to reject light pollution" is a function, still abstract, and leaves the reader assembling the point. "LP is a filter for photographing nebulae from a city, and was never meant to be pointed at a star" is the use case, and every fact after it lands as a consequence. Name the job, then explain the machinery.
+- One pull-out, one idea. If a `.term` is defining something and also explaining what it costs you, it is two things: leave the definition in the pull-out and move the consequences to running prose beneath it. Watch the ordering when you split — prose that refers back to a number the pull-out establishes has to sit after it, not before.
 - Every step earns a picture if one exists — setup photos, the raw frame, the plot. Show the artifact, not a description of it. `## ` heads group steps into phases without restarting the numbering.
 - No captions. The prose around a figure carries it; a caption is a second, competing explanation and it drifts out of step with the text. If a picture needs explaining, explain it in the sentence above it.
 - Name the script where it is used, never in an appendix. `pickles_chi2.py pulls table lew from VizieR` in the step that does the fitting. A table of scripts at the end is a reference nobody reads in order, and it separates the tool from the moment it matters.
+- Only name a script that did work in that step. A script that merely renders the figure is picture-making, not method — how a plot was stretched or coloured is production detail and belongs in the script's own comments. Ask whether the step would have a different result without it. If not, leave it out.
+- Stop writing when the figure has made the point. A paragraph restating what the picture already shows reads as a lack of confidence in the picture. Say what the panels are, since there are no captions, and stop.
 - Quote the two or three lines that carry the idea, not the file. Real constants and real function signatures — `A_FIT = 56016.0`, `centroid_zero_order(d, y, x, box=60)` — so the step is reproducible from the page.
 - Don't explain the repository. No GitHub paths, no folder structure, no "the raw data lives in". The scripts are assumed available; the reader is us.
 - Put the answer in a `.result`, including intermediate answers. A step that produces a number should end in the number.
+- Past tense, and headings as gerunds — "Threading the grating onto the objective lens", "We held it up to a laptop screen". The page records what was done, not what a reader should go and do. An imperative ("hold the grating up to a screen") reads as an instruction manual and quietly promises a completeness the page is not offering.
+- No italics. Reach for them and the sentence is usually the problem; rebuild it so the important word lands on its own. Bold stays, but structurally only — the defined term at the head of a `.term`, and the numbers inside a `.result`.
+- Never compare to an alternative you do not explain. "We threaded it onto the objective lens rather than behind it" raises a second method, says nothing about it, and leaves the reader wondering what they missed. Either explain the alternative because the choice mattered, or just say what was done. Every surviving "rather than" in a good page answers itself in the same sentence.
+- Cut sentences that praise the step. "The check takes two minutes and settles whether the grating is the right way round" is the page telling you a step was worthwhile instead of telling you what happened. State the action and the outcome; the reader can judge.
 - Two figures showing the same thing is one figure too many. The first draft carried both a residual panel and a standalone residual plot; they disagreed in the third decimal and clashed in styling, which is how the redundancy got noticed.
 - Generated figures should share one visual theme. Plots made by older scripts arrive on a white background and read as foreign next to the rest.
 - Keep text out of the figure. No figure title, no standfirst, no panel headings, no value labels on the points — all of that is prose, and prose is where it can be edited. Keep only what is part of the graph: axis labels, tick labels, and bare series identifiers where two curves would otherwise be indistinguishable. The plotting scripts enforce this — in `step_figures.py` the `head()` helper is a deliberate no-op and `dress()` ignores its `title` argument, so a call site can keep its wording as documentation without drawing it.

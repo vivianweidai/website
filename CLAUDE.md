@@ -8,7 +8,7 @@
 - this file is locked. Material changes need James's agreement; tweaks and corrections do not. New detail belongs at the edge, in the folder it describes
 
 
-## The three verticals
+## The Three Verticals
 
 The site, the app, and this repo are organized around exactly three content verticals. Everything in `web/public/` belongs to one of them.
 
@@ -19,7 +19,7 @@ The site, the app, and this repo are organized around exactly three content vert
 | Projects | `web/public/projects/` (folders + `thewall/thewall.yml`) | `thewall.json` | Hands-on research: raw data, photos, notebooks, reproducible pipelines. The frontier — where the work happens. |
 
 
-## The two surfaces
+## The Two Surfaces
 
 All three verticals are served by both surfaces, from the same generated JSON. Neither surface has a backend, an admin endpoint, or a database; both read static manifests.
 
@@ -39,7 +39,7 @@ All three verticals are served by both surfaces, from the same generated JSON. N
 `web/public/` is served verbatim at the site root, which is why there is no top-level `content/`.
 
 
-## Content builds and deployment
+## Content Builds and Deployment
 
 Every `*.json` under `web/public/` is generated — never edit it by hand; edit the `.yml`/source and rebuild. The website (client-side JS) and the Apple app fetch the same JSON, so a stale manifest silently ships bad data to the app (the `.githooks/pre-commit` guard exists for exactly this).
 

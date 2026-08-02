@@ -34,10 +34,10 @@ whole filing system:
 
 ADDING PICTURES
 ---------------
-Drop files into thewall/photos/ named "YYYYMMDD Some Name.ext", add a row each
-to thewall.yml for the caption and tags, and run this. The script fails loudly
-on a missing file, an unknown science, an unowned toy, or the same bytes used
-twice, so a mistake is a build error rather than a hole in the wall.
+Drop a file into thewall/<science>/ named "YYYYMMDD Some Name.ext" and run this.
+No YAML. The script fails loudly on a missing file, an unknown science, a file
+it cannot date, or the same bytes used twice, so a mistake is a build error
+rather than a hole in the wall.
 
 Video works the same way. An .mp4 tile autoplays muted and loops; its
 dimensions come from the MP4 header and it is served without re-encoding.
@@ -46,8 +46,15 @@ ONE SCIENCE PER PICTURE
 -----------------------
 A picture belongs to exactly one science and that science is the folder it sits
 in. There is no tagging layer above it — no categories, no toys, nothing to
-declare. Only two things still need a row in thewall.yml: a project card, and a
-picture that lives inside a project folder and should also appear on the wall.
+declare. thewall.yml holds project cards; a project gets exactly one tile, and
+its `hero:` is the only thing that points inside a project folder.
+
+WHAT IS NOT COMPUTED
+--------------------
+This site is for personal consumption, so anything that reaches no screen is
+not built. Photo-tile captions were dropped 2026-08-02 (they only ever became
+alt/aria-label text) and so was an EXIF date fallback that no file reached.
+The `caption` key still ships as "" because the iOS model needs it present.
 """
 
 from __future__ import annotations
@@ -56,7 +63,6 @@ import hashlib
 import json
 import re
 import struct
-import subprocess
 import sys
 import urllib.parse
 from pathlib import Path
@@ -124,13 +130,6 @@ def project_photos(proj: Path) -> list[str]:
     return out
 
 
-def caption_from(name: str) -> str:
-    """'20260730 M 31.jpg' -> 'M 31'. The date prefix sorts the wall and is
-    never displayed, so the caption is whatever is left of the filename."""
-    stem = name.rsplit(".", 1)[0]
-    return re.sub(r"^\d{8}[ _-]+", "", stem).strip()
-
-
 def slug(s: str) -> str:
     return re.sub(r"^-|-$", "", re.sub(r"[^a-z0-9]+", "-", s.lower()))
 
@@ -138,13 +137,16 @@ def slug(s: str) -> str:
 def measured(rel: str, path: Path) -> tuple[str, int, int]:
     """(url, w, h) for a file. One copy, served as it is.
 
-    There used to be a thewall/thumbs/ folder holding a long-edge-1000 copy of
-    everything oversized. It was deleted 2026-07-30: the wall is around fifty
-    pictures, not five hundred, and a second generated copy of each one was a
-    folder to explain and keep pruned. Instead the pictures under
-    thewall/<science>/ are themselves web-sized — a long edge of 2000, which is
-    ample for the lightbox on any display and about a third of camera output.
-    Resize on the way in, not on the way out.
+    A thewall/thumbs/ folder of long-edge-1000 copies was deleted 2026-07-30:
+    the wall is around fifty pictures, not five hundred, and a second generated
+    copy of each was a folder to explain and keep pruned. The pictures under
+    thewall/<science>/ are themselves web-sized — long edge 2000, ample for the
+    lightbox on any display and about a third of camera output. Resize on the
+    way in, not on the way out.
+
+    So `src` and `full` are the same URL. Both keys stay in the manifest: the
+    shipped iOS app decodes them as non-optional (TheWallTile.swift), so
+    dropping either breaks the Projects tab on installed copies with no error.
     """
     w, h = image_size(path)
     return url_for(rel), w, h
@@ -259,17 +261,16 @@ def image_size(path: Path) -> tuple[int, int]:
 
 
 # ── capture date ─────────────────────────────────────────────────────
-# The wall is chronological, so every tile needs a month, and there are three
-# ways to get one — in this order:
+# The wall is chronological, so every tile needs a month, and it comes from one
+# place: a YYYYMMDD prefix on the filename, or failing that on any folder above
+# it — which covers thewall/<science>/ by its naming convention and every
+# generated plot by the project folder it sits in.
 #
-#   1. an explicit `date: YYYY-MM` in the row, which always wins
-#   2. a YYYYMMDD prefix on the filename, or failing that on any folder above
-#      it — which covers thewall/photos/ by its naming convention and every
-#      generated plot by the project folder it sits in
-#   3. the camera's own EXIF DateTimeOriginal, for project photos still under
-#      their original camera names
-#
-# Between them, a row almost never needs to state a date by hand.
+# An EXIF DateTimeOriginal fallback lived here until 2026-08-02 — about seventy
+# lines of hand-rolled IFD parsing for project photos still under their camera
+# names. Every file on the wall carries a date prefix (the naming convention is
+# mandatory and the build already errors without one), so it never fired. One
+# rule, enforced, beats two rules where the second is unreachable.
 
 def _filename_month(path: Path) -> str | None:
     """'YYYY-MM' from a 'YYYYMMDD Some Name.ext' name.
@@ -282,79 +283,6 @@ def _filename_month(path: Path) -> str | None:
         if m:
             return f"{m.group(1)}-{m.group(2)}"
     return None
-
-
-_EXIF_FMTSIZE = {1: 1, 2: 1, 3: 2, 4: 4, 5: 8, 7: 1, 9: 4, 10: 8}
-
-
-def _exif_month(path: Path) -> str | None:
-    """Return 'YYYY-MM' from EXIF DateTimeOriginal (falling back to the IFD0
-    DateTime), or None when the file carries no EXIF."""
-    if path.suffix.lower() not in (".jpg", ".jpeg"):
-        return None  # PNGs and video carry no EXIF; those rows need an explicit date
-    with path.open("rb") as fh:
-        if fh.read(2) != b"\xff\xd8":
-            return None
-        # Walk JPEG segments looking for APP1/Exif.
-        blob = None
-        while True:
-            head = fh.read(2)
-            if len(head) < 2 or head[0] != 0xFF:
-                return None
-            marker = head[1]
-            if marker == 0xDA:  # start of scan — no EXIF before the image data
-                return None
-            length = struct.unpack(">H", fh.read(2))[0]
-            payload = fh.read(length - 2)
-            if marker == 0xE1 and payload[:6] == b"Exif\x00\x00":
-                blob = payload[6:]
-                break
-
-    if not blob or len(blob) < 8:
-        return None
-    endian = "<" if blob[:2] == b"II" else ">" if blob[:2] == b"MM" else None
-    if endian is None:
-        return None
-
-    def u16(off): return struct.unpack(endian + "H", blob[off:off + 2])[0]
-    def u32(off): return struct.unpack(endian + "I", blob[off:off + 4])[0]
-
-    def read_ifd(offset: int) -> dict[int, int]:
-        """tag → value-or-offset, for the tags we care about."""
-        tags: dict[int, int] = {}
-        if offset + 2 > len(blob):
-            return tags
-        for i in range(u16(offset)):
-            e = offset + 2 + i * 12
-            if e + 12 > len(blob):
-                break
-            tag, fmt, count = u16(e), u16(e + 2), u32(e + 4)
-            size = _EXIF_FMTSIZE.get(fmt, 0) * count
-            tags[tag] = u32(e + 8) if size > 4 else e + 8
-        return tags
-
-    def ascii_at(off: int) -> str:
-        end = blob.find(b"\x00", off)
-        return blob[off:end if end >= 0 else off + 19].decode("ascii", "replace")
-
-    try:
-        ifd0 = read_ifd(u32(4))
-        stamp = None
-        if 0x8769 in ifd0:  # Exif sub-IFD → DateTimeOriginal
-            sub = read_ifd(ifd0[0x8769])
-            if 0x9003 in sub:
-                stamp = ascii_at(sub[0x9003])
-        if not stamp and 0x0132 in ifd0:  # plain DateTime
-            stamp = ascii_at(ifd0[0x0132])
-    except (struct.error, IndexError):
-        return None
-
-    m = re.match(r"(\d{4}):(\d{2}):", stamp or "")
-    return f"{m.group(1)}-{m.group(2)}" if m else None
-
-
-# ── toy vocabulary ───────────────────────────────────────────────────
-
 
 
 def read_title(folder: Path) -> str:
@@ -370,7 +298,7 @@ def build() -> dict:
     seen_src: dict[str, str] = {}
     seen_bytes: dict[str, str] = {}
 
-    def add(rel: str, science: str, caption: str, where: str,
+    def add(rel: str, science: str, where: str, caption: str = "",
             kind: str = "photo", href: str | None = None,
             photos: list[str] | None = None) -> None:
         path = CONTENT / rel
@@ -394,6 +322,11 @@ def build() -> dict:
             "kind": kind,
             "science": science,
             "science_slug": SCIENCE_SLUGS[science],
+            # Only a project card renders this (web index.astro, iOS
+            # TheWallView `if tile.isProject`). A photo tile shows no text on
+            # either surface, so it ships "" rather than a caption derived from
+            # its filename. The key itself is load-bearing: the iOS model
+            # decodes `caption` as a non-optional String.
             "caption": caption,
             "src": src,             # what the wall loads
             "full": url_for(rel),   # the original, for the viewer
@@ -441,7 +374,7 @@ def build() -> dict:
             if f.name.endswith(".poster.jpg"):
                 continue          # a clip's still, not a tile of its own
             rel = str(f.relative_to(CONTENT))
-            add(rel, science, caption_from(f.name), f"thewall/{folder}/{f.name}")
+            add(rel, science, f"thewall/{folder}/{f.name}")
 
     # ── 2. thewall.yml ──────────────────────────────────────────────
     # Only two things still need it: project cards, and pictures that live
@@ -461,13 +394,12 @@ def build() -> dict:
             proj = CONTENT / e["folder"]
             if not proj.is_dir():
                 raise ValueError(f"{where}: no such project folder {e['folder']!r}")
-            add(f"{e['folder']}/{e['hero']}", science,
-                e.get("caption") or read_title(proj), where,
+            add(f"{e['folder']}/{e['hero']}", science, where,
+                caption=e.get("caption") or read_title(proj),
                 kind="project", href=url_for(e["folder"] + "/"),
                 photos=project_photos(proj))
         else:
-            rel = e["src"]
-            add(rel, science, e.get("caption") or caption_from(rel.split("/")[-1]), where)
+            add(e["src"], science, where, caption=e.get("caption", ""))
 
     # NEWEST FIRST, EVERYWHERE. One descending sort on (month, filename), so
     # the top of the wall is always the most recent thing added and the page
