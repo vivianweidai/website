@@ -5,6 +5,50 @@
       "science": "Astronomy",
       "science_slug": "astronomy",
       "caption": "",
+      "src": "/projects/thewall/astronomy/20260803%20NGC%207331.jpg",
+      "full": "/projects/thewall/astronomy/20260803%20NGC%207331.jpg",
+      "w": 952,
+      "h": 1690,
+      "date": "2026-08"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "",
+      "src": "/projects/thewall/astronomy/20260803%20M%2092.jpg",
+      "full": "/projects/thewall/astronomy/20260803%20M%2092.jpg",
+      "w": 952,
+      "h": 1690,
+      "date": "2026-08"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "",
+      "src": "/projects/thewall/astronomy/20260803%20M%2052%20And%20The%20Bubble%20Nebula.jpg",
+      "full": "/projects/thewall/astronomy/20260803%20M%2052%20And%20The%20Bubble%20Nebula.jpg",
+      "w": 952,
+      "h": 1690,
+      "date": "2026-08"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "",
+      "src": "/projects/thewall/astronomy/20260803%20M%2015%20Great%20Pegasus%20Cluster.jpg",
+      "full": "/projects/thewall/astronomy/20260803%20M%2015%20Great%20Pegasus%20Cluster.jpg",
+      "w": 952,
+      "h": 1690,
+      "date": "2026-08"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "",
       "src": "/projects/thewall/astronomy/20260801%20NGC%207000%20North%20America%20Nebula.jpg",
       "full": "/projects/thewall/astronomy/20260801%20NGC%207000%20North%20America%20Nebula.jpg",
       "w": 952,
@@ -948,7 +992,7 @@
     {
       "science": "Astronomy",
       "slug": "astronomy",
-      "count": 19
+      "count": 23
     }
   ]
 }
