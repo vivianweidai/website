@@ -23,7 +23,7 @@ We see that light from the photosphere, the layer where photons finally stop bei
 
 <div class="step">
 
-### Cooler gas higher up removes specific wavelengths
+### Hydrogen makes the dark bands
 
 In the photosphere's cooler upper reaches, hydrogen atoms in the n = 2 level absorb exactly the photons whose energy lifts them to n = 3, 4, 5 or 6 — the Balmer series, at 656.3, 486.1, 434.0 and 410.2 nm. Those wavelengths leave the star depleted, and the dark gaps they leave behind are our target measurement.
 
@@ -41,7 +41,7 @@ Vega is the classic target for spectroscopy, because its hydrogen lines are abou
 
 <div class="step">
 
-### Threading the grating onto the objective lens
+### Attaching the diffraction grating
 
 The Star Analyser 100 carries a hundred grooves per millimetre, so its groove spacing is 10,000 nm — the number the whole wavelength scale hangs on. We threaded it onto the front of the objective lens, so light from every star in the field passes through the rulings before it reaches the optics and the frame fills with parallel rainbows.
 
@@ -57,9 +57,9 @@ The Star Analyser 100 carries a hundred grooves per millimetre, so its groove sp
 
 ### Checking dispersion
 
-We held it up to a laptop screen before dark. Every white pixel split into three narrow bands, because a screen fakes white out of three coloured emitters; sunlight through the same grating gives an unbroken rainbow.
+We held it up to a laptop screen. Every white pixel split into three narrow bands, because a screen fakes white out of three coloured emitters; sunlight through the same grating would give an unbroken rainbow.
 
-<figure class="small"><img src="photos/setup/setup5.jpg" alt="Laptop screen through the grating, each white pixel split into three coloured bands"></figure>
+<figure class="medium"><img src="photos/setup/setup5.jpg" alt="Left, screen pixels seen through the grating, each white dot split into red, green and blue; right, the same screen outside the grating, the dots still white"></figure>
 
 </div>
 

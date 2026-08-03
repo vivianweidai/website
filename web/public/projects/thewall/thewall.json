@@ -49,6 +49,17 @@
       "science": "Astronomy",
       "science_slug": "astronomy",
       "caption": "",
+      "src": "/projects/thewall/astronomy/20260803%20Albireo.jpg",
+      "full": "/projects/thewall/astronomy/20260803%20Albireo.jpg",
+      "w": 952,
+      "h": 1690,
+      "date": "2026-08"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "",
       "src": "/projects/thewall/astronomy/20260801%20NGC%207000%20North%20America%20Nebula.jpg",
       "full": "/projects/thewall/astronomy/20260801%20NGC%207000%20North%20America%20Nebula.jpg",
       "w": 952,
@@ -992,7 +1003,7 @@
     {
       "science": "Astronomy",
       "slug": "astronomy",
-      "count": 23
+      "count": 24
     }
   ]
 }
