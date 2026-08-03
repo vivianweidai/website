@@ -16,7 +16,7 @@ Adding one: drop the file in, run `python3 pipeline/scripts/build_thewall.py`. N
 
 Video is a tile like any other: an `.mp4` autoplays muted and loops, dimensions come from the MP4 header (`tkhd`, rotation honoured), served without re-encoding. Give it a still named `<name>.poster.jpg` — the tile shows it before playing, and the iOS app shows it instead of the video.
 
-`thewall.yml` holds project cards only. A card is a link, so it gets a caption (read from the project's `report.md` title, never retyped), a science pill and a `Project →` badge, framed in its science colour — a card must not read as one more photo. `hero:` names which image inside the project folder fronts it; that hero is the only thing that still points into a project folder. A project gets exactly one tile.
+`thewall.yml` holds project cards only. A card is a link, so it gets a caption (read from the project's `report.md` title, never retyped), a science pill and a `Report →` badge, framed in its science colour — a card must not read as one more photo. `hero:` names which image inside the project folder fronts it; that hero is the only thing that still points into a project folder. A project gets exactly one tile.
 
 Layout. Landscape and square tiles span two columns, portraits one — a portrait gets its presence from its aspect ratio, and a 4:3 photo at one column is a stamp. `grid-auto-flow: row dense` back-fills the hole a wide tile leaves at the end of a row; local order shifts, which on a wall reads as packing. Clicking opens a lightbox — ‹ › buttons, ← → keys, Esc, click-backdrop to dismiss. It pages through currently visible tiles, so a filtered wall stays inside its filter, and skips project cards because those are links. Neighbours preload.
 

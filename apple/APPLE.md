@@ -5,7 +5,7 @@ Universal SwiftUI app ("My Science" on the App Store) mirroring vivianweidai.com
 Run everything from `apple/`, on the main dev box. Repo-wide conventions and the three verticals are `../CLAUDE.md`.
 
 
-## The two-package split
+## The Two-Package Split
 
 The SwiftPM package (`Package.swift`, iOS 17 + watchOS 10) is split in two so the watch target shares data and grouping logic without dragging in WebKit:
 
@@ -19,18 +19,18 @@ The watch app is embedded in the iOS bundle, so installing on iPhone auto-instal
 `project.yml` is the XcodeGen spec; regenerate the gitignored `Science.xcodeproj` with `xcodegen generate`.
 
 
-## The three tabs
+## The Three Tabs
 
 `shared/UI/Views/RootTabView.swift`. Each reads a generated JSON manifest — the same ones the webapp uses. `APIClient` fetches exactly two, `olympiads.json` and `thewall.json`, plus `curriculum.json` via `CurriculumLoader`. Nothing else.
 
 - Curriculum — cascading subject → section → topic → table browser from `curriculum/curriculum.json`; tables fetched from GitHub raw URLs, rendered with KaTeX in a `WKWebView`.
 - Olympiads — contests and unified textbooks from `olympiads/olympiads.json`. The watch companion renders this tab only, offline-first from `Caches/olympiads_cache.json`. Both surfaces carry the timeline's four standing markers in the website's own vocabulary — invited/attended, competitive, Team Canada/alternate — and the watch's detail badges use its label set (FOUNDATION / ATTENDED / INVITED / COMPETITIVE / TEAM CANADA / ALTERNATE).
-- Projects — the same wall the website shows, from `projects/thewall/thewall.json`, laid out by the same rules (`WallMetrics` ports the CSS grid): landscape and square tiles span two columns, portraits take one, tiles stay in manifest order, and a half-filled row keeps its gap rather than back-filling. A photo tile carries no text — caption and science pill belong to project cards, which are framed in their science colour and badged `PROJECT →`. Tapping a photo opens the full-resolution pager; a project card opens that project's `report.md` in the markdown reader; a clip autoplays muted in place and opens with controls in-app (`ClipView.swift`).
+- Projects — the same wall the website shows, from `projects/thewall/thewall.json`, laid out by the same rules (`WallMetrics` ports the CSS grid): landscape and square tiles span two columns, portraits take one, tiles stay in manifest order, and a half-filled row keeps its gap rather than back-filling. A photo tile carries no text — caption and science pill belong to project cards, which are framed in their science colour and badged `REPORT →`. Tapping a photo opens the full-resolution pager; a project card opens that project's `report.md` in the markdown reader; a clip autoplays muted in place and opens with controls in-app (`ClipView.swift`).
 
 Because the wall reads the same manifest the site builds, a row added to `thewall/thewall.yml` appears in the app with no release. Only layout changes need one.
 
 
-## The two runtime traps
+## The Two Runtime Traps
 
 Both were silent failures with no error anywhere, and both are load-bearing.
 
@@ -41,7 +41,7 @@ Clips must play from a downloaded copy, never from their https URL. `vivianweida
 Browsers tolerate the same response, which is why the website's `<video>` tags never showed the problem. If the range behaviour is ever fixed at the edge this stays correct, it just stops being load-bearing. Verify a clip by screenshotting the wall twice a few seconds apart and diffing: a poster is byte-identical, playback is not.
 
 
-## Markdown shell contract
+## Markdown Shell Contract
 
 `shared/UI/Rendering/katex-shell.html`. Three things a project page can rely on in-app:
 
@@ -50,12 +50,12 @@ Browsers tolerate the same response, which is why the website's `<video>` tags n
 - `<video>` and `<source>` relative `src` is resolved like `<img>`, and the WebView allows inline autoplay. That combination is what makes the Stargazing solar hero play.
 
 
-## Shipping — before you start
+## Shipping — Before You Start
 
 No App Store Connect identifiers live in this repo, because it is public. Team ID, app ID, API Key ID, issuer and account-holder name go in `.release.env` (gitignored) or the operator's own records. The `.p8` upload key stays at `~/.appstoreconnect/private_keys/` at mode 600, referenced by path, never committed.
 
 
-## Release flow
+## Release Flow
 
 1. `xcodegen generate`
 2. Bump `MARKETING_VERSION` / `CURRENT_PROJECT_VERSION` in `project.yml`
@@ -80,14 +80,14 @@ Check the Included Assets row under the chosen build before submitting: it shoul
 The ASC steps can be driven through Claude-in-Chrome on an already-signed-in session.
 
 
-### The signing gotcha — the thing that wastes a cycle
+### The Signing Gotcha — The Thing that Wastes a Cycle
 
 The dev box typically has only an Apple Development cert, no distribution cert, and an App Manager API key cannot do cloud signing, so you get `No signing certificate "iOS Distribution" found`.
 
 Fix without an Admin key: run `-exportArchive` without the `-authenticationKey*` args, so it re-signs via the signed-in Xcode account session instead. With `-allowProvisioningUpdates` the account holder can create the dist cert and profiles silently. Then upload separately with `altool`.
 
 
-### Resubmitting a version already Waiting for Review
+### Resubmitting a Version Already Waiting for Review
 
 ASC will not accept a new build while the version sits in review. Removing it costs your place in the review queue — that is the whole price, so decide before clicking.
 
@@ -101,7 +101,7 @@ ASC will not accept a new build while the version sits in review. Removing it co
 Keep `MARKETING_VERSION` unchanged and bump only `CURRENT_PROJECT_VERSION`. The ASC version record is pinned to the marketing string, so a build carrying a different one is not selectable.
 
 
-### Dev install, for review rather than release
+### Dev Install, for Review Rather than Release
 
 `xcodebuild … build`, then `xcrun devicectl device install app --device <coredevice-id> <Science.app>`. The phone must be unlocked to launch.
 
@@ -120,7 +120,7 @@ One set per device family — that is the whole policy. Every smaller iPhone siz
 Both portrait.
 
 
-### Media Manager's file inputs go stale on every re-render
+### Media Manager's File Inputs Go Stale on Every Re-Render
 
 Uploading N files in one call lands them in nondeterministic order, and a `ref` captured before a Delete All silently rebinds to the next section's input — which is how six 6.9" screenshots were uploaded against the 6.5" size limits and rejected.
 
@@ -128,7 +128,7 @@ Uploading N files in one call lands them in nondeterministic order, and a `ref` 
 - Re-`find` the input after any action that redraws the section.
 
 
-### Driving the simulator
+### Driving the Simulator
 
 `cliclick` (Homebrew) posts raw CGEvents at screen coordinates, so the device-pixel to screen-point mapping has to be right.
 

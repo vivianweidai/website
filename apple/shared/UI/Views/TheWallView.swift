@@ -331,7 +331,7 @@ private struct TheWallTileView: View {
     /// The web's `.tile-badge`: uppercase, science-tinted, tucked into the
     /// top-left corner with only its inner corner rounded.
     private var badge: some View {
-        Text("PROJECT →")
+        Text("REPORT →")
             .font(.system(size: 9, weight: .bold))
             .tracking(0.6)
             .foregroundStyle(Color.black.opacity(0.82))

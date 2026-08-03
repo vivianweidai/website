@@ -184,7 +184,7 @@ const titlePills = sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`
     /* Reset on body, so numbering runs unbroken across the whole page and
        an `## ` section head can group steps without restarting the count. */
     body { counter-reset: step; }
-    .step > *:not(h3):not(.tall):not(.small) { margin-left: 3em; }
+    .step > *:not(h3):not(.tall):not(.small):not(.medium) { margin-left: 3em; }
     .step .term, .step .result, .step .eq { margin-left: 3em; }
 
     /* Pull-out: a key technical term, defined where it first bites. */
@@ -270,11 +270,14 @@ const titlePills = sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`
        Both are centred — a narrow figure flush left reads as a mistake. */
     .tall  { max-width: 17em; margin-left: auto; margin-right: auto; }
     .small { max-width: 26em; margin-left: auto; margin-right: auto; }
+    /* Between .small and full width. For a diagram whose own labels stop being
+       legible if the whole thing is scaled down to photograph size. */
+    .medium { max-width: 36em; margin-left: auto; margin-right: auto; }
     /* Centred figures are excluded from the step indent above, so their auto
        margins are free to centre them across the full column. */
 
     @media (max-width: 640px) {
-      .step > *:not(h3):not(.tall):not(.small) { margin-left: 0; }
+      .step > *:not(h3):not(.tall):not(.small):not(.medium) { margin-left: 0; }
       .step .term, .step .result, .step .eq { margin-left: 0; }
       .row { grid-template-columns: 1fr 1fr; }
     }
