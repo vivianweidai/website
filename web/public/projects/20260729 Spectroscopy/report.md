@@ -5,7 +5,7 @@ sciences:
   - Astronomy
 ---
 
-<p class="lede">A diffraction grating threaded onto the front of the Seestar spreads each star's light into a small rainbow. Thirty short infrared-filtered exposures of Vega, stacked, give a spectrum clean enough to read the dark gaps where hydrogen has absorbed — deep enough here to classify the star as <strong>A0V</strong>, which is what SIMBAD independently lists for Vega — checked only after the classification was made. Albireo through the identical chain comes out shallower at every hydrogen line — 9.7 % against Vega's 31.9 % at Hα — because neither of its two stars sits near the ~10,000 K at which hydrogen absorbs most strongly. That contrast is what makes the classification mean anything.</p>
+<p class="lede">A diffraction grating attached to the Seestar produces a small rainbow band for stars. Vega's spectrum clearly shows hydrogen bands that confirm it as <strong>A0V</strong>. Albireo's bands are shallower, as expected since neither of its two stars is near the ~10,000 K where the strongest hydrogen absorption takes place.</p>
 
 ## The journey of light
 
@@ -13,7 +13,11 @@ sciences:
 
 ### The star makes a continuum
 
-Vega's photosphere is hot dense gas. A photon cannot cross it without being absorbed and re-emitted an enormous number of times, and every one of those interactions scrambles its energy and direction. What finally escapes bears no relation to the photon that went in: the light has come into equilibrium with the gas — thermalized — and its spectrum is now set by one thing only, the temperature. That equilibrium spectrum is the smooth blackbody curve, carrying every wavelength at once. There is no structure in it yet. This is only the baseline everything else gets measured against.
+Deep inside Vega the gas is hot and dense, and a photon cannot cross it without being absorbed and re-emitted an enormous number of times, every interaction scrambling its energy and direction. What escapes bears no relation to what went in: the light has come into equilibrium with the gas — thermalized — and its spectrum is set by temperature alone.
+
+That is a **blackbody**: one smooth curve carrying every wavelength at once, with no lines and no gaps anywhere in it. Every star radiates one. It tells you how hot the star is and nothing whatever about what it is made of.
+
+We see that light from the photosphere, the layer where photons finally stop being reabsorbed and get out — not the core, which is hotter still and sealed far below. The blackbody is the baseline. Everything the rest of this report measures is something that happened to it on the way out.
 
 </div>
 
@@ -326,33 +330,55 @@ Here binning is doing a different job, and the lost detail is affordable because
 
 The problem it solves is that neighbouring pixels are not equally sensitive. Each sits under its own colour filter, so a green pixel and a red one report different numbers for the same amount of starlight. What we are trying to measure is a *shape* — how the brightness falls away from the star's centre — and a shape is read by comparing each pixel against the next one along. Do that on the raw mosaic and you measure the star's profile multiplied by the filter pattern, rather than the profile itself.
 
-The damage goes further than a bit of added texture. The answer would depend on where the star happened to land: one centred on a green pixel measures a different width from one centred on a red, because a different filter sits under its peak. Sub-pixel position is essentially random, so the 400 stars would scatter for a reason having nothing to do with the optics — and the entire value of this measurement is that they *do not* scatter.
+Binning is the obvious way out, and it is where we started. It fixes the problem by making every pixel identical in composition. The filters repeat on a 2 × 2 tile — one red, one blue, two green — so a 2 × 2 block always contains exactly one of each, wherever it falls. Each binned pixel sums the same set of filters as every other, which turns a sensitivity that varied pixel to pixel into one flat factor applied everywhere. A constant factor cannot distort a shape, and normalising each star to its own peak divides it out completely. That is why the block is 2 × 2 and not some other size: it matches the mosaic's period exactly. This is the same trap the debayering step below is about, met from a different direction.
 
-Binning fixes it by making every pixel identical in composition. The filters repeat on a 2 × 2 tile — one red, one blue, two green — so a 2 × 2 block always contains exactly one of each, wherever it falls. Each binned pixel sums the same set of filters as every other, which turns a sensitivity that varied pixel to pixel into one flat factor applied everywhere. A constant factor cannot distort a shape, and normalising each star to its own peak divides it out completely. That is why the block is 2 × 2 and not some other size: it matches the mosaic's period exactly. This is the same trap the debayering step below is about, met from a different direction.
-
-With that out of the way the rest is bookkeeping. Local maxima are picked out, keeping only stars bright enough to measure, faint enough not to saturate, and far enough from the edge to have room around them. The first 400 are cut out in 25 × 25 boxes, each normalised to its own peak so a bright star and a faint one count equally, and averaged together. The width of that stacked profile at half its height is the number.
+The rest is bookkeeping. Local maxima are picked out, keeping only stars bright enough to measure, faint enough not to saturate, and far enough from the edge to have room around them. Each is cut out in a small box and normalised to its own peak so a bright star and a faint one count equally, and the boxes are averaged together. The width of that stacked profile at half its height is the number.
 
 That last step needs a word, because a star has no edge. Its brightness fades away smoothly into the sky, so there is no distance at which it stops and no width to read off directly. **Full width at half maximum** picks a repeatable place to measure instead: find the peak, drop to half of it, and measure straight across. Half is not arbitrary — it is roughly where the profile is steepest, and therefore where the crossing point is best determined. Up near the peak or out in the tail the curve is nearly flat, so a tiny error in brightness would slide the crossing a long way sideways and the width would come out different every time.
 
 Choosing half also settles something that looks like a contradiction in the frame above. Bright stars plainly show as bigger blobs than faint ones, and yet every star is a point source and the optics blur them all by exactly the same amount. Both are true. The instrument hands every star the same profile shape, and brightness only scales that shape taller or shorter. A bright star is the same bell with a higher peak, so it stays above the sky background much further out into its wings, and the part you can see is wider. Apparent size on an image is a brightness measurement in disguise; it says nothing about the optics, which is exactly what we are trying to measure here.
 
-Half maximum sidesteps it because the level is not a fixed brightness — it is half of whatever that particular star peaked at. Scale a profile up and the peak and the half-maximum level rise together, so the two crossing points stay exactly where they were and the width does not move. A star ten times brighter gives the same answer. That is what lets 400 stars of wildly different brightness land on one number. The exception is a star bright enough to clip flat at the top, which has no true peak left to take half of, and that is why the selection kept only stars faint enough not to saturate.
+Half maximum sidesteps it because the level is not a fixed brightness — it is half of whatever that particular star peaked at. Scale a profile up and the peak and the half-maximum level rise together, so the two crossing points stay exactly where they were and the width does not move. A star ten times brighter gives the same answer. That is what lets a thousand stars of wildly different brightness land on one number. The exception is a star bright enough to clip flat at the top, which has no true peak left to take half of, and that is why the selection kept only stars faint enough not to saturate.
 
 <figure><img src="photos/figures/bayer_binning.png" alt="The same measurement run twice: top row on the raw mosaic, bottom row binned 2 by 2. One star, the stacked profile with its half-maximum crossing, and every star's width"></figure>
 
-That whole pipeline is worth running twice to see what the mosaic costs. The top row does it on the sensor's raw output; the bottom row bins 2 × 2 first and changes nothing else.
+That pipeline is worth running twice to see what the mosaic costs. The top row measures the sensor's raw output, the bottom row bins 2 × 2 first, and both rows measure the same stars so that binning is the only difference between them.
 
 **One star, as recorded.** Top left, each pixel is tinted by the filter sitting over it, with the 2 × 2 tiles outlined — a smooth blob of light seen through a grid of three different sensitivities. Bottom left, the same star binned, and the grid is gone.
 
-**The 400-star stacked profile,** with the dashed line at half the peak and the arrow spanning the width it defines. Raw, the profile visibly zigzags as the trace steps between filters. Binned, it is the clean bell the star actually has.
+**The stacked profile,** with the dashed line at half the peak and the arrow spanning the width it defines. Raw, the peak is narrow and the wings carry a visible ripple as the trace steps from one filter to the next. Binned, the ripple is gone and the bell is smooth — and distinctly wider.
 
-**Every star's own width.** Binned, they pile into a single spike — a median of 4 px with an interquartile range of **zero**, so half the stars measure identically. Raw, the same stars spread across an interquartile range of **14 px** and throw off a second population out at 15 to 22 px. Those are not wide stars; they are stars whose peak happened to land on an unlucky filter, measured by a method that cannot tell the difference.
+**Every star's own width.** Binned, the widths land on 2, 4 or 6 native pixels and nothing in between, because one binned pixel is two native ones and the method counts whole pixels. Raw, they land on 2 or 3. Neither of them scatters.
+
+That last panel is not what we expected, and it is worth being straight about why. An earlier version of this measurement showed the raw widths scattering enormously, with a whole second population of very wide stars, and read that as the price of the mosaic. It was nothing of the kind. Those wide stars were saturated — clipped flat at the top, so half of their maximum was half of a plateau, and the width came out huge. The cut that was supposed to exclude them was being tested against the binned frame, where a clipped star's four summed wells put it under the limit; tested against the raw frame where saturation actually happens, it removes them, the scatter vanishes, and the two rows agree.
+
+So the mosaic does not wreck this particular measurement. What binning does do is change the answer: the same stars measure 4 native pixels binned and 2 unbinned. Binning cannot sharpen anything, so the larger number is the suspect one. Feeding the method synthetic stars of known width shows exactly what it is doing — a true 3 px star reads 4, a true 5 reads 6, a true 4 reads 4. It is not biased so much as rounded, and it has to be: a width counted in binned pixels can only come out even. A reading of 4 means somewhere between 3 and 4, which is not precise enough for a number the rest of the report leans on.
+
+The way to avoid the trade is to stop mixing filters rather than average over them. Take one colour at a time — those pixels all share a sensitivity, so nothing is imprinted, and no binning is needed. The cost is that a single colour samples the star only every second pixel, which is coarser than the raw grid rather than finer. What rescues it is how many stars there are. Each of the 1,158 stars in this frame sits at its own arbitrary position within a pixel, so pooling all of them by true distance from their own centre samples the profile far more finely than any single star can. The sub-pixel placement we cannot control becomes the sampling we could not otherwise buy.
+
+<figure><img src="photos/figures/psf_by_colour.png" alt="Left, the pooled profile for red, green and blue with each width arrowed at half maximum. Right, how far blue's centre sits outward from red's, against distance from the frame centre, scattering about zero"></figure>
+
+Left, each colour's pooled profile with its width arrowed at half maximum. Right, a separate question the same data can answer, explained below.
 
 <div class="result">
-<strong>4.0 native pixels, or 14.7″</strong> at 3.669″/px. Every one of the 400 stars shares it.
+<strong>Red 2.83 native px (10.4″), green 3.46 (12.7″), blue 3.97 (14.6″)</strong>, from 1,158 stars with no binning anywhere.
 </div>
 
-That number is worth sitting with, because it is four to seven times the two-to-four arcseconds a backyard sky normally delivers. Our PSF is therefore not the atmosphere's doing at all — if it were, a better night would fix it. It is optics, focus and tracking, which is why waiting for steadier air would change nothing here. It is also why the spectral type came out solid while the subclass stayed marginal — the A in A0V is safe, the 0 much less so. At 14.7″ the resolution element is wide enough to blend neighbouring wavelengths, so a broad type survives and a fine subdivision inside it barely does.
+Two things fall out of that. The first is that every one of them is far larger than the two to four arcseconds a backyard sky delivers. Our PSF is therefore not the atmosphere's doing — if it were, a better night would fix it. It is optics, focus and tracking, and waiting for steadier air would change nothing.
+
+The second is that the blur depends on colour, with blue 40 % wider than red. That is the chromatic focus problem from the filter step arriving in the visible band: refractive index falls as wavelength rises, so each colour comes to focus at its own distance behind the glass, and a lens corrected across the visible still leaves a residue inside it. Blue is landing slightly out of focus.
+
+That is one of the two ways a lens mishandles colour, and having measured one it is worth asking about the other. Focusing each colour at its own distance is the longitudinal kind, and it makes blue blurrier everywhere in the frame equally. The lateral kind is different: each colour is magnified by a slightly different amount, so blue's image of a star sits a little further out from the centre of the frame than red's. It is zero in the middle and grows towards the corners, and it would matter here, because a spectrum is a wavelength scale laid across the sensor and lateral colour would stretch that scale differently depending on where the star happened to sit.
+
+Measuring it needs one piece of care, which is the right-hand panel. Red and blue centres never land in exactly the same place, if only because each is measured with its own noise — so the raw distance between them is about 0.65 px everywhere and proves nothing. What separates the two cases is direction. Noise pushes blue off red in a random direction, so it averages to nothing. Lateral colour always pushes it directly outward, away from the frame's centre, so it survives averaging. The panel plots that outward component alone.
+
+<div class="result">
+It sits at <strong>zero across the whole frame</strong> — averaged over all 1,158 stars, blue's outward offset from red is 0.02 ± 0.02 px.
+</div>
+
+So this telescope has essentially no lateral colour. The whole of its chromatic error is focus, and the 0.65 px that red and blue centres differ by is our own measurement noise rather than anything the optics did.
+
+For the spectrum this means the resolution element is not one number. It is widest at the blue end and narrowest at the red, so of the four Balmer lines Hα at 656 nm is the best resolved and Hδ at 410 nm the worst. It is also why the spectral type came out solid while the subclass stayed marginal — the A in A0V is safe, the 0 much less so. At something like 13″ the resolution element is wide enough to blend neighbouring wavelengths, so a broad type survives and a fine subdivision inside it barely does.
 
 </div>
 
@@ -362,9 +388,13 @@ That number is worth sitting with, because it is four to seven times the two-to-
 
 The goal of this step is a trace in which every wiggle belongs to the star.
 
-That matters more here than it would in a photograph, because of what gets measured at the end. The classification rests on how deep the dark gaps sit below the smooth continuum on either side of them. A dip is only meaningful relative to that continuum — so anything that puts a ripple into the continuum manufactures dips that no atom made, and there is nothing in the finished trace to say which dips are hydrogen and which are the sensor. Whatever is going to corrupt the continuum has to be dealt with before the spectrum is extracted, not after.
+The step before this one arrived at the rule the hard way: when you are measuring a shape, never mix pixels sitting under different filters. It got there by trying the alternative first, binning them together, and finding that the cure cost more than the disease. Reading one colour at a time is what finally worked.
 
-The mosaic is the first and worst source of exactly that, because the streak lies at an angle across a grid of pixels that are not equally sensitive.
+That same rule now has to be applied to the spectrum, and it is worth seeing why the identical mistake carries two very different prices. Measuring stars, mixing filters added scatter — an error we could average away across a thousand stars, and one that showed up honestly as a wider spread. Extracting a spectrum, it does something far more dangerous.
+
+The classification rests on how deep the dark gaps sit below the smooth continuum on either side of them. A dip only means anything relative to that continuum, so anything that puts a ripple into the continuum manufactures dips that no atom made, and nothing in the finished trace says which dips are hydrogen and which are the sensor. The mosaic does not add scatter here. It adds a ripple — and a ripple is the exact shape of the thing we are hunting for. That is why this has to be dealt with before the spectrum is extracted rather than cleaned up afterwards.
+
+The reason it turns into a ripple is that the streak lies at an angle across a grid of pixels that are not equally sensitive.
 
 <div class="term">
 
@@ -372,11 +402,19 @@ The mosaic is the first and worst source of exactly that, because the streak lie
 
 </div>
 
-Extracting without it averages three different filter throughputs at once, and as the streak drifts across the two-pixel grid the mix inside the box keeps shifting. The two periodic patterns beat against each other like two mistuned strings, leaving a ripple that belongs to the mosaic and not the star. `s2_reduce.py` takes the planes at half resolution instead, with no interpolation — each colour is read off only the pixels that actually carry it, and nothing is invented for the gaps between them. The image comes out half as wide and half as tall, which is the honest size of what each colour was really sampled at.
+Extracting without it means drawing a box across the streak on the raw mosaic and adding up everything inside it, filters and all. Our streak runs within four degrees of the sensor's long axis, so stepping one place along the spectrum moves almost exactly one row down the mosaic. And in a GRBG pattern the rows alternate: one row is green and red repeating, the next is blue and green. Those two collect different amounts of the same starlight — measured at one point along this streak, 25,652 against 33,488, a difference of nearly a quarter.
 
-Measured across a line-free window, that halved the ripple, **0.05 → 0.026**.
+So consecutive points along the spectrum are being read through alternating filter combinations, and the trace saws up and down between them once every pixel. Both traces in the figure below are built from the same photons in the same frame. The only difference is that one of them counts pixels that share a filter and the other does not.
 
-<figure><img src="photos/figures/bayer_ripple.png" alt="Raw Bayer mosaic magnified, and the ripple it leaves in an un-debayered trace"></figure>
+Worse, the size of that step is not fixed. It depends on the colour of the light arriving at that point, and the entire purpose of a spectrum is that the colour changes along it. Blue-and-green rows win at the blue end, green-and-red rows win at the red end, so the sawtooth swells and shrinks as you move along. That slow swelling is the beat between two patterns that almost match, and it is the dangerous part: a fast ripple could be smoothed away, but its envelope drifts on the same scale as a real absorption feature. We took the planes at half resolution instead, with no interpolation — each colour is read off only the pixels that actually carry it, and nothing is invented for the gaps between them. The image comes out half as wide and half as tall, which is the honest size of what each colour was really sampled at.
+
+Measured across a stretch of spectrum with no absorption lines in it, where a correct trace would be flat, that cut the ripple from **0.273 to 0.055** — down to a fifth.
+
+<figure><img src="photos/figures/bayer_ripple.png" alt="Three panels: the raw mosaic magnified, a line-free window with both traces, and five nanometres of it blown up to single pixels"></figure>
+
+Left, twenty pixels square of the raw mosaic with the streak running through it. The checkerboard is not noise — it is the filters, and that alternation is what a summing box has to walk across. Middle, the line-free window with both traces divided by their own local average, so that flat means correct: the un-debayered trace in pale purple, the split-plane one in orange. The purple is one line, not a band — it wobbles up and down faster than the plot can draw at this scale, so the thickness of it at any wavelength is the size of the error there. It does not settle down anywhere, and it is at its worst toward the red end. The blue block is not data — it marks the five nanometres that the third panel enlarges. Right, that slice blown up far enough to see individual pixels, which is where the purple line stops looking like noise. It steps up, down, up, down, one pixel at a time, because consecutive pixels sit under different filters — and a wobble that regular, sitting on top of the continuum, is exactly the shape of an absorption line.
+
+Worth sizing that against what we are trying to measure. The ripple swings by roughly a fifth of the continuum. The Hα line this report eventually measures in Albireo is a dip of 9.7 %. Left in, the mosaic would have been writing features into the spectrum larger than the real ones we were there to read.
 
 </div>
 
@@ -386,7 +424,7 @@ Measured across a line-free window, that halved the ripple, **0.05 → 0.026**.
 
 Two things have to be pinned down before any wavelength can be read: where the spectrum starts, and which way it runs. The zero-order dot is the origin, since every wavelength is measured as a distance out from it, so an error in the dot's position slides the entire wavelength scale along with it. And the streak lies at an angle across the sensor, so a column of pixels is not yet one wavelength — it has to be straightened before it can be.
 
-`figure_streak.py` handles both. The dot is found as the compact bright blob rather than the long one, which is what separates it from the streak. Its position is then taken from its unsaturated wings and not its peak: the core is clipped flat, so the brightest pixel inside that plateau is wherever noise put it, while the wings still fall off smoothly and give a centre good to a fraction of a pixel.
+The dot is found as the compact bright blob rather than the long one, which is what separates it from the streak. Its position is then taken from its unsaturated wings and not its peak. On a bright frame the core clips flat — ten pixels of this one sit exactly on the sensor's ceiling — and the brightest pixel inside a plateau is wherever noise put it, while the wings still fall away smoothly and give a centre good to a fraction of a pixel. Whether the core clips depends on the star and the exposure, and on the shorter subs it does not, so the wings are used either way rather than testing each frame and switching method.
 
 The streak's direction is the direction out of the dot along which the light is brightest, refined by following how far the light sits off that line as you go out. With a centre and an angle, the frame is resampled along that axis so the spectrum lies horizontal — after which every column is one wavelength, which is the whole reason for straightening it.
 
@@ -402,7 +440,7 @@ The dot centroided at (816.4, 143.9) and the streak ran at −4.1°.
 
 With the streak straight, every column holds one wavelength, so adding a column up collapses the rainbow to one number per wavelength. The three colour planes are added back together first — they were split apart only to stop the mosaic printing itself onto the trace, and all three carry part of the same starlight.
 
-How wide to sum was the only judgement call. Past the edge of the star each extra row adds sky noise and no signal, so noise grows as √rows while signal has stopped. Three pixels either side was best; forty captures every photon but keeps **56 %** of the achievable signal-to-noise. `figure_extraction.py` swept the width.
+How wide to sum was the only judgement call. Past the edge of the star each extra row adds sky noise and no signal, so noise grows as √rows while signal has stopped. We swept the width to find out where the trade turns: three pixels either side was best, while forty captures every photon and keeps only **56 %** of the achievable signal-to-noise.
 
 <figure><img src="photos/figures/extraction_demo.png" alt="Four panels: extraction and the aperture-width trade-off"></figure>
 
@@ -423,7 +461,7 @@ A is measured, not derived. We read the pixel distance from the dot out to each 
 | Hβ | 486.135 nm | 2,735 px |
 | Hα | 656.281 nm | 3,693 px |
 
-Least squares over all four, with A the only thing free to move, settles on 56,016. `figure_fitting_A.py` did the fit.
+Least squares over all four, with A the only thing free to move, settles on 56,016.
 
 <figure><img src="photos/figures/fitting_A.png" alt="Measured distance to each Balmer line, the one-parameter fit, and residuals"></figure>
 
@@ -475,7 +513,7 @@ The bump near 480 nm and the dip between 560 and 590 nm are instrument, not star
 
 ### Fitting χ² against 131 templates
 
-The Pickles atlas publishes Balmer equivalent widths for 131 templates — the same quantity we measured, so no resolution matching and no flux calibration were needed. `s4_classify.py` pulled table `lew` from VizieR (J/PASP/110/863), cached it, and ordered the templates hot to cool.
+The Pickles atlas publishes Balmer equivalent widths for 131 templates — the same quantity we measured, so no resolution matching and no flux calibration were needed. We pulled the published equivalent widths from VizieR (J/PASP/110/863) and ordered the templates hot to cool.
 
 <div class="eq">χ² = Σ ( EW<sub>ours</sub> − EW<sub>template</sub> )² / σ²</div>
 
@@ -502,7 +540,7 @@ The minimum sits among the A stars and is deep — its neighbours are an order o
 
 ### Running a second star through the same chain
 
-Albireo is a pair we cannot resolve — 35″ of separation is 4.8 px here, so what reached the sensor was one blended streak carrying a K3II giant and a B8V dwarf together. The other rainbows in that frame are unrelated field stars. `s3_results.py` ran both targets and reported depth and significance line by line.
+Albireo is a pair we cannot resolve — 35″ of separation is 4.8 px here, so what reached the sensor was one blended streak carrying a K3II giant and a B8V dwarf together. The other rainbows in that frame are unrelated field stars. Both targets went through the identical chain, and depth and significance were reported line by line for each.
 
 <figure><img src="photos/figures/vega_vs_albireo.png" alt="Vega and the Albireo blend through the same reduction pipeline"></figure>
 
