@@ -13,9 +13,9 @@ sciences:
 
 ### The star makes a continuum
 
-Deep inside Vega the gas is hot and dense, and a photon cannot cross it without being absorbed and re-emitted an enormous number of times, every interaction scrambling its energy and direction. What escapes bears no relation to what went in: the light has come into equilibrium with the gas — thermalized — and its spectrum is set by temperature alone.
+Deep inside Vega the gas is hot and dense, and a photon cannot leave it without being absorbed and re-emitted many times, every interaction scrambling its energy and direction. The light becomes thermalized into equilibrium with the gas, and its spectrum is set by temperature alone.
 
-That is a **blackbody**: one smooth curve carrying every wavelength at once, with no lines and no gaps anywhere in it. Every star radiates one. It tells you how hot the star is and nothing whatever about what it is made of.
+This is a **blackbody**: one smooth emission curve carrying every wavelength at once. Every star radiates one. The shape of the curve tells you how hot the star is and nothing about what it is made of.
 
 We see that light from the photosphere, the layer where photons finally stop being reabsorbed and get out — not the core, which is hotter still and sealed far below. The blackbody is the baseline. Everything the rest of this report measures is something that happened to it on the way out.
 
@@ -23,48 +23,9 @@ We see that light from the photosphere, the layer where photons finally stop bei
 
 <div class="step">
 
-### Cooler gas above it removes specific wavelengths
+### Cooler gas higher up removes specific wavelengths
 
-Above the photosphere sits a thinner, cooler layer. Hydrogen atoms sitting in the n = 2 level absorb exactly the photons whose energy lifts them to n = 3, 4, 5 or 6 — the Balmer series, at 656.3, 486.1, 434.0 and 410.2 nm. Those wavelengths leave the star depleted, and the dark gaps they leave behind are the entire measurement.
-
-<figure class="small">
-<svg viewBox="0 0 400 190" style="width:100%;height:auto" role="img" aria-label="Hydrogen energy levels: a photon lifting an atom from n=2 up to n=3, 4, 5 or 6 gives each of the four Balmer lines">
-  <defs>
-    <!-- one marker per line colour: context-stroke is not honoured here, so the
-         arrowheads would otherwise all render black. userSpaceOnUse keeps them
-         a fixed size instead of scaling with stroke-width. -->
-    <marker id="ha" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#c0392b"/></marker>
-    <marker id="hb" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#2e86c1"/></marker>
-    <marker id="hg" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#5b4bc4"/></marker>
-    <marker id="hd" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#7d3c98"/></marker>
-  </defs>
-  <g stroke="#1f2328" stroke-width="1.8">
-    <line x1="78" y1="132" x2="372" y2="132"/>
-    <line x1="78" y1="80"  x2="372" y2="80"/>
-    <line x1="78" y1="52"  x2="372" y2="52"/>
-    <line x1="78" y1="35"  x2="372" y2="35"/>
-    <line x1="78" y1="21"  x2="372" y2="21"/>
-  </g>
-  <g font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#656d76" text-anchor="end">
-    <text x="70" y="137">n = 2</text><text x="70" y="85">n = 3</text>
-    <text x="70" y="57">n = 4</text><text x="70" y="40">n = 5</text><text x="70" y="26">n = 6</text>
-  </g>
-  <g stroke-width="2.2">
-    <line x1="135" y1="128" x2="135" y2="87" stroke="#c0392b" marker-end="url(#ha)"/>
-    <line x1="195" y1="128" x2="195" y2="59" stroke="#2e86c1" marker-end="url(#hb)"/>
-    <line x1="255" y1="128" x2="255" y2="42" stroke="#5b4bc4" marker-end="url(#hg)"/>
-    <line x1="315" y1="128" x2="315" y2="28" stroke="#7d3c98" marker-end="url(#hd)"/>
-  </g>
-  <g font-family="-apple-system, sans-serif" font-size="13" text-anchor="middle">
-    <text x="135" y="155" fill="#c0392b">Hα</text><text x="135" y="174" fill="#656d76" font-size="12">656.3</text>
-    <text x="195" y="155" fill="#2e86c1">Hβ</text><text x="195" y="174" fill="#656d76" font-size="12">486.1</text>
-    <text x="255" y="155" fill="#5b4bc4">Hγ</text><text x="255" y="174" fill="#656d76" font-size="12">434.0</text>
-    <text x="315" y="155" fill="#7d3c98">Hδ</text><text x="315" y="174" fill="#656d76" font-size="12">410.2</text>
-  </g>
-</svg>
-</figure>
-
-All four Balmer lines start on the same rung, n = 2. The jump to n = 3 is the smallest gap, so it takes the least energy and absorbs the longest wavelength — red Hα. Higher rungs mean bigger gaps and bluer light, and they bunch up towards the top because the energy levels themselves bunch up.
+In the photosphere's cooler upper reaches, hydrogen atoms in the n = 2 level absorb exactly the photons whose energy lifts them to n = 3, 4, 5 or 6 — the Balmer series, at 656.3, 486.1, 434.0 and 410.2 nm. Those wavelengths leave the star depleted, and the dark gaps they leave behind are our target measurement.
 
 </div>
 
@@ -72,7 +33,7 @@ All four Balmer lines start on the same rung, n = 2. The jump to n = 3 is the sm
 
 ### Why Vega
 
-Vega is the classic target for this, because its hydrogen lines are about as deep as a star's get, and the reason is the physics that makes a spectral type mean a temperature. Populating n = 2 takes heat, but much more heat ionizes the hydrogen away entirely, so the number of atoms able to absorb at all peaks near 10,000 K — which is Vega's temperature almost exactly. Hotter stars and cooler ones both show weaker Balmer lines. Line strength therefore reads temperature, and that is what makes a classification possible from nothing but the depth of a few gaps. It also makes Vega the easiest place to start: the thing we are trying to measure is at its strongest.
+Vega is the classic target for spectroscopy, because its hydrogen lines are about as deep as a star's get, and the reason is the physics that makes a spectral type mean a temperature. Populating n = 2 takes heat, but much more heat ionizes the hydrogen away entirely, so the number of atoms able to absorb at all peaks near 10,000 K — which is Vega's temperature almost exactly. Hotter stars and cooler ones both show weaker Balmer lines. Line strength therefore reads temperature, and that is what makes a classification possible from nothing but the depth of a few gaps.
 
 </div>
 
@@ -106,9 +67,7 @@ We held it up to a laptop screen before dark. Every white pixel split into three
 
 ### Choosing the filter
 
-Those dark bands are the measurement, and they exist only as gaps in the continuum around them, so reading them means capturing the continuum too, across the whole visible range. Any filter that keeps a selection of wavelengths rather than a band of them destroys the thing being measured.
-
-The scope carries two, and only one leaves that intact.
+Those dark bands are the measurement, and they exist only as gaps in the continuum around them, so reading them means capturing the continuum too, across the whole visible range. Any filter that keeps a selection of wavelengths rather than a band of them destroys the thing being measured. The scope carries two, and only one leaves that intact.
 
 <div class="term">
 
@@ -118,7 +77,7 @@ The scope carries two, and only one leaves that intact.
 
 </div>
 
-That band of near-infrared the sensor can see and we cannot causes two separate problems.
+That band of near-infrared the sensor sees and we cannot causes two problems.
 
 The first is focus. A lens bends light by refraction, and the refractive index of glass is not a single number — it falls as wavelength rises, so blue is bent harder than red. A lens's focal length is set by that index, so if the index changes with colour then the focal length does too, and every wavelength comes to its own focus at its own distance behind the glass. Designers cancel this by cementing two glasses whose dispersions pull in opposite directions, which drags a chosen pair of wavelengths back to a common focus; the correction holds across the visible band it was built for and lapses outside it. Near-infrared sits far enough outside that its focus can be millimetres adrift, so with the visible image sharp the infrared is still a wide converging cone when it reaches the sensor and lands as a broad disc — the halo around every star.
 
@@ -130,7 +89,7 @@ The second is colour, and it needs the sensor introduced first.
 
 </div>
 
-That reconstruction is a convenience for photographs and a hazard for measurements, and it comes back twice below — once when measuring the width of a star, once when extracting the spectrum itself. For now the thing that matters is that the filters are dyes, and a dye absorbs because its molecules have transitions at particular wavelengths — transitions that sit in the visible. In the near-infrared they have nothing to absorb with, so red, green and blue are all transparent to it alike. Infrared therefore reaches every pixel whatever filter is over it and adds the same pedestal to all three channels. Since colour is read from the ratios between channels, an equal addition to each drags every ratio toward grey, and nothing in the frame says how much of a pixel was infrared, so it cannot be subtracted afterwards.
+That reconstruction is a convenience for photographs and a hazard for measurements, and it comes back twice below. What matters here is that the filters are dyes, and a dye absorbs because its molecules have transitions at particular wavelengths — transitions that sit in the visible. In the near-infrared they have nothing to absorb with, so red, green and blue are all transparent to it alike. Infrared therefore reaches every pixel whatever filter is over it and adds the same pedestal to all three channels. Since colour is read from the ratios between channels, an equal addition to each drags every ratio toward grey, and nothing in the frame says how much of a pixel was infrared, so it cannot be subtracted afterwards.
 
 <div class="row">
 <figure><img src="photos/data/data3.jpg" alt="Vega through the LP filter, reduced to a cyan stub"></figure>
@@ -151,8 +110,6 @@ We want to aim the telescope so the whole spectrum lands on the picture, which m
 We used first order only, so m = 1, and solving for the angle a wavelength leaves at gives:
 
 <div class="eq"><span class="eq-n">2</span>θ = asin( λ / d )</div>
-
-Start with what the lens does, because it is the part doing the work.
 
 A lens sorts light by **direction**. Every ray arriving parallel to every other ray — whatever part of the glass each one enters — is brought together at a single point in the focal plane. Rays arriving at a different angle meet at a different point. That is the whole reason a star photographs as a dot: its rays arrive parallel, so they all end up in one place.
 
@@ -252,15 +209,13 @@ Every number there rests on a focal length nobody verified, which is fine for fr
 | plate scale, 3.669″/px | plate solving, no grating involved | 163.0 mm |
 | A = 56,016, fitted later | the four dark bands themselves | 162.4 mm |
 
-The 160 mm is what the Seestar writes into every frame's header as `FOCALLEN`. The other two rows need a word each.
+The other two rows need a word each.
 
 **Plate solving** is matching the pattern of stars in a frame against a catalogue of known positions. Once it matches, you know where the scope was pointing and — the useful part here — how much sky each pixel covers, which is 3.669 arcseconds. That converts straight into a focal length, because a telescope maps *direction* onto *position*: light arriving at angle θ off-axis lands f · tan θ from the centre of the frame. Arcseconds per pixel and the 2.9 µm pixel size therefore give f, and it comes out at 163.0 mm.
 
 **The Balmer fit** runs the same relation backwards. Instead of assuming a focal length and predicting where the lines will fall, it measures where they actually fell — the pixel distance from the zero-order dot out to each of the four dark bands — and then solves for the one A that places all four at their known wavelengths at once. That happens properly a few steps below, and it lands on A = 56,016. Multiplied by the 2.9 µm pixel size, that is a focal length of 162.4 mm.
 
-Both of those are measuring the same f the dispersion relation needs, by completely unrelated means — one from the positions of catalogued stars, one from hydrogen.
-
-They agree with each other to 0.4 % while both sit about 2 % off the header value. That is why the wavelength scale gets re-fitted properly further down, on wavelengths fixed by atomic physics rather than by a manufacturer's figure.
+Both measure the same f by completely unrelated means — one from the positions of catalogued stars, one from hydrogen — and they agree with each other to 0.4 % while both sit about 2 % off the header value. That is why the wavelength scale gets re-fitted further down, on wavelengths fixed by atomic physics rather than by a manufacturer's figure.
 
 </div>
 
@@ -296,7 +251,7 @@ Vega is why one streak dominates the frame. It is the star the magnitude scale w
 
 ### Measuring the blur
 
-The goal of this step is to measure how wide a point of light comes out on our sensor, and then to hold that number against what the atmosphere alone would have done. A star is a point source — genuinely, not approximately — so any width it has when we record it was added by something on our side. Measure it, compare it to the sky, and we find out whether waiting for a better night would help.
+The goal of this step is to measure how wide a point of light comes out on our sensor, and then to hold that number against what the atmosphere alone would have done. If our blur is the bigger of the two, waiting for a better night will not help.
 
 It matters for the spectrum because of what a spectrum actually is. It is not really a rainbow — it is a **stack of images of the light source**, one for every wavelength, each shifted a little further along by the grating. With no slit anywhere in our setup the source is the star's own image, so every wavelength paints its own copy of that blob, and the blob's width sets the finest wavelength difference we can hope to separate.
 
@@ -330,7 +285,7 @@ Here binning is doing a different job, and the lost detail is affordable because
 
 The problem it solves is that neighbouring pixels are not equally sensitive. Each sits under its own colour filter, so a green pixel and a red one report different numbers for the same amount of starlight. What we are trying to measure is a *shape* — how the brightness falls away from the star's centre — and a shape is read by comparing each pixel against the next one along. Do that on the raw mosaic and you measure the star's profile multiplied by the filter pattern, rather than the profile itself.
 
-Binning is the obvious way out, and it is where we started. It fixes the problem by making every pixel identical in composition. The filters repeat on a 2 × 2 tile — one red, one blue, two green — so a 2 × 2 block always contains exactly one of each, wherever it falls. Each binned pixel sums the same set of filters as every other, which turns a sensitivity that varied pixel to pixel into one flat factor applied everywhere. A constant factor cannot distort a shape, and normalising each star to its own peak divides it out completely. That is why the block is 2 × 2 and not some other size: it matches the mosaic's period exactly. This is the same trap the debayering step below is about, met from a different direction.
+Binning is the obvious way out, and it is where we started. It fixes the problem by making every pixel identical in composition. The filters repeat on a 2 × 2 tile — one red, one blue, two green — so a 2 × 2 block always contains exactly one of each, wherever it falls. Each binned pixel sums the same set of filters as every other, which turns a sensitivity that varied pixel to pixel into one flat factor applied everywhere. A constant factor cannot distort a shape, and normalising each star to its own peak divides it out completely. That is why the block is 2 × 2 and not some other size: it matches the mosaic's period exactly.
 
 The rest is bookkeeping. Local maxima are picked out, keeping only stars bright enough to measure, faint enough not to saturate, and far enough from the edge to have room around them. Each is cut out in a small box and normalised to its own peak so a bright star and a faint one count equally, and the boxes are averaged together. The width of that stacked profile at half its height is the number.
 
@@ -358,13 +313,13 @@ The way to avoid the trade is to stop mixing filters rather than average over th
 
 <figure><img src="photos/figures/psf_by_colour.png" alt="Left, the pooled profile for red, green and blue with each width arrowed at half maximum. Right, how far blue's centre sits outward from red's, against distance from the frame centre, scattering about zero"></figure>
 
-Left, each colour's pooled profile with its width arrowed at half maximum. Right, a separate question the same data can answer, explained below.
+Left, each colour's pooled profile with its width arrowed at half maximum. The right-hand panel answers a different question, taken up below.
 
 <div class="result">
 <strong>Red 2.83 native px (10.4″), green 3.46 (12.7″), blue 3.97 (14.6″)</strong>, from 1,158 stars with no binning anywhere.
 </div>
 
-Two things fall out of that. The first is that every one of them is far larger than the two to four arcseconds a backyard sky delivers. Our PSF is therefore not the atmosphere's doing — if it were, a better night would fix it. It is optics, focus and tracking, and waiting for steadier air would change nothing.
+Two things fall out of that. The first answers the question this step opened with: every one of those widths is far larger than the two to four arcseconds a backyard sky delivers. The blur is ours — optics, focus and tracking — and not the sky's.
 
 The second is that the blur depends on colour, with blue 40 % wider than red. That is the chromatic focus problem from the filter step arriving in the visible band: refractive index falls as wavelength rises, so each colour comes to focus at its own distance behind the glass, and a lens corrected across the visible still leaves a residue inside it. Blue is landing slightly out of focus.
 
