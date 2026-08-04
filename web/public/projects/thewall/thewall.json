@@ -5,6 +5,28 @@
       "science": "Astronomy",
       "science_slug": "astronomy",
       "caption": "",
+      "src": "/projects/thewall/astronomy/20260803%20SW%20Lac%20Eclipse%20Minimum.jpg",
+      "full": "/projects/thewall/astronomy/20260803%20SW%20Lac%20Eclipse%20Minimum.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-08"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "",
+      "src": "/projects/thewall/astronomy/20260803%20SW%20Lac%20Eclipse%20Maximum.jpg",
+      "full": "/projects/thewall/astronomy/20260803%20SW%20Lac%20Eclipse%20Maximum.jpg",
+      "w": 2160,
+      "h": 3840,
+      "date": "2026-08"
+    },
+    {
+      "kind": "photo",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "",
       "src": "/projects/thewall/astronomy/20260803%20NGC%207331.jpg",
       "full": "/projects/thewall/astronomy/20260803%20NGC%207331.jpg",
       "w": 952,
@@ -83,28 +105,6 @@
         "photos/setup/setup4.jpg",
         "photos/setup/setup5.jpg"
       ],
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astronomy",
-      "caption": "",
-      "src": "/projects/thewall/astronomy/20260731%20SW%20Lac%20Eclipse%20Minimum.jpg",
-      "full": "/projects/thewall/astronomy/20260731%20SW%20Lac%20Eclipse%20Minimum.jpg",
-      "w": 1125,
-      "h": 2000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astronomy",
-      "caption": "",
-      "src": "/projects/thewall/astronomy/20260731%20SW%20Lac%20Eclipse%20Maximum.jpg",
-      "full": "/projects/thewall/astronomy/20260731%20SW%20Lac%20Eclipse%20Maximum.jpg",
-      "w": 1125,
-      "h": 2000,
       "date": "2026-07"
     },
     {

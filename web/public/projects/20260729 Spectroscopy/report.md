@@ -67,19 +67,26 @@ We held it up to a laptop screen. Every white pixel split into three narrow band
 
 ### Choosing the filter
 
-Those dark bands are the measurement, and they exist only as gaps in the continuum around them, so reading them means capturing the continuum too, across the whole visible range. Any filter that keeps a selection of wavelengths rather than a band of them destroys the thing being measured. The scope carries two, and only one leaves that intact.
+We need to capture the entire spectrum, the Seestar has two filters available. Vega through the LP filter throws off a cyan stub because the red stub is offscreen. The IRCUT presents a full violet-to-red streak.
 
 <div class="term">
 
+**LP** is a filter for photographing nebulae from a city. It was never meant to be pointed at a star. Nebular gas is thin enough to be near vacuum, so nothing thermalizes into a continuum: a nearby hot star ionizes it, electrons recombine and cascade down the energy levels, and every jump emits at one exact wavelength. A nebula's entire output is therefore a few bright lines, while streetlight skyglow is spread across all of them — so keeping two narrow windows, at Hα and at Hβ/OIII, discards most of the glow and almost none of the nebula.
+
 **IRCUT** blocks everything past about 700 nm. A silicon pixel only registers a photon carrying enough energy to lift an electron across the silicon bandgap, and that gap of 1.12 eV corresponds to a wavelength of 1100 nm: anything shorter is detected, anything longer passes through the sensor unseen. So the chip responds all the way out to 1100 nm while the eye stops near 700. Cutting at 700 nm is what puts the red end of our spectrum there.
 
-**LP** is a filter for photographing nebulae from a city. It was never meant to be pointed at a star. Nebular gas is thin enough to be near vacuum, so nothing thermalizes into a continuum: a nearby hot star ionizes it, electrons recombine and cascade down the energy levels, and every jump emits at one exact wavelength. A nebula's entire output is therefore a few bright lines, while streetlight skyglow is spread across all of them — so keeping two narrow windows, at Hα and at Hβ/OIII, discards most of the glow and almost none of the nebula.
 
 </div>
 
-That band of near-infrared the sensor sees and we cannot causes two problems.
+<div class="row">
+<figure><img src="photos/data/data3.jpg" alt="Vega through the LP filter, reduced to a cyan stub"></figure>
+<figure><img src="photos/data/data2.jpg" alt="Vega through IRCUT, a full violet-to-red streak"></figure>
+<figure><img src="photos/figures/filter_passbands.png" alt="What each filter passes, against a wavelength scale"></figure>
+</div>
 
-The first is focus. A lens bends light by refraction, and the refractive index of glass is not a single number — it falls as wavelength rises, so blue is bent harder than red. A lens's focal length is set by that index, so if the index changes with colour then the focal length does too, and every wavelength comes to its own focus at its own distance behind the glass. Designers cancel this by cementing two glasses whose dispersions pull in opposite directions, which drags a chosen pair of wavelengths back to a common focus; the correction holds across the visible band it was built for and lapses outside it. Near-infrared sits far enough outside that its focus can be millimetres adrift, so with the visible image sharp the infrared is still a wide converging cone when it reaches the sensor and lands as a broad disc — the halo around every star.
+The IRCUT does more than set where our red end falls. The near-infrared beyond it — which the sensor sees and we cannot — causes two problems of its own if allowed to pass through.
+
+The first is focus. A lens bends light by refraction, and the refractive index of glass is not a single number — it falls as wavelength rises, so blue is bent harder than red. A lens's focal length is set by that index, so if the index changes with colour then the focal length does too, and every wavelength comes to its own focus at its own distance behind the glass. Designers cancel this by cementing two glasses whose dispersions pull in opposite directions, which drags a chosen pair of wavelengths back to a common focus; the correction holds across the visible band it was built for and lapses outside it. Near-infrared sits far enough outside that its focus can be millimetres adrift, so with the visible image sharp the infrared is still a wide converging cone when it reaches the sensor and lands as a broad disc — the halo around every star in the camera's captured image.
 
 The second is colour, and it needs the sensor introduced first.
 
@@ -89,37 +96,82 @@ The second is colour, and it needs the sensor introduced first.
 
 </div>
 
-That reconstruction is a convenience for photographs and a hazard for measurements, and it comes back twice below. What matters here is that the filters are dyes, and a dye absorbs because its molecules have transitions at particular wavelengths — transitions that sit in the visible. In the near-infrared they have nothing to absorb with, so red, green and blue are all transparent to it alike. Infrared therefore reaches every pixel whatever filter is over it and adds the same pedestal to all three channels. Since colour is read from the ratios between channels, an equal addition to each drags every ratio toward grey, and nothing in the frame says how much of a pixel was infrared, so it cannot be subtracted afterwards.
+<figure class="medium">
+<svg viewBox="0 0 660 152" style="width:100%;height:auto" role="img" aria-label="A grid of red, green and blue filters laid over the sensor in a repeating two-by-two tile of green, red, blue, green; one tile enlarged; and the four bare numbers the sensor actually stores for it">
+  <defs>
+    <!-- The mosaic drawn once as a tile and repeated, so the pattern is
+         guaranteed regular rather than hand-placed 60 times. -->
+    <pattern id="bayer" width="44" height="44" patternUnits="userSpaceOnUse">
+      <rect x="0"  y="0"  width="22" height="22" fill="#4a9d5b"/>
+      <rect x="22" y="0"  width="22" height="22" fill="#d1584a"/>
+      <rect x="0"  y="22" width="22" height="22" fill="#4a86c8"/>
+      <rect x="22" y="22" width="22" height="22" fill="#4a9d5b"/>
+    </pattern>
+    <marker id="fl" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#8b949e"/></marker>
+  </defs>
 
-<div class="row">
-<figure><img src="photos/data/data3.jpg" alt="Vega through the LP filter, reduced to a cyan stub"></figure>
-<figure><img src="photos/data/data2.jpg" alt="Vega through IRCUT, a full violet-to-red streak"></figure>
-<figure><img src="photos/figures/filter_passbands.png" alt="What each filter passes, against a wavelength scale"></figure>
-</div>
+  <rect x="20" y="10" width="220" height="132" fill="url(#bayer)"/>
+  <!-- The ringed tile is painted explicitly rather than left to the pattern.
+       Where a pattern's tiling starts depends on the renderer's anchoring, so
+       relying on it would risk ringing a tile that does not match the enlarged
+       one beside it -- the one thing this figure must get right. -->
+  <g>
+    <rect x="132" y="44" width="22" height="22" fill="#4a9d5b"/>
+    <rect x="154" y="44" width="22" height="22" fill="#d1584a"/>
+    <rect x="132" y="66" width="22" height="22" fill="#4a86c8"/>
+    <rect x="154" y="66" width="22" height="22" fill="#4a9d5b"/>
+  </g>
+  <rect x="132" y="44" width="44" height="44" fill="none" stroke="#1f2328" stroke-width="2.5"/>
+
+  <line x1="258" y1="76" x2="300" y2="76" stroke="#8b949e" stroke-width="1.6" marker-end="url(#fl)"/>
+
+  <g>
+    <rect x="316" y="24" width="52" height="52" fill="#4a9d5b"/>
+    <rect x="368" y="24" width="52" height="52" fill="#d1584a"/>
+    <rect x="316" y="76" width="52" height="52" fill="#4a86c8"/>
+    <rect x="368" y="76" width="52" height="52" fill="#4a9d5b"/>
+  </g>
+  <g font-family="-apple-system, sans-serif" font-size="17" font-weight="600" fill="#ffffff" text-anchor="middle">
+    <text x="342" y="56">G</text><text x="394" y="56">R</text>
+    <text x="342" y="108">B</text><text x="394" y="108">G</text>
+  </g>
+
+  <line x1="438" y1="76" x2="480" y2="76" stroke="#8b949e" stroke-width="1.6" marker-end="url(#fl)"/>
+
+  <g fill="#eceff2" stroke="#d1d9e0" stroke-width="1.2">
+    <rect x="496" y="24" width="52" height="52"/>
+    <rect x="548" y="24" width="52" height="52"/>
+    <rect x="496" y="76" width="52" height="52"/>
+    <rect x="548" y="76" width="52" height="52"/>
+  </g>
+  <g font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#57606a" text-anchor="middle">
+    <text x="522" y="55">1204</text><text x="574" y="55">812</text>
+    <text x="522" y="107">640</text><text x="574" y="107">1190</text>
+  </g>
+</svg>
+</figure>
+
+The pattern on the left repeats across the whole chip, and the middle is the one tile ringed inside it. Every pixel sees the world through exactly one of those dyes, and what comes back is the panel on the right — four bare numbers with no colour attached to them. The colour exists only in the pattern, which is why it has to be reconstructed and why that reconstruction is a convenience for photographs and a hazard for measurements. It comes back twice below. What matters here is that the filters are dyes, and a dye absorbs because its molecules have transitions at particular wavelengths — transitions that sit in the visible. In the near-infrared they have nothing to absorb with, so red, green and blue are all transparent to it alike. Infrared therefore reaches every pixel whatever filter is over it and adds the same pedestal to all three channels. Since colour is read from the ratios between channels, an equal addition to each drags every ratio toward grey, and nothing in the frame says how much of a pixel was infrared, so it cannot be subtracted afterwards.
 
 </div>
 
 <div class="step">
 
-### Aiming so the spectrum stays on the sensor
+### Aiming the telescope
 
-We want to aim the telescope so the whole spectrum lands on the picture, which means working out where each wavelength falls on the sensor — and above all where the dark bands fall. The grating equation says light leaving at angle θ reinforces itself only where the path difference between neighbouring grooves is a whole number of wavelengths.
+We want to capture the whole spectrum on our photograph, we use only the first order m = 1.
 
 <div class="eq"><span class="eq-n">1</span>d · sin θ = m · λ</div>
 
-We used first order only, so m = 1, and solving for the angle a wavelength leaves at gives:
-
 <div class="eq"><span class="eq-n">2</span>θ = asin( λ / d )</div>
 
-A lens sorts light by **direction**. Every ray arriving parallel to every other ray — whatever part of the glass each one enters — is brought together at a single point in the focal plane. Rays arriving at a different angle meet at a different point. That is the whole reason a star photographs as a dot: its rays arrive parallel, so they all end up in one place.
+A lens sorts light by **direction**. Parallel rays are brought together at a single point in the focal plane. Rays arriving at a different angle meet at a different point. That is the whole reason a star photographs as a dot: its rays arrive parallel, so they all end up in one place.
 
 Now put the grating in front of it. Starlight arrives as one parallel beam. The grating splits it into several parallel beams, one per wavelength, each leaving at its own angle θ — and each beam is still parallel within itself. The lens then does the only thing it does, and sends each beam to its own point. The undeflected beam lands on the axis, and that is the zero-order dot. The beam tilted by θ lands a distance s away from it.
 
 <div class="eq"><span class="eq-n">3</span>s = f · tan θ</div>
 
-That f is the telescope's focal length, and the tan comes from the lens's angle-to-position mapping rather than from a ray crossing a gap.
-
-Which is why the grating's distance from the lens never enters. Slide the grating a centimetre closer and the tilted beam simply arrives across a slightly different part of the glass — same beam, same angle — so the lens still gathers it to the same point. Only the angle survives the journey, and only f turns that angle into millimetres.
+That f is the telescope's focal length, and the tan comes from the lens's angle-to-position mapping rather than from a ray crossing a gap. The grating's distance from the lens does not matter.
 
 <figure>
 <svg viewBox="0 0 680 300" style="width:100%;height:auto" role="img" aria-label="Starlight arrives parallel at the grating on the right, which splits it into two parallel beams at different angles; the objective lens then brings each beam to its own point on the sensor, the tilted one landing s away from the axis">
@@ -183,7 +235,7 @@ Which is why the grating's distance from the lens never enters. Slide the gratin
 </svg>
 </figure>
 
-Dividing by the pixel size, p = 2.9 µm, puts that in pixels rather than millimetres.
+Dividing by the pixel size, p = 2.9 µm, puts the distance in pixels rather than millimetres.
 
 <div class="eq"><span class="eq-n">4</span>px = s / p</div>
 
@@ -191,7 +243,11 @@ Substituting 2 into 3 and 3 into 4 leaves f and p appearing only as a ratio, so 
 
 <div class="eq"><span class="eq-n">5</span>px(λ) = A · tan( asin( λ / 10,000 nm ) )</div>
 
-Neither half of A is ours to measure. The pixel pitch p is the sensor's, 2.9 µm, and the focal length f is whatever the Seestar writes into every frame's header — `FOCALLEN = 160 mm`.
+Neither half of A is ours to measure, and the two are known in very different ways.
+
+The pixel pitch p is a manufacturing dimension. A sensor's pixel grid is etched into silicon by the same photolithography that prints a processor, so the spacing is fixed when the wafer is patterned and is identical on every copy of the chip ever made. Nothing about the telescope, the night or the focus can move it. Ours is the IMX585, and its pitch — the distance from the centre of one pixel to the centre of the next, which is also the width of one pixel since they tile without gaps — is **2.9 µm**. That number is taken from the sensor's specification and never questioned again.
+
+The focal length f is a different kind of number entirely. It is not a single part you can measure with calipers — it is a property of the assembled optics, set by where the lens elements actually sit and how far they end up from the sensor once the thing is screwed together and focused. The Seestar writes a value into every frame's header, `FOCALLEN = 160 mm`, but that is the figure the instrument was designed to, not a measurement of the one in front of us. Good enough to aim with. Not good enough to build a wavelength scale on, which is what the rest of this step is about.
 
 <div class="eq"><span class="eq-n">6</span>A = f / p = 160 mm ÷ 2.9 µm = 55,172 px</div>
 
@@ -215,7 +271,7 @@ The other two rows need a word each.
 
 **The Balmer fit** runs the same relation backwards. Instead of assuming a focal length and predicting where the lines will fall, it measures where they actually fell — the pixel distance from the zero-order dot out to each of the four dark bands — and then solves for the one A that places all four at their known wavelengths at once. That happens properly a few steps below, and it lands on A = 56,016. Multiplied by the 2.9 µm pixel size, that is a focal length of 162.4 mm.
 
-Both measure the same f by completely unrelated means — one from the positions of catalogued stars, one from hydrogen — and they agree with each other to 0.4 % while both sit about 2 % off the header value. That is why the wavelength scale gets re-fitted further down, on wavelengths fixed by atomic physics rather than by a manufacturer's figure.
+Both measure the same f by completely unrelated means — one from the positions of catalogued stars, one from hydrogen — and they agree with each other to 0.4% while both sit about 2% off the header value. That is why the wavelength scale gets re-fitted further down, on wavelengths fixed by atomic physics rather than by a manufacturer's figure.
 
 </div>
 
