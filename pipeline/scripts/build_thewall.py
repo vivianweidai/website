@@ -174,6 +174,21 @@ def _png_size(fh) -> tuple[int, int] | None:
     return w, h
 
 
+def _gif_size(fh) -> tuple[int, int] | None:
+    """GIF logical screen descriptor: two little-endian uint16 at byte 6.
+
+    Added for the astronomy project heroes, which are animated blinks — a GIF
+    is the only format that moves inside an <img>, and a card hero is an <img>.
+    An .mp4 is the right answer for a wall photo tile and the wrong one here.
+    """
+    fh.seek(0)
+    if fh.read(3) != b"GIF":
+        return None
+    fh.seek(6)
+    w, h = struct.unpack("<HH", fh.read(4))
+    return w, h
+
+
 def _jpeg_size(fh) -> tuple[int, int] | None:
     fh.seek(0)
     if fh.read(2) != b"\xff\xd8":
@@ -255,7 +270,7 @@ def image_size(path: Path) -> tuple[int, int]:
         size = _mp4_size(path)
     else:
         with path.open("rb") as fh:
-            size = _png_size(fh) or _jpeg_size(fh)
+            size = _png_size(fh) or _jpeg_size(fh) or _gif_size(fh)
     if not size:
         raise ValueError(f"could not read dimensions from {path}")
     return size

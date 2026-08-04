@@ -27,8 +27,17 @@
 # thewall/<science>/ under its own name.
 
 
+# The three astronomy projects share a hero format: 720 x 720, so their tiles
+# match on the wall, and each one shows the thing that distinguishes its
+# measurement — a moving object, a star changing brightness, a rainbow.
+- folder: 20260803 Photometry
+  hero: photos/figures/blink.gif
+  science: Astronomy
+- folder: 20260729 Astrometry
+  hero: photos/figures/blink.gif
+  science: Astronomy
 - folder: 20260729 Spectroscopy
-  hero: photos/setup/setup1.jpg
+  hero: photos/figures/hero.jpg
   science: Astronomy
 - folder: 20260420 UV-Vis Spectroscopy
   hero: photos/samples/samples6.jpeg

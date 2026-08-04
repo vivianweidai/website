@@ -1,6 +1,18 @@
 {
   "tiles": [
     {
+      "kind": "project",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "Photometry",
+      "src": "/projects/20260803%20Photometry/photos/figures/blink.gif",
+      "full": "/projects/20260803%20Photometry/photos/figures/blink.gif",
+      "w": 720,
+      "h": 720,
+      "href": "/projects/20260803%20Photometry/",
+      "date": "2026-08"
+    },
+    {
       "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astronomy",
@@ -93,10 +105,10 @@
       "science": "Astronomy",
       "science_slug": "astronomy",
       "caption": "Spectroscopy",
-      "src": "/projects/20260729%20Spectroscopy/photos/setup/setup1.jpg",
-      "full": "/projects/20260729%20Spectroscopy/photos/setup/setup1.jpg",
-      "w": 2000,
-      "h": 1500,
+      "src": "/projects/20260729%20Spectroscopy/photos/figures/hero.jpg",
+      "full": "/projects/20260729%20Spectroscopy/photos/figures/hero.jpg",
+      "w": 720,
+      "h": 720,
       "href": "/projects/20260729%20Spectroscopy/",
       "photos": [
         "photos/setup/setup1.jpg",
@@ -105,6 +117,18 @@
         "photos/setup/setup4.jpg",
         "photos/setup/setup5.jpg"
       ],
+      "date": "2026-07"
+    },
+    {
+      "kind": "project",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "Astrometry",
+      "src": "/projects/20260729%20Astrometry/photos/figures/blink.gif",
+      "full": "/projects/20260729%20Astrometry/photos/figures/blink.gif",
+      "w": 720,
+      "h": 720,
+      "href": "/projects/20260729%20Astrometry/",
       "date": "2026-07"
     },
     {
@@ -1003,7 +1027,7 @@
     {
       "science": "Astronomy",
       "slug": "astronomy",
-      "count": 24
+      "count": 26
     }
   ]
 }
