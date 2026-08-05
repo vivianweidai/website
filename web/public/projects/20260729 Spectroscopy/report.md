@@ -526,15 +526,8 @@ For the spectrum that width is the resolution element, and at 14.7″ it is wide
 
 ### Splitting the Bayer planes
 
-The blur step met the mosaic as a problem in *space* — the filter pattern printing itself onto a star's profile. Here the same pattern prints itself onto the spectrum instead.
+The blur step met the mosaic as a problem in *space* — the filter pattern printing itself onto a star's profile. Here the pattern prints itself onto the spectrum.
 
-<div class="term">
-
-**Debayering** is undoing the mosaic — separating those interleaved grids back into three full images, one per color. The usual way fills in each pixel's two missing channels by interpolating from its neighbors, which invents numbers that were never measured. That is fine for a photograph and not okay here.
-
-</div>
-
-Extracting the spectrum without splitting the colors means drawing a box across the streak on the raw mosaic and adding up everything inside it. Each box lies along one column of the sensor, and stepping one place along the spectrum moves to the next column, so the sequence alternates GR and BG. Both kinds hold green, and green contributes the same to each, so it cancels; the difference is the other half of the pair. At any one point along the streak the dispersion has already sorted the light, so every pixel there is receiving the same wavelength — a red-filtered pixel and a blue-filtered one simply do not pass the same fraction of it. The two sums come out different, and the trace saws up and down once every column.
 
 <figure class="medium">
 <svg viewBox="0 0 700 200" style="width:100%;height:auto" role="img" aria-label="Left, a patch of the mosaic drawn with the spectrum running left to right, so each sensor column stands as a vertical stripe. Two neighboring stripes are outlined: a green-and-red column and the blue-and-green column next to it. An arrow beneath shows the direction along the spectrum. Right, the resulting trace stepping between a green-and-red level and a lower blue-and-green level once every column.">
@@ -582,23 +575,32 @@ Extracting the spectrum without splitting the colors means drawing a box across 
 </svg>
 </figure>
 
-Before going further it is worth looking at what the three planes actually hold, because one picture accounts for the shape of everything that follows.
+Extracting the spectrum without splitting the colors means drawing a box across the streak on the raw mosaic and adding up everything inside it. Each box lies along one column of the sensor, and stepping along the spectrum moves to the next column, so the sequence alternates GR and BG. Reading along, those two levels taken in turn produce a sawtooth.
 
-<figure><img src="photos/figures/bayer_planes.png" alt="Top, the three planes summed. Bottom, the same light with the planes kept apart, each peaking at its own filter"></figure>
 
-Top is the three planes added back together — the trace as the rest of this report shows it, and it looks like two mountains with a notch between them. None of that is Vega. An A0V star radiates a continuum that falls steadily from the blue end to the red across this whole range, so every rise in that panel is the instrument. Bottom is the same light with the planes kept apart, and the reason is plain: each peaks where its own filter does, blue at 490 nm, green at 519, red at 599. The shaded notch is simply the stretch where green has fallen away and red has not yet switched on. Those peak positions are the filter printed on the star rather than the filter alone — a redder star slides them, and the same three planes on Xi Draconis sit at 490, 565 and 611 nm.
+<div class="term">
 
-The same picture explains why the sawtooth is not a fixed size. A GR column carries green plus red and a BG column carries blue plus green; green is common to both, so the step between them is red minus blue — the gap between the red and blue curves in that bottom panel. Where they are far apart the sawtooth is large, and where they cross it nearly vanishes. That is the dangerous part. A ripple of constant size could be smoothed away, but one whose envelope drifts across the spectrum drifts on the same scale as a real absorption feature.
+**Debayering** is undoing the mosaic — separating those interleaved grids back into three full images, one per color. The usual way fills in each pixel's two missing channels by interpolating from its neighbors, which invents numbers that were never measured. That is fine for a photograph and not okay here.
 
-The fix is to stop mixing them in the first place. The mosaic is split into three planes before anything is extracted, each keeping only the pixels that actually measured its own color — green from its two diagonal positions, red and blue from theirs. That halves the resolution and invents nothing. The spectrum is then extracted from each plane on its own, so every pixel in a given box sits behind the same filter and there is no mix left to shift.
+</div>
 
-Measuring what splitting the colors gets us needs no machinery at all, because a sawtooth is by construction a disagreement between neighbors. Take a stretch with no absorption lines in it — we used 612 to 645 nm — and for each pair of adjacent columns ask how far apart they sit as a fraction of their average. On the raw mosaic the typical pair disagrees by **52%**. Off the split planes, **1.1%**.
+Read independently, the three color filters produce their own spectrum reading.
+
+<figure><img src="photos/figures/bayer_planes.png" alt="The three planes extracted separately, each peaking at its own filter"></figure>
+
+If we read each column one at a time, we get the combined RG or BG flux — two curves, with the trace hopping between them. Green sits in both and lifts both by the same amount, so it can never push them apart: the height of a tooth is R − B. That is the dangerous part, and it is why the sawtooth cannot just be smoothed away. Its size is not fixed — it swells and shrinks across the spectrum on the same scale as real hydrogen absorption.
+
+<figure><img src="photos/figures/bayer_sawtooth.png" alt="The two kinds of column drawn as two curves with the gap shaded, and three zooms showing the trace zigzagging between them"></figure>
+
+We can build the total flux spectrum by combining the three individual color planes. The extra green is dealt with by averaging its two pixels into one — not interpolating, so every number in the sum is still a number that was measured. The two mountains continue to be the blue and red filters peaking.
+
+<figure><img src="photos/figures/bayer_sum.png" alt="The three planes added back together, R plus G plus B, with the four Balmer lines marked"></figure>
+
+We can see the drastic difference splitting the colors produces by focusing on one region where we know there is no hydrogen absorption. The sawtooth of the raw mosaic is enormous — neighboring columns disagree by 52% of their average. The split planes carry none at all: 1.1%, and what is left there is noise.
 
 <figure><img src="photos/figures/bayer_ripple.png" alt="Two panels: Vega's full spectrum off the split planes with the line-free window marked, and five nanometers of that window blown up to single columns with both traces"></figure>
 
-Left, Vega read off the split planes, with the blue block marking the 612 to 645 nm stretch the number is measured in — chosen because it carries no lines, so any wobble in there belongs to the instrument. Right, five nanometers of it at single-column resolution. Each trace is divided by one number, its own average across those five nanometers, purely so the two can share an axis. The split-plane trace in orange is smooth. The raw-mosaic trace in pale purple steps up, down, up, down, once every column — and a wobble that regular, sitting on the continuum, is exactly the shape of an absorption line.
-
-Worth sizing that against what we are trying to measure. The Hα line this report eventually measures in Albireo is a dip of 9.7%. The mosaic on its own was moving neighboring columns by more than five times that, so left in it would have been writing features into the spectrum larger than the real ones we were there to read.
+It is worth sizing the effect against what we are trying to measure. The Hα line this report eventually measures in Albireo is a dip of 10%. In this window the mosaic on its own moves neighboring columns by five times that: writing features into the spectrum larger than the real physical phenomenon we were trying to measure. How much it costs depends on where you look — elsewhere the sawtooth runs from a few percent to over 80% — but what splitting leaves behind is the same everywhere.
 
 </div>
 
@@ -606,15 +608,19 @@ Worth sizing that against what we are trying to measure. The Hα line this repor
 
 ### Finding the dot and rectifying the streak
 
-Two things have to be pinned down before any wavelength can be read: where the spectrum starts, and which way it runs. The zero-order dot is the origin, since every wavelength is measured as a distance out from it, so an error in the dot's position slides the entire wavelength scale along with it. And the streak lies at an angle across the sensor, so a column of pixels is not yet one wavelength — it has to be straightened before it can be.
+Two things have to be pinned down before any wavelength can be read: where the spectrum starts, and which way it runs. The zero-order dot is the origin, since every wavelength is measured as a distance out from it. The streak lies at an angle, so a column of pixels is not yet one wavelength.
 
-The dot is found as the compact bright blob rather than the long one, which is what separates it from the streak. Its position is then taken from its unsaturated wings and not its peak. On a bright frame the core clips flat — ten pixels of this one sit exactly on the sensor's ceiling — and the brightest pixel inside a plateau is wherever noise put it, while the wings still fall away smoothly and give a center good to a fraction of a pixel. Whether the core clips depends on the star and the exposure, and on the shorter subs it does not, so the wings are used either way rather than testing each frame and switching method.
+The dot is the compact bright blob rather than the long one, which is what separates it from the streak. Its position comes from the wings, not the peak.
 
-The streak's direction is the direction out of the dot along which the light is brightest, refined by following how far the light sits off that line as you go out. With a center and an angle, the frame is resampled along that axis so the spectrum lies horizontal — after which every column is one wavelength, which is the whole reason for straightening it.
+<figure><img src="photos/figures/zero_order_dot.png" alt="Left, the zero-order dot with its ten clipped pixels marked. Right, a cut through it showing the flat top against the sensor ceiling"></figure>
 
-The dot centroided at (816.4, 143.9) and the streak ran at −3.86°.
+Ten pixels of this dot sit exactly on 65,535, the sensor's ceiling. Inside a plateau the brightest pixel is wherever noise put it, so an argmax center is a coin flip across ten pixels. The wings still fall away smoothly, and a flux centroid on those alone gives a center good to a fraction of a pixel. The cut samples every second pixel — neighbors are different filters, and one parity is one filter.
+
+The streak's direction is the direction out of the dot along which the light is brightest, refined by following how far the light sits off that line as you go out. With a center and an angle, the frame is resampled along that axis.
 
 <figure><img src="photos/figures/streak_rectified.png" alt="Vega's streak resampled horizontal with the four Balmer lines marked"></figure>
+
+The dot centroided at (816.4, 143.9) and the streak ran at −3.86°. Every column is now one wavelength, which is the whole reason for straightening it, and the four Balmer lines land where the grating equation says they should.
 
 </div>
 
@@ -764,13 +770,15 @@ It came out shallower at all four lines, not one. There was also far less of it 
 
 Read Hγ and Hα, the two lines on clean continuum and the two the classification used. Hβ's 5.6% looks like the sharpest contrast here and is the one number not to quote: at 1.3σ it is not a detection, and its continuum is the one stretch of the spectrum we could not fit cleanly.
 
-<div class="term">
+Both stars are overwhelmingly hydrogen, the same as Vega. Nothing here is hydrogen-poor. What differs is how many hydrogen atoms sit in n = 2, the only ones that can absorb a Balmer photon, and that population is set by temperature.
 
-**Why the blend is shallow, and it is not composition.** Both stars are overwhelmingly hydrogen, the same as Vega — nothing here is hydrogen-poor or metal-rich in any way that matters. What differs is how many hydrogen atoms sit in n = 2, the only ones that can absorb a Balmer photon, and that population is set by temperature. It peaks around 10,000 K, and **neither** of Albireo's stars is near it: the K3II giant at ~4,300 K is far too cool to lift electrons to n = 2, so nearly all its hydrogen sits in the ground state and is invisible to these lines, while the B8V at ~13,000 K is hot enough that hydrogen is beginning to ionize and the neutral atoms are being removed.
+<figure><img src="photos/figures/balmer_vs_temperature.png" alt="Top, published Hγ widths across the Pickles dwarf sequence, peaking in the early A stars. Bottom, the Boltzmann fraction of hydrogen in n = 2 against temperature"></figure>
 
-A second effect stacks on top. The pair is unresolved, and the K giant is brighter by roughly six times in visible light, so its continuum floods the blend and dilutes whatever Balmer absorption the B star contributes — a fixed amount of absorbed light against a much larger total reads as a smaller percentage. Vega gets both halves right at once: one star, sitting almost exactly at the peak.
+Top is somebody else's data: the Pickles catalog's own published Hγ widths across its dwarf sequence. The maximum sits in the early A stars, and our Vega measurement lands on that plateau. Either side of it the lines collapse — by K they read zero. Vega was never a fair test of this method; it is the single best case in the whole diagram.
 
-</div>
+Bottom is why, on the cool side. Absorbing at Hγ needs an electron already lifted to n = 2, which costs 10.2 eV of the star's own heat, so the population that can absorb follows the Boltzmann factor. Between Vega at 9,600 K and Albireo's K3II at ~4,300 K it falls **four million-fold**. The lines are not faint there, they are absent, and no exposure recovers them. The B8V at ~13,000 K fails from the other end, hot enough that hydrogen is beginning to ionize and the neutral atoms are being removed.
+
+A second effect stacks on top. The pair is unresolved and the K giant is brighter by roughly six times in visible light, so its continuum floods the blend and dilutes whatever the B star absorbs — a fixed amount of absorbed light against a much larger total reads as a smaller percentage.
 
 The K giant does show far more metal lines than Vega, which is where the "heavy metals" intuition comes from, but that is the same cause read the other way round. Cool gas keeps its metals neutral or singly ionized with many low-energy transitions available, and the hydrogen lines have got out of the way. Excitation, not abundance.
 
