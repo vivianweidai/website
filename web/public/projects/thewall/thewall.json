@@ -5,8 +5,8 @@
       "science": "Astronomy",
       "science_slug": "astronomy",
       "caption": "Photometry",
-      "src": "/projects/20260803%20Photometry/photos/figures/blink.gif",
-      "full": "/projects/20260803%20Photometry/photos/figures/blink.gif",
+      "src": "/projects/20260803%20Photometry/photos/figures/xzcyg_blink.gif",
+      "full": "/projects/20260803%20Photometry/photos/figures/xzcyg_blink.gif",
       "w": 720,
       "h": 720,
       "href": "/projects/20260803%20Photometry/",
@@ -17,21 +17,10 @@
       "science": "Astronomy",
       "science_slug": "astronomy",
       "caption": "",
-      "src": "/projects/thewall/astronomy/20260803%20SW%20Lac%20Eclipse%20Minimum.jpg",
-      "full": "/projects/thewall/astronomy/20260803%20SW%20Lac%20Eclipse%20Minimum.jpg",
-      "w": 2160,
-      "h": 3840,
-      "date": "2026-08"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astronomy",
-      "caption": "",
-      "src": "/projects/thewall/astronomy/20260803%20SW%20Lac%20Eclipse%20Maximum.jpg",
-      "full": "/projects/thewall/astronomy/20260803%20SW%20Lac%20Eclipse%20Maximum.jpg",
-      "w": 2160,
-      "h": 3840,
+      "src": "/projects/thewall/astronomy/20260804%20The%20Double%20Cluster.jpg",
+      "full": "/projects/thewall/astronomy/20260804%20The%20Double%20Cluster.jpg",
+      "w": 1126,
+      "h": 2000,
       "date": "2026-08"
     },
     {
@@ -104,6 +93,18 @@
       "kind": "project",
       "science": "Astronomy",
       "science_slug": "astronomy",
+      "caption": "Astrometry",
+      "src": "/projects/20260729%20Astrometry/photos/figures/juno_blink.gif",
+      "full": "/projects/20260729%20Astrometry/photos/figures/juno_blink.gif",
+      "w": 720,
+      "h": 720,
+      "href": "/projects/20260729%20Astrometry/",
+      "date": "2026-07"
+    },
+    {
+      "kind": "project",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
       "caption": "Spectroscopy",
       "src": "/projects/20260729%20Spectroscopy/photos/figures/hero.jpg",
       "full": "/projects/20260729%20Spectroscopy/photos/figures/hero.jpg",
@@ -117,18 +118,6 @@
         "photos/setup/setup4.jpg",
         "photos/setup/setup5.jpg"
       ],
-      "date": "2026-07"
-    },
-    {
-      "kind": "project",
-      "science": "Astronomy",
-      "science_slug": "astronomy",
-      "caption": "Astrometry",
-      "src": "/projects/20260729%20Astrometry/photos/figures/blink.gif",
-      "full": "/projects/20260729%20Astrometry/photos/figures/blink.gif",
-      "w": 720,
-      "h": 720,
-      "href": "/projects/20260729%20Astrometry/",
       "date": "2026-07"
     },
     {
@@ -154,28 +143,6 @@
       "date": "2026-07",
       "video": true,
       "poster": "/projects/thewall/physics/20260730%20Pulling%20The%20Force%20Sensor.poster.jpg"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astronomy",
-      "caption": "",
-      "src": "/projects/thewall/astronomy/20260729%20Juno%20Before.jpg",
-      "full": "/projects/thewall/astronomy/20260729%20Juno%20Before.jpg",
-      "w": 1125,
-      "h": 2000,
-      "date": "2026-07"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astronomy",
-      "caption": "",
-      "src": "/projects/thewall/astronomy/20260729%20Juno%20After.jpg",
-      "full": "/projects/thewall/astronomy/20260729%20Juno%20After.jpg",
-      "w": 1125,
-      "h": 2000,
-      "date": "2026-07"
     },
     {
       "kind": "photo",
@@ -1027,7 +994,7 @@
     {
       "science": "Astronomy",
       "slug": "astronomy",
-      "count": 26
+      "count": 23
     }
   ]
 }

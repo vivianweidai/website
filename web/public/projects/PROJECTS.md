@@ -14,11 +14,11 @@ Nothing in the filename reaches a screen, so it is plumbing, not copy — it doe
 
 Adding one: drop the file in, run `python3 pipeline/scripts/build_thewall.py`. No YAML for a photo tile. Resize on the way in — long edge 2000, `sips -Z 2000 in.jpg --out in.jpg`. There is no thumbnail folder; the wall and lightbox load these files directly, and there is deliberately no `thumbs/` folder, because a second generated copy is one more thing to explain and keep pruned. Full-resolution originals live outside the published site.
 
-Video is a tile like any other: an `.mp4` autoplays muted and loops, dimensions come from the MP4 header (`tkhd`, rotation honoured), served without re-encoding. Give it a still named `<name>.poster.jpg` — the tile shows it before playing, and the iOS app shows it instead of the video.
+Video is a tile like any other: an `.mp4` autoplays muted and loops, dimensions come from the MP4 header (`tkhd`, rotation honored), served without re-encoding. Give it a still named `<name>.poster.jpg` — the tile shows it before playing, and the iOS app shows it instead of the video.
 
-`thewall.yml` holds project cards only. A card is a link, so it gets a caption (read from the project's `report.md` title, never retyped), a science pill and a `Report →` badge, framed in its science colour — a card must not read as one more photo. `hero:` names which image inside the project folder fronts it; that hero is the only thing that still points into a project folder. A project gets exactly one tile.
+`thewall.yml` holds project cards only. A card is a link, so it gets a caption (read from the project's `report.md` title, never retyped), a science pill and a `Report →` badge, framed in its science color — a card must not read as one more photo. `hero:` names which image inside the project folder fronts it; that hero is the only thing that still points into a project folder. A project gets exactly one tile.
 
-Layout. Landscape and square tiles span two columns, portraits one — a portrait gets its presence from its aspect ratio, and a 4:3 photo at one column is a stamp. `grid-auto-flow: row dense` back-fills the hole a wide tile leaves at the end of a row; local order shifts, which on a wall reads as packing. Clicking opens a lightbox — ‹ › buttons, ← → keys, Esc, click-backdrop to dismiss. It pages through currently visible tiles, so a filtered wall stays inside its filter, and skips project cards because those are links. Neighbours preload.
+Layout. Landscape and square tiles span two columns, portraits one — a portrait gets its presence from its aspect ratio, and a 4:3 photo at one column is a stamp. `grid-auto-flow: row dense` back-fills the hole a wide tile leaves at the end of a row; local order shifts, which on a wall reads as packing. Clicking opens a lightbox — ‹ › buttons, ← → keys, Esc, click-backdrop to dismiss. It pages through currently visible tiles, so a filtered wall stays inside its filter, and skips project cards because those are links. Neighbors preload.
 
 Dating and sorting. One source: a `YYYYMMDD` prefix on the filename or any folder above it, which dates every generated plot by its project folder. A file the build cannot date is a build error — there is no EXIF fallback and no `date:` row key. Tiles sort newest month first, then by filename descending within the month, so the filename is the one lever for placement and renaming a file moves its tile. Ordering is otherwise untouched: the wall is hand-curated, and pictures named to sit together must stay together.
 
@@ -67,7 +67,7 @@ First built for `20260729 Spectroscopy`. The classes live in `layouts/Project.as
 | `.result` | a number the step exists to produce; `.big` inside it for the headline one |
 | `.eq` | a display equation, with `<small>` for the line explaining it |
 | `.row` / `.row.two` | a strip of 3 (or 2) figures |
-| `.small` / `.tall` | a single figure narrowed and centred — 26em for a photo, 17em for a portrait frame |
+| `.small` / `.tall` | a single figure narrowed and centered — 26em for a photo, 17em for a portrait frame |
 
 Writing rules that came out of the first one:
 
@@ -91,6 +91,8 @@ Writing rules that came out of the first one:
 - Don't explain the repository. No GitHub paths, no folder structure, no "the raw data lives in". The scripts are assumed available; the reader is us.
 - Put the answer in a `.result`, including intermediate answers. A step that produces a number should end in the number.
 - Past tense, and headings as gerunds — "Threading the grating onto the objective lens", "We held it up to a laptop screen". The page records what was done, not what a reader should go and do. An imperative ("hold the grating up to a screen") reads as an instruction manual and quietly promises a completeness the page is not offering.
+- American spelling throughout: color, center, neighbor, gray, normalize, catalog, millimeter, nanometer, analyze. The exception is a proper noun — the Star Analyser 100 keeps the spelling on its own label. Worth a pass before publishing, because British forms creep back in one word at a time.
+- No space before a percent sign. `9.7%`, not `9.7%`. Same for a figure's own labels, so the page and the plots agree.
 - No italics. Reach for them and the sentence is usually the problem; rebuild it so the important word lands on its own. Bold stays, but structurally only — the defined term at the head of a `.term`, and the numbers inside a `.result`.
 - Never compare to an alternative you do not explain. "We threaded it onto the objective lens rather than behind it" raises a second method, says nothing about it, and leaves the reader wondering what they missed. Either explain the alternative because the choice mattered, or just say what was done. Every surviving "rather than" in a good page answers itself in the same sentence.
 - Cut sentences that praise the step. "The check takes two minutes and settles whether the grating is the right way round" is the page telling you a step was worthwhile instead of telling you what happened. State the action and the outcome; the reader can judge.
@@ -98,4 +100,4 @@ Writing rules that came out of the first one:
 - Generated figures should share one visual theme. Plots made by older scripts arrive on a white background and read as foreign next to the rest.
 - Keep text out of the figure. No figure title, no standfirst, no panel headings, no value labels on the points — all of that is prose, and prose is where it can be edited. Keep only what is part of the graph: axis labels, tick labels, and bare series identifiers where two curves would otherwise be indistinguishable. The plotting scripts enforce this — in `step_figures.py` the `head()` helper is a deliberate no-op and `dress()` ignores its `title` argument, so a call site can keep its wording as documentation without drawing it.
 - Point with graphics, not words. To call out a feature, mark it — an `axvspan` over the 477 nm response step, a ring around the zero-order dot, a double-headed arrow across a width — and let the sentence beside the figure say what it means. Reclaim the top margin the removed header used to occupy or the figure floats in dead space.
-- Size the figure to its job, centred. A multi-panel analysis plot earns full width; a single photo making a single point does not. `.small` (26em) for a standalone photo, `.tall` (17em) for a portrait frame. Both centre horizontally — a narrow figure flush left reads as a mistake.
+- Size the figure to its job, centered. A multi-panel analysis plot earns full width; a single photo making a single point does not. `.small` (26em) for a standalone photo, `.tall` (17em) for a portrait frame. Both center horizontally — a narrow figure flush left reads as a mistake.

@@ -16,7 +16,7 @@ sciences:
 
 <!-- TO WRITE. The idea: you cannot measure where something is in the sky
      directly. You measure where it sits among stars whose positions are
-     already known, and inherit their calibration. Introduce the catalogue
+     already known, and inherit their calibration. Introduce the catalog
      (Gaia DR3) as the ruler. -->
 
 </div>
@@ -27,7 +27,7 @@ sciences:
 
 <!-- TO WRITE. Already defined in the Spectroscopy report at the focal-length
      step; here it is the main event rather than an aside, so it needs the
-     fuller version — pattern-matching the star field against a catalogue,
+     fuller version — pattern-matching the star field against a catalog,
      what a WCS is, and what "residual" means for one. -->
 
 </div>
@@ -55,7 +55,7 @@ sciences:
 Refit covered <strong>34 of 50</strong> frames · WCS residual <strong>2.02″ → 1.68″</strong> on a median of 36 Gaia stars
 </div>
 
-<!-- TO WRITE. The 22 % median gain is not the interesting part. The along-track
+<!-- TO WRITE. The 22% median gain is not the interesting part. The along-track
      systematic collapsing from −0.93″ to −0.04″ is, because that is what a real
      WCS correction looks like and noise does not do it. -->
 
@@ -89,9 +89,9 @@ Refit covered <strong>34 of 50</strong> frames · WCS residual <strong>2.02″ �
      plan: a better centroid buys nothing until the WCS is better. It was a
      prediction before the refit and the refit confirmed it.
 
-     What it is not: not the catalogue epoch (propagating back to 2MASS 1999.5
+     What it is not: not the catalog epoch (propagating back to 2MASS 1999.5
      only moves 1.49″ → 1.22″); not field distortion (SIP shows no radial trend,
-     2.39 / 1.40 / 1.41 / 2.70″ centre to corner); not refraction (the plate
+     2.39 / 1.40 / 1.41 / 2.70″ center to corner); not refraction (the plate
      solve absorbs it, and the offset points 21° from the zenith anyway). What
      is left is astrometry.net's own accuracy. -->
 
@@ -128,14 +128,14 @@ Refit covered <strong>34 of 50</strong> frames · WCS residual <strong>2.02″ �
      | field stars, comet-aligned | 19.8″ | control — must be wider, and is |
 
      The 1.27x ratio is the weaker half. The profile SHAPE is the strong half:
-     peak-normalised, the comet holds 0.324 at 12.8″ where a star holds 0.094,
+     peak-normalized, the comet holds 0.324 at 12.8″ where a star holds 0.094,
      and 0.235 at 16.5″ against 0.025. Between 9″ and 24″ it carries light the
      PSF does not have, and a halo cannot be faked by seeing.
 
      Widths combine in quadrature under convolution, so the intrinsic size is
      sqrt(18.3² − 14.5²) = 11.3″; at 3.445 AU that is a coma near 28,000 km —
      an upper bound, because the comet-aligned stack smears with ephemeris
-     error. Deblended of a G = 14.94 neighbour the comet is about mag 14.2
+     error. Deblended of a G = 14.94 neighbor the comet is about mag 14.2
      against Horizons' Tmag 14.90. -->
 
 </div>

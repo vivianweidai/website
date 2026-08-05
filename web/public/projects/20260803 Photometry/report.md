@@ -16,7 +16,7 @@ sciences:
 
 <!-- TO WRITE. The same idea as the Astrometry report's opening, in the other
      dimension: you do not measure how bright a star is, you measure how bright
-     it is compared with its neighbours in the same frame. Anything that dims
+     it is compared with its neighbors in the same frame. Anything that dims
      the target — cloud, altitude, dew — dims the comparisons too and divides
      out. That is what "differential" means. Five comparison stars here, which
      is the reducer's maximum. -->
@@ -47,7 +47,7 @@ sciences:
      un-bracketed minimum cannot be timed. -->
 
 <div class="result">
-<strong>510 subs over 200 min</strong>, all 510 through the noise cut · 44 % phase coverage, 0.201 → 0.633
+<strong>510 subs over 200 min</strong>, all 510 through the noise cut · 44% phase coverage, 0.201 → 0.633
 </div>
 
 </div>
@@ -99,7 +99,7 @@ Comparison-star scatter <strong>0.072 mag</strong> — the number that sets whic
      is 0.805 mag of per-point noise sitting on top of a real 0.713. The
      inflation is larger than the signal, and it GROWS with frame count rather
      than converging, because the extremes of a noisy sample keep finding
-     further extremes. Only binned medians can be compared against a catalogue.
+     further extremes. Only binned medians can be compared against a catalog.
      This is the same shape of error as the raw-width scatter in the
      Spectroscopy report — a statistic that looks like a measurement and is
      actually a property of the sampling. -->
