@@ -30,6 +30,9 @@
 # The three astronomy projects share a hero format: 720 x 720, so their tiles
 # match on the wall, and each one shows the thing that distinguishes its
 # measurement — a moving object, a star changing brightness, a rainbow.
+- folder: 20260804 Colorimetry
+  hero: photos/figures/hero.jpg
+  science: Astronomy
 - folder: 20260803 Photometry
   hero: photos/figures/xzcyg_blink.gif
   science: Astronomy

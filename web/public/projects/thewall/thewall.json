@@ -13,6 +13,18 @@
       "date": "2026-08"
     },
     {
+      "kind": "project",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "Colorimetry",
+      "src": "/projects/20260804%20Colorimetry/photos/figures/hero.jpg",
+      "full": "/projects/20260804%20Colorimetry/photos/figures/hero.jpg",
+      "w": 720,
+      "h": 720,
+      "href": "/projects/20260804%20Colorimetry/",
+      "date": "2026-08"
+    },
+    {
       "kind": "photo",
       "science": "Astronomy",
       "science_slug": "astronomy",
@@ -972,7 +984,7 @@
     {
       "science": "Astronomy",
       "slug": "astronomy",
-      "count": 21
+      "count": 22
     }
   ]
 }

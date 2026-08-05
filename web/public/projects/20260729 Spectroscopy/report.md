@@ -526,7 +526,7 @@ For the spectrum that width is the resolution element, and at 14.7″ it is wide
 
 ### Splitting the Bayer planes
 
-The blur step met the mosaic as a problem in *space* — the filter pattern printing itself onto a star's profile. Here the same pattern prints itself onto the spectrum instead. The goal is to separate the mosaic into three images, each built only from pixels sitting under one filter, and to read the spectrum off those.
+The blur step met the mosaic as a problem in *space* — the filter pattern printing itself onto a star's profile. Here the same pattern prints itself onto the spectrum instead.
 
 <div class="term">
 
@@ -534,7 +534,7 @@ The blur step met the mosaic as a problem in *space* — the filter pattern prin
 
 </div>
 
-Extracting the spectrum without it means drawing a box across the streak on the raw mosaic and adding up everything inside it. Each box lies along one column of the sensor, and stepping one place along the spectrum moves to the next column, so the sequence alternates GR and BG. Both kinds hold green, and green contributes the same to each, so it cancels; the difference is the other half of the pair. At any one point along the streak the dispersion has already sorted the light, so every pixel there is receiving the same wavelength — a red-filtered pixel and a blue-filtered one simply do not pass the same fraction of it. The two sums come out different, and the trace saws up and down once every column.
+Extracting the spectrum without splitting the colors means drawing a box across the streak on the raw mosaic and adding up everything inside it. Each box lies along one column of the sensor, and stepping one place along the spectrum moves to the next column, so the sequence alternates GR and BG. Both kinds hold green, and green contributes the same to each, so it cancels; the difference is the other half of the pair. At any one point along the streak the dispersion has already sorted the light, so every pixel there is receiving the same wavelength — a red-filtered pixel and a blue-filtered one simply do not pass the same fraction of it. The two sums come out different, and the trace saws up and down once every column.
 
 <figure class="medium">
 <svg viewBox="0 0 700 200" style="width:100%;height:auto" role="img" aria-label="Left, a patch of the mosaic drawn with the spectrum running left to right, so each sensor column stands as a vertical stripe. Two neighboring stripes are outlined: a green-and-red column and the blue-and-green column next to it. An arrow beneath shows the direction along the spectrum. Right, the resulting trace stepping between a green-and-red level and a lower blue-and-green level once every column.">
@@ -582,19 +582,23 @@ Extracting the spectrum without it means drawing a box across the streak on the 
 </svg>
 </figure>
 
-Worse, the size of that gap is not fixed. It depends on the color arriving at that point, and the entire purpose of a spectrum is that the color changes along it: blue-and-green columns win at the blue end, green-and-red columns win at the red end, so the sawtooth swells and shrinks as you move along. That envelope is the dangerous part. A predictable ripple could be smoothed away, but its envelope drifts on the same scale as a real absorption feature.
+Before going further it is worth looking at what the three planes actually hold, because one picture accounts for the shape of everything that follows.
 
-Binning was the way out last time, a 2 × 2 block covers one whole tile wherever it lands, so every sample would carry the identical filter mix. What it cannot do is keep the colors apart. Here we split the color planes instead, at half resolution and with no interpolation.
+<figure><img src="photos/figures/bayer_planes.png" alt="Top, the three planes summed. Bottom, the same light with the planes kept apart, each peaking at its own filter"></figure>
 
-Putting a number on that needs a stretch of spectrum with no absorption lines in it, where a correct trace would be flat and anything left over is the instrument. We used 612 to 645 nm. Divide the trace by its own running median and the star's continuum divides out, so a correct trace sits at 1.0 and the ripple is whatever still deviates from it; its standard deviation is then a single number in units of the continuum itself. Un-debayered that comes to **0.273** — the trace wanders by 27% of the continuum. Off the split planes it is **0.055**, down to a fifth.
+Top is the three planes added back together — the trace as the rest of this report shows it, and it looks like two mountains with a notch between them. None of that is Vega. An A0V star radiates a continuum that falls steadily from the blue end to the red across this whole range, so every rise in that panel is the instrument. Bottom is the same light with the planes kept apart, and the reason is plain: each peaks where its own filter does, blue at 490 nm, green at 519, red at 599. The shaded notch is simply the stretch where green has fallen away and red has not yet switched on. Those peak positions are the filter printed on the star rather than the filter alone — a redder star slides them, and the same three planes on Xi Draconis sit at 490, 565 and 611 nm.
 
-Choosing the window matters, and choosing it badly flatters the answer. Running the same metric across 600 to 612 nm scores the split-plane trace at 0.100 against 0.017 to 0.026 everywhere else, because Vega has a real dip and peak in there and the metric cannot tell a genuine feature from a defect. Leaving that stretch in charges the honest trace for the star's own spectrum and understates what debayering buys — 0.253 to 0.066 rather than 0.273 to 0.055.
+The same picture explains why the sawtooth is not a fixed size. A GR column carries green plus red and a BG column carries blue plus green; green is common to both, so the step between them is red minus blue — the gap between the red and blue curves in that bottom panel. Where they are far apart the sawtooth is large, and where they cross it nearly vanishes. That is the dangerous part. A ripple of constant size could be smoothed away, but one whose envelope drifts across the spectrum drifts on the same scale as a real absorption feature.
 
-<figure><img src="photos/figures/bayer_ripple.png" alt="Three panels: the raw mosaic magnified, a line-free window with both traces, and five nanometers of it blown up to single pixels"></figure>
+The fix is to stop mixing them in the first place. The mosaic is split into three planes before anything is extracted, each keeping only the pixels that actually measured its own color — green from its two diagonal positions, red and blue from theirs. That halves the resolution and invents nothing. The spectrum is then extracted from each plane on its own, so every pixel in a given box sits behind the same filter and there is no mix left to shift.
 
-Left, Vega itself, read off the split planes — the continuum shaped by the grating and the filter, the Balmer lines marked, and the blue block over 612 to 645 nm marking the window the ripple is measured in. It is the flattest, most featureless stretch on offer, which is the whole reason it was chosen: any wobble in there belongs to the instrument. Right, five nanometers of that window blown up to individual columns, both traces divided by their own running median so that flat means correct. The split-plane trace in orange sits on 1.0. The raw-mosaic trace in pale purple steps up, down, up, down, one column at a time, swinging a quarter of the continuum — and a wobble that regular, sitting on the continuum, is exactly the shape of an absorption line.
+Measuring what splitting the colors gets us needs no machinery at all, because a sawtooth is by construction a disagreement between neighbors. Take a stretch with no absorption lines in it — we used 612 to 645 nm — and for each pair of adjacent columns ask how far apart they sit as a fraction of their average. On the raw mosaic the typical pair disagrees by **52%**. Off the split planes, **1.1%**.
 
-Worth sizing that against what we are trying to measure. The ripple swings by roughly a quarter of the continuum, while the Hα line this report eventually measures in Albireo is a dip of 9.7%. Left in, the mosaic would have been writing features into the spectrum larger than the real ones we were there to read.
+<figure><img src="photos/figures/bayer_ripple.png" alt="Two panels: Vega's full spectrum off the split planes with the line-free window marked, and five nanometers of that window blown up to single columns with both traces"></figure>
+
+Left, Vega read off the split planes, with the blue block marking the 612 to 645 nm stretch the number is measured in — chosen because it carries no lines, so any wobble in there belongs to the instrument. Right, five nanometers of it at single-column resolution. Each trace is divided by one number, its own average across those five nanometers, purely so the two can share an axis. The split-plane trace in orange is smooth. The raw-mosaic trace in pale purple steps up, down, up, down, once every column — and a wobble that regular, sitting on the continuum, is exactly the shape of an absorption line.
+
+Worth sizing that against what we are trying to measure. The Hα line this report eventually measures in Albireo is a dip of 9.7%. The mosaic on its own was moving neighboring columns by more than five times that, so left in it would have been writing features into the spectrum larger than the real ones we were there to read.
 
 </div>
 
@@ -661,9 +665,34 @@ A needs re-fitting after every unscrew. Fitted on the 2026-07-28 mounting, A put
 
 <div class="term">
 
-**The continuum** is the smooth, roughly blackbody background a hot dense photosphere radiates at every wavelength at once. Dividing the spectrum by a smooth fit through its own line-free stretches removes the star's temperature slope and the instrument response together, leaving every line as a dip below a flat 1.0.
+**The continuum** is the smooth, roughly blackbody background a hot dense photosphere radiates at every wavelength at once. Dividing the spectrum by an estimate of it removes the star's temperature slope and the instrument response together, leaving every line as a dip below a flat 1.0.
 
 </div>
+
+Every spectrum from here on is a flat line with dips in it, and that is worth pausing on, because it is not what the sensor recorded. What came off the sensor is the trace from two steps back: the star's own falling continuum, multiplied by the filter mountains, with the absorption lines cut into it. The horizontal spectrum of a textbook, where a dip is read against its neighbors on either side, is manufactured — and the manufacturing has one free number in it.
+
+The operation is a running median. At each wavelength take every sample within a fixed window either side, call their median the continuum there, and divide. A median rather than a mean because the lines are dips: a mean would be dragged down by them and the continuum would sag into every line it passed. What the window sets is a scale. Structure much broader than the window is tracked and divides out to 1.0; structure much narrower is stepped over and survives.
+
+<figure><img src="photos/figures/continuum_window.png" alt="Top, the raw trace with three candidate running medians drawn on it. Bottom, what each one leaves behind after division"></figure>
+
+Top, the raw trace in grey with three candidate continua drawn on it — this is the whole idea made visible, a guess at the smooth background laid over the thing it is guessing at. Follow the blue one, 107 nm wide: it steps straight across the green/red crossover without noticing it, so the crossover survives division and reappears as a fake absorption feature 30 nm across. Follow the red one, 15 nm wide: it dives into the Balmer lines themselves, and dividing by a continuum that already contains the line removes most of the line. Hγ reads 15% deep at 43 nm and 8% deep at 15 nm — a third of the line eaten by the choice of window alone. Bottom, what each leaves behind. This is a single 5 s sub, so it is grainier than the 25-sub stack the measurements come from; the shapes are the point, not the noise.
+
+We use 43 nm, several times the roughly 10 nm width of a Balmer line so the median steps over the lines, and narrower than the filter mountains so those divide out.
+
+What that cannot fix is the crossover, and the reason is arithmetic. It is about 30 nm wide and a Balmer line is about 10 nm, which is not enough separation for any single window to take one and leave the other. At 43 nm the lines survive intact and a residue of the crossover survives with them — the bump near 590 nm still visible in the middle panel, and in the normalized spectrum two steps down. The same broken continuum near 477 nm is why Hβ's equivalent width comes out negative and why only two of the four lines are usable.
+
+Since the window is a choice, the honest thing is to measure how much the answer depends on it.
+
+| Continuum window | Hγ | Hα |
+|---|---|---|
+| 36 nm | 13.07 Å | 9.85 Å |
+| 43 nm — used | 13.11 Å | 11.71 Å |
+| 57 nm | 12.46 Å | 13.98 Å |
+| 72 nm | 12.33 Å | 15.88 Å |
+
+Hγ barely notices, holding 12.3 to 13.2 Å across windows from 22 nm all the way to 107. Hα moves by half its own value across the four rows above. The reason is position rather than physics: Hα sits at 656 nm and the trace ends at 672, so a 43 nm window centered on it runs off the end of the data and part of its continuum estimate is padding rather than measurement. Any line within half a window of an edge inherits that.
+
+It does not overturn the result — χ² against Pickles still ranks A0V first at every window in the table, with A3V second and A0IV third, the same order as the published fit. But it does mean the Hα equivalent width carries a systematic of about ±3 Å from this choice, larger than the ±1.5 Å the fit derives from scatter, and the fix is more red end rather than a better window.
 
 </div>
 
