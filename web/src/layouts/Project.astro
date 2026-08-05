@@ -37,7 +37,7 @@ const titlePills = sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href={faviconSvg} />
+      <link rel="icon" type="image/svg+xml" href={faviconSvg} />
   <title>{project || title || 'Vivian Dai'}</title>
   <script is:inline set:html={`window._pagePhotos = ${JSON.stringify(photos)};`} />
   <style is:global>
@@ -214,6 +214,13 @@ const titlePills = sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`
     .result > *:first-child { margin-top: 0; }
     .result > *:last-child { margin-bottom: 0; }
     .result .big { font-size: 1.2em; font-weight: 600; }
+
+    /* MathJax SVG inside an equation box. Glyphs are paths, so they take their
+       colour from currentColor and need no font file to sit correctly.
+       MathJax writes its own font-size onto the container, hence !important. */
+    .eq mjx-container { margin: 0 !important; font-size: 1.75em !important; }
+    .eq mjx-container svg { max-width: 100%; height: auto; }
+    .eq:has(mjx-container) { font-family: inherit; padding: 1.2em 1em; }
 
     .eq {
       font-family: ui-monospace, "SF Mono", Menlo, monospace;

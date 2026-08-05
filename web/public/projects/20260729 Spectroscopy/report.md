@@ -5,7 +5,7 @@ sciences:
   - Astronomy
 ---
 
-<p class="lede">A diffraction grating attached to the Seestar produces a small rainbow band for stars. Vega's spectrum clearly shows hydrogen bands that confirm it as <strong>A0V</strong>. Albireo's bands are shallower, as expected since neither of its two stars is near the ~10,000 K where the strongest hydrogen absorption takes place.</p>
+<p class="lede">A diffraction grating attached to the Seestar produces a small rainbow band for stars. Vega's spectrum clearly shows the hydrogen absorption lines that confirm it as spectral type <strong>A0V</strong>.</p>
 
 ## The journey of light
 
@@ -588,39 +588,35 @@ Read independently, the three color filters produce their own spectrum reading.
 
 <figure><img src="photos/figures/bayer_planes.png" alt="The three planes extracted separately, each peaking at its own filter"></figure>
 
-If we read each column one at a time, we get the combined RG or BG flux — two curves, with the trace hopping between them. Green sits in both and lifts both by the same amount, so it can never push them apart: the height of a tooth is R − B. That is the dangerous part, and it is why the sawtooth cannot just be smoothed away. Its size is not fixed — it swells and shrinks across the spectrum on the same scale as real hydrogen absorption.
+If we read each column one at a time, we get the combined RG or BG flux — two curves, with the trace hopping between them. Green flux is in both and is common, the difference between the values is R − B. That is the dangerous part, and it is why the sawtooth of the mosaic flux cannot be smoothed away. Its size is not fixed — it swells and shrinks across the spectrum on the same scale as real hydrogen absorption.
 
 <figure><img src="photos/figures/bayer_sawtooth.png" alt="The two kinds of column drawn as two curves with the gap shaded, and three zooms showing the trace zigzagging between them"></figure>
 
-We can build the total flux spectrum by combining the three individual color planes. The extra green is dealt with by averaging its two pixels into one — not interpolating, so every number in the sum is still a number that was measured. The two mountains continue to be the blue and red filters peaking.
+Instead of the mosaic flux, we instead build the total flux spectrum by combining the three individual color planes. The extra green is dealt with by averaging its two pixels into one, so every number in the sum is still a number that was measured and not interpolated. The two mountains continue to be the blue and red filters peaking.
 
 <figure><img src="photos/figures/bayer_sum.png" alt="The three planes added back together, R plus G plus B, with the four Balmer lines marked"></figure>
 
-We can see the drastic difference splitting the colors produces by focusing on one region where we know there is no hydrogen absorption. The sawtooth of the raw mosaic is enormous — neighboring columns disagree by 52% of their average. The split planes carry none at all: 1.1%, and what is left there is noise.
+We can see the drastic difference splitting the colors produces by focusing on one region where we know there is no hydrogen absorption. The sawtooth of the raw mosaic is enormous — neighboring columns disagree by 52% of their average. The split planes carry none at all: 1.2%, and what is left there is noise.
 
-<figure><img src="photos/figures/bayer_ripple.png" alt="Two panels: Vega's full spectrum off the split planes with the line-free window marked, and five nanometers of that window blown up to single columns with both traces"></figure>
+<figure><img src="photos/figures/bayer_ripple.png" alt="Left, the whole spectrum read off the raw mosaic, the sawtooth filling in as a band. Right, five nanometers of the marked window at single-column resolution, both traces"></figure>
 
-It is worth sizing the effect against what we are trying to measure. The Hα line this report eventually measures in Albireo is a dip of 10%. In this window the mosaic on its own moves neighboring columns by five times that: writing features into the spectrum larger than the real physical phenomenon we were trying to measure. How much it costs depends on where you look — elsewhere the sawtooth runs from a few percent to over 80% — but what splitting leaves behind is the same everywhere.
+It is worth sizing the effect against what we are trying to measure. Vega's own Hα line, once the reduction is finished, is a dip of 32%. In this window the mosaic on its own moves neighboring columns by more than that: writing features into the spectrum larger than the real physical phenomenon we were trying to measure.
 
 </div>
 
 <div class="step">
 
-### Finding the dot and rectifying the streak
+### Finding the dot and the streak
 
-Two things have to be pinned down before any wavelength can be read: where the spectrum starts, and which way it runs. The zero-order dot is the origin, since every wavelength is measured as a distance out from it. The streak lies at an angle, so a column of pixels is not yet one wavelength.
-
-The dot is the compact bright blob rather than the long one, which is what separates it from the streak. Its position comes from the wings, not the peak.
+Two things have to be pinned down before any wavelength can be read: where the spectrum starts, and which way it runs. The position of the star is determined by the wings, not the peak. Ten pixels of this dot sit exactly on 65,535, the sensor's ceiling, so choosing the maximum is a random cointoss. The wings  fall away smoothly, and a flux centroid on those gives a star location precise to within a pixel.
 
 <figure><img src="photos/figures/zero_order_dot.png" alt="Left, the zero-order dot with its ten clipped pixels marked. Right, a cut through it showing the flat top against the sensor ceiling"></figure>
-
-Ten pixels of this dot sit exactly on 65,535, the sensor's ceiling. Inside a plateau the brightest pixel is wherever noise put it, so an argmax center is a coin flip across ten pixels. The wings still fall away smoothly, and a flux centroid on those alone gives a center good to a fraction of a pixel. The cut samples every second pixel — neighbors are different filters, and one parity is one filter.
 
 The streak's direction is the direction out of the dot along which the light is brightest, refined by following how far the light sits off that line as you go out. With a center and an angle, the frame is resampled along that axis.
 
 <figure><img src="photos/figures/streak_rectified.png" alt="Vega's streak resampled horizontal with the four Balmer lines marked"></figure>
 
-The dot centroided at (816.4, 143.9) and the streak ran at −3.86°. Every column is now one wavelength, which is the whole reason for straightening it, and the four Balmer lines land where the grating equation says they should.
+The dot is centered at (816.4, 143.9) and the streak ran at −3.86°. Every column is now one wavelength and the four Balmer lines land where the grating equation says they should.
 
 </div>
 
@@ -630,9 +626,12 @@ The dot centroided at (816.4, 143.9) and the streak ran at −3.86°. Every colu
 
 With the streak straight, every column holds one wavelength, so adding a column up collapses the rainbow to one number per wavelength. The three color planes are added back together first — they were split apart only to stop the mosaic printing itself onto the trace, and all three carry part of the same starlight.
 
-How wide to sum was the only judgment call. Past the edge of the star each extra row adds sky noise and no signal, so noise grows as √rows while signal has stopped. We swept the width to find out where the trade turns: three pixels either side was best, while forty captures every photon and keeps only **56%** of the achievable signal-to-noise.
+<figure><img src="photos/figures/extraction_demo.png" alt="The rectified streak with the extraction aperture drawn as two dashed lines hugging the spine"></figure>
 
-<figure><img src="photos/figures/extraction_demo.png" alt="Four panels: extraction and the aperture-width trade-off"></figure>
+We had to decide how wide to sum the brightness, and the obvious argument turns out to be the wrong one. It says narrow is better: past the edge of the star each extra row adds sky noise and no signal, so noise grows as √rows while signal has stopped. That is true only when the sky is what limits you, and on a star bright enough to saturate its own zero order it is not.
+
+Measured on the finished spectrum the continuum noise runs **0.025 at one pixel either side, 0.020 at two, 0.017 at nine**, and then flattens. Nine is what we use. Narrow loses because the trace wanders a fraction of a pixel from row to row: a three-pixel box turns that wander into noise, and a nineteen-pixel box does not.
+
 
 </div>
 
@@ -640,9 +639,7 @@ How wide to sum was the only judgment call. Past the edge of the star each extra
 
 ### Fitting the wavelength scale
 
-The dispersion relation that placed the star in its corner carries one free parameter, and the whole wavelength scale is that parameter. Aiming only needed a rough A; reading a spectrum needs a measured one.
-
-A is measured, not derived. We read the pixel distance from the dot out to each dark line; every wavelength is fixed by atomic physics, so four lines gave four equations in one unknown. Three were spare, and that redundancy is the test — no wrong model places four lines to a fraction of a nanometer with a single number.
+The grating equation helped us place both the star and its spectrum in the same image frame. The equation needed only a single parameter A to help our aim be roughly correct. Reading the spectrum needs more precision and we now derive A from atomic physics using the known wavelength of the hydrogen bands.
 
 | Line | Wavelength, from atomic physics | Distance from the dot, measured |
 |---|---|---|
@@ -651,15 +648,17 @@ A is measured, not derived. We read the pixel distance from the dot out to each 
 | Hβ | 486.135 nm | 2,735 px |
 | Hα | 656.281 nm | 3,693 px |
 
-Least squares over all four, with A the only thing free to move, settles on 56,016.
-
 <figure><img src="photos/figures/fitting_A.png" alt="Measured distance to each Balmer line, the one-parameter fit, and residuals"></figure>
 
-<div class="result">
-<strong>A = 56,016 px</strong>, out-of-sample residuals <strong>0.185 nm rms</strong>. <code>A × 2.9 µm = 162.4 mm</code> against a 163 mm plate-scale focal length. The residuals scatter around zero rather than sloping with wavelength, so the tan-of-asin shape is right and not merely fitted.
+<div class="term">
+
+**Root mean square**, written rms, is how a set of errors gets averaged into one number. Square each one, take the mean of the squares, then square-root it. Squaring first does two things: it stops a miss to the left cancelling a miss to the right, and it counts one large error for more than several small ones. So an rms of 0.185 nm means the typical line lands about that far from where atomic physics says it should.
+
 </div>
 
-A needs re-fitting after every unscrew. Fitted on the 2026-07-28 mounting, A put Hα at 3,629 px; fitted on this one it puts the same line at 3,684 px, and we measured it at 3,693. Since sliding the grating along the axis cannot move it, the likeliest culprit is tilt: a grating not quite square to the axis has its groove spacing foreshortened, which changes the dispersion directly. The streak angle swung from 16° to −3.8° across those same two mountings, which says the barrel really did seat differently.
+<div class="result">
+Least squares over the four data points settles on <strong>A = 56,016 px</strong>, reproducing the four lines to <strong>0.185 nm rms</strong> on the combined spectrum. <code>A × 2.9 µm = 162.4 mm</code> as compared to a 163 mm plate-scale focal length.
+</div>
 
 </div>
 
@@ -669,36 +668,25 @@ A needs re-fitting after every unscrew. Fitted on the 2026-07-28 mounting, A put
 
 ### Dividing out the continuum
 
+We want to measure hydrogen absorption, and absorption only means something against what would have been there without it. On the raw trace that comparison is not available: Hβ's dip sits partway up a filter mountain and Hα's sits on a falling tail. Flatten the background and the question becomes answerable — every line is a dip below 1.0, and its depth is the fraction of light the star's hydrogen removed.
+
 <div class="term">
 
-**The continuum** is the smooth, roughly blackbody background a hot dense photosphere radiates at every wavelength at once. Dividing the spectrum by an estimate of it removes the star's temperature slope and the instrument response together, leaving every line as a dip below a flat 1.0.
+**The continuum** is the smooth background upon which we can observe hydrogen absorption lines. **Normalizing** means dividing the spectrum by that background so it lies flat at 1.0 and every absorption line becomes a visible dip below it. We measure the continuum from the data itself, with a running median.
 
 </div>
 
-Every spectrum from here on is a flat line with dips in it, and that is worth pausing on, because it is not what the sensor recorded. What came off the sensor is the trace from two steps back: the star's own falling continuum, multiplied by the filter mountains, with the absorption lines cut into it. The horizontal spectrum of a textbook, where a dip is read against its neighbors on either side, is manufactured — and the manufacturing has one free number in it.
+At each wavelength take every sample within a fixed window either side, call their median the continuum there, and divide. A median rather than a mean because the absorption lines are dips, and a mean would be dragged down into every line it passed.
 
-The operation is a running median. At each wavelength take every sample within a fixed window either side, call their median the continuum there, and divide. A median rather than a mean because the lines are dips: a mean would be dragged down by them and the continuum would sag into every line it passed. What the window sets is a scale. Structure much broader than the window is tracked and divides out to 1.0; structure much narrower is stepped over and survives.
+The window has to be wide compared to a line and narrow compared to the instrument, so the lines survive and everything else flattens. We use 43 nm, against a Balmer line about 10 nm across.
 
-<figure><img src="photos/figures/continuum_window.png" alt="Top, the raw trace with three candidate running medians drawn on it. Bottom, what each one leaves behind after division"></figure>
+<figure><img src="photos/figures/normalized_spectrum.png" alt="Vega normalized: flat at 1.0 with the four Balmer lines as deep dips below it"></figure>
 
-Top, the raw trace in grey with three candidate continua drawn on it — this is the whole idea made visible, a guess at the smooth background laid over the thing it is guessing at. Follow the blue one, 107 nm wide: it steps straight across the green/red crossover without noticing it, so the crossover survives division and reappears as a fake absorption feature 30 nm across. Follow the red one, 15 nm wide: it dives into the Balmer lines themselves, and dividing by a continuum that already contains the line removes most of the line. Hγ reads 15% deep at 43 nm and 8% deep at 15 nm — a third of the line eaten by the choice of window alone. Bottom, what each leaves behind. This is a single 5 s sub, so it is grainier than the 25-sub stack the measurements come from; the shapes are the point, not the noise.
+The two mountains are gone. So is the blackbody **Planck curve** where Vega declines across the visible range. The median treats that as one more broad thing to divide away. What is left is the shape everyone recognizes — a flat line at 1.0 with the four Balmer lines cut into it.
 
-We use 43 nm, several times the roughly 10 nm width of a Balmer line so the median steps over the lines, and narrower than the filter mountains so those divide out.
+Two features did not flatten both are color filters handing over where they overlap. This is a challenge unique to the spectroscopy work: the spectrum has already been wavelength-segregated and the color filters do not help but hinder. A monochrome sensor that only counts photons would work better for this purpose.
 
-What that cannot fix is the crossover, and the reason is arithmetic. It is about 30 nm wide and a Balmer line is about 10 nm, which is not enough separation for any single window to take one and leave the other. At 43 nm the lines survive intact and a residue of the crossover survives with them — the bump near 590 nm still visible in the middle panel, and in the normalized spectrum two steps down. The same broken continuum near 477 nm is why Hβ's equivalent width comes out negative and why only two of the four lines are usable.
-
-Since the window is a choice, the honest thing is to measure how much the answer depends on it.
-
-| Continuum window | Hγ | Hα |
-|---|---|---|
-| 36 nm | 13.07 Å | 9.85 Å |
-| 43 nm — used | 13.11 Å | 11.71 Å |
-| 57 nm | 12.46 Å | 13.98 Å |
-| 72 nm | 12.33 Å | 15.88 Å |
-
-Hγ barely notices, holding 12.3 to 13.2 Å across windows from 22 nm all the way to 107. Hα moves by half its own value across the four rows above. The reason is position rather than physics: Hα sits at 656 nm and the trace ends at 672, so a 43 nm window centered on it runs off the end of the data and part of its continuum estimate is padding rather than measurement. Any line within half a window of an edge inherits that.
-
-It does not overturn the result — χ² against Pickles still ranks A0V first at every window in the table, with A3V second and A0IV third, the same order as the published fit. But it does mean the Hα equivalent width carries a systematic of about ±3 Å from this choice, larger than the ±1.5 Å the fit derives from scatter, and the fix is more red end rather than a better window.
+The artifacts cost us two absorption lines, and they fail differently. Hβ lands on the handover, so the continuum beside it sits at 1.16 rather than 1.0. Hδ sits where the continuum averages a fair 1.03 but scatters by 0.16. Hγ and Hα are more workable: a level within 3% of 1.0, and scatter near 0.03.
 
 </div>
 
@@ -706,84 +694,73 @@ It does not overturn the result — χ² against Pickles still ranks A0V first a
 
 ### Measuring equivalent width, not depth
 
-Depth is the obvious measurement and the wrong one: seeing makes a line shallower and wider at once, though the total light removed has not changed. Equivalent width measures that total — the area of the dip, written as the width of a rectangular notch removing the same light — and area survives blurring. Normalized against the local continuum, it also needs no flux calibration.
+Depth is the obvious measurement and the wrong one: seeing makes a line shallower and wider at once, though the total light removed has not changed. Equivalent width measures the total area of the dip. Normalized against the local continuum, it also needs no flux calibration to be comparable to reference catalogs.
 
-<div class="eq">EW = ∫ ( 1 − F / F<sub>continuum</sub> ) dλ</div>
+<div class="eq">
 
-We swept the integration width outward to confirm the number had settled rather than still climbing.
+$$\mathrm{EW} \;=\; \int \left( 1 - \frac{F_\lambda}{F_{\mathrm{cont}}} \right) \, d\lambda$$
 
-<figure><img src="photos/figures/continuum_and_EW.png" alt="Normalized spectrum, EW as a shaded area, and the convergence test"></figure>
+</div>
+
+We measured it on Hγ, one of the two lines the color filters left alone, and swept the integration width outward until there was no area left to add. An equivalent width of 13.1 Å says the line removes as much light as a completely black band **1.31 nm wide** would.
+
+<figure><img src="photos/figures/continuum_and_EW.png" alt="Left, the Hγ dip with the missing light shaded. Right, equivalent width against integration half-width for all four lines"></figure>
+
+Left, the shaded area is the measurement — everything Hγ took out of the flat 1.0. Right, that same area recomputed as the window widens: Hγ and Hα climb and then flatten, and the plateau is the number.
+
+The two broken lines fail in plain sight on that right panel. Hβ crosses zero near 4.5 nm and keeps falling, because widening its window sweeps up the manufactured peaks on either side for negative area. Hδ turns over and drifts.
 
 <div class="result">
 <strong>Hγ ≈ 13.1 Å · Hα ≈ 11.7 Å</strong>, both converged.
 </div>
 
-<figure><img src="photos/figures/vega_spectrum.png" alt="Reduced Vega spectrum, 25 subs combined, four Balmer lines marked"></figure>
-
-The bump near 480 nm and the dip between 560 and 590 nm are instrument, not star.
-
 </div>
 
 <div class="step">
 
-### Fitting χ² against 131 templates
+### Classifying against a reference
 
-The Pickles atlas publishes Balmer equivalent widths for 131 templates — the same quantity we measured, so no resolution matching and no flux calibration were needed. We pulled the published equivalent widths from VizieR (J/PASP/110/863) and ordered the templates hot to cool.
+The Pickles atlas publishes Balmer equivalent widths for 131 spectral types. We used χ² to rank the types in terms of goodness of fit to our two measured hydrogen absorption lines.
 
-<div class="eq">χ² = Σ ( EW<sub>ours</sub> − EW<sub>template</sub> )² / σ²</div>
+<div class="term">
 
-<figure><img src="photos/figures/pickles_chi2.png" alt="Chi-squared of our two EWs against all 131 Pickles templates"></figure>
+**Spectral type** is a star's label in the Morgan–Keenan system, and it has three parts. A letter for temperature, running O B A F G K M from hottest to coolest. A digit subdividing that letter, 0 the hottest end of its range and 9 the coolest. And a Roman numeral for luminosity class, V meaning a main-sequence star still burning hydrogen in its core. A0V is therefore a main-sequence star at the hot end of A.
 
-The minimum sits among the A stars and is deep — its neighbors are an order of magnitude worse.
+</div>
+
+<div class="eq">
+
+$$\chi^{2} \;=\; \sum_{\mathrm{lines}} \frac{\left( \mathrm{EW}_{\mathrm{ours}} - \mathrm{EW}_{\mathrm{template}} \right)^{2}}{\sigma^{2}}$$
+
+</div>
+
+χ² adds up how far our two hydrogen absorption numbers sit from a spectral type's, divided by σ — the uncertainty on our own equivalent widths. σ is the root-mean-square of how far our two lines miss the closest type, A0V: 0.79 Å at Hγ and 1.91 Å at Hα, which comes to **1.46 Å**. Nothing is fitted to our data: each spectral type is a fixed hypothesis, and the lowest χ² is the closest one.
+
+<div class="term">
+
+**Two chi-squareds.** The version taught for counts divides by the expected count, `(O − E)² / E`, because counts are Poisson and a Poisson variance equals its mean — the expected value hands you the variance for free. An equivalent width is not a count, so nothing hands us a variance and σ has to be supplied. Same statistic, and both are really (observed − expected)² divided by the variance; only the route to the variance differs.
+
+</div>
+
+<figure><img src="photos/figures/pickles_chi2.png" alt="All 131 spectral types by chi-squared on a log scale, hot to cool, with A0V lowest and its nearest rivals labeled"></figure>
+
+All 131 spectral types on a log scale, hot to cool. The field sits around χ² = 117 while A0V sits at 2.00, some sixty times closer, and the axis has to be logarithmic to show it. The pile-up on the right is the cool half of the diagram, where every type reads a Balmer width of zero and so is wrong by the same amount.
 
 | Rank | Type | χ² | Δχ² |
 |---|---|---|---|
-| 1 | **A0V** | 4.27 | 0.00 |
-| 2 | A3V | 6.28 | 2.01 |
-| 3 | A0IV | 8.00 | 3.73 |
+| 1 | **A0V** | 2.00 | 0.00 |
+| 2 | A3V | 2.94 | 0.94 |
+| 3 | A0IV | 3.74 | 1.74 |
 
-σ was derived rather than assumed: the value making reduced χ² equal 1 is our equivalent-width uncertainty, 1.5 Å, and at that σ only A0V and A3V survive — hence ±3 subclasses.
+The minimum is deep against the field and shallow against its neighbors, and both readings are the answer. Being that far clear of the field settles the letter. But A3V sits 0.94 behind, inside 1σ, so the number after it does not settle — which is exactly what ±3 subclasses means, and why the earlier blur measurement mattered.
+
+One of the two numbers carries a caveat. Hγ reads 13.11 Å against the A0V template's 13.90, within 6%. Hα reads 11.71 Å against 9.80, high by 19%. Hα sits near the edge of the frame, so its continuum window runs off the end and part of the estimate is padding rather than measurement. Hγ is the absorption line doing the honest work here.
+
+Taken character by character, the three parts of the label are not equally earned. The A was always safe. The V holds only in the coarse sense: a giant or a supergiant is ruled out easily, since A0III and A0I fall at χ² 9.2 and 70.6, but A0IV differs from A0V by only 0.30 Å at Hγ against our 1.46 Å uncertainty, so Hα alone separates them and Hα is the hydrogen line carrying the bias. The 0 never settled at all.
 
 <div class="result">
 <p class="big">Vega = A0V</p>
-<p>±3 subclasses, equivalent-width uncertainty ≈ 1.5 Å. We consulted the catalog only afterwards, so it was a blind classification: SIMBAD lists A0V.</p>
-</div>
-
-</div>
-
-<div class="step">
-
-### Running a second star through the same chain
-
-Albireo is a pair we cannot resolve — 35″ of separation is 9.5 native pixels, and 4.8 in the half-resolution color planes the extraction reads, so what reached the sensor was one blended streak carrying a K3II giant and a B8V dwarf together. The other rainbows in that frame are unrelated field stars. Both targets went through the identical chain, and depth and significance were reported line by line for each.
-
-<figure><img src="photos/figures/vega_vs_albireo.png" alt="Vega and the Albireo blend through the same reduction pipeline"></figure>
-
-It came out shallower at all four lines, not one. There was also far less of it — 3 × 20 s against Vega's 30 × 5 s — so its continuum noise is 0.043 against 0.017, and every significance falls with it.
-
-| Line | Vega | Albireo | Albireo σ |
-|---|---|---|---|
-| Hδ 410.2 | 30.7% | 19.2% | 4.5 |
-| Hγ 434.0 | 37.4% | 25.3% | 5.9 |
-| Hβ 486.1 | 32.1% | 5.6% | 1.3 |
-| Hα 656.3 | 31.9% | 9.7% | 2.3 |
-
-Read Hγ and Hα, the two lines on clean continuum and the two the classification used. Hβ's 5.6% looks like the sharpest contrast here and is the one number not to quote: at 1.3σ it is not a detection, and its continuum is the one stretch of the spectrum we could not fit cleanly.
-
-Both stars are overwhelmingly hydrogen, the same as Vega. Nothing here is hydrogen-poor. What differs is how many hydrogen atoms sit in n = 2, the only ones that can absorb a Balmer photon, and that population is set by temperature.
-
-<figure><img src="photos/figures/balmer_vs_temperature.png" alt="Top, published Hγ widths across the Pickles dwarf sequence, peaking in the early A stars. Bottom, the Boltzmann fraction of hydrogen in n = 2 against temperature"></figure>
-
-Top is somebody else's data: the Pickles catalog's own published Hγ widths across its dwarf sequence. The maximum sits in the early A stars, and our Vega measurement lands on that plateau. Either side of it the lines collapse — by K they read zero. Vega was never a fair test of this method; it is the single best case in the whole diagram.
-
-Bottom is why, on the cool side. Absorbing at Hγ needs an electron already lifted to n = 2, which costs 10.2 eV of the star's own heat, so the population that can absorb follows the Boltzmann factor. Between Vega at 9,600 K and Albireo's K3II at ~4,300 K it falls **four million-fold**. The lines are not faint there, they are absent, and no exposure recovers them. The B8V at ~13,000 K fails from the other end, hot enough that hydrogen is beginning to ionize and the neutral atoms are being removed.
-
-A second effect stacks on top. The pair is unresolved and the K giant is brighter by roughly six times in visible light, so its continuum floods the blend and dilutes whatever the B star absorbs — a fixed amount of absorbed light against a much larger total reads as a smaller percentage.
-
-The K giant does show far more metal lines than Vega, which is where the "heavy metals" intuition comes from, but that is the same cause read the other way round. Cool gas keeps its metals neutral or singly ionized with many low-energy transitions available, and the hydrogen lines have got out of the way. Excitation, not abundance.
-
-<div class="result">
-Albireo is shallower at every Balmer line — <strong>9.7% against Vega's 31.9% at Hα</strong>, <strong>25.3% against 37.4% at Hγ</strong>. That is the control working: the pipeline is reading temperature, and a star at the wrong temperature comes out different. Without it the A0V label has nothing to be measured against.
+<p>±3 subclasses, equivalent-width uncertainty 1.46 Å. Confirmed by catalog: SIMBAD lists A0V.</p>
 </div>
 
 </div>
