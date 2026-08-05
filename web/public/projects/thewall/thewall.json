@@ -39,17 +39,6 @@
       "science": "Astronomy",
       "science_slug": "astronomy",
       "caption": "",
-      "src": "/projects/thewall/astronomy/20260803%20M%2092.jpg",
-      "full": "/projects/thewall/astronomy/20260803%20M%2092.jpg",
-      "w": 952,
-      "h": 1690,
-      "date": "2026-08"
-    },
-    {
-      "kind": "photo",
-      "science": "Astronomy",
-      "science_slug": "astronomy",
-      "caption": "",
       "src": "/projects/thewall/astronomy/20260803%20M%2052%20And%20The%20Bubble%20Nebula.jpg",
       "full": "/projects/thewall/astronomy/20260803%20M%2052%20And%20The%20Bubble%20Nebula.jpg",
       "w": 952,
@@ -994,7 +983,7 @@
     {
       "science": "Astronomy",
       "slug": "astronomy",
-      "count": 23
+      "count": 22
     }
   ]
 }
