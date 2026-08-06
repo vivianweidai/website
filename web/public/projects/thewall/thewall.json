@@ -16,6 +16,18 @@
       "kind": "project",
       "science": "Astronomy",
       "science_slug": "astronomy",
+      "caption": "Temperature",
+      "src": "/projects/20260805%20Temperature/photos/figures/hero.jpg",
+      "full": "/projects/20260805%20Temperature/photos/figures/hero.jpg",
+      "w": 720,
+      "h": 720,
+      "href": "/projects/20260805%20Temperature/",
+      "date": "2026-08"
+    },
+    {
+      "kind": "project",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
       "caption": "Colorimetry",
       "src": "/projects/20260804%20Colorimetry/photos/figures/hero.jpg",
       "full": "/projects/20260804%20Colorimetry/photos/figures/hero.jpg",
@@ -983,7 +995,7 @@
     {
       "science": "Astronomy",
       "slug": "astronomy",
-      "count": 22
+      "count": 23
     }
   ]
 }

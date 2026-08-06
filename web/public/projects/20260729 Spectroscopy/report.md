@@ -5,7 +5,7 @@ sciences:
   - Astronomy
 ---
 
-<p class="lede">A diffraction grating attached to the Seestar produces a small rainbow band for stars. Vega's spectrum clearly shows the hydrogen absorption lines that confirm it as spectral type <strong>A0V</strong>.</p>
+<p class="lede">A diffraction grating attached to the Seestar produces a small rainbow band for stars. Vega's spectrum clearly shows the hydrogen absorption lines that confirm it as spectral type <strong>A0V</strong>. Running the same pipeline on a cool giant, <strong>Xi Draconis</strong>, shows those lines gone entirely — the label has to come from magnesium and iron bands instead, and lands on <strong>K2–K3 III</strong>.</p>
 
 ## The journey of light
 
@@ -696,11 +696,7 @@ The artifacts cost us two absorption lines, and they fail differently. Hβ lands
 
 Depth is the obvious measurement and the wrong one: seeing makes a line shallower and wider at once, though the total light removed has not changed. Equivalent width measures the total area of the dip. Normalized against the local continuum, it also needs no flux calibration to be comparable to reference catalogs.
 
-<div class="eq">
-
-$$\mathrm{EW} \;=\; \int \left( 1 - \frac{F_\lambda}{F_{\mathrm{cont}}} \right) \, d\lambda$$
-
-</div>
+<div class="eq">EW = ∫ ( 1 − F(λ) / F_continuum ) dλ</div>
 
 We measured it on Hγ, one of the two lines the color filters left alone, and swept the integration width outward until there was no area left to add. An equivalent width of 13.1 Å says the line removes as much light as a completely black band **1.31 nm wide** would.
 
@@ -711,7 +707,7 @@ Left, the shaded area is the measurement — everything Hγ took out of the flat
 The two broken lines fail in plain sight on that right panel. Hβ crosses zero near 4.5 nm and keeps falling, because widening its window sweeps up the manufactured peaks on either side for negative area. Hδ turns over and drifts.
 
 <div class="result">
-<strong>Hγ ≈ 13.1 Å · Hα ≈ 11.7 Å</strong>, both converged.
+<strong>Hγ ≈ 13.1 Å and Hα ≈ 11.7 Å</strong> both converged.
 </div>
 
 </div>
@@ -728,11 +724,7 @@ The Pickles atlas publishes Balmer equivalent widths for 131 spectral types. We 
 
 </div>
 
-<div class="eq">
-
-$$\chi^{2} \;=\; \sum_{\mathrm{lines}} \frac{\left( \mathrm{EW}_{\mathrm{ours}} - \mathrm{EW}_{\mathrm{template}} \right)^{2}}{\sigma^{2}}$$
-
-</div>
+<div class="eq">χ² = Σ over lines ( EW_ours − EW_template )² / σ²</div>
 
 χ² adds up how far our two hydrogen absorption numbers sit from a spectral type's, divided by σ — the uncertainty on our own equivalent widths. σ is the root-mean-square of how far our two lines miss the closest type, A0V: 0.79 Å at Hγ and 1.91 Å at Hα, which comes to **1.46 Å**. Nothing is fitted to our data: each spectral type is a fixed hypothesis, and the lowest χ² is the closest one.
 
@@ -748,7 +740,7 @@ All 131 spectral types on a log scale, hot to cool. The field sits around χ² =
 
 | Rank | Type | χ² | Δχ² |
 |---|---|---|---|
-| 1 | **A0V** | 2.00 | 0.00 |
+| 1 | A0V | 2.00 | 0.00 |
 | 2 | A3V | 2.94 | 0.94 |
 | 3 | A0IV | 3.74 | 1.74 |
 
@@ -761,6 +753,119 @@ Taken character by character, the three parts of the label are not equally earne
 <div class="result">
 <p class="big">Vega = A0V</p>
 <p>±3 subclasses, equivalent-width uncertainty 1.46 Å. Confirmed by catalog: SIMBAD lists A0V.</p>
+</div>
+
+</div>
+
+## Running it again on a cooler star
+
+<div class="step">
+
+### A second star on the same pipeline
+
+We ran the identical pipeline on a very different star. **Xi Draconis**, also called Grumium, is a K2III giant at magnitude 3.75 — about 4,400 K against Vega's 9,600 K.
+
+<figure class="medium"><img src="photos/data/xidraconis_frame.jpg" alt="The full sensor frame: a mostly black field with two rainbow streaks, the brighter one running off the right-hand edge"></figure>
+
+Every step ran unchanged: the same grating, the same split Bayer planes, the same trace, the same running-median continuum. Only one number was refitted, `A`, because the barrel had been unscrewed and remounted in between. It came back at **56,081 px** against Vega's 56,016 — a shift of 0.12%.
+
+<figure><img src="photos/figures/xidraconis_streak.png" alt="The same streak resampled horizontal, with the four metal band windows marked in red"></figure>
+
+Marked in red are the four features this star gets classified on. They are **metal bands** rather than hydrogen lines, and they are labelled without rules drawn over them so the streak can be judged by eye.
+
+<div class="term">
+
+**Metal**, to an astronomer, means any element heavier than helium — carbon, magnesium and iron all count, which is not what a chemist means by the word. Stars are so overwhelmingly hydrogen and helium that everything else gets swept into one category.
+
+**Band** rather than line because at our resolution none of these is a single transition. Each is dozens of neighboring lines blurred into one broad trough. Mg b is a triplet of magnesium lines near 517 nm; Fe4383 and Fe5270 are iron blends. G4300 is not strictly a metal at all — it is the CH molecule, which only exists in a star cool enough for molecules to survive, and that is exactly why it shows up here and not in Vega.
+
+</div>
+
+G4300 and Fe4383 sit out in the thin blue end, Mg b and Fe5270 in the bright green, and that difference decides which of them turns out to be worth anything.
+
+<figure><img src="photos/figures/hot_and_cool.png" alt="Vega above and Xi Draconis below on one shared scale, with guide lines at H-beta and magnesium b"></figure>
+
+At **Hβ**, the top plunges and the bottom is flat: 32.1% deep on Vega, 1.1% on Xi Draconis. At **Mg b**, the magnesium band at 517 nm, it reverses: 1.4% on Vega, 20.8% on Xi Draconis. Nothing in the reduction changed between those two panels, so the swap belongs to the stars.
+
+The bottom trace is visibly noisier, and honestly so — 19 subs against Vega's 25, on a star magnitude 3.75 against Vega's 0.03, which is nearly four magnitudes and a factor of about 30 in brightness. It also stops at 651 nm rather than 660, which costs us Hα entirely.
+
+</div>
+
+<div class="step">
+
+### Why the hydrogen is gone, not faint
+
+The tempting reading is that we underexposed. It is worth being clear that no exposure time would fix this, because the atoms that produce a Balmer line are not there.
+
+A Balmer photon is absorbed by a hydrogen atom already sitting in the **n = 2** level, 10.2 eV above the ground state. How many atoms are up there is set by temperature alone, through the Boltzmann factor.
+
+<div class="eq">n₂ / n₁ = ( g₂ / g₁ ) · exp( −E / kT )</div>
+
+with E = 10.2 eV and g₂ / g₁ = 4, the ratio of how many quantum states each level offers. Two constants and a temperature — nothing here is fitted to anything we measured.
+
+<figure><img src="photos/figures/hydrogen_vs_temperature.png" alt="Above, Pickles Hgamma widths peaking at A and falling to zero by K. Below, the Boltzmann n=2 fraction against temperature with both stars marked"></figure>
+
+Above is somebody else's data: the Pickles catalog's own published Hγ widths for its dwarf sequence, in spectral order, with no temperature scale assumed and nothing fitted. The dashed line is our Vega measurement, 13.1 Å. Vega sits at the peak — **A0 is the maximum of Balmer strength in the entire HR diagram**, which is exactly why the first pass worked so cleanly. Walk right toward K and the curve reaches zero and stays there.
+
+Below is the reason, and it is two constants and a temperature. At Vega's 9,600 K the fraction of hydrogen in n = 2 is 1.8 × 10⁻⁵. At Xi Draconis's 4,400 K it is 8.3 × 10⁻¹². That is a factor of **2.1 million**.
+
+<div class="result">
+The Balmer lines are not weak on a cool star. They are absent, and the method has to change.
+</div>
+
+</div>
+
+<div class="step">
+
+### Measuring a band instead of a line
+
+Instead of hydrogen we use metal features that Vega does not have. Back at Hγ we found the Equivalent Width by widening the integration window until the area stopped growing, and called that plateau the answer. Run the identical test on Mg b:
+
+| half-width | 2 nm | 3 nm | 4 nm | 5 nm | 6 nm | 8 nm |
+|---|---|---|---|---|---|---|
+| **Hγ on Vega** | 9.88 | 12.05 | 12.84 | 13.20 | 13.11 | 11.10 |
+| **Mg b on Xi Draconis** | 6.14 | 8.58 | 10.48 | 11.33 | 12.35 | 12.40 |
+
+Hγ settles. Between 4 and 6 nm it moves 2%, which is the plateau, and past 8 nm it falls away as the window runs into the filter artifacts. Mg b never settles — over the same 4 to 6 nm it climbs 18% and is still climbing. Widen the window and you do not run out of feature, you run into the next iron line.
+
+That is what makes a metal band different from a Balmer line, and it is a statement about the star rather than about our optics: a cool atmosphere produces so many overlapping lines that no measurement can find its own edges. So the edges stop being measured and start being **declared** — the window is fixed by convention, and once it is fixed the continuum has to be fixed too. Pick two side bands either side of the feature, draw a straight line between their medians, and call that the continuum. The area below it is a **band index**.
+
+<div class="term">
+
+**A band index** is an equivalent width with its continuum defined rather than measured. The two side bands are fixed by convention, the straight line between them is the pretend continuum, and the area of the dip below it is the number. It survives an uncalibrated instrument because over ~10 nm any response curve is near enough a straight line, and dividing one straight line by another leaves the dip alone.
+
+</div>
+
+Pickles publishes index *values*, but with no bandpass definitions attached so we cannot directly compare. The same catalog carries the underlying spectra, which we run through our own bandpass.
+
+<figure><img src="photos/figures/band_index.png" alt="The magnesium b index built twice with identical windows: our spectrum on the left, the K2III template on the right"></figure>
+
+The same construction, run twice. Ours on the left, the K2III template on the right. The two blue bars are the side bands, each curve has been divided by its own straight-line continuum so that continuum lies flat at 1.0, and the shaded area below it is the index. Left reads **0.300 nm**, right reads **0.329 nm** — two numbers that mean the same thing because they were made the same way.
+
+| Index | Ours | K1 III | K2 III | K3 III | K5 III | M0 III |
+|---|---|---|---|---|---|---|
+| G4300 | 0.656 ± 0.034 | 0.718 | 0.636 | 0.632 | 0.745 | 0.673 |
+| Fe4383 | 0.317 ± 0.024 | 0.190 | 0.223 | 0.175 | 0.183 | 0.214 |
+| Mg b | **0.300 ± 0.035** | 0.305 | **0.329** | 0.271 | 0.487 | 0.706 |
+| Fe5270 | 0.264 ± 0.031 | 0.241 | 0.255 | 0.238 | 0.244 | 0.233 |
+
+</div>
+
+<div class="step">
+
+### What a cool star's label is worth
+
+Four indices fall inside the range we can reach: G4300, Fe4383, Mg b and Fe5270. Other valuable indices are out of our spectrum window. The same χ² from before ranks the templates.
+
+<figure><img src="photos/figures/cool_indices.png" alt="Four panels, one per index, each showing every template's distance from our measurement in units of our own sigma"></figure>
+
+We disregard Fe4383 because it has no distinguishing power and use the other three for the χ² ranking.
+
+<figure><img src="photos/figures/cool_chi2.png" alt="Chi-squared against every cool template on a log scale, dipping sharply to a minimum at K2 and K3"></figure>
+
+<div class="result">
+<p class="big">Xi Draconis = K2–K3 III</p>
+<p>Indistinguishable between the two. SIMBAD lists K2III — consistent, and not confirmed to a subclass.</p>
 </div>
 
 </div>
