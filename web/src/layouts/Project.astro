@@ -287,6 +287,18 @@ const titlePills = sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`
       .step > *:not(h3):not(.tall):not(.small):not(.medium) { margin-left: 0; }
       .step .term, .step .result, .step .eq { margin-left: 0; }
       .row { grid-template-columns: 1fr 1fr; }
+
+      /* A wide table cannot compress to a phone's width -- its columns have a
+         minimum content width and seven of them overflow a 390 px screen, which
+         made the whole PAGE scroll sideways and pushed the prose off the left
+         edge. Give the table its own scroll box instead, so the body stays put
+         and only the table moves. Spectroscopy is the only report wide enough
+         to need this today; the rule is general so the next one is covered. */
+      table { display: block; width: 100%; overflow-x: auto; font-size: 0.86em; }
+
+      /* Nothing else may push the page wider than the screen. */
+      body { overflow-x: clip; }
+      p, li, td, th, h1, h2, h3 { overflow-wrap: break-word; }
     }
   </style>
 </head>
