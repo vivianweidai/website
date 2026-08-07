@@ -186,6 +186,14 @@ const titlePills = sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`
     body { counter-reset: step; }
     .step > *:not(h3):not(.tall):not(.small):not(.medium) { margin-left: 3em; }
     .step .term, .step .result, .step .eq { margin-left: 3em; }
+    /* ⚠️ base.css sets `table { width: 100% }`, and a percentage width resolves
+       against the CONTAINING BLOCK — which is the step, not the indented column
+       the prose occupies. So the indent above shifted every table 3em right
+       while leaving it 3em too wide, and the right edge landed exactly one
+       indent past the prose. It reads as a broken margin rather than as a
+       too-wide table, which is why it survived so long. Subtract the indent the
+       table is already carrying. */
+    .step > table { width: calc(100% - 3em); }
 
     /* Pull-out: a key technical term, defined where it first bites. */
     .term {
@@ -295,6 +303,10 @@ const titlePills = sciences.map((s) => ({ label: s, url: `/projects/#${SLUG[s]}`
          and only the table moves. Spectroscopy is the only report wide enough
          to need this today; the rule is general so the next one is covered. */
       table { display: block; width: 100%; overflow-x: auto; font-size: 0.86em; }
+      /* The indent is zeroed above, so the desktop rule's `- 3em` would leave a
+         gap on the right instead of closing one. It outranks the bare `table`
+         selector, so it has to be reset by name rather than left to cascade. */
+      .step > table { width: 100%; }
 
       /* Nothing else may push the page wider than the screen. */
       body { overflow-x: clip; }

@@ -58,6 +58,22 @@
 # must keep answering. The two gallery.json rules above were re-pointed at the
 # NEW location rather than chaining through the old one — one hop, not two.
 
+# THE SIXTH MOVE (2026-08-06): 20260805 Temperature was folded into 20260729
+# Spectroscopy as its third pipeline, and its folder deleted. The two reports had
+# become one argument read in two places — the temperature is what the continuum
+# returns once the camera is divided out, and the camera only has to be divided
+# out because the other two measurements do not need it.
+#
+# The splat carries report.md and the photos alike, and every path it can produce
+# exists on the far side: the temperature figures were copied into Spectroscopy's
+# photos/figures/ under the same names, and hero.jpg exists in both. A phone
+# holding a cached copy of yesterday's thewall.json is the case this covers.
+#
+# ⚠️ PERCENT-ENCODED, because _redirects is whitespace-separated and a literal
+# space in a source pattern would parse as the end of the field.
+
+/projects/20260805%20Temperature/*   /projects/20260729%20Spectroscopy/:splat   301
+
 # Served by Cloudflare Workers Static Assets, which reads this file from the
 # assets directory. The Worker itself is still a pure passthrough.
 

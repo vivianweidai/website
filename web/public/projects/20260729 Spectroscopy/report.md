@@ -5,7 +5,7 @@ sciences:
   - Astronomy
 ---
 
-<p class="lede">A diffraction grating attached to the Seestar produces a small rainbow band for stars. Vega's spectrum clearly shows the hydrogen absorption lines that confirm it as spectral type <strong>A0V</strong>. Running the same pipeline on a cool giant, <strong>Xi Draconis</strong>, shows those lines gone entirely — the label has to come from magnesium and iron bands instead, and lands on <strong>K2–K3 III</strong>.</p>
+<p class="lede">A diffraction grating on the front of the Seestar turns every star in the field into its own small rainbow. Three measurements can be read off one of those rainbows, and which of them works depends on the star: the area of a single absorption line, the strength of a band of lines too crowded to have edges, or the shape of the continuum lying under both. We ran all three on four stars: the first two classified them to a spectral type, and the third measured a temperature — <strong>Xi Draconis at 4424 K</strong>.</p>
 
 ## The journey of light
 
@@ -31,9 +31,23 @@ In the photosphere's cooler upper reaches, hydrogen atoms in the n = 2 level abs
 
 <div class="step">
 
+### Three things to measure on one rainbow
+
+A spectrum holds two kinds of thing, and they are not read the same way. There is the smooth continuum the star radiates, and there are the gaps cut into it on the way out. Both carry information about the star, and getting either one out needs its own measurement. There are two ways to read the gaps and one way to read the continuum.
+
+| Pipeline | Reads | Returns | Needs |
+|---|---|---|---|
+| Equivalent width | the area of one line | a spectral type | a line with findable edges |
+| Band index | a blend of lines | a spectral type | a window around the band |
+| Continuum shape | the curve underneath | a temperature | the camera divided out first |
+
+</div>
+
+<div class="step">
+
 ### Why Vega
 
-Vega is the classic target for spectroscopy, because its hydrogen lines are about as deep as a star's get, and the reason is the physics that makes a spectral type mean a temperature. Populating n = 2 takes heat, but much more heat ionizes the hydrogen away entirely, so the number of atoms able to absorb at all peaks near 10,000 K — which is Vega's temperature almost exactly. Hotter stars and cooler ones both show weaker Balmer lines. Line strength therefore reads temperature, and that is what makes a classification possible from nothing but the depth of a few gaps.
+Vega is the classic target for spectroscopy, because its hydrogen lines are about as deep as a star's get, and the reason is the physics that makes a spectral type mean a temperature. Populating n = 2 takes heat, but much more heat ionizes the hydrogen away entirely. The number of atoms able to absorb peaks near Vega's temperature of 10,000 K. Hotter stars and cooler ones both show weaker Balmer lines. Line strength therefore reads temperature, and that is what makes a classification possible from nothing but the depth of a few gaps.
 
 </div>
 
@@ -74,7 +88,6 @@ We need to capture the entire spectrum, the Seestar has two filters available. V
 **LP** is a filter for photographing nebulae from a city. It was never meant to be pointed at a star. Nebular gas is thin enough to be near vacuum, so nothing thermalizes into a continuum: a nearby hot star ionizes it, electrons recombine and cascade down the energy levels, and every jump emits at one exact wavelength. A nebula's entire output is therefore a few bright lines, while streetlight skyglow is spread across all of them — so keeping two narrow windows, at Hα and at Hβ/OIII, discards most of the glow and almost none of the nebula.
 
 **IRCUT** blocks everything past about 700 nm. A silicon pixel only registers a photon carrying enough energy to lift an electron across the silicon bandgap, and that gap of 1.12 eV corresponds to a wavelength of 1100 nm: anything shorter is detected, anything longer passes through the sensor unseen. So the chip responds all the way out to 1100 nm while the eye stops near 700. Cutting at 700 nm is what puts the red end of our spectrum there.
-
 
 </div>
 
@@ -505,8 +518,6 @@ Two stars from the frame, one faint and one bright, each taken through the whole
 
 The two come out at wildly different heights, because one star sent far more light. Divide each by its own peak and their shapes can be compared directly — the dashed curves on the right — and the solid black line between them is their average, with its width arrowed at half maximum against a scale of single pixels. The disagreement between the two is drawn larger than it really is; at the true separation all three curves collapse into one stroke and there is nothing to see.
 
-
-
 Choosing half also settles the contradiction those two boxes put on display. Bright stars plainly show as bigger blobs than faint ones, and yet every star is a point source and the optics blur them all by exactly the same amount. Both are true. The instrument hands every star the same profile shape, and brightness only scales that shape taller or shorter. A bright star is the same bell with a higher peak, so it stays above the sky background much further out into its wings, and the part you can see is wider. Apparent size on an image is a brightness measurement in disguise; it says nothing about the optics, which is what we are actually trying to measure here.
 
 Half maximum sidesteps it because the level is not a fixed brightness — it is half of whatever that particular star peaked at. Scale a profile up and the peak and the half-maximum level rise together, so the two crossing points stay exactly where they were and the width does not move. A star ten times brighter gives the same answer. That is what lets a thousand stars of wildly different brightness land on one number. The exception is a star bright enough to clip flat at the top, which has no true peak left to take half of, and that is why the selection kept only stars faint enough not to saturate.
@@ -527,7 +538,6 @@ For the spectrum that width is the resolution element, and at 14.7″ it is wide
 ### Splitting the Bayer planes
 
 The blur step met the mosaic as a problem in *space* — the filter pattern printing itself onto a star's profile. Here the pattern prints itself onto the spectrum.
-
 
 <figure class="medium">
 <svg viewBox="0 0 700 200" style="width:100%;height:auto" role="img" aria-label="Left, a patch of the mosaic drawn with the spectrum running left to right, so each sensor column stands as a vertical stripe. Two neighboring stripes are outlined: a green-and-red column and the blue-and-green column next to it. An arrow beneath shows the direction along the spectrum. Right, the resulting trace stepping between a green-and-red level and a lower blue-and-green level once every column.">
@@ -576,7 +586,6 @@ The blur step met the mosaic as a problem in *space* — the filter pattern prin
 </figure>
 
 Extracting the spectrum without splitting the colors means drawing a box across the streak on the raw mosaic and adding up everything inside it. Each box lies along one column of the sensor, and stepping along the spectrum moves to the next column, so the sequence alternates GR and BG. Reading along, those two levels taken in turn produce a sawtooth.
-
 
 <div class="term">
 
@@ -632,7 +641,6 @@ We had to decide how wide to sum the brightness, and the obvious argument turns 
 
 Measured on the finished spectrum the continuum noise runs **0.025 at one pixel either side, 0.020 at two, 0.017 at nine**, and then flattens. Nine is what we use. Narrow loses because the trace wanders a fraction of a pixel from row to row: a three-pixel box turns that wander into noise, and a nineteen-pixel box does not.
 
-
 </div>
 
 <div class="step">
@@ -662,7 +670,7 @@ Least squares over the four data points settles on <strong>A = 56,016 px</strong
 
 </div>
 
-## Reading the star
+## Pipeline one — the area of a line
 
 <div class="step">
 
@@ -757,13 +765,11 @@ Taken character by character, the three parts of the label are not equally earne
 
 </div>
 
-## Running it again on a cooler star
-
 <div class="step">
 
-### A second star on the same pipeline
+### Running it again on a cool giant
 
-We ran the identical pipeline on a very different star. **Xi Draconis**, also called Grumium, is a K2III giant at magnitude 3.75 — about 4,400 K against Vega's 9,600 K.
+The pipeline works on Vega. The question is how far from Vega it keeps working, and the fastest way to find out is to move the temperature a long way. **Xi Draconis**, also called Grumium, is a K2III giant at magnitude 3.75 — about 4,400 K against Vega's 9,600 K.
 
 <figure class="medium"><img src="photos/data/xidraconis_frame.jpg" alt="The full sensor frame: a mostly black field with two rainbow streaks, the brighter one running off the right-hand edge"></figure>
 
@@ -771,7 +777,7 @@ Every step ran unchanged: the same grating, the same split Bayer planes, the sam
 
 <figure><img src="photos/figures/xidraconis_streak.png" alt="The same streak resampled horizontal, with the four metal band windows marked in red"></figure>
 
-Marked in red are the four features this star gets classified on. They are **metal bands** rather than hydrogen lines, and they are labelled without rules drawn over them so the streak can be judged by eye.
+Marked in red are the four features this star gets classified on. They are **metal bands** rather than hydrogen lines, and they are labeled without rules drawn over them so the streak can be judged by eye.
 
 <div class="term">
 
@@ -814,6 +820,8 @@ The Balmer lines are not weak on a cool star. They are absent, and the method ha
 </div>
 
 </div>
+
+## Pipeline two — the strength of a band
 
 <div class="step">
 
@@ -867,5 +875,205 @@ We disregard Fe4383 because it has no distinguishing power and use the other thr
 <p class="big">Xi Draconis = K2–K3 III</p>
 <p>Indistinguishable between the two. SIMBAD lists K2III — consistent, and not confirmed to a subclass.</p>
 </div>
+
+</div>
+
+<div class="step">
+
+### Reading a second cool star
+
+**Eltanin**, the brightest star in Draco at magnitude 2.2, is a K5 giant — three subclasses cooler than Xi Draconis, and three rungs further down the same ladder. It is the obvious second test, because a pipeline that puts two stars on two different rungs has done something that landing one star near one rung could have done by luck.
+
+<figure><img src="photos/figures/eltanin_indices.png" alt="Four panels, one per index, each showing every template's distance from our Eltanin measurement in units of our own sigma"></figure>
+
+Four panels, one per index, in the same order as before: G4300, Fe4383, Mg b, Fe5270. The shaded band is one sigma either side of our measurement, and a template crossing it agrees with us.
+
+Mg b behaves. It climbs steadily across the sequence and crosses our value between K5 and M0, which is one rung out. Fe5270 crosses nowhere at all: every template on the list sits two to five sigma below what we measured. Put all four into one χ² and the answer is **M1 III**, wrong by two subclasses, with K5 III third.
+
+</div>
+
+<div class="step">
+
+### Throwing away two of the four indices
+
+G4300 and Fe4383 sit at 428 and 438 nm. Mg b and Fe5270 sit at 517 and 527. That is not a detail of bookkeeping — the first pair falls in the blue plane of the mosaic and the second pair falls in the green, and on a cool star those are not the same instrument. A K giant emits very little blue, so the two blue windows are read off the thinnest part of the faintest region of the spectrum.
+
+<figure><img src="photos/figures/one_star_two_nights.png" alt="Xi Draconis on 3 August and 5 August drawn over each other, with the two blue index windows marked in red and the two green ones in green; below, the ratio of the two nights, flat at one above 440 nm and swinging wildly below it"></figure>
+
+<div class="result">
+
+Ranked on the two green-plane indices alone, Eltanin's best match is <strong>K5 III</strong>, which is what SIMBAD lists.
+
+</div>
+
+</div>
+
+## Pipeline three — the shape of the continuum
+
+<div class="step">
+
+### Why the camera has to come out first
+
+Both pipelines above returned a label. We measured how deep a few features were, compared the pattern against a library of cataloged stars, and took the name of the closest match. That is a rank, not a physical quantity.
+
+<div class="term">
+
+**Local baseline.** Measuring a feature against continuum taken from right beside it — ten or twenty nanometers either side — rather than against any absolute scale. Anything varying slowly across a span that short sits in the feature and the baseline alike, and cancels.
+
+</div>
+
+That is also why neither of them needed the instrument calibrated. Across ten or twenty nanometers the camera's distortion is near enough to a straight line to cancel whichever way the baseline is drawn, so both labels would have been sound on a much worse camera. It is why nothing up to this point has had to know what fraction of the light the Seestar actually records at any wavelength.
+
+Temperature is the opposite case. It is carried by the shape of the whole continuum — the **Planck curve** for a blackbody, and something close to it with the metal lines eating into the blue for a cool star — and a local baseline throws that shape away by design. Reading the continuum means measuring what the camera did across the entire range and dividing it out.
+
+</div>
+
+<div class="step">
+
+### Using Vega as the ruler
+
+Vega is the primary spectrophotometric standard of astronomy. Its true spectrum has been measured from space and published wavelength by wavelength in the CALSPEC database, so what it emits is not in question.
+
+Everything from here runs on one night and one mounting. On 5 August the grating went on once and stayed on: Vega at 23:25, then Eltanin, Deneb and Xi Draconis, then Vega again at 00:34. The standard and the targets share a threading of the barrel, and the two Vega stacks bracketing the night agree to a median of 0.992 with 3.2% scatter, so the instrument is measured rather than assumed.
+
+So we photographed it, and put what the sensor recorded beside what Vega actually emits. The curves are normalized by their own reading at the midpoint of the spectrum.
+
+<figure><img src="photos/figures/ours_against_calspec.png" alt="Our recorded Vega spectrum against the published CALSPEC spectrum of the same star, ours carrying a sharp cliff near 477 nm and a broad bump near 588 nm that the published one does not have"></figure>
+
+</div>
+
+<div class="step">
+
+### Reading the camera off the difference
+
+The camera multiplies. A filter passing 40% of the light at some wavelength scales it by 0.4 rather than removing a fixed amount, so the camera comes out by division: our Vega divided by CALSPEC's, wavelength by wavelength. What is left is everything the light met on the way to the pixel.
+
+Our Vega is two stacks rather than one exposure, and haze and airmass shift across a night, so each frame is scaled to a common brightness at 550 nm before combining — otherwise the stack averages differences in transparency instead of beating down noise. One number per frame, which moves the whole curve up or down and leaves its shape alone.
+
+<figure><img src="photos/figures/instrument_response.png" alt="The measured instrument response across the full range, with vertical bands marking sharp steps at 477 and 588 nanometers"></figure>
+
+Both filter handovers stand out as steps, marked here, and between them the response runs smooth. Neither is subtle, and neither is the star.
+
+</div>
+
+<div class="step">
+
+### Testing it on a different star
+
+We build the curve from Vega, apply it to Xi Draconis shot the same night on the same mounting, and ask whether what comes out looks more like a K giant than what went in.
+
+<figure><img src="photos/figures/transfer_before_after.png" alt="Xi Draconis in white against two cataloged giant templates, the camera still in the light on the left and divided out on the right, with the region between the two filter handovers shaded"></figure>
+
+The left panel is the star as the camera recorded it, and the camera is most of what you see: a cliff at 477 nm and a bump above 580 that no giant has. The right panel is the same light with the response divided out, and both are gone. Inside the shaded band the white trace now runs with the templates rather than across them.
+
+<div class="result">
+
+Inside the good zone the corrected star sits <strong>1.9× closer</strong> to K2 III than to K4 III — rms 0.064 against 0.119 — where before the correction K4 III was winning. The catalogs list <strong>K2 III</strong>.
+
+</div>
+
+</div>
+
+<div class="step">
+
+### Reading three targets off one mounting
+
+That window is where the instrument was designed to work. Both the color filters over the pixels and the achromatic doublet in front of them are built for human vision, so between about 480 and 600 nm one filter carries the light and the lens brings it to a sharp focus. Outside that band the light is mid-handoff between one dye and the next while the lens no longer focuses it. There is nothing stable there to divide out.
+
+<figure><img src="photos/figures/three_targets.png" alt="Three panels, each our corrected continuum in white against the cataloged template it matches best, for Eltanin, Xi Draconis and Deneb"></figure>
+
+</div>
+
+<div class="step">
+
+### Finding the temperature at the minimum
+
+Picking the closest template and reading its temperature off the label would be the band-index trick again with a number attached, and it would inherit the same ceiling: the answer could only ever be one of the ten temperatures the library happens to contain.
+
+The templates are not the answer. They are samples of a continuous relationship between temperature and continuum shape, and a sample can be interpolated. So the measurement is not which template wins — it is how badly our star fits each one, plotted against that template's temperature.
+
+<figure><img src="photos/figures/temperature_minimum.png" alt="Misfit between our corrected continuum and each comparison spectrum, plotted against that spectrum's temperature, for two stars; each traces a U with a parabola through its lowest three points and a dotted line at the minimum"></figure>
+
+Each star traces a U. The curve through the lowest three points of each is a parabola, and the dotted line is its vertex — the temperature at which our star would fit best, which is not a temperature any template has.
+
+<div class="result">
+
+<p class="big">Xi Draconis 4424 K · Eltanin 3963 K</p>
+<p>against literature values of 4390 K and 3930 K, so both land <strong>about 34 K high</strong>. Neither number sits on a template: 4424 K falls between K2 and K1, and 3963 K between K5 and K4.</p>
+
+</div>
+
+One feature of the plot is worth naming rather than leaving to puzzle over: Xi Draconis's misfit dips again near 4990 K, a long way from its real temperature.
+
+Temperature is read off the slope of the continuum, and a slope is measured over a baseline. Ours is the whole of the good zone and no more — 500 to 570 nm, a span of <strong>70 nm</strong>. That is a short lever to weigh a temperature on. Over the full optical range a G8 giant and a K2 giant are not remotely alike, but across 70 nm the difference between them is a gentle tilt, and comparison stars differ in more than temperature: an unlucky combination of composition and surface gravity can tilt a hotter giant the same way. The 4990 K dip is that coincidence, not a second solution.
+
+A wider window would separate them and the camera does not offer one, so the fit is taken from the shape of the minimum rather than from the single lowest point on the plot.
+
+</div>
+
+<div class="step">
+
+### Not using a blackbody, and seeing why not
+
+A star radiates roughly as a blackbody, so the obvious move is to fit a Planck curve instead of a catalog of real stars. The dotted line on the Xi Draconis panel two steps above is that fit. It returns 4230 K where the literature says 4390 K, and it fits worse while doing it — rms 0.074 against the K2 III template's 0.043.
+
+<div class="term">
+
+**Line blanketing.** In a cool star, thousands of metal absorption lines crowd the blue and remove flux wholesale. The continuum there sits well below a blackbody, so the star looks redder, and therefore cooler, than it is.
+
+</div>
+
+So the blackbody reads the star 160 K cooler than it is, and cooler is the direction blanketing has to push it.
+
+What the fit is actually reading is a slope. A hotter blackbody puts more of its light at short wavelengths, so the tilt of the continuum across our window is the whole thermometer — blue-heavy is hot, red-heavy is cool. Metal lines remove light from the blue side, which tips that tilt toward the red, and a red-tipped continuum is what a cooler star has. The effect is worst on exactly the cool stars this method is best on, because those are the ones with enough metal lines to do the removing.
+
+That is the whole reason the comparison runs against real stellar spectra rather than against an idealized curve — real ones already have the blanketing in them, so it cancels instead of having to be modeled. Predicting which way an error will point before measuring it is what separates a measurement from a fit that happens to return a number.
+
+</div>
+
+## What the three pipelines are worth
+
+<div class="step">
+
+### Running one star through all three
+
+**Deneb** is an A2 supergiant: near enough Vega's surface temperature, and about two hundred times the radius, which spreads a comparable mass of atmosphere over forty thousand times the area and leaves it very thin. Every step ran unchanged — the same grating, the same split planes, the same running-median continuum.
+
+**Pipeline one** measures its two Balmer equivalent widths against the same 131 templates and returns **F2 III**, without hesitating: the nearest rival is more than a sigma behind, where Vega's nearest rival sat inside one.
+
+<figure><img src="photos/figures/deneb_chi2.png" alt="All 131 spectral types by chi-squared on a log scale, hot to cool, with F2III lowest and the whole A region sitting high above it"></figure>
+
+<div class="term">
+
+**Stark broadening.** A hydrogen atom's energy levels shift in the electric field of a passing ion or electron, so it absorbs slightly off its own wavelength for as long as a charge is nearby. The denser the gas, the more often that happens, and the further the line's wings spread. Those wings hold most of a Balmer line's area, so an equivalent width is partly a reading of gas density — and gas density is what a luminosity class is.
+
+</div>
+
+A supergiant photosphere has almost no pressure in it, so the wings are not there and the area collapses. Deneb reads Hγ 6.9 Å and Hα 2.4 Å against Vega's 13.7 and 20.0, roughly half of each. The Pickles catalog says it from the other side: Hγ runs 13.9 Å at A0V and 4.2 Å at A0I, so most of the spread in that column is luminosity rather than temperature. A weak Balmer line has two possible causes — a star too cool to populate n = 2, or a star too thin to broaden what it has — and one number cannot separate two causes. Sliding down the dwarf sequence toward F is a perfectly good way to make a Balmer line weak, and it is the wrong one here.
+
+**Pipeline two** has nothing to say at all. Metal bands need an atmosphere cool enough to hold the molecules and the neutral atoms that make them, and at 8,500 K Deneb has neither. This is not a failure — it is the pipeline correctly declining a star outside its range, which is what the first two-thirds of this report established the range for.
+
+**Pipeline three** puts the corrected continuum against every cataloged spectrum in the library and picks **A2 I** first, ahead of the two other supergiants and every dwarf. Same star, same night, same frames as the answer that was wrong.
+
+<div class="result">
+
+<p class="big">F2 III · nothing · A2 I</p>
+<p>Deneb is A2 Ia. Three pipelines on one star, and the two that return a label from a feature disagree with the one that reads the shape underneath it.</p>
+
+</div>
+
+That is the whole report in one star. The first two pipelines are cheap, need no calibrated instrument, and are blind to anything that is not a feature sitting on a local baseline. The third costs a night of instrument work and sees the thing the other two cannot: not the depth of what was removed from the light, but the shape of what was there to begin with.
+
+</div>
+
+<div class="step">
+
+### What a number is worth that a label is not
+
+Two things separate 4424 K from K2 III.
+
+It is a property of the star in physical units, reached by putting our light beside published light, rather than a name borrowed from the nearest entry in a catalog. And it can be wrong. A label matched against a list is either the closest match or it is not; a temperature can be checked against an independent measurement and disagree with it, which is what makes the agreement mean something when it happens.
+
+It also arrives by a route sharing nothing with the other two. The lines vanish on cool stars and the bands vanish on hot ones, so both label pipelines have a temperature range and neither covers the diagram. The continuum does not vanish anywhere. The classification used four absorption band strengths, measured against a straight line drawn a few nanometers either side. The temperature used the overall slope, with those same bands contributing almost nothing to it, and with an instrument correction that neither of the other pipelines needed or wanted. Two independent observables landing on the same star is worth more than either of them landing there alone.
 
 </div>
