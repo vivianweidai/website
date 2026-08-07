@@ -72,7 +72,7 @@ First built for `20260729 Spectroscopy`. The classes live in `layouts/Project.as
 Writing rules that came out of the first one:
 
 - One step = one thing that happened. Either something physical done to the sample or the signal, or one operation on the numbers. If a step needs "and" in its title, it is two steps.
-- Steps run in the order you did them, setup through to the answer. The reader is following a path, not consulting a reference — this is what makes it teachable and what separates it from the legacy format.
+- Steps run in the order that builds understanding, which is usually but not always the order you did them. The reader is following a path, not consulting a reference — this is what makes it teachable and what separates it from the legacy format. Where the two orders differ, the science wins: sections are rungs of a ladder, each one measuring something the rung below it could not reach, and the night the data happened to arrive is not a rung. How a target was chosen or noticed is only worth a sentence if the choice changed the measurement.
 - Cut the meta. No "this report describes", no standalone Data or Method section describing where files live and what format they are in. Where that matters it belongs in the step that touches it.
 - Write it as a recipe, not an essay. The target is reproducing the work, so no scene-setting, no motivation, no adjectives doing emotional work. The lede is instrument, data, result — three clauses.
 - Define the word where it bites, in a `.term`, not in a glossary and not on first mention in the lede. A reader meets "seeing" at the step where seeing is the problem.
