@@ -468,9 +468,9 @@ Everything so far has asked where an object is. The same machinery answers how b
 
 **C/2024 J3** sits in a field shot at five seconds a frame, at magnitude 14 — nowhere near visible in a single exposure. At a signal-to-noise ratio of about 0.2 there is nothing there to see at all. Recovering it means stacking hundreds of frames, and the interesting part is how they are stacked.
 
-<figure><img src="photos/figures/comet_motion.png" alt="Four panels: one raw frame with the comet invisible, then three deep stacks in which a faint smudge appears inside a solid circle and steps across the panels while the field stars stay put. Each stacked panel also carries two dotted circles marking where the comet sat in the other two slices."></figure>
+<figure><img src="photos/figures/comet_motion.png" alt="Four panels: one raw frame with the comet invisible, then three deep stacks in which a faint smudge appears inside a solid circle and steps across the panels while the field stars stay put."></figure>
 
-The run is split into three time slices and each slice is stacked with the stars aligned. The field stars therefore sit still from panel to panel, and anything moving relative to them steps across — which is what the solid circle is doing. Each panel also carries the other two slices as dotted circles, so the whole track is visible from any one of them, and the first panel is a single raw frame for scale.
+The run is split into three time slices and each slice is stacked with the stars aligned. The field stars therefore sit still from panel to panel, and anything moving relative to them steps across — which is what the circle is doing. The first panel is a single raw frame at the same crop, and it is there to show what nothing looks like: no stacking, no smudge, so the thing appearing in the other three was put there by the stacking rather than by a hopeful eye.
 
 <div class="result">
 comet at magnitude <strong>14.12</strong>, against a <strong>15.42</strong> limit · zero point from 218 Gaia stars at 0.225 mag scatter
@@ -478,7 +478,7 @@ comet at magnitude <strong>14.12</strong>, against a <strong>15.42</strong> limi
 
 <div class="term">
 
-The **zero point** is what turns counts into a magnitude. A sensor does not measure brightness, it collects light, and how many counts that becomes depends on the aperture, the exposure, the optics and how clear the night was. So you photograph stars whose brightness is already known, see what they come out at, and that offset calibrates everything else in the frame. Position is borrowed from a catalog and so is brightness — 218 Gaia stars set this one, agreeing among themselves to 0.225 mag, which is the floor under the comet's 14.12.
+The **zero point** is what turns counts into a magnitude. A sensor does not measure brightness, it collects light, and how many counts that becomes depends on the aperture, the exposure, the optics and how clear the night was. So you photograph stars whose brightness is already known, see what they come out at, and that offset calibrates everything else in the frame.
 
 </div>
 
@@ -492,11 +492,11 @@ Both are small bodies moving against the stars, and at this scale neither shows 
 
 <div class="term">
 
-**FWHM**, full width at half maximum, is how wide a blur is: the diameter of the disc at the height where it has dropped to half its peak brightness. Every point source in a frame is spread into the same blur by the optics and the air, so the field stars measure it directly — they are known points, and whatever width they come out at is the instrument's own.
+**FWHM**, full width at half maximum, is how wide a blur is: the diameter of the disc at the height where it has dropped to half its peak brightness. Every point source in a frame is spread into the same blur by the optics and the air, so the field stars measure it directly — they are points, and whatever width they come out at is the instrument's own.
 
 </div>
 
-Measuring that takes both of the stacks, and the difference between them is what the argument turns on. Adding hundreds of frames together means choosing what to hold still. Line the **stars** up and they come out sharp, while the comet — which moved the whole time — smears into a streak. Line the frames up on the **comet's** own motion instead and it comes out sharp, while every star smears. Same frames, two stacks, and what is sharp in one is smeared in the other.
+Measuring that takes two stacks built from the same frames, and the difference between them is what the argument turns on. Adding hundreds of frames together means choosing what to hold still. Line the **stars** up and they come out sharp, while the comet — which moved the whole time — smears into a streak. Line the frames up on the **comet's** own motion instead and it comes out sharp, while every star smears. Same frames, two stacks, and what is sharp in one is smeared in the other.
 
 Three widths make the argument, all measured on those two stacks:
 
@@ -508,9 +508,15 @@ Three widths make the argument, all measured on those two stacks:
 
 <figure><img src="photos/figures/comet_profile.png" alt="Three curves of surface brightness against radius on a log scale: the comet, the field stars, and the field stars in the comet-aligned stack. The comet's curve sits well above the field stars' between about 9 and 24 arcseconds"></figure>
 
+Reading that figure takes one convention. Each curve is an object's brightness plotted against distance from its own center, divided by its brightness *at* the center — so every curve starts at 1 on the left and falls as you move outward. The vertical axis is logarithmic, so each labelled line is a factor of ten, and a curve dropping past two of them has fallen to a hundredth of its core.
+
+The dotted horizontal line is where the table above comes from. It sits at half brightness, and the radius where a curve crosses it is the half-width — double it and you have the full width at half maximum. The blue curve crosses at 7.25″, the comet's at 9.10″, the smeared stars' at 9.90″, which are the three numbers in the table. Figure and table are one measurement, read two ways.
+
 The third row is what makes this an argument rather than an assertion. In a stack aligned on the comet's motion the stars are the things being smeared, so they must come out wider than in a star-aligned stack — and they do. That confirms the alignment behaved as expected, and it brackets the comet between the two: wider than an unsmeared star, narrower than a smeared one.
 
-The width ratio is the weaker half of the case. The shape of the profile is the stronger half, and it is what the figure is for: peak-normalized, the comet holds 0.317 of its brightness at 12.8″ where a star holds 0.094, and 0.228 at 16.5″ against 0.024. Between about 9″ and 24″ it is carrying light that a point source simply does not have. Blur cannot manufacture a halo; it can only spread the light that was already there.
+The width ratio is the weaker half of the case, though, because it rests on a single crossing point. The shape of the whole curve is the stronger half, and it is the real reason for the figure. Look at the vertical gap between the orange curve and the blue one out past the dotted line: at 12.8″ the comet still holds 0.317 of its central brightness where a star holds 0.094, and at 16.5″ it is 0.228 against 0.024 — nearly a full decade on this axis. Between about 9″ and 24″ the comet is carrying light that a point source simply does not have.
+
+That gap is what cannot be faked. Blur takes light and spreads it; it never creates any. A star seen through worse air, or through a stack that smeared it, still falls away as the grey curve does — steadily, with nothing left over. The orange curve refuses to fall, and the only thing that puts light at 16.5″ from a center is something that is actually emitting there. That is the coma.
 
 Two blurs applied one on top of the other combine in quadrature, so the comet's intrinsic size is √(18.2² − 14.5²) = 11.1″. At 3.445 AU, where one arcsecond spans 2,499 km, that is a coma about **27,700 km** across — twice the diameter of the Earth. It is an upper bound rather than a measurement, because any error in the comet's predicted track smears the stack a little further.
 
