@@ -262,7 +262,7 @@ That number is the denominator for everything that follows. A result is only int
 
 Juno is the only thing in the frame that is not a star, and over half an hour it says so. Each frame was solved independently and then cropped around the same sky coordinate.
 
-<figure class="medium"><img src="photos/figures/juno_blink_zoom.gif" alt="A zoomed crop of the first and last frames alternating; the field stars hold still and Juno, the bright dot at center, steps across them"></figure>
+<figure class="medium"><img src="photos/figures/juno_blink_wide.gif" alt="The first and last frames alternating, cropped to a wide strip; the field stars hold still and Juno, the bright dot at center, steps across them"></figure>
 
 <div class="result">
 <strong>24.5″</strong> between the night's first and last frame, 40.1 min apart — <strong>6.7 px</strong> on the sensor
@@ -366,7 +366,7 @@ Gaia's catalog positions are quoted for 2016. So a decade of that motion has alr
 <p>from 205 frames — agreeing to <strong>0.40%</strong> in how far the star travelled and <strong>4.0′</strong> of arc in which way, at 1.6× the measurement floor.</p>
 </div>
 
-The left panel is the whole displacement, with every frame's own answer drawn as a separate point so the scatter is visible rather than asserted. Read it as a consistency test rather than a discovery: the plate solution is itself built from Gaia stars moved to tonight, so the frame is Gaia's frame, and what has been shown is that the star sits where that frame says it should. That still exercises the solve, the centroid and the epoch arithmetic all at once, on a 30 mm telescope in a suburban backyard.
+The left panel is the whole displacement, with every frame's own answer drawn as a separate point so the scatter is visible rather than asserted. Read it as a consistency test rather than a discovery: the plate solution is itself built from Gaia stars moved to tonight, so the frame is Gaia's frame, and what has been shown is that the star sits where that frame says it should. That still exercises the solve, the centroid and the epoch arithmetic all at once.
 
 </div>
 
@@ -464,7 +464,7 @@ The second row is where the rest of this page comes from. Nobody pointed the tel
 
 ### Recovering an object below the single-frame limit
 
-Everything so far has asked where an object is. The same machinery answers how big it is, and the object that shows it is a comet.
+Everything so far has asked where an object is. The same machinery answers how big it is: revealing a comet.
 
 **C/2024 J3** sits in a field shot at five seconds a frame, at magnitude 14 — nowhere near visible in a single exposure. At a signal-to-noise ratio of about 0.2 there is nothing there to see at all. Recovering it means stacking hundreds of frames, and the interesting part is how they are stacked.
 
