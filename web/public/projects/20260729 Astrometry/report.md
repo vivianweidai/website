@@ -262,7 +262,7 @@ That number is the denominator for everything that follows. A result is only int
 
 Juno is the only thing in the frame that is not a star, and over half an hour it says so. Each frame was solved independently and then cropped around the same sky coordinate.
 
-<figure class="medium"><img src="photos/figures/juno_blink.gif" alt="The first and last frames alternating; the star field holds still and Juno, the bright dot at center, steps across it"></figure>
+<figure class="medium"><img src="photos/figures/juno_blink_zoom.gif" alt="A zoomed crop of the first and last frames alternating; the field stars hold still and Juno, the bright dot at center, steps across them"></figure>
 
 <div class="result">
 <strong>24.5″</strong> between the night's first and last frame, 40.1 min apart — <strong>6.7 px</strong> on the sensor
