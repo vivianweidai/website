@@ -5,13 +5,15 @@ sciences:
   - Astronomy
 ---
 
-<p class="lede">A 30 mm telescope photographed the asteroid 3 Juno fifty times in thirty-seven minutes and measured where it sat against the Gaia catalog. Every position landed within <strong>0.74″</strong> of what JPL Horizons predicted — a number that describes the telescope rather than the asteroid, and the error bar under everything that follows. The same method recovered a decade of Barnard's Star's motion to <strong>0.4%</strong>, and measured a <strong>28,000 km</strong> coma on a comet that no single frame shows at all.</p>
+<p class="lede">The Seestar's accuracy in pinpointing a star is measured to be <strong>0.27″</strong>. With that metric in hand: a single frame of an asteroid sits <strong>0.74″</strong> from prediction, a decade of motion by the fastest-moving star comes back within <strong>0.4%</strong> of prediction, and an invisible comet is shown to carry a <strong>28,000 km</strong> tail.</p>
 
 ## What a position is
 
 <div class="step">
 
-### A position is only ever relative
+### Finding the reference
+
+The key question is not where any particular object is in the sky. It is how well this telescope can say where anything is. Every other astronomy project that points at a star has to trust that answer, and none of them can check it.
 
 There is no ruler in the sky. A telescope cannot report where something is; it can only report where something sits relative to other things in the same picture. Every astrometric measurement is therefore borrowed — you find objects whose positions are already known to great precision, and you measure your target against them.
 
@@ -29,21 +31,30 @@ So everything rests on what you borrow from, and the sky splits that question in
 
 </div>
 
-Gaia is what the frame gets fitted to, so it builds the ruler. Horizons is what the moving target gets checked against, so it holds the answer. And the two are independent — Horizons knows nothing of our star field, and Gaia knows nothing of Juno — which is the only reason the comparison at the end of this page means anything.
+Gaia is what the frame gets fitted to, so it builds the ruler. Horizons is what erratic moving targets get checked against, so it holds the answer. And the two are independent — Horizons knows nothing of stars and Gaia knows nothing of asteroids.
 
 </div>
 
 <div class="step">
 
-### Choosing a target whose position is already known
+### Choosing the frame
 
-3 Juno is the third asteroid ever discovered, found in 1804, and at magnitude 9.1 it is an obvious dot in a single twenty-second exposure. Juno has been watched for two centuries, so its orbit is known far better than one night with a small telescope could ever measure. That turns the measurement around. Whatever disagreement we find is not news about the asteroid; it is a description of the instrument that found it.
+Both populations are in this one frame. That is what makes it a measurement rather than a photograph.
 
 <figure class="medium"><img src="photos/figures/juno_first.png" alt="One twenty-second exposure, the whole sensor: a dark field of several hundred stars, 3.9 by 2.2 degrees, with Juno ringed in red near the center."></figure>
 
+Nearly every dot here is a star, and Gaia knows where each of them belongs to a fraction of a milliarcsecond. Fitting the frame to them is what turns its pixels into coordinates — the star field **is** the ruler.
+
+Ringed near the center is the one dot that is not a star but an asteroid. That is the thing the ruler gets used **on**, and Horizons holds its answer independently. One exposure, both categories, each doing the job only it can do.
+
+And they arrive together, which matters more than it sounds. A ruler built on one night and applied to another would carry errors the target never shared. Here the reference and the target sit in the same picture, at the same instant, through the same air — so whatever the frame gets wrong, it gets wrong about both of them at once.
+
+The target itself is chosen to be uninteresting. 3 Juno is bright enough to be obvious in twenty seconds, and its orbit has been refined for two centuries, so it is known far better than one night with a 30 mm telescope could ever measure. Any disagreement is therefore not news about the asteroid. It is a description of the instrument.
+
 </div>
 
-## One frame, one position
+
+## Building the ruler
 
 <div class="step">
 
@@ -109,18 +120,20 @@ The answer that comes back is a **WCS**, a World Coordinate System: the function
 
 <div class="step">
 
-### Solving the frame from its own pixels
+### Identify the frame
+
+Run that method on the frame and it answers one question: which patch of sky is this.
 
 <div class="term">
 
-**astrometry.net** is the free software that runs the quad method above. It matches the frame against an index of the sky to determine the rough patch of sky being looked at.
+**astrometry.net** is the free software that runs the quad method above. It matches the frame against a pre-built index of the sky, and it needs nothing but the pixels.
 
 </div>
 
-Its goal is identification, and that word is carrying weight. The solver works through quads until one match is unambiguous and then it stops, because the question it was asked has been answered. So what it hands back is anchored on however few stars it took to reach certainty, matched against a coarse internal index.
+The solver works through quads until one match is unambiguous, and then it stops, because what it was asked has been answered. So what comes back rests on however few stars it took to be certain — enough to place the frame on the sky, and nothing beyond that. It found where the frame is. It never worked out how precisely the frame maps, because nothing asked it to.
 
 <div class="result">
-center <strong>RA 301.809° Dec −5.156°</strong> · <strong>3.669″</strong> per pixel · rotated <strong>179.92°</strong> · and a curvature term
+center <strong>RA 301.809° Dec −5.156°</strong> · <strong>3.669″</strong> per pixel · rotated <strong>179.92°</strong>
 </div>
 
 That mapping is complete and it works: hand it any pixel in the frame and it hands back a celestial coordinate. The only question left is how close that coordinate is to the truth, and it can be asked directly, because the frame is full of stars whose real positions Gaia already knows. Put each one through this mapping and compare:
@@ -129,43 +142,45 @@ That mapping is complete and it works: hand it any pixel in the frame and it han
 the solver's mapping lands <strong>2.14″</strong> from where Gaia puts the same stars
 </div>
 
-Two arcseconds is a fine answer to which patch of sky this is. It is a poor one for what comes next, because the thing this page exists to measure is the gap between where the frame puts Juno and where Horizons says Juno was — and that gap turns out to be under an arcsecond. A mapping already carrying two would swamp it.
-
 </div>
 
 <div class="step">
 
-### Refitting the frame against Gaia
+### Calibrate the frame
 
-Bringing that 2.14″ down is what this step is for. The mapping gets built again from every star the frame contains, against Gaia, rather than from the few that were enough to settle the identification. Five moves, each with a job:
+Now we ask the question nobody asked the solver. Not where is this frame, but how precisely does it map — and the way to improve an answer is to use everything the frame is holding. The solver stopped at a handful of stars. This uses all of them, and it measures them against Gaia rather than against a coarse index:
 
 - **Detect our own stars.** Find every source sitting 4σ above the background, each with a sub-pixel center. These are what the new mapping will be fitted to, so what matters is that there are many of them and that they are spread across the sensor.
 - **Pull the Gaia stars.** Ask the catalog for everything in this patch of sky. This is the truth the frame is about to be held against.
 - **Move them to tonight.** Carry each star along its own drift across the decade since 2016, so the catalog describes the sky actually in front of the telescope.
-- **Pair the two lists.** Match each detection to its catalog star and reject anything more than 5 arcseconds apart — wide enough to cover the error being corrected, tight enough that no star is confused with a neighbor. A catalog star claimed by two detections is dropped entirely, because an ambiguous pair drags the fit rather than averaging out of it.
+- **Pair the two lists.** Match each detection to its catalog star and reject anything more than 5 arcseconds apart — wide enough to cover the error being corrected, tight enough that no star is confused with a neighbor. A catalog star claimed by two detections is dropped entirely.
 - **Fit the mapping.** Solve for the WCS that best carries those pixel positions onto those catalog positions, and keep it in place of the solver's.
 
-That runs on all fifty frames of the night, on a median of 115 stars each. Measuring what it bought takes one precaution, though, and it is the same precaution the rest of this page keeps coming back to. Asking how far the new mapping puts the stars it was fitted to is asking a model to grade its own homework — the answer improves whether or not the mapping got better.
+That runs on all fifty frames of the night, on a median of 115 stars each. Finding out what it bought takes one precaution, and it is the precaution the rest of this page keeps returning to. Ask how far the new mapping puts the stars it was fitted to and the number will improve — but it would improve whether or not the mapping got better, because those stars are what the fit was told to satisfy. A model marking its own homework always passes.
 
 So the stars are split into five groups and the mapping is fitted five times, each time with one group left out. Every star is then scored against a mapping that had no part in placing it:
 
 <div class="result">
-<strong>2.14″ → 1.36″</strong>, on <strong>1,033</strong> stars held out of the fit that measured them
+<p class="big">2.14″ → 1.36″</p>
+<p>the calibrated mapping, scored only on the stars it was never fitted to</p>
+<p>center <strong>RA 301.809° Dec −5.156°</strong> · <strong>3.670″</strong> per pixel · rotated <strong>179.97°</strong></p>
 </div>
 
-The mapping that comes out of it:
+Almost the same four numbers as before. The pointing has not moved at this precision, and the scale shifts in the fourth decimal. That is the right outcome: the solver had already found where the frame was. What it had never done was make the mapping hold evenly across the whole of it, and that is what changed.
 
-<div class="result">
-center <strong>RA 301.809° Dec −5.156°</strong> · <strong>3.670″</strong> per pixel · rotated <strong>179.97°</strong> · and a curvature term
-</div>
+The ruler exists now. What it is worth is a different question, and nothing here has answered it — every number in this act was measured against Gaia, and Gaia is what the mapping was fitted to. To find out what the ruler is worth, it has to measure something it has never seen.
 
 </div>
+
+## Assessing the ruler
 
 <div class="step">
 
 ### Differencing against the ephemeris
 
-That refitted WCS is the function this page set out to build: hand it a pixel, it hands back celestial coordinates, and it is now good to 1.36″. So the measurement is three steps. Find Juno's pixel. Push it through the function. Difference the answer against JPL Horizons' prediction for that exact instant.
+Something the ruler has never seen. That is what the asteroid is for, and it is the only thing in the frame that qualifies — every star here has already been used to build the mapping or to check it, but Juno was never part of either.
+
+So the measurement is three steps. Find Juno's pixel. Push it through the mapping. Difference the answer against where JPL Horizons says it was at that exact instant. Because Horizons knows Juno's orbit far better than this telescope can measure it, whatever comes out is not news about the asteroid. It is the instrument's report card.
 
 <div class="term">
 
@@ -182,14 +197,10 @@ An **ephemeris** is a table of where an object was, computed for the instants yo
 Under the mapping fitted so far — flat, a plane onto a plane — that difference comes out at:
 
 <div class="result">
-O−C = <strong>1.57″</strong> median, on a flat mapping
+<strong>O−C = 1.57″</strong> median on a flat mapping
 </div>
 
-That is the first honest number the method produces, and it is about twice as large as it needs to be. The reason is not in the asteroid. It is in the shape of the field.
-
 </div>
-
-## What limits a position
 
 <div class="step">
 
@@ -219,19 +230,21 @@ Which leaves one question — how much bend to allow — and it carries a trap. 
 
 <figure class="medium"><img src="photos/figures/sip_degree.png" alt="Three models — flat, SIP degree 2, SIP degree 3 — each with three bars: fit to the reference stars, disagreement with the ephemeris, and cross-track bias. The first bar falls steadily across the three models; the other two fall sharply at degree 2 and then rise again at degree 3."></figure>
 
-The blue bar is the: how well each model fits the stars it was fitted to, falling every time the model is given another parameter. The other two bars are the honest test. The middle one is the whole disagreement with Horizons. The third is the part of that disagreement running perpendicular to Juno's motion — the piece a distortion error would show up in, since a mis-shaped field pushes a target sideways rather than along its own path.
+The blue bar is the trap, drawn. It is how well each model fits the stars it was fitted to, and it falls every time the model is handed another parameter — which is exactly what it would do whether or not the extra freedom corresponded to anything real. The other two bars are the honest test. The middle one is the whole disagreement with Horizons. The third is the part of that disagreement running perpendicular to Juno's motion — the piece a distortion error would show up in, since a mis-shaped field pushes a target sideways rather than along its own path.
 
 <div class="result">
-median disagreement with the ephemeris <strong>1.57″ flat · 0.73″ at degree 2 · 0.74″ at degree 3</strong>
+median disagreement with the ephemeris <strong>1.57″ flat · 0.74″ at degree 2 · 0.75″ at degree 3</strong>
 </div>
 
 </div>
 
 <div class="step">
 
-### Measuring the error bar instead of deriving it
+### Measuring the error bar
 
-One frame gives one position. The run holds fifty, and they exist for this step rather than for the picture: each is an independent measurement of the same quantity, and the spread between them is the only honest error bar available. A single deep exposure would have given a prettier frame and no way to know how much to trust it.
+Everything so far has produced one position from one frame. The run holds fifty of them, and the reason it does is this step: fifty separate answers to the same question are the only way to find out how much any one of them is worth. A single deep exposure would have given a prettier picture and no way at all to judge it.
+
+What **one** position costs is already in hand: **0.74″**, which is what the last two steps arrived at once the mapping was allowed to bend. The other number is not. What is an **average** of fifty worth? It cannot be looked up in a specification either — it is a property of this telescope on this night, and it has to be measured.
 
 <div class="result">
 50 × 20 s frames over 37.5 min · Juno arriving <strong>32×</strong> stronger than the noise around it
@@ -239,46 +252,55 @@ One frame gives one position. The run holds fifty, and they exist for this step 
 
 That last number is the **signal-to-noise ratio**, and it is why one frame is enough to measure from: Juno's light stands thirty-two times clear of the grain in the picture, so its center can be pinned down without help from any other frame. Hold on to it — the comet later in this page arrives at 0.2, and everything about how it has to be handled follows from that one difference.
 
-The tempting move, having taken fifty measurements, is to divide the scatter by the square root of fifty and claim an error ten times smaller. It is wrong here, and the way it is wrong generalizes.
+The fifty frames are genuinely separate: separate exposures, separately solved, and the light in each arrived independently of the light in the others. So the spread between their answers is real information — it is an honest picture of how much this instrument wobbles from one frame to the next.
 
-Dividing by √N assumes the measurements are independent. These are not. All fifty frames share a plate solution built the same way, a centroid algorithm with the same habits, and the same demosaic. Errors like that do not cancel when averaged — they are one error, fifty times.
+The tempting move is to take that spread, divide it by the square root of fifty, and claim an error seven times smaller. It is wrong here, and the way it is wrong generalizes.
 
-So the error bar is measured rather than derived. Take 107 ordinary field stars whose true positions are already known, push them through the identical pipeline on the identical frames, average them the identical way, and see how far off they land:
+Separate frames are not the same thing as independent *errors*, and √N needs the second. All fifty share a plate solution built the same way, a centroid algorithm with the same habits, and the same demosaic. Whatever those get wrong, they get wrong identically in every frame — so it never shows up as scatter between them, and averaging cannot touch it. That part is one error, fifty times.
+
+So the error bar is measured rather than derived. Take 107 ordinary field stars whose true positions are already known, push them through the identical pipeline on the identical frames, average them the identical way:
 
 <div class="result">
 <p class="big">0.27″</p>
-<p>the median error on an averaged position from this instrument — 68th percentile 0.34″, 90th 0.55″. Dividing the frame-to-frame scatter by √N instead gives 0.08″, three times too small.</p>
+<p>the median error on an averaged position from this instrument</p>
 </div>
 
-That number is the denominator for everything that follows. A result is only interesting if it is large compared to 0.27″, and any claim below it is noise wearing a decimal point.
+From here on, this is the denominator. Everything below gets quoted as a multiple of it, because a result smaller than 0.27″ is not something this telescope can distinguish from its own noise. Barnard's decade of motion comes in at 1.6× the floor. What is left of the parallax after subtraction comes in at 1.2×, which is why that one is reported as a hint rather than a detection.
 
 </div>
 
-## Motion in a night
+## Using the ruler
 
 <div class="step">
 
-### Watching Juno cross the field
+### Measuring Juno
+
+With a floor in hand, every result from here can be judged rather than merely reported. The question stops being *what did we measure* and becomes *is it bigger than 0.27″*.
 
 Juno is the only thing in the frame that is not a star, and over half an hour it says so. Each frame was solved independently and then cropped around the same sky coordinate.
 
 <figure class="medium"><img src="photos/figures/juno_blink_wide.gif" alt="The first and last frames alternating, cropped to a wide strip; the field stars hold still and Juno, the bright dot at center, steps across them"></figure>
 
 <div class="result">
-<strong>24.5″</strong> between the night's first and last frame, 40.1 min apart — <strong>6.7 px</strong> on the sensor
+<p class="big">24.5″ moved in 40.1 minutes</p>
+<p>the night's first frame to its last — <strong>6.7 px</strong> on the sensor, which is <strong>91×</strong> the 0.27″ floor</p>
 </div>
 
-Against a 0.27″ floor, six pixels is enormous, and that is the general lesson — motion is the easiest thing a small telescope measures, because it is the one quantity where the instrument's own errors mostly cancel.
+Ninety times the floor is large enough that the arithmetic is almost beside the point — you can simply watch it happen in the figure above. And it is worth noticing what your eye is doing there, because it is the same thing the whole page is doing. It is not measuring Juno against the edge of the frame or against the page. It is measuring Juno against the stars, which sit still. A position is only ever relative, and that holds for the eye as much as for the pipeline: what registers is one dot moving while several hundred do not.
+
+The stars sit still because they were made to. Each frame was solved on its own and cropped about the same sky coordinate, so all fifty had already been put into a common reference before anyone looked. And that is the general lesson — motion is the easiest thing a small telescope measures, because it is the one quantity where the instrument's own errors mostly cancel.
 
 </div>
 
 <div class="step">
 
-### Resolving the residual along the track
+### Dissecting the error
 
-Now that the object has a direction of travel, the leftover disagreement can be split along it. The obvious way to report a position error is as a miss in right ascension and a miss in declination. It is the wrong basis, because it mixes two errors that have different causes and different fixes.
+The 0.74″ is a length, and a length is the least informative thing about a vector. The error also has a direction, and what that direction gets measured against is a choice — one that decides whether the number stays merely large or starts saying something.
 
-Resolve the residual instead along the direction the object is moving, and perpendicular to it.
+The obvious basis is the coordinate grid: so far off in right ascension, so far off in declination. That is the wrong choice, and the reason is that those axes are ours. Right ascension and declination are bookkeeping laid over the sky, and nothing about an instrument's errors has any reason to line up with them. Splitting along them mixes causes together.
+
+The asteroid supplies a better pair of axes, and this is the one place where the astronomy does the work rather than the arithmetic. Juno is on an orbit, so it has a direction of travel that belongs to the object itself. Resolve the error along that direction, and perpendicular to it.
 
 <figure class="medium">
 <svg viewBox="0 0 640 210" style="width:100%;height:auto" role="img" aria-label="An object's track running up to the right. The predicted position sits on the track and the measured position sits off it; the gap between them is drawn as two legs, one running along the track and one perpendicular to it. A hollow marker further up the track shows where a clock error would move the prediction — along the track, and no distance at all off it.">
@@ -307,53 +329,19 @@ Resolve the residual instead along the direction the object is moving, and perpe
 
 The filled dot on the track is where the ephemeris says Juno was; the filled dot off it is where we measured it. The blue leg is the along-track error and the red leg is the cross-track error.
 
-<div class="eq"><span class="eq-n">1</span>along-track error = rate × timing error</div>
+<div class="eq">along-track error = rate × timing error</div>
 
 The split matters because a clock error can only ever produce the blue leg. If we believe an exposure happened a second later than it did, the object has moved on along its own path and we will say so — that is the hollow marker, sliding the prediction up the track and changing nothing perpendicular to it. Cross-track has no such term. A wrong clock cannot push an object sideways off its own orbit, so a systematic error across the track has to be the measurement or the mapping, and the decomposition tells you which drawer to look in before you start looking.
 
 <figure><img src="photos/figures/juno_oc.png" alt="Left, along-track and cross-track residuals for each of the fifty frames against time. Right, the same fifty measurements as a scatter of ΔRA against ΔDec, clustered near the origin"></figure>
 
-<div class="result">
-<p class="big">O−C = 0.74″ median</p>
-<p>Along-track +0.24″ (scatter 0.62″) · cross-track −0.55″ (scatter 0.50″)</p>
-</div>
-
-Because Horizons knows Juno's orbit far better than we can measure it, essentially all of that is instrumental. The number is a description of the telescope, not of the asteroid.
-
-The along-track figure being the smaller of the two says the clock is honest — although it is worth being clear about how weak that test is here. Juno moves 0.011″ per second, so the epoch could be ten seconds wrong and nothing in these residuals would notice. The clock has not been vindicated; it has not yet been asked a hard question.
+Two numbers now, where there was one. Along-track comes out at **+0.24″** and cross-track at **−0.55″**. The along-track miss is the smaller of the pair, which says the clock is telling roughly the truth. The cross-track miss is the larger, and no clock can produce it — so whatever is left sits in the mapping or in how the target was measured, and it stays on the books as the one thing this run could not explain away.
 
 </div>
 
 <div class="step">
 
-### Asking whether the bias belongs to the asteroid
-
-The cross-track number is the one that survived, and it has been chased through three explanations.
-
-Most of it was the flat field model, and modeling the curvature removed two thirds of it — from −1.48″ under a flat fit to about half an arcsecond. What was left could still be one of two things: something about how we measure Juno specifically, or something wrong with the frame that everything in it inherits.
-
-That is a testable difference, because the frame is full of other objects. We pushed ordinary Gaia field stars through the identical path on the identical frames — same brightness cut, same centroid box, same solution, resolved onto the same two axes — and compared each one to its own catalog position instead of to Horizons. If the frame is skewed, the stars will show the same lean as Juno. If it is not, they will not.
-
-| measured the same way | rows | cross-track |
-|---|---|---|
-| 106 field stars | 2,120 | **−0.10″** |
-| Juno | 20 | **−0.46″** |
-
-<div class="result">
-the field is nearly clean, and Juno is not — a difference of <strong>0.36″</strong>, about <strong>2.5σ</strong>
-</div>
-
-So the residue points at the target rather than at the frame. It is a hint and not a verdict: 2.5σ is short of anything worth calling a result, which is why it is quoted with its uncertainty rather than as a finding.
-
-And it changes nothing already reported. The whole of it sits below the 0.74″ that every position on this page carries anyway — so this is structure noticed inside the error bar, not a correction to be applied on top of it.
-
-</div>
-
-## Motion in a decade
-
-<div class="step">
-
-### Recovering ten years of Barnard's Star
+### Measuring Barnard's Star
 
 Every star in the sky is moving; almost all of them are too far away for it to show within a human lifetime. Barnard's Star is six light years away and crossing our line of sight quickly, which gives it the largest **proper motion** known — 10.4 arcseconds per year, a full Moon's width every 180 years.
 
@@ -363,18 +351,18 @@ Gaia's catalog positions are quoted for 2016. So a decade of that motion has alr
 
 <div class="result">
 <p class="big">110.53″ measured against 110.09″ predicted</p>
-<p>from 205 frames — agreeing to <strong>0.40%</strong> in how far the star travelled and <strong>4.0′</strong> of arc in which way, at 1.6× the measurement floor.</p>
+<p>from 205 frames — a gap of <strong>0.44″</strong> which is <strong>1.6×</strong> the 0.27″ floor</p>
 </div>
 
-The left panel is the whole displacement, with every frame's own answer drawn as a separate point so the scatter is visible rather than asserted. Read it as a consistency test rather than a discovery: the plate solution is itself built from Gaia stars moved to tonight, so the frame is Gaia's frame, and what has been shown is that the star sits where that frame says it should. That still exercises the solve, the centroid and the epoch arithmetic all at once.
+Read that as a consistency test rather than a discovery. The plate solution is itself built from Gaia stars moved forward to tonight, so the frame is Gaia's frame, and what has been shown is that the star sits where that frame says it should. It still exercises the solve, the centroid and the decade of epoch arithmetic all at once.
 
 </div>
 
 <div class="step">
 
-### Finding the parallax hiding in the leftover
+### Dissecting the error
 
-The right panel is the same measurement magnified a thousand times, and it is where the honest complication lives.
+Magnify the arrival end of that measurement a thousand times — the right panel of the figure above — and an honest complication appears.
 
 <div class="term">
 
@@ -417,23 +405,23 @@ Our measurement carries that shift and the catalog position it is compared again
 </svg>
 </figure>
 
-Subtracting the parallax predicted for that night shrinks the leftover from 0.459″ to 0.319″, within 1.2× of the floor — where a randomly pointed correction of that size would on average have made things worse. That is weak support, and it is as far as one night goes.
+The leftover was **0.459″**. The parallax predicted for that night was **0.425″** — almost the same size. Subtract it and **0.319″** survives, which moves the disagreement from 1.7× the floor down to 1.2×.
 
-<div class="result">
-residual <strong>0.459″</strong> · predicted parallax <strong>0.425″</strong> · what survives subtracting it <strong>0.319″</strong>
-</div>
+Both halves of that are encouraging. A correction pointed in a random direction would on average have made the residual *larger*, not smaller, so the fact that it shrank says this one pointed roughly the right way. And landing at 1.2× the floor means the full model — proper motion plus parallax — now accounts for very nearly everything this telescope can resolve. There is hardly anything left over to explain.
 
-It is not a detection, and the reason is visible in the figure rather than in the arithmetic. The two arrows are **42° apart**, so most of what we measured does not lie along the parallax at all, and the neat agreement between the two lengths is partly an accident of that angle. A fixed instrumental offset of the same size would look identical from one night.
+What it does not do is prove that the thing explaining it is parallax, and the reason is visible in the figure rather than in the arithmetic. The two arrows are **42° apart**, so most of what we measured does not lie along the parallax at all, and the neat agreement between the two lengths is partly an accident of that angle. A fixed instrumental offset of the same size would look identical from one night.
 
 What separates them is the one thing the figure makes obvious: six months later Earth is on the other side of its orbit and the parallax vector reverses, while an instrumental offset points exactly where it pointed before. The two hypotheses predict opposite shifts, so a second epoch around February decides it. That observation has been scheduled and not yet made.
 
 </div>
 
-## Finding something to measure
+## The same ruler, a different question
 
 <div class="step">
 
 ### Sweeping nights that were shot for something else
+
+Everything so far has asked *where*. The same instrument, characterized the same way, answers *how big* — and the object that shows it was already sitting on a disk here, in frames shot for something else entirely.
 
 Every frame carries its own pointing and its own timestamp in the header, and those two numbers are enough to ask a question without opening the image data at all: which known small bodies were inside this field at the moment it was taken?
 
@@ -443,28 +431,18 @@ Every frame carries its own pointing and its own timestamp in the header, and th
 
 </div>
 
-| object | predicted V | the night it was on |
+| object | predicted magnitude | the night it was on |
 |---|---|---|
 | 3 Juno | 9.1 | its own run — the target |
 | C/2024 J3 | 13.1 | a night shot on a variable star |
-| (992) Swasey | 15.0 | the Juno run |
-| (3366) Godel | 15.4 | the Juno run |
 
-<div class="result">
-three of the four were already on disk and unnoticed, a comet among them
-</div>
-
-The second row is where the rest of this page comes from. Nobody pointed the telescope at a comet — it was sitting in a field shot for a variable star, and a header query is what noticed. The bottom two had been through the same frames as Juno itself without anyone seeing them.
+The second row is where the rest of this page comes from. Nobody pointed the telescope at a comet — it was sitting in a field shot for a variable star, and a header query is what noticed.
 
 </div>
-
-## Measuring size, not position
 
 <div class="step">
 
 ### Recovering an object below the single-frame limit
-
-Everything so far has asked where an object is. The same machinery answers how big it is.
 
 **C/2024 J3** sits in a field shot at five seconds a frame, at magnitude 14 — nowhere near visible in a single exposure. At a signal-to-noise ratio of about 0.2 there is nothing there to see at all. Recovering it means stacking hundreds of frames, and the interesting part is how they are stacked.
 
@@ -473,13 +451,7 @@ Everything so far has asked where an object is. The same machinery answers how b
 The run is split into three time slices and each slice is stacked with the stars aligned. The field stars therefore sit still from panel to panel, and anything moving relative to them steps across — which is what the circle is doing. The first panel is a single raw frame at the same crop, and it is there to show what nothing looks like: no stacking, no smudge, so the thing appearing in the other three was put there by the stacking rather than by a hopeful eye.
 
 <div class="result">
-comet at magnitude <strong>14.12</strong>, against a <strong>15.42</strong> limit · zero point from 218 Gaia stars at 0.225 mag scatter
-</div>
-
-<div class="term">
-
-The **zero point** is what turns counts into a magnitude. A sensor does not measure brightness, it collects light, and how many counts that becomes depends on the aperture, the exposure, the optics and how clear the night was. So you photograph stars whose brightness is already known, see what they come out at, and that offset calibrates everything else in the frame.
-
+comet at magnitude <strong>14.12</strong>, against a <strong>15.42</strong> limit
 </div>
 
 </div>
@@ -492,105 +464,34 @@ Both are small bodies moving against the stars, and at this scale neither shows 
 
 <div class="term">
 
-**FWHM**, full width at half maximum, is how wide a blur is: the diameter of the disc at the height where it has dropped to half its peak brightness. Every point source in a frame is spread into the same blur by the optics and the air, so the field stars measure it directly — they are points, and whatever width they come out at is the instrument's own.
+Every star in this frame is a **point source**. Not approximately — the nearest star to the Sun would be about 0.001 arcseconds across from here, and even Betelgeuse, one of the largest discs in the sky, is under 0.05. One pixel of this sensor is 3.669. So any width a star shows was put there entirely by the telescope and the air on the way down, and that shape is the **PSF**, the point spread function. The field stars measure it directly: they are the one thing in the picture whose true size is known to be zero.
 
 </div>
 
-Measuring that takes two stacks built from the same frames, and the difference between them is what the argument turns on. Adding hundreds of frames together means choosing what to hold still. Line the **stars** up and they come out sharp, while the comet — which moved the whole time — smears into a streak. Line the frames up on the **comet's** own motion instead and it comes out sharp, while every star smears. Same frames, two stacks, and what is sharp in one is smeared in the other.
+<div class="term">
 
-Three widths make the argument, all measured on those two stacks:
+**FWHM**, full width at half maximum, is how that smear gets a number: the width of the profile at the height where it has fallen to half its peak.
 
-| | FWHM | what it is |
-|---|---|---|
-| C/2024 J3, comet-aligned | 18.2″ | the object |
-| field stars, star-aligned | 14.5″ | the instrument |
-| field stars, comet-aligned | 19.8″ | the control |
+</div>
+
+<figure><img src="photos/figures/fwhm_star.png" alt="Left, a star as a grid of pixels in false colour, with one horizontal row outlined. Right, the brightness along that row rising to a peak and falling away, with a dashed line at half the peak and a double arrow spanning the width where the curve crosses it."></figure>
+
+Find the peak, drop to half of it, measure straight across — **12.1″** for this star. Half is chosen because it is roughly where the profile is steepest, so the crossing is pinned down tightly. Up at the peak or out in the tail the curve is nearly flat, and a small error in brightness would slide the crossing a long way sideways.
+
+Reading it at half of each star's *own* peak has a second consequence, and it is the one that matters here: brightness cancels. A brighter star really does look bigger — the same shape scaled up, so its wings stand clear of the sky further out — but its FWHM is unchanged. Across 607 isolated stars in one frame, spanning a factor of 67 in peak brightness, the median width holds between 12.2″ and 13.3″ with no trend. Apparent size follows brightness; this number does not, which is what lets a faint comet be compared against stars far brighter than it.
+
+Measuring the comet against that ruler takes two stacks built from the same frames. Adding hundreds of frames together means choosing what to hold still: line the **stars** up and they come out sharp, while the comet — which moved the whole time — smears into a streak; line the frames up on the **comet's** own motion instead and it comes out sharp, while every star smears. Same frames, two stacks, and what is sharp in one is smeared in the other.
 
 <figure><img src="photos/figures/comet_profile.png" alt="Three curves of surface brightness against radius on a log scale: the comet, the field stars, and the field stars in the comet-aligned stack. The comet's curve sits well above the field stars' between about 9 and 24 arcseconds"></figure>
 
-Reading that figure takes one convention. Each curve is an object's brightness plotted against distance from its own center, divided by its brightness *at* the center — so every curve starts at 1 on the left and falls as you move outward. The vertical axis is logarithmic, so each labelled line is a factor of ten, and a curve dropping past two of them has fallen to a hundredth of its core.
+Each curve is an object's brightness plotted against distance from its own center, divided by its brightness at the center, so all three start at 1 on the left and fall as you move outward.
 
-The dotted horizontal line is where the table above comes from. It sits at half brightness, and the radius where a curve crosses it is the half-width — double it and you have the full width at half maximum. The blue curve crosses at 7.25″, the comet's at 9.10″, the smeared stars' at 9.90″, which are the three numbers in the table. Figure and table are one measurement, read two ways.
+Start at the dotted line, which sits at half brightness. Follow it right and the blue curve crosses first, the comet's next, the smeared stars' last. That order is the answer. The comet is wider than the PSF, and the only way to be wider than the instrument's own smear is to have a body of your own.
 
-The third row is what makes this an argument rather than an assertion. In a stack aligned on the comet's motion the stars are the things being smeared, so they must come out wider than in a star-aligned stack — and they do. That confirms the alignment behaved as expected, and it brackets the comet between the two: wider than an unsmeared star, narrower than a smeared one.
+One crossing can be luck, though, so the stronger evidence is that the comet stays above a star at every radius, and by a widening margin: **1.7×** brighter at 9.2″, **3.4×** at 12.8″, **9.4×** at 16.5″, **17.2×** at 20.2″. The two curves keep separating the further out you look.
 
-The width ratio is the weaker half of the case, though, because it rests on a single crossing point. The shape of the whole curve is the stronger half, and it is the real reason for the figure. Look at the vertical gap between the orange curve and the blue one out past the dotted line: at 12.8″ the comet still holds 0.317 of its central brightness where a star holds 0.094, and at 16.5″ it is 0.228 against 0.024 — nearly a full decade on this axis. Between about 9″ and 24″ the comet is carrying light that a point source simply does not have.
+The third curve is the check that the machinery is honest. Those stars were smeared on purpose by the comet-aligned stacking, and they came out at **19.8″** — had the alignment done nothing they would have measured 14.5″ like the others, so the smearing is real and its size is known. That the comet sits *below* them, at 18.2″, is the other half. If its width had been an artifact of imperfect tracking it would have crept up toward theirs. It did not, so the width it carries over the PSF is its own.
 
-That gap is what cannot be faked. Blur takes light and spreads it; it never creates any. A star seen through worse air, or through a stack that smeared it, still falls away as the grey curve does — steadily, with nothing left over. The orange curve refuses to fall, and the only thing that puts light at 16.5″ from a center is something that is actually emitting there. That is the coma.
-
-Two blurs applied one on top of the other combine in quadrature, so the comet's intrinsic size is √(18.2² − 14.5²) = 11.1″. At 3.445 AU, where one arcsecond spans 2,499 km, that is a coma about **27,700 km** across — twice the diameter of the Earth. It is an upper bound rather than a measurement, because any error in the comet's predicted track smears the stack a little further.
-
-</div>
-
-<div class="step">
-
-### Setting the bar a width measurement has to clear
-
-A width test that has only ever been run on comets is only half a test. It needs a negative — a rock that comes back unresolved — and two attempts at one show what the test requires in order to mean anything.
-
-(3366) Godel gave the right answer weakly. It profiled at 24.5″ against the instrument's 24.9″ on that night and the classification came back as not resolved, consistent with a point source — which is exactly what a rock should do. But at 2.8σ the object is barely detected at all, so part of what was profiled is background, and a negative from a marginal detection is not worth much.
-
-(992) Swasey failed in the more instructive direction. It profiled at 99.8″ against the same 24.9″, and the classification duly reported a coma 145,291 km wide for a main-belt rock without hesitating.
-
-<figure><img src="photos/figures/swasey_profile.png" alt="Three profiles of surface brightness against radius on a log scale. The two star curves fall steadily and run out at about 35 arcsec. Swasey's curve does the opposite: it climbs an order of magnitude out to roughly 28 arcsec, holds there, and only then falls away."></figure>
-
-The two star curves fall, as a point source must. Swasey's climbs by a factor of ten and does not turn over until about 28″. That is not an object; it is the wing of a star 181 times brighter sitting 38″ away, and past a certain distance from Swasey you are simply measuring the neighbor. The half-maximum crossing the width is read from lands out at 50″, on the far side of the hump.
-
-That is worth stating as physics rather than as a bug. A centroid is a center of mass, weighted by brightness instead of by mass, so a neighbor inside the measuring box drags the answer toward itself by an amount set by how bright it is and how far away:
-
-<div class="eq"><span class="eq-n">2</span>Δ = d · f / (1 + f)</div>
-
-with d the separation and f the neighbor's brightness as a fraction of the target's. Elsewhere in this run a field star 7.4 px from Juno at 14% of its brightness moved the reported position by 0.92 px — enough to turn a 1.74″ residual into 5.46″, and predicted by that expression to 0.6%. Nothing in the profile measurement checked for a neighbor before doing its arithmetic.
-
-Between them the two attempts wrote the specification a candidate now has to meet: an asteroid **brighter than about magnitude 14.5**, so it is detected solidly, with **no star brighter than magnitude 14 within two arcminutes**, so there is clean sky to measure the profile against. Bright enough to trust and alone enough to measure — Godel failed the first, Swasey the second.
-
-Both halves of that are things the header sweep can check before a night is spent on them, which is what the sweep is really for. It was worth running once to find out what was already on disk; it is worth keeping because it screens candidates against a specification that was not written yet when the frames were taken.
-
-</div>
-
-## What the numbers cost to trust
-
-<div class="step">
-
-### Chasing one missing line of a database query
-
-For weeks this reduction was not reproducible. The identical command on the identical fifty frames returned between 35 and 40 refit frames and a cross-track bias that wandered across a quarter of an arcsecond — about the size of the statistical error itself, so every published number carried a second, invisible error bar as large as its first.
-
-The explanation on file was that the plate solver samples star quadruples at random. It is a plausible story and it was wrong. Ten solves of one frame return the same field center to nine decimal places.
-
-The real cause was one missing line in the query that fetches the Gaia stars. The server returns at most 2,000 rows, the patch of sky we ask about holds 7,221 stars, and nothing in the request said which 2,000 to send — so the server chose, and chose differently every time.
-
-<figure><img src="photos/figures/cone_stability.png" alt="Left, four pairs of repeated queries: each returns 2,000 rows but two draws share only about 1,300 of them. Right, Gaia stars matched into the fit per frame, a low band before the fix and points near 115 after, against a dashed line at the 60 a degree-2 model needs."></figure>
-
-Two draws of the same query shared about 1,300 of their 2,000 rows. A third of the catalog our plate solution was fitted against was being redrawn on every call. Sorting the results before the cut fixed it in one line, and made the query nine times faster as a side effect.
-
-The part worth keeping is what that one clause had been causing. It was upstream of four separate problems, each of which had been written down as its own defect:
-
-- the reduction was not reproducible, for the reason above
-- the frames looked like two different populations, because a threshold on star count was biting on a starved catalog
-- the distortion model was unaffordable, since degree 2 costs twelve free parameters against the 29 to 47 matched stars a truncated catalog delivered — and about 118 once it did not
-- and most of the cross-track bias, because that is what a flat model does to a curved field
-
-The right panel is that third item, and it is the one that should have been the tell. The distortion model was never rejected on evidence. It was simply too expensive to fit, and the reason it was too expensive was a bug three steps upstream.
-
-One rule covers the whole family. Any cut that shrinks a set — a row limit, a brightness threshold, a search radius — needs its surviving count printed, not assumed. Every guard here was written to remove a bias, and each one removed the measurement instead without announcing it.
-
-</div>
-
-<div class="step">
-
-### What a position is worth
-
-Three targets, one method, and the same 0.27″ underneath all of them.
-
-Juno gives the number itself: a point source measured to 0.74″, which is a statement about a 30 mm telescope and not about an asteroid. Barnard's Star gives the one measurement here that beats that floor, and it does so by being relative — the star is measured against its own neighbors in the same frame, so the error the frame shares with them cancels instead of dominating. That is the only route a small instrument has past its own systematics, and it is why the proper motion lands at 0.4% while the absolute positions sit near an arcsecond.
-
-The comet gives something different again: a physical size, in kilometers, for an object four pixels wide that no single frame shows at all.
-
-<div class="result">
-0.74″ per position · <strong>0.27″</strong> averaged · 0.4% on a decade of proper motion · a 27,700 km coma
-</div>
-
-What the year of work actually produced, though, is none of those. Three of the four numbers above moved after the reduction was corrected, one of them by a factor of two, and two earlier results were withdrawn outright. Every one of those corrections came from the same move: measuring something already known through the identical pipeline and seeing what came back. Field stars gave the error floor, control stars tested where the bias lived, and a query run five times gave the reproducibility. None of it required a clear night.
+Reading the crossing radius off each curve and doubling it turns the graph into three numbers: the comet at **18.2″**, the instrument at **14.5″**, the smeared control at 19.8″. Two blurs stacked one on the other combine in quadrature, which is the same rule independent errors follow in statistics and for the same reason: a blur is a random displacement given to every photon, and independent displacements add their variances. So the observed width is √(intrinsic² + PSF²), and the comet's own size is √(18.2² − 14.5²) = 11.1″. At 3.445 AU, where one arcsecond spans 2,499 km, that is a coma about **27,700 km** across — twice the diameter of the Earth. It is an upper bound rather than a measurement, because the subtraction cannot tell one smear from another: other measurement errors could have contributed to the variance.
 
 </div>
