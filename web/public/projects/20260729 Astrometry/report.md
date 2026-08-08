@@ -197,7 +197,7 @@ That is the first honest number the method produces, and it is about twice as la
 
 The sky is a sphere and the sensor is a flat rectangle, so something has to give. Nearly four degrees of curved sky is being pressed onto a plane, and no lens performs that trick perfectly — which means the error in the mapping is not one number across the frame. It is small in the middle and grows toward the corners.
 
-Checking our own frames against Gaia says exactly that: the residual runs about **0.8″** within ten arcminutes of the center and rises past **3″** at the edges, climbing steadily the whole way out.
+Checking our own frames against Gaia says exactly that: pooled over ten frames and 1,076 stars, the residual runs **1.28″** within ten arcminutes of the center and climbs to **2.90″** beyond a degree, rising steadily the whole way out.
 
 That matters more than the size of it suggests, because of where a flat model puts its compromise. Asked to fit a curved field with a plane, the fit splits the difference across the whole frame — and since the disagreement is worst at the corners, that is where it spends its effort. What it gives up is the middle, which is precisely where a deliberately centered target sits.
 
@@ -464,7 +464,7 @@ The second row is where the rest of this page comes from. Nobody pointed the tel
 
 ### Recovering an object below the single-frame limit
 
-Everything so far has asked where an object is. The same machinery answers how big it is: revealing a comet.
+Everything so far has asked where an object is. The same machinery answers how big it is.
 
 **C/2024 J3** sits in a field shot at five seconds a frame, at magnitude 14 — nowhere near visible in a single exposure. At a signal-to-noise ratio of about 0.2 there is nothing there to see at all. Recovering it means stacking hundreds of frames, and the interesting part is how they are stacked.
 
