@@ -83,18 +83,6 @@
       "kind": "project",
       "science": "Astronomy",
       "science_slug": "astronomy",
-      "caption": "Astrometry",
-      "src": "/projects/20260729%20Astrometry/photos/figures/juno_blink.gif",
-      "full": "/projects/20260729%20Astrometry/photos/figures/juno_blink.gif",
-      "w": 1000,
-      "h": 554,
-      "href": "/projects/20260729%20Astrometry/",
-      "date": "2026-07"
-    },
-    {
-      "kind": "project",
-      "science": "Astronomy",
-      "science_slug": "astronomy",
       "caption": "Spectroscopy",
       "src": "/projects/20260729%20Spectroscopy/photos/figures/hero.jpg",
       "full": "/projects/20260729%20Spectroscopy/photos/figures/hero.jpg",
@@ -107,6 +95,18 @@
         "photos/setup/setup4.jpg",
         "photos/setup/setup5.jpg"
       ],
+      "date": "2026-07"
+    },
+    {
+      "kind": "project",
+      "science": "Astronomy",
+      "science_slug": "astronomy",
+      "caption": "Astrometry",
+      "src": "/projects/20260729%20Astrometry/photos/figures/hero.gif",
+      "full": "/projects/20260729%20Astrometry/photos/figures/hero.gif",
+      "w": 720,
+      "h": 720,
+      "href": "/projects/20260729%20Astrometry/",
       "date": "2026-07"
     },
     {
