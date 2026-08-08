@@ -13,7 +13,7 @@ sciences:
 
 ### Brightness is only ever relative
 
-You cannot measure how bright a star is. You can only measure how bright it is **compared with its neighbours in the same frame**.
+You cannot measure how bright a star is. You can only measure how bright it is **compared with its neighbors in the same frame**.
 
 That sounds like a limitation and it is the entire method. Cloud, haze, altitude, dew on the lens — every one of them dims the target, and every one dims the comparison stars sitting beside it on the same sensor, through the same column of air, in the same twenty seconds. Divide the target's brightness by theirs and all of it cancels. What survives the division is only what is *not* shared, and a star that is genuinely changing is the only thing not shared.
 
@@ -71,9 +71,9 @@ Advanced Settings → *Save each frame in enhancing*. Frames then land as indivi
 
 ### Green only, and why
 
-The sensor is a colour camera. Every pixel sits under a red, green or blue filter in a repeating tile, so a raw frame is not one image — it is three interleaved images at different wavelengths.
+The sensor is a color camera. Every pixel sits under a red, green or blue filter in a repeating tile, so a raw frame is not one image — it is three interleaved images at different wavelengths.
 
-That matters more than it sounds. Adding all three together measures brightness through a passband nobody can name, which makes the result impossible to compare with anyone else's. And letting the camera interpolate the colours — debayering — smears light across the boundary of the aperture we are about to measure, which corrupts the measurement outright.
+That matters more than it sounds. Adding all three together measures brightness through a passband nobody can name, which makes the result impossible to compare with anyone else's. And letting the camera interpolate the colors — debayering — smears light across the boundary of the aperture we are about to measure, which corrupts the measurement outright.
 
 So we throw away three quarters of the pixels and keep only the green ones. That halves the resolution, which does not matter at all when the job is summing light inside a circle. What it buys is a **defined passband**: green on this sensor is close enough to the standard Johnson V band to be reported as one. Having a band with a name is the difference between a light curve and a submission.
 
@@ -85,9 +85,9 @@ So we throw away three quarters of the pixels and keep only the green ones. That
 
 For each frame the software plate-solves the sky, converts each comparison star's celestial coordinates into pixel positions, and sums the light inside a circle 3.5 pixels across, subtracting the sky measured from a ring around it.
 
-The circle is deliberately tight. Photometry's classic failure is a neighbouring star sneaking inside the aperture and being counted as part of the target — on an earlier asteroid measurement that mistake cost a factor of 2.5.
+The circle is deliberately tight. Photometry's classic failure is a neighboring star sneaking inside the aperture and being counted as part of the target — on an earlier asteroid measurement that mistake cost a factor of 2.5.
 
-Every frame is plate-solved individually rather than assuming the field holds still, because the mount re-centres itself mid-run. Fitting one transformation at the start and trusting it drifts off target partway through the night, and the software then measures whatever star happens to be nearest.
+Every frame is plate-solved individually rather than assuming the field holds still, because the mount re-centers itself mid-run. Fitting one transformation at the start and trusting it drifts off target partway through the night, and the software then measures whatever star happens to be nearest.
 
 </div>
 
@@ -97,7 +97,7 @@ Every frame is plate-solved individually rather than assuming the field holds st
 
 The comparison stars are the ruler. Everything in this report is measured against them, so a comparison star that varies is a ruler that stretches.
 
-Nothing in the pipeline had ever checked. We took all 25 stars that had been used as references across every night and asked two catalogues — Gaia and the Variable Star Index — a simple question: is this star known to vary?
+Nothing in the pipeline had ever checked. We took all 25 stars that had been used as references across every night and asked two catalogs — Gaia and the Variable Star Index — a simple question: is this star known to vary?
 
 <div class="result">
 <strong>Six of twenty-five</strong> carry a variability flag — including V0364 Lacertae, a named variable — and between them they were contributing <strong>31.7 %, 48.7 % and 32.5 %</strong> of the reference brightness on the three nights.
@@ -105,13 +105,15 @@ Nothing in the pipeline had ever checked. We took all 25 stars that had been use
 
 Roughly a third of the ruler was made of rubber, and on one night nearly half.
 
-Rebuilding the list took two passes. First the catalogue check above, which left 19. Then a second question the catalogues cannot answer: is the star actually *measurable* on every night? That is not the same as whether it was detected. One night found only 7 comparison stars where another found 20 — not because thirteen stars had left the sky, but because a brighter background raised the detection threshold past them. Measuring at the known coordinates instead, one star that had only ever been *detected* on the worst night turns out to measure cleanly on all three.
+Rebuilding the list took two passes. First the catalog check above, which left 19. Then a second question the catalogs cannot answer: is the star actually *measurable* on every night? That is not the same as whether it was detected. One night found only 7 comparison stars where another found 20 — not because thirteen stars had left the sky, but because a brighter background raised the detection threshold past them. Measuring at the known coordinates instead, one star that had only ever been *detected* on the worst night turns out to measure cleanly on all three.
 
 <div class="result">
 Nine stars survive both tests, spanning magnitude 5.8 to 8.7. The list is now fixed and written down, so every night is measured against the same ruler.
 </div>
 
 The cost is real and worth stating: nine stars average worse than twenty, so on two of the three nights the noise floor got slightly *worse*. On the third it improved. Removing the variables mattered more than losing the count.
+
+Both questions we asked were about the *stars*. Neither asked whether the camera could measure them, and that turned out to be the one that mattered — but not for another two weeks, and it has its own section further down.
 
 </div>
 
@@ -141,9 +143,9 @@ Every comparison star is measured **exactly the same way as the target** — eac
 Comparison-star scatter <strong>0.064 magnitudes</strong> — measured on the night, not assumed
 </div>
 
-<figure><img src="photos/figures/swlac_lightcurve.png" alt="SW Lac light curve: the target in green tracing a deep eclipse, with the comparison stars in grey lying flat near zero"></figure>
+<figure><img src="photos/figures/swlac_lightcurve.png" alt="SW Lac light curve: the target in green tracing a deep eclipse, with the comparison stars in gray lying flat near zero"></figure>
 
-The grey points are the comparison stars, flat. The green points are SW Lac. The eclipse is not subtle once the sky has been divided out — but it needed dividing out first, and that is the point.
+The gray points are the comparison stars, flat. The green points are SW Lac. The eclipse is not subtle once the sky has been divided out — but it needed dividing out first, and that is the point.
 
 This is also what makes a *negative* result trustworthy. An earlier attempt on a different star looked like a detection until it was compared with its own envelope, where it turned out the target was not standing out from its comparison stars at all. That measurement was retracted, and it was the envelope that caught it.
 
@@ -211,10 +213,10 @@ This is the correction that took the longest to find, because nothing about it l
 
 You wrote down the time your shutter opened. But you are standing on a planet that swings 300 million kilometres across its own orbit each year, and light takes **8.3 minutes** to cross one astronomical unit. The same eclipse observed in February and in August arrives at your telescope up to sixteen minutes apart — not because the star did anything, but because you moved.
 
-So a raw observation time is not a fact about the star. The fix is to convert it to when that light would have reached the **centre of mass of the solar system**, a point that does not swing around annually. Every observer and every spacecraft reports times that way, which is what lets a garden in Vancouver and a telescope in orbit put numbers on the same line.
+So a raw observation time is not a fact about the star. The fix is to convert it to when that light would have reached the **center of mass of the solar system**, a point that does not swing around annually. Every observer and every spacecraft reports times that way, which is what lets a garden in Vancouver and a telescope in orbit put numbers on the same line.
 
 <div class="result">
-light travel to the barycentre <strong>+3.897 min</strong> · clock scale correction <strong>+1.153 min</strong> · total <strong>+5.05 min</strong>
+light travel to the barycenter <strong>+3.897 min</strong> · clock scale correction <strong>+1.153 min</strong> · total <strong>+5.05 min</strong>
 </div>
 
 Our whole error bar is ±1.36 minutes. The correction is nearly four times larger than the measurement's uncertainty.
@@ -270,7 +272,7 @@ Separating the two needs a fourth point, and the archive cannot supply one: a se
 
 Three nights, measured against the same nine stars, can be folded together into a single cycle.
 
-<figure><img src="photos/figures/swlac_folded.png" alt="Left, three nights folded onto one cycle in different colours, overlapping cleanly. Right, the binned curve showing both minima and no flat stretch anywhere"></figure>
+<figure><img src="photos/figures/swlac_folded.png" alt="Left, three nights folded onto one cycle in different colors, overlapping cleanly. Right, the binned curve showing both minima and no flat stretch anywhere"></figure>
 
 That they overlap at all is the payoff from fixing the comparison list. Where two nights cover the same part of the cycle they agree to **0.049 magnitudes**, which is below the measurement noise — so this is one light curve, not three stacked hopefully.
 
@@ -278,7 +280,9 @@ The classification does not come from how deep the eclipses are. It comes from w
 
 A detached binary — two small stars far apart — sits at flat maximum brightness for most of its orbit and drops into two narrow eclipses. A contact binary is two stars touching, tidally pulled into egg shapes, so the area you see changes continuously and the brightness never settles anywhere.
 
-Excluding the eclipse itself, the remaining curve still swings **0.734 magnitudes, ten times the noise floor**. There is no flat stretch anywhere. That is a contact binary, and the catalogues agree — which makes this a test of the method rather than a discovery, and a useful one, since every previous run of this classifier had been on a completely different kind of star.
+Excluding the eclipse itself, the remaining curve still swings **0.734 magnitudes, ten times the noise floor**. There is no flat stretch anywhere. That is a contact binary, and the catalogs agree — which makes this a test of the method rather than a discovery, and a useful one, since every previous run of this classifier had been on a completely different kind of star.
+
+The verdict holds. The *margin* does not, quite: measured against a different set of comparison stars the same swing comes out at 0.526 magnitudes and under four times the floor. Out-of-eclipse wobble is exactly what a drifting reference would counterfeit, and the next section is about discovering that our reference drifts. The star is still in contact — but "ten times" is the number to be careful with.
 
 </div>
 
@@ -290,12 +294,12 @@ XZ Cygni does not eclipse. It is a **pulsator** — one star, physically swellin
 
 <figure class="medium"><img src="photos/figures/xzcyg_blink.gif" alt="XZ Cygni alternating between its faintest and brightest, the change subtle against a steady field"></figure>
 
-Its type can be read off the light curve's shape, but rather than assert a threshold we asked a catalogue of 38,000 real RR Lyrae stars a direct question: of stars with this period and this amplitude, how many are of each subtype?
+Its type can be read off the light curve's shape, but rather than assert a threshold we asked a catalog of 38,000 real RR Lyrae stars a direct question: of stars with this period and this amplitude, how many are of each subtype?
 
-<figure><img src="photos/figures/xzcyg_bailey.png" alt="Period against amplitude for tens of thousands of catalogued RR Lyrae stars, the two subtypes forming separate clouds, with XZ Cygni marked in the fundamental-mode region"></figure>
+<figure><img src="photos/figures/xzcyg_bailey.png" alt="Period against amplitude for tens of thousands of cataloged RR Lyrae stars, the two subtypes forming separate clouds, with XZ Cygni marked in the fundamental-mode region"></figure>
 
 <div class="result">
-<strong>1,516</strong> catalogued RRAB stars share this period and reach this amplitude. <strong>Zero</strong> of the other subtype do — the entire class tops out below our measurement.
+<strong>1,516</strong> cataloged RRAB stars share this period and reach this amplitude. <strong>Zero</strong> of the other subtype do — the entire class tops out below our measurement.
 </div>
 
 Two independent arguments agree here, and they would fail differently: the amplitude argument would break if our brightness scale were wrong, while the rise time — 2.17 hours from minimum to maximum — is pure timing and would break if the period were wrong. Neither can rescue the other, and both point the same way.
@@ -308,7 +312,7 @@ Two independent arguments agree here, and they would fail differently: the ampli
 
 ### A period of our own
 
-Every period in this report is borrowed from a catalogue. We use them to fold the light curve, and they are stated as borrowed, but measuring one from our own frames would test the whole pipeline end to end in a way that fitting somebody else's ephemeris never does.
+Every period in this report is borrowed from a catalog. We use them to fold the light curve, and they are stated as borrowed, but measuring one from our own frames would test the whole pipeline end to end in a way that fitting somebody else's ephemeris never does.
 
 It does not come out. Pooling every night we have and scanning blindly across candidate periods, the answer is honestly *undetermined* — and the reason is not the photometry.
 
@@ -320,19 +324,79 @@ This one moved from being a computing problem to an observing problem in the cou
 
 <div class="step">
 
-### A colour term that is not there
+### A color term that is not there
 
 Blue light is scattered by the atmosphere more than red, so in principle a red star and a blue star fade at slightly different rates as they sink toward the horizon. That difference does not cancel in a differential measurement, and it would be a real systematic if it were large enough.
 
 The first attempt found one. It was wrong, and the way it was wrong is the useful part: the fit used the comparison stars' own combined brightness as a stand-in for atmospheric thickness — but every measurement is *divided by* that same quantity, so the two axes of the fit shared their noise. Simulate stars that do not vary at all and the same method still produces an answer of the same size, differing only in sign depending on assumptions.
 
-Rebuilt against genuine airmass taken from the clock, and run beside a **placebo** — the same fit using star brightness instead of star colour, a quantity with no business producing an extinction signal —
+Rebuilt against genuine airmass taken from the clock, and run beside a **placebo** — the same fit using star brightness instead of star color, a quantity with no business producing an extinction signal —
 
 <div class="result">
-colour term <strong>0.9σ</strong> · placebo <strong>2.2σ</strong>
+color term <strong>0.9σ</strong> · placebo <strong>2.2σ</strong>
 </div>
 
-The placebo wins. There is no colour result here, and saying so is the finding. This is a bounded negative rather than a shrug: it was tested on the best night available, with twenty comparison stars and a wide spread of colour, and the answer did not move.
+The placebo wins. There is no color result here, and saying so is the finding. This is a bounded negative rather than a shrug: it was tested on the best night available, with twenty comparison stars and a wide spread of color, and the answer did not move.
+
+</div>
+
+## The ruler was not straight
+
+<div class="step">
+
+### A seam that had to join
+
+XZ Cygni was watched on two nights three days apart, and by luck the two runs stop and start at almost the same point in its cycle — one ends just after maximum light, the next picks up a little further down the same slope. They do not overlap. They *abut*.
+
+That is an unusually strict test, and we did not plan it. Where two runs overlap, any disagreement between them can be absorbed by nudging one up or down. Where they merely meet, the curve has to join, and there is nothing to adjust.
+
+<div class="result">
+It did not join. Across a gap of eight per cent of one cycle, the brightness jumped <strong>0.66 magnitudes</strong> — steeper than the star's own rise, which is the fastest thing this kind of star does.
+</div>
+
+</div>
+
+<div class="step">
+
+### It was not the star
+
+The first suspects were all about timing: a stale ephemeris, the star's known 58-day modulation, an error in the period. Each was ruled out by arithmetic rather than opinion — a shift applied to both nights equally cannot produce a disagreement *between* them, and moving them relative to each other by the amount required needs a period wrong by nearly four per cent, on a star whose period is known to six decimal places.
+
+What settled it was measuring the step twice, using different halves of the reference set. On the six brightest comparison stars the step read 0.78 magnitudes. On the six faintest it read 0.41.
+
+A real light curve cannot depend on which constant stars you measured it against. The step was in the ruler.
+
+</div>
+
+<div class="step">
+
+### A pixel can only count so far
+
+Every pixel in the camera is a bucket that collects light and reports how full it is. Fill it past the top and it keeps reporting the same number, because there is nowhere left to put anything — the brightness of that star is now under-reported, and by an amount that depends on how far past full it went.
+
+Our comparison stars were chosen for being bright, because bright stars are precise. Every one of them was over the top of the bucket. On the brightest of them, eight pixels in the core sit pinned at the maximum value the camera can express.
+
+The pipeline had a guard against exactly this, and it had never once fired. It compared each star against a ceiling of 60,000 — but it applied that test to a processed image in which a completely saturated star reads about 52,000. The guard was set above the value it was meant to catch, so it passed everything, on every target, for as long as it had existed.
+
+<div class="result">
+Measured against 443 stars faint enough to be trustworthy, a star at the saturation plateau reads <strong>0.24 magnitudes too faint</strong>, and how much too faint changes from night to night. That is the step.
+</div>
+
+</div>
+
+<div class="step">
+
+### Fixed on one star, impossible on the other
+
+For XZ Cygni the repair worked. Rebuilt from fifteen fainter stars, all comfortably inside the bucket, the two nights join to **0.0001 magnitudes** — and become a single light curve covering 58 per cent of one cycle with nothing fitted between them.
+
+For SW Lacertae it cannot be done, and knowing why is worth as much as the fix. The eclipse we are trying to measure is shallow enough that the reference has to be precise, and in that particular patch of sky every star bright enough to give that precision is over the top of the bucket, while every star inside the bucket is too faint to be quiet. We built the alternative and measured it: three times noisier than the measurement needs.
+
+<div class="result">
+So SW Lacertae keeps its saturated reference deliberately, and the report keeps the consequence: its <strong>timing</strong> is unaffected, because a fault shared by every frame in a night shifts the whole curve without changing where its lowest point falls. Anything comparing <strong>brightness between nights</strong> carries the doubt.
+</div>
+
+The epoch was re-measured against the fainter, honest reference as a check. It moved **1.7 seconds**.
 
 </div>
 
@@ -340,11 +404,19 @@ The placebo wins. There is no colour result here, and saying so is the finding. 
 
 ### One night that does not behave
 
-Of the three nights, one is four times noisier than the other two — measured against identical stars, with identical apertures and identical code.
+Of the three SW Lacertae nights, one scatters four times as much as the other two — measured against identical stars, with identical apertures and identical code. It had been the report's open mystery.
 
-That question could not even be *asked* before the comparison list was fixed, because a bad night and a bad set of reference stars produce the same symptom. Now the reference is identical across all three, so whatever this is belongs to the night.
+It is not a mystery any more, and the answer is dull in the best way. Four candidate causes; three eliminated and the fourth measured.
 
-It matters more than a footnote, because that night is the only one covering part of the cycle. On the folded curve the deeper minimum lands in the wrong place — where the space telescope says the shallower one should be — and the phases in question rest on that single anomalous night, in bins nothing else can check. So the fold cannot yet identify which eclipse is which from depth alone, and this report does not claim it can.
+It was not the star sitting near the edge of the frame, which it was not — 147 pixels clear, where the measurement needs eleven. It was not looking through more atmosphere: that night has the *flattest* altitude track of the three. What is left is that the night was simply dimmer, and a dimmer star is a noisier one. Building a noise model from a *different* night and applying it frame by frame accounts for most of the excess, and inside the bad night the scatter tracks the star's own brightness almost exactly as photon counting predicts.
+
+The remainder is cloud that was not uniform across the sky. On that night the nine reference stars, spread across two degrees, disagree with **each other** by more than twice what they do on either neighbor — so no single average of them was the right correction for the target's particular line of sight.
+
+<div class="result">
+Measured against what the star's own light can support, the night is <strong>1.7 times</strong> noisier rather than four. Nothing about it is a fault in the method. It is a night that should not have been observed through.
+</div>
+
+One consequence survives. That night is still the only one covering part of the cycle, and on the folded curve the deeper minimum lands where the space telescope says the shallower one should be. The fold cannot yet identify which eclipse is which from depth alone, and this report does not claim it can — settling that needs one night holding *both* eclipses, so that a common error cancels in the comparison.
 
 </div>
 

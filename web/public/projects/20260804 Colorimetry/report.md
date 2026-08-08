@@ -5,17 +5,17 @@ sciences:
   - Astronomy
 ---
 
-<p class="lede">A colour camera is three cameras interleaved, and photometry had been throwing two of them away. Recovered, they give two colour indices per star — enough, in principle, to separate how hot a star is from how much dust sits in front of it. Before any of that could be believed, the telescope itself had to be measured: our own optics make a star at the edge of the frame read <strong>0.20 magnitudes redder</strong> than the same star at the centre, which is larger than the entire real colour spread of the field.</p>
+<p class="lede">A color camera is three cameras interleaved, and photometry had been throwing two of them away. Recovered, they give two color indices per star — enough, in principle, to separate how hot a star is from how much dust sits in front of it. Before any of that could be believed, the telescope itself had to be measured: our own optics make a star at the edge of the frame read <strong>0.20 magnitudes redder</strong> than the same star at the center, which is larger than the entire real color spread of the field.</p>
 
-## What a colour is
+## What a color is
 
 <div class="step">
 
-### A star's colour is its temperature
+### A star's color is its temperature
 
 <!-- TO WRITE. The blackbody again, but read sideways. Spectroscopy read the
      absorption lines cut INTO the continuum; colorimetry reads the shape of the
-     continuum itself. Wien: hotter peaks bluer. A colour index is the crudest
+     continuum itself. Wien: hotter peaks bluer. A color index is the crudest
      possible spectrum — two numbers instead of two thousand — and the trade is
      that it costs one exposure of an ordinary image instead of a grating, a
      framing fight and a wavelength solution. Every star in the frame at once,
@@ -30,7 +30,7 @@ sciences:
 
 <!-- TO WRITE. Interstellar dust grains scatter blue light more efficiently than
      red, so a star seen through dust arrives both dimmer and redder. The trap is
-     that this is the SAME direction on a single colour index as being cool. One
+     that this is the SAME direction on a single color index as being cool. One
      number cannot tell a hot star behind dust from a cool star in clear sky —
      they land on the same value. This degeneracy is the whole reason the project
      needs two indices rather than one, and it is why `physics.color` returns a
@@ -38,9 +38,9 @@ sciences:
 
 <div class="term">
 
-**A colour index** is the difference of two magnitudes — here TG − TR, the green
+**A color index** is the difference of two magnitudes — here TG − TR, the green
 band minus the red. Because magnitudes are logarithmic, a difference of magnitudes
-is a RATIO of brightnesses, so a colour index is independent of how far away the
+is a RATIO of brightnesses, so a color index is independent of how far away the
 star is and of how big the telescope is. It is a property of the light itself.
 
 **Reddening** is what dust does. **Extinction** is the dimming that comes with it.
@@ -52,7 +52,7 @@ They are the same physical process measured on two different axes.
 
 <div class="step">
 
-### Two colours break the tie
+### Two colors break the tie
 
 <!-- TO WRITE. Temperature moves a star along one locus in the plane of (TB-TG)
      against (TG-TR); dust moves it along a different direction, the reddening
@@ -68,7 +68,7 @@ They are the same physical process measured on two different axes.
 
 ### The Bayer mosaic
 
-<!-- TO WRITE. Every pixel on this sensor sits under a coloured dye. The pattern
+<!-- TO WRITE. Every pixel on this sensor sits under a colored dye. The pattern
      is GRBG: in each 2x2 tile, two green, one red, one blue. So a single exposure
      is not one image but three interleaved ones, at different sampling rates,
      through three different filters. Include the tile diagram. -->
@@ -85,14 +85,14 @@ They are the same physical process measured on two different axes.
      across it has no defined passband. But "do not sum them" and "do not use
      them" are different statements. This project is the second statement being
      retracted: 50% of the sensor was being used and 50% was being deleted, and
-     the deleted half carries colour.
+     the deleted half carries color.
 
      The founding measurement: 20 stars, 12 plate-solved frames, from photometry's
-     own SW Lac run. One common colour across all of them is rejected at
-     chi-squared 897.2 / 19 dof. The colours are real and separable from noise. -->
+     own SW Lac run. One common color across all of them is rejected at
+     chi-squared 897.2 / 19 dof. The colors are real and separable from noise. -->
 
 <div class="result">
-<strong>χ² = 897.2 / 19 dof</strong> against the hypothesis that every star has the same colour · p = 4.5 × 10⁻¹⁷⁸
+<strong>χ² = 897.2 / 19 dof</strong> against the hypothesis that every star has the same color · p = 4.5 × 10⁻¹⁷⁸
 </div>
 
 </div>
@@ -116,17 +116,17 @@ They are the same physical process measured on two different axes.
 
 ### The frame is not uniform
 
-The blocking discovery, and the one that could have ended the project: a star near the edge of the frame reads redder than the same star near the centre. Not because it is redder — because of where it is.
+The blocking discovery, and the one that could have ended the project: a star near the edge of the frame reads redder than the same star near the center. Not because it is redder — because of where it is.
 
 <div class="result">
-<strong>TG − TR runs +0.204 ± 0.024 mag</strong> from centre to edge, an 8.5σ measurement on 351 stars
+<strong>TG − TR runs +0.204 ± 0.024 mag</strong> from center to edge, an 8.5σ measurement on 351 stars
 </div>
 
-The size is what makes it fatal rather than merely annoying. The real colour spread between different stars in that field is about 0.12 mag. The instrument's own gradient is larger than the entire signal it is supposed to measure.
+The size is what makes it fatal rather than merely annoying. The real color spread between different stars in that field is about 0.12 mag. The instrument's own gradient is larger than the entire signal it is supposed to measure.
 
 <!-- TO WRITE. Spell out the consequence with the cluster case: a cluster's stars
-     are spread across the frame by construction, so every colour-magnitude
-     diagram would be smeared along the colour axis by our own optics — and it
+     are spread across the frame by construction, so every color-magnitude
+     diagram would be smeared along the color axis by our own optics — and it
      would still look like a perfectly plausible diagram. That is the danger. Not
      a wrong answer that announces itself, but a believable one. -->
 
@@ -137,10 +137,10 @@ The size is what makes it fatal rather than merely annoying. The real colour spr
 ### Is it the star, or is it where the star is?
 
 <!-- TO WRITE. The obvious test — compare stars near the edge with stars near the
-     centre — cannot distinguish the two explanations on its own. If edge stars
+     center — cannot distinguish the two explanations on its own. If edge stars
      read redder, that could be the optics, or the field could simply happen to
      have redder stars around its rim. With enough stars coincidence becomes
-     implausible, but the test still ASSUMES the field has no colour pattern of
+     implausible, but the test still ASSUMES the field has no color pattern of
      its own, and a star cluster breaks that assumption by construction. -->
 
 </div>
@@ -151,7 +151,7 @@ The size is what makes it fatal rather than merely annoying. The real colour spr
 
 <!-- TO WRITE. The assumption-free version: instead of comparing different stars
      at different places, follow ONE star as it moves around the frame. If its
-     colour changes, the star did not change — the instrument did. This is
+     color changes, the star did not change — the instrument did. This is
      self-calibration, and it is standard practice rather than anything invented
      here; large surveys use it to solve their flat fields rather than trusting
      lab calibration. Credit that explicitly.
@@ -167,7 +167,7 @@ The size is what makes it fatal rather than merely annoying. The real colour spr
 <!-- TO WRITE. We did not have to dither. The mount slipped all through both
      runs — the same fault that cost 9.4% of the XZ Cyg subs in the Photometry
      report — and it walked the field 20 to 30 arcminutes across each night.
-     Every star sampled a range of distances from the frame centre for free.
+     Every star sampled a range of distances from the frame center for free.
      The defect that ruined subs is what makes the calibration possible.
 
      ⚠️ AND THEN SELF-CALIBRATION DID NOT WORK, which is the honest part of this
@@ -192,11 +192,11 @@ The size is what makes it fatal rather than merely annoying. The real colour spr
 ### What a radial model cannot see
 
 <!-- TO WRITE. State the assumption plainly. The correction fitted here is a
-     function of distance from the frame centre and nothing else. That catches
+     function of distance from the frame center and nothing else. That catches
      vignetting and a symmetric focus gradient, which are the likely causes. It is
      blind to anything that is not circularly symmetric: a tilted sensor, a
-     decentred element, or a gradient in the Bayer dyes across the chip would all
-     produce a colour pattern that this model cannot represent and would quietly
+     decenterd element, or a gradient in the Bayer dyes across the chip would all
+     produce a color pattern that this model cannot represent and would quietly
      average away.
 
      Testing for those needs the same star at many positions across a GRID rather
@@ -207,11 +207,11 @@ The size is what makes it fatal rather than merely annoying. The real colour spr
 
 </div>
 
-## From colour to physics
+## From color to physics
 
 <div class="step">
 
-### The colour-magnitude diagram
+### The color-magnitude diagram
 
 <!-- TO WRITE. Many stars, one epoch — the new axis this project adds, since every
      other astronomy result here is one object across many epochs. Main sequence,
@@ -226,12 +226,12 @@ The size is what makes it fatal rather than merely annoying. The real colour spr
 
 <div class="step">
 
-### The two-colour diagram and the reddening vector
+### The two-color diagram and the reddening vector
 
 <!-- TO WRITE. The plane where temperature and dust separate. Draw the reddening
-     vector as an arrow with its length labelled — a CMD without one invites the
+     vector as an arrow with its length labeled — a CMD without one invites the
      reader to read temperature straight off the horizontal axis, which is exactly
-     the mistake the second colour exists to prevent. -->
+     the mistake the second color exists to prevent. -->
 
 </div>
 
@@ -241,7 +241,7 @@ The size is what makes it fatal rather than merely annoying. The real colour spr
 
 <!-- TO WRITE. Instrumental indices say star A is redder than star B and nothing
      else. APASS covers our fields at V 10-17; cross-match by position, regress
-     instrumental TG-TR against catalogued B-V, and QUOTE THE SCATTER — that
+     instrumental TG-TR against cataloged B-V, and QUOTE THE SCATTER — that
      number is the error bar on every temperature and reddening downstream, and
      it decides whether the Cepheid distance in the Photometry report is worth
      attempting at all. If the scatter is large that is a result, not a failure. -->
@@ -258,7 +258,7 @@ The size is what makes it fatal rather than merely annoying. The real colour spr
      entry rather than three. A single CMD is a picture: you draw it, it looks
      like a main sequence, and nothing about it could come out wrong in a way you
      would notice. Three clusters at KNOWN, DIFFERENT reddenings is a test,
-     because the two-colour diagram predicts in advance that each cluster's locus
+     because the two-color diagram predicts in advance that each cluster's locus
      sits displaced along the reddening vector by a published amount.
 
      | Cluster | E(B−V) | Distance | Best months |
