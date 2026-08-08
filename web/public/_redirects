@@ -74,6 +74,23 @@
 
 /projects/20260805%20Temperature/*   /projects/20260729%20Spectroscopy/:splat   301
 
+# THE FIRST DELETION (2026-08-08): 20260405 Melting Point was withdrawn. The
+# OptiMelt broke before the run produced anything, so the report was a stub
+# describing an experiment that never happened.
+#
+# Unlike every rule above this one, there is no replacement to point at — the
+# work does not exist somewhere else under a new name. The rule sends the whole
+# subtree to the wall so a phone holding a cached thewall.json lands on a real
+# page instead of a 404 when the stale card is tapped. The in-app markdown
+# reader will fetch report.md and receive the wall's HTML, which renders as
+# noise rather than an error; that is the accepted cost of the tile outliving
+# the project by one release, and it clears itself on the next App Store build.
+#
+# ⚠️ PERCENT-ENCODED, same as the rule above, and disjoint from every other
+# source pattern here.
+
+/projects/20260405%20Melting%20Point/*   /projects/   301
+
 # Served by Cloudflare Workers Static Assets, which reads this file from the
 # assets directory. The Worker itself is still a pure passthrough.
 

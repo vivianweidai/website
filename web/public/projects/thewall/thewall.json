@@ -392,30 +392,6 @@
       "kind": "project",
       "science": "Chemistry",
       "science_slug": "chemistry",
-      "caption": "Melting Point",
-      "src": "/projects/20260405%20Melting%20Point/photos/setup/setup3.jpeg",
-      "full": "/projects/20260405%20Melting%20Point/photos/setup/setup3.jpeg",
-      "w": 1200,
-      "h": 900,
-      "href": "/projects/20260405%20Melting%20Point/",
-      "photos": [
-        "photos/samples/samples1.jpeg",
-        "photos/samples/samples2.jpeg",
-        "photos/samples/samples3.jpeg",
-        "photos/setup/setup1.jpeg",
-        "photos/setup/setup2.jpeg",
-        "photos/setup/setup3.jpeg",
-        "photos/setup/setup4.jpeg",
-        "photos/setup/setup5.jpeg",
-        "photos/setup/setup6.jpeg",
-        "photos/setup/setup7.jpeg"
-      ],
-      "date": "2026-04"
-    },
-    {
-      "kind": "project",
-      "science": "Chemistry",
-      "science_slug": "chemistry",
       "caption": "IR Spectroscopy",
       "src": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup2.jpeg",
       "full": "/projects/20260419%20IR%20Spectroscopy/photos/setup/setup2.jpeg",
@@ -656,17 +632,6 @@
     },
     {
       "kind": "photo",
-      "science": "Mathematics",
-      "science_slug": "mathematics",
-      "caption": "",
-      "src": "/projects/thewall/mathematics/20260419%20O-H%20Dominant.png",
-      "full": "/projects/thewall/mathematics/20260419%20O-H%20Dominant.png",
-      "w": 2000,
-      "h": 814,
-      "date": "2026-04"
-    },
-    {
-      "kind": "photo",
       "science": "Chemistry",
       "science_slug": "chemistry",
       "caption": "",
@@ -749,28 +714,6 @@
       "caption": "",
       "src": "/projects/thewall/chemistry/20250315%20Berkeley%20B.jpeg",
       "full": "/projects/thewall/chemistry/20250315%20Berkeley%20B.jpeg",
-      "w": 2000,
-      "h": 1500,
-      "date": "2025-03"
-    },
-    {
-      "kind": "photo",
-      "science": "Biology",
-      "science_slug": "biology",
-      "caption": "",
-      "src": "/projects/thewall/biology/20250307%20Leaf%20Epidermis.jpg",
-      "full": "/projects/thewall/biology/20250307%20Leaf%20Epidermis.jpg",
-      "w": 2000,
-      "h": 1500,
-      "date": "2025-03"
-    },
-    {
-      "kind": "photo",
-      "science": "Biology",
-      "science_slug": "biology",
-      "caption": "",
-      "src": "/projects/thewall/biology/20250305%20Tissue%20Section.jpg",
-      "full": "/projects/thewall/biology/20250305%20Tissue%20Section.jpg",
       "w": 2000,
       "h": 1500,
       "date": "2025-03"
@@ -947,7 +890,7 @@
     {
       "science": "Mathematics",
       "slug": "mathematics",
-      "count": 5
+      "count": 4
     },
     {
       "science": "Computing",
@@ -962,12 +905,12 @@
     {
       "science": "Chemistry",
       "slug": "chemistry",
-      "count": 11
+      "count": 10
     },
     {
       "science": "Biology",
       "slug": "biology",
-      "count": 10
+      "count": 8
     },
     {
       "science": "Astronomy",
